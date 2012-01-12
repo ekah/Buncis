@@ -31,16 +31,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\Lib\fluentnhibernate\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2">
+      <HintPath>..\..\Lib\fluentnhibernate\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
     <Reference Include="FluentNHibernate">
       <HintPath>..\..\Lib\fluentnhibernate\FluentNHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate">
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\..\Lib\fluentnhibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Burrow">
+      <HintPath>..\..\Lib\fluentnhibernate\NHibernate.Burrow.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\..\Lib\structuremap\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,13 +59,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NHibernateConfigurator.cs" />
     <Compile Include="DataRegistry.cs" />
+    <Compile Include="NHibernateHelper.cs" />
+    <Compile Include="NHUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Buncis.Core\Buncis.Core.csproj">
       <Project>{98DC3D6A-6996-454A-BD5F-3CE36ACF4C8B}</Project>
       <Name>Buncis.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Buncis.Framework.Core\Buncis.Framework.Core.csproj">
+      <Project>{D6F426E2-E30B-4453-9FC7-6839B680C4E6}</Project>
+      <Name>Buncis.Framework.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Buncis.Data.Domain\Buncis.Data.Domain.csproj">
       <Project>{28221BDC-8577-4D64-A630-540ADC544B04}</Project>

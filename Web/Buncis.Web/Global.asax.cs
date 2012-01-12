@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using Buncis.Framework.Core.Infrastructure.IoC;
+using Buncis.Web.Common.IoC;
 
 namespace Buncis.Web
 {
@@ -13,7 +15,7 @@ namespace Buncis.Web
         void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup
-
+            IoC.InitializeIoC(new DependencyResolverFactory());
         }
 
         void Application_End(object sender, EventArgs e)

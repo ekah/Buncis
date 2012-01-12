@@ -31,6 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\Lib\fluentnhibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Linq, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\fluentnhibernate\NHibernate.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryRepository.cs" />
+    <Compile Include="GenericRepository.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupplierRepository.cs" />
@@ -49,6 +57,10 @@
     <ProjectReference Include="..\..\Core\Buncis.Core\Buncis.Core.csproj">
       <Project>{98DC3D6A-6996-454A-BD5F-3CE36ACF4C8B}</Project>
       <Name>Buncis.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Buncis.Framework.Core\Buncis.Framework.Core.csproj">
+      <Project>{D6F426E2-E30B-4453-9FC7-6839B680C4E6}</Project>
+      <Name>Buncis.Framework.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Buncis.Data.Domain\Buncis.Data.Domain.csproj">
       <Project>{28221BDC-8577-4D64-A630-540ADC544B04}</Project>

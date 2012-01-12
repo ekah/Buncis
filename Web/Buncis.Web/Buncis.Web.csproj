@@ -34,6 +34,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\Lib\fluentnhibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\..\Lib\fluentnhibernate\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <HintPath>..\..\Lib\structuremap\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
@@ -131,6 +140,28 @@
   <ItemGroup>
     <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Buncis.Core\Buncis.Core.csproj">
+      <Project>{98DC3D6A-6996-454A-BD5F-3CE36ACF4C8B}</Project>
+      <Name>Buncis.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Buncis.Framework.Core\Buncis.Framework.Core.csproj">
+      <Project>{D6F426E2-E30B-4453-9FC7-6839B680C4E6}</Project>
+      <Name>Buncis.Framework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\Buncis.Data.Common\Buncis.Data.Common.csproj">
+      <Project>{8F3EEEBB-AB4D-4AB6-A89D-C5F4671F3472}</Project>
+      <Name>Buncis.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\Buncis.Data.Domain\Buncis.Data.Domain.csproj">
+      <Project>{28221BDC-8577-4D64-A630-540ADC544B04}</Project>
+      <Name>Buncis.Data.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Buncis.Web.Common\Buncis.Web.Common.csproj">
+      <Project>{04FF072D-8A48-4DB8-AD00-7F7317FA2DE7}</Project>
+      <Name>Buncis.Web.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
