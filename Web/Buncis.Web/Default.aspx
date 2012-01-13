@@ -17,6 +17,10 @@
     <div>
         <asp:Literal runat="server" ID="ltrTest"></asp:Literal>
         <br />
+        <br />
+        <asp:Literal runat="server" ID="ltrTest2"></asp:Literal>
+        <br />
+        <br />
         <asp:Button ID="randomize1" Text="Randomize 1" runat="server" />
         <asp:Button ID="randomize2" Text="Randomize 2" runat="server" />
         <asp:Button ID="randomize3" Text="Randomize 3" runat="server" />

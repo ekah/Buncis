@@ -10,32 +10,13 @@ namespace Buncis.Data.Common
 {
     public class NHUnitOfWork : DisposableResource, IUnitOfWork
     {
-        //private readonly ISessionFactory _sessionFactory;
-        //private readonly ITransaction _transaction;
-
         private readonly ISession _session;
-        private readonly ITransaction _transaction;
-
-        //public NHUnitOfWork(ISessionFactory sessionFactory)
-        //{
-        //    _sessionFactory = sessionFactory;
-        //    Session = _sessionFactory.GetCurrentSession();
-        //    Session.FlushMode = FlushMode.Auto;
-        //    _transaction = Session.BeginTransaction(IsolationLevel.ReadCommitted);
-        //}
+        private ITransaction _transaction;
 
         public NHUnitOfWork(ISession session)
         {
             _session = session;
-            _transaction = _session.BeginTransaction();
         }
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    _session.Close();
-
-        //    base.Dispose(disposing);
-        //}
 
         /// <summary>
         /// Commits this instance.
@@ -65,6 +46,14 @@ namespace Buncis.Data.Common
             {
                 _transaction.Rollback();
             }
+        }
+
+        /// <summary>
+        /// Begins this instance.
+        /// </summary>
+        public void Begin()
+        {
+            _transaction = _session.BeginTransaction();
         }
     }
 }

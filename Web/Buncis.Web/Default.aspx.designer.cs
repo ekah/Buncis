@@ -22,6 +22,15 @@ namespace Buncis.Web {
         protected global::System.Web.UI.WebControls.Literal ltrTest;
         
         /// <summary>
+        /// ltrTest2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrTest2;
+        
+        /// <summary>
         /// randomize1 control.
         /// </summary>
         /// <remarks>

@@ -19,22 +19,16 @@ namespace Buncis.Web
         ISupplierRepository sr = null;
         IUnitOfWork uow = null;
 
-        private Category Category { get; set; }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                ltrTest.Text = Category == null ? "" : Category.CategoryName;
+
             }
         }
 
         protected override void OnInit(EventArgs e)
         {
-            cr = IoC.Resolve<ICategoryRepository>();
-            pr = IoC.Resolve<IProductRepository>();
-            sr = IoC.Resolve<ISupplierRepository>();
-
             randomize1.Click += new EventHandler(randomize1_Click);
             randomize2.Click += new EventHandler(randomize1_Click);
             randomize3.Click += new EventHandler(randomize1_Click);
@@ -57,18 +51,27 @@ namespace Buncis.Web
 
         void randomize1_Click(object sender, EventArgs e)
         {
+            cr = IoC.Resolve<ICategoryRepository>();
+            pr = IoC.Resolve<IProductRepository>();
+            sr = IoC.Resolve<ISupplierRepository>();
             uow = IoC.Resolve<IUnitOfWork>();
 
             using (uow)
             {
-                Category = cr.FindBy(o => o.CategoryId == 9);
+                uow.Begin();
 
-                Category.CategoryName = new Random(DateTime.Now.Millisecond).Next().ToString();
-                ltrTest.Text = Category == null ? "" : Category.CategoryName;
+                var category = cr.FindBy(o => o.CategoryId == 9);
+                category.CategoryName = new Random(DateTime.Now.Millisecond).Next().ToString();
+                ltrTest.Text = category == null ? "" : category.CategoryName;
+                cr.Update(category);
 
-                cr.Update(Category);
+                var supplier = sr.FindBy(o => o.SupplierId == 30);
+                supplier.ContactTitle = new Random(DateTime.Now.Millisecond).Next().ToString();
+                ltrTest2.Text = supplier == null ? "" : supplier.ContactTitle;
+                sr.Update(supplier);
 
-                uow.Commit();
+                //uow.Commit();
+                uow.Rollback();
             }
         }
 

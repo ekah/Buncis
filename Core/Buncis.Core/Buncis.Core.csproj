@@ -33,12 +33,15 @@
   <ItemGroup>
     <Reference Include="FluentNHibernate">
       <HintPath>..\..\Lib\fluentnhibernate\FluentNHibernate.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\..\Lib\fluentnhibernate\NHibernate.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\..\Lib\structuremap\StructureMap.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -58,11 +61,16 @@
     <ProjectReference Include="..\..\Data\Buncis.Data.Domain\Buncis.Data.Domain.csproj">
       <Project>{28221BDC-8577-4D64-A630-540ADC544B04}</Project>
       <Name>Buncis.Data.Domain</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Buncis.Framework.Core\Buncis.Framework.Core.csproj">
       <Project>{D6F426E2-E30B-4453-9FC7-6839B680C4E6}</Project>
       <Name>Buncis.Framework.Core</Name>
+      <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
