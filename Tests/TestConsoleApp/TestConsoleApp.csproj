@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{904981D7-CBCB-49C3-901F-7B5D353DBB97}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestConsoleApp</RootNamespace>
+    <AssemblyName>TestConsoleApp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\..\Lib\fluentnhibernate\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\Lib\fluentnhibernate\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2">
+      <HintPath>..\..\Lib\fluentnhibernate\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\Lib\fluentnhibernate\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\Lib\fluentnhibernate\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\..\Lib\moq\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\Lib\fluentnhibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Burrow">
+      <HintPath>..\..\Lib\fluentnhibernate\NHibernate.Burrow.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Burrow.AppBlock">
+      <HintPath>..\..\Lib\fluentnhibernate\NHibernate.Burrow.AppBlock.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Burrow.TestUtil">
+      <HintPath>..\..\Lib\fluentnhibernate\NHibernate.Burrow.TestUtil.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Burrow.WebUtil">
+      <HintPath>..\..\Lib\fluentnhibernate\NHibernate.Burrow.WebUtil.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\..\Lib\fluentnhibernate\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Linq">
+      <HintPath>..\..\Lib\fluentnhibernate\NHibernate.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq">
+      <HintPath>..\..\Lib\fluentnhibernate\Remotion.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\Lib\structuremap\Rhino.Mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\..\Lib\structuremap\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.AutoMocking">
+      <HintPath>..\..\Lib\structuremap\StructureMap.AutoMocking.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Buncis.Core\Buncis.Core.csproj">
+      <Project>{98DC3D6A-6996-454A-BD5F-3CE36ACF4C8B}</Project>
+      <Name>Buncis.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Buncis.Framework.Core\Buncis.Framework.Core.csproj">
+      <Project>{D6F426E2-E30B-4453-9FC7-6839B680C4E6}</Project>
+      <Name>Buncis.Framework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\Buncis.Data.Common\Buncis.Data.Common.csproj">
+      <Project>{8F3EEEBB-AB4D-4AB6-A89D-C5F4671F3472}</Project>
+      <Name>Buncis.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\Buncis.Data.Domain\Buncis.Data.Domain.csproj">
+      <Project>{28221BDC-8577-4D64-A630-540ADC544B04}</Project>
+      <Name>Buncis.Data.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\Buncis.Data.Repository\Buncis.Data.Repository.csproj">
+      <Project>{9DD459BA-FAF6-4EB7-BAD2-C2D9994AC969}</Project>
+      <Name>Buncis.Data.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Buncis.Services\Buncis.Services.csproj">
+      <Project>{3EB19167-CDB0-429F-91BC-796C8D744552}</Project>
+      <Name>Buncis.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Web\Buncis.Web.Common\Buncis.Web.Common.csproj">
+      <Project>{04FF072D-8A48-4DB8-AD00-7F7317FA2DE7}</Project>
+      <Name>Buncis.Web.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Web\Buncis.Web\Buncis.Web.csproj">
+      <Project>{7B8B9C2E-9110-4539-B6D1-928AF85786CC}</Project>
+      <Name>Buncis.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

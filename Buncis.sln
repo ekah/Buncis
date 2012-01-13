@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buncis.Web.Common", "Web\Bu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buncis.Services", "Services\Buncis.Services\Buncis.Services.csproj", "{3EB19167-CDB0-429F-91BC-796C8D744552}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{10DA439F-3C7D-4D60-8531-0D9FFBDA426A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleApp", "Tests\TestConsoleApp\TestConsoleApp.csproj", "{904981D7-CBCB-49C3-901F-7B5D353DBB97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -115,6 +119,16 @@ Global
 		{3EB19167-CDB0-429F-91BC-796C8D744552}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{3EB19167-CDB0-429F-91BC-796C8D744552}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{3EB19167-CDB0-429F-91BC-796C8D744552}.Release|x86.ActiveCfg = Release|Any CPU
+		{904981D7-CBCB-49C3-901F-7B5D353DBB97}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{904981D7-CBCB-49C3-901F-7B5D353DBB97}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{904981D7-CBCB-49C3-901F-7B5D353DBB97}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{904981D7-CBCB-49C3-901F-7B5D353DBB97}.Debug|x86.ActiveCfg = Debug|x86
+		{904981D7-CBCB-49C3-901F-7B5D353DBB97}.Debug|x86.Build.0 = Debug|x86
+		{904981D7-CBCB-49C3-901F-7B5D353DBB97}.Release|Any CPU.ActiveCfg = Release|x86
+		{904981D7-CBCB-49C3-901F-7B5D353DBB97}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{904981D7-CBCB-49C3-901F-7B5D353DBB97}.Release|Mixed Platforms.Build.0 = Release|x86
+		{904981D7-CBCB-49C3-901F-7B5D353DBB97}.Release|x86.ActiveCfg = Release|x86
+		{904981D7-CBCB-49C3-901F-7B5D353DBB97}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,5 +142,6 @@ Global
 		{7B8B9C2E-9110-4539-B6D1-928AF85786CC} = {EDE23C79-E714-44C6-9B10-3174851E2834}
 		{04FF072D-8A48-4DB8-AD00-7F7317FA2DE7} = {EDE23C79-E714-44C6-9B10-3174851E2834}
 		{3EB19167-CDB0-429F-91BC-796C8D744552} = {42DDCF3F-BBB6-4710-B91B-B486BDEA0FE8}
+		{904981D7-CBCB-49C3-901F-7B5D353DBB97} = {10DA439F-3C7D-4D60-8531-0D9FFBDA426A}
 	EndGlobalSection
 EndGlobal
