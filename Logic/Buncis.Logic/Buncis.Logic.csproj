@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3EB19167-CDB0-429F-91BC-796C8D744552}</ProjectGuid>
+    <ProjectGuid>{7C233E93-C064-47DF-9C11-0181658AD2C2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Buncis.Services</RootNamespace>
-    <AssemblyName>Buncis.Services</AssemblyName>
+    <RootNamespace>Buncis.Logic</RootNamespace>
+    <AssemblyName>Buncis.Logic</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LinqKit">
-      <HintPath>..\..\Lib\linqkit\LinqKit.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,25 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\BuncisBaseService.cs" />
-    <Compile Include="CategoryService.cs" />
-    <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SupplierService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Core\Buncis.Core\Buncis.Core.csproj">
-      <Project>{98DC3D6A-6996-454A-BD5F-3CE36ACF4C8B}</Project>
-      <Name>Buncis.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Core\Buncis.Framework.Core\Buncis.Framework.Core.csproj">
-      <Project>{D6F426E2-E30B-4453-9FC7-6839B680C4E6}</Project>
-      <Name>Buncis.Framework.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Data\Buncis.Data.Domain\Buncis.Data.Domain.csproj">
-      <Project>{28221BDC-8577-4D64-A630-540ADC544B04}</Project>
-      <Name>Buncis.Data.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

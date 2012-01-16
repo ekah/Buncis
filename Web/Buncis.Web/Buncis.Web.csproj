@@ -173,6 +173,10 @@
       <Project>{28221BDC-8577-4D64-A630-540ADC544B04}</Project>
       <Name>Buncis.Data.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Services\Buncis.Services\Buncis.Services.csproj">
+      <Project>{3EB19167-CDB0-429F-91BC-796C8D744552}</Project>
+      <Name>Buncis.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Buncis.Web.Common\Buncis.Web.Common.csproj">
       <Project>{04FF072D-8A48-4DB8-AD00-7F7317FA2DE7}</Project>
       <Name>Buncis.Web.Common</Name>

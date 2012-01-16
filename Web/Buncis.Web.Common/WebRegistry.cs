@@ -11,7 +11,7 @@ namespace Buncis.Web.Common
     {
         public WebRegistry()
         {
-            //For<ISystemSettings>().Use<SystemSettings>().f
+            
         }
     }
 }
