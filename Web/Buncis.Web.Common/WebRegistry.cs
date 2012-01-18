@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using StructureMap.Configuration.DSL;
 using Buncis.Core.Infrastructures;
+using Buncis.Data.Common;
+using Buncis.Framework.Core.Infrastructure;
 
 namespace Buncis.Web.Common
 {
@@ -11,7 +13,7 @@ namespace Buncis.Web.Common
     {
         public WebRegistry()
         {
-            
+            For<IUnitOfWork>().HttpContextScoped().Use<NHUnitOfWork>();
         }
     }
 }

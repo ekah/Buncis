@@ -74,6 +74,10 @@
       <Name>Buncis.Data.Domain</Name>
       <Private>True</Private>
     </ProjectReference>
+    <ProjectReference Include="..\..\Services\Buncis.Services.Common\Buncis.Services.Common.csproj">
+      <Project>{5E12F512-548F-4F3E-89E4-54B4F3D57FCC}</Project>
+      <Name>Buncis.Services.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

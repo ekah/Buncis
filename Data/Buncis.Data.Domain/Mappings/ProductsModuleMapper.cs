@@ -11,7 +11,7 @@ namespace Buncis.Data.Domain.Mappings
     {
         public CategoryMap()
         {
-            Table("dbo.Categories");
+            Table("Categories");
             Id(x => x.CategoryId);
             Map(x => x.CategoryName);
             Map(x => x.CategoryDescription).Column("Description");
@@ -22,7 +22,7 @@ namespace Buncis.Data.Domain.Mappings
     {
         public ProductMap()
         {
-            Table("dbo.Products");
+            Table("Products");
             Id(x => x.ProductId);
             Map(x => x.ProductName);
             Map(x => x.QuantityPerUnit);
@@ -42,7 +42,7 @@ namespace Buncis.Data.Domain.Mappings
     {
         public SupplierMap()
         {
-            Table("dbo.Suppliers");
+            Table("Suppliers");
             Id(x => x.SupplierId);
             Map(x => x.CompanyName);
             Map(x => x.ContactName);

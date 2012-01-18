@@ -8,10 +8,11 @@ using Buncis.Data.Common;
 using StructureMap;
 using NHibernate;
 using StructureMap.Graph;
+using Buncis.Services.Common;
 
 namespace Buncis.Web.Common.IoC
 {
-    public class DependencyResolver : DisposableResource,  IDependencyResolver
+    public class DependencyResolver : DisposableResource, IDependencyResolver
     {
         public DependencyResolver()
         {
@@ -25,6 +26,8 @@ namespace Buncis.Web.Common.IoC
                     y.Convention<DefaultConventionScanner>();
                 });
                 x.AddRegistry<DataRegistry>();
+                x.AddRegistry<WebRegistry>();
+                x.AddRegistry<ServiceRegistry>();
             });
         }
 

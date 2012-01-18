@@ -12,11 +12,19 @@ namespace Buncis.Services
     {
         private ICategoryRepository _categoryRepository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CategoryService"/> class.
+        /// </summary>
+        /// <param name="categoryRepository">The category repository.</param>
         public CategoryService(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }
 
+        /// <summary>
+        /// Gets all categories.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Category> GetAllCategories()
         {
             return _categoryRepository.GetAll().ToList();

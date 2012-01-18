@@ -15,10 +15,7 @@ namespace Buncis.Web
 {
     public partial class _Default : System.Web.UI.Page
     {
-        //ICategoryRepository cr = null;
         IProductRepository pr = null;
-        //ISupplierRepository sr = null;
-        //IUnitOfWork uow = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,58 +23,14 @@ namespace Buncis.Web
 
             if (!IsPostBack)
             {
-
-                IProductService ps = new Buncis.Services.ProductService(pr);
+                IProductService ps = IoC.Resolve<IProductService>();
                 var res = ps.GetProducts(3, 8);
             }
         }
 
         protected override void OnInit(EventArgs e)
         {
-            //randomize1.Click += new EventHandler(randomize1_Click);
-            //randomize2.Click += new EventHandler(randomize1_Click);
-            //randomize3.Click += new EventHandler(randomize1_Click);
-            //randomize4.Click += new EventHandler(randomize1_Click);
-            //btnCancel.Click += new EventHandler(btnCancel_Click);
-            //btnComplete.Click += new EventHandler(btnComplete_Click);
-
             base.OnInit(e);
-        }
-
-        void btnComplete_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        void btnCancel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        void randomize1_Click(object sender, EventArgs e)
-        {
-            //cr = IoC.Resolve<ICategoryRepository>();
-            //pr = IoC.Resolve<IProductRepository>();
-            //sr = IoC.Resolve<ISupplierRepository>();
-            //uow = IoC.Resolve<IUnitOfWork>();
-
-            //using (uow)
-            //{
-            //    uow.Begin();
-
-            //    var category = cr.FindBy(o => o.CategoryId == 9);
-            //    category.CategoryName = new Random(DateTime.Now.Millisecond).Next().ToString();
-            //    ltrTest.Text = category == null ? "" : category.CategoryName;
-            //    cr.Update(category);
-
-            //    var supplier = sr.FindBy(o => o.SupplierId == 30);
-            //    supplier.ContactTitle = new Random(DateTime.Now.Millisecond).Next().ToString();
-            //    ltrTest2.Text = supplier == null ? "" : supplier.ContactTitle;
-            //    sr.Update(supplier);
-
-            //    //uow.Commit();
-            //    uow.Rollback();
-            //}
         }
 
     }

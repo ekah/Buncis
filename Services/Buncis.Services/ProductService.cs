@@ -68,5 +68,29 @@ namespace Buncis.Services
             Expression<Func<Product, bool>> query = (p) => categoryExpression.Invoke(p) && supplierExpression.Invoke(p);
             return _productRepository.FilterBy(query.Expand()).ToList();
         }
+
+        /// <summary>
+        /// Updates the product.
+        /// </summary>
+        /// <param name="product">The product.</param>
+        public void UpdateProduct(Product product)
+        {
+            UsingTransaction(() =>
+            {
+                _productRepository.Update(product);
+            });
+        }
+
+        /// <summary>
+        /// Adds the product.
+        /// </summary>
+        /// <param name="product">The product.</param>
+        public void AddProduct(Product product)
+        {
+            UsingTransaction(() =>
+            {
+                _productRepository.Add(product);
+            });
+        }
     }
 }

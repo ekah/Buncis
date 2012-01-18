@@ -38,7 +38,6 @@ namespace Buncis.Data.Common
                 o.AssemblyContainingType<CategoryRepository>();
                 o.Convention<DefaultConventionScanner>();
             });
-            For<IUnitOfWork>().HttpContextScoped().Use<NHUnitOfWork>();
         }
     }
 }

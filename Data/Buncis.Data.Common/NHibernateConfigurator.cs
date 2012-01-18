@@ -15,7 +15,7 @@ namespace Buncis.Data.Common
         public void Config(IPersistenceUnitCfg puCfg, NHibernate.Cfg.Configuration nhCfg)
         {
             Fluently.Configure(nhCfg)
-                .Database(MsSqlConfiguration.MsSql2008.ConnectionString(c => c.FromConnectionStringWithKey("BuncisConnectionString")))
+                .Database(MySQLConfiguration.Standard.ConnectionString(c => c.FromConnectionStringWithKey("BuncisConnectionString")))
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CategoryMap>())
                 .BuildConfiguration();
         }
