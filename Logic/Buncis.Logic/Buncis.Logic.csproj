@@ -49,6 +49,7 @@
     <Compile Include="Models\ProductDetailModel.cs" />
     <Compile Include="Models\ProductListingModel.cs" />
     <Compile Include="Models\SupplierListingModel.cs" />
+    <Compile Include="Presenters\BuncisBasePresenter.cs" />
     <Compile Include="Presenters\CategoryListingPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ICategoryListingView.cs" />
@@ -57,6 +58,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\Buncis.Core\Buncis.Core.csproj">
+      <Project>{98DC3D6A-6996-454A-BD5F-3CE36ACF4C8B}</Project>
+      <Name>Buncis.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Core\Buncis.Framework.Mvp\Buncis.Framework.Mvp.csproj">
       <Project>{B4D9A823-66E5-443C-868C-CE394243644C}</Project>
       <Name>Buncis.Framework.Mvp</Name>
