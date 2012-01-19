@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\Settings\IPropertySettingsResolver.cs" />
+    <Compile Include="Infrastructure\Settings\SettingsProvider.cs" />
     <Compile Include="Infrastructure\DisposableResource.cs" />
     <Compile Include="Infrastructure\Extensions\Dynamic.cs" />
     <Compile Include="Infrastructure\IoC\IDependencyResolver.cs" />

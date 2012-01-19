@@ -10,6 +10,7 @@ using NHibernate;
 using Buncis.Data.Models;
 using Buncis.Framework.Core.Infrastructure;
 using Buncis.Core.Services;
+using Buncis.Core.Infrastructures;
 
 namespace Buncis.Web
 {
@@ -19,13 +20,16 @@ namespace Buncis.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            pr = IoC.Resolve<IProductRepository>();
+            //pr = IoC.Resolve<IProductRepository>();
 
-            if (!IsPostBack)
-            {
-                IProductService ps = IoC.Resolve<IProductService>();
-                var res = ps.GetProducts(3, 8);
-            }
+            //if (!IsPostBack)
+            //{
+            //    IProductService ps = IoC.Resolve<IProductService>();
+            //    var res = ps.GetProducts(3, 8);
+            //}
+
+            ISystemSettings settings = IoC.Resolve<ISystemSettings>();
+
         }
 
         protected override void OnInit(EventArgs e)
