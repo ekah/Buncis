@@ -9,6 +9,8 @@ using StructureMap;
 using NHibernate;
 using StructureMap.Graph;
 using Buncis.Services.Common;
+using WebFormsMvp.Binder;
+using WebFormsMvp.Contrib.StructureMap;
 
 namespace Buncis.Web.Common.IoC
 {
@@ -29,6 +31,8 @@ namespace Buncis.Web.Common.IoC
                 x.AddRegistry<WebRegistry>();
                 x.AddRegistry<ServiceRegistry>();
             });
+
+            PresenterBinder.Factory = (IPresenterFactory)new StructureMapPresenterFactory(ObjectFactory.Container);
         }
 
         public T Resolve<T>()

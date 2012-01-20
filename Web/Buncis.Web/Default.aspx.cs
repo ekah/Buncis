@@ -16,26 +16,7 @@ namespace Buncis.Web
 {
     public partial class _Default : System.Web.UI.Page
     {
-        IProductRepository pr = null;
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            //pr = IoC.Resolve<IProductRepository>();
-
-            //if (!IsPostBack)
-            //{
-            //    IProductService ps = IoC.Resolve<IProductService>();
-            //    var res = ps.GetProducts(3, 8);
-            //}
-
-            ISystemSettings settings = IoC.Resolve<ISystemSettings>();
-
-        }
-
-        protected override void OnInit(EventArgs e)
-        {
-            base.OnInit(e);
-        }
+        
 
     }
 }

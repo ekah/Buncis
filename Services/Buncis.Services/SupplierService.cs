@@ -19,7 +19,7 @@ namespace Buncis.Services
 
         public IEnumerable<Supplier> GetAllSuppliers()
         {
-            return _supplierRepository.GetAll().ToList();
+            return _supplierRepository.GetAll().OrderBy(s => s.CompanyName).ToList();
         }
     }
 }

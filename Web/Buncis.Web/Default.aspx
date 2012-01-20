@@ -14,19 +14,4 @@
         You can also find <a href="http://go.microsoft.com/fwlink/?LinkID=152368&amp;clcid=0x409"
             title="MSDN ASP.NET Docs">documentation on ASP.NET at MSDN</a>.
     </p>
-    <div>
-        <asp:Literal runat="server" ID="ltrTest"></asp:Literal>
-        <br />
-        <br />
-        <asp:Literal runat="server" ID="ltrTest2"></asp:Literal>
-        <br />
-        <br />
-        <asp:Button ID="randomize1" Text="Randomize 1" runat="server" />
-        <asp:Button ID="randomize2" Text="Randomize 2" runat="server" />
-        <asp:Button ID="randomize3" Text="Randomize 3" runat="server" />
-        <asp:Button ID="randomize4" Text="Randomize 4" runat="server" />
-        <br />
-        <asp:Button ID="btnComplete" Text="Complete" runat="server" />
-        <asp:Button ID="btnCancel" Text="Cancel" runat="server" />
-    </div>
 </asp:Content>

@@ -42,13 +42,21 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebFormsMvp">
+      <HintPath>..\..\Lib\aspnetmvp\WebFormsMvp.dll</HintPath>
+    </Reference>
+    <Reference Include="WebFormsMvp.Contrib.StructureMap, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Lib\aspnetmvp\WebFormsMvp.Contrib.StructureMap.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\DropDownListExtension.cs" />
     <Compile Include="IoC\DependencyResolver.cs" />
     <Compile Include="IoC\DependencyResolverFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

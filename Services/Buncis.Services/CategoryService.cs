@@ -27,7 +27,7 @@ namespace Buncis.Services
         /// <returns></returns>
         public IEnumerable<Category> GetAllCategories()
         {
-            return _categoryRepository.GetAll().ToList();
+            return _categoryRepository.GetAll().OrderBy(c => c.CategoryName).ToList();
         }
     }
 }

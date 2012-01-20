@@ -7,8 +7,7 @@ using Buncis.Logic.Models;
 
 namespace Buncis.Logic.Views
 {
-    public interface ICategoryListingView : IBaseView<CategoryListingModel>
+    public interface IProductDetailView : IBaseView<ProductDetailModel>
     {
-        event EventHandler GetCategories;
     }
 }

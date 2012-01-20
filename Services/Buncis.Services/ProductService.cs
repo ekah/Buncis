@@ -66,7 +66,10 @@ namespace Buncis.Services
                 supplierExpression = (p) => true;
 
             Expression<Func<Product, bool>> query = (p) => categoryExpression.Invoke(p) && supplierExpression.Invoke(p);
-            return _productRepository.FilterBy(query.Expand()).ToList();
+            var lists = _productRepository.FilterBy(query.Expand()).ToList();
+            lists = lists.OrderBy(o => o.ProductName).ToList();
+
+            return lists;
         }
 
         /// <summary>
