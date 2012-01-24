@@ -96,7 +96,14 @@
     <Content Include="Assets\Images\Products\i_mate_ultimate_8150.png" />
     <Content Include="Assets\Images\Products\laptop %281%29.png" />
     <Content Include="Assets\Images\Products\laptop.png" />
+    <Content Include="Assets\Images\sites\bar_slice.jpg" />
+    <Content Include="Assets\Images\sites\footer_slice.jpg" />
+    <Content Include="Assets\Images\sites\header.jpg" />
+    <Content Include="Assets\Images\sites\header_slice2.jpg" />
+    <Content Include="Assets\Images\sites\nav_slice.jpg" />
     <Content Include="ProductSearch.aspx" />
+    <Content Include="Styles\buncismain.css" />
+    <Content Include="Styles\productsearch.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
