@@ -17,7 +17,12 @@
         <asp:Repeater ID="rptProducts" runat="server">
             <ItemTemplate>
                 <div class="search-results-item">
-                    <asp:Label runat="server" ID="lblName" Text='<%# Eval("ProductName") %>'></asp:Label>
+                    <div class="item-image">
+                        <img src='<%# Eval("ProductImage") %>' />
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name"><%# Eval("ProductName")%></h3>
+                    </div>                    
                 </div>
             </ItemTemplate>
         </asp:Repeater>

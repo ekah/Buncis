@@ -4,48 +4,100 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
     <title></title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/buncismain.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form runat="server">
-    <div class="page">
-        <div class="header">
-            <div class="title">
-                <h1>
-                    My ASP.NET Application
-                </h1>
-            </div>
-            <div class="loginDisplay">
-                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
-                    <AnonymousTemplate>
-                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
-                    </AnonymousTemplate>
-                    <LoggedInTemplate>
-                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
-                    </LoggedInTemplate>
-                </asp:LoginView>
-            </div>
-            <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
-                        <asp:MenuItem NavigateUrl="~/ProductSearch.aspx" Text="Products"/>
-                    </Items>
-                </asp:Menu>
+    <div id="main">
+        <div id="top_bar">
+            <div class="container">
+                <p id="login">
+                    <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                        <AnonymousTemplate>
+                            [ <a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server">Log In</a>
+                            ]
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            Welcome <span class="bold">
+                                <asp:LoginName ID="HeadLoginName" runat="server" />
+                            </span>! [
+                            <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
+                                LogoutPageUrl="~/" />
+                            ]
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </p>
+                <p id="subscribe">Stay Updated: <a href="#">Subscribe via RSS</a> <a href="#">Email Updates</a></p>
             </div>
         </div>
-        <div class="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        <div id="header">
+            <div id="branding" class="container">
+                <h1>Buncis</h1>
+                <p class="desc">A web app, the Green one.</p>
+            </div>
+            <div id="navigation">
+                <ul id="menu" class="container">
+                    <li><a href="/Default.aspx">Home</a></li>
+                    <li><a href="/About.aspx">About</a></li>
+                    <li><a href="/ProductSearch.aspx">Products</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="clear">
+        <div id="content" class="container">
+            <div id="sidebar">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#">General</a></li>
+                    <li><a href="#">Ghost Sightings</a></li>
+                    <li><a href="#">UFO Crashes</a></li>
+                    <li><a href="#">Government Coverups</a></li>
+                    <li><a href="#">International Conspiracies</a></li>
+                </ul>
+                <h3>Recent Posts</h3>
+                <ul>
+                    <li><a href="#">Ghost Sighting in Mansion</a></li>
+                    <li><a href="#">UFO picked up by satelites</a></li>
+                    <li><a href="#">Mutants amoung us?</a></li>
+                    <li><a href="#">Bigfoot: Fact or Fiction?</a></li>
+                </ul>
+                <h3>Archives</h3>
+                <ul>
+                    <li><a href="">June 2008</a></li>
+                    <li><a href="">May 2008</a></li>
+                    <li><a href="">April 2008</a></li>
+                    <li><a href="">March 2008</a></li>
+                </ul>
+            </div>
+            <div id="maincontent">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
         </div>
     </div>
-    <div class="footer">
-        
+    <div id="footer">
+        <div id="footer_content" class="container">
+            <div id="copyright">
+                <p>Copyright © 2009.<br />All Rights Reserved.</p>
+            </div>
+            <div id="links">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="#">PSDtuts - Photosohp tutorials</a></li>
+                    <li><a href="#">NetTtuts - Web development and design tutorials</a></li>
+                    <li><a href="#">VectorTuts - Illustrator and vector tutorials</a></li>
+                    <li><a href="#">FlashTuts - Adobe Flash tutorials</a></li>
+                </ul>
+            </div>
+            <div id="feeds">
+                <h4>Follow our updates</h4>
+                <ul>
+                    <li><a href="#">Subscribe to RSS Feed</a></li>
+                    <li><a href="#">What is RSS?</a></li>
+                    <li><a href="#">Email Updates</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
     </form>
 </body>

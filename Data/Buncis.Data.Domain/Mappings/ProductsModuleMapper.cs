@@ -33,6 +33,7 @@ namespace Buncis.Data.Domain.Mappings
             Map(x => x.Discontinued);
             Map(x => x.CategoryId);
             Map(x => x.SupplierId);
+            Map(x => x.ProductImage);
             References<Category>(x => x.Category).Column("CategoryId");
             References<Supplier>(x => x.Supplier).Column("SupplierId");
         }

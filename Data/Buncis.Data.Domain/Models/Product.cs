@@ -17,6 +17,7 @@ namespace Buncis.Data.Models
         public virtual int UnitsOnOrder { get; set; }
         public virtual int ReorderLevel { get; set; }
         public virtual bool Discontinued { get; set; }
+        public virtual string ProductImage { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual Supplier Supplier { get; set; }

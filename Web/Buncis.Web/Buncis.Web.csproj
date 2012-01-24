@@ -86,6 +86,16 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Assets\Images\Products\hdd %281%29.png" />
+    <Content Include="Assets\Images\Products\hdd.png" />
+    <Content Include="Assets\Images\Products\hp_hdd.png" />
+    <Content Include="Assets\Images\Products\hp_ipaq_111.png" />
+    <Content Include="Assets\Images\Products\hp_ipaq_211.png" />
+    <Content Include="Assets\Images\Products\htc_trinity.png" />
+    <Content Include="Assets\Images\Products\i_mate_ultimate_6150.png" />
+    <Content Include="Assets\Images\Products\i_mate_ultimate_8150.png" />
+    <Content Include="Assets\Images\Products\laptop %281%29.png" />
+    <Content Include="Assets\Images\Products\laptop.png" />
     <Content Include="ProductSearch.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
