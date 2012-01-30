@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Buncis.Framework.Mvp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Bullseye")]
+[assembly: AssemblyCompany("Buncis")]
 [assembly: AssemblyProduct("Buncis.Framework.Mvp")]
-[assembly: AssemblyCopyright("Copyright © Bullseye 2012")]
+[assembly: AssemblyCopyright("Buncis 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
