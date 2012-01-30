@@ -7,109 +7,127 @@
 
 body
 {
-    font-family: Arial, helvetica, Sans-Serif;
+    font-family: "Trebuchet MS" , Arial, Sans-Serif;
     font-size: 10px;
 }
 .container
 {
-    width: 900px;
+    width: 960px;
     margin: 0 auto;
 }
 
 p#login
 {
-    float: left;
-    width: 50%;
-}
-
-p#subscribe
-{
     float: right;
     width: 50%;
-    text-align: right;
+    margin-top: 5px;
+}
+
+p#language
+{
+    float: right;
+    background: url(/assets/images/icons/ico_english.png) no-repeat 0px 2px;
+    width: 16px;
+    margin: 5px 2px 5px 20px;
+    height: 20px;
 }
 
 #top_bar
 {
     overflow: hidden;
-    background: #08413c url(/assets/images/sites/bar_slice.jpg) repeat-x;
     padding-top: 7px;
     padding-bottom: 7px;
-    border-bottom: 1px solid #7ab7b7;
+    /*border-bottom: 2px solid #43592D;*/
+    text-align: right;
+    margin: 0px auto;
+    background-color: #EDEDED;
 }
 
 #top_bar p
 {
     font-size: 1.2em;
-    color: #abf0e8;
+    color: #045634;
 }
 
 #top_bar a
 {
     font-size: 1.2em;
-    color: #a5bf8d;
+    color: #045634;
+    text-decoration: none;
 }
 
 #header
 {
-    background: #01835f url(/assets/images/sites/header_slice2.jpg) top repeat-x;
+    margin: 0px auto;
+    background-color: #FCFEFC;
 }
 
 h1
 {
-    font-family: "Myriad Pro" , arial, sans-serif;
-    color: #fff;
-    font-weight: normal;
-    font-size: 4.8em;
-    padding-top: 25px;
-}
-
-p.desc
-{
-    font-family: "Myriad Pro" , arial, sans-serif;
-    color: #fff;
-    font-size: 2.4em;
-    position: absolute;
-    top: 50%;
-    left: 7em;
 }
 
 #branding
 {
-    overflow: hidden;
-    margin-bottom: 30px;
-    position: relative;
+    background: url(/assets/images/sites/logo.gif) no-repeat 0px -70px;
+    height: 300px;
+    margin-bottom: -120px;
 }
 
-ul#menu
+ul.menu
 {
     list-style: none;
 }
 
-ul#menu li a
+ul.menu li a
 {
-    font-size: 1.8em;
+    font-size: 1.3em;
     text-decoration: none;
-    color: #2b2b2b;
+    color: #FFFFFF;
     text-transform: uppercase;
+    padding: 11px 30px;
+    background-color: #43592D;
+    display: inline;
 }
 
-ul#menu li
+ul.menu li a:hover
+{
+    padding: 20px 30px 11px;
+    background-color: #364C20;
+}
+
+a.menu-selected
+{
+    padding: 20px 30px 11px !important;
+    background-color: #718630 !important;
+}
+
+ul.menu li
 {
     float: left;
-    padding: 11px 45px 11px 0px;
+    border-right: solid 1px #fff;
+    padding: 0px;
+    margin: 0px;
 }
 
 #navigation
 {
-    background: #8ec196 url(/assets/images/sites/nav_slice.jpg) top repeat-x;
+    /*background: #8ec196 url(/assets/images/sites/nav_slice.jpg) top repeat-x;*/
     overflow: hidden;
-    border-top: 1px solid #9cebda;
+    border-top: 2px solid #43592D;
+    border-bottom: 2px solid #43592D;
+    background-color: #E5E9D7;
+    padding-bottom: 10px;
+    padding-top: 20px;
 }
 
 #content
 {
     overflow: hidden;
+}
+
+#content-wrapper
+{
+    background-color: #FFFFFF;
 }
 
 #maincontent
@@ -138,6 +156,8 @@ ul#menu li
     width: 24%;
     background: #d8ddd1;
     padding: 25px 3%;
+    margin-bottom: -4975px;
+    padding-bottom: 5000px;
 }
 
 #sidebar h3
@@ -167,14 +187,16 @@ ul#menu li
 
 #footer p
 {
-    color: #a5bf8d;
+    /*color: #a5bf8d;*/
 }
 
 #footer h4
 {
-    color: #a5bf8d;
+    /*color: #a5bf8d;*/
+    color: #045634;
     font-size: 1.4em;
     padding-top: 0;
+    padding-bottom: 5px;
 }
 
 #footer ul
@@ -183,20 +205,30 @@ ul#menu li
     margin-left: 0;
 }
 
+#footer ul li
+{
+    padding: 2px 0px;
+}
+
 #footer ul li a
 {
     text-decoration: none;
-    color: #fff;
+    color: #525254;
 }
 
 #footer
 {
-    font-size: 1.2em;
-    background: url(/assets/images/sites/footer_slice.jpg) repeat-x;
-    border-top: 2px solid #1e956c;
+    font-size: 1.2em; /*background: url(/assets/images/sites/footer_slice.jpg) repeat-x;*/
+    /*border-top: 2px solid #43592D;*/
     padding-top: 20px;
     padding-bottom: 20px;
     overflow: hidden;
+    height: auto; /*background-color: #093c2b;*/
+    background-color: #EDEDED;
+}
+
+#footer_content
+{
 }
 
 #copyright
@@ -204,6 +236,12 @@ ul#menu li
     float: right;
     width: 20%;
     text-align: right;
+}
+
+#copyright p
+{
+    color: #397552;
+    font-weight: bold;
 }
 
 #links
@@ -216,4 +254,20 @@ ul#menu li
 {
     float: left;
     width: 40%;
+}
+
+input, textarea, select
+{
+    font-size: 1.2em;
+    display: inline-block;
+    width: 210px;
+    height: 2.0em;
+    padding: 4px;
+    line-height: 1.8em;
+    color: #656565;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-family: "Trebuchet MS" , Arial, Sans-Serif;
 }

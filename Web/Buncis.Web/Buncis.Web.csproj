@@ -155,6 +155,9 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -190,7 +193,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
+    <Content Include="Assets\Images\icons\ico_search.png" />
+    <Content Include="Assets\Images\icons\ico_english.png" />
+    <Content Include="Assets\Images\sites\logo.gif" />
     <Content Include="Site.Master" />
+    <Content Include="Styles\icons.css" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Buncis.Core\Buncis.Core.csproj">

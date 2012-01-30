@@ -5,6 +5,7 @@
 <head runat="server">
     <title></title>
     <link href="/Styles/buncismain.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/icons.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -13,11 +14,15 @@
     <div id="main">
         <div id="top_bar">
             <div class="container">
+                <p id="language">   
+                    <a href="#" class="lang-english" title="english">&nbsp;</a>
+                </p>
                 <p id="login">
                     <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                         <AnonymousTemplate>
-                            [ <a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server">Log In</a>
-                            ]
+                            <a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server">Log In</a>
+                            &nbsp;&nbsp;/&nbsp;&nbsp;
+                            <a href="#" id="HeadRegister" runat="server">Register</a>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             Welcome <span class="bold">
@@ -28,27 +33,28 @@
                             ]
                         </LoggedInTemplate>
                     </asp:LoginView>
-                </p>
-                <p id="subscribe">
-                    Stay Updated: <a href="#">Subscribe via RSS</a> <a href="#">Email Updates</a></p>
+                </p>                
+                <%--<p id="subscribe">
+                        Stay Updated: <a href="#">Subscribe via RSS</a> <a href="#">Email Updates</a></p>--%>
             </div>
         </div>
         <div id="header">
             <div id="branding" class="container">
-                <h1>
-                    Buncis</h1>
-                <p class="desc">
-                    A web app, the Green one.</p>
+                <%--<h1>
+                        Buncis</h1>
+                    <p class="desc">
+                        A web app, the Green one.</p>--%>
             </div>
-            <div id="navigation">
-                <ul id="menu" class="container">
-                    <li><a href="/Default.aspx">Home</a></li>
-                    <li><a href="/About.aspx">About</a></li>
-                    <li><a href="/ProductSearch.aspx">Products</a></li>
+            <div id="navigation">   
+                <ul class="menu container" runat="server" id="menu">
+                    <li><a href="/Default.aspx" runat="server" title="home">Home</a></li>
+                    <li><a href="/About.aspx" runat="server" title="about">About</a></li>
+                    <li><a href="/ProductSearch.aspx" runat="server" title="products">Products</a></li>
                 </ul>
             </div>
         </div>
-        <div id="content" class="container">
+        <div id="content-wrapper">
+            <div id="content" class="container">
             <div id="sidebar">
                 <h3>
                     Categories</h3>
@@ -80,12 +86,13 @@
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             </div>
         </div>
+        </div>
     </div>
     <div id="footer">
         <div id="footer_content" class="container">
             <div id="copyright">
                 <p>
-                    Copyright © 2009.<br />
+                    Copyright © 2012.<br />
                     All Rights Reserved.</p>
             </div>
             <div id="links">

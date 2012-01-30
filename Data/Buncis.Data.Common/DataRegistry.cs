@@ -22,7 +22,7 @@ namespace Buncis.Data.Common
                     }
                     return burrowFramework.GetSession();
                 }
-                catch (Exception ex)
+                catch 
                 {
                     //throw;
                 }

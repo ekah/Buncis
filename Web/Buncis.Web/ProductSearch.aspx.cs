@@ -2,10 +2,11 @@
 
 namespace Buncis.Web
 {
-    public partial class ProductSearch : System.Web.UI.Page
+    public partial class ProductSearch : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.MenuTitle = "products";
         }
     }
 }
