@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Buncis.Framework.Core.Repository;
 using NHibernate;
 using NHibernate.Linq;
-using Buncis.Framework.Core.Repository;
 
 namespace Buncis.Data.Repository
 {

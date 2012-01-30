@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Buncis.Logic.Views;
-using Buncis.Framework.Mvp.Presenters;
 using Buncis.Core.Infrastructures;
 using Buncis.Core.Services;
+using Buncis.Logic.Views;
 
 namespace Buncis.Logic.Presenters
 {
@@ -22,14 +18,13 @@ namespace Buncis.Logic.Presenters
             view.GetCategories += new EventHandler(view_GetCategories);
         }
 
-        void view_GetCategories(object sender, EventArgs e)
+        private void view_GetCategories(object sender, EventArgs e)
         {
             View.Model.Categories = _categoryService.GetAllCategories();
         }
 
-        void view_Load(object sender, EventArgs e)
+        private void view_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -2,14 +2,14 @@
     Inherits="Buncis.Web.UserControls.ProductSearch" %>
 <div class="product-search">
     <div class="search-filter">
-        <label>Categories:</label>
+        <label>
+            Categories:</label>
         <asp:DropDownList ID="ddlCategories" runat="server" AppendDataBoundItems="false">
-            
         </asp:DropDownList>
         <span>&nbsp;&nbsp;&nbsp;</span>
-        <label>Suppliers:</label>
+        <label>
+            Suppliers:</label>
         <asp:DropDownList ID="ddlSuppliers" runat="server" AppendDataBoundItems="false">
-            
         </asp:DropDownList>
         <asp:Button ID="btnSearch" runat="server" Text="Search" />
     </div>
@@ -21,8 +21,9 @@
                         <img src='<%# Eval("ProductImage") %>' />
                     </div>
                     <div class="item-details">
-                        <h3 class="item-name"><%# Eval("ProductName")%></h3>
-                    </div>                    
+                        <h3 class="item-name">
+                            <%# Eval("ProductName")%></h3>
+                    </div>
                 </div>
             </ItemTemplate>
         </asp:Repeater>

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Buncis.Data.Models;
 using FluentNHibernate.Mapping;
-using Buncis.Data.Models;
 
 namespace Buncis.Data.Domain.Mappings
 {

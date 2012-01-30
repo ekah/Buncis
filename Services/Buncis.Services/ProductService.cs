@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Dynamic;
-using System.Text;
+using System.Linq.Expressions;
+using Buncis.Core.Repositories;
 using Buncis.Core.Services;
 using Buncis.Data.Models;
-using Buncis.Core.Repositories;
-using System.Linq.Expressions;
 using LinqKit;
 
 namespace Buncis.Services

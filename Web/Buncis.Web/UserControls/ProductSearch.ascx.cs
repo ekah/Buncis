@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using WebFormsMvp;
+using Buncis.Framework.Mvp.Controls;
+using Buncis.Logic.CustomEventArgs;
+using Buncis.Logic.Models;
 using Buncis.Logic.Presenters;
 using Buncis.Logic.Views;
-using Buncis.Framework.Mvp.Controls;
-using Buncis.Logic.Models;
-using Buncis.Logic.CustomEventArgs;
 using Buncis.Web.Common.Extensions;
+using WebFormsMvp;
 
 namespace Buncis.Web.UserControls
 {
@@ -39,12 +35,12 @@ namespace Buncis.Web.UserControls
             {
                 if (Initialize != null)
                 {
-                    Initialize(this, e);                    
+                    Initialize(this, e);
                 }
             }
         }
 
-        void btnSearch_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             var categoryId = string.IsNullOrEmpty(ddlCategories.SelectedValue) ? (int?)null : int.Parse(ddlCategories.SelectedValue);
             var supplierId = string.IsNullOrEmpty(ddlSuppliers.SelectedValue) ? (int?)null : int.Parse(ddlSuppliers.SelectedValue);
@@ -61,7 +57,6 @@ namespace Buncis.Web.UserControls
                 rptProducts.DataBind();
             }
         }
-
 
         public void BindSupplierDropDownList()
         {

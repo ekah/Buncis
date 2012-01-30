@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Buncis.Core.Services;
 using Buncis.Core.Infrastructures;
+using Buncis.Core.Services;
 using Buncis.Logic.Views;
 
 namespace Buncis.Logic.Presenters
@@ -20,10 +17,9 @@ namespace Buncis.Logic.Presenters
             view.GetSuppliers += new EventHandler(view_GetSuppliers);
         }
 
-        void view_GetSuppliers(object sender, EventArgs e)
+        private void view_GetSuppliers(object sender, EventArgs e)
         {
             View.Model.Suppliers = _supplierService.GetAllSuppliers();
         }
-
     }
 }

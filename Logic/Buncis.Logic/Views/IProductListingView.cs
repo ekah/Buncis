@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Buncis.Framework.Mvp.Views;
-using Buncis.Logic.Models;
+﻿using Buncis.Framework.Mvp.Views;
 using Buncis.Logic.CustomEventArgs;
+using Buncis.Logic.Models;
 
 namespace Buncis.Logic.Views
 {
@@ -13,6 +9,7 @@ namespace Buncis.Logic.Views
         event SearchProductsEventHandler SearchProducts;
 
         void BindSupplierDropDownList();
+
         void BindCategoryDropDownList();
     }
 }

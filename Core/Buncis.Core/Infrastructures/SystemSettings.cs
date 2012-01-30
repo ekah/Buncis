@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Buncis.Core.Infrastructures
+﻿namespace Buncis.Core.Infrastructures
 {
     public class SystemSettings : ISystemSettings
     {
@@ -15,6 +10,6 @@ namespace Buncis.Core.Infrastructures
 
         public int GlobalItemPerPage { get; set; }
 
-        #endregion
+        #endregion ISystemSettings Members
     }
 }

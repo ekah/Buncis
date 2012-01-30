@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Configuration;
 using Buncis.Framework.Core.Infrastructure.Settings;
-using System.Configuration;
 
 namespace Buncis.Core.Infrastructures
 {
@@ -16,6 +12,6 @@ namespace Buncis.Core.Infrastructures
             return ConfigurationManager.AppSettings[keyName];
         }
 
-        #endregion
+        #endregion IPropertySettingsResolver Members
     }
 }

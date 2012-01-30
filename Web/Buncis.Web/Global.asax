@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Buncis.Web.Global" Language="C#" %>
+﻿<%@ Application CodeBehind="Global.asax.cs" Inherits="Buncis.Web.Global" Language="C#" %>

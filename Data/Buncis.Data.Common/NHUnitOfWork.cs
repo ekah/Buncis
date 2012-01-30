@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Buncis.Framework.Core.Infrastructure;
 using NHibernate;
-using System.Data;
 
 namespace Buncis.Data.Common
 {

@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Buncis.Core.Services;
 using Moq;
 
 namespace TestConsoleApp
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             int pid = 0;
             Mock<IProductService> ps = new Mock<IProductService>();

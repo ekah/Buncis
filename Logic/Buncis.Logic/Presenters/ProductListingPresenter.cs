@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Buncis.Logic.Views;
 using Buncis.Core.Infrastructures;
 using Buncis.Core.Services;
 using Buncis.Logic.CustomEventArgs;
+using Buncis.Logic.Views;
 
 namespace Buncis.Logic.Presenters
 {
@@ -30,7 +27,7 @@ namespace Buncis.Logic.Presenters
             view.SearchProducts += new CustomEventArgs.SearchProductsEventHandler(view_SearchProducts);
         }
 
-        void view_Initialize(object sender, EventArgs e)
+        private void view_Initialize(object sender, EventArgs e)
         {
             View.Model.Categories = _categoryService.GetAllCategories();
             View.Model.Suppliers = _supplierService.GetAllSuppliers();
@@ -41,7 +38,6 @@ namespace Buncis.Logic.Presenters
 
         protected void view_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void view_SearchProducts(object sender, ProductListingEventArgs e)

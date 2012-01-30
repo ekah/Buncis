@@ -1,11 +1,11 @@
 ﻿/* DEFAULTS
 ----------------------------------------------------------*/
 
-body   
+body
 {
     background: #b6b7bc;
     font-size: .80em;
-    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    font-family: "Helvetica Neue" , "Lucida Grande" , "Segoe UI" , Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
     padding: 0px;
     color: #696969;
@@ -33,8 +33,7 @@ p
     line-height: 1.6em;
 }
 
-
-/* HEADINGS   
+/* HEADINGS
 ----------------------------------------------------------*/
 
 h1, h2, h3, h4, h5, h6
@@ -75,15 +74,14 @@ h5, h6
     font-size: 1em;
 }
 
-/* this rule styles <h1> and <h2> tags that are the 
+/* this rule styles <h1> and <h2> tags that are the
 first child of the left and right table columns */
 .rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
 {
     margin-top: 0px;
 }
 
-
-/* PRIMARY LAYOUT ELEMENTS   
+/* PRIMARY LAYOUT ELEMENTS
 ----------------------------------------------------------*/
 
 .page
@@ -138,14 +136,13 @@ first child of the left and right table columns */
     line-height: normal;
 }
 
-
-/* TAB MENU   
+/* TAB MENU
 ----------------------------------------------------------*/
 
 div.hideSkiplink
 {
-    background-color:#3a4f63;
-    width:100%;
+    background-color: #3a4f63;
+    width: 100%;
 }
 
 div.menu
@@ -187,7 +184,7 @@ div.menu ul li a:active
     text-decoration: none;
 }
 
-/* FORM ELEMENTS   
+/* FORM ELEMENTS
 ----------------------------------------------------------*/
 
 fieldset
@@ -197,7 +194,7 @@ fieldset
     border: 1px solid #ccc;
 }
 
-fieldset p 
+fieldset p
 {
     margin: 2px 12px 10px 10px;
 }
@@ -207,25 +204,25 @@ fieldset.login label, fieldset.register label, fieldset.changePassword label
     display: block;
 }
 
-fieldset label.inline 
+fieldset label.inline
 {
     display: inline;
 }
 
-legend 
+legend
 {
     font-size: 1.1em;
     font-weight: 600;
     padding: 2px 4px 8px 4px;
 }
 
-input.textEntry 
+input.textEntry
 {
     width: 320px;
     border: 1px solid #ccc;
 }
 
-input.passwordEntry 
+input.passwordEntry
 {
     width: 320px;
     border: 1px solid #ccc;
@@ -236,7 +233,7 @@ div.accountInfo
     width: 42%;
 }
 
-/* MISC  
+/* MISC
 ----------------------------------------------------------*/
 
 .clear

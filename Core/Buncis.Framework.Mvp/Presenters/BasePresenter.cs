@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WebFormsMvp;
+﻿using WebFormsMvp;
 
 namespace Buncis.Framework.Mvp.Presenters
 {
@@ -11,7 +7,6 @@ namespace Buncis.Framework.Mvp.Presenters
         public BasePresenter(TView view)
             : base(view)
         {
-
         }
     }
 }
