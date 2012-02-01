@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
     <title></title>
-    <link href="/Styles/buncismain.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/core.css" rel="stylesheet" type="text/css" />
     <link href="/Styles/icons.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
@@ -48,7 +48,18 @@
             <div id="navigation">   
                 <ul class="menu container" runat="server" id="menu">
                     <li><a href="/Default.aspx" runat="server" title="home">Home</a></li>
-                    <li><a href="/About.aspx" runat="server" title="about">About</a></li>
+                    <li><a href="/About.aspx" runat="server" title="about">About</a>
+                        <ul class="submenu">
+                            <li><a id="A1" href="/About.aspx" runat="server" title="Who we are">Who we are</a>
+                                <ul class="submenu">
+                                    <li><a id="A4" href="/About.aspx" runat="server" title="history">History</a></li>
+                                    <li><a id="A5" href="/About.aspx" runat="server" title="people">People</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="A2" href="/About.aspx" runat="server" title="What we do">What we do</a></li>
+                            <li><a id="A3" href="/About.aspx" runat="server" title="How to join us">How to join us</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/ProductSearch.aspx" runat="server" title="products">Products</a></li>
                 </ul>
             </div>

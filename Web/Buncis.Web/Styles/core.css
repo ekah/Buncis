@@ -32,12 +32,12 @@ p#language
     height: 20px;
 }
 
+/**** top bar ****/
 #top_bar
 {
     overflow: hidden;
     padding-top: 7px;
-    padding-bottom: 7px;
-    /*border-bottom: 2px solid #43592D;*/
+    padding-bottom: 7px; 
     text-align: right;
     margin: 0px auto;
     background-color: #EDEDED;
@@ -55,15 +55,12 @@ p#language
     color: #045634;
     text-decoration: none;
 }
+/**** end top bar ****/
 
 #header
 {
     margin: 0px auto;
     background-color: #FCFEFC;
-}
-
-h1
-{
 }
 
 #branding
@@ -73,9 +70,42 @@ h1
     margin-bottom: -120px;
 }
 
+
+/******* Menu ******/
+ul.menu ul.submenu li:hover>ul 
+{
+    left: 150px;
+    top: -40px;
+}
+
 ul.menu
 {
     list-style: none;
+    position:relative;
+}
+
+ul.menu ul
+{
+    display: none;
+    position: relative;
+}
+
+ul.menu li:hover>ul
+{
+    display: block;    
+    left: 0px;
+    top: 0px;
+}
+
+ul.menu li:hover
+{
+    background-color: #364C20;
+}
+
+ul.menu ul li
+{
+    float: none;
+    border-top:solid 1px #fff;
 }
 
 ul.menu li a
@@ -84,41 +114,45 @@ ul.menu li a
     text-decoration: none;
     color: #FFFFFF;
     text-transform: uppercase;
-    padding: 11px 30px;
+    padding: 12px 12px 0px 20px;
     background-color: #43592D;
-    display: inline;
+    display: block;
+    text-align: left;
+    height: 28px;
 }
 
 ul.menu li a:hover
 {
-    padding: 20px 30px 11px;
     background-color: #364C20;
-}
-
-a.menu-selected
-{
-    padding: 20px 30px 11px !important;
-    background-color: #718630 !important;
 }
 
 ul.menu li
 {
     float: left;
-    border-right: solid 1px #fff;
     padding: 0px;
     margin: 0px;
+    width: 150px;
+    display:block;
+    height: 40px;
+    z-index: 999;
+    border-right:solid 1px #fff;
+}
+
+a.menu-selected
+{
+    background-color: #718630 !important;
 }
 
 #navigation
 {
-    /*background: #8ec196 url(/assets/images/sites/nav_slice.jpg) top repeat-x;*/
-    overflow: hidden;
     border-top: 2px solid #43592D;
     border-bottom: 2px solid #43592D;
     background-color: #E5E9D7;
-    padding-bottom: 10px;
-    padding-top: 20px;
+    padding: 0px;
+    margin: 0px;
+    height:40px;
 }
+/******* End Menu ******/
 
 #content
 {
@@ -185,14 +219,14 @@ ul.menu li
     color: #525254;
 }
 
+
+/**** Footer ****/
 #footer p
 {
-    /*color: #a5bf8d;*/
 }
 
 #footer h4
 {
-    /*color: #a5bf8d;*/
     color: #045634;
     font-size: 1.4em;
     padding-top: 0;
@@ -218,12 +252,11 @@ ul.menu li
 
 #footer
 {
-    font-size: 1.2em; /*background: url(/assets/images/sites/footer_slice.jpg) repeat-x;*/
-    /*border-top: 2px solid #43592D;*/
+    font-size: 1.2em; 
     padding-top: 20px;
     padding-bottom: 20px;
     overflow: hidden;
-    height: auto; /*background-color: #093c2b;*/
+    height: auto; 
     background-color: #EDEDED;
 }
 
@@ -255,6 +288,7 @@ ul.menu li
     float: left;
     width: 40%;
 }
+/**** end footer ****/
 
 input, textarea, select
 {

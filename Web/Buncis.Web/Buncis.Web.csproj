@@ -100,7 +100,7 @@
     <Content Include="Assets\Images\sites\header_slice2.jpg" />
     <Content Include="Assets\Images\sites\nav_slice.jpg" />
     <Content Include="ProductSearch.aspx" />
-    <Content Include="Styles\buncismain.css" />
+    <Content Include="Styles\core.css" />
     <Content Include="Styles\productsearch.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
