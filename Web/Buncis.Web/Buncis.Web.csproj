@@ -196,6 +196,7 @@
     <Content Include="Assets\Images\icons\ico_search.png" />
     <Content Include="Assets\Images\icons\ico_english.png" />
     <Content Include="Assets\Images\sites\logo.gif" />
+    <Content Include="Assets\Images\sites\buncis_logo.png" />
     <Content Include="Site.Master" />
     <Content Include="Styles\icons.css" />
   </ItemGroup>

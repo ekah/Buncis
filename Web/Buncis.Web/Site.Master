@@ -39,6 +39,7 @@
             </div>
         </div>
         <div id="header">
+            <div id="logo" class="container">&nbsp;</div>
             <div id="branding" class="container">
                 <%--<h1>
                         Buncis</h1>
