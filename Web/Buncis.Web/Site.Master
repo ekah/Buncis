@@ -16,6 +16,7 @@
             <div class="container">
                 <p id="language">   
                     <a href="#" class="lang-english" title="english">&nbsp;</a>
+                    <a href="#" class="lang-indonesia" title="indonesia">&nbsp;</a>
                 </p>
                 <p id="login">
                     <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
@@ -39,7 +40,6 @@
             </div>
         </div>
         <div id="header">
-            <div id="logo" class="container">&nbsp;</div>
             <div id="branding" class="container">
                 <%--<h1>
                         Buncis</h1>
@@ -49,9 +49,9 @@
             <div id="navigation">   
                 <ul class="menu container" runat="server" id="menu">
                     <li><a href="/Default.aspx" runat="server" title="home">Home</a></li>
-                    <li><a href="/About.aspx" runat="server" title="about">About</a>
+                    <li class="hover"><a href="/About.aspx" runat="server" title="about">About</a>
                         <ul class="submenu">
-                            <li><a id="A1" href="/About.aspx" runat="server" title="Who we are">Who we are</a>
+                            <li class="hover"><a id="A1" href="/About.aspx" runat="server" title="Who we are">Who we are</a>
                                 <ul class="submenu">
                                     <li><a id="A4" href="/About.aspx" runat="server" title="history">History</a></li>
                                     <li><a id="A5" href="/About.aspx" runat="server" title="people">People</a></li>
@@ -67,7 +67,7 @@
         </div>
         <div id="content-wrapper">
             <div id="content" class="container">
-            <div id="sidebar">
+            <%--<div id="sidebar">
                 <h3>
                     Categories</h3>
                 <ul>
@@ -93,7 +93,7 @@
                     <li><a href="">April 2008</a></li>
                     <li><a href="">March 2008</a></li>
                 </ul>
-            </div>
+            </div>--%>
             <div id="maincontent">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             </div>
@@ -103,13 +103,10 @@
     <div id="footer">
         <div id="footer_content" class="container">
             <div id="copyright">
-                <p>
-                    Copyright © 2012.<br />
-                    All Rights Reserved.</p>
+                <p>Copyright © 2012.<br />All Rights Reserved.</p>
             </div>
             <div id="links">
-                <h4>
-                    Links</h4>
+                <h4>Links</h4>
                 <ul>
                     <li><a href="#">PSDtuts - Photosohp tutorials</a></li>
                     <li><a href="#">NetTtuts - Web development and design tutorials</a></li>
@@ -118,8 +115,7 @@
                 </ul>
             </div>
             <div id="feeds">
-                <h4>
-                    Follow our updates</h4>
+                <h4>Follow our updates</h4>
                 <ul>
                     <li><a href="#">Subscribe to RSS Feed</a></li>
                     <li><a href="#">What is RSS?</a></li>
