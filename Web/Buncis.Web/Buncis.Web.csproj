@@ -191,7 +191,6 @@
     <Content Include="Assets\Images\icons\ico_english.png" />
     <Content Include="Assets\Images\icons\ico_indonesia.png" />
     <Content Include="Assets\Images\sites\header2.png" />
-    <Content Include="Assets\Images\sites\header.png" />
     <Content Include="Assets\Images\sites\buncis_logo.png" />
     <Content Include="Site.Master" />
     <Content Include="Styles\icons.css" />

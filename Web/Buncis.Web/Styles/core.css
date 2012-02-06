@@ -91,15 +91,14 @@ p#language a.lang-indonesia
     height: 17em;
     background: url(/assets/images/sites/header2.png) no-repeat scroll top right #3E731D;
 }
-
+/*background: url(/assets/images/sites/buncis_logo_2.png) no-repeat; */
 #branding
 {
-    background: url(/assets/images/sites/buncis_logo.png) no-repeat; /*background-color: #738F32 #D4DEBB*/
     height: 12em;
 }
 
 /******* Menu ******/
-ul.menu ul.submenu li.hover > ul
+ul.menu ul.submenu li:hover > ul
 {
     left: 18em;
     top: -4em;
@@ -113,11 +112,11 @@ ul.menu
 
 ul.menu ul
 {
-    display: block;
+    display: none;
     position: relative;
 }
 
-ul.menu li.hover > ul
+ul.menu li:hover > ul
 {
     display: block;
     left: 0px;
