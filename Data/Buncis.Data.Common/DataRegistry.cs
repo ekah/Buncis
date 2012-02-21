@@ -1,9 +1,9 @@
-﻿using System;
-using Buncis.Data.Repository;
+﻿using Buncis.Data.Repository;
 using NHibernate;
 using NHibernate.Burrow;
 using StructureMap.Configuration.DSL;
 using StructureMap.Graph;
+using Buncis.Core.Repositories;
 
 namespace Buncis.Data.Common
 {

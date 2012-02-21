@@ -1,4 +1,5 @@
-﻿namespace Buncis.Web
+﻿using Buncis.Web.Common.Membership;
+namespace Buncis.Web
 {
     public partial class _Default : BasePage
     {
@@ -7,6 +8,13 @@
             this.MenuTitle = "home";
 
             base.OnInit(e);
+        }
+
+        protected override void OnLoad(System.EventArgs e)
+        {
+            WebMembership.Entity.DoLogin("", "");
+
+            base.OnLoad(e);
         }
     }
 }

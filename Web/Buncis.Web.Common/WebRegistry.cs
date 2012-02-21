@@ -1,7 +1,10 @@
 ﻿using Buncis.Core.Infrastructures;
+using Buncis.Core.Membership;
 using Buncis.Data.Common;
 using Buncis.Framework.Core.Infrastructure;
 using Buncis.Framework.Core.Infrastructure.Settings;
+using Buncis.Framework.Core.Membership;
+using Buncis.Web.Common.Membership;
 using StructureMap.Configuration.DSL;
 
 namespace Buncis.Web.Common
@@ -18,6 +21,8 @@ namespace Buncis.Web.Common
                 var settingsProvider = new SettingsProvider<SystemSettings>(propertySettingsResolver);
                 return settingsProvider.ResolveSettings();
             });
+            For<IMembershipStorage>().Use<WebMembershipStorage>();
+            For<IMembership>().Use<CoreMembership>();
         }
     }
 }

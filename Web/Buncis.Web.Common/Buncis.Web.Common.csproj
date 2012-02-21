@@ -59,6 +59,8 @@
     <Compile Include="Extensions\DropDownListExtension.cs" />
     <Compile Include="IoC\DependencyResolver.cs" />
     <Compile Include="IoC\DependencyResolverFactory.cs" />
+    <Compile Include="Membership\WebMembership.cs" />
+    <Compile Include="Membership\WebMembershipStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebRegistry.cs" />
   </ItemGroup>
