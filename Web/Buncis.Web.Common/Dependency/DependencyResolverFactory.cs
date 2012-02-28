@@ -1,6 +1,6 @@
 ﻿using Buncis.Framework.Core.Infrastructure.IoC;
 
-namespace Buncis.Web.Common.IoC
+namespace Buncis.Web.Common.Dependency
 {
     public class DependencyResolverFactory : IDependencyResolverFactory
     {

@@ -60,6 +60,7 @@
     <Compile Include="Repositories\IMembershipRepository.cs" />
     <Compile Include="Membership\IMembershipStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IPageRepository.cs" />
     <Compile Include="Services\IPageService.cs" />
   </ItemGroup>
   <ItemGroup>

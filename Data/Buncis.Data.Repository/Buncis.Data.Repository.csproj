@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="GenericRepository.cs" />
     <Compile Include="MembershipRepository.cs" />
+    <Compile Include="PageRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
