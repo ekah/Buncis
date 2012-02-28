@@ -1,4 +1,4 @@
-﻿using Buncis.Data.Domain.Models;
+﻿using Buncis.Data.Domain;
 using Buncis.Framework.Core.Repository;
 
 namespace Buncis.Core.Repositories

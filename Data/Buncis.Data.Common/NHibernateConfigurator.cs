@@ -10,9 +10,14 @@ namespace Buncis.Data.Common
     {
         public void Config(IPersistenceUnitCfg puCfg, NHibernate.Cfg.Configuration nhCfg)
         {
+            //Fluently.Configure(nhCfg)
+            //    .Database(MySQLConfiguration.Standard.ConnectionString(c => c.FromConnectionStringWithKey("BuncisConnectionString")))
+            //    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CategoryMap>())
+            //    .BuildConfiguration();
+
             Fluently.Configure(nhCfg)
-                .Database(MySQLConfiguration.Standard.ConnectionString(c => c.FromConnectionStringWithKey("BuncisConnectionString")))
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CategoryMap>())
+                .Database(MsSqlConfiguration.MsSql2008.ConnectionString(c => c.FromConnectionStringWithKey("BuncisConnectionString")))
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<PageMap>())
                 .BuildConfiguration();
         }
 

@@ -10,8 +10,8 @@ namespace Buncis.Services.Common
         {
             Scan(p =>
             {
-                p.AssemblyContainingType<IProductService>();
-                p.AssemblyContainingType<ProductService>();
+                p.AssemblyContainingType<IPageService>();
+                p.AssemblyContainingType<PageService>();
                 p.Convention<DefaultConventionScanner>();
             });
         }

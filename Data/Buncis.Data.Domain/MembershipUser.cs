@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Buncis.Data.Domain.Models
+namespace Buncis.Data.Domain
 {
     public class MembershipUser
     {

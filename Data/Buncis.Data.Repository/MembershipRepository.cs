@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Buncis.Core.Repositories;
-using Buncis.Data.Domain.Models;
+using Buncis.Data.Domain;
 using NHibernate;
 
 namespace Buncis.Data.Repository

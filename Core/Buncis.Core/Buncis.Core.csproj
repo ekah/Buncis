@@ -60,12 +60,7 @@
     <Compile Include="Repositories\IMembershipRepository.cs" />
     <Compile Include="Membership\IMembershipStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ICategoryRepository.cs" />
-    <Compile Include="Repositories\IProductRepository.cs" />
-    <Compile Include="Repositories\ISupplierRepository.cs" />
-    <Compile Include="Services\ICategoryService.cs" />
-    <Compile Include="Services\IProductService.cs" />
-    <Compile Include="Services\ISupplierService.cs" />
+    <Compile Include="Services\IPageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\Buncis.Data.Domain\Buncis.Data.Domain.csproj">

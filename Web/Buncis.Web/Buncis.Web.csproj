@@ -79,7 +79,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
@@ -94,15 +93,10 @@
     <Content Include="Assets\Images\Products\i_mate_ultimate_8150.png" />
     <Content Include="Assets\Images\Products\laptop %281%29.png" />
     <Content Include="Assets\Images\Products\laptop.png" />
-    <Content Include="ProductSearch.aspx" />
-    <Content Include="Styles\core.css" />
-    <Content Include="Styles\productsearch.css" />
-    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="UserControls\ProductSearch.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -114,13 +108,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Account\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -152,38 +139,17 @@
     <Compile Include="BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Content.Master.cs">
+      <DependentUpon>Content.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Content.Master.designer.cs">
+      <DependentUpon>Content.Master</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ProductSearch.aspx.cs">
-      <DependentUpon>ProductSearch.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProductSearch.aspx.designer.cs">
-      <DependentUpon>ProductSearch.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\ProductSearch.ascx.cs">
-      <DependentUpon>ProductSearch.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserControls\ProductSearch.ascx.designer.cs">
-      <DependentUpon>ProductSearch.ascx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
@@ -192,8 +158,6 @@
     <Content Include="Assets\Images\icons\ico_indonesia.png" />
     <Content Include="Assets\Images\sites\header2.png" />
     <Content Include="Assets\Images\sites\buncis_logo.png" />
-    <Content Include="Site.Master" />
-    <Content Include="Styles\icons.css" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Buncis.Core\Buncis.Core.csproj">
@@ -222,7 +186,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content.Master" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Styles\" />
+    <Folder Include="UserControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

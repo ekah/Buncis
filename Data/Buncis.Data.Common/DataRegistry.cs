@@ -30,7 +30,7 @@ namespace Buncis.Data.Common
             });
             Scan(o =>
             {
-                o.AssemblyContainingType<CategoryRepository>();
+                o.AssemblyContainingType<MembershipRepository>();
                 o.Convention<DefaultConventionScanner>();
             });
         }

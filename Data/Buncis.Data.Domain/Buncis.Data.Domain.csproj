@@ -48,11 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mappings\ProductsModuleMapper.cs" />
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\MembershipUser.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Mappings\PageMapper.cs" />
+    <Compile Include="MembershipUser.cs" />
+    <Compile Include="Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
