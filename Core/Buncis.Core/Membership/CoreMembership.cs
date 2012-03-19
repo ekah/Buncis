@@ -1,20 +1,14 @@
-﻿using System;
-using Buncis.Core.Repositories;
+﻿using Buncis.Core.Repositories;
 using Buncis.Framework.Core.Membership;
 
 namespace Buncis.Core.Membership
 {
     public class CoreMembership : IMembership
     {
+        private const string KEY_USERENTITY = "_loggedIn_UserEntity_";
         private readonly IMembershipRepository _membershipRepository;
         private readonly IMembershipStorage _membershipStorage;
 
-        private const string KEY_USERENTITY = "_loggedIn_UserEntity_";
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BuncisMembership"/> class.
-        /// </summary>
-        /// <param name="membershipRepository">The membership repository.</param>
         public CoreMembership(IMembershipRepository membershipRepository, IMembershipStorage membershipStorage)
         {
             _membershipStorage = membershipStorage;
@@ -23,9 +17,6 @@ namespace Buncis.Core.Membership
 
         #region IMembership Members
 
-        /// <summary>
-        /// Gets the logged in user id.
-        /// </summary>
         public int? LoggedInUserId
         {
             get
@@ -37,15 +28,9 @@ namespace Buncis.Core.Membership
             }
         }
 
-        /// <summary>
-        /// Gets the logged in user entity.
-        /// </summary>
         public UserProfile LoggedInUserEntity
         {
-            get
-            {
-                return _membershipStorage.GetUserProfileFromStorage(KEY_USERENTITY);
-            }
+            get { return _membershipStorage.GetUserProfileFromStorage(KEY_USERENTITY); }
         }
 
         public bool UserHasAccessToModule(BuncisModule module)

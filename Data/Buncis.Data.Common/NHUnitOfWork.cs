@@ -14,6 +14,8 @@ namespace Buncis.Data.Common
             _session = session;
         }
 
+        #region IUnitOfWork Members
+
         /// <summary>
         /// Commits this instance.
         /// </summary>
@@ -51,5 +53,7 @@ namespace Buncis.Data.Common
         {
             _transaction = _session.BeginTransaction();
         }
+
+        #endregion
     }
 }

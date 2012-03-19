@@ -1,5 +1,4 @@
-﻿
-namespace Buncis.Framework.Core.Membership
+﻿namespace Buncis.Framework.Core.Membership
 {
     public enum BuncisModule
     {

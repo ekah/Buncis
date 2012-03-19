@@ -3,12 +3,15 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate.Burrow;
 using NHibernate.Burrow.Configuration;
+using NHibernate.Cfg;
 
 namespace Buncis.Data.Common
 {
     public class NHibernateConfigurator : IConfigurator
     {
-        public void Config(IPersistenceUnitCfg puCfg, NHibernate.Cfg.Configuration nhCfg)
+        #region IConfigurator Members
+
+        public void Config(IPersistenceUnitCfg puCfg, Configuration nhCfg)
         {
             //Fluently.Configure(nhCfg)
             //    .Database(MySQLConfiguration.Standard.ConnectionString(c => c.FromConnectionStringWithKey("BuncisConnectionString")))
@@ -16,7 +19,9 @@ namespace Buncis.Data.Common
             //    .BuildConfiguration();
 
             Fluently.Configure(nhCfg)
-                .Database(MsSqlConfiguration.MsSql2008.ConnectionString(c => c.FromConnectionStringWithKey("BuncisConnectionString")))
+                .Database(
+                    MsSqlConfiguration.MsSql2008.ConnectionString(
+                        c => c.FromConnectionStringWithKey("BuncisConnectionString")))
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<PageMap>())
                 .BuildConfiguration();
         }
@@ -24,10 +29,12 @@ namespace Buncis.Data.Common
         public void Config(IBurrowConfig val)
         {
             val.PersistenceUnitCfgs.Add(new PersistenceUnitElement
-            {
-                Name = "PersistenceUnit1",
-                NHConfigFile = null
-            });
+                                            {
+                                                Name = "PersistenceUnit1",
+                                                NHConfigFile = null
+                                            });
         }
+
+        #endregion
     }
 }

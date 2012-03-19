@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using Buncis.Framework.Core.Repository;
 using NHibernate;
 using NHibernate.Linq;
@@ -15,6 +16,8 @@ namespace Buncis.Data.Repository
         {
             _session = session;
         }
+
+        #region IRepository<T> Members
 
         public bool Add(T entity)
         {
@@ -57,14 +60,16 @@ namespace Buncis.Data.Repository
             return _session.Linq<T>();
         }
 
-        public T FindBy(System.Linq.Expressions.Expression<Func<T, bool>> expression)
+        public T FindBy(Expression<Func<T, bool>> expression)
         {
             return _session.Linq<T>().SingleOrDefault(expression);
         }
 
-        public IQueryable<T> FilterBy(System.Linq.Expressions.Expression<Func<T, bool>> expression)
+        public IQueryable<T> FilterBy(Expression<Func<T, bool>> expression)
         {
             return _session.Linq<T>().Where(expression);
         }
+
+        #endregion
     }
 }

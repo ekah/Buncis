@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Web.Security;
+using System.Web.UI;
 
 namespace Buncis.Web.Account
 {
-    public partial class Register : System.Web.UI.Page
+    public partial class Register : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

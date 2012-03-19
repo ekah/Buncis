@@ -9,30 +9,34 @@ using WebFormsMvp.Contrib.StructureMap;
 
 namespace Buncis.Web.Common.Dependency
 {
-	public class DependencyResolver : DisposableResource, IDependencyResolver
-	{
-		public DependencyResolver()
-		{
-			ObjectFactory.Initialize(x =>
-			{
-				x.Scan(y =>
-				{
-					y.TheCallingAssembly();
-					y.AssemblyContainingType(GetType());
-					y.LookForRegistries();
-					y.Convention<DefaultConventionScanner>();
-				});
-				x.AddRegistry<DataRegistry>();
-				x.AddRegistry<WebRegistry>();
-				x.AddRegistry<ServiceRegistry>();
-			});
+    public class DependencyResolver : DisposableResource, IDependencyResolver
+    {
+        public DependencyResolver()
+        {
+            ObjectFactory.Initialize(x =>
+                                         {
+                                             x.Scan(y =>
+                                                        {
+                                                            y.TheCallingAssembly();
+                                                            y.AssemblyContainingType(GetType());
+                                                            y.LookForRegistries();
+                                                            y.Convention<DefaultConventionScanner>();
+                                                        });
+                                             x.AddRegistry<DataRegistry>();
+                                             x.AddRegistry<WebRegistry>();
+                                             x.AddRegistry<ServiceRegistry>();
+                                         });
 
-			PresenterBinder.Factory = (IPresenterFactory)new StructureMapPresenterFactory(ObjectFactory.Container);
-		}
+            PresenterBinder.Factory = new StructureMapPresenterFactory(ObjectFactory.Container);
+        }
 
-		public T Resolve<T>()
-		{
-			return ObjectFactory.Container.GetInstance<T>();
-		}
-	}
+        #region IDependencyResolver Members
+
+        public T Resolve<T>()
+        {
+            return ObjectFactory.Container.GetInstance<T>();
+        }
+
+        #endregion
+    }
 }

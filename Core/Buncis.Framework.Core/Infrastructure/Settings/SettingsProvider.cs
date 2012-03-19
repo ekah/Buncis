@@ -6,7 +6,7 @@ namespace Buncis.Framework.Core.Infrastructure.Settings
 {
     public class SettingsProvider<TSettings> where TSettings : class, new()
     {
-        private IPropertySettingsResolver _resolver;
+        private readonly IPropertySettingsResolver _resolver;
 
         public SettingsProvider(IPropertySettingsResolver resolver)
         {
@@ -15,7 +15,7 @@ namespace Buncis.Framework.Core.Infrastructure.Settings
 
         public TSettings ResolveSettings()
         {
-            TSettings instance = Activator.CreateInstance<TSettings>();
+            var instance = Activator.CreateInstance<TSettings>();
             Type type = instance.GetType();
 
             // use reflection to resolve each settings property from app config
@@ -24,8 +24,8 @@ namespace Buncis.Framework.Core.Infrastructure.Settings
 
             foreach (PropertyInfo property in properties)
             {
-                var propertyName = property.Name.ToLower();
-                object propertyValue = (object)_resolver.ResolvePropertySettings(propertyName);
+                string propertyName = property.Name.ToLower();
+                object propertyValue = _resolver.ResolvePropertySettings(propertyName);
 
                 //TypeConverter typeConverter = TypeDescriptor.GetConverter(propertyValue.GetType());
                 TypeConverter typeConverter = TypeDescriptor.GetConverter(property.PropertyType);
