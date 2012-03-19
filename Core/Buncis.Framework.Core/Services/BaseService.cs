@@ -12,7 +12,7 @@ namespace Buncis.Framework.Core.Services
 
         protected void UsingTransaction(Action action)
         {
-            using (IUnitOfWork unitOfWork = IoC.Resolve<IUnitOfWork>())
+            using (var unitOfWork = IoC.Resolve<IUnitOfWork>())
             {
                 unitOfWork.Begin();
                 try

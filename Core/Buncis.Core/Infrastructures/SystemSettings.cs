@@ -10,6 +10,6 @@
 
         public int GlobalItemPerPage { get; set; }
 
-        #endregion ISystemSettings Members
+        #endregion
     }
 }

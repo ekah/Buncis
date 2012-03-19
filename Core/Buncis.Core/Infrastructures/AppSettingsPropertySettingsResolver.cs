@@ -12,6 +12,6 @@ namespace Buncis.Core.Infrastructures
             return ConfigurationManager.AppSettings[keyName];
         }
 
-        #endregion IPropertySettingsResolver Members
+        #endregion
     }
 }

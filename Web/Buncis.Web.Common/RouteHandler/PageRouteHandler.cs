@@ -1,42 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Routing;
-using Buncis.Framework.Core.Infrastructure.IoC;
-using Buncis.Core.Services;
-using System.Web;
+﻿using System.Web;
 using System.Web.Compilation;
+using System.Web.Routing;
 using System.Web.UI;
+using Buncis.Core.Services;
+using Buncis.Data.Domain;
+using Buncis.Framework.Core.Infrastructure.IoC;
 
 namespace Buncis.Web.Common.RouteHandler
 {
-	public class PageRouteHandler : IRouteHandler
-	{
-		#region IRouteHandler Members
+    public class PageRouteHandler : IRouteHandler
+    {
+        #region IRouteHandler Members
 
-		public System.Web.IHttpHandler GetHttpHandler(RequestContext requestContext)
-		{
-			string pageName = requestContext.RouteData.Values["PageName"] as string;
+        public IHttpHandler GetHttpHandler(RequestContext requestContext)
+        {
+            var pageName = requestContext.RouteData.Values["PageName"] as string;
 
-			if (string.IsNullOrEmpty(pageName))
-				return RouteHandlerHelper.GetNotFoundHttpHandler();
-			else
-			{
-				var pageService = IoC.Resolve<IPageService>();
-				var pageFromDb = pageService.GetPageByFriendlyUrl(pageName);
+            if (string.IsNullOrEmpty(pageName))
+            {
+                return RouteHandlerHelper.GetNotFoundHttpHandler();
+            }
 
-				if (pageFromDb == null)
-					return RouteHandlerHelper.GetNotFoundHttpHandler();
-				else
-				{
-					HttpContext.Current.Items[BuncisWebConstants.HttpContextItemKeys.KEY_CURRENT_PAGE] = pageFromDb;
+            var pageService = IoC.Resolve<IPageService>();
+            DynamicPage pageFromDb = pageService.GetPageByFriendlyUrl(pageName);
+            if (pageFromDb == null)
+            {
+                return RouteHandlerHelper.GetNotFoundHttpHandler();
+            }
 
-					return BuildManager.CreateInstanceFromVirtualPath("/Default.aspx", typeof(Page)) as Page;
-				}
-			}
-		}
+            HttpContext.Current.Items[BuncisWebConstants.HttpContextItemKeys.KEY_CURRENT_PAGE] = pageFromDb;
 
-		#endregion
-	}
+            return BuildManager.CreateInstanceFromVirtualPath("/Default.aspx", typeof (Page)) as Page;
+        }
+
+        #endregion
+    }
 }

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
+﻿using System.Web.UI;
 
 namespace Buncis.Web
 {
-    public class BasePage : System.Web.UI.Page
+    public class BasePage : Page
     {
         //protected string MenuTitle { get; set; }
 

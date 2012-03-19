@@ -9,11 +9,11 @@ namespace Buncis.Services.Common
         public ServiceRegistry()
         {
             Scan(p =>
-            {
-                p.AssemblyContainingType<IPageService>();
-                p.AssemblyContainingType<PageService>();
-                p.Convention<DefaultConventionScanner>();
-            });
+                     {
+                         p.AssemblyContainingType<IPageService>();
+                         p.AssemblyContainingType<PageService>();
+                         p.Convention<DefaultConventionScanner>();
+                     });
         }
     }
 }
