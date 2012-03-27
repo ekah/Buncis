@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BuncisBaseService.cs" />
-    <Compile Include="PageService.cs" />
+    <Compile Include="DynamicPageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

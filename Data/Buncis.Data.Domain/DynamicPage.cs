@@ -14,6 +14,6 @@ namespace Buncis.Data.Domain
         public virtual string MetaTitle { get; set; }
         public virtual string MetaDescription { get; set; }
         public virtual DateTime DateCreated { get; set; }
-        public virtual bool? IsDeleted { get; set; }
+        public virtual bool IsDeleted { get; set; }
     }
 }

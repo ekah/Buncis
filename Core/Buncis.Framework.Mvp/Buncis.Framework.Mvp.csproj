@@ -50,6 +50,7 @@
     <Compile Include="Presenters\BasePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\IBaseView.cs" />
+    <Compile Include="Views\IBindableView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomEventArgs\" />

@@ -86,16 +86,6 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Assets\Images\Products\hdd %281%29.png" />
-    <Content Include="Assets\Images\Products\hdd.png" />
-    <Content Include="Assets\Images\Products\hp_hdd.png" />
-    <Content Include="Assets\Images\Products\hp_ipaq_111.png" />
-    <Content Include="Assets\Images\Products\hp_ipaq_211.png" />
-    <Content Include="Assets\Images\Products\htc_trinity.png" />
-    <Content Include="Assets\Images\Products\i_mate_ultimate_6150.png" />
-    <Content Include="Assets\Images\Products\i_mate_ultimate_8150.png" />
-    <Content Include="Assets\Images\Products\laptop %281%29.png" />
-    <Content Include="Assets\Images\Products\laptop.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
@@ -156,6 +146,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DynamicPage.aspx.cs">
+      <DependentUpon>DynamicPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicPage.aspx.designer.cs">
+      <DependentUpon>DynamicPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -170,11 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
-    <Content Include="Assets\Images\icons\ico_search.png" />
-    <Content Include="Assets\Images\icons\ico_english.png" />
-    <Content Include="Assets\Images\icons\ico_indonesia.png" />
-    <Content Include="Assets\Images\sites\header2.png" />
-    <Content Include="Assets\Images\sites\buncis_logo.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Buncis.Core\Buncis.Core.csproj">
@@ -189,10 +181,6 @@
       <Project>{B4D9A823-66E5-443C-868C-CE394243644C}</Project>
       <Name>Buncis.Framework.Mvp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Data\Buncis.Data.Domain\Buncis.Data.Domain.csproj">
-      <Project>{28221BDC-8577-4D64-A630-540ADC544B04}</Project>
-      <Name>Buncis.Data.Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Logic\Buncis.Logic\Buncis.Logic.csproj">
       <Project>{7C233E93-C064-47DF-9C11-0181658AD2C2}</Project>
       <Name>Buncis.Logic</Name>
@@ -205,10 +193,12 @@
   <ItemGroup>
     <Content Include="Content.Master" />
     <Content Include="Default.aspx" />
+    <Content Include="DynamicPage.aspx" />
     <Content Include="NotFound.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\Images\" />
     <Folder Include="Buncis\" />
     <Folder Include="Styles\" />
     <Folder Include="UserControls\" />

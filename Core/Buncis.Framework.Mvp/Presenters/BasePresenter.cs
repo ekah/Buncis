@@ -1,4 +1,5 @@
-﻿using WebFormsMvp;
+﻿using System;
+using WebFormsMvp;
 
 namespace Buncis.Framework.Mvp.Presenters
 {
@@ -7,6 +8,12 @@ namespace Buncis.Framework.Mvp.Presenters
         public BasePresenter(TView view)
             : base(view)
         {
+            view.Load += view_Load;
+        }
+
+        protected virtual void view_Load(object sender, EventArgs e)
+        {
+            // this can be overriden
         }
     }
 }

@@ -4,6 +4,9 @@ using System.Web.Routing;
 using Buncis.Framework.Core.Infrastructure.IoC;
 using Buncis.Web.Common.Dependency;
 using Buncis.Web.Common.RouteHandler;
+using WebFormsMvp.Binder;
+using Buncis.Core.Resources;
+using Buncis.Core.Utility;
 
 namespace Buncis.Web
 {
@@ -13,13 +16,14 @@ namespace Buncis.Web
         {
             // Code that runs on application startup
             IoC.InitializeIoC(new DependencyResolverFactory());
+
             RegisterRoutes(RouteTable.Routes);
         }
 
         private void RegisterRoutes(RouteCollection routes)
         {
             // Register Route for Dynamic Pages
-            routes.Add("Dynamic Pages", new Route("[*PageName]", new PageRouteHandler()));
+            routes.Add(RouteNames.DynamicPage, new Route("{*" + QueryStrings.PageName + "}", new PageRouteHandler()));
         }
 
         private void Application_End(object sender, EventArgs e)
@@ -43,6 +47,12 @@ namespace Buncis.Web
             // Note: The Session_End event is raised only when the sessionstate mode
             // is set to InProc in the Web.config file. If session mode is set to StateServer
             // or SQLServer, the event is not raised.
+        }
+
+        private void Application_BeginRequest(object sender, EventArgs e)
+        {
+            Log log = new Log();
+            log.SaveToText(HttpContext.Current.Request.Url.AbsolutePath);
         }
     }
 }

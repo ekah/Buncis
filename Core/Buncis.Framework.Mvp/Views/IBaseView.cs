@@ -3,7 +3,7 @@ using WebFormsMvp;
 
 namespace Buncis.Framework.Mvp.Views
 {
-    public interface IBaseView<T> : IView<T> where T : class, new()
+    public interface IBaseView<TModel> : IView<TModel> where TModel : class, new()
     {
         event EventHandler Initialize;
     }

@@ -2,8 +2,9 @@
 
 namespace Buncis.Core.Services
 {
-    public interface IPageService
+    public interface IDynamicPageService
     {
         DynamicPage GetPageByFriendlyUrl(string friendlyUrl);
+        DynamicPage GetPage(int pageId);
     }
 }
