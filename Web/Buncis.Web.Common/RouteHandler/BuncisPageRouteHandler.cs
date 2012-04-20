@@ -9,7 +9,7 @@ using Buncis.Framework.Core.Infrastructure.IoC;
 
 namespace Buncis.Web.Common.RouteHandler
 {
-    public class PageRouteHandler : IRouteHandler
+    public class BuncisPageRouteHandler : IRouteHandler
     {
         #region IRouteHandler Members
 

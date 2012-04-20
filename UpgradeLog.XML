@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Buncis">
+</Property><Property Name="Solution File" Value="D:\Projects\Buncis\Buncis.sln">
+</Property><Property Name="Date" Value="Monday, 16 April 2012">
+</Property><Property Name="Time" Value="10:05 AM">
+</Property></Properties><Event ErrorLevel="0" Project="Buncis.Core" Source="Core\Buncis.Core\Buncis.Core.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Buncis.Core" Source="Core\Buncis.Core\Buncis.Core.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Buncis.Data.Domain" Source="Data\Buncis.Data.Domain\Buncis.Data.Domain.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Buncis.Data.Domain" Source="Data\Buncis.Data.Domain\Buncis.Data.Domain.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Buncis.Data.Repository" Source="Data\Buncis.Data.Repository\Buncis.Data.Repository.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Buncis.Data.Repository" Source="Data\Buncis.Data.Repository\Buncis.Data.Repository.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Buncis.Web" Source="Web\Buncis.Web\Buncis.Web.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Buncis.Web" Source="Web\Buncis.Web\Buncis.Web.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Buncis.Data.Common" Source="Data\Buncis.Data.Common\Buncis.Data.Common.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Buncis.Data.Common" Source="Data\Buncis.Data.Common\Buncis.Data.Common.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Buncis.Framework.Core" Source="Core\Buncis.Framework.Core\Buncis.Framework.Core.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Buncis.Framework.Core" Source="Core\Buncis.Framework.Core\Buncis.Framework.Core.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Buncis.Web.Common" Source="Web\Buncis.Web.Common\Buncis.Web.Common.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Buncis.Web.Common" Source="Web\Buncis.Web.Common\Buncis.Web.Common.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Buncis.Services" Source="Services\Buncis.Services\Buncis.Services.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Buncis.Services" Source="Services\Buncis.Services\Buncis.Services.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="TestConsoleApp" Source="Tests\TestConsoleApp\TestConsoleApp.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="TestConsoleApp" Source="Tests\TestConsoleApp\TestConsoleApp.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Buncis.Logic" Source="Logic\Buncis.Logic\Buncis.Logic.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Buncis.Logic" Source="Logic\Buncis.Logic\Buncis.Logic.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Buncis.Services.Common" Source="Services\Buncis.Services.Common\Buncis.Services.Common.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Buncis.Services.Common" Source="Services\Buncis.Services.Common\Buncis.Services.Common.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Buncis.Framework.Mvp" Source="Core\Buncis.Framework.Mvp\Buncis.Framework.Mvp.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Buncis.Framework.Mvp" Source="Core\Buncis.Framework.Mvp\Buncis.Framework.Mvp.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Buncis.sln" Description="The solution file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="" Source="Buncis.sln" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="Buncis.Data.Domain" Source="Data\Buncis.Data.Domain\Buncis.Data.Domain.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Buncis.Data.Repository" Source="Data\Buncis.Data.Repository\Buncis.Data.Repository.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Buncis.Data.Common" Source="Data\Buncis.Data.Common\Buncis.Data.Common.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Buncis.Core" Source="Core\Buncis.Core\Buncis.Core.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Buncis.Framework.Core" Source="Core\Buncis.Framework.Core\Buncis.Framework.Core.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Buncis.Framework.Mvp" Source="Core\Buncis.Framework.Mvp\Buncis.Framework.Mvp.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Buncis.Web" Source="Web\Buncis.Web\Buncis.Web.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Buncis.Web.Common" Source="Web\Buncis.Web.Common\Buncis.Web.Common.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Buncis.Services" Source="Services\Buncis.Services\Buncis.Services.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Buncis.Services.Common" Source="Services\Buncis.Services.Common\Buncis.Services.Common.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="TestConsoleApp" Source="Tests\TestConsoleApp\app.config" Description="File converted successfully. All &lt;supportedRuntime&gt; and &lt;requiredRuntime&gt; tags were removed to enable the project to build and run with Visual Studio 2005.">
+</Event><Event ErrorLevel="3" Project="TestConsoleApp" Source="Tests\TestConsoleApp\app.config" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Buncis.Logic" Source="Logic\Buncis.Logic\Buncis.Logic.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

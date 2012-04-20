@@ -4,16 +4,16 @@ using StructureMap.Graph;
 
 namespace Buncis.Services.Common
 {
-    public class ServiceRegistry : Registry
-    {
-        public ServiceRegistry()
-        {
-            Scan(p =>
-                     {
-                         p.AssemblyContainingType<IDynamicPageService>();
-                         p.AssemblyContainingType<DynamicPageService>();
-                         p.Convention<DefaultConventionScanner>();
-                     });
-        }
-    }
+	public class ServiceRegistry : Registry
+	{
+		public ServiceRegistry()
+		{
+			Scan(p =>
+			{
+				p.AssemblyContainingType<IDynamicPageService>();
+				p.AssemblyContainingType<DynamicPageService>();
+				p.Convention<DefaultConventionScanner>();
+			});
+		}
+	}
 }
