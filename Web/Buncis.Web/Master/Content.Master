@@ -3,20 +3,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+	<title>Buncis Web</title>
+	<asp:ContentPlaceHolder ID="head" runat="server">
+	</asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-        Banner and header goes here</div>
-    <div>
-        <asp:ContentPlaceHolder ID="MainPlaceHolder" runat="server">
-        </asp:ContentPlaceHolder>
-    </div>
-    <div>
-        Footer and other thing goes here</div>
-    </form>
+	<div id="header">
+		<div id="topBar"></div>
+		<div id="logo"></div>
+		<div id="menu"></div>
+	</div>
+	
+	<div id="body">
+		<div id="content">
+			<div id="leftContent"></div>
+			<div id="rightContent"></div>
+		</div>
+	</div>
+	
+	<div id="footer">
+		
+	</div>
+
+	<form id="form1" runat="server">
+	</form>
 </body>
 </html>
