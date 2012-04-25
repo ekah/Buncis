@@ -21,10 +21,11 @@ Thumbs.db
 [Dd]ebug*/
 *.lib
 *.sbr
-obj/
+[Oo]bj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
 /template/references/*
 /_UpgradeReport_Files/*
 UpgradeLog.XML
+buncis.log
