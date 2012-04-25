@@ -95,6 +95,7 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\bun.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -194,7 +195,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Images\" />
-    <Folder Include="Styles\" />
     <Folder Include="UserControls\" />
   </ItemGroup>
   <ItemGroup>
