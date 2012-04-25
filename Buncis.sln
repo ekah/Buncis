@@ -5,29 +5,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{7C636C10-A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{BD829857-315F-4D8C-A56B-24F62BC51020}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{EDE23C79-E714-44C6-9B10-3174851E2834}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{42DDCF3F-BBB6-4710-B91B-B486BDEA0FE8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{10DA439F-3C7D-4D60-8531-0D9FFBDA426A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{18725CF7-AE09-480E-994B-ABFFDB1D4797}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buncis.Core", "Core\Buncis.Core\Buncis.Core.csproj", "{98DC3D6A-6996-454A-BD5F-3CE36ACF4C8B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buncis.Data.Domain", "Data\Buncis.Data.Domain\Buncis.Data.Domain.csproj", "{28221BDC-8577-4D64-A630-540ADC544B04}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buncis.Data.Repository", "Data\Buncis.Data.Repository\Buncis.Data.Repository.csproj", "{9DD459BA-FAF6-4EB7-BAD2-C2D9994AC969}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{EDE23C79-E714-44C6-9B10-3174851E2834}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buncis.Web", "Web\Buncis.Web\Buncis.Web.csproj", "{7B8B9C2E-9110-4539-B6D1-928AF85786CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buncis.Data.Common", "Data\Buncis.Data.Common\Buncis.Data.Common.csproj", "{8F3EEEBB-AB4D-4AB6-A89D-C5F4671F3472}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{42DDCF3F-BBB6-4710-B91B-B486BDEA0FE8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buncis.Framework.Core", "Core\Buncis.Framework.Core\Buncis.Framework.Core.csproj", "{D6F426E2-E30B-4453-9FC7-6839B680C4E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buncis.Web.Common", "Web\Buncis.Web.Common\Buncis.Web.Common.csproj", "{04FF072D-8A48-4DB8-AD00-7F7317FA2DE7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buncis.Services", "Services\Buncis.Services\Buncis.Services.csproj", "{3EB19167-CDB0-429F-91BC-796C8D744552}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{10DA439F-3C7D-4D60-8531-0D9FFBDA426A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{18725CF7-AE09-480E-994B-ABFFDB1D4797}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buncis.Logic", "Logic\Buncis.Logic\Buncis.Logic.csproj", "{7C233E93-C064-47DF-9C11-0181658AD2C2}"
 EndProject

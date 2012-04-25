@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.UI;
 
-namespace Buncis.Web
+namespace Buncis.Web.Master
 {
     public partial class Content : MasterPage
     {

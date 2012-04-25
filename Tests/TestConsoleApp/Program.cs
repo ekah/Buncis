@@ -10,7 +10,7 @@ namespace TestConsoleApp
         {
             int pid = 0;
             Mock<IProductService> ps = new Mock<IProductService>();
-            ps.Setup(o => o.GetProductByProductId(pid)).Returns(new Product()
+            ps.Setup(o => o.GetProductByProductId(pid)).Returns(new Buncis.Data.Models.Product()
             {
                 ProductId = 111,
                 ProductName = "wah",

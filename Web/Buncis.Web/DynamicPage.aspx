@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content.Master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Content.Master" AutoEventWireup="true"
     CodeBehind="DynamicPage.aspx.cs" Inherits="Buncis.Web.DynamicPage" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="server">

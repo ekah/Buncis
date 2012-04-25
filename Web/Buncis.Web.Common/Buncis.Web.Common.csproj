@@ -91,7 +91,9 @@
     <Compile Include="Membership\WebMembershipStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteHandler\BuncisPageRouteHandler.cs" />
+    <Compile Include="RouteHandler\RouteHandlerFactory.cs" />
     <Compile Include="RouteHandler\RouteHandlerHelper.cs" />
+    <Compile Include="RouteHandler\BuncisRoutingConfiguration.cs" />
     <Compile Include="Utility\WebUtil.cs" />
     <Compile Include="WebRegistry.cs" />
   </ItemGroup>

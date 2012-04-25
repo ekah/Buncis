@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Buncis.Logic.Models;
 using Buncis.Logic.Presenters;
 using Buncis.Logic.Views;
+using Buncis.Web.Base;
 using WebFormsMvp;
 
 namespace Buncis.Web
@@ -23,6 +24,7 @@ namespace Buncis.Web
         {
             Initialize(this, e);
         }
+
         #region IBindableView<DynamicPageModel> Members
 
         public void BindViewData()

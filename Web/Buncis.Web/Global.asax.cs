@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web;
 using System.Web.Routing;
+using Buncis.Core.Utility.Logging;
 using Buncis.Framework.Core.Infrastructure.IoC;
 using Buncis.Web.Common.Dependency;
 using Buncis.Web.Common.RouteHandler;
@@ -8,7 +9,6 @@ using StructureMap;
 using WebFormsMvp.Binder;
 using Buncis.Core.Resources;
 using Buncis.Core.Utility;
-using Buncis.Core.Utility.Logging;
 
 namespace Buncis.Web
 {
@@ -17,15 +17,11 @@ namespace Buncis.Web
 		private void Application_Start(object sender, EventArgs e)
 		{
 			// Code that runs on application startup
-			IoC.InitializeIoC(new DependencyResolverFactory());
+			IDependencyResolverFactory dependencyResolverFactory = new DependencyResolverFactory();
+			IoC.InitializeIoC(dependencyResolverFactory);
 
-			RegisterRoutes(RouteTable.Routes);
-		}
-
-		private void RegisterRoutes(RouteCollection routes)
-		{
-			// Register Route for Dynamic Pages
-			routes.Add(RouteNames.DynamicPage, new Route("{*" + QueryStrings.PageName + "}", new BuncisPageRouteHandler()));
+			var routingConfig = new BuncisRoutingConfiguration();
+			routingConfig.RegisterRoutes(RouteTable.Routes);
 		}
 
 		private void Application_End(object sender, EventArgs e)

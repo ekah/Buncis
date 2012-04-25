@@ -26,3 +26,5 @@ obj/
 _ReSharper*/
 [Tt]est[Rr]esult*
 /template/references/*
+_UpgradeReport_Files/*
+UpgradeLog.XML

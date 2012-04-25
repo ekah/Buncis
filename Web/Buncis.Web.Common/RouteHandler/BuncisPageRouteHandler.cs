@@ -15,30 +15,48 @@ namespace Buncis.Web.Common.RouteHandler
 
         public IHttpHandler GetHttpHandler(RequestContext requestContext)
         {
-            var pageName = requestContext.RouteData.Values[QueryStrings.PageName] as string;
-            if (string.IsNullOrEmpty(pageName))
+            var pageName = ResolvePageNameFromRequest(requestContext);
+            int? pageId;
+            if (IsValidPageRequest(pageName, out pageId))
             {
-                if (requestContext.HttpContext.Request.Url.AbsolutePath != "/")
-                {
-                    return RouteHandlerHelper.GetNotFoundHttpHandler();
-                }
-
-                pageName = string.Empty;
+                return GetDynamicPageHandler(pageId.Value);
             }
 
-            pageName = string.Format("/{0}", pageName);
-            var pageService = IoC.Resolve<IDynamicPageService>();
-            var pageFromDb = pageService.GetPageByFriendlyUrl(pageName);
-            if (pageFromDb == null)
-            {
-                return RouteHandlerHelper.GetNotFoundHttpHandler();
-            }
+            return RouteHandlerHelper.GetNotFoundHttpHandler();
+        }
 
+        private IHttpHandler GetDynamicPageHandler(int pageId)
+        {
             var virtualPath = string.Format("{0}", Redirections.DynamicPage);
-            var queryString = string.Format("?{0}={1}", QueryStrings.PageId, pageFromDb.PageId);
+            var queryString = string.Format("?{0}={1}", QueryStrings.PageId, pageId);
             HttpContext.Current.RewritePath(string.Concat(virtualPath, queryString));
             var page = BuildManager.CreateInstanceFromVirtualPath(virtualPath, typeof(Page)) as Page;
             return page;
+        }
+
+        private bool IsValidPageRequest(string pageName, out int? pageId)
+        {
+            pageId = null;
+            if (string.IsNullOrEmpty(pageName))
+            {
+                return false;
+            }
+
+            var pageService = IoC.Resolve<IDynamicPageService>();
+            var pageFromDb = pageService.GetPageByFriendlyUrl(pageName);
+            pageId = pageFromDb == null ? (int?)null : pageFromDb.PageId;
+            return pageFromDb != null;
+        }
+
+        private string ResolvePageNameFromRequest(RequestContext requestContext)
+        {
+            var pageName = requestContext.RouteData.Values[QueryStrings.PageName] as string;
+            if (requestContext.HttpContext.Request.Url.AbsolutePath == "/")
+            {
+                pageName = string.Empty;
+            }
+            pageName = string.Format("/{0}", pageName);
+            return pageName;
         }
 
         #endregion

@@ -23,7 +23,7 @@ namespace Buncis.Logic.Presenters
 
         void view_Initialize(object sender, EventArgs e)
         {
-            var str = "view is initialized";
+            
         }
 
         protected override void view_Load(object sender, EventArgs e)
