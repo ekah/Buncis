@@ -12,11 +12,11 @@ namespace Buncis.Core.Utility.Logging
 
 		public void WriteLog(string log)
 		{
-			using (TextWriter tw = new StreamWriter(_logPath, true))
-			{
-				tw.WriteLine(log);
-				tw.Close();
-			}
+            //using (TextWriter tw = new StreamWriter(_logPath, true))
+            //{
+            //    tw.WriteLine(log);
+            //    tw.Close();
+            //}
 		}
 	}
 }

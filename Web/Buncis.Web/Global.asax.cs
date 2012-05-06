@@ -24,7 +24,7 @@ namespace Buncis.Web
 			var routingConfig = new BuncisRoutingConfiguration();
 			routingConfig.RegisterRoutes(RouteTable.Routes);
 
-			ControlsContainer.InitializeDynamicControls();
+			DynamicControlsContainer.InitializeDynamicControls();
 		}
 
 		private void Application_End(object sender, EventArgs e)

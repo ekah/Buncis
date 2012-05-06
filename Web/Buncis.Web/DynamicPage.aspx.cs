@@ -10,27 +10,30 @@ using Buncis.Logic.Presenters;
 using Buncis.Logic.Views;
 using Buncis.Web.Base;
 using WebFormsMvp;
+using Buncis.Web.Common.DynamicControls;
 
 namespace Buncis.Web
 {
-	[PresenterBinding(typeof(DynamicPagePresenter), ViewType = typeof(IDynamicPageView))]
-	public partial class DynamicPage : BasePage<DynamicPageModel>, IDynamicPageView
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
-			TriggerInitializeView(this, e);
-		}
+    [PresenterBinding(typeof(DynamicPagePresenter), ViewType = typeof(IDynamicPageView))]
+    public partial class DynamicPage : BasePage<DynamicPageModel>, IDynamicPageView
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            InitializeView(this, e);
+        }
 
-		#region IBindableView<DynamicPageModel> Members
+        #region IBindableView<DynamicPageModel> Members
 
-		public void BindViewData()
-		{
-			var rawPageContent = Model.PageContent;
+        public void BindViewData()
+        {
+            Page.Title = Model.MetaTitle;
+            Page.MetaDescription = Model.MetaDescription;
 
-			
-		}
+            var controlResolver = IoC.Resolve<IDynamicControlsResolver>();
+            controlResolver.ResolveDynamicControls(plcBodyContent, Model.PageContent);
+        }
 
-		#endregion
+        #endregion
 
-	}
+    }
 }

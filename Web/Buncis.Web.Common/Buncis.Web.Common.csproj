@@ -84,11 +84,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuncisWebConstants.cs" />
-    <Compile Include="DynamicControls\ControlsContainer.cs" />
+    <Compile Include="DynamicControls\DynamicControlsContainer.cs" />
     <Compile Include="DynamicControls\DynamicControl.cs" />
     <Compile Include="DynamicControls\DynamicControlsLibrary.cs" />
-    <Compile Include="DynamicControls\IWebDynamicControlsResolver.cs" />
-    <Compile Include="DynamicControls\WebDynamicControlsResolver.cs" />
+    <Compile Include="DynamicControls\IDynamicControlsResolver.cs" />
+    <Compile Include="DynamicControls\DynamicControlsResolver.cs" />
     <Compile Include="Extensions\DropDownListExtension.cs" />
     <Compile Include="Dependency\DependencyResolver.cs" />
     <Compile Include="Dependency\DependencyResolverFactory.cs" />

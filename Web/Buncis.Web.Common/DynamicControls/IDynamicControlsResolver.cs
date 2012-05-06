@@ -6,8 +6,8 @@ using System.Web.UI;
 
 namespace Buncis.Web.Common.DynamicControls
 {
-	public interface IWebDynamicControlsResolver
-	{
-		void ResolveDynamicControls(Control controlToPutResult, string pageContent);
-	}
+    public interface IDynamicControlsResolver
+    {
+        void ResolveDynamicControls(Control controlToAddResult, string pageContent);
+    }
 }

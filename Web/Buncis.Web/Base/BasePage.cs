@@ -9,7 +9,7 @@ namespace Buncis.Web.Base
 	{
 		public event EventHandler Initialize;
 
-		protected void TriggerInitializeView(object sender, EventArgs e)
+		protected void InitializeView(object sender, EventArgs e)
 		{
 			Initialize(sender, e);
 		}
