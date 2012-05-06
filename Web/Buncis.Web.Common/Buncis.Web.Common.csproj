@@ -92,6 +92,7 @@
     <Compile Include="Extensions\DropDownListExtension.cs" />
     <Compile Include="Dependency\DependencyResolver.cs" />
     <Compile Include="Dependency\DependencyResolverFactory.cs" />
+    <Compile Include="Membership\AspNetMembership.cs" />
     <Compile Include="Membership\WebMembership.cs" />
     <Compile Include="Membership\WebMembershipStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

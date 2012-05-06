@@ -9,19 +9,33 @@ namespace Buncis.Web.Common.Membership
     {
         #region IMembershipStorage Members
 
+        /// <summary>
+        /// Gets the user profile from storage.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
         public UserProfile GetUserProfileFromStorage(string key)
         {
             return HttpContext.Current.Session[key] as UserProfile;
         }
 
+        /// <summary>
+        /// Saves the user profile to storage.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="userProfile">The user profile.</param>
         public void SaveUserProfileToStorage(string key, UserProfile userProfile)
         {
-            throw new NotImplementedException();
+            HttpContext.Current.Session[key] = userProfile;
         }
 
+        /// <summary>
+        /// Clears the storage.
+        /// </summary>
+        /// <param name="key">The key.</param>
         public void ClearStorage(string key)
         {
-            throw new NotImplementedException();
+            HttpContext.Current.Session.Remove(key);
         }
 
         #endregion

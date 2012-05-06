@@ -25,7 +25,8 @@ namespace Buncis.Web.Common
                                            return settingsProvider.ResolveSettings();
                                        });
             For<IMembershipStorage>().Use<WebMembershipStorage>();
-            For<IMembership>().Use<CoreMembership>();
+            //For<IMembership>().Use<CoreMembership>();
+            For<IMembership>().Use<AspNetMembership>();
             For<IDynamicControlsResolver>().Use<DynamicControlsResolver>();
         }
     }
