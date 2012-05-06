@@ -10,7 +10,7 @@ namespace Buncis.Web.Common.RouteHandler
     {
         public IRouteHandler GetRouteHandler<T>()
         {
-            Type typeOfT = typeof(T);
+            var typeOfT = typeof(T);
             var THasIRouteHandlerInterface = typeOfT.GetInterfaces().Any(o => o.Name.Contains("IRouteHandler"));
             if (THasIRouteHandlerInterface)
             {

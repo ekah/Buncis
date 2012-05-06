@@ -4,5 +4,5 @@
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="bodyContent" ContentPlaceHolderID="MainPlaceHolder" runat="server">
-    <asp:Literal runat="server" ID="ltrBodyContent"></asp:Literal>
+    <asp:PlaceHolder runat="server" ID="plcBodyContent"></asp:PlaceHolder>
 </asp:Content>

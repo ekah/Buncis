@@ -1,4 +1,5 @@
-﻿using Buncis.Framework.Core.Membership;
+﻿using Buncis.Framework.Core.Infrastructure.IoC;
+using Buncis.Framework.Core.Membership;
 using StructureMap;
 
 namespace Buncis.Web.Common.Membership
@@ -12,7 +13,7 @@ namespace Buncis.Web.Common.Membership
             get
             {
                 if (_membership == null)
-                    _membership = ObjectFactory.GetInstance<IMembership>();
+                    _membership = IoC.Resolve<IMembership>();
                 return _membership;
             }
         }

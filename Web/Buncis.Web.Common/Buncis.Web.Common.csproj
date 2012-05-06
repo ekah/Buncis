@@ -84,6 +84,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuncisWebConstants.cs" />
+    <Compile Include="DynamicControls\ControlsContainer.cs" />
+    <Compile Include="DynamicControls\DynamicControl.cs" />
+    <Compile Include="DynamicControls\DynamicControlsLibrary.cs" />
+    <Compile Include="DynamicControls\IWebDynamicControlsResolver.cs" />
+    <Compile Include="DynamicControls\WebDynamicControlsResolver.cs" />
     <Compile Include="Extensions\DropDownListExtension.cs" />
     <Compile Include="Dependency\DependencyResolver.cs" />
     <Compile Include="Dependency\DependencyResolverFactory.cs" />
@@ -140,6 +145,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

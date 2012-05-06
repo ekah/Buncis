@@ -1,31 +1,61 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Content.master.cs" Inherits="Buncis.Web.Master.Content" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head runat="server">	
 	<title>Buncis Web</title>
+	<link rel="stylesheet" href="/styles/normalize.css" />
+	<link rel="stylesheet" href="/styles/bun.css" />
+
+	<script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript"></script>	
+
 	<asp:ContentPlaceHolder ID="head" runat="server">
 	</asp:ContentPlaceHolder>
 </head>
 <body>
-	<div id="header">
-		<div id="topBar"></div>
-		<div id="logo"></div>
-		<div id="menu"></div>
-	</div>
-	
-	<div id="body">
-		<div id="content">
-			<div id="leftContent"></div>
-			<div id="rightContent"></div>
-		</div>
-	</div>
-	
-	<div id="footer">
-		
-	</div>
-
 	<form id="form1" runat="server">
+		<div id="topBar" class="roundBottom"></div>
+		<div id="bannerWrapper" class="">
+			<div id="banner"></div>
+		</div>
+		<div id="header" class="">
+			<div id="logoWrapper">
+				<div id="logo" class="def-shadow">
+					<img src="/images/logo.png" class="logo-img"/>
+					<img src="/images/logo_text.png" class="logo-text"/>
+				</div>
+			</div>
+			<div id="menuWrapper">
+				<div id="menu" class="def-shadow">
+					<ul class="menu-bar">
+						<li><a href="#"><span class="menu-title">Home</span><span class="menu-info">Latest Info</span></a></li>
+						<li><a href="#"><span class="menu-title">About Us</span><span class="menu-info">Company Details</span></a></li>
+						<li><a href="#"><span class="menu-title">Resources</span><span class="menu-info">Blogs, Articles, FAQs</span></a></li>
+						<li><a href="#"><span class="menu-title">Careers</span><span class="menu-info">Join with us</span></a></li>
+						<li><a href="#"><span class="menu-title">Products</span><span class="menu-info">Products Catalog</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div id="body">
+			<div id="content" class="roundLeft roundRight">
+				<div id="leftContent" class="contentBox roundLeft">
+					<asp:ContentPlaceHolder ID="MainPlaceHolder" runat="server">
+					</asp:ContentPlaceHolder>
+				</div>
+				<div id="rightContent" class="contentBox roundRight">
+					<p>Candy canes dragée wypas jujubes carrot cake. Cheesecake chupa chups chocolate cake fruitcake. Sesame snaps marshmallow tart sweet sweet roll chocolate bar ice cream.</p><p>
+					Oat cake gingerbread sweet roll pastry croissant marzipan sweet roll sesame snaps candy. Pudding soufflé pie jelly donut liquorice powder gingerbread candy canes. Macaroon cupcake bonbon icing topping tart sesame snaps faworki lollipop. Jujubes chupa chups fruitcake pie gummies.</p><p>
+					Gummies chocolate gingerbread danish gummies jujubes applicake sweet roll wafer. Wypas chocolate halvah dragée lollipop candy canes toffee. Cake macaroon sweet cupcake chocolate bar biscuit gingerbread sugar plum jelly-o.</p>						
+				</div>
+			</div>
+		</div>
+
+		<div id="footer" class="">
+			<p>Ipsum lalalala</p>
+		</div>
 	</form>
 </body>
 </html>

@@ -9,6 +9,7 @@ using StructureMap;
 using WebFormsMvp.Binder;
 using Buncis.Core.Resources;
 using Buncis.Core.Utility;
+using Buncis.Web.Common.DynamicControls;
 
 namespace Buncis.Web
 {
@@ -22,6 +23,8 @@ namespace Buncis.Web
 
 			var routingConfig = new BuncisRoutingConfiguration();
 			routingConfig.RegisterRoutes(RouteTable.Routes);
+
+			ControlsContainer.InitializeDynamicControls();
 		}
 
 		private void Application_End(object sender, EventArgs e)
@@ -49,7 +52,7 @@ namespace Buncis.Web
 
 		private void Application_BeginRequest(object sender, EventArgs e)
 		{
-			var log = ObjectFactory.GetInstance<IBuncisLog>();
+			var log = IoC.Resolve<IBuncisLog>();
 			log.WriteLog(HttpContext.Current.Request.Url.AbsolutePath);
 		}
 	}

@@ -92,10 +92,22 @@
     <Content Include="Buncis\Account\Login.aspx" />
     <Content Include="Buncis\Dashboard.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Images\body_bg.png" />
+    <Content Include="Images\body_bg2.png" />
+    <Content Include="Images\header_bg.png" />
+    <Content Include="Images\header_bg2.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logo_bg.jpg" />
+    <Content Include="Images\logo_text.png" />
+    <Content Include="Images\menu_bg.jpg" />
+    <Content Include="Images\menu_separator.png" />
+    <Content Include="Scripts\jquery-1.7.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.7.2.js" />
+    <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <Content Include="Scripts\jquery.corner.js" />
     <Content Include="Styles\bun.css" />
+    <Content Include="Styles\normalize.css" />
+    <Content Include="UserControls\News\NewsList.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -163,6 +175,13 @@
       <DependentUpon>NotFound.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\News\NewsList.ascx.cs">
+      <DependentUpon>NewsList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\News\NewsList.ascx.designer.cs">
+      <DependentUpon>NewsList.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Buncis.Core\Buncis.Core.csproj">
@@ -194,14 +213,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\Images\" />
-    <Folder Include="UserControls\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master\Buncis.Master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Buncis\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
