@@ -7,7 +7,7 @@ using Omu.ValueInjecter;
 
 namespace Buncis.Logic.Presenters
 {
-    public class DynamicPagePresenter : BuncisBasePresenter<IDynamicPageView>
+    public class DynamicPagePresenter : CorePresenter<IDynamicPageView>
     {
         private readonly IDynamicPageService _dynamicPageService;
 

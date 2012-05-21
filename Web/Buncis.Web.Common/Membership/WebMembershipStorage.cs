@@ -14,9 +14,9 @@ namespace Buncis.Web.Common.Membership
         /// </summary>
         /// <param name="key">The key.</param>
         /// <returns></returns>
-        public UserProfile GetUserProfileFromStorage(string key)
+        public IUserProfile GetUserProfileFromStorage(string key)
         {
-            return HttpContext.Current.Session[key] as UserProfile;
+            return HttpContext.Current.Session[key] as IUserProfile;
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Buncis.Web.Common.Membership
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="userProfile">The user profile.</param>
-        public void SaveUserProfileToStorage(string key, UserProfile userProfile)
+        public void SaveUserProfileToStorage(string key, IUserProfile userProfile)
         {
             HttpContext.Current.Session[key] = userProfile;
         }

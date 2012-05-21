@@ -6,7 +6,7 @@ using Buncis.Services.Base;
 
 namespace Buncis.Services
 {
-    public class DynamicPageService : BuncisBaseService, IDynamicPageService
+    public class DynamicPageService : CoreService, IDynamicPageService
     {
         private readonly IPageRepository _pageRepository;
 

@@ -61,11 +61,20 @@ namespace Buncis.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ~/Buncis/Dashboard.aspx.
+        /// </summary>
+        public static string Page_Buncis_Dashboard {
+            get {
+                return ResourceManager.GetString("Page_Buncis_Dashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ~/DynamicPage.aspx.
         /// </summary>
-        public static string DynamicPage {
+        public static string Page_DynamicPage {
             get {
-                return ResourceManager.GetString("DynamicPage", resourceCulture);
+                return ResourceManager.GetString("Page_DynamicPage", resourceCulture);
             }
         }
     }

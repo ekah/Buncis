@@ -98,8 +98,8 @@
       <DependentUpon>RouteNames.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\IDynamicPageService.cs" />
-    <Compile Include="Utility\Logging\IBuncisLog.cs" />
-    <Compile Include="Utility\Logging\BuncisLog.cs" />
+    <Compile Include="Utility\Logging\ILog.cs" />
+    <Compile Include="Utility\Logging\Log.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\Buncis.Data.Domain\Buncis.Data.Domain.csproj">

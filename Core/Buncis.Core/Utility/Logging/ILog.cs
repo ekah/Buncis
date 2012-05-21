@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Buncis.Core.Utility.Logging
 {
-	public interface IBuncisLog
+	public interface ILog
 	{
 		void WriteLog(string log);
 	}

@@ -4,46 +4,67 @@ using System.Linq;
 using System.Text;
 using Buncis.Framework.Core.Membership;
 using Buncis.Core.Membership;
+using Security = System.Web.Security;
+using System.Web.Security;
+using System.Web;
 
 namespace Buncis.Web.Common.Membership
 {
-    public class AspNetMembership : IMembership
+    internal class AspNetMembership : IWebMembership
     {
         private const string KEY_MEMBERSHIP_STORAGE = "_user_entity_stored";
-        private readonly IMembershipStorage _membershipStorage;
 
         public int? LoggedInUserId
         {
             get
             {
                 int? v = null;
-                if (LoggedInUserEntity != null)
-                    v = LoggedInUserEntity.UserId;
+                if (LoggedInUserProfile != null)
+                    v = LoggedInUserProfile.UserId;
                 return v;
             }
         }
 
-        public UserProfile LoggedInUserEntity
+        public IWebUserProfile LoggedInWebUserProfile
         {
             get
             {
-                return _membershipStorage.GetUserProfileFromStorage(KEY_MEMBERSHIP_STORAGE);
+                return null;
             }
         }
 
-        public AspNetMembership(IMembershipStorage membershipStorage)
+        public IUserProfile LoggedInUserProfile
         {
-            _membershipStorage = membershipStorage;
+            get
+            {
+                return (IUserProfile)LoggedInWebUserProfile;
+            }
         }
 
-        public bool UserHasAccessToModule(BuncisModule module)
+        public bool UserHasAccessToModule(ApplicationModule module)
         {
             return true;
         }
 
         public bool DoLogin(string username, string password)
         {
-            return true;
+            if (Security.Membership.ValidateUser(username, password))
+            {
+                var ticket = new FormsAuthenticationTicket(1,
+                    username,
+                    DateTime.Now,
+                    DateTime.Now.AddDays(20),
+                    false,
+                    null,
+                    FormsAuthentication.FormsCookiePath);
+
+                var encryptedValue = FormsAuthentication.Encrypt(ticket);
+                FormsAuthentication.SetAuthCookie(encryptedValue, true);
+
+                return true;
+            }
+
+            return false;
         }
 
         public bool DoLogout(int userId)

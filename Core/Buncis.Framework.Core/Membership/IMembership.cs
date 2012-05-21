@@ -3,9 +3,9 @@
     public interface IMembership
     {
         int? LoggedInUserId { get; }
-        UserProfile LoggedInUserEntity { get; }
+        IUserProfile LoggedInUserProfile { get; }
 
-        bool UserHasAccessToModule(BuncisModule module);
+        bool UserHasAccessToModule(ApplicationModule module);
         bool DoLogin(string username, string password);
         bool DoLogout(int userId);
     }

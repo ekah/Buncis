@@ -19,9 +19,7 @@ namespace Buncis.Data.Common
             //    .BuildConfiguration();
 
             Fluently.Configure(nhCfg)
-                .Database(
-                    MsSqlConfiguration.MsSql2008.ConnectionString(
-                        c => c.FromConnectionStringWithKey("BuncisConnectionString")))
+                .Database(MsSqlConfiguration.MsSql2008.ConnectionString(c => c.FromConnectionStringWithKey("BuncisConnectionString")))
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<PageMap>())
                 .BuildConfiguration();
         }
@@ -29,10 +27,10 @@ namespace Buncis.Data.Common
         public void Config(IBurrowConfig val)
         {
             val.PersistenceUnitCfgs.Add(new PersistenceUnitElement
-                                            {
-                                                Name = "PersistenceUnit1",
-                                                NHConfigFile = null
-                                            });
+            {
+                Name = "PersistenceUnit1",
+                NHConfigFile = null
+            });
         }
 
         #endregion

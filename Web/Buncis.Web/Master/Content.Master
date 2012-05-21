@@ -6,28 +6,25 @@
 	<title>Buncis Web</title>
 	<link rel="stylesheet" href="/styles/normalize.css" />
 	<link rel="stylesheet" href="/styles/bun.css" />
-
 	<script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
-	<script type="text/javascript"></script>	
-
 	<asp:ContentPlaceHolder ID="head" runat="server">
 	</asp:ContentPlaceHolder>
 </head>
 <body>
 	<form id="form1" runat="server">
-		<div id="topBar" class="roundBottom"></div>
+		<div id="topBar" class=""></div>
 		<div id="bannerWrapper" class="">
 			<div id="banner"></div>
 		</div>
 		<div id="header" class="">
 			<div id="logoWrapper">
-				<div id="logo" class="def-shadow">
+				<div id="logo" class="shadow-5 roundBottom-5">
 					<img src="/images/logo.png" class="logo-img"/>
-					<img src="/images/logo_text.png" class="logo-text"/>
+					<!--<img src="/images/logo_text.png" class="logo-text"/>-->
 				</div>
 			</div>
 			<div id="menuWrapper">
-				<div id="menu" class="def-shadow">
+				<div id="menu" class="shadow-5">
 					<ul class="menu-bar">
 						<li><a href="#"><span class="menu-title">Home</span><span class="menu-info">Latest Info</span></a></li>
 						<li><a href="#"><span class="menu-title">About Us</span><span class="menu-info">Company Details</span></a></li>
@@ -40,12 +37,12 @@
 		</div>
 		
 		<div id="body">
-			<div id="content" class="roundLeft roundRight">
-				<div id="leftContent" class="contentBox roundLeft">
+			<div id="contentWrapper" class="roundTop-5 roundBottom-5">
+				<div id="leftContent" class="contentBox">
 					<asp:ContentPlaceHolder ID="MainPlaceHolder" runat="server">
 					</asp:ContentPlaceHolder>
 				</div>
-				<div id="rightContent" class="contentBox roundRight">
+				<div id="rightContent" class="contentBox">
 					<p>Candy canes dragée wypas jujubes carrot cake. Cheesecake chupa chups chocolate cake fruitcake. Sesame snaps marshmallow tart sweet sweet roll chocolate bar ice cream.</p><p>
 					Oat cake gingerbread sweet roll pastry croissant marzipan sweet roll sesame snaps candy. Pudding soufflé pie jelly donut liquorice powder gingerbread candy canes. Macaroon cupcake bonbon icing topping tart sesame snaps faworki lollipop. Jujubes chupa chups fruitcake pie gummies.</p><p>
 					Gummies chocolate gingerbread danish gummies jujubes applicake sweet roll wafer. Wypas chocolate halvah dragée lollipop candy canes toffee. Cake macaroon sweet cupcake chocolate bar biscuit gingerbread sugar plum jelly-o.</p>						

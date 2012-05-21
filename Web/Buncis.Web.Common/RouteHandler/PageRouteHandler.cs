@@ -8,7 +8,7 @@ using Buncis.Framework.Core.Infrastructure.IoC;
 
 namespace Buncis.Web.Common.RouteHandler
 {
-	public class BuncisPageRouteHandler : IRouteHandler
+	public class PageRouteHandler : IRouteHandler
 	{
 		#region IRouteHandler Members
 
@@ -27,7 +27,7 @@ namespace Buncis.Web.Common.RouteHandler
 
 		private IHttpHandler GetDynamicPageHandler(int pageId)
 		{
-			var virtualPath = string.Format("{0}", Redirections.DynamicPage);
+			var virtualPath = string.Format("{0}", Redirections.Page_DynamicPage);
 			var queryString = string.Format("?{0}={1}", QueryStrings.PageId, pageId);
 			HttpContext.Current.RewritePath(string.Concat(virtualPath, queryString));
 			var page = BuildManager.CreateInstanceFromVirtualPath(virtualPath, typeof(Page)) as Page;

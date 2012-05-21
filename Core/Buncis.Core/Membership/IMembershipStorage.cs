@@ -4,8 +4,8 @@ namespace Buncis.Core.Membership
 {
     public interface IMembershipStorage
     {
-        UserProfile GetUserProfileFromStorage(string key);
-        void SaveUserProfileToStorage(string key, UserProfile userProfile);
+        IUserProfile GetUserProfileFromStorage(string key);
+        void SaveUserProfileToStorage(string key, IUserProfile userProfile);
         void ClearStorage(string key);
     }
 }

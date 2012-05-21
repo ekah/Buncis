@@ -65,7 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\BuncisMvpUserControl.cs">
+    <Compile Include="Controls\BaseMvpUserControl.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Presenters\BasePresenter.cs" />

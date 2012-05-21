@@ -71,7 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\DynamicPageModel.cs" />
-    <Compile Include="Presenters\BuncisBasePresenter.cs" />
+    <Compile Include="Presenters\CorePresenter.cs" />
     <Compile Include="Presenters\DynamicPagePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\IDynamicPageView.cs" />

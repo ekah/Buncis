@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Buncis.Core.Utility.Logging
 {
-	public class BuncisLog : IBuncisLog
+	public class Log : ILog
 	{
 		private string _logPath = @"d:\projects\buncis\buncis.log";
 

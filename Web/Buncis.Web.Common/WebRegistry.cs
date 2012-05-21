@@ -19,13 +19,13 @@ namespace Buncis.Web.Common
             For<IUnitOfWork>().HttpContextScoped().Use<NHUnitOfWork>();
             For<IPropertySettingsResolver>().Use<AppSettingsPropertySettingsResolver>();
             For<ISystemSettings>().Use(delegate()
-                                       {
-                                           var propertySettingsResolver = ObjectFactory.Container.GetInstance<IPropertySettingsResolver>();
-                                           var settingsProvider = new SettingsProvider<SystemSettings>(propertySettingsResolver);
-                                           return settingsProvider.ResolveSettings();
-                                       });
-            For<IMembershipStorage>().Use<WebMembershipStorage>();
-            //For<IMembership>().Use<CoreMembership>();
+            {
+                var propertySettingsResolver = ObjectFactory.Container.GetInstance<IPropertySettingsResolver>();
+                var settingsProvider = new SettingsProvider<SystemSettings>(propertySettingsResolver);
+                return settingsProvider.ResolveSettings();
+            });
+            For<IMembershipStorage>().Use<WebMembershipStorage>();            
+            For<IWebMembership>().Use<AspNetMembership>();
             For<IMembership>().Use<AspNetMembership>();
             For<IDynamicControlsResolver>().Use<DynamicControlsResolver>();
         }

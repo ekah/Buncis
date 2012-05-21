@@ -1,6 +1,6 @@
 ﻿namespace Buncis.Web.Common
 {
-    public static class BuncisWebConstants
+    public static class WebConstants
     {
         #region Nested type: HttpContextItemKeys
 

@@ -8,7 +8,7 @@ using StructureMap;
 
 namespace Buncis.Web.Common.RouteHandler
 {
-    public class BuncisRoutingConfiguration
+    public class RoutingConfiguration
     {
         public void RegisterRoutes(RouteCollection routes)
         {
@@ -17,7 +17,7 @@ namespace Buncis.Web.Common.RouteHandler
             // Register Route for Dynamic Pages
             routes.Add(RouteNames.DynamicPage,
                 new Route("{*" + QueryStrings.PageName + "}",
-                routeHandlerFactory.GetRouteHandler<BuncisPageRouteHandler>()));
+                routeHandlerFactory.GetRouteHandler<PageRouteHandler>()));
         }
     }
 }

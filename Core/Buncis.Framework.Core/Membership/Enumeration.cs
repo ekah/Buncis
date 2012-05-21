@@ -1,6 +1,6 @@
 ﻿namespace Buncis.Framework.Core.Membership
 {
-    public enum BuncisModule
+    public enum ApplicationModule
     {
         Product,
         Category,

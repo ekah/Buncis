@@ -21,7 +21,7 @@ namespace Buncis.Web
 			IDependencyResolverFactory dependencyResolverFactory = new DependencyResolverFactory();
 			IoC.InitializeIoC(dependencyResolverFactory);
 
-			var routingConfig = new BuncisRoutingConfiguration();
+			var routingConfig = new RoutingConfiguration();
 			routingConfig.RegisterRoutes(RouteTable.Routes);
 
 			DynamicControlsContainer.InitializeDynamicControls();
@@ -52,7 +52,7 @@ namespace Buncis.Web
 
 		private void Application_BeginRequest(object sender, EventArgs e)
 		{
-			var log = IoC.Resolve<IBuncisLog>();
+			var log = IoC.Resolve<ILog>();
 			log.WriteLog(HttpContext.Current.Request.Url.AbsolutePath);
 		}
 	}

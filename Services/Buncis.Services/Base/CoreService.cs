@@ -2,7 +2,7 @@
 
 namespace Buncis.Services.Base
 {
-    public class BuncisBaseService : BaseService
+    public class CoreService : BaseService
     {
     }
 }

@@ -6,19 +6,19 @@ using System;
 
 namespace Buncis.Logic.Presenters
 {
-	public abstract class BuncisBasePresenter<TView> : BasePresenter<TView> where TView : class, ICustomEventView
+	public abstract class CorePresenter<TView> : BasePresenter<TView> where TView : class, ICustomEventView
 	{
 		protected ISystemSettings SystemSettings;
 
-		protected BuncisBasePresenter(ISystemSettings systemSettings, TView view)
+		protected CorePresenter(ISystemSettings systemSettings, TView view)
 			: base(view)
 		{
 			SystemSettings = systemSettings;
 
 			view.Initialize += view_Initialize;
 		}
-		
-		protected BuncisBasePresenter(TView view)
+
+        protected CorePresenter(TView view)
 			: base(view)
 		{
 			view.Initialize += view_Initialize;
