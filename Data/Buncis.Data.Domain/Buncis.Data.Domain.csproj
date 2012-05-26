@@ -69,11 +69,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Article.cs" />
+    <Compile Include="News\Article.cs" />
     <Compile Include="Mappings\NewsModuleMapper.cs" />
     <Compile Include="Mappings\PageModuleMapper.cs" />
     <Compile Include="MembershipUser.cs" />
-    <Compile Include="DynamicPage.cs" />
+    <Compile Include="Pages\DynamicPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

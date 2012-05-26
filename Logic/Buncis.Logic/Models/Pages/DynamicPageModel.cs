@@ -1,4 +1,4 @@
-﻿namespace Buncis.Logic.Models
+﻿namespace Buncis.Logic.Models.Pages
 {
     public class DynamicPageModel
     {

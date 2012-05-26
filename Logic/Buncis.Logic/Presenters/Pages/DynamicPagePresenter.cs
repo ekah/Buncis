@@ -4,8 +4,10 @@ using Buncis.Core.Services;
 using Buncis.Web.Common.Utility;
 using Buncis.Core.Resources;
 using Omu.ValueInjecter;
+using Buncis.Logic.Views.Pages;
+using Buncis.Core.Services.Pages;
 
-namespace Buncis.Logic.Presenters
+namespace Buncis.Logic.Presenters.Pages
 {
     public class DynamicPagePresenter : CorePresenter<IDynamicPageView>
     {

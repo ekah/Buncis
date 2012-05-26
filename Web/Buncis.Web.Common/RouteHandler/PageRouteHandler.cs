@@ -5,6 +5,7 @@ using System.Web.UI;
 using Buncis.Core.Resources;
 using Buncis.Core.Services;
 using Buncis.Framework.Core.Infrastructure.IoC;
+using Buncis.Core.Services.Pages;
 
 namespace Buncis.Web.Common.RouteHandler
 {

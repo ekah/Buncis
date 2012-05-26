@@ -70,15 +70,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\DynamicPageModel.cs" />
+    <Compile Include="CustomEventArgs\BuncisPageListingEventArgs.cs" />
+    <Compile Include="Models\Pages\BuncisPageListingModel.cs" />
+    <Compile Include="Models\Pages\DynamicPageModel.cs" />
     <Compile Include="Presenters\CorePresenter.cs" />
-    <Compile Include="Presenters\DynamicPagePresenter.cs" />
+    <Compile Include="Presenters\Pages\BuncisPageListingPresenter.cs" />
+    <Compile Include="Presenters\Pages\DynamicPagePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\IDynamicPageView.cs" />
+    <Compile Include="ViewModel\BuncisPageViewModel.cs" />
+    <Compile Include="Views\Pages\IDynamicPageView.cs" />
+    <Compile Include="Views\Pages\IBuncisPageListingView.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CustomEventArgs\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Buncis.Core\Buncis.Core.csproj">
       <Project>{98DC3D6A-6996-454A-BD5F-3CE36ACF4C8B}</Project>

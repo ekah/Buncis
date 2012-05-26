@@ -81,7 +81,7 @@
     <Compile Include="Repositories\IMembershipRepository.cs" />
     <Compile Include="Membership\IMembershipStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\IPageRepository.cs" />
+    <Compile Include="Repositories\Pages\IPageRepository.cs" />
     <Compile Include="Resources\QueryStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -97,7 +97,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RouteNames.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\IDynamicPageService.cs" />
+    <Compile Include="Services\Pages\IDynamicPageService.cs" />
     <Compile Include="Utility\Logging\ILog.cs" />
     <Compile Include="Utility\Logging\Log.cs" />
   </ItemGroup>

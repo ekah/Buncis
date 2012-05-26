@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Buncis.Data.Domain
+namespace Buncis.Data.Domain.Pages
 {
     public class DynamicPage
     {

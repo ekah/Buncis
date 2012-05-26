@@ -65,7 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\CoreService.cs" />
-    <Compile Include="DynamicPageService.cs" />
+    <Compile Include="Pages\DynamicPageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

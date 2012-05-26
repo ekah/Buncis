@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using FluentNHibernate.Mapping;
+using Buncis.Data.Domain.News;
 
 namespace Buncis.Data.Domain.Mappings
 {

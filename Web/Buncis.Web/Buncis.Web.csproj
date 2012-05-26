@@ -97,6 +97,8 @@
   <ItemGroup>
     <Content Include="Buncis\Account\Login.aspx" />
     <Content Include="Buncis\Dashboard.aspx" />
+    <Content Include="Buncis\NotFound.aspx" />
+    <Content Include="Buncis\Pages\List.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Images\body_bg.png" />
     <Content Include="Images\body_bg2.png" />
@@ -147,6 +149,20 @@
     </Compile>
     <Compile Include="Buncis\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Buncis\NotFound.aspx.cs">
+      <DependentUpon>NotFound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Buncis\NotFound.aspx.designer.cs">
+      <DependentUpon>NotFound.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Buncis\Pages\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Buncis\Pages\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master\Buncis.Master.cs">
       <DependentUpon>Buncis.Master</DependentUpon>

@@ -8,7 +8,14 @@ namespace Buncis.Web.Common.RouteHandler
     {
         public static IHttpHandler GetNotFoundHttpHandler()
         {
-            return BuildManager.CreateInstanceFromVirtualPath("/NotFound.aspx", typeof(Page)) as Page;
+            if (HttpContext.Current.Request.Url.PathAndQuery.ToLower().Contains("/buncis/"))
+            {
+                return BuildManager.CreateInstanceFromVirtualPath("/buncis/NotFound.aspx", typeof(Page)) as Page;
+            }
+            else
+            {
+                return BuildManager.CreateInstanceFromVirtualPath("/NotFound.aspx", typeof(Page)) as Page;
+            }
         }
     }
 }

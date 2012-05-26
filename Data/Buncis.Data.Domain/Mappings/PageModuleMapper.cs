@@ -1,4 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
+using Buncis.Data.Domain.Pages;
 
 namespace Buncis.Data.Domain.Mappings
 {

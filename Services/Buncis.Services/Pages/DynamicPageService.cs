@@ -3,8 +3,13 @@ using Buncis.Core.Repositories;
 using Buncis.Core.Services;
 using Buncis.Data.Domain;
 using Buncis.Services.Base;
+using Buncis.Core.Services.Pages;
+using Buncis.Core.Repositories.Pages;
+using Buncis.Data.Domain.Pages;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Buncis.Services
+namespace Buncis.Services.Pages
 {
     public class DynamicPageService : CoreService, IDynamicPageService
     {
@@ -14,8 +19,6 @@ namespace Buncis.Services
         {
             _pageRepository = pageRepository;
         }
-
-        #region IDynamicPageService Members
 
         public DynamicPage GetPageByFriendlyUrl(string friendlyUrl)
         {
@@ -31,6 +34,10 @@ namespace Buncis.Services
             return pageFromDb;
         }
 
-        #endregion
+        public IList<DynamicPage> GetPagesNotDeleted()
+        {
+            var pages = _pageRepository.FilterBy(o => o.IsDeleted == false).OrderBy(o => o.PageName).ToList();
+            return pages;
+        }
     }
 }
