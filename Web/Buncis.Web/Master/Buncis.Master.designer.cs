@@ -13,13 +13,13 @@ namespace Buncis.Web.Master {
     public partial class Buncis {
         
         /// <summary>
-        /// head control.
+        /// contentPlaceholderHead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder contentPlaceholderHead;
         
         /// <summary>
         /// form1 control.
@@ -31,12 +31,12 @@ namespace Buncis.Web.Master {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// contentPlaceholderMain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder contentPlaceholderMain;
     }
 }

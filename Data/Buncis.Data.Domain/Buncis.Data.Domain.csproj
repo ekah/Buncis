@@ -69,10 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappings\MembershipMappper.cs" />
+    <Compile Include="Membership\MembershipRole.cs" />
+    <Compile Include="Membership\MembershipUser.cs" />
     <Compile Include="News\Article.cs" />
     <Compile Include="Mappings\NewsModuleMapper.cs" />
     <Compile Include="Mappings\PageModuleMapper.cs" />
-    <Compile Include="MembershipUser.cs" />
     <Compile Include="Pages\DynamicPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -93,6 +95,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

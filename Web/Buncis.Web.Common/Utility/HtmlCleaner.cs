@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Web.UI;
-using System.IO;
 
 namespace Buncis.Web.Common.Utility
 {

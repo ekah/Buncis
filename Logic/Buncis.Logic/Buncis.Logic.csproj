@@ -73,7 +73,7 @@
     <Compile Include="CustomEventArgs\BuncisPageListingEventArgs.cs" />
     <Compile Include="Models\Pages\BuncisPageListingModel.cs" />
     <Compile Include="Models\Pages\DynamicPageModel.cs" />
-    <Compile Include="Presenters\CorePresenter.cs" />
+    <Compile Include="Presenters\LogicPresenter.cs" />
     <Compile Include="Presenters\Pages\BuncisPageListingPresenter.cs" />
     <Compile Include="Presenters\Pages\DynamicPagePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,9 +83,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Buncis.Core\Buncis.Core.csproj">
-      <Project>{98DC3D6A-6996-454A-BD5F-3CE36ACF4C8B}</Project>
-      <Name>Buncis.Core</Name>
+    <ProjectReference Include="..\..\Core\Buncis.Framework.Core\Buncis.Framework.Core.csproj">
+      <Project>{D6F426E2-E30B-4453-9FC7-6839B680C4E6}</Project>
+      <Name>Buncis.Framework.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Core\Buncis.Framework.Mvp\Buncis.Framework.Mvp.csproj">
       <Project>{B4D9A823-66E5-443C-868C-CE394243644C}</Project>

@@ -1,5 +1,4 @@
-﻿using System;
-using WebFormsMvp;
+﻿using WebFormsMvp;
 
 namespace Buncis.Framework.Mvp.Views
 {

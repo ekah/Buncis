@@ -2,9 +2,6 @@
 {
     public enum ApplicationModule
     {
-        Product,
-        Category,
-        Supplier
     }
 
     public enum PermissionType
@@ -13,5 +10,11 @@
         Add,
         Edit,
         Delete
+    }
+
+    public enum Roles
+    {
+        Administrator,
+        User
     }
 }

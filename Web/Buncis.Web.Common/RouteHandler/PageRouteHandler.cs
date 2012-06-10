@@ -3,9 +3,9 @@ using System.Web.Compilation;
 using System.Web.Routing;
 using System.Web.UI;
 using Buncis.Core.Resources;
-using Buncis.Core.Services;
 using Buncis.Framework.Core.Infrastructure.IoC;
-using Buncis.Core.Services.Pages;
+using Buncis.Framework.Core.Resources;
+using Buncis.Framework.Services.Pages;
 
 namespace Buncis.Web.Common.RouteHandler
 {

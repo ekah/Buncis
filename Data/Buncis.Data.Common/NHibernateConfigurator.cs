@@ -17,7 +17,7 @@ namespace Buncis.Data.Common
             //    .Database(MySQLConfiguration.Standard.ConnectionString(c => c.FromConnectionStringWithKey("BuncisConnectionString")))
             //    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CategoryMap>())
             //    .BuildConfiguration();
-
+            nhCfg.SetProperty("connection.release_mode", "auto");
             Fluently.Configure(nhCfg)
                 .Database(MsSqlConfiguration.MsSql2008.ConnectionString(c => c.FromConnectionStringWithKey("BuncisConnectionString")))
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<PageMap>())

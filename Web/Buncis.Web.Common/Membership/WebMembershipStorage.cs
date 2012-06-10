@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web;
-using Buncis.Core.Membership;
 using Buncis.Framework.Core.Membership;
 
 namespace Buncis.Web.Common.Membership

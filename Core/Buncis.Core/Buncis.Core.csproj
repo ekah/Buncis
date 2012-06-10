@@ -74,32 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructures\ISystemSettings.cs" />
-    <Compile Include="Infrastructures\SystemSettings.cs" />
-    <Compile Include="Infrastructures\AppSettingsPropertySettingsResolver.cs" />
-    <Compile Include="Membership\CoreMembership.cs" />
-    <Compile Include="Repositories\IMembershipRepository.cs" />
-    <Compile Include="Membership\IMembershipStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Pages\IPageRepository.cs" />
-    <Compile Include="Resources\QueryStrings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QueryStrings.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\Redirections.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Redirections.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\RouteNames.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RouteNames.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Services\Pages\IDynamicPageService.cs" />
-    <Compile Include="Utility\Logging\ILog.cs" />
-    <Compile Include="Utility\Logging\Log.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\Buncis.Data.Domain\Buncis.Data.Domain.csproj">
@@ -131,18 +106,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\QueryStrings.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>QueryStrings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Redirections.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Redirections.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RouteNames.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>RouteNames.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Folder Include="Repositories\" />
+    <Folder Include="Services\" />
+    <Folder Include="Utility\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

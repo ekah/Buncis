@@ -54,6 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -61,6 +62,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\Settings\AppSettingsPropertySettingsResolver.cs" />
+    <Compile Include="Infrastructure\Extensions\DateTimeExtension.cs" />
+    <Compile Include="Infrastructure\Settings\ISystemSettings.cs" />
     <Compile Include="Infrastructure\Settings\IPropertySettingsResolver.cs" />
     <Compile Include="Infrastructure\Settings\SettingsProvider.cs" />
     <Compile Include="Infrastructure\DisposableResource.cs" />
@@ -69,13 +73,34 @@
     <Compile Include="Infrastructure\IoC\IDependencyResolverFactory.cs" />
     <Compile Include="Infrastructure\IoC\IoC.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\Settings\SystemSettings.cs" />
     <Compile Include="Membership\Enumeration.cs" />
     <Compile Include="Membership\IMembership.cs" />
+    <Compile Include="Membership\IMembershipStorage.cs" />
     <Compile Include="Membership\IUserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IReadOnlyRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\Membership\IMembershipRoleRepository.cs" />
+    <Compile Include="Repository\Membership\IMembershipUserRepository.cs" />
+    <Compile Include="Repository\Pages\IPageRepository.cs" />
+    <Compile Include="Resources\QueryStrings.Designer.cs">
+      <DependentUpon>QueryStrings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Redirections.Designer.cs">
+      <DependentUpon>Redirections.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\RouteNames.Designer.cs">
+      <DependentUpon>RouteNames.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\Pages\IDynamicPageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -93,6 +118,27 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\QueryStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>QueryStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Redirections.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Redirections.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\RouteNames.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RouteNames.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\Buncis.Data.Domain\Buncis.Data.Domain.csproj">
+      <Project>{28221BDC-8577-4D64-A630-540ADC544B04}</Project>
+      <Name>Buncis.Data.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

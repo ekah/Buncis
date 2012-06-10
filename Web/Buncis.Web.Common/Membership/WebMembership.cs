@@ -1,6 +1,5 @@
 ﻿using Buncis.Framework.Core.Infrastructure.IoC;
 using Buncis.Framework.Core.Membership;
-using StructureMap;
 
 namespace Buncis.Web.Common.Membership
 {

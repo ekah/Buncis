@@ -1,8 +1,6 @@
-﻿using Buncis.Core.Repositories;
-using Buncis.Data.Domain;
+﻿using Buncis.Data.Domain.Pages;
+using Buncis.Framework.Core.Repository.Pages;
 using NHibernate;
-using Buncis.Data.Domain.Pages;
-using Buncis.Core.Repositories.Pages;
 
 namespace Buncis.Data.Repository.Pages
 {

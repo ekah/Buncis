@@ -1,16 +1,36 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Buncis.master.cs" Inherits="Buncis.Web.Master.Buncis" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head runat="server">
 	<title>Buncis</title>
-	<asp:ContentPlaceHolder ID="head" runat="server">
+    <link href="/Styles/jHtmlArea/jHtmlArea.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/styles/normalize.css" />
+	<link rel="stylesheet" href="/styles/bun_x.css" />
+	<script src="/scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.tools.min.js" type="text/javascript"></script>
+    <script src="/Scripts/aux3/jquery.colorbox.js" type="text/javascript"></script>
+    <script src="/Scripts/jHtmlArea/jHtmlArea-0.7.0.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('table.data-table tbody tr:nth-child(odd)').addClass('odd');
+        });
+    </script>
+	<asp:ContentPlaceHolder ID="contentPlaceholderHead" runat="server">    	
 	</asp:ContentPlaceHolder>
 </head>
-<body>
+<body class="buncisBody">
 	<form id="form1" runat="server">
-	<div>
-		<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    <div id="topBarWrapper">
+		<div id="topBar">
+			<div id="logo"><img src="/images/logo.png" alt="Buncis Logo" /></div>
+			<div id="loginInfo">
+				Login Info goes here
+			</div>
+		</div>		
+	</div>
+	<div class="buncisContent">
+		<asp:ContentPlaceHolder ID="contentPlaceholderMain" runat="server">
 		</asp:ContentPlaceHolder>
 	</div>
 	</form>

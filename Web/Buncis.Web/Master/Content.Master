@@ -1,7 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Content.master.cs" Inherits="Buncis.Web.Master.Content" %>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head runat="server">	
 	<title>Buncis Web</title>
 	<link rel="stylesheet" href="/styles/normalize.css" />
@@ -12,11 +12,11 @@
 </head>
 <body>
 	<form id="form1" runat="server">
-		<div id="topBar" class=""></div>
-		<div id="bannerWrapper" class="">
-			<div id="banner"></div>
+		<div id="topBar" class="roundTop-5 shadow-0-6"></div>
+		<div id="bannerWrapper" class="roundBottom-5 shadow-0-6">
+			<div id="banner" class="roundTop-5 roundBottom-5"></div>
 		</div>
-		<div id="header" class="">
+		<div id="header">
 			<div id="logoWrapper">
 				<div id="logo" class="shadow-5 roundBottom-5">
 					<img src="/images/logo.png" class="logo-img"/>
@@ -37,10 +37,36 @@
 		</div>
 		
 		<div id="body">
-			<div id="contentWrapper" class="roundTop-5 roundBottom-5">
+			<div id="contentWrapper" class="roundTop-5 roundBottom-5 shadow-0-6">
 				<div id="leftContent" class="contentBox">
 					<asp:ContentPlaceHolder ID="MainPlaceHolder" runat="server">
 					</asp:ContentPlaceHolder>
+					<asp:PlaceHolder runat="server" Visible="False">
+					<p>
+					Credibly conceptualize intermandated experiences for low-risk high-yield e-services. Monotonectally expedite collaborative convergence through multimedia based resources. Energistically orchestrate cost effective infomediaries before visionary leadership skills. Competently recaptiualize mission-critical deliverables vis-a-vis robust technologies. Intrinsicly generate alternative alignments vis-a-vis enabled methodologies.
+					</p>
+					<p>
+					Seamlessly disseminate compelling ideas without prospective leadership. Enthusiastically visualize backward-compatible technology for cross-media solutions. Dramatically incentivize best-of-breed systems after standards compliant models. Progressively deploy front-end relationships after backward-compatible "outside the box" thinking. Appropriately engineer B2B imperatives after resource maximizing sources.
+					</p>
+					<p>
+					Competently evisculate fully researched leadership after unique e-services. Conveniently architect mission-critical leadership skills without future-proof web services. Collaboratively pursue cross-platform methodologies via unique internal or "organic" sources. Proactively unleash dynamic potentialities via backend products. Assertively coordinate multidisciplinary infrastructures with client-centered convergence.
+					</p>
+					<p>
+					Quickly network economically sound results whereas collaborative expertise. Efficiently synthesize effective results rather than synergistic initiatives. Globally generate viral internal or "organic" sources before backend infrastructures. Continually orchestrate inexpensive markets whereas backend technologies. Proactively synergize 24/7 markets without ubiquitous core competencies.
+					</p>
+					<p>
+					Monotonectally fashion seamless outsourcing vis-a-vis market positioning leadership. Professionally innovate intuitive benefits rather than virtual architectures. Quickly envisioneer backend interfaces before equity invested leadership. Competently communicate distinctive functionalities via error-free functionalities. Professionally aggregate open-source functionalities rather than stand-alone initiatives.
+					</p>
+					<p>
+					Professionally maintain an expanded array of functionalities before principle-centered partnerships. Credibly reinvent mission-critical ROI without B2C potentialities. Progressively e-enable backward-compatible schemas rather than next-generation leadership. Distinctively re-engineer extensive action items for compelling architectures. Interactively disseminate resource-leveling partnerships through visionary products.
+					</p>
+					<p>
+					Authoritatively re-engineer resource sucking networks before focused methods of empowerment. Competently extend sticky technologies whereas market-driven technologies. Competently reconceptualize best-of-breed imperatives before diverse potentialities. Interactively benchmark out-of-the-box channels through synergistic vortals. Appropriately leverage other's future-proof e-commerce via business technologies.
+					</p>
+					<p>
+					Collaboratively build error-free portals through cost effective value. Compellingly integrate extensive users through empowered partnerships. Uniquely formulate pandemic best practices after excellent experiences. Globally optimize tactical "outside the box" thinking through technically sound strategic theme areas. Competently monetize turnkey growth strategies through intermandated leadership.
+					</p>
+					</asp:PlaceHolder>
 				</div>
 				<div id="rightContent" class="contentBox">
 					<p>Candy canes dragée wypas jujubes carrot cake. Cheesecake chupa chups chocolate cake fruitcake. Sesame snaps marshmallow tart sweet sweet roll chocolate bar ice cream.</p><p>
@@ -50,7 +76,7 @@
 			</div>
 		</div>
 
-		<div id="footer" class="">
+		<div id="footer" class="roundTop-5 roundBottom-5 shadow-0-6">
 			<p>Ipsum lalalala</p>
 		</div>
 	</form>

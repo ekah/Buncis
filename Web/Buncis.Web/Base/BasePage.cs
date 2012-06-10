@@ -1,5 +1,4 @@
-﻿using System.Web.UI;
-using WebFormsMvp.Web;
+﻿using WebFormsMvp.Web;
 using System;
 using Buncis.Framework.Mvp.Views;
 

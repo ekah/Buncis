@@ -14,6 +14,7 @@ namespace Buncis.Data.Domain.Pages
         public virtual string MetaTitle { get; set; }
         public virtual string MetaDescription { get; set; }
         public virtual DateTime DateCreated { get; set; }
+        public virtual DateTime DateLastUpdated { get; set; }
         public virtual bool IsDeleted { get; set; }
     }
 }

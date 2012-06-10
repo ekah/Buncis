@@ -1,4 +1,6 @@
 ﻿using System;
+using Buncis.Data.Domain.Membership;
+using System.Collections.Generic;
 
 namespace Buncis.Framework.Core.Membership
 {
@@ -12,5 +14,7 @@ namespace Buncis.Framework.Core.Membership
         bool IsLocked { get; set; }
         bool IsApproved { get; set; }
         DateTime? LastLoginDate { get; set; }
+        int ClientId { get; set; }
+        IList<MembershipRole> Roles { get; set; }
     }
 }

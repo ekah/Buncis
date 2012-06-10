@@ -1,14 +1,13 @@
-﻿using Buncis.Core.Infrastructures;
-using Buncis.Core.Membership;
-using Buncis.Data.Common;
+﻿using Buncis.Data.Common;
 using Buncis.Framework.Core.Infrastructure;
 using Buncis.Framework.Core.Infrastructure.Settings;
 using Buncis.Framework.Core.Membership;
 using Buncis.Web.Common.Membership;
-using Buncis.Web.Common.RouteHandler;
 using StructureMap;
 using StructureMap.Configuration.DSL;
 using Buncis.Web.Common.DynamicControls;
+using NHibernate;
+using NHibernate.Burrow;
 
 namespace Buncis.Web.Common
 {
@@ -24,10 +23,26 @@ namespace Buncis.Web.Common
                 var settingsProvider = new SettingsProvider<SystemSettings>(propertySettingsResolver);
                 return settingsProvider.ResolveSettings();
             });
-            For<IMembershipStorage>().Use<WebMembershipStorage>();            
+            For<IMembershipStorage>().Use<WebMembershipStorage>();
             For<IWebMembership>().Use<AspNetMembership>();
             For<IMembership>().Use<AspNetMembership>();
             For<IDynamicControlsResolver>().Use<DynamicControlsResolver>();
+
+            For<ISession>().Use(s =>
+            {
+                try
+                {
+                    var burrowFramework = new BurrowFramework();
+                    var debugSession = burrowFramework.GetSession();
+                    return debugSession;
+                }
+                catch
+                {
+                    //throw;
+                }
+
+                return null;
+            });
         }
     }
 }

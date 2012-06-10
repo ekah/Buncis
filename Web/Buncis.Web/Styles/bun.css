@@ -5,36 +5,37 @@ body
     padding: 0px;
     background: transparent url("/images/body_bg2.png") repeat;
     font-family: Verdana, "Trebuchet MS" , Tahoma, Arial, Helvetica, sans-serif;
-    font-size: 10pt;
+    font-size: 13px;
     color: #333333;
+}
+
+html, body
+{
+    /*height: 100%;*/
 }
 
 #topBar
 {
     height: 50px;
-    width: 100%;
+    width: 1002px;
     background-color: #000;
-    margin: 0px;
-    position: absolute;
-    z-index: 199;
+    margin: 0px auto;
     top: 0px;
+    border: black 1px solid;
 }
 
 #bannerWrapper
 {
     background: #ccc no-repeat;
-    height: 150px;
-    width: 100%;
-    position: absolute;
-    z-index: 198;
-    top: 0;
+    height: 100px;
+    width: 1002px;
+    margin: 0px auto 0px;
 }
 
 #banner
 {
     background: transparent url("/images/header_bg3.png") no-repeat -150px 0px;
     height: 100px;
-    margin: 50px auto 0px;
     width: 100%;
 }
 
@@ -74,10 +75,10 @@ body
 {
     position: absolute;
     z-index: 209;
-    top: 150px;
-    width: 1000px;
+    top: 140px;
+    width: 1002px;
     background-color: transparent;
-    margin: -10px auto;
+    margin: 0px auto;
 }
 
 #menu
@@ -97,28 +98,35 @@ body
     box-shadow: 2px 2px 5px 0px #222;
 }
 
+.shadow-0-6
+{
+    -webkit-box-shadow: 0px 0px 6px #333;
+    -moz-box-shadow: 0px 0px 6px #333;
+    box-shadow: 0px 0px 6px #333;
+}
 #header
 {
     width: 1000px;
     margin: 0px auto;
     padding: 0px;
+    height: auto;
 }
 
 #body
 {
-    margin-top: 200px;
     width: 100%;
+    margin: 50px auto 0px;
 }
 
 #contentWrapper
 {
     overflow: auto;
     margin: 0px auto 0px;
-    width: 1000px;
-    -webkit-box-shadow: 0px 0px 6px #333;
-    -moz-box-shadow: 0px 0px 6px #333;
-    box-shadow: 0px 0px 6px #333;
-    border: 1px solid #BDBDBD;
+	width: 1000px;	
+	/*border: 1px solid #BDBDBD;*/
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
 }
 
 #leftContent
@@ -231,9 +239,12 @@ body
 #footer
 {
     background: #000;
+    width: 1002px;
+    margin: 10px auto 0px;
+}
+#footer, .push
+{
     height: 150px;
-    width: 100%;
-    margin: 10px 0px 0px;
 }
 
 #footer p

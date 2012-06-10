@@ -1,5 +1,5 @@
-﻿using FluentNHibernate.Mapping;
-using Buncis.Data.Domain.Pages;
+﻿using Buncis.Data.Domain.Pages;
+using FluentNHibernate.Mapping;
 
 namespace Buncis.Data.Domain.Mappings
 {
@@ -19,6 +19,7 @@ namespace Buncis.Data.Domain.Mappings
             Map(x => x.MetaTitle).Column("MetaTitle").Not.Nullable().Length(255);
             Map(x => x.MetaDescription).Column("MetaDescription").Not.Nullable().Length(500);
             Map(x => x.DateCreated).Column("DateCreated").Not.Nullable();
+            Map(x => x.DateLastUpdated).Column("DateLastUpdated").Not.Nullable();
             Map(x => x.IsDeleted).Column("IsDeleted").Not.Nullable();
         }
     }

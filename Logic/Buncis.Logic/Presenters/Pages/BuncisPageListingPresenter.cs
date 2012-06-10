@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Buncis.Logic.Views.Pages;
-using Buncis.Core.Services;
-using Buncis.Core.Services.Pages;
 using Buncis.Logic.ViewModel;
 using Omu.ValueInjecter;
+using Buncis.Framework.Services.Pages;
 
 namespace Buncis.Logic.Presenters.Pages
 {
-    public class BuncisPageListingPresenter : CorePresenter<IBuncisPageListingView>
+    public class BuncisPageListingPresenter : LogicPresenter<IBuncisPageListingView>
     {
         private readonly IDynamicPageService _dynamicPageService;
 
@@ -25,13 +22,16 @@ namespace Buncis.Logic.Presenters.Pages
         void View_GetList(object sender, EventArgs e)
         {
             var rawPages = _dynamicPageService.GetPagesNotDeleted();
+
             var convertedPages = rawPages.Select(o =>
             {
                 var viewModel = new BuncisPageViewModel();
                 viewModel.InjectFrom(o);
 
                 return viewModel;
-            }).ToList().AsEnumerable();
+            }).ToList();
+
+            convertedPages = convertedPages.OrderByDescending(o => o.IsHomePage).ThenBy(o => o.PageName).ToList();
 
             this.View.Model.BuncisPages = convertedPages;
 

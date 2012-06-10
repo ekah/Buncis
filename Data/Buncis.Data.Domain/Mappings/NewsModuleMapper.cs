@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Buncis.Data.Domain.News;
 using FluentNHibernate.Mapping;
-using Buncis.Data.Domain.News;
 
 namespace Buncis.Data.Domain.Mappings
 {
@@ -11,7 +7,7 @@ namespace Buncis.Data.Domain.Mappings
     {
         public ArticleMap()
         {
-            Table("News_Article");
+            Table("News_Articles");
             LazyLoad();
             Id(x => x.ArticleId).GeneratedBy.Identity().Column("ArticleId");
             Map(x => x.ArticleTitle).Column("ArticleTitle").Not.Nullable().Length(250);

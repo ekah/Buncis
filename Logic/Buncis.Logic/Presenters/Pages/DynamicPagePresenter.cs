@@ -1,15 +1,14 @@
 ﻿using System;
-using Buncis.Logic.Views;
-using Buncis.Core.Services;
 using Buncis.Web.Common.Utility;
 using Buncis.Core.Resources;
 using Omu.ValueInjecter;
 using Buncis.Logic.Views.Pages;
-using Buncis.Core.Services.Pages;
+using Buncis.Framework.Services.Pages;
+using Buncis.Framework.Core.Resources;
 
 namespace Buncis.Logic.Presenters.Pages
 {
-    public class DynamicPagePresenter : CorePresenter<IDynamicPageView>
+    public class DynamicPagePresenter : LogicPresenter<IDynamicPageView>
     {
         private readonly IDynamicPageService _dynamicPageService;
 

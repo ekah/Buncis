@@ -68,10 +68,6 @@
     <Compile Include="ServiceRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Buncis.Core\Buncis.Core.csproj">
-      <Project>{98DC3D6A-6996-454A-BD5F-3CE36ACF4C8B}</Project>
-      <Name>Buncis.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Core\Buncis.Framework.Core\Buncis.Framework.Core.csproj">
       <Project>{D6F426E2-E30B-4453-9FC7-6839B680C4E6}</Project>
       <Name>Buncis.Framework.Core</Name>

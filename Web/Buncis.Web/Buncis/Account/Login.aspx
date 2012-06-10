@@ -2,7 +2,7 @@
 	Inherits="Buncis.Web.Buncis.Account.Login" %>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 	<title>Buncis</title>		
 	<link rel="stylesheet" href="/styles/normalize.css" />
@@ -11,15 +11,15 @@
     <script src="/Scripts/jquery.tools.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.form-item :input').validator();
+            window.validators = $('#loginPanel input').validator();
         });        
     </script>
 </head>
-<body class="loginBody">
+<body class="buncisBody">
 <form runat="server" id="formLogin" clientidmode="Static">
 	<div id="topBarWrapper">
 		<div id="topBar">
-			<div id="logo"><img src="/images/logo.png" alt="Buncis Logo"></img></div>
+			<div id="logo"><img src="/images/logo.png" alt="Buncis Logo" /></div>
 			<div id="loginInfo">
 				Login Info goes here
 			</div>
@@ -29,7 +29,7 @@
 		<div>			
 			<div class="form-item">
 				<label class="medium">Username</label>
-				<div><input runat="server" id="txtUsername" type="text" 
+				<div><input runat="server" id="txtUsername" type="text"
                     required="required" class="medium" clientidmode="Static" 
                     data-message="Username is required" /></div>
 			</div>
@@ -39,8 +39,9 @@
                     required="required" class="medium" clientidmode="Static" 
                     data-message="Password is required"/></div>
 			</div>		
-            <div class="form-item button-container">
-                <input type="submit" value="Login" class="button-gray" id="btnLogin" runat="server" clientidmode="Static" />
+            <div class="form-item buttonContainer">
+                <input type="submit" class="button-gray login" id="btnLogin" runat="server" clientidmode="Static" value="Login" />
+                <input type="button" value="Reset" class="button-gray login" />
             </div>
 		</div>
 	</fieldset>

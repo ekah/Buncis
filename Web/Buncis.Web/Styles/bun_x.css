@@ -4,13 +4,18 @@ body
     margin: 0px;
     padding: 0px;
     font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 11pt;
+    font-size: 13px;
+}
+
+a
+{
+    text-decoration: none;
 }
 
 #topBarWrapper
 {
     width: 100%;
-    height: 100px;
+    height: 50px;
     background-color: #000; /*border-bottom: solid 3px #fff;*/
 }
 
@@ -26,33 +31,34 @@ body
 {
     float: left;
     width: 700px;
-    height: 100px;
+    height: 50px;
+}
+
+#logo img
+{
+    max-height: 45px;
 }
 
 #loginInfo
 {
     float: left;
     width: 210px;
-    height: 60px;
+    height: 30px;
     color: #fff;
-    padding: 20px;
+    padding: 10px;
 }
 
 #loginPanel
 {
-    width: 500px;
-    height: 150px;
+    width: 300px;
+    height: 210px;
     margin: 100px auto 0px;
     border: solid 1px #888;
     background-color: #fff;
-    padding: 30px;
-    -moz-box-shadow:0 0 6px #bbb;
-    -webkit-box-shadow:0 0 6px #bbb;
-}
-
-#loginPanel legend
-{
-    font-size: 1.5em;
+    padding: 20px 30px;
+    box-shadow: 0 0 6px #bbb;
+    -moz-box-shadow: 0 0 6px #bbb;
+    -webkit-box-shadow: 0 0 6px #bbb;
 }
 
 .roundLeft-5
@@ -149,14 +155,12 @@ body
     -webkit-border-top-left-radius: 10px;
 }
 
-
 .shadow-15
 {
     -webkit-box-shadow: 0px 0px 15px 0px #111;
     -moz-box-shadow: 0px 0px 15px 0px #111;
     box-shadow: 0px 0px 15px 0px #111;
 }
-
 
 .form-item
 {
@@ -167,9 +171,9 @@ body
 .form-item label
 {
     display: block;
-    float: left;
-    padding: 0.75em 10px;
-    text-align: right;
+    /*float: left;*/
+    padding: 1em 0px 0.5em;
+    /*text-align: right;*/
     font-weight: bold;
     height: 1em;
     line-height: 0.75em;
@@ -178,6 +182,7 @@ body
 .form-item input[type=text]
 {
     padding: 0.5em;
+    border: 1px solid #bbb;
 }
 
 input[type=text].medium
@@ -210,48 +215,63 @@ label.long
     width: 160px;
 }
 
-.button-container
+.buttonContainer
 {
     text-align: right;
-    margin-top: 10px;
+    margin-top: 15px;
     padding: 10px;
 }
 
-.button-gray
+.button-gray.login
 {
     font-weight: bold;
-    display: inline;
+    display: block;
     background-color: #eaeaea;
-    border: solid 1px #aeaeae;
-    height: 2.5em;
+    border: solid 1px #bbb;
+    height: 3em;
     padding: 0.5em 10px;
-    
-    -moz-box-shadow:0 0 6px #ddd;
-    -webkit-box-shadow:0 0 6px #ddd;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    float: right;
+    margin-left: 5px;
 }
 
-.loginBody
+.button-action
 {
-    background: #eee;
+    font-weight: bold;
+    display: block;
+    background-color: #eaeaea;
+	border: solid 1px #bbb;
+    color: #000;
+    padding: 0.5em 10px;
+    height: 2em;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    float: right;
+    text-decoration: none;
+    line-height: 2em;
+}
+
+.buncisBody
+{
+    background: #f1f1f1;
 }
 
 .error
 {
-    height:1.5em;
-    background-color:#666;
-    font-size:11px;
-    border:1px solid #bababa;
-    padding:4px 10px;
-    color:#eee;
-    margin:-4px 0px 0px 4px;
-    
-    display:none; /* must have this */    
- 
-    -moz-box-shadow:0 0 6px #ccc;
-    -webkit-box-shadow:0 0 6px #ccc;
+    height: 1.5em;
+    background-color: #666;
+    font-size: 11px;
+    border: 1px solid #bababa;
+    padding: 4px 10px;
+    color: #eee;
+    margin: -4px 0px 0px 4px;
+    display: none; /* must have this */
+    box-shadow: 0 0 6px #ccc;
+    -moz-box-shadow: 0 0 6px #ccc;
+    -webkit-box-shadow: 0 0 6px #ccc;
     border-radius: 4px;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -259,6 +279,149 @@ label.long
 
 .error p
 {
-    margin: 0px;    
+    margin: 0px;
     font-weight: bold;
+}
+
+.buncisContent
+{
+    width: 1000px;
+    margin: 0px auto;
+    padding: 10px;
+}
+
+.buncisContentHeader
+{
+    background-color: #fff;
+    padding: 1px 20px;
+    box-shadow: 0 0 6px #bbb;
+    -moz-box-shadow: 0 0 6px #bbb;
+    -webkit-box-shadow: 0 0 6px #bbb;
+    border-radius: 5px;
+    -moz-border-radius: 5x;
+    -webkit-border-radius: 5px;
+    border: 1px solid #bbb;
+    margin: 2px 0px;
+}
+
+.buncisContentHeader h3
+{
+    font-size: 1.5em;
+    margin: 0.5em 0px;
+}
+
+.buncisContentBody
+{
+    background-color: #fff;
+    box-shadow: 0 0 6px #bbb;
+    -moz-box-shadow: 0 0 6px #bbb;
+    -webkit-box-shadow: 0 0 6px #bbb;
+    border-radius: 5px;
+    -moz-border-radius: 5x;
+    -webkit-border-radius: 5px;
+    border: 1px solid #bbb;
+    margin: 2px 0px;
+}
+
+.innerContent
+{
+    margin-top: 10px;
+    padding: 0px 20px 30px;
+}
+
+.actionContent
+{
+    height: 3em;
+    padding: 0px 20px 10px;
+    margin-top: 20px;
+}
+
+table.data-table
+{
+    width: 100%;
+    padding: 0px;
+    margin: 10px 0px 0px 0px;
+}
+
+table.data-table thead tr th
+{
+    padding: 0px 10px;
+    text-align: left;
+    color: #f9f9f9;
+    background-color: #000;
+}
+
+table.data-table thead tr
+{
+    height: 40px;
+}
+
+table.data-table tbody tr td
+{
+    padding: 0px 10px;
+    text-align: left;
+    border-bottom: 1px solid #aaa;
+}
+
+table.data-table tbody tr td span.info
+{
+	font-style: italic;
+	font-size: 0.9em;
+}
+table.data-table tbody tr
+{
+	height: 50px;
+    background-color: #f5f5f5;
+}
+
+table.data-table tbody tr:hover
+{
+	background-color: #e5e5e5 !important;
+}
+table.data-table tbody tr.odd
+{
+    background-color: #fff;
+}
+table.data-table tbody
+{
+	font-size: 1em;
+}
+table.data-table tbody tr td.icon-col
+{
+	width: 1%;
+}
+
+.icon
+{
+    display: block;
+    max-width: 16px;
+    max-height: 16px;
+    width: 16px;
+    height: 16px;
+    text-decoration: none;
+}
+
+.button-action span
+{
+    display: block;
+    padding-left: 20px;
+    background-position: 0px 0.4em;
+}
+
+.icon-pages
+{
+    background-image: url("/images/icons/attibutes.png");
+    background-repeat: no-repeat;
+}
+
+.icon-home
+{
+    background-image: url("/images/icons/home.png");
+    background-repeat: no-repeat;
+}
+
+.icon-plus
+{
+    background-image: url("/images/icons/plus.png");
+    background-repeat: no-repeat;
 }

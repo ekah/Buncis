@@ -4,6 +4,7 @@ using Buncis.Web.Common.Utility;
 using System.IO;
 using Buncis.Web.Common.Membership;
 using Buncis.Core.Resources;
+using Buncis.Framework.Core.Resources;
 
 namespace Buncis.Web.Buncis.Account
 {

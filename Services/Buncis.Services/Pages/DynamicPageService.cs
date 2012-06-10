@@ -1,17 +1,14 @@
 ﻿using System;
-using Buncis.Core.Repositories;
-using Buncis.Core.Services;
-using Buncis.Data.Domain;
-using Buncis.Services.Base;
-using Buncis.Core.Services.Pages;
-using Buncis.Core.Repositories.Pages;
-using Buncis.Data.Domain.Pages;
 using System.Collections.Generic;
 using System.Linq;
+using Buncis.Data.Domain.Pages;
+using Buncis.Framework.Core.Repository.Pages;
+using Buncis.Framework.Services.Pages;
+using Buncis.Services.Base;
 
 namespace Buncis.Services.Pages
 {
-    public class DynamicPageService : CoreService, IDynamicPageService
+    public class DynamicPageService : LogicService, IDynamicPageService
     {
         private readonly IPageRepository _pageRepository;
 
