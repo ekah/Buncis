@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Page_Buncis_Dashboard" xml:space="preserve">
-    <value>~/Buncis/Dashboard.aspx</value>
+    <value>~/bPanel/Dashboard.aspx</value>
   </data>
   <data name="Page_DynamicPage" xml:space="preserve">
     <value>~/DynamicPage.aspx</value>

@@ -17,9 +17,9 @@ namespace Buncis.Services.Pages
             _pageRepository = pageRepository;
         }
 
-        public DynamicPage GetPageByFriendlyUrl(string friendlyUrl)
-        {
-            var pageFromDb = _pageRepository.FindBy(o => o.FriendlyUrl.Equals(friendlyUrl, StringComparison.OrdinalIgnoreCase));
+		public DynamicPage GetPageByFriendlyUrl(int clientId, string friendlyUrl)
+		{
+			var pageFromDb = _pageRepository.FindBy(o => o.FriendlyUrl.Equals(friendlyUrl, StringComparison.OrdinalIgnoreCase) && o.ClientId == clientId);
 
             return pageFromDb;
         }
@@ -31,9 +31,11 @@ namespace Buncis.Services.Pages
             return pageFromDb;
         }
 
-        public IList<DynamicPage> GetPagesNotDeleted()
+        public IList<DynamicPage> GetPagesNotDeleted(int clientId)
         {
-            var pages = _pageRepository.FilterBy(o => o.IsDeleted == false).OrderBy(o => o.PageName).ToList();
+            var pages = _pageRepository.FilterBy(o => o.IsDeleted == false && o.ClientId == clientId)
+                .OrderBy(o => o.PageName).ToList();
+
             return pages;
         }
     }

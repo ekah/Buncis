@@ -7,6 +7,6 @@ namespace Buncis.Logic.Views.Pages
 {
     public interface IBuncisPageListingView : IBindableView<BuncisPageListingModel>
     {
-        event EventHandler GetList;
+        
     }
 }

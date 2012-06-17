@@ -8,7 +8,7 @@ namespace Buncis.Framework.Mvp.Presenters
         public BasePresenter(TView view)
             : base(view)
         {
-            view.Load += view_Load;
+            view.Load += view_Load;            
         }
 
         protected virtual void view_Load(object sender, EventArgs e)

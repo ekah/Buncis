@@ -2,6 +2,8 @@
 {
     public enum ApplicationModule
     {
+		Pages,
+		News
     }
 
     public enum PermissionType

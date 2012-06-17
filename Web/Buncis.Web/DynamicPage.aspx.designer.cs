@@ -10,7 +10,7 @@
 namespace Buncis.Web {
     
     
-    public partial class DynamicPage {
+    public partial class DynamicLogicPage {
         
         /// <summary>
         /// plcBodyContent control.

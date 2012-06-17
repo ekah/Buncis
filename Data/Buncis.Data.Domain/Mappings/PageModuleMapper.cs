@@ -20,6 +20,7 @@ namespace Buncis.Data.Domain.Mappings
             Map(x => x.MetaDescription).Column("MetaDescription").Not.Nullable().Length(500);
             Map(x => x.DateCreated).Column("DateCreated").Not.Nullable();
             Map(x => x.DateLastUpdated).Column("DateLastUpdated").Not.Nullable();
+            Map(x => x.ClientId).Column("ClientId").Not.Nullable();
             Map(x => x.IsDeleted).Column("IsDeleted").Not.Nullable();
         }
     }

@@ -11,16 +11,11 @@ using Buncis.Logic.Presenters.Pages;
 namespace Buncis.Web
 {
     [PresenterBinding(typeof(DynamicPagePresenter), ViewType = typeof(IDynamicPageView))]
-    public partial class DynamicPage : BasePage<DynamicPageModel>, IDynamicPageView
+    public partial class DynamicLogicPage : BaseLogicPage<DynamicPageModel>, IDynamicPageView
     {
-        protected override void OnInit(EventArgs e)
-        {
-            base.OnInit(e);
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            InitializeView(this, e);
+            InitializeView();
         }
 
         #region IBindableView<DynamicPageModel> Members

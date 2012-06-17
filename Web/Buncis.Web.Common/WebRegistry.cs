@@ -8,6 +8,9 @@ using StructureMap.Configuration.DSL;
 using Buncis.Web.Common.DynamicControls;
 using NHibernate;
 using NHibernate.Burrow;
+using Buncis.Framework.Services.Pages;
+using uNhAddIns.SessionEasier;
+using Buncis.Web.Common.WebServices;
 
 namespace Buncis.Web.Common
 {
@@ -23,16 +26,17 @@ namespace Buncis.Web.Common
                 var settingsProvider = new SettingsProvider<SystemSettings>(propertySettingsResolver);
                 return settingsProvider.ResolveSettings();
             });
-            For<IMembershipStorage>().Use<WebMembershipStorage>();
-            For<IWebMembership>().Use<AspNetMembership>();
-            For<IMembership>().Use<AspNetMembership>();
+            For<IWebMembership>().Use<WebMembership>();
             For<IDynamicControlsResolver>().Use<DynamicControlsResolver>();
-
             For<ISession>().Use(s =>
             {
                 try
                 {
                     var burrowFramework = new BurrowFramework();
+                    if (!burrowFramework.WorkSpaceIsReady)
+                    {
+                        burrowFramework.InitWorkSpace();
+                    }
                     var debugSession = burrowFramework.GetSession();
                     return debugSession;
                 }
@@ -43,6 +47,8 @@ namespace Buncis.Web.Common
 
                 return null;
             });
+
+            //For<ISessionFactoryProvider>().Use<WebSessionFactoryProvider>();
         }
     }
 }

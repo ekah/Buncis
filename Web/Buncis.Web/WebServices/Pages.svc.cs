@@ -4,15 +4,39 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Buncis.Framework.Core.SupportClasses;
+using Buncis.Logic.ViewModel;
+using Buncis.Framework.Services.Pages;
+using Buncis.Framework.Core.Infrastructure.IoC;
+using Omu.ValueInjecter;
+using Buncis.Logic.Presenters.Pages;
+using Buncis.Logic.BusinessObject;
+using uNhAddIns.WCF;
 
 namespace Buncis.Web.WebServices
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Pages" in code, svc and config file together.
-    public class Pages : IPages
+    public class Pages : BaseWebService, IPages
     {
-        public string DoWork()
+        public Response<List<BuncisPageViewModel>> GetPages(int clientId)
         {
-            return "a";
+            try
+            {
+                var bo = IoC.Resolve<BuncisPages>();
+                bo.ClientId = clientId;
+                var boResponse = bo.GetList();
+
+                var response = new Response<List<BuncisPageViewModel>>();
+                response.IsSuccess = boResponse.IsSuccess;
+                response.Message = boResponse.Message;
+                response.ResponseObject = bo.List;
+
+                return response;
+            }
+            catch
+            {
+                CurrentResponse.StatusCode = 500;
+                return null;
+            }
         }
     }
 }

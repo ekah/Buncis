@@ -2,40 +2,24 @@
 using System.Linq;
 using Buncis.Logic.Views.Pages;
 using Buncis.Logic.ViewModel;
-using Omu.ValueInjecter;
 using Buncis.Framework.Services.Pages;
+using Buncis.Framework.Mvp.Presenters;
+using System.Collections.Generic;
+using Buncis.Logic.BusinessObject;
 
 namespace Buncis.Logic.Presenters.Pages
 {
     public class BuncisPageListingPresenter : LogicPresenter<IBuncisPageListingView>
     {
         private readonly IDynamicPageService _dynamicPageService;
+        private readonly BuncisPages _buncisPages;
 
         public BuncisPageListingPresenter(IBuncisPageListingView view, IDynamicPageService dynamicPageService)
             : base(view)
         {
             _dynamicPageService = dynamicPageService;
-
-            this.View.GetList += new EventHandler(View_GetList);
+            _buncisPages = new BuncisPages(_dynamicPageService);
         }
 
-        void View_GetList(object sender, EventArgs e)
-        {
-            var rawPages = _dynamicPageService.GetPagesNotDeleted();
-
-            var convertedPages = rawPages.Select(o =>
-            {
-                var viewModel = new BuncisPageViewModel();
-                viewModel.InjectFrom(o);
-
-                return viewModel;
-            }).ToList();
-
-            convertedPages = convertedPages.OrderByDescending(o => o.IsHomePage).ThenBy(o => o.PageName).ToList();
-
-            this.View.Model.BuncisPages = convertedPages;
-
-            this.View.BindViewData();
-        }
     }
 }

@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Buncis.Framework.Core.Resources
-{
-
-
+namespace Buncis.Framework.Core.Resources {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -61,7 +61,7 @@ namespace Buncis.Framework.Core.Resources
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ~/Buncis/Dashboard.aspx.
+        ///   Looks up a localized string similar to ~/bPanel/Dashboard.aspx.
         /// </summary>
         public static string Page_Buncis_Dashboard {
             get {

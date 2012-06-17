@@ -7,13 +7,15 @@ using Buncis.Framework.Core.Infrastructure.IoC;
 using Buncis.Data.Domain.Membership;
 using System.Collections.Generic;
 using Buncis.Framework.Core.Repository.Membership;
+using Buncis.Framework.Core.Infrastructure.Settings;
 
 namespace Buncis.Web.Common.Membership
 {
-    public class WebUserProfile : ProfileBase, IUserProfile
-    {
-        private IMembershipUserRepository _membershipUserRepository;
-        private IMembershipRoleRepository _membershipRoleRepository;
+	public class WebUserProfile : ProfileBase, IWebUserProfile
+	{
+		private readonly IMembershipUserRepository _membershipUserRepository;
+		private readonly IMembershipRoleRepository _membershipRoleRepository;
+		private readonly ISystemSettings _systemSettings;
 
         private Security.MembershipUser _systemMembershipUser;
         public Security.MembershipUser SystemMembershipUser
@@ -28,30 +30,34 @@ namespace Buncis.Web.Common.Membership
             }
         }
 
-        public WebUserProfile()
-        {
-            _membershipUserRepository = IoC.Resolve<IMembershipUserRepository>();
-            _membershipRoleRepository = IoC.Resolve<IMembershipRoleRepository>();
-        }
+		public WebUserProfile()
+		{
+			_membershipUserRepository = IoC.Resolve<IMembershipUserRepository>();
+			_membershipRoleRepository = IoC.Resolve<IMembershipRoleRepository>();
+			_systemSettings = IoC.Resolve<ISystemSettings>();
+		}
 
-        private MembershipUser _membershipUser;
-        private MembershipUser MembershipUser
-        {
-            get
-            {
-                // assuming the user is not deleted
-                if (_membershipUser == null)
-                {
-                    var membershipUser = _membershipUserRepository.FindBy(o => o.ProfileUserId == (Guid)SystemMembershipUser.ProviderUserKey);
-                    if (membershipUser == null)
-                    {
-                        throw new Exception("The user is not found in database");
-                    }
-                    _membershipUser = membershipUser;
-                }
-                return _membershipUser;
-            }
-        }
+		private MembershipUser _membershipUser;
+		private MembershipUser MembershipUser
+		{
+			get
+			{
+				// assuming the user is not deleted
+				if (_membershipUser == null)
+				{
+					var membershipUser = IsAnonymous
+						? _membershipUserRepository.FindBy(o => o.ProfileUserId == Guid.Empty && o.ClientId == _systemSettings.ClientId)
+						: _membershipUserRepository.FindBy(o => o.ProfileUserId == (Guid)SystemMembershipUser.ProviderUserKey);
+
+					if (membershipUser == null)
+					{
+						throw new Exception("The user is not found in database");
+					}
+					_membershipUser = membershipUser;
+				}
+				return _membershipUser;
+			}
+		}
 
 
         public int UserId
@@ -170,16 +176,40 @@ namespace Buncis.Web.Common.Membership
             }
         }
 
-        public IList<MembershipRole> Roles
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-    }
+		public IList<MembershipRole> Roles
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+			set
+			{
+				throw new NotImplementedException();
+			}
+		}
+
+		public string UserName
+		{
+			get
+			{
+				return base.UserName;
+			}
+			set
+			{
+				throw new Exception("Cannot set this property");
+			}
+		}
+
+		public bool IsAnonymous
+		{
+			get
+			{
+				return base.IsAnonymous;
+			}
+			set
+			{
+				throw new Exception("Cannot set this property");
+			}
+		}
+	}
 }

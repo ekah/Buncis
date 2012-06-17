@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Routing;
-using Buncis.Core.Resources;
 using Buncis.Framework.Core.Resources;
 
 namespace Buncis.Web.Common.RouteHandler

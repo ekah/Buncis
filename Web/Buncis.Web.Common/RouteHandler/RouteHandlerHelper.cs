@@ -10,7 +10,7 @@ namespace Buncis.Web.Common.RouteHandler
         {
             if (HttpContext.Current.Request.Url.PathAndQuery.ToLower().Contains("/buncis/"))
             {
-                return BuildManager.CreateInstanceFromVirtualPath("/buncis/NotFound.aspx", typeof(Page)) as Page;
+                return BuildManager.CreateInstanceFromVirtualPath("/bPanel/NotFound.aspx", typeof(Page)) as Page;
             }
             else
             {

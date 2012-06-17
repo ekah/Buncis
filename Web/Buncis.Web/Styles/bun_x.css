@@ -48,6 +48,13 @@ a
     padding: 10px;
 }
 
+#loginInfo ul
+{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
 #loginPanel
 {
     width: 300px;

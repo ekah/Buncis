@@ -70,6 +70,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObject\BuncisPages.cs" />
+    <Compile Include="BusinessObject\BaseBusinessObject.cs" />
     <Compile Include="CustomEventArgs\BuncisPageListingEventArgs.cs" />
     <Compile Include="Models\Pages\BuncisPageListingModel.cs" />
     <Compile Include="Models\Pages\DynamicPageModel.cs" />

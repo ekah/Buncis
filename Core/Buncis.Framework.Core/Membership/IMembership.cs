@@ -1,4 +1,6 @@
-﻿namespace Buncis.Framework.Core.Membership
+﻿using Buncis.Framework.Core.SupportClasses;
+
+namespace Buncis.Framework.Core.Membership
 {
     public interface IMembership
     {
@@ -6,7 +8,8 @@
         IUserProfile LoggedInUserProfile { get; }
 
         bool UserHasAccessToModule(ApplicationModule module);
-        bool DoLogin(string username, string password);
-        bool DoLogout(int userId);
+
+        Response DoLogin(string username, string password);
+		Response DoLogout(int userId);
     }
 }

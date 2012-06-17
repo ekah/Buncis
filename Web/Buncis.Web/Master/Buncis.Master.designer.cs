@@ -31,6 +31,15 @@ namespace Buncis.Web.Master {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// loginInfo1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Buncis.Web.UserControls.Component.LoginInfo loginInfo1;
+        
+        /// <summary>
         /// contentPlaceholderMain control.
         /// </summary>
         /// <remarks>

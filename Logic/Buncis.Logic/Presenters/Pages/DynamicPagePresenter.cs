@@ -1,6 +1,5 @@
 ﻿using System;
 using Buncis.Web.Common.Utility;
-using Buncis.Core.Resources;
 using Omu.ValueInjecter;
 using Buncis.Logic.Views.Pages;
 using Buncis.Framework.Services.Pages;

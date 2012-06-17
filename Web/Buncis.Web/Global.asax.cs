@@ -6,6 +6,9 @@ using Buncis.Web.Common.Dependency;
 using Buncis.Web.Common.RouteHandler;
 using Buncis.Web.Common.DynamicControls;
 using NHibernate.Burrow;
+using Microsoft.Practices.ServiceLocation;
+using StructureMap.ServiceLocatorAdapter;
+using StructureMap;
 
 namespace Buncis.Web
 {
@@ -17,10 +20,15 @@ namespace Buncis.Web
             IDependencyResolverFactory dependencyResolverFactory = new DependencyResolverFactory();
             IoC.InitializeIoC(dependencyResolverFactory);
 
+            //var slProvider = new WebServiceLocatorProvider();
+            //ServiceLocator.SetLocatorProvider(slProvider.GetWebServiceLocator);
+
             var routingConfig = new RoutingConfiguration();
             routingConfig.RegisterRoutes(RouteTable.Routes);
 
             DynamicControlsContainer.InitializeDynamicControls();
+
+            var a = typeof(Buncis.Web.Common.WebServices.WebSessionBehaviorExtensionElement).AssemblyQualifiedName;
         }
 
         private void Application_End(object sender, EventArgs e)
@@ -48,12 +56,12 @@ namespace Buncis.Web
 
         private void Application_BeginRequest(object sender, EventArgs e)
         {
-			new BurrowFramework().InitWorkSpace();
+			//new BurrowFramework().InitWorkSpace();
         }
 
         private void Application_EndRequest(object sender, EventArgs e)
         {
-			new BurrowFramework().CloseWorkSpace();
+			//new BurrowFramework().CloseWorkSpace();
         }
     }
 }

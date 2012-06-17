@@ -5,8 +5,8 @@ using Security = System.Web.Security;
 
 namespace Buncis.Web.Common.Membership
 {
-    public interface IWebUserProfile : IUserProfile
-    {
-        Security.MembershipUser SystemMembershipUser { get; set; }
-    }
+	public interface IWebUserProfile : IUserProfile
+	{
+		Security.MembershipUser SystemMembershipUser { get; }
+	}
 }

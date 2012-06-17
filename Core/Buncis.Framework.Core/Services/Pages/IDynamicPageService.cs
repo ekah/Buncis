@@ -5,8 +5,8 @@ namespace Buncis.Framework.Services.Pages
 {
     public interface IDynamicPageService
     {
-        DynamicPage GetPageByFriendlyUrl(string friendlyUrl);
+        DynamicPage GetPageByFriendlyUrl(int clientId, string friendlyUrl);
         DynamicPage GetPage(int pageId);
-        IList<DynamicPage> GetPagesNotDeleted();
+        IList<DynamicPage> GetPagesNotDeleted(int clientId);
     }
 }

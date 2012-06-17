@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Buncis.Core.Resources
+namespace Buncis.Framework.Core.Resources
 {
 
 
@@ -39,7 +39,7 @@ namespace Buncis.Core.Resources
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Buncis.Core.Resources.RouteNames", typeof(RouteNames).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Buncis.Framework.Core.Resources.RouteNames", typeof(RouteNames).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
