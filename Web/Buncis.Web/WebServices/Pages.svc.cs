@@ -24,6 +24,7 @@ namespace Buncis.Web.WebServices
                 var bo = IoC.Resolve<BuncisPages>();
                 bo.ClientId = clientId;
                 var boResponse = bo.GetList();
+                bo.List = bo.List.OrderByDescending(p => p.IsHomePage).ThenBy(o => o.PageName).ToList();
 
                 var response = new Response<List<BuncisPageViewModel>>();
                 response.IsSuccess = boResponse.IsSuccess;

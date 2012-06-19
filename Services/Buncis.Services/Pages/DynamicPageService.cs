@@ -17,16 +17,17 @@ namespace Buncis.Services.Pages
             _pageRepository = pageRepository;
         }
 
-		public DynamicPage GetPageByFriendlyUrl(int clientId, string friendlyUrl)
-		{
-			var pageFromDb = _pageRepository.FindBy(o => o.FriendlyUrl.Equals(friendlyUrl, StringComparison.OrdinalIgnoreCase) && o.ClientId == clientId);
+        public DynamicPage GetPageByFriendlyUrl(int clientId, string friendlyUrl)
+        {
+            var pageFromDb = _pageRepository.FindBy(o => o.FriendlyUrl.Equals(friendlyUrl, StringComparison.OrdinalIgnoreCase)
+                && o.ClientId == clientId);
 
             return pageFromDb;
         }
 
         public DynamicPage GetPage(int pageId)
         {
-            var pageFromDb = _pageRepository.FindBy(o => o.PageId == pageId);
+            var pageFromDb = _pageRepository.FindBy(o => o.PageId == pageId && !o.IsDeleted);
 
             return pageFromDb;
         }

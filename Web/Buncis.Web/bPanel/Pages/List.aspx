@@ -6,7 +6,9 @@
 
         (function (pages) {
             pages._elems = {
+                clientId: <%= CurrentProfile.ClientId %>,
                 txtPageContent: '#txtPageContent',
+                tablePages: '#table-pages'
             };
         }(window._pages = window._pages || {}));
 
@@ -19,45 +21,19 @@
     </div>
     <div class="buncisContentBody">
         <div class="actionContent">
-            <a href="#" id="" class="button-action"><span class="icon-plus">Add Page</span></a>
+            <a href="javascript:void(0);" id="aAddPage" class="button-action"><span class="icon-plus">Add Page</span></a>
         </div>
         <div class="innerContent">
-            <asp:Repeater runat="server" ID="rptPages">
-                <HeaderTemplate>
-                    <table class="data-table"> 
-                        <thead>
-                            <th>&nbsp;</th>
-                            <th>Page</th>
-							<th>Activities</th>
-                        </thead>               
-                        <tbody>
-                </HeaderTemplate>
-                <ItemTemplate>
-                        <tr>
-                            <td class="icon-col">
-                                <asp:HyperLink ID="lnkEditPage" runat="server" ClientIDMode="Static" NavigateUrl="#">
-                                    <span runat="server" id="spanIcon">&nbsp;</span>
-                                </asp:HyperLink>
-                            </td>
-                            <td>
-                            	<div>
-                            		<span><strong><%# Eval("PageName") %></strong></span><br/>
-									<span class="info"><%# Eval("PageDescription") %></span>
-								</div>
-							</td>                
-                            <td>
-                            	<div>
-                            		<span>Created Date: <%# ((DateTime)Eval("DateCreated")).ToLongFormatString() %></span><br/>
-									<span>Last Updated Date: <%# ((DateTime)Eval("DateLastUpdated")).ToLongFormatString() %></span>
-								</div>
-							</td>
-                        </tr>
-                </ItemTemplate>
-                <FooterTemplate>
-                        </tbody>
-                    </table>
-                </FooterTemplate>
-            </asp:Repeater>
+            <table class="data-table" id="table-pages"> 
+                <thead>
+                    <th>&nbsp;</th>
+                    <th>Page</th>
+					<th>Activities</th>
+                    <th>&nbsp;</th>
+                </thead>               
+                <tbody>                                             
+                </tbody>
+            </table>
         </div>
     </div>
 

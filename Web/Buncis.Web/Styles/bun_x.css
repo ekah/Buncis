@@ -398,6 +398,45 @@ table.data-table tbody tr td.icon-col
 	width: 1%;
 }
 
+table.data-table td.action-col 
+{
+    padding: 0px 10px;
+    width: 120px;
+    text-align: right;
+}
+
+table.data-table td a.edit 
+{
+    color: #006400;
+}
+
+table.data-table td a.delete
+{
+    color: #8b0000;
+}
+
+table.data-table td a.edit, table.data-table td a.delete  
+{
+    text-decoration: none;
+    display: block;
+    float: right;
+    font-weight: bold;
+    height: 25px;
+    padding: 5px 10px 5px;
+    margin-left: 5px;
+    line-height: 2em;
+}
+
+table.data-table td a.edit:hover, table.data-table td a.delete:hover  
+{
+    background-color: #cecece;
+}
+
+.dataTables_length 
+{
+    
+}
+
 .icon
 {
     display: block;
