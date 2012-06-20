@@ -7,6 +7,7 @@ using Buncis.Web.Common.DynamicControls;
 using Buncis.Logic.Models.Pages;
 using Buncis.Logic.Views.Pages;
 using Buncis.Logic.Presenters.Pages;
+using Buncis.Web.Common.Exceptions;
 
 namespace Buncis.Web
 {
@@ -15,7 +16,17 @@ namespace Buncis.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
             InitializeView();
+            }
+            catch (PageNotFoundException pnfex)
+            {
+                Response.StatusCode = 404;
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         #region IBindableView<DynamicPageModel> Members

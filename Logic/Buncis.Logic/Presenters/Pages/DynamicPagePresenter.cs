@@ -4,6 +4,7 @@ using Omu.ValueInjecter;
 using Buncis.Logic.Views.Pages;
 using Buncis.Framework.Services.Pages;
 using Buncis.Framework.Core.Resources;
+using Buncis.Web.Common.Exceptions;
 
 namespace Buncis.Logic.Presenters.Pages
 {
@@ -17,13 +18,13 @@ namespace Buncis.Logic.Presenters.Pages
             _dynamicPageService = dynamicPageService;
         }
 
-        protected override void view_Load(object sender, EventArgs e)
+        protected override void view_Initialize(object sender, EventArgs e)
         {
             var pageId = int.Parse(WebUtil.GetQueryString(QueryStrings.PageId, "-1"));
             var pageFromDb = _dynamicPageService.GetPage(pageId);
             if (pageFromDb == null)
             {
-                throw new Exception("The Page is not found in database");
+                throw new PageNotFoundException("The Page is not found in database", pageId);
             }
 
             View.Model.InjectFrom(pageFromDb);

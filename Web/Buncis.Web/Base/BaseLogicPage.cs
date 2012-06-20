@@ -17,12 +17,7 @@ namespace Buncis.Web.Base
             Initialize(this, new EventArgs());
         }
 
-        public void AfterPresenterCreated()
-        {
-            SetClientId(this, new SetClientIdEventArgs { ClientId = CurrentProfile.ClientId });
-        }
 
-        public event EventHandler SetClientId;
 
         protected IUserProfile CurrentProfile
         {
