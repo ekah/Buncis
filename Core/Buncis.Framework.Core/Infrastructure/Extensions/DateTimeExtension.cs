@@ -11,7 +11,7 @@ namespace Buncis.Framework.Infrastructure.Extensions
         /// <returns></returns>
         public static string ToLongFormatString(this DateTime input)
         {
-            return input.ToString("dddd, dd MMMM yyyy HH:mm");
+            return input.ToString("ddd, dd MMM yyyy HH:mm");
         }
     }
 }

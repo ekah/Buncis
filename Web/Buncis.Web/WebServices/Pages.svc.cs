@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Activation;
 using System.Text;
 using Buncis.Framework.Core.SupportClasses;
 using Buncis.Logic.ViewModel;
@@ -24,7 +25,7 @@ namespace Buncis.Web.WebServices
                 var bo = IoC.Resolve<BuncisPages>();
                 bo.ClientId = clientId;
                 var boResponse = bo.GetList();
-                bo.List = bo.List.OrderByDescending(p => p.IsHomePage).ThenBy(o => o.PageName).ToList();
+                bo.List = bo.List.OrderByDescending(p => p.IsHomePage).ThenBy(o => o.DateLastUpdated).ToList();
 
                 var response = new Response<List<BuncisPageViewModel>>();
                 response.IsSuccess = boResponse.IsSuccess;

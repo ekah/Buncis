@@ -24,16 +24,18 @@
             <a href="javascript:void(0);" id="aAddPage" class="button-action"><span class="icon-plus">Add Page</span></a>
         </div>
         <div class="innerContent">
-            <table class="data-table" id="table-pages"> 
+            <table class="data-table table-pages" id="table-pages"> 
                 <thead>
                     <th>&nbsp;</th>
                     <th>Page</th>
-					<th>Activities</th>
+					<th>Last Updated</th>
+					<th>Created</th>
                     <th>&nbsp;</th>
                 </thead>               
                 <tbody>                                             
                 </tbody>
             </table>
+			<div class="clearFloats"></div>
         </div>
     </div>
 

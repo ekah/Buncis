@@ -105,6 +105,7 @@
     <Compile Include="Membership\IWebMembership.cs" />
     <Compile Include="Membership\IWebUserProfile.cs" />
     <Compile Include="RouteHandler\BaseRouteHandler.cs" />
+    <Compile Include="Utility\CacheUtility.cs" />
     <Compile Include="WebConstants.cs" />
     <Compile Include="DynamicControls\DynamicControlsContainer.cs" />
     <Compile Include="DynamicControls\DynamicControl.cs" />

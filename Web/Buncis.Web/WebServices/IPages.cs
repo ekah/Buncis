@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
+using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using Buncis.Framework.Core.SupportClasses;
 using Buncis.Logic.ViewModel;

@@ -305,7 +305,7 @@ label.long
     -moz-box-shadow: 0 0 6px #bbb;
     -webkit-box-shadow: 0 0 6px #bbb;
     border-radius: 5px;
-    -moz-border-radius: 5x;
+    -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border: 1px solid #bbb;
     margin: 2px 0px;
@@ -324,7 +324,7 @@ label.long
     -moz-box-shadow: 0 0 6px #bbb;
     -webkit-box-shadow: 0 0 6px #bbb;
     border-radius: 5px;
-    -moz-border-radius: 5x;
+    -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border: 1px solid #bbb;
     margin: 2px 0px;
@@ -339,10 +339,12 @@ label.long
 .actionContent
 {
     height: 3em;
-    padding: 0px 20px 10px;
+    padding: 0px 20px 5px;
     margin-top: 20px;
 }
 
+
+/* data table */
 table.data-table
 {
     width: 100%;
@@ -352,7 +354,7 @@ table.data-table
 
 table.data-table thead tr th
 {
-    padding: 0px 10px;
+    padding: 0px 0px 0px 15px;
     text-align: left;
     color: #f9f9f9;
     background-color: #000;
@@ -360,12 +362,12 @@ table.data-table thead tr th
 
 table.data-table thead tr
 {
-    height: 40px;
+    height: 2em;
 }
 
 table.data-table tbody tr td
 {
-    padding: 0px 10px;
+    padding: 5px 0px 5px 15px;
     text-align: left;
     border-bottom: 1px solid #aaa;
 }
@@ -377,8 +379,10 @@ table.data-table tbody tr td span.info
 }
 table.data-table tbody tr
 {
-	height: 50px;
+	/*height: 50px;*/
+	height: 4em;
     background-color: #f5f5f5;
+    padding: 5px 0px;
 }
 
 table.data-table tbody tr:hover
@@ -389,7 +393,7 @@ table.data-table tbody tr.odd
 {
     background-color: #fff;
 }
-table.data-table tbody
+table.data-table tbody, table.data-table thead
 {
 	font-size: 1em;
 }
@@ -401,7 +405,7 @@ table.data-table tbody tr td.icon-col
 table.data-table td.action-col 
 {
     padding: 0px 10px;
-    width: 120px;
+    width: 130px;
     text-align: right;
 }
 
@@ -431,10 +435,53 @@ table.data-table td a.edit:hover, table.data-table td a.delete:hover
 {
     background-color: #cecece;
 }
+/* end data table */
 
-.dataTables_length 
+
+/* pages table */
+table.data-table.table-pages tr td:nth-child(2) {
+	width: 40%;
+}
+table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr td:nth-child(4) {
+	width: 20%;
+}
+/* end pages table */
+
+
+/* data table additional */
+.tableFoot {
+	height: 2em;
+	padding: 0.5em;
+	background-color: #c0c0c0;
+}
+.dataTables_info  {
+	float:left;
+}
+.dataTables_paginate.paging_full_numbers {
+	float:right;
+}
+.dataTables_paginate.paging_full_numbers a:hover {
+	cursor: pointer;	
+}
+.dataTables_paginate.paging_full_numbers a.previous, 
+.dataTables_paginate.paging_full_numbers a.next, 
+.dataTables_paginate.paging_full_numbers a.last, 
+.dataTables_paginate.paging_full_numbers a.first  {
+	padding: 0px 5px;
+}
+.dataTables_paginate.paging_full_numbers span a.paginate_active, 
+.dataTables_paginate.paging_full_numbers span a.paginate_button 
 {
-    
+	padding: 0px 5px;
+}
+.dataTables_paginate.paging_full_numbers span a.paginate_active {
+	font-weight: bold;
+}
+/* end data table additional */
+
+
+.clearFloats {
+	clear: both;
 }
 
 .icon
