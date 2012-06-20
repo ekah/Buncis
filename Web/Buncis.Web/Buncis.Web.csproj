@@ -251,6 +251,9 @@
     <Content Include="Scripts\jquery.tools.min.js" />
     <Content Include="Styles\bun_x.css" />
     <Content Include="Styles\bun.css" />
+    <Content Include="Styles\colorbox\colorbox.css" />
+    <Content Include="Styles\colorbox\images\border1.png" />
+    <Content Include="Styles\colorbox\images\border2.png" />
     <Content Include="Styles\jHtmlArea\jHtmlArea.ColorPickerMenu.css" />
     <Content Include="Styles\jHtmlArea\jHtmlArea.css" />
     <Content Include="Styles\jHtmlArea\jHtmlArea.Editor.css" />

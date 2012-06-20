@@ -8,7 +8,9 @@
             pages._elems = {
                 clientId: <%= CurrentProfile.ClientId %>,
                 txtPageContent: '#txtPageContent',
-                tablePages: '#table-pages'
+                tablePages: '#table-pages',
+                btnAddPage: '.addPage',
+                pageForm: '.form-page'
             };
         }(window._pages = window._pages || {}));
 
@@ -21,7 +23,7 @@
     </div>
     <div class="buncisContentBody">
         <div class="actionContent">
-            <a href="javascript:void(0);" id="aAddPage" class="button-action"><span class="icon-plus">Add Page</span></a>
+            <a href="javascript:void(0);" id="aAddPage" class="button-action addPage"><span class="icon-plus">Add Page</span></a>
         </div>
         <div class="innerContent">
             <table class="data-table table-pages" id="table-pages"> 
@@ -40,13 +42,40 @@
     </div>
 
     <!-- popup to edit/update page -->
-    <div>
-        <div>
+    <div style="display: none">
+        <div class="form-page">
+            <div class="left">
+            	<div class="form-item">
+            		<label>Name</label>
+    				<input type="text" required="required" id="txtPageName" class="medium"/>
+            	</div>
+    			<div class="form-item">
+            		<label>Name displayed on Menu</label>
+    				<input type="text" required="required" id="txtPageMenuName" class="medium"/>
+            	</div>
+                <div class="form-item">
+                    <label>Friendly Url</label>
+                    <input type="text" required="required" id="txtPageUrl" class="medium"/>
+                </div>                
+			</div>
+            <div class="right">
+                <div class="form-item">
+                    <label>Meta Title</label>
+                    <input type="text" required="required" id="txtPageMetaTitle" class="medium"/>
+                </div>
+                <div class="form-item">
+                    <label>Meta Description</label>
+                    <input type="text" required="required" id="txtPageMetaDescription" class="medium"/>
+                </div>
+                <div class="form-item">
+                    <label>Do you want to make this page as your Home page?</label>
+                    <input type="checkbox" required="required" id="chkIsHomePage" class="medium"/>
+                </div>
+            </div>
+            <div class="clearFloats"></div>
             <div class="form-item">
                 <label>Content</label>
-                <div>
-                    <textarea id="txtPageContent" class="htmlarea" rows="5" cols="150"></textarea>
-                </div>
+                <div><textarea id="txtPageContent" class="htmlarea" rows="45" cols="130"></textarea></div>
             </div>
         </div>
     </div>

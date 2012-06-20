@@ -16,6 +16,7 @@
 			}
 		});
 	}
+	
 	function render(data) {
 		$(pages._elems.tablePages).dataTable({
 			"bProcessing": true,
@@ -65,14 +66,39 @@
 			"sDom": 'lrt<"tableFoot"ip>',
 		});
 	}
+	
+	function showPopup(mode) {
+		var h = $(window).height();
+		//var w = $(window).width();
+		$.colorbox({
+			height: h,
+			width: 900,
+			title: "Add/Edit Page",
+			href: $(pages._elems.pageForm),
+			inline: true,
+			overlayClose: false,
+			onLoad: function() {
+				
+			},
+			onComplete: function() {
+				$(pages._elems.txtPageContent).htmlarea();
+			}
+		});
+	}
+
 	pages.init = function () {
 		getData(render);
 	};
+	pages.showForm = function (mode) {
+		showPopup(mode);
+	}
 } (window._pages = window._pages || {}));
 
 var pages = window._pages;
 
 $(document).ready(function () {
-    $(pages._elems.txtPageContent).htmlarea();
-    pages.init();
+    pages.init();	
+	$(pages._elems.btnAddPage).click(function () {
+		pages.showForm('add');
+	});
 });

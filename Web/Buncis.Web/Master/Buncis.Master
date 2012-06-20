@@ -6,8 +6,9 @@
 <head runat="server">
 	<title>Buncis</title>
     <link href="/Styles/jHtmlArea/jHtmlArea.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="/styles/normalize.css" />
-	<link rel="stylesheet" href="/styles/bun_x.css" />
+	<link href="/Styles/colorbox/colorbox.css" rel="stylesheet" type="text/css" />
+    <link href="/styles/normalize.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/bun_x.css" rel="stylesheet" type="text/css" />
 	<script src="/scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="/Scripts/jquery.tools.min.js" type="text/javascript"></script>
     <script src="/Scripts/modules/colorbox/jquery.colorbox.js" type="text/javascript"></script>

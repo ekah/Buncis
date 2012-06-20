@@ -480,6 +480,13 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
 /* end data table additional */
 
 
+/* form pages */
+.form-page .left, .form-page .right {
+    float: left;
+}
+/* end form pages */
+
+
 .clearFloats {
 	clear: both;
 }
