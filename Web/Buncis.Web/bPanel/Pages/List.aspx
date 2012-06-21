@@ -10,12 +10,16 @@
                 txtPageContent: '#txtPageContent',
                 tablePages: '#table-pages',
                 btnAddPage: '.addPage',
-                pageForm: '.form-page'
+                pageForm: '.form-page',
+                chkIsHomePage: '#chkIsHomePage'
             };
         }(window._pages = window._pages || {}));
 
     </script>
     <script src="/Scripts/bunx/_act_pages.js" type="text/javascript"></script>
+    <style type="text/css">    
+
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentPlaceholderMain" runat="server">
     <div class="buncisContentHeader">
@@ -69,7 +73,7 @@
                 </div>
                 <div class="form-item">
                     <label>Do you want to make this page as your Home page?</label>
-                    <input type="checkbox" required="required" id="chkIsHomePage" class="medium"/>
+                    <input type="checkbox" required="required" id="chkIsHomePage" />
                 </div>
             </div>
             <div class="clearFloats"></div>

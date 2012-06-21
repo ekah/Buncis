@@ -12,6 +12,11 @@ a
     text-decoration: none;
 }
 
+input:focus, textarea:focus {
+    background-color: #f7f7f7;
+}
+
+
 #topBarWrapper
 {
     width: 100%;
@@ -482,7 +487,10 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
 
 /* form pages */
 .form-page .left, .form-page .right {
-    float: left;
+    float: left;    
+}
+.form-page .right {
+    padding-left: 20px;
 }
 /* end form pages */
 

@@ -101,4 +101,9 @@ $(document).ready(function () {
 	$(pages._elems.btnAddPage).click(function () {
 		pages.showForm('add');
 	});
+	$(pages._elems.chkIsHomePage).iButton({
+    	change: function ($input){
+
+	    }
+  	});
 });
