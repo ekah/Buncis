@@ -26,7 +26,7 @@
 }
 #cboxLoadedContent
 {
-    overflow: auto;
+    overflow: auto;    
 }
 #cboxTitle
 {
@@ -142,12 +142,14 @@
 }
 #cboxLoadedContent
 {
+	margin-top: 30px;
     margin-bottom: 20px;
 }
 #cboxTitle
 {
     position: absolute;
-    bottom: 0px;
+    /*bottom: 0px;*/
+    top: 0px;
     left: 0;
     text-align: center;
     width: 100%;
@@ -188,9 +190,12 @@
 #cboxClose
 {
     position: absolute;
-    bottom: 0;
+    /*bottom: 0;*/
+    top: 0;
     right: 0;
-    display: block;
+    /*display: block;*/
+    display: none !important;
+    visibility: hidden !important;
     color: #444;
     padding: 3px 10px 2px;
     height: 20px;

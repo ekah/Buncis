@@ -233,6 +233,7 @@
     <Content Include="Images\logo_text.png" />
     <Content Include="Images\menu_bg.jpg" />
     <Content Include="Images\menu_separator.png" />
+    <Content Include="Scripts\bunx\common.js" />
     <Content Include="Scripts\modules\colorbox\jquery.colorbox-min.js" />
     <Content Include="Scripts\modules\colorbox\jquery.colorbox.js" />
     <Content Include="Scripts\bunx\_act_pages.js" />
@@ -265,6 +266,7 @@
     <Content Include="Styles\jHtmlArea\jHtmlArea_Toolbar_Group_BG.png" />
     <Content Include="Styles\jHtmlArea\jHtmlArea_Toolbar_Group__Btn_Select_BG.png" />
     <Content Include="Styles\normalize.css" />
+    <Content Include="Styles\tools\tabs-no-images.css" />
     <Content Include="UserControls\Component\LoginInfo.ascx" />
     <Content Include="UserControls\News\NewsList.ascx" />
     <Content Include="Web.config">

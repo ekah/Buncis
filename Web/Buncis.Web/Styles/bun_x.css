@@ -7,8 +7,7 @@ body
     font-size: 13px;
 }
 
-a
-{
+a {
     text-decoration: none;
 }
 
@@ -264,6 +263,7 @@ label.long
     float: right;
     text-decoration: none;
     line-height: 2em;
+    margin-left: 5px;
 }
 
 .buncisBody
@@ -492,7 +492,21 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
 .form-page .right {
     padding-left: 20px;
 }
+.form-page textarea {
+	overflow: scroll;
+}
 /* end form pages */
+
+
+/* colorbox custom */
+.popup-button-wrapper {
+	margin: 0px !important;
+	padding: 0px !important;
+	height:40px;
+	position: relative;
+}
+/* end colorbox custom */
+
 
 
 .clearFloats {

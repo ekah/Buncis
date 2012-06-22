@@ -68,20 +68,22 @@
 	}
 	
 	function showPopup(mode) {
-		var h = $(window).height();
-		//var w = $(window).width();
+		//var h = $(window).height();
 		$.colorbox({
-			height: h,
+			height: 662,
 			width: 900,
 			title: "Add/Edit Page",
-			href: $(pages._elems.pageForm),
+			href: $(pages._elems.pageFormPopup),
 			inline: true,
 			overlayClose: false,
+			scrolling: false,
 			onLoad: function() {
 				
 			},
 			onComplete: function() {
 				$(pages._elems.txtPageContent).htmlarea();
+				$(pages._elems.tabsMenu).tabs(pages._elems.tabs);
+				pages.validators = $(pages._elems.pageForm).validator();
 			}
 		});
 	}
@@ -103,7 +105,14 @@ $(document).ready(function () {
 	});
 	$(pages._elems.chkIsHomePage).iButton({
     	change: function ($input){
-
+    		if($input.is(":checked")) {
+				$(pages._elems.txtPageUrl).val('/');
+    			$(pages._elems.txtPageUrl).attr('disabled', 'disabled');
+    		}
+    		else {
+    			$(pages._elems.txtPageUrl).val('');
+    			$(pages._elems.txtPageUrl).removeAttr('disabled');
+    		}
 	    }
   	});
 });

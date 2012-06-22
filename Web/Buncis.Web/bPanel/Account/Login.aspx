@@ -41,7 +41,7 @@
 			</div>		
             <div class="form-item buttonContainer">
                 <input type="submit" class="button-gray login" id="btnLogin" runat="server" clientidmode="Static" value="Login" />
-                <input type="button" value="Reset" class="button-gray login" />
+                <input type="button" class="button-gray login" value="Reset" />
             </div>
 		</div>
 	</fieldset>

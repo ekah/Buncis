@@ -7,11 +7,20 @@
         (function (pages) {
             pages._elems = {
                 clientId: <%= CurrentProfile.ClientId %>,
-                txtPageContent: '#txtPageContent',
+                tabsMenu: '.page-tabs',
+                tabs: '.form-page > div.tabContent',
                 tablePages: '#table-pages',
                 btnAddPage: '.addPage',
+                pageFormPopup: '#form-page-popup',
                 pageForm: '.form-page',
-                chkIsHomePage: '#chkIsHomePage'
+                validated: '.form-page :input, .form-page :textarea',
+                txtPageName: '#txtPageName',
+                txtPageUrl: '#txtPageUrl',
+                txtPageMenuName: '#txtPageMenuName',
+                txtPageMetaTitle: '#txtPageMetaTitle',
+                txtPageMetaDescription: '#txtPageMetaDescription',
+                txtPageContent: '#txtPageContent',
+                chkIsHomePage: '#chkIsHomePage',
             };
         }(window._pages = window._pages || {}));
 
@@ -47,40 +56,54 @@
 
     <!-- popup to edit/update page -->
     <div style="display: none">
-        <div class="form-page">
-            <div class="left">
-            	<div class="form-item">
-            		<label>Name</label>
-    				<input type="text" required="required" id="txtPageName" class="medium"/>
-            	</div>
-    			<div class="form-item">
-            		<label>Name displayed on Menu</label>
-    				<input type="text" required="required" id="txtPageMenuName" class="medium"/>
-            	</div>
-                <div class="form-item">
-                    <label>Friendly Url</label>
-                    <input type="text" required="required" id="txtPageUrl" class="medium"/>
-                </div>                
+		<div id="form-page-popup">
+			<div class="form-page">
+				<div class="popup-button-wrapper buttonContainer">
+					<a href="javascript:void(0);" id="btnClose" class="button-action popup-button-close">Close</a>
+					<a href="javascript:void(0);" id="btnSavePage" class="button-action">Save</a>
+				</div>
+        		<ul class="page-tabs css-tabs skin2">
+    				<li><a href="javascript:void(0)">Page Information</a></li>
+					<li><a href="javascript:void(0)">Page Content</a></li>
+    			</ul>
+        		<div class="page-tab1 tabContent">
+					<div class="left">
+            			<div class="form-item">
+            				<label>Name</label>
+    						<input type="text" required="required" id="txtPageName" class="medium"/>
+            			</div>
+    					<div class="form-item">
+            				<label>Name displayed on Menu</label>
+    						<input type="text" required="required" id="txtPageMenuName" class="medium"/>
+            			</div>
+						<div class="form-item">
+							<label>Friendly Url</label>
+							<input type="text" required="required" id="txtPageUrl" class="medium"/>
+						</div>                
+					</div>
+					<div class="right">
+						<div class="form-item">
+							<label>Meta Title</label>
+							<input type="text" required="required" id="txtPageMetaTitle" class="medium"/>
+						</div>
+						<div class="form-item">
+							<label>Meta Description</label>
+							<input type="text" required="required" id="txtPageMetaDescription" class="medium"/>
+						</div>
+						<div class="form-item">
+							<label>Do you want to make this page as your Home page?</label>
+							<input type="checkbox" required="required" id="chkIsHomePage" />
+						</div>
+					</div>
+					<div class="clearFloats"></div>            
+				</div>
+				<div class="page-tab2 tabContent"> 
+					<div class="form-item">
+						<label>Content</label>
+						<div><textarea id="txtPageContent" class="htmlarea" rows="24" cols="130"></textarea></div>
+					</div>
+				</div>
 			</div>
-            <div class="right">
-                <div class="form-item">
-                    <label>Meta Title</label>
-                    <input type="text" required="required" id="txtPageMetaTitle" class="medium"/>
-                </div>
-                <div class="form-item">
-                    <label>Meta Description</label>
-                    <input type="text" required="required" id="txtPageMetaDescription" class="medium"/>
-                </div>
-                <div class="form-item">
-                    <label>Do you want to make this page as your Home page?</label>
-                    <input type="checkbox" required="required" id="chkIsHomePage" />
-                </div>
-            </div>
-            <div class="clearFloats"></div>
-            <div class="form-item">
-                <label>Content</label>
-                <div><textarea id="txtPageContent" class="htmlarea" rows="45" cols="130"></textarea></div>
-            </div>
-        </div>
+		</div>
     </div>
 </asp:Content>
