@@ -1,0 +1,38 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BMCustom.master.cs" Inherits="Buncis.Web.Master.BMCustom" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+	<title>Breakthrough Ministries</title>
+	<link rel="stylesheet" href="/styles/normalize.css" />
+	<link rel="stylesheet" href="/styles/bm.css" />
+	<script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
+	<asp:ContentPlaceHolder ID="head" runat="server">
+	</asp:ContentPlaceHolder>
+</head>
+<body>
+	<asp:ContentPlaceHolder ID="MainPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+	<form id="form1" runat="server">
+		<div class="body">
+			<div class="wrapper">
+				<div class="content-wrapper">
+					<h1>Breakthrough Ministries</h1>
+					<div>
+							
+					</div>
+					<div class="content-top">
+						<div class="frame teaser-images-frame">
+							<div class="teaser-images">
+							
+							</div>
+						</div>
+						<div class="content-quote">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

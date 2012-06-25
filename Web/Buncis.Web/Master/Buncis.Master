@@ -31,6 +31,7 @@
 			<div id="loginInfo">
 				<bun:LoginInfo runat="server" id="loginInfo1" clientidmode="Static"></bun:LoginInfo>
 			</div>
+			<div class="clearFloats"></div>
 		</div>		
 	</div>
 	<div class="buncisContent">

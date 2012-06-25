@@ -123,6 +123,7 @@
     <Content Include="bPanel\NotFound.aspx" />
     <Content Include="bPanel\Pages\List.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Images\bm\bg_bm_02.jpg" />
     <Content Include="Images\body_bg.png" />
     <Content Include="Images\body_bg2.png" />
     <Content Include="Images\header_bg.png" />
@@ -252,6 +253,7 @@
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
     <Content Include="Scripts\jquery.tools.min.js" />
+    <Content Include="Styles\bm.css" />
     <Content Include="Styles\bun_x.css" />
     <Content Include="Styles\bun.css" />
     <Content Include="Styles\colorbox\colorbox.css" />
@@ -267,6 +269,7 @@
     <Content Include="Styles\jHtmlArea\jHtmlArea_Toolbar_Group__Btn_Select_BG.png" />
     <Content Include="Styles\normalize.css" />
     <Content Include="Styles\tools\tabs-no-images.css" />
+    <Content Include="tests\TestDefault.aspx" />
     <Content Include="UserControls\Component\LoginInfo.ascx" />
     <Content Include="UserControls\News\NewsList.ascx" />
     <Content Include="Web.config">
@@ -318,6 +321,13 @@
     <Compile Include="bPanel\Pages\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\BMCustom.Master.cs">
+      <DependentUpon>BMCustom.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\BMCustom.Master.designer.cs">
+      <DependentUpon>BMCustom.Master</DependentUpon>
+    </Compile>
     <Compile Include="Master\Buncis.Master.cs">
       <DependentUpon>Buncis.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -357,6 +367,13 @@
       <DependentUpon>NotFound.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tests\TestDefault.aspx.cs">
+      <DependentUpon>TestDefault.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tests\TestDefault.aspx.designer.cs">
+      <DependentUpon>TestDefault.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Component\LoginInfo.ascx.cs">
       <DependentUpon>LoginInfo.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -415,6 +432,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="services.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Master\BMCustom.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
