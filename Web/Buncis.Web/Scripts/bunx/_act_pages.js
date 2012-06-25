@@ -128,7 +128,7 @@
 	function showPopup(mode, pageId) {
 		$.colorbox({
 			height: 662,
-			width: 900,
+			width: 960,
 			title: "Add/Edit Page",
 			href: $(pages._elems.pageFormPopup),
 			inline: true,
