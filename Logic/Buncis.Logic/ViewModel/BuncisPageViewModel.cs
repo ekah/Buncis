@@ -9,6 +9,7 @@ namespace Buncis.Logic.ViewModel
 	{
 		public int PageId { get; set; }
 		public string PageName { get; set; }
+        public string PageMenuName { get; set; }
 		public string PageDescription { get; set; }
 		public string PageTeaser
 		{

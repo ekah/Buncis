@@ -22,5 +22,17 @@
         {
             return _resolver.Resolve<T>();
         }
+
+        /// <summary>
+        /// Resolves the specified argument name.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="argumentName">Name of the argument.</param>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
+        public static T Resolve<T>(string argumentName, int value)
+        {
+            return _resolver.ResolveWithIntArgument<T>(argumentName, value);
+        }
     }
 }

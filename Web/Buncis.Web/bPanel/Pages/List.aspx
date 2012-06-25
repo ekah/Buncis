@@ -21,6 +21,10 @@
                 txtPageMetaDescription: '#txtPageMetaDescription',
                 txtPageContent: '#txtPageContent',
                 chkIsHomePage: '#chkIsHomePage',
+                btnSavePage: '#btnSavePage',
+                btnEditPage: '#table-pages td a.edit',
+                btnDeletePage: '#table-pages td a.delete',
+                colorboxArea: '#cboxLoadedContent'
             };
         }(window._pages = window._pages || {}));
 
@@ -84,11 +88,11 @@
 					<div class="right">
 						<div class="form-item">
 							<label>Meta Title</label>
-							<input type="text" required="required" id="txtPageMetaTitle" class="medium"/>
+							<input type="text" required="required" id="txtPageMetaTitle" class="long"/>
 						</div>
 						<div class="form-item">
 							<label>Meta Description</label>
-							<input type="text" required="required" id="txtPageMetaDescription" class="medium"/>
+							<textarea required="required" id="txtPageMetaDescription" rows="5" cols="70" class="meta-desc"></textarea>
 						</div>
 						<div class="form-item">
 							<label>Do you want to make this page as your Home page?</label>

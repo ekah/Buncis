@@ -495,6 +495,11 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
 .form-page textarea {
 	overflow: scroll;
 }
+.form-page textarea.meta-desc 
+{
+    overflow-y: scroll;
+    overflow-x: hidden !important;
+}
 /* end form pages */
 
 

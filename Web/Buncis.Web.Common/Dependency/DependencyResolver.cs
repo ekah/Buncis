@@ -37,6 +37,11 @@ namespace Buncis.Web.Common.Dependency
             return ObjectFactory.Container.GetInstance<T>();
         }
 
+        public T ResolveWithIntArgument<T>(string argumentName, int argumentValue)
+        {
+            return ObjectFactory.Container.With(argumentName).EqualTo(argumentValue).GetInstance<T>();
+        }
+
         #endregion
     }
 }

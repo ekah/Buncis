@@ -4,14 +4,14 @@ namespace Buncis.Framework.Core.Repository
 {
     public interface IRepository<T> : IReadOnlyRepository<T> where T : class
     {
-        bool Add(T entity);
+        void Add(T entity);
 
-        bool Add(IEnumerable<T> items);
+        void Add(IEnumerable<T> items);
 
-        bool Update(T entity);
+        void Update(T entity);
 
-        bool Delete(T entity);
+        void Delete(T entity);
 
-        bool Delete(IEnumerable<T> entities);
+        void Delete(IEnumerable<T> entities);
     }
 }

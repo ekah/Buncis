@@ -6,33 +6,81 @@ using Buncis.Logic.ViewModel;
 using Omu.ValueInjecter;
 using Buncis.Framework.Services.Pages;
 using Buncis.Framework.Core.SupportClasses;
+using Buncis.Data.Domain.Pages;
 
 namespace Buncis.Logic.BusinessObject
 {
-    public class BuncisPages : BaseBusinessObject<BuncisPageViewModel>
+    public class BuncisPages : BaseClientBusinessObject<BuncisPageViewModel>
     {
         private readonly IDynamicPageService _dynamicPageService;
 
-        public int ClientId { get; set; }
-
-        public BuncisPages(IDynamicPageService dynamicPageService)
+        public BuncisPages(IDynamicPageService dynamicPageService, int clientId)
         {
             _dynamicPageService = dynamicPageService;
+            ClientId = clientId;
         }
 
         public override Response<BuncisPageViewModel> Insert()
         {
-            throw new NotImplementedException();
+            var response = new Response<BuncisPageViewModel>();
+            try
+            {
+                var page = new DynamicPage();
+                page.InjectFrom(ToInsert);
+                page.ClientId = ClientId;
+                page.DateCreated = DateTime.UtcNow;
+                _dynamicPageService.SavePage(page);
+
+                GetEditableByKey();
+
+                response.IsSuccess = true;
+                response.ResponseObject = Editable;
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = ex.Message;
+            }
+            return response;
         }
 
         public override Response<BuncisPageViewModel> Update()
         {
-            throw new NotImplementedException();
+            var response = new Response<BuncisPageViewModel>();
+            try
+            {
+                var page = new DynamicPage();
+                page.InjectFrom(Editable);
+                page.ClientId = ClientId;
+                page.DateLastUpdated = DateTime.UtcNow;
+                _dynamicPageService.SavePage(page);
+
+                GetEditableByKey();
+
+                response.IsSuccess = true;
+                response.ResponseObject = Editable;
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = ex.Message;
+            }
+            return response;
         }
 
         public override Response Delete()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var page = _dynamicPageService.GetPage(KeyToDelete);
+                page.IsDeleted = true;
+                _dynamicPageService.SavePage(page);
+                return new Response(true, string.Empty);
+            }
+            catch (Exception ex)
+            {
+                return new Response(false, ex.Message);
+            }
         }
 
         public override Response GetList()
@@ -45,7 +93,6 @@ namespace Buncis.Logic.BusinessObject
                 {
                     var viewModel = new BuncisPageViewModel();
                     viewModel.InjectFrom(o);
-
                     return viewModel;
                 }).ToList();
 
@@ -66,12 +113,26 @@ namespace Buncis.Logic.BusinessObject
 
         public override Response GetEditableByKey()
         {
-            throw new NotImplementedException();
+            var response = new Response();
+            try
+            {
+                var page = _dynamicPageService.GetPage(Key);
+                var viewModel = new BuncisPageViewModel();
+                viewModel.InjectFrom(page);
+                Editable = viewModel;
+                response.IsSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = ex.Message;
+            }
+            return response;
         }
 
         public override void SetupNewObjectToInsert()
         {
-            throw new NotImplementedException();
+            ToInsert = new BuncisPageViewModel();
         }
 
         public override bool ValidateBeforeInsert()

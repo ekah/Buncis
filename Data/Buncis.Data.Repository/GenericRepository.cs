@@ -19,40 +19,35 @@ namespace Buncis.Data.Repository
 
         #region IRepository<T> Members
 
-        public bool Add(T entity)
+        public void Add(T entity)
         {
             _session.Save(entity);
-            return true;
         }
 
-        public bool Add(IEnumerable<T> items)
+        public void Add(IEnumerable<T> items)
         {
             foreach (T item in items)
             {
                 _session.Save(item);
             }
-            return true;
         }
 
-        public bool Update(T entity)
+        public void Update(T entity)
         {
             _session.Update(entity);
-            return true;
         }
 
-        public bool Delete(T entity)
+        public void Delete(T entity)
         {
             _session.Delete(entity);
-            return true;
         }
 
-        public bool Delete(IEnumerable<T> entities)
+        public void Delete(IEnumerable<T> entities)
         {
             foreach (T entity in entities)
             {
                 _session.Delete(entity);
             }
-            return true;
         }
 
         public IQueryable<T> GetAll()

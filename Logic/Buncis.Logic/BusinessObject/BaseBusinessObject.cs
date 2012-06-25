@@ -8,9 +8,10 @@ namespace Buncis.Logic.BusinessObject
 {
     public abstract class BaseBusinessObject<T> where T : class
     {
-        public T ObjectToInsert { get; set; }
-        public T ObjectEditable { get; set; }
+        public T ToInsert { get; set; }
+        public T Editable { get; set; }
         public int Key { get; set; }
+        public int KeyToDelete { get; set; }
         public List<T> List { get; set; }
 
         public abstract Response<T> Insert();

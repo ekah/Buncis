@@ -18,8 +18,6 @@ namespace Buncis.Logic.Presenters.Pages
             : base(view)
         {
             _dynamicPageService = dynamicPageService;
-            _buncisPages = new BuncisPages(_dynamicPageService);
         }
-
     }
 }
