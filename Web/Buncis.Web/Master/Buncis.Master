@@ -20,6 +20,7 @@
     <script src="/Scripts/modules/iButton/jquery.ibutton.js" type="text/javascript"></script>
 	<script src="/Scripts/bunx/common.js" type="text/javascript"></script>
     <script src="/Scripts/modules/blockui/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="/Scripts/json2.js" type="text/javascript"></script>
     
 	<asp:ContentPlaceHolder ID="contentPlaceholderHead" runat="server">    	
 	</asp:ContentPlaceHolder>

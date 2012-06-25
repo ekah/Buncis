@@ -4,6 +4,8 @@
 
 	var listWebServiceUrl = '/webservices/pages.svc/getpages?clientid=' + pages._elems.clientId;
     var singleWebServiceUrl = '/webservices/pages.svc/getpage?clientid=' + pages._elems.clientId;
+    var deleteWebServiceUrl = '/webservices/pages.svc/deletepage';
+    
     var pTemplate = {
         DateCreated: "/Date(958775525000+0800)/",
         DateLastUpdated: "/Date(958775525000+0800)/",
@@ -46,6 +48,33 @@
 				}
 			},
 			error: function () {
+			}
+		});
+    }
+
+    function deletePage(pageId, callback) {
+        var oData = ({
+            clientId: _pages._elems.clientId,
+            pageId: pageId,                        
+        });
+        $(pages._elems.colorboxArea).block();
+		$.ajax({
+			type: "POST",
+			url: deleteWebServiceUrl,
+            data: JSON.stringify(oData),
+            dataType: 'json',
+            contentType: 'text/json',
+			success: function (result) {
+                $(pages._elems.colorboxArea).unblock();
+                if(result.d.IsSuccess) {
+                    $.colorbox.close();
+                }
+				else {
+                    // show error message here
+                }
+			},
+			error: function () {
+                $(pages._elems.colorboxArea).unblock();
 			}
 		});
     }
@@ -126,37 +155,65 @@
     }
 	
 	function showPopup(mode, pageId) {
-		$.colorbox({
-			height: 662,
-			width: 960,
-			title: "Add/Edit Page",
-			href: $(pages._elems.pageFormPopup),
-			inline: true,
-			overlayClose: false,
-			scrolling: false,
-			onLoad: function() {
-				
-			},
-			onComplete: function() {
-                if(mode === 'edit') {
-                    $(pages._elems.colorboxArea).block(); // block colorbox
-                    getPage(pageId, function(data) {
-                        bind(data);                            
-                        $(pages._elems.colorboxArea).unblock(); // unblock colorbox
-				        $(pages._elems.txtPageContent).htmlarea(); 
-                        $(pages._elems.tabsMenu).tabs(pages._elems.tabs);				                
-                        pages.validators = $(pages._elems.pageForm).validator();  
-                    });
+        if(mode === 'delete') {
+            $.colorbox({
+			    title: "Delete Page",
+			    href: $(pages._elems.deletePagePopup),
+			    inline: true,
+			    overlayClose: false,
+			    scrolling: false,
+                onClosed: function() {
+                    $(pages._elems.confirmDeletePage).removeAttr('rel');
+                },
+			    onLoad: function() {
+                    var td = $(pages._elems.tablePages).find('a[rel="' + pageId + '"]').parent();
+                    var tr = $(td).parent();
+                    var oTd = $(tr).find('td:nth-child(2)');
+                    var el = $(oTd).find('strong');
+                    var pageName = $(el).text();
+                    $(pages._elems.deletedPageName).text(pageName);
+                },
+			    onComplete: function() {
+                    $(pages._elems.confirmDeletePage).attr('rel', pageId);
                 }
-                else {
-                    resetForm();                    
-                    $(pages._elems.txtPageContent).htmlarea(); 
-				    $(pages._elems.tabsMenu).tabs(pages._elems.tabs);
-				    pages.validators = $(pages._elems.pageForm).validator();      
-                }
-			}
-		});
+		    });
+        }
+        else {
+		    $.colorbox({
+			    height: 662,
+			    width: 960,
+			    title: "Add/Edit Page",
+			    href: $(pages._elems.pageFormPopup),
+			    inline: true,
+			    overlayClose: false,
+			    scrolling: false,
+                onClosed: function() {
+                    $(pages._elems.txtPageContent).htmlarea('dispose'); 
+                },
+			    onLoad: function() { },
+			    onComplete: function() {
+                    if(mode === 'edit') {
+                        $(pages._elems.colorboxArea).block(); // block colorbox
+                        getPage(pageId, function(data) {
+                            bind(data);                        
+                            preparePopupForm();
+                            $(pages._elems.colorboxArea).unblock();			        
+                        });
+                    }
+                    else {
+                        resetForm();                    
+                        preparePopupForm();                       
+                    }
+			    }
+		    });
+        }
 	}
+
+    function preparePopupForm() {
+        $(pages._elems.txtPageContent).htmlarea(); 
+		$(pages._elems.tabsMenu).tabs(pages._elems.tabs);
+		pages.validators = $(pages._elems.pageForm).validator();  
+    }
 
     function setupEvents() {
     	$(pages._elems.btnAddPage).click(function () {
@@ -178,6 +235,16 @@
             var $self = $(this);
             var pageId = $self.attr('rel');
             showPopup('edit', pageId);
+        });
+        $(pages._elems.tablePages).delegate(pages._elems.btnDeletePage, 'click', function() {
+            var $self = $(this);
+            var pageId = $self.attr('rel');
+            showPopup('delete', pageId);
+        });
+        $(pages._elems.confirmDeletePage).click(function() {
+            var $self = $(this);
+            var pageId = $self.attr('rel');
+            deletePage(pageId);
         });
     }
 

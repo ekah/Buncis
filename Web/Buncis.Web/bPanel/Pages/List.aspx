@@ -13,6 +13,10 @@
                 btnAddPage: '.addPage',
                 pageFormPopup: '#form-page-popup',
                 pageForm: '.form-page',
+                deletePagePopup: '#delete-page-popup',
+                deletedPageName: '#d-pageName',
+                confirmDeletePage: '#deletePage-confirm',
+                cancelDeletePage: '#deletePage-cancel',
                 validated: '.form-page :input, .form-page :textarea',
                 txtPageName: '#txtPageName',
                 txtPageUrl: '#txtPageUrl',
@@ -63,8 +67,8 @@
 		<div id="form-page-popup">
 			<div class="form-page">
 				<div class="popup-button-wrapper buttonContainer">
-					<a href="javascript:void(0);" id="btnClose" class="button-action popup-button-close">Close</a>
-					<a href="javascript:void(0);" id="btnSavePage" class="button-action">Save</a>
+					<a href="javascript:void(0);" id="btnClose" class="button-whiteOnRed popup-button-close">Close</a>
+					<a href="javascript:void(0);" id="btnSavePage" class="button-whiteOnGreen">Save</a>
 				</div>
         		<ul class="page-tabs css-tabs skin2">
     				<li><a href="javascript:void(0)">Page Information</a></li>
@@ -83,31 +87,42 @@
 						<div class="form-item">
 							<label>Friendly Url</label>
 							<input type="text" required="required" id="txtPageUrl" class="medium"/>
-						</div>                
-					</div>
-					<div class="right">
-						<div class="form-item">
+						</div>    
+                        <div class="form-item">
+							<label>Do you want to make this page as your Home page?</label>
+							<input type="checkbox" required="required" id="chkIsHomePage" />
+						</div>
+                        <div class="form-item">
 							<label>Meta Title</label>
 							<input type="text" required="required" id="txtPageMetaTitle" class="long"/>
 						</div>
 						<div class="form-item">
 							<label>Meta Description</label>
 							<textarea required="required" id="txtPageMetaDescription" rows="5" cols="70" class="meta-desc"></textarea>
-						</div>
-						<div class="form-item">
-							<label>Do you want to make this page as your Home page?</label>
-							<input type="checkbox" required="required" id="chkIsHomePage" />
-						</div>
+						</div>						
+					</div>
+					<div class="right">						
 					</div>
 					<div class="clearFloats"></div>            
 				</div>
 				<div class="page-tab2 tabContent"> 
 					<div class="form-item">
 						<label>Content</label>
-						<div><textarea id="txtPageContent" class="htmlarea" rows="24" cols="130"></textarea></div>
+						<div><textarea id="txtPageContent" class="htmlarea" rows="23" cols="130"></textarea></div>
 					</div>
 				</div>
 			</div>
 		</div>
+    </div>
+
+    <!-- popup delete page -->
+    <div style="display:none">
+        <div id="delete-page-popup">
+            <p>Are you sure you want to delete page <strong><span id="d-pageName"></span></strong> ?</p>
+            <div class="popup-button-wrapper buttonContainer">
+        	    <a href="javascript:void(0);" id="deletePage-cancel" class="button-whiteOnBlack popup-button-close">No</a>
+                <a href="javascript:void(0);" id="deletePage-confirm" class="button-whiteOnRed">Yes</a>			    
+            </div>
+        </div>
     </div>
 </asp:Content>

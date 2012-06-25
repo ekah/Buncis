@@ -123,6 +123,7 @@
     <Content Include="bPanel\NotFound.aspx" />
     <Content Include="bPanel\Pages\List.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\bm\bg_bm_02.jpg" />
     <Content Include="Images\body_bg.png" />
     <Content Include="Images\body_bg2.png" />
@@ -235,6 +236,7 @@
     <Content Include="Images\menu_bg.jpg" />
     <Content Include="Images\menu_separator.png" />
     <Content Include="Scripts\bunx\common.js" />
+    <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\modules\blockui\jquery.blockUI.js" />
     <Content Include="Scripts\modules\colorbox\jquery.colorbox-min.js" />
     <Content Include="Scripts\modules\colorbox\jquery.colorbox.js" />
@@ -254,6 +256,7 @@
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
     <Content Include="Scripts\jquery.tools.min.js" />
+    <Content Include="Scripts\spin.js" />
     <Content Include="Styles\bm.css" />
     <Content Include="Styles\bun_x.css" />
     <Content Include="Styles\bun.css" />
