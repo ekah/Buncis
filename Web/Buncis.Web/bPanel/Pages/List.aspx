@@ -12,7 +12,7 @@
                 tablePages: '#table-pages',
                 btnAddPage: '.addPage',
                 pageFormPopup: '#form-page-popup',
-                pageForm: '.form-page',
+                pageFormElements: '.form-page .form-item :input',
                 deletePagePopup: '#delete-page-popup',
                 deletedPageName: '#d-pageName',
                 confirmDeletePage: '#deletePage-confirm',
@@ -68,7 +68,7 @@
 			<div class="form-page">
 				<div class="popup-button-wrapper buttonContainer">
 					<a href="javascript:void(0);" id="btnClose" class="button-whiteOnRed popup-button-close">Close</a>
-					<a href="javascript:void(0);" id="btnSavePage" class="button-whiteOnGreen">Save</a>
+					<a href="javascript:void(0);" id="btnSavePage" class="button-whiteOnGreen" rel="0">Save</a>
 				</div>
         		<ul class="page-tabs css-tabs skin2">
     				<li><a href="javascript:void(0)">Page Information</a></li>
@@ -78,27 +78,34 @@
 					<div class="left">
             			<div class="form-item">
             				<label>Name</label>
-    						<input type="text" required="required" id="txtPageName" class="medium"/>
+    						<input type="text" required="required" id="txtPageName" class="medium" 
+                                name="txtPageName" data-message="Page Name is required" />
             			</div>
     					<div class="form-item">
             				<label>Name displayed on Menu</label>
-    						<input type="text" required="required" id="txtPageMenuName" class="medium"/>
+    						<input type="text" required="required" id="txtPageMenuName" class="medium" 
+                                name="txtPageMenuName" data-message="Page Menu Name is required" />
             			</div>
 						<div class="form-item">
 							<label>Friendly Url</label>
-							<input type="text" required="required" id="txtPageUrl" class="medium"/>
+							<input type="text" required="required" id="txtPageUrl" class="medium" 
+                                name="txtPageUrl" data-message="Page Url is required" />
 						</div>    
                         <div class="form-item">
 							<label>Do you want to make this page as your Home page?</label>
-							<input type="checkbox" required="required" id="chkIsHomePage" />
+							<input type="checkbox" id="chkIsHomePage" />
 						</div>
                         <div class="form-item">
-							<label>Meta Title</label>
-							<input type="text" required="required" id="txtPageMetaTitle" class="long"/>
+							<label>Page Title</label>
+							<input type="text" required="required" id="txtPageMetaTitle" class="long" 
+                                name="txtPageMetaTitle" data-message="Page Title is required" />
 						</div>
 						<div class="form-item">
-							<label>Meta Description</label>
-							<textarea required="required" id="txtPageMetaDescription" rows="5" cols="70" class="meta-desc"></textarea>
+							<label>Page Description</label>
+							<textarea required="required" id="txtPageMetaDescription" name="txtPageMetaDescription"
+                                rows="5" cols="70" class="meta-desc"
+                                data-message="Page Description is required">
+                            </textarea>
 						</div>						
 					</div>
 					<div class="right">						
@@ -108,7 +115,12 @@
 				<div class="page-tab2 tabContent"> 
 					<div class="form-item">
 						<label>Content</label>
-						<div><textarea id="txtPageContent" class="htmlarea" rows="23" cols="130"></textarea></div>
+						<div>
+                            <textarea id="txtPageContent" class="htmlarea" name="txtPageContent"
+                                rows="23" cols="130" required="required"
+                                data-message="Page Content is required">
+                            </textarea>
+                        </div>
 					</div>
 				</div>
 			</div>

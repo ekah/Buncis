@@ -12,7 +12,7 @@ a {
 }
 
 input:focus, textarea:focus {
-    background-color: #f7f7f7;
+    background-color: #ececec;
 }
 
 
@@ -352,6 +352,7 @@ label.long
     border-radius: 4px;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
+    z-index: 99999;
 }
 
 .error p
@@ -586,6 +587,10 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
     border-bottom: solid 1px #666;
     padding: 10px;
     background-color: #dbdbdb;
+    -moz-border-radius: 0px 0px 4px 4px;
+    -webkit-border-radius: 0px 0px 4px 4px;
+    border-radius: 0px 0px 4px 4px;
+
 }
 /* end tabs */
 
@@ -622,10 +627,34 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
     background-repeat: no-repeat;
 }
 
+/* colorbox loading */
 .loading 
 {    
     font-weight: bold;
-    color: #732c7b;
+    background-color: #cdcdcd;
     margin: 0px;
-    padding: 0px;
+    padding: 10px;
+    height: 32px;
+    width: 160px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #444;
 }
+
+.loading span 
+{
+    display:block;
+    float: left;	
+    height: 32px;
+    padding: 0px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+.loading img 
+{
+    float:left;
+}
+/* end colorbox loading */

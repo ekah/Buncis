@@ -80,7 +80,8 @@
 		$.blockUI.defaults = {
 			// message displayed when blocking (use null for no message)
 			//message:  '<h1>Please wait...</h1>',
-            message:  '<p class="loading">Loading..</p><br/><img src="/images/ajax-loader.gif"/>',
+            //message:  '<p class="loading">Loading..</p><br/><img src="/images/ajax-loader.gif"/>',
+            message:  '<div class="loading"><span>Loading..</span><img src="/images/ajax-loader-2.gif" /></div>',
 
 			title: null,	  // title string; only used when theme == true
 			draggable: true,  // only used when theme == true (requires jquery-ui.js to be loaded)
@@ -93,9 +94,11 @@
 			css: {
 				padding:	0,
 				margin:		0,
-				width:		'30%',
-				top:		'40%',
-				left:		'35%',
+				//width:		'30%',
+				//top:		'40%',
+				//left:		'35%',
+                top:        '50%',
+                left:		'50%',
 				textAlign:	'center',
 				color:		'#000',
 				//border:		'3px solid #aaa',

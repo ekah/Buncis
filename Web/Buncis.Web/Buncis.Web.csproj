@@ -123,6 +123,7 @@
     <Content Include="bPanel\NotFound.aspx" />
     <Content Include="bPanel\Pages\List.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Images\ajax-loader-2.gif" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\bm\bg_bm_02.jpg" />
     <Content Include="Images\body_bg.png" />
@@ -241,6 +242,7 @@
     <Content Include="Scripts\modules\colorbox\jquery.colorbox-min.js" />
     <Content Include="Scripts\modules\colorbox\jquery.colorbox.js" />
     <Content Include="Scripts\bunx\_act_pages.js" />
+    <Content Include="Scripts\modules\dataTables\jquery.dataTables.plugins.js" />
     <Content Include="Scripts\modules\dataTables\jquery.dataTables.js" />
     <Content Include="Scripts\modules\dataTables\jquery.dataTables.min.js" />
     <Content Include="Scripts\modules\iButton\jquery.ibutton.js" />
