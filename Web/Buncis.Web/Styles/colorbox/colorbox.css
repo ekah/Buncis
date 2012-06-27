@@ -31,12 +31,12 @@
 #cboxTitle
 {
     margin: 0;
-    background-color: #cecece;
+    background-color: #4C3843;
     height: 20px;
-    padding: 5px 0px 0px 0px;    
-    color: #000 !important;
+    padding: 10px 0px;    
+    color: #FFD328 !important;
     font-weight: bold;
-    font-size:13px;    
+    font-size:14px;    
     border-radius: 4px;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -145,7 +145,7 @@
 }
 #cboxLoadedContent
 {
-	margin-top: 30px;
+	margin-top: 45px;
     margin-bottom: 10px;
 }
 #cboxTitle

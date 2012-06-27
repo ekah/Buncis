@@ -11,6 +11,7 @@
 	<link href="/styles/bun_x.css" rel="stylesheet" type="text/css" />
     <link href="/Styles/iButton/jquery.ibutton.css" rel="stylesheet" type="text/css" />
 	<link href="/Styles/tools/tabs-no-images.css" rel="stylesheet" type="text/css" />
+	<link href="/Styles/smartWizard/smart_wizard.css" rel="stylesheet" type="text/css" />
     
     <script src="/scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="/Scripts/jquery.tools.min.js" type="text/javascript"></script>    
@@ -20,7 +21,8 @@
     <script src="/Scripts/modules/iButton/jquery.ibutton.min.js" type="text/javascript"></script>
 	<script src="/Scripts/bunx/common.js" type="text/javascript"></script>
     <script src="/Scripts/modules/blockui/jquery.blockUI.js" type="text/javascript"></script>
-    <script src="/Scripts/json2.js" type="text/javascript"></script>
+	<script src="/Scripts/json2.js" type="text/javascript"></script>
+	<script src="/Scripts/modules/smartWizard/jquery.smartWizard-2.0.js" type="text/javascript"></script>
     
 	<asp:ContentPlaceHolder ID="contentPlaceholderHead" runat="server">    	
 	</asp:ContentPlaceHolder>
@@ -40,7 +42,9 @@
 		<asp:ContentPlaceHolder ID="contentPlaceholderMain" runat="server">
 		</asp:ContentPlaceHolder>
 	</div>
-	<div id="errors"></div>
+	<div id="errors">
+		<h3>Oops! Please fix this first</h3>
+	</div>
 	</form>
 </body>
 </html>

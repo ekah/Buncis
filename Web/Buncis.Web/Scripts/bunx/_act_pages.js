@@ -86,7 +86,7 @@
     }
 
     function savePage(pageId) {
-        pages.validators.data("validator").checkValidity();
+        pages.form.validators.data("validator").checkValidity();
     }
 
 	function render(data) {
@@ -201,7 +201,7 @@
 			    overlayClose: false,
 			    scrolling: false,
                 onClosed: function() {
-                    $(pages._elems.txtPageContent).htmlarea('dispose'); 
+                    destroyForm();
                 },
 			    onLoad: function() { },
 			    onComplete: function() {
@@ -223,6 +223,7 @@
 	}
 
     function preparePopupForm() {
+    	/*
 		$(pages._elems.tabsMenu).tabs(pages._elems.tabs, {
 			onClick: function (event, tabIndex) {
 				if($(pages._elems.txtPageContent).is(':visible')) {
@@ -230,11 +231,35 @@
 					$(pages._elems.txtPageContent).htmlarea();
 				}
 			}
-		});
-		pages.validators = $(pages._elems.pageFormElements).validator({
-			effect: 'floatingWall'
+		});*/
+    	if(!pages.form.wizardHasBeenInitialized) {
+    		pages.form.wizard = $(pages._elems.pageWizards).smartWizard({
+    			enableAllSteps: true,
+    			enableFinishButton: false, // makes finish button enabled always
+    			labelNext:'', // label for Next button
+    			labelPrevious:'', // label for Previous button
+    			labelFinish:'',  // label for Finish button
+    			onShowStep: function (step) {
+    				if($(pages._elems.txtPageContent).is(':visible')) {
+						$(pages._elems.txtPageContent).htmlarea('dispose'); // redispose
+						$(pages._elems.txtPageContent).htmlarea();
+					}
+    			}
+    		});
+    		pages.form.wizardHasBeenInitialized = true;
+    	}
+		pages.form.validators = $(pages._elems.pageFormElements).validator({
+			effect: 'floatingWall',
+			container: window._elems.errorContainer,
 		});  
     }
+	
+	function destroyForm() {
+		$(pages._elems.txtPageContent).htmlarea('dispose'); 
+        var api = _pages.form.validators.data("validator");
+		api.destroy();
+		pages.form.validators = {};
+	}
 
     function setupEvents() {
     	$(pages._elems.btnAddPage).click(function () {
@@ -278,7 +303,11 @@
 		getPages(render);
         setupEvents();
 	};
-    pages.validators = {};
+	pages.form = {
+		wizard: {},
+		wizardHasBeenInitialized: false,
+		validators: {},
+	};
     pages.pageTable = {};
 
 } (window._pages = window._pages || {}));

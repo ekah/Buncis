@@ -3,12 +3,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="contentPlaceholderHead" runat="server">
     <script type="text/javascript">
-
+   	
         (function (pages) {
             pages._elems = {
                 clientId: <%= CurrentProfile.ClientId %>,
-                tabsMenu: '.page-tabs',
-                tabs: '.form-page > div.tabContent',
+                pageWizards: '#page-wizard',
                 tablePages: '#table-pages',
                 btnAddPage: '.addPage',
                 pageFormPopup: '#form-page-popup',
@@ -70,57 +69,59 @@
 					<a href="javascript:void(0);" id="btnClose" class="button-whiteOnRed popup-button-close">Close</a>
 					<a href="javascript:void(0);" id="btnSavePage" class="button-whiteOnGreen" rel="0">Save</a>
 				</div>
-        		<ul class="page-tabs css-tabs skin2">
-    				<li><a href="javascript:void(0)">Page Information</a></li>
-					<li><a href="javascript:void(0)">Page Content</a></li>
-    			</ul>
-        		<div class="page-tab1 tabContent">
-					<div class="left">
-            			<div class="form-item">
-            				<label>Name</label>
-    						<input type="text" required="required" id="txtPageName" class="medium" 
-                                name="txtPageName" data-message="Page Name is required" />
-            			</div>
-    					<div class="form-item">
-            				<label>Name displayed on Menu</label>
-    						<input type="text" required="required" id="txtPageMenuName" class="medium" 
-                                name="txtPageMenuName" data-message="Page Menu Name is required" />
-            			</div>
-						<div class="form-item">
-							<label>Friendly Url</label>
-							<input type="text" required="required" id="txtPageUrl" class="medium" 
-                                name="txtPageUrl" data-message="Page Url is required" />
-						</div>    
-                        <div class="form-item">
-							<label>Do you want to make this page as your Home page?</label>
-							<input type="checkbox" id="chkIsHomePage" />
+				<div id="page-wizard" class="swMain">
+        			<ul class="page-tabs">
+    					<li><a href="#page-tab1">Section 1: Page Information</a></li>
+						<li><a href="#page-tab2">Section 2: Page Content</a></li>
+    				</ul>
+        			<div id="page-tab1" class="page-tab1">
+						<div class="left">
+            				<div class="form-item">
+            					<label>Name</label>
+    							<input type="text" required="required" id="txtPageName" class="medium" 
+									name="txtPageName" data-message="Page Name is required" />
+            				</div>
+    						<div class="form-item">
+            					<label>Name displayed on Menu</label>
+    							<input type="text" required="required" id="txtPageMenuName" class="medium" 
+									name="txtPageMenuName" data-message="Page Menu Name is required" />
+            				</div>
+							<div class="form-item">
+								<label>Friendly Url</label>
+								<input type="text" required="required" id="txtPageUrl" class="medium" 
+									name="txtPageUrl" data-message="Page Url is required" />
+							</div>    
+							<div class="form-item">
+								<label>Do you want to make this page as your Home page?</label>
+								<input type="checkbox" id="chkIsHomePage" />
+							</div>				
 						</div>
-                        <div class="form-item">
-							<label>Page Title</label>
-							<input type="text" required="required" id="txtPageMetaTitle" class="long" 
-                                name="txtPageMetaTitle" data-message="Page Title is required" />
+						<div class="right">
+							<div class="form-item">
+								<label>Page Title</label>
+								<input type="text" required="required" id="txtPageMetaTitle" class="long" 
+									name="txtPageMetaTitle" data-message="Page Title is required" />
+							</div>
+							<div class="form-item">
+								<label>Page Description</label>
+								<textarea required="required" id="txtPageMetaDescription" name="txtPageMetaDescription"
+									style="width: 400px; height: 80px" class="meta-desc"
+									data-message="Page Description is required">
+								</textarea>
+							</div>		
 						</div>
+						<div class="clearFloats"></div>            
+					</div>
+					<div id="page-tab2" class="page-tab2"> 
 						<div class="form-item">
-							<label>Page Description</label>
-							<textarea required="required" id="txtPageMetaDescription" name="txtPageMetaDescription"
-                                style="width: 500px; height: 80px" class="meta-desc"
-                                data-message="Page Description is required">
-                            </textarea>
-						</div>						
-					</div>
-					<div class="right">						
-					</div>
-					<div class="clearFloats"></div>            
-				</div>
-				<div class="page-tab2 tabContent"> 
-					<div class="form-item">
-						<label>Content</label>
-						<div>
-                            <textarea id="txtPageContent" class="htmlarea" name="txtPageContent"
-                                style="width: 870px; height: 400px" required="required"
-                                data-message="Page Content is required">
-                            </textarea>
-                        </div>
+							<label>Content</label>
+							<div>
+								<textarea id="txtPageContent" class="htmlarea" name="txtPageContent"
+									style="width: 870px; height: 350px" required="required"
+									data-message="Page Content is required">
+								</textarea>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
