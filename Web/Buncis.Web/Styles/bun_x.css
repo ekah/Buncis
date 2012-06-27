@@ -11,10 +11,18 @@ a {
     text-decoration: none;
 }
 
-input:focus, textarea:focus {
-    background-color: #ececec;
+input, textarea {
+	box-shadow: 0 0 2px #aeaeae;	
+	-webkit-box-shadow: 0 0 2px #aeaeae;	
+	-moz-box-shadow: 0 0 2px #aeaeae;	
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
 }
 
+input:focus, textarea:focus {
+    background-color: #FFF8E3;    
+}
 
 #topBarWrapper
 {
@@ -273,7 +281,7 @@ label.long
 	font-weight: bold;
     display: block;
     background-color: #9a3334;
-	border: solid 1px #bbb;
+	border: solid 1px #333;
     color: #fff;
     padding: 0.5em 10px;
     height: 2em;
@@ -291,7 +299,7 @@ label.long
     font-weight: bold;
     display: block;
     background-color: #2c6700;
-	border: solid 1px #bbb;
+	border: solid 1px #333;
     color: #fff;
     padding: 0.5em 10px;
     height: 2em;
@@ -563,7 +571,7 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
 }
 .form-page textarea.meta-desc 
 {
-    overflow-y: scroll;
+    overflow-y: auto !important;
     overflow-x: hidden !important;
 }
 /* end form pages */
@@ -658,3 +666,10 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
     float:left;
 }
 /* end colorbox loading */
+
+
+/* custom error summary */
+.errors {
+	display: none;
+}
+/* end custom error summary */

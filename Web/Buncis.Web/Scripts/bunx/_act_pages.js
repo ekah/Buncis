@@ -86,7 +86,6 @@
     }
 
     function savePage(pageId) {
-        console.log(pageId);
         pages.validators.data("validator").checkValidity();
     }
 
@@ -153,7 +152,6 @@
         else {
             $(pages._elems.chkIsHomePage).removeAttr('checked');
         }
-        $(pages._elems.txtPageContent).htmlarea('updateHtmlArea');
     }
 
     function resetForm() {
@@ -164,7 +162,6 @@
         $(pages._elems.txtPageMetaDescription).val('');
         $(pages._elems.txtPageContent).val('');
         $(pages._elems.chkIsHomePage).removeAttr('checked');
-        $(pages._elems.txtPageContent).htmlarea('updateHtmlArea');
         $(pages._elems.btnSavePage).attr('rel', '0');
     }
 	
@@ -226,10 +223,17 @@
 	}
 
     function preparePopupForm() {
-        $(pages._elems.txtPageContent).htmlarea('dispose'); // redispose
-        $(pages._elems.txtPageContent).htmlarea();
-		$(pages._elems.tabsMenu).tabs(pages._elems.tabs);
-		pages.validators = $(pages._elems.pageFormElements).validator();  
+		$(pages._elems.tabsMenu).tabs(pages._elems.tabs, {
+			onClick: function (event, tabIndex) {
+				if($(pages._elems.txtPageContent).is(':visible')) {
+					$(pages._elems.txtPageContent).htmlarea('dispose'); // redispose
+					$(pages._elems.txtPageContent).htmlarea();
+				}
+			}
+		});
+		pages.validators = $(pages._elems.pageFormElements).validator({
+			effect: 'floatingWall'
+		});  
     }
 
     function setupEvents() {

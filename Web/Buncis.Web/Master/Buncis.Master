@@ -40,6 +40,7 @@
 		<asp:ContentPlaceHolder ID="contentPlaceholderMain" runat="server">
 		</asp:ContentPlaceHolder>
 	</div>
+	<div id="errors"></div>
 	</form>
 </body>
 </html>

@@ -103,7 +103,7 @@
 						<div class="form-item">
 							<label>Page Description</label>
 							<textarea required="required" id="txtPageMetaDescription" name="txtPageMetaDescription"
-                                rows="5" cols="70" class="meta-desc"
+                                style="width: 500px; height: 80px" class="meta-desc"
                                 data-message="Page Description is required">
                             </textarea>
 						</div>						
@@ -117,7 +117,7 @@
 						<label>Content</label>
 						<div>
                             <textarea id="txtPageContent" class="htmlarea" name="txtPageContent"
-                                rows="23" cols="130" required="required"
+                                style="width: 870px; height: 400px" required="required"
                                 data-message="Page Content is required">
                             </textarea>
                         </div>
