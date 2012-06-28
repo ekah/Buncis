@@ -70,17 +70,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessObject\BaseClientBusinessObject.cs" />
-    <Compile Include="BusinessObject\BuncisPages.cs" />
-    <Compile Include="BusinessObject\BaseBusinessObject.cs" />
     <Compile Include="CustomEventArgs\BuncisPageListingEventArgs.cs" />
+    <Compile Include="DataTransferObject\oBuncisPage.cs" />
     <Compile Include="Models\Pages\BuncisPageListingModel.cs" />
     <Compile Include="Models\Pages\DynamicPageModel.cs" />
     <Compile Include="Presenters\LogicPresenter.cs" />
     <Compile Include="Presenters\Pages\BuncisPageListingPresenter.cs" />
     <Compile Include="Presenters\Pages\DynamicPagePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\BuncisPageViewModel.cs" />
     <Compile Include="Views\Pages\IDynamicPageView.cs" />
     <Compile Include="Views\Pages\IBuncisPageListingView.cs" />
   </ItemGroup>
@@ -97,6 +94,10 @@
     <ProjectReference Include="..\..\Data\Buncis.Data.Domain\Buncis.Data.Domain.csproj">
       <Project>{28221BDC-8577-4D64-A630-540ADC544B04}</Project>
       <Name>Buncis.Data.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Buncis.Services\Buncis.Services.csproj">
+      <Project>{3EB19167-CDB0-429F-91BC-796C8D744552}</Project>
+      <Name>Buncis.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Web\Buncis.Web.Common\Buncis.Web.Common.csproj">
       <Project>{04FF072D-8A48-4DB8-AD00-7F7317FA2DE7}</Project>

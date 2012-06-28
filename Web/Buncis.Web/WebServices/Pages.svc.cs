@@ -6,68 +6,84 @@ using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.Text;
 using Buncis.Framework.Core.SupportClasses;
-using Buncis.Logic.ViewModel;
-using Buncis.Framework.Services.Pages;
 using Buncis.Framework.Core.Infrastructure.IoC;
 using Omu.ValueInjecter;
 using Buncis.Logic.Presenters.Pages;
-using Buncis.Logic.BusinessObject;
 using uNhAddIns.WCF;
+using Buncis.Logic.DataTransferObject;
+using Buncis.Framework.Core.Services.Pages;
 
 namespace Buncis.Web.WebServices
 {
-    public class Pages : BaseWebService, IPages
-    {
-        public Response<List<BuncisPageViewModel>> GetPages(int clientId)
-        {
-            var bo = IoC.Resolve<BuncisPages>("clientId", clientId);
-            var boResponse = bo.GetList();
-            bo.List = bo.List.OrderByDescending(p => p.IsHomePage).ThenBy(o => o.DateLastUpdated).ToList();
+	public class Pages : BaseWebService, IPages
+	{
+		//public Response UpdatePage(int clientId, BOBuncisPage viewModel)
+		//{
+		//    var bo = IoC.Resolve<BuncisPages>("clientId", clientId);
+		//    bo.Editable = viewModel;
+		//    var boResponse = bo.Update();
+		//    return new Response(boResponse.IsSuccess, boResponse.Message);
+		//}
 
-            var response = new Response<List<BuncisPageViewModel>>();
-            response.ResponseObject = bo.List;
-            response.IsSuccess = boResponse.IsSuccess;
-            response.Message = boResponse.Message;
+		//public Response DeletePage(int clientId, int pageId)
+		//{
+		//    var bo = IoC.Resolve<BuncisPages>("clientId", clientId);
+		//    bo.KeyToDelete = pageId;
+		//    var boResponse = bo.Delete();
+		//    return new Response(boResponse.IsSuccess, boResponse.Message);
+		//}
 
-            return response;
-        }
+		//public Response InsertPage(int clientId, BOBuncisPage viewModel)
+		//{
+		//    var bo = IoC.Resolve<BuncisPages>("clientId", clientId);
+		//    bo.ToInsert = viewModel;
+		//    var boResponse = bo.Insert();
+		//    return new Response(boResponse.IsSuccess, boResponse.Message);
+		//}
 
-        public Response<BuncisPageViewModel> GetPage(int clientId, int pageId)
-        {
-            var bo = IoC.Resolve<BuncisPages>("clientId", clientId);
-            bo.Key = pageId;
+		public Response<IEnumerable<oBuncisPage>> GetPages(int clientId)
+		{
+			var service = IoC.Resolve<IDynamicPageService>();
+			var pages = service.GetPagesNotDeleted(clientId)
+				.OrderByDescending(p => p.IsHomePage)
+				.ThenBy(o => o.DateLastUpdated)
+				.ToList();
 
-            var boResponse = bo.GetEditableByKey();
-            var response = new Response<BuncisPageViewModel>();
-            response.IsSuccess = boResponse.IsSuccess;
-            response.Message = boResponse.Message;
-            response.ResponseObject = bo.Editable;
+			var dto = pages.Select(o => (oBuncisPage)new oBuncisPage().InjectFrom(o)).ToList();
+			var response = new Response<IEnumerable<oBuncisPage>>();
+			response.ResponseObject = dto;
+			response.IsSuccess = true;
+			response.Message = string.Empty;
 
-            return response;
-        }
+			return response;
+		}
 
-        public Response UpdatePage(int clientId, BuncisPageViewModel viewModel)
-        {
-            var bo = IoC.Resolve<BuncisPages>("clientId", clientId);
-            bo.Editable = viewModel;
-            var boResponse = bo.Update();
-            return new Response(boResponse.IsSuccess, boResponse.Message);
-        }
+		public Response<oBuncisPage> GetPage(int clientId, int pageId)
+		{
+			var service = IoC.Resolve<IDynamicPageService>();
+			var page = service.GetPage(pageId);
 
-        public Response DeletePage(int clientId, int pageId)
-        {
-            var bo = IoC.Resolve<BuncisPages>("clientId", clientId);
-            bo.KeyToDelete = pageId;
-            var boResponse = bo.Delete();
-            return new Response(boResponse.IsSuccess, boResponse.Message);
-        }
+			var response = new Response<oBuncisPage>();
+			response.IsSuccess = true;
+			response.Message = string.Empty;
+			response.ResponseObject = (oBuncisPage)new oBuncisPage().InjectFrom(page);
 
-        public Response InsertPage(int clientId, BuncisPageViewModel viewModel)
-        {
-            var bo = IoC.Resolve<BuncisPages>("clientId", clientId);
-            bo.ToInsert = viewModel;
-            var boResponse = bo.Insert();
-            return new Response(boResponse.IsSuccess, boResponse.Message);
-        }
-    }
+			return response;
+		}
+
+		public Response UpdatePage(int clientId, oBuncisPage viewModel)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Response DeletePage(int clientId, int pageId)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Response InsertPage(int clientId, oBuncisPage viewModel)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

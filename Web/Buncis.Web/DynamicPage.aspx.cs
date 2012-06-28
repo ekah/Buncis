@@ -11,36 +11,36 @@ using Buncis.Web.Common.Exceptions;
 
 namespace Buncis.Web
 {
-    [PresenterBinding(typeof(DynamicPagePresenter), ViewType = typeof(IDynamicPageView))]
-    public partial class DynamicLogicPage : BaseLogicPage<DynamicPageModel>, IDynamicPageView
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            try
-            {
-            InitializeView();
-            }
-            catch (PageNotFoundException pnfex)
-            {
-                Response.StatusCode = 404;
-            }
-            catch (Exception ex)
-            {
-            }
-        }
+	[PresenterBinding(typeof(DynamicPagePresenter), ViewType = typeof(IDynamicPageView))]
+	public partial class DynamicLogicPage : BaseLogicPage<DynamicPageModel>, IDynamicPageView
+	{
+		protected void Page_Load(object sender, EventArgs e)
+		{
+			try
+			{
+				InitializeView();
+			}
+			catch (PageNotFoundException pnfex)
+			{
+				Response.StatusCode = 404;
+			}
+			catch (Exception ex)
+			{
+			}
+		}
 
-        #region IBindableView<DynamicPageModel> Members
+		#region IBindableView<DynamicPageModel> Members
 
-        public void BindViewData()
-        {
-            Page.Title = Model.MetaTitle;
-            Page.MetaDescription = Model.MetaDescription;
+		public void BindViewData()
+		{
+			Page.Title = Model.DynamicPage.MetaTitle;
+			Page.MetaDescription = Model.DynamicPage.MetaDescription;
 
-            var controlResolver = IoC.Resolve<IDynamicControlsResolver>();
-            controlResolver.ResolveDynamicControls(plcBodyContent, Model.PageContent);
-        }
+			var controlResolver = IoC.Resolve<IDynamicControlsResolver>();
+			controlResolver.ResolveDynamicControls(plcBodyContent, Model.DynamicPage.PageContent);
+		}
 
-        #endregion
+		#endregion
 
-    }
+	}
 }

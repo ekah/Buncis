@@ -1,8 +1,9 @@
 ﻿using System;
+using Buncis.Framework.Core.Services.Pages;
+using Buncis.Framework.Core.ViewModel;
 using Buncis.Web.Common.Utility;
 using Omu.ValueInjecter;
 using Buncis.Logic.Views.Pages;
-using Buncis.Framework.Services.Pages;
 using Buncis.Framework.Core.Resources;
 using Buncis.Web.Common.Exceptions;
 
@@ -27,7 +28,8 @@ namespace Buncis.Logic.Presenters.Pages
                 throw new PageNotFoundException("The Page is not found in database", pageId);
             }
 
-            View.Model.InjectFrom(pageFromDb);
+			View.Model.DynamicPage = new vBuncisPage();
+            View.Model.DynamicPage.InjectFrom(pageFromDb);
             View.BindViewData();
         }
     }

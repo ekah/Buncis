@@ -7,19 +7,18 @@
     var deleteWebServiceUrl = '/webservices/pages.svc/deletepage';
     
     var pTemplate = {
-        DateCreated: "/Date(958775525000+0800)/",
-        DateLastUpdated: "/Date(958775525000+0800)/",
+        PageId: 0,
+        PageName: "",
+        PageMenuName: "",
+        PageDescription: "",
+        PageTeaser: "",
+        PageContent: "",
+        MetaTitle: "",
+		MetaDescription: "",
         DisplayDateCreated: "",
         DisplayDateLastUpdated: "",
         FriendlyUrl: "",
         IsHomePage: false,
-        MetaDescription: "",
-        MetaTitle: "",
-        PageContent: "",
-        PageDescription: "",
-        PageId: 0,
-        PageName: "",
-        PageTeaser: ""
     };
 
 	function getPages(callback) {

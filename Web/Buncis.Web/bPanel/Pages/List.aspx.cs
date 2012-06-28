@@ -8,7 +8,6 @@ using Buncis.Logic.Presenters.Pages;
 using WebFormsMvp;
 using Buncis.Logic.CustomEventArgs;
 using System.Web.UI.HtmlControls;
-using Buncis.Logic.ViewModel;
 
 namespace Buncis.Web.bPanel.Pages
 {

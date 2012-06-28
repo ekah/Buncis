@@ -1,4 +1,4 @@
-﻿using Buncis.Framework.Services.Pages;
+﻿using Buncis.Framework.Core.Services.Pages;
 using Buncis.Services.Pages;
 using StructureMap.Configuration.DSL;
 using StructureMap.Graph;

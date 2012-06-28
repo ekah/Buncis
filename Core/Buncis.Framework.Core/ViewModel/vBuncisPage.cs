@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Linq;
 using Buncis.Framework.Infrastructure.Extensions;
-using System.Collections.Generic;
 
-namespace Buncis.Logic.ViewModel
+namespace Buncis.Framework.Core.ViewModel
 {
-	public class BuncisPageViewModel
+	public class vBuncisPage
 	{
 		public int PageId { get; set; }
 		public string PageName { get; set; }
@@ -21,7 +20,6 @@ namespace Buncis.Logic.ViewModel
 				var spaced = taken.Select(o => o + " ");
 				return string.Format("{0}{1}", string.Concat(spaced), words.Length > num ? ".." : "");
 			}
-			set { }
 		}
 		public string PageContent { get; set; }
 		public string MetaTitle { get; set; }
@@ -34,7 +32,6 @@ namespace Buncis.Logic.ViewModel
 			{
 				return DateCreated.ToLongFormatString();
 			}
-			set { }
 		}
 		public string DisplayDateLastUpdated
 		{
@@ -42,7 +39,6 @@ namespace Buncis.Logic.ViewModel
 			{
 				return DateLastUpdated.ToLongFormatString();
 			}
-			set { }
 		}
 		public string FriendlyUrl { get; set; }
 		public bool IsHomePage
@@ -51,7 +47,6 @@ namespace Buncis.Logic.ViewModel
 			{
 				return FriendlyUrl.Equals("/", StringComparison.OrdinalIgnoreCase);
 			}
-			set { }
 		}
 	}
 }

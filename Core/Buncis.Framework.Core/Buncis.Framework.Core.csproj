@@ -99,8 +99,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\ValidationDictionary.cs" />
     <Compile Include="Services\Pages\IDynamicPageService.cs" />
     <Compile Include="SupportClasses\Response.cs" />
+    <Compile Include="ViewModel\vBuncisPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

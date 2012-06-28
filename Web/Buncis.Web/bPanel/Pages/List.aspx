@@ -105,7 +105,7 @@
 							<div class="form-item">
 								<label>Page Description</label>
 								<textarea required="required" id="txtPageMetaDescription" name="txtPageMetaDescription"
-									style="width: 400px; height: 80px" class="meta-desc"
+									style="width: 400px; height: 150px" class="meta-desc"
 									data-message="Page Description is required">
 								</textarea>
 							</div>		
