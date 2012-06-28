@@ -2,30 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Buncis.Framework.Core.Services;
 using Buncis.Framework.Core.ViewModel;
+using Buncis.Framework.Core.Services;
 
 namespace Buncis.Services.Validator.Pages
 {
-	public class OnSavePageValidator : ValidationDictionary<vBuncisPage>
-	{
-		public OnSavePageValidator(vBuncisPage objectToValidate)
-			: base(objectToValidate)
-		{
+    public class OnDeletePageValidator : ValidationDictionary<vBuncisPage>
+    {
+        public OnDeletePageValidator(vBuncisPage objectToValidate)
+            : base(objectToValidate)
+        {
 
-		}
+        }
 
-		protected override void ValidationProcess()
-		{
+        protected override void ValidationProcess()
+        {
             if (validatedObject != null)
             {
-                // logic before save here
                 isValid = true;
             }
             else
             {
                 isValid = false;
             }
-		}
-	}
+        }
+    }
 }

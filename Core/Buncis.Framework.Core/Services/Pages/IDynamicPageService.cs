@@ -8,6 +8,7 @@ namespace Buncis.Framework.Core.Services.Pages
 		vBuncisPage GetPageByFriendlyUrl(int clientId, string friendlyUrl);
 		vBuncisPage GetPage(int pageId);
 		IEnumerable<vBuncisPage> GetPagesNotDeleted(int clientId);
-		ValidationDictionary<vBuncisPage> SavePage(vBuncisPage page);
+		ValidationDictionary<vBuncisPage> SavePage(int clientId, vBuncisPage page);
+        ValidationDictionary<vBuncisPage> DeletePage(int pageId);
 	}
 }

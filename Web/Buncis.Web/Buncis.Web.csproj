@@ -265,10 +265,10 @@
     <Content Include="Scripts\jquery-1.7.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
-    <Content Include="Scripts\jquery.tools.min.js" />
     <Content Include="Scripts\modules\smartWizard\jquery.smartWizard-2.0.js" />
     <Content Include="Scripts\modules\smartWizard\jquery.smartWizard-2.0.min.js" />
     <Content Include="Scripts\spin.js" />
+    <Content Include="Scripts\validator.js" />
     <Content Include="Styles\bm.css" />
     <Content Include="Styles\bun_x.css" />
     <Content Include="Styles\bun.css" />

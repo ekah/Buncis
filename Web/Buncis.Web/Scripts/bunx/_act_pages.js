@@ -5,6 +5,8 @@
 	var listWebServiceUrl = '/webservices/pages.svc/getpages?clientid=' + pages._elems.clientId;
     var singleWebServiceUrl = '/webservices/pages.svc/getpage?clientid=' + pages._elems.clientId;
     var deleteWebServiceUrl = '/webservices/pages.svc/deletepage';
+    var updateWebServiceUrl = '/webservices/pages.svc/updatepage';
+    var insertWebServiceUrl = '/webservices/pages.svc/insertpage';
     
     var pTemplate = {
         PageId: 0,
@@ -85,7 +87,55 @@
     }
 
     function savePage(pageId) {
-        pages.form.validators.data("validator").checkValidity();
+        var oPageId = parseInt(pageId, 10);
+        var api = _pages.form.validators.data("validator");
+        var isValid = api.checkValidity();
+        var template = $.extend(pTemplate, true);
+        var oData = '';
+        var wsUrl = '';
+
+        if(isValid) {
+            template.PageId = oPageId;
+            template.PageName = $(pages._elems.txtPageName).val();
+            template.PageDescription = $(pages._elems.txtPageDescription).val();
+            template.PageMenuName = $(pages._elems.txtPageMenuName).val();            
+            template.PageContent = $(pages._elems.txtPageContent).val();
+            template.MetaTitle = $(pages._elems.txtPageMetaTitle).val();
+            template.MetaDescription = $(pages._elems.txtPageMetaDescription).val();
+            template.FriendlyUrl = $(pages._elems.txtPageUrl).val();
+            template.IsHomePage = $(pages._elems.chkIsHomePage).is(':checked');
+
+            if(pageId <= 0) {
+                wsUrl = insertWebServiceUrl;
+            }
+            else {
+                wsUrl = updateWebServiceUrl;
+            }
+
+            oData = {
+                clientId: pages._elems.clientId,
+                page: template
+            };
+		    $.ajax({
+			    type: "POST",
+			    url: wsUrl,
+                data: JSON.stringify(oData),
+                dataType: 'json',
+                contentType: 'text/json',
+			    success: function (result) {                
+                    console.log(result);
+                    if(result.d.IsSuccess) {                    
+                                        
+                    }
+				    else {
+                        // show error message here
+                    }
+			    },
+			    error: function () {
+                        
+			    }
+		    });
+        }
     }
 
 	function render(data) {
@@ -140,6 +190,7 @@
 
     function bind(data) {
         $(pages._elems.txtPageName).val(data.PageName);
+        $(pages._elems.txtPageDescription).val(data.PageDescription);
         $(pages._elems.txtPageUrl).val(data.FriendlyUrl);
         $(pages._elems.txtPageMenuName).val(data.PageMenuName);
         $(pages._elems.txtPageMetaTitle).val(data.MetaTitle);
@@ -155,6 +206,7 @@
 
     function resetForm() {
         $(pages._elems.txtPageName).val('');
+        $(pages._elems.txtPageDescription).val('');
         $(pages._elems.txtPageUrl).val('');
         $(pages._elems.txtPageMenuName).val('');
         $(pages._elems.txtPageMetaTitle).val('');

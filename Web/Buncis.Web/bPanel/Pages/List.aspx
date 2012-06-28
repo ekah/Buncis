@@ -18,6 +18,7 @@
                 cancelDeletePage: '#deletePage-cancel',
                 validated: '.form-page :input, .form-page :textarea',
                 txtPageName: '#txtPageName',
+                txtPageDescription: '#txtPageDescription',
                 txtPageUrl: '#txtPageUrl',
                 txtPageMenuName: '#txtPageMenuName',
                 txtPageMetaTitle: '#txtPageMetaTitle',
@@ -81,32 +82,40 @@
     							<input type="text" required="required" id="txtPageName" class="medium" 
 									name="txtPageName" data-message="Page Name is required" />
             				</div>
+                            <div class="form-item">
+								<label>Page Description</label>
+								<textarea required="required" id="txtPageDescription" name="txtPageDescription"
+									style="width: 400px; height: 100px" class="meta-desc"
+									data-message="Page Description is required">
+								</textarea>
+							</div>
     						<div class="form-item">
             					<label>Name displayed on Menu</label>
     							<input type="text" required="required" id="txtPageMenuName" class="medium" 
 									name="txtPageMenuName" data-message="Page Menu Name is required" />
             				</div>
+                            <div class="form-item">
+								<label>Do you want to make this page as your Home page?</label>
+								<input type="checkbox" id="chkIsHomePage" />
+							</div>		
 							<div class="form-item">
 								<label>Friendly Url</label>
 								<input type="text" required="required" id="txtPageUrl" class="medium" 
 									name="txtPageUrl" data-message="Page Url is required" />
-							</div>    
-							<div class="form-item">
-								<label>Do you want to make this page as your Home page?</label>
-								<input type="checkbox" id="chkIsHomePage" />
-							</div>				
+							</div>								
 						</div>
 						<div class="right">
 							<div class="form-item">
-								<label>Page Title</label>
+								<label>Page Meta Title</label>
 								<input type="text" required="required" id="txtPageMetaTitle" class="long" 
-									name="txtPageMetaTitle" data-message="Page Title is required" />
+									name="txtPageMetaTitle" data-message="Page Meta Title is required" />
 							</div>
 							<div class="form-item">
-								<label>Page Description</label>
-								<textarea required="required" id="txtPageMetaDescription" name="txtPageMetaDescription"
-									style="width: 400px; height: 150px" class="meta-desc"
-									data-message="Page Description is required">
+								<label>Page Meta Description</label>
+								<textarea required="required" 
+                                    id="txtPageMetaDescription" name="txtPageMetaDescription"
+									style="width: 400px; height: 100px" class="meta-desc"
+									data-message="Page Meta Description is required">
 								</textarea>
 							</div>		
 						</div>

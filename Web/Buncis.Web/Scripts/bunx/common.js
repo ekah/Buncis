@@ -25,4 +25,6 @@ $.tools.validator.addEffect("floatingWall", function(errors, event) {
 	});
  
 // the effect does nothing when all inputs are valid
+}, function (inputs) {
+
 });

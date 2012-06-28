@@ -14,7 +14,7 @@ namespace Buncis.Framework.Core.ViewModel
 		{
 			get
 			{
-				var num = 6;
+				var num = 5;
 				var words = (PageDescription ?? string.Empty).Split(' ');
 				var taken = words.Take(words.Length > num ? num : words.Length);
 				var spaced = taken.Select(o => o + " ");

@@ -5,56 +5,58 @@ using System.Text;
 
 namespace Buncis.Framework.Core.Services
 {
-	public abstract class ValidationDictionary<TValidatedType> where TValidatedType : class
-	{
-		private readonly Dictionary<string, string> _validationSummary;
-		public Dictionary<string, string> ValidationSummary
-		{
-			get
-			{
-				return _validationSummary;
-			}
-		}
+    public abstract class ValidationDictionary<TValidatedType> where TValidatedType : class
+    {
+        public string ValidationMessage { get; protected set; }
 
-		protected bool isValid;
-		public bool IsValid
-		{
-			get
-			{
-				return isValid;
-			}
-		}
+        private readonly Dictionary<string, string> _validationSummary;
+        public Dictionary<string, string> ValidationSummary
+        {
+            get
+            {
+                return _validationSummary;
+            }
+        }
 
-		protected TValidatedType validatedObject;
-		public TValidatedType ValidatedObject
-		{
-			get
-			{
-				return validatedObject;
-			}
-		}
+        protected bool isValid;
+        public bool IsValid
+        {
+            get
+            {
+                return isValid;
+            }
+        }
 
-		public ValidationDictionary(TValidatedType objectToValidate)
-		{
-			_validationSummary = new Dictionary<string, string>();
-			validatedObject = objectToValidate;
-		}
+        protected TValidatedType validatedObject;
+        public TValidatedType ValidatedObject
+        {
+            get
+            {
+                return validatedObject;
+            }
+        }
 
-		protected void AddError(string key, string message)
-		{
-			_validationSummary.Add(key, message);
-		}
+        public ValidationDictionary(TValidatedType objectToValidate)
+        {
+            _validationSummary = new Dictionary<string, string>();
+            validatedObject = objectToValidate;
+        }
 
-		public void Validate()
-		{
-			if (validatedObject == null)
-			{
-				throw new Exception("Validated Object has not beet set yet");
-			}
+        protected void AddError(string key, string message)
+        {
+            _validationSummary.Add(key, message);
+        }
 
-			ValidationProcess();
-		}
+        public void Validate()
+        {
+            if (validatedObject == null)
+            {
+                throw new Exception("Validated Object has not beet set yet");
+            }
 
-		protected abstract void ValidationProcess();
-	}
+            ValidationProcess();
+        }
+
+        protected abstract void ValidationProcess();
+    }
 }
