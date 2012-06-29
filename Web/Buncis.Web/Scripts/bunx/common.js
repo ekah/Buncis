@@ -8,23 +8,28 @@ $(document).ready(function () {
 	$('body').delegate('.popup-button-close', 'click', function () {
 		$.colorbox.close();
 	});
+	$('.wall-close a').click(function () {
+		$('#errors').hide();
+	})
 });
 
 
-$.tools.validator.addEffect("floatingWall", function(errors, event) {
- 
+$.tools.validator.addEffect("floatingWall", function (errors, event) {
+
 	// get the message wall
 	var floatingWall = $(this.getConf().container).fadeIn();
- 
+
+	var innerWall = floatingWall.find('.innerWall');
+
 	// remove all existing messages
-	floatingWall.find("p").remove();
- 
+	innerWall.find("p").remove();
+
 	// add new ones
-	$.each(errors, function(index, error) {
-		floatingWall.append("<p>" + error.messages[0] + "</p>");
+	$.each(errors, function (index, error) {
+		innerWall.append("<p>" + error.messages[0] + "</p>");
 	});
- 
-// the effect does nothing when all inputs are valid
+
+	// the effect does nothing when all inputs are valid
 }, function (inputs) {
 
 });

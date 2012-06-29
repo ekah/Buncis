@@ -9,9 +9,10 @@
                 clientId: <%= CurrentProfile.ClientId %>,
                 pageWizards: '#page-wizard',
                 tablePages: '#table-pages',
-                btnAddPage: '.addPage',
+                btnAddPage: '#aAddPage',
                 pageFormPopup: '#form-page-popup',
                 pageFormElements: '.form-page .form-item :input',
+                pageTabs: '.page-tabs',
                 deletePagePopup: '#delete-page-popup',
                 deletedPageName: '#d-pageName',
                 confirmDeletePage: '#deletePage-confirm',
@@ -72,7 +73,7 @@
 				</div>
 				<div id="page-wizard" class="swMain">
         			<ul class="page-tabs">
-    					<li><a href="#page-tab1">Section 1: Page Information</a></li>
+    					<li><a href="#page-tab1" class="tabStart">Section 1: Page Information</a></li>
 						<li><a href="#page-tab2">Section 2: Page Content</a></li>
     				</ul>
         			<div id="page-tab1" class="page-tab1">

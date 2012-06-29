@@ -80,6 +80,7 @@ namespace Buncis.Services.Pages
             if (dPage.PageId <= 0) // insert
             {
                 dPage.DateCreated = DateTime.UtcNow;
+				dPage.DateLastUpdated = DateTime.UtcNow;
                 _pageRepository.Add(dPage);
             }
             else // update

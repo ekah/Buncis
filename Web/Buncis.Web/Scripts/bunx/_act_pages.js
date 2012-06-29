@@ -70,11 +70,17 @@
                     var deleted = $(pages._elems.tablePages).find('a.delete[rel="' + pageId + '"]').parent();
                     var aPos = pages.pageTable.fnGetPosition(deleted.get(0));
                     var idx = aPos[0];
+                	var tr = deleted.parent();
+                	var data = pages.pageTable.fnGetData(tr.get(0));
+                	var name = data.PageName;
+                	
+                	pages.form.deletedPageName = name;
                     pages.pageTable.fnDeleteRow(idx);
-                    setTimeout(function() { 
+                    
+					setTimeout(function() { 
                         $(_pages._elems.colorboxArea).unblock(); 
                         $.colorbox.close();
-                    }, 1000);                    
+                    }, 1000);               
                 }
 				else {
                     // show error message here
@@ -123,9 +129,13 @@
                 dataType: 'json',
                 contentType: 'text/json',
 			    success: function (result) {                
-                    console.log(result);
                     if(result.d.IsSuccess) {                    
-                                        
+                        $('#cboxContent').showMessage({
+                        	thisMessage: ["System has successfully saved page data."],
+                        	position: 'absolute',
+                        	opacity: 100,
+                        	className: 'success',
+						});
                     }
 				    else {
                         // show error message here
@@ -227,7 +237,13 @@
 			    overlayClose: false,
 			    scrolling: false,
                 onClosed: function() {
+                	var name = pages.form.deletedPageName;
                     $(pages._elems.confirmDeletePage).removeAttr('rel');
+					$('body').showMessage({
+						thisMessage: ["System has successfully deleted page " + name],
+						opacity: 100,
+						className: 'success',
+					});       
                 },
 			    onLoad: function() {
                     var td = $(pages._elems.tablePages).find('a.delete[rel="' + pageId + '"]').parent();
@@ -257,16 +273,17 @@
 			    onLoad: function() { },
 			    onComplete: function() {
                     preparePopupForm();
+			    	$(pages._elems.colorboxArea).block(); // block colorbox
                     if(mode === 'edit') {
-                        $(pages._elems.colorboxArea).block(); // block colorbox
                         getPage(pageId, function(data) {
                             bind(data);
                             $(pages._elems.btnSavePage).attr('rel', pageId);
-                            setTimeout(function() { $(_pages._elems.colorboxArea).unblock(); }, 1000);
+                        	setTimeout(function() { $(_pages._elems.colorboxArea).unblock(); }, 1000);
                         });
                     }
                     else {
                         resetForm();
+                    	setTimeout(function() { $(_pages._elems.colorboxArea).unblock(); }, 500);
                     }
 			    }
 		    });
@@ -274,17 +291,9 @@
 	}
 
     function preparePopupForm() {
-    	/*
-		$(pages._elems.tabsMenu).tabs(pages._elems.tabs, {
-			onClick: function (event, tabIndex) {
-				if($(pages._elems.txtPageContent).is(':visible')) {
-					$(pages._elems.txtPageContent).htmlarea('dispose'); // redispose
-					$(pages._elems.txtPageContent).htmlarea();
-				}
-			}
-		});*/
     	if(!pages.form.wizardHasBeenInitialized) {
     		pages.form.wizard = $(pages._elems.pageWizards).smartWizard({
+    			keyNavigation: false,
     			enableAllSteps: true,
     			enableFinishButton: false, // makes finish button enabled always
     			labelNext:'', // label for Next button
@@ -299,9 +308,13 @@
     		});
     		pages.form.wizardHasBeenInitialized = true;
     	}
+    	else {
+    		$(pages._elems.pageTabs).find('a.tabStart').click();
+    	}
 		pages.form.validators = $(pages._elems.pageFormElements).validator({
 			effect: 'floatingWall',
 			container: window._elems.errorContainer,
+			errorInputEvent: null,
 		});  
     }
 	
@@ -358,6 +371,7 @@
 		wizard: {},
 		wizardHasBeenInitialized: false,
 		validators: {},
+		deletedPageName: '',
 	};
     pages.pageTable = {};
 

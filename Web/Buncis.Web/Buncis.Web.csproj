@@ -135,6 +135,7 @@
     <Content Include="Images\header_bg3.png" />
     <Content Include="Images\ibutton-slider-default.png" />
     <Content Include="Images\ibutton-slider-giva-original.png" />
+    <Content Include="Images\icons\close_exit_delete.png" />
     <Content Include="Images\icons\address.png" />
     <Content Include="Images\icons\administrative-docs.png" />
     <Content Include="Images\icons\advertising.png" />
@@ -265,6 +266,8 @@
     <Content Include="Scripts\jquery-1.7.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <Content Include="Scripts\modules\showmessage\jquery.showMessage.js" />
+    <Content Include="Scripts\modules\showmessage\jquery.showMessage.min.js" />
     <Content Include="Scripts\modules\smartWizard\jquery.smartWizard-2.0.js" />
     <Content Include="Scripts\modules\smartWizard\jquery.smartWizard-2.0.min.js" />
     <Content Include="Scripts\spin.js" />
@@ -284,6 +287,7 @@
     <Content Include="Styles\jHtmlArea\jHtmlArea_Toolbar_Group_BG.png" />
     <Content Include="Styles\jHtmlArea\jHtmlArea_Toolbar_Group__Btn_Select_BG.png" />
     <Content Include="Styles\normalize.css" />
+    <Content Include="Styles\showmessage\showMessage.css" />
     <Content Include="Styles\smartWizard\images\loader.gif" />
     <Content Include="Styles\smartWizard\smart_wizard.css" />
     <Content Include="Styles\smartWizard\smart_wizard_vertical.css" />
