@@ -4,9 +4,20 @@
 <html>
 <head runat="server">
 	<title>Breakthrough Ministries</title>
-	<link rel="stylesheet" href="/styles/normalize.css" />
-	<link rel="stylesheet" href="/styles/bm.css" />
-	<script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
+	<link href="/styles/normalize.css" rel="stylesheet" />
+	<link href="/styles/bm.css" rel="stylesheet" />
+
+	<script src="/scripts/jquery-1.7.2.min.js" type="text/javascript" ></script>
+	<script src="/Scripts/modules/slides/slides.min.jquery.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.teaserImages-inside').slides({
+				pagination: false
+			});
+		});
+	</script>
+
 	<asp:ContentPlaceHolder ID="head" runat="server">
 	</asp:ContentPlaceHolder>
 </head>
@@ -15,22 +26,52 @@
 	<form id="form1" runat="server">
 		<div class="body">
 			<div class="wrapper">
-				<div class="content-wrapper">
-					<h1>Breakthrough Ministries</h1>
-					<div>
-							
-					</div>
-					<div class="content-top">
-						<div class="frame teaser-images-frame">
-							<div class="teaser-images">
-							
-							</div>
-						</div>
-						<div class="content-quote">
-							
+				<div class="header">
+					<h1>Lorem Ipsum</h1>
+					<div class="header-desc">Lorem ipsum dolor sit amor..</div>
+				</div>
+				
+				<div class="aux-menu">
+					<span><a href="javascript:void(0);">Signup</a></span>
+					<span><a href="javascript:void(0);">Login</a></span>					
+					<div class="clearFloats"></div>
+				</div>
+
+				<div class="menu-container">
+					<div class="frame-container menu">
+						<div class="frame menu-frame"></div>
+						<div class="frame-inside menu-inside">
+							<ul>
+								<li><a href="javascript:void(0);">Home</a></li>
+								<li><a href="javascript:void(0);">Daily Bread</a></li>
+								<li><a href="javascript:void(0);">Articles</a></li>
+								<li><a href="javascript:void(0);">News</a></li>
+								<li><a href="javascript:void(0);">Events</a></li>
+								<li><a href="javascript:void(0);">About Us</a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
+
+				<div class="content-top">
+					<div class="frame-container teaserImages">					
+						<div class="frame teaserImages-frame"></div>
+						<div class="frame-inside teaserImages-inside">
+							<div class="slides_container">
+								<img src="/images/bm/dummy1.png" />
+								<img src="/images/bm/dummy2.png" />
+								<img src="/images/bm/dummy3.png" />
+								<img src="/images/bm/dummy4.png" />
+							</div>
+							<a href="javascript:void(0);" class="prev"><img src="/images/bm/previous.png" width="32" height="32" alt="Arrow Prev"></a>
+							<a href="javascript:void(0);" class="next"><img src="/images/bm/next.png" width="32" height="32" alt="Arrow Next"></a>
+						</div>
+					</div>
+					<div class="frame-container quotes">					
+						<div class="frame quotes-frame"></div>
+						<div class="frame-inside quotes-inside">lorem</div>
+					</div>
+				</div>				
 			</div>
 		</div>
 	</form>

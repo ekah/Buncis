@@ -15,7 +15,7 @@
 	<link href="/Styles/showmessage/showMessage.css" rel="stylesheet" type="text/css" />
     
     <script src="/scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <script src="/Scripts/validator.js" type="text/javascript"></script>
+    <script src="/Scripts/tools/validator.js" type="text/javascript"></script>
     <script src="/Scripts/bunx/common.js" type="text/javascript"></script>
 	<script src="/Scripts/modules/showmessage/jquery.showMessage.js" type="text/javascript"></script>
     <script src="/Scripts/modules/colorbox/jquery.colorbox-min.js" type="text/javascript"></script>
