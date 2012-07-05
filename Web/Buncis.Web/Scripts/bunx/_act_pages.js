@@ -96,11 +96,23 @@
         var oPageId = parseInt(pageId, 10);
         var api = _pages.form.validators.data("validator");
         var isValid = api.checkValidity();
-        var template = $.extend(pTemplate, true);
+        var template = {};
         var oData = '';
         var wsUrl = '';
+        var mode = '';
 
         if(isValid) {
+            if(oPageId <= 0) {
+                template = $.extend(pTemplate, true);                
+                wsUrl = insertWebServiceUrl;
+                mode = 'add';
+            }
+            else {
+                template = pages.form.editedData;
+                wsUrl = updateWebServiceUrl;
+                mode = 'edit';
+            }
+            
             template.PageId = oPageId;
             template.PageName = $(pages._elems.txtPageName).val();
             template.PageDescription = $(pages._elems.txtPageDescription).val();
@@ -110,13 +122,6 @@
             template.MetaDescription = $(pages._elems.txtPageMetaDescription).val();
             template.FriendlyUrl = $(pages._elems.txtPageUrl).val();
             template.IsHomePage = $(pages._elems.chkIsHomePage).is(':checked');
-
-            if(pageId <= 0) {
-                wsUrl = insertWebServiceUrl;
-            }
-            else {
-                wsUrl = updateWebServiceUrl;
-            }
 
             oData = {
                 clientId: pages._elems.clientId,
@@ -128,14 +133,33 @@
                 data: JSON.stringify(oData),
                 dataType: 'json',
                 contentType: 'text/json',
-			    success: function (result) {                
-                    if(result.d.IsSuccess) {                    
-                        $('#cboxContent').showMessage({
-                        	thisMessage: ["System has successfully saved page data."],
+			    success: function (result) {                                  
+                    if(result.d.IsSuccess) { 
+                        var msg = '';     
+                        if(mode === 'add') {     
+                            msg = "System has successfully added new page.";
+                        }
+                        else {
+                            msg = "System has successfully edited page data.";
+                        }
+
+                        $.colorbox.close();           
+                        $('.buncisContent').showMessage({
+                        	thisMessage: [msg],
                         	position: 'absolute',
                         	opacity: 100,
-                        	className: 'success',
+                        	className: 'success'
 						});
+
+                        if(mode === 'add') {
+                            var added = pages.pageTable.fnAddDataAndDisplay(result.d.ResponseObject);
+                            $.scrollTo(added.nTr);
+                        }                
+                        else {                            
+                            pages.pageTable.fnUpdate(result.d.ResponseObject, pages.form.editedRowPos);
+                            window._helpers.animateRow(pages.form.editedRow);
+                            $.scrollTo(pages.form.editedRow);
+                        }
                     }
 				    else {
                         // show error message here
@@ -159,7 +183,7 @@
             	{ "mDataProp": null },
                 { "mDataProp": null }
             ],
-			"fnRowCallback": function (nRow, aData, iDisplayIndex) {
+			"fnRowCallback": function (nRow, aData, iDisplayIndex) {                
 				var col0class = aData.IsHomePage ? 'icon icon-home' : 'icon icon-pages';
 				var col0 = '<a href="javascript:void(0);" class="pages view" rel="' + aData.PageId + '">';
 				col0 += '<span runat="server" class="' + col0class + '">&nbsp;</span></a>';
@@ -179,11 +203,10 @@
 				col4 += '<a href="javascript:void(0);" rel="' + aData.PageId + '" class="pages edit">Edit</a>';
 				$('td:eq(4)', nRow).html(col4);
 			},
-			"aoColumnDefs": [{ "sClass": "icon-col", "aTargets": [0] },
-                             { "sClass": "action-col", "aTargets": [4]}],
-			"bStateSave": true,
-			"bFilter": false,
-			"bSort": false,
+			"aoColumnDefs": [{ "sClass": "icon-col", "aTargets": [0] }, { "sClass": "action-col", "aTargets": [4]}],
+			"bStateSave": false,
+			"bFilter": true,
+			"bSort": true,
 			"bPaginate": true,
 			"sPaginationType": "full_numbers",
 			"oLanguage": {
@@ -194,7 +217,7 @@
 					"sLast": "Last&raquo;"
 				}
 			},
-			"sDom": 'lrt<"tableFoot"ip>',
+			"sDom": 'lrt<"tableFoot"ip>'
 		});
 	}
 
@@ -278,6 +301,18 @@
                         getPage(pageId, function(data) {
                             bind(data);
                             $(pages._elems.btnSavePage).attr('rel', pageId);
+                            
+                            var td = $(pages._elems.tablePages).find('a.edit[rel="' + pageId + '"]').parent();
+                            var tr = $(td).parent();
+                            pages.form.editedRow = tr;
+                            
+                            var aPos = pages.pageTable.fnGetPosition(tr.get(0));
+                            pages.form.editedRowPos = aPos;
+                            
+                            var data = pages.pageTable.fnGetData();
+                            var dData = data[aPos];
+                            pages.form.editedData = dData;
+                            
                         	setTimeout(function() { $(_pages._elems.colorboxArea).unblock(); }, 1000);
                         });
                     }
@@ -371,7 +406,10 @@
 		wizard: {},
 		wizardHasBeenInitialized: false,
 		validators: {},
-		deletedPageName: '',
+		deletedPageName: '',   
+        editedRow: {},
+        editedRowPos: -1,  
+        editedData: {}   
 	};
     pages.pageTable = {};
 

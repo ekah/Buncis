@@ -77,11 +77,14 @@ namespace Buncis.Services.Pages
                 dPage.FriendlyUrl = "/";
             }
 
+            // db operations
             if (dPage.PageId <= 0) // insert
             {
                 dPage.DateCreated = DateTime.UtcNow;
-				dPage.DateLastUpdated = DateTime.UtcNow;
+                dPage.DateLastUpdated = DateTime.UtcNow;
                 _pageRepository.Add(dPage);
+
+                validator.ValidatedObject.PageId = dPage.PageId; // set the pageId from inserted Id
             }
             else // update
             {
@@ -97,6 +100,10 @@ namespace Buncis.Services.Pages
                     _pageRepository.Update(fromDb);
                 }
             }
+
+            // refetch data 
+            var ping = _pageRepository.FindBy(o => o.PageId == validator.ValidatedObject.PageId && !o.IsDeleted);
+            validator.ValidatedObject.InjectFrom(ping);            
 
             return validator;
         }

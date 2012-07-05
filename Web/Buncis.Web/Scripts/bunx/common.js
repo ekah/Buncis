@@ -33,3 +33,12 @@ $.tools.validator.addEffect("floatingWall", function (errors, event) {
 }, function (inputs) {
 
 });
+
+
+(function(helpers) {
+    helpers.animateRow = function(row) {
+        $(row)
+            .animate({ backgroundColor: '#acfa58' }, 1500)
+            .animate({ backgroundColor: 'transparent' }, 1500); 
+    };
+})(window._helpers = window._helpers || {})

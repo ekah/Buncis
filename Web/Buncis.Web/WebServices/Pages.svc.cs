@@ -44,12 +44,19 @@ namespace Buncis.Web.WebServices
             return response;
         }
 
-        public Response UpdatePage(int clientId, oBuncisPage page)
+        public Response<oBuncisPage> UpdatePage(int clientId, oBuncisPage page)
         {
             var service = IoC.Resolve<IDynamicPageService>();
             var viewModel = (vBuncisPage)new vBuncisPage().InjectFrom(page);
             var result = service.SavePage(clientId, viewModel);
-            var response = new Response(result.IsValid, string.Empty);
+
+            var response = new Response<oBuncisPage>();
+            response.IsSuccess = result.IsValid;
+            response.Message = result.ValidationMessage;
+
+            var responseObject = (oBuncisPage)new oBuncisPage().InjectFrom(result.ValidatedObject);
+            response.ResponseObject = responseObject;
+
             return response;
         }
 
@@ -61,12 +68,19 @@ namespace Buncis.Web.WebServices
             return new Response(result.IsValid, string.Empty);
         }
 
-        public Response InsertPage(int clientId, oBuncisPage page)
+        public Response<oBuncisPage> InsertPage(int clientId, oBuncisPage page)
         {
             var service = IoC.Resolve<IDynamicPageService>();
             var viewModel = (vBuncisPage)new vBuncisPage().InjectFrom(page);
             var result = service.SavePage(clientId, viewModel);
-            var response = new Response(result.IsValid, string.Empty);
+
+            var response = new Response<oBuncisPage>();
+            response.IsSuccess = result.IsValid;
+            response.Message = result.ValidationMessage;
+            
+            var responseObject = (oBuncisPage)new oBuncisPage().InjectFrom(result.ValidatedObject);
+            response.ResponseObject = responseObject;
+
             return response;
         }
     }

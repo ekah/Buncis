@@ -28,33 +28,8 @@ input:focus, textarea:focus {
     background-color: #FFF8E3;    
 }
 
-#topBarWrapper
-{
-    width: 100%;
-    height: 50px;
-    background-color: #000; /*border-bottom: solid 3px #fff;*/
-}
 
-#topBar
-{
-    width: 960px;
-    height: 100%;
-    margin: 0px auto;
-    overflow: auto;
-}
-
-#logo
-{
-    float: left;
-    width: 700px;
-    height: 50px;
-}
-
-#logo img
-{
-    max-height: 45px;
-}
-
+/* #region login*/
 #loginInfo
 {
     float: right;
@@ -84,7 +59,10 @@ input:focus, textarea:focus {
     -moz-box-shadow: 0 0 6px #bbb;
     -webkit-box-shadow: 0 0 6px #bbb;
 }
+/* #endregion */
 
+
+/* #region defaults */
 .roundLeft-5
 {
     border-bottom-left-radius: 5px;
@@ -185,62 +163,10 @@ input:focus, textarea:focus {
     -moz-box-shadow: 0px 0px 15px 0px #111;
     box-shadow: 0px 0px 15px 0px #111;
 }
-
-.form-item
-{
-    padding: 4px;
-    overflow: auto;
-}
-
-.form-item label
-{
-    display: block;
-    /*float: left;*/
-    padding: 1em 0px 0.5em;
-    /*text-align: right;*/
-    font-weight: bold;
-    height: 1em;
-    line-height: 0.75em;
-}
-
-.form-item input[type=text], .form-item textarea
-{
-    padding: 0.5em;
-    border: 1px solid #bbb;
-}
-
-input[type=text].medium
-{
-    width: 20em;
-}
-
-input[type=text].short
-{
-    width: 10em;
-}
-
-input[type=text].long
-{
-    width: 30em;
-}
-
-label.short
-{
-    width: 80px;
-}
-
-label.medium
-{
-    width: 120px;
-}
-
-label.long
-{
-    width: 160px;
-}
+/* #endregion */
 
 
-/* buttons */
+/* #region region buttons */
 .buttonContainer
 {
     text-align: right;
@@ -340,12 +266,61 @@ label.long
     padding-left: 20px;
     background-position: 0px 0.4em;
 }
-/* end buttons */
+/* #endregion end buttons */
 
 
-.buncisBody
+/* #region form */
+.form-item
 {
-    background: #f1f1f1;
+    padding: 4px;
+    overflow: auto;
+}
+
+.form-item label
+{
+    display: block;
+    /*float: left;*/
+    padding: 1em 0px 0.5em;
+    /*text-align: right;*/
+    font-weight: bold;
+    height: 1em;
+    line-height: 0.75em;
+}
+
+.form-item input[type=text], .form-item textarea
+{
+    padding: 0.5em;
+    border: 1px solid #bbb;
+}
+
+input[type=text].medium
+{
+    width: 20em;
+}
+
+input[type=text].short
+{
+    width: 10em;
+}
+
+input[type=text].long
+{
+    width: 30em;
+}
+
+label.short
+{
+    width: 80px;
+}
+
+label.medium
+{
+    width: 120px;
+}
+
+label.long
+{
+    width: 160px;
 }
 
 .error
@@ -371,6 +346,41 @@ label.long
 {
     margin: 0px;
     font-weight: bold;
+}
+/* #endregion */
+
+
+/* #region page components */
+#topBarWrapper
+{
+    width: 100%;
+    height: 50px;
+    background-color: #000; /*border-bottom: solid 3px #fff;*/
+}
+
+#topBar
+{
+    width: 960px;
+    height: 100%;
+    margin: 0px auto;
+    overflow: auto;
+}
+
+#logo
+{
+    float: left;
+    width: 700px;
+    height: 50px;
+}
+
+#logo img
+{
+    max-height: 45px;
+}
+
+.buncisBody
+{
+    background: #f1f1f1;
 }
 
 .buncisContent
@@ -426,8 +436,13 @@ label.long
     margin-top: 20px;
 }
 
+.clearFloats {
+	clear: both;
+}
+/* #endregion */
 
-/* data table */
+
+/* #region data table */
 table.data-table
 {
     width: 100%;
@@ -518,20 +533,20 @@ table.data-table td a.edit:hover, table.data-table td a.delete:hover
 {
     background-color: #cecece;
 }
-/* end data table */
+/* #endregion end data table */
 
 
-/* pages table */
+/* #region pages table */
 table.data-table.table-pages tr td:nth-child(2) {
 	width: 40%;
 }
 table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr td:nth-child(4) {
 	width: 20%;
 }
-/* end pages table */
+/* #endregion end pages table */
 
 
-/* data table additional */
+/* #region data table additional */
 .tableFoot {
 	height: 2em;
 	padding: 0.5em;
@@ -560,10 +575,10 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
 .dataTables_paginate.paging_full_numbers span a.paginate_active {
 	font-weight: bold;
 }
-/* end data table additional */
+/* #endregion end data table additional */
 
 
-/* form pages */
+/* #region form pages */
 .form-page .left, .form-page .right {
     float: left;    
 }
@@ -578,20 +593,20 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
     overflow-y: auto !important;
     overflow-x: hidden !important;
 }
-/* end form pages */
+/* #endregion end form pages */
 
 
-/* colorbox custom */
+/* #region colorbox custom */
 .popup-button-wrapper {
 	margin: 0px !important;
 	padding: 0px !important;
 	height:40px;
 	position: relative;
 }
-/* end colorbox custom */
+/* #endregion end colorbox custom */
 
 
-/* tabs */
+/* #region tabs */
 .tabContent 
 {
     border-left: solid 1px #666;
@@ -604,15 +619,10 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
     border-radius: 0px 0px 4px 4px;
 
 }
-/* end tabs */
+/* #endregion end tabs */
 
 
-.clearFloats {
-	clear: both;
-}
-
-
-/* icons */
+/* #region icons */
 .icon
 {
     display: block;
@@ -651,10 +661,10 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
     height: 32px;
     text-decoration: none;       
 }
-/* end icons */
+/* #endregion end icons */
 
 
-/* colorbox loading */
+/* #region colorbox loading */
 .loading 
 {    
     font-weight: bold;
@@ -684,10 +694,10 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
 {
     float:left;
 }
-/* end colorbox loading */
+/* #endregion end colorbox loading */
 
 
-/* custom error summary */
+/* #region custom error summary */
 #errors {
 	display: none;
 	position: fixed;
@@ -718,4 +728,4 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
     z-index: 2147483647;
 }
 
-/* end custom error summary */
+/* #endregion end custom error summary */

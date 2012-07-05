@@ -58,7 +58,7 @@
 
 				// custom
 				var cssLink = document.createElement("link")
-				cssLink.href = "/styles/bun_x.css";
+				cssLink.href = "/styles/bunIFrame.css";
 				cssLink.rel = "stylesheet";
 				cssLink.type = "text/css";
 				iframe.contents().find('body').get(0).appendChild(cssLink);
