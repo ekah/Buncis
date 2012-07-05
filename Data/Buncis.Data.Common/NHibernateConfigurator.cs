@@ -14,14 +14,12 @@ namespace Buncis.Data.Common
         public void Config(IPersistenceUnitCfg puCfg, Configuration nhCfg)
         {
             nhCfg.SetProperty("connection.release_mode", "auto");
-            //nhCfg.SetProperty("current_session_context_class", 
-            //    "uNhAddIns.SessionEasier.Contexts.ThreadLocalSessionContext, uNhAddIns");
 
             Fluently.Configure(nhCfg)
                 .Database(MsSqlConfiguration.MsSql2008.ConnectionString(c => c.FromConnectionStringWithKey("BuncisConnectionString")))
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<PageMap>())
+                .ExposeConfiguration(configuration => configuration.SetProperty(Environment.UseSqlComments, "false"))
                 .BuildConfiguration();
-                //.BuildSessionFactory();
         }
 
         public void Config(IBurrowConfig val)

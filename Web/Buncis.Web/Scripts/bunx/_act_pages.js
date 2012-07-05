@@ -80,6 +80,12 @@
 					setTimeout(function() { 
                         $(_pages._elems.colorboxArea).unblock(); 
                         $.colorbox.close();
+                        $(_pages._elems.confirmDeletePage).removeAttr('rel');
+					    $('body').showMessage({
+						    thisMessage: ["System has successfully deleted page " + _pages.form.deletedPageName],
+						    opacity: 100,
+						    className: 'success',
+					    });
                     }, 1000);               
                 }
 				else {
@@ -260,13 +266,7 @@
 			    overlayClose: false,
 			    scrolling: false,
                 onClosed: function() {
-                	var name = pages.form.deletedPageName;
-                    $(pages._elems.confirmDeletePage).removeAttr('rel');
-					$('body').showMessage({
-						thisMessage: ["System has successfully deleted page " + name],
-						opacity: 100,
-						className: 'success',
-					});       
+                	       
                 },
 			    onLoad: function() {
                     var td = $(pages._elems.tablePages).find('a.delete[rel="' + pageId + '"]').parent();

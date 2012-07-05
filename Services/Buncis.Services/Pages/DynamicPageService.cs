@@ -8,51 +8,61 @@ using Buncis.Services.Validator.Pages;
 using Omu.ValueInjecter;
 using Buncis.Framework.Core.Repository.Pages;
 using Buncis.Framework.Core.ViewModel;
+using Buncis.Framework.Core.Filters;
 
 namespace Buncis.Services.Pages
 {
     public class DynamicPageService : BaseService, IDynamicPageService
     {
         private readonly IPageRepository _pageRepository;
+        private readonly IDynamicPageFilters _dynamicPageFilters;
 
-        public DynamicPageService(IPageRepository pageRepository)
+        public DynamicPageService(IPageRepository pageRepository,
+            IDynamicPageFilters dynamicPageFilters)
         {
             _pageRepository = pageRepository;
+            _dynamicPageFilters = dynamicPageFilters;
         }
 
         public vBuncisPage GetPageByFriendlyUrl(int clientId, string friendlyUrl)
         {
-            var pageFromDb = _pageRepository
-                .FindBy(o => o.FriendlyUrl.Equals(friendlyUrl, StringComparison.OrdinalIgnoreCase) && o.ClientId == clientId);
-
+            var expression = _dynamicPageFilters.Init()
+                .GetByClientId(clientId)
+                .GetByFriendlyUrl(friendlyUrl)
+                .Expression;
+            var pageFromDb = _pageRepository.FindBy(expression);
             var viewModel = new vBuncisPage();
             viewModel.InjectFrom(pageFromDb);
-
             return viewModel;
         }
 
         public vBuncisPage GetPage(int pageId)
         {
-            var pageFromDb = _pageRepository.FindBy(o => o.PageId == pageId && !o.IsDeleted);
-
+            var expression = _dynamicPageFilters.Init()
+                .GetByPageId(pageId)
+                .GetNotDeleted()
+                .Expression;
+            var pageFromDb = _pageRepository.FindBy(expression);
             var viewModel = new vBuncisPage();
             viewModel.InjectFrom(pageFromDb);
-
             return viewModel;
         }
 
         public IEnumerable<vBuncisPage> GetPagesNotDeleted(int clientId)
         {
+            var expression = _dynamicPageFilters.Init()
+                .GetByClientId(clientId)
+                .GetNotDeleted()
+                .Expression;
             var pages = _pageRepository
-                .FilterBy(o => o.IsDeleted == false && o.ClientId == clientId)
+                .FilterBy(expression)
                 .OrderBy(o => o.PageName).ToList();
-
             var viewModels = pages.Select(o =>
-                {
-                    var viewModel = new vBuncisPage();
-                    viewModel.InjectFrom(o);
-                    return viewModel;
-                }).ToList();
+            {
+                var viewModel = new vBuncisPage();
+                viewModel.InjectFrom(o);
+                return viewModel;
+            }).ToList();
 
             return viewModels;
         }
@@ -69,9 +79,9 @@ namespace Buncis.Services.Pages
             // prepare object to save
             var dPage = new DynamicPage();
             dPage.InjectFrom(page);
-
-            // rule based
             dPage.ClientId = clientId;
+
+            // rule based            
             if (page.IsHomePage)
             {
                 dPage.FriendlyUrl = "/";
@@ -80,38 +90,58 @@ namespace Buncis.Services.Pages
             // db operations
             if (dPage.PageId <= 0) // insert
             {
-                dPage.DateCreated = DateTime.UtcNow;
-                dPage.DateLastUpdated = DateTime.UtcNow;
-                _pageRepository.Add(dPage);
-
+                InsertPage(dPage);
                 validator.ValidatedObject.PageId = dPage.PageId; // set the pageId from inserted Id
             }
             else // update
             {
-                var fromDb = _pageRepository.FindBy(o => o.PageId == page.PageId && !o.IsDeleted);
-                if (fromDb != null)
-                {
-                    // excluded fields
-                    var createdDate = fromDb.DateCreated;
-
-                    fromDb.InjectFrom(dPage);
-                    fromDb.DateCreated = createdDate;
-                    fromDb.DateLastUpdated = DateTime.UtcNow;
-                    _pageRepository.Update(fromDb);
-                }
+                UpdatePage(dPage);
             }
 
             // refetch data 
-            var ping = _pageRepository.FindBy(o => o.PageId == validator.ValidatedObject.PageId && !o.IsDeleted);
-            validator.ValidatedObject.InjectFrom(ping);            
+            var expression = _dynamicPageFilters.Init()
+                .GetByPageId(validator.ValidatedObject.PageId)
+                .GetNotDeleted()
+                .Expression;
+            var ping = _pageRepository.FindBy(expression);
+            validator.ValidatedObject.InjectFrom(ping);
 
             return validator;
         }
 
+        private void InsertPage(DynamicPage dPage)
+        {
+            dPage.DateCreated = DateTime.UtcNow;
+            dPage.DateLastUpdated = DateTime.UtcNow;
+            _pageRepository.Add(dPage);
+        }
+
+        private void UpdatePage(DynamicPage dPage)
+        {
+            var expression = _dynamicPageFilters.Init()
+                .GetByPageId(dPage.PageId)
+                .GetNotDeleted()
+                .Expression;
+            var fromDb = _pageRepository.FindBy(expression);
+            if (fromDb != null)
+            {
+                // excluded fields
+                var createdDate = fromDb.DateCreated;
+                fromDb.InjectFrom(dPage);
+                fromDb.DateCreated = createdDate;
+                fromDb.DateLastUpdated = DateTime.UtcNow;
+                _pageRepository.Update(fromDb);
+            }
+        }
+
         public ValidationDictionary<vBuncisPage> DeletePage(int pageId)
         {
-            var dPage = _pageRepository.FindBy(o => o.PageId == pageId && !o.IsDeleted);
             vBuncisPage vPage;
+            var expression = _dynamicPageFilters.Init()
+                .GetByPageId(pageId)
+                .GetNotDeleted()
+                .Expression;
+            var dPage = _pageRepository.FindBy(expression);
             if (dPage == null)
             {
                 vPage = null;

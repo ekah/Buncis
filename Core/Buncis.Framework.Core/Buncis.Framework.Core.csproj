@@ -62,6 +62,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filters\IDynamicPageFilters.cs" />
+    <Compile Include="Filters\IFilter.cs" />
     <Compile Include="Infrastructure\Settings\AppSettingsPropertySettingsResolver.cs" />
     <Compile Include="Infrastructure\Extensions\DateTimeExtension.cs" />
     <Compile Include="Infrastructure\Settings\ISystemSettings.cs" />

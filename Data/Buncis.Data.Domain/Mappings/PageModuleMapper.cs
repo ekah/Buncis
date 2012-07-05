@@ -8,7 +8,7 @@ namespace Buncis.Data.Domain.Mappings
         public PageMap()
         {
             Table("Page_Pages");
-            LazyLoad();
+            //LazyLoad();
             Id(x => x.PageId).GeneratedBy.Identity().Column("PageId");
             Map(x => x.PageName).Column("PageName").Not.Nullable().Length(255);
             Map(x => x.PageMenuName).Column("PageMenuName").Not.Nullable().Length(50);

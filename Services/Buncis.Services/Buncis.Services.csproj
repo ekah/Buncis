@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filters\DynamicPageFilters.cs" />
     <Compile Include="Pages\DynamicPageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validator\Pages\OnDeletePageValidator.cs" />
