@@ -67,10 +67,11 @@
     </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\..\Lib\fluentnhibernate\NHibernate.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="NHibernate.Burrow">
+    <Reference Include="NHibernate.Burrow, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\Lib\fluentnhibernate\NHibernate.Burrow.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\..\Lib\structuremap\StructureMap.dll</HintPath>

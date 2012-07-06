@@ -29,7 +29,7 @@ namespace Buncis.Services.Pages
             var expression = _dynamicPageFilters.Init()
                 .GetByClientId(clientId)
                 .GetByFriendlyUrl(friendlyUrl)
-                .Expression;
+                .FilterExpression;
             var pageFromDb = _pageRepository.FindBy(expression);
             var viewModel = new vBuncisPage();
             viewModel.InjectFrom(pageFromDb);
@@ -41,7 +41,7 @@ namespace Buncis.Services.Pages
             var expression = _dynamicPageFilters.Init()
                 .GetByPageId(pageId)
                 .GetNotDeleted()
-                .Expression;
+				.FilterExpression;
             var pageFromDb = _pageRepository.FindBy(expression);
             var viewModel = new vBuncisPage();
             viewModel.InjectFrom(pageFromDb);
@@ -53,7 +53,7 @@ namespace Buncis.Services.Pages
             var expression = _dynamicPageFilters.Init()
                 .GetByClientId(clientId)
                 .GetNotDeleted()
-                .Expression;
+				.FilterExpression;
             var pages = _pageRepository
                 .FilterBy(expression)
                 .OrderBy(o => o.PageName).ToList();
@@ -102,7 +102,7 @@ namespace Buncis.Services.Pages
             var expression = _dynamicPageFilters.Init()
                 .GetByPageId(validator.ValidatedObject.PageId)
                 .GetNotDeleted()
-                .Expression;
+				.FilterExpression;
             var ping = _pageRepository.FindBy(expression);
             validator.ValidatedObject.InjectFrom(ping);
 
@@ -121,7 +121,7 @@ namespace Buncis.Services.Pages
             var expression = _dynamicPageFilters.Init()
                 .GetByPageId(dPage.PageId)
                 .GetNotDeleted()
-                .Expression;
+				.FilterExpression;
             var fromDb = _pageRepository.FindBy(expression);
             if (fromDb != null)
             {
@@ -140,7 +140,7 @@ namespace Buncis.Services.Pages
             var expression = _dynamicPageFilters.Init()
                 .GetByPageId(pageId)
                 .GetNotDeleted()
-                .Expression;
+				.FilterExpression;
             var dPage = _pageRepository.FindBy(expression);
             if (dPage == null)
             {

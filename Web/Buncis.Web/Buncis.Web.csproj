@@ -80,6 +80,9 @@
     <Reference Include="Omu.ValueInjecter">
       <HintPath>..\..\packages\valueinjecter.2.3\lib\Omu.ValueInjecter.dll</HintPath>
     </Reference>
+    <Reference Include="Remotion.Linq">
+      <HintPath>..\..\Lib\fluentnhibernate\Remotion.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
       <HintPath>..\..\Lib\structuremap\StructureMap.dll</HintPath>
     </Reference>
@@ -106,13 +109,6 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="uNhAddIns, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Lib\fluentnhibernate\uNhAddIns.dll</HintPath>
-    </Reference>
-    <Reference Include="uNhAddIns.WCF">
-      <HintPath>..\..\Lib\fluentnhibernate\uNhAddIns.WCF.dll</HintPath>
-    </Reference>
     <Reference Include="WebFormsMvp">
       <HintPath>..\..\Lib\aspnetmvp\WebFormsMvp.dll</HintPath>
     </Reference>

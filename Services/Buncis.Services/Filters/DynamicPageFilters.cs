@@ -8,51 +8,80 @@ using Buncis.Framework.Core.Filters;
 
 namespace Buncis.Services.Filters
 {
-    public class DynamicPageFilters : IDynamicPageFilters
-    {
-        private Predicate<DynamicPage> _predicate;
+	public class DynamicPageFilters : IDynamicPageFilters
+	{
+		//private Predicate<DynamicPage> _predicate;
 
-        public Expression<Func<DynamicPage, bool>> Expression
-        {
-            get
-            {
-                return page => _predicate(page);
-            }
-        }
+		private ParameterExpression argParam = Expression.Parameter(typeof(DynamicPage), "p");
+		private Expression _expression;
 
-        public DynamicPageFilters()
-        {
-            Init();
-        }
+		public Expression<Func<DynamicPage, bool>> FilterExpression
+		{
+			get
+			{
+				Expression<Func<DynamicPage, bool>> e = Expression.Lambda<Func<DynamicPage, bool>>(_expression, argParam);
+				return e;
+			}
+		}
 
-        public IDynamicPageFilters Init()
-        {
-            _predicate = page => page.IsDeleted == true;
-            return this;
-        }
+		public DynamicPageFilters()
+		{
+			Init();
+		}
 
-        public IDynamicPageFilters GetByClientId(int clientId)
-        {
-            _predicate = page => _predicate(page) && page.ClientId == clientId;
-            return this;
-        }
+		public IDynamicPageFilters Init()
+		{
+			Expression pageIdProperty = Expression.Property(argParam, "PageId");
+			ConstantExpression val1 = Expression.Constant(0, typeof(int));
+			Expression e1 = Expression.GreaterThan(pageIdProperty, val1);
 
-        public IDynamicPageFilters GetByPageId(int pageId)
-        {
-            _predicate = page => _predicate(page) && page.PageId == pageId;
-            return this;
-        }
+			_expression = e1;
 
-        public IDynamicPageFilters GetByFriendlyUrl(string friendlyUrl)
-        {
-            _predicate = page => _predicate(page) && page.FriendlyUrl.Equals(friendlyUrl, StringComparison.OrdinalIgnoreCase);
-            return this;
-        }
+			return this;
+		}
 
-        public IDynamicPageFilters GetNotDeleted()
-        {
-            _predicate = page => _predicate(page) && !page.IsDeleted;
-            return this;
-        }
-    }
+		public IDynamicPageFilters GetByClientId(int clientId)
+		{
+			Expression clientIdProperty = Expression.Property(argParam, "ClientId");
+			ConstantExpression val1 = Expression.Constant(clientId, typeof(int));
+			Expression e1 = Expression.Equal(clientIdProperty, val1);
+
+			_expression = Expression.AndAlso(_expression, e1);
+
+			return this;
+		}
+
+		public IDynamicPageFilters GetByPageId(int pageId)
+		{
+			Expression pageIdProperty = Expression.Property(argParam, "PageId");
+			ConstantExpression val1 = Expression.Constant(pageId, typeof(int));
+			Expression e1 = Expression.Equal(pageIdProperty, val1);
+
+			_expression = Expression.AndAlso(_expression, e1);
+
+			return this;
+		}
+
+		public IDynamicPageFilters GetByFriendlyUrl(string friendlyUrl)
+		{
+			Expression urlProperty = Expression.Property(argParam, "FriendlyUrl");
+			ConstantExpression val1 = Expression.Constant(friendlyUrl, typeof(string));
+			Expression e1 = Expression.Equal(urlProperty, val1);
+
+			_expression = Expression.AndAlso(_expression, e1);
+
+			return this;
+		}
+
+		public IDynamicPageFilters GetNotDeleted()
+		{
+			Expression isDeletedProperty = Expression.Property(argParam, "IsDeleted");
+			ConstantExpression val1 = Expression.Constant(false, typeof(bool));
+			Expression e1 = Expression.Equal(isDeletedProperty, val1);
+
+			_expression = Expression.AndAlso(_expression, e1);
+
+			return this;
+		}
+	}
 }
