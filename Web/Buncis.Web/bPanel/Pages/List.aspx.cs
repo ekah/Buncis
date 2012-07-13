@@ -16,7 +16,7 @@ namespace Buncis.Web.bPanel.Pages
     {
         public void BindViewData()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

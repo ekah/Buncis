@@ -12,156 +12,158 @@ using Buncis.Framework.Core.Filters;
 
 namespace Buncis.Services.Pages
 {
-    public class DynamicPageService : BaseService, IDynamicPageService
-    {
-        private readonly IPageRepository _pageRepository;
-        private readonly IDynamicPageFilters _dynamicPageFilters;
+	public class DynamicPageService : BaseService, IDynamicPageService
+	{
+		private readonly IPageRepository _pageRepository;
+		private readonly IDynamicPageFilters _dynamicPageFilters;
 
-        public DynamicPageService(IPageRepository pageRepository,
-            IDynamicPageFilters dynamicPageFilters)
-        {
-            _pageRepository = pageRepository;
-            _dynamicPageFilters = dynamicPageFilters;
-        }
+		public DynamicPageService(IPageRepository pageRepository,
+			IDynamicPageFilters dynamicPageFilters)
+		{
+			_pageRepository = pageRepository;
+			_dynamicPageFilters = dynamicPageFilters;
+		}
 
-        public vBuncisPage GetPageByFriendlyUrl(int clientId, string friendlyUrl)
-        {
-            var expression = _dynamicPageFilters.Init()
-                .GetByClientId(clientId)
-                .GetByFriendlyUrl(friendlyUrl)
-                .FilterExpression;
-            var pageFromDb = _pageRepository.FindBy(expression);
-            var viewModel = new vBuncisPage();
-            viewModel.InjectFrom(pageFromDb);
-            return viewModel;
-        }
-
-        public vBuncisPage GetPage(int pageId)
-        {
-            var expression = _dynamicPageFilters.Init()
-                .GetByPageId(pageId)
-                .GetNotDeleted()
+		public vBuncisPage GetPageByFriendlyUrl(int clientId, string friendlyUrl)
+		{
+			var expression = _dynamicPageFilters.Init()
+				.GetByClientId(clientId)
+				.GetByFriendlyUrl(friendlyUrl)
 				.FilterExpression;
-            var pageFromDb = _pageRepository.FindBy(expression);
-            var viewModel = new vBuncisPage();
-            viewModel.InjectFrom(pageFromDb);
-            return viewModel;
-        }
 
-        public IEnumerable<vBuncisPage> GetPagesNotDeleted(int clientId)
-        {
-            var expression = _dynamicPageFilters.Init()
-                .GetByClientId(clientId)
-                .GetNotDeleted()
+			var pageFromDb = _pageRepository.FindBy(expression);
+
+			var viewModel = new vBuncisPage();
+			viewModel.InjectFrom(pageFromDb);
+
+			return viewModel;
+		}
+
+		public vBuncisPage GetPage(int pageId)
+		{
+			var expression = _dynamicPageFilters.Init()
+				.GetByPageId(pageId)
+				.GetNotDeleted()
 				.FilterExpression;
-            var pages = _pageRepository
-                .FilterBy(expression)
-                .OrderBy(o => o.PageName).ToList();
-            var viewModels = pages.Select(o =>
-            {
-                var viewModel = new vBuncisPage();
-                viewModel.InjectFrom(o);
-                return viewModel;
-            }).ToList();
 
-            return viewModels;
-        }
+			var pageFromDb = _pageRepository.FindBy(expression);
 
-        public ValidationDictionary<vBuncisPage> SavePage(int clientId, vBuncisPage page)
-        {
-            var validator = new OnSavePageValidator(page);
-            validator.Validate();
-            if (!validator.IsValid)
-            {
-                return validator; // return immediate
-            }
+			var viewModel = new vBuncisPage();
+			viewModel.InjectFrom(pageFromDb);
 
-            // prepare object to save
-            var dPage = new DynamicPage();
-            dPage.InjectFrom(page);
-            dPage.ClientId = clientId;
+			return viewModel;
+		}
 
-            // rule based            
-            if (page.IsHomePage)
-            {
-                dPage.FriendlyUrl = "/";
-            }
-
-            // db operations
-            if (dPage.PageId <= 0) // insert
-            {
-                InsertPage(dPage);
-                validator.ValidatedObject.PageId = dPage.PageId; // set the pageId from inserted Id
-            }
-            else // update
-            {
-                UpdatePage(dPage);
-            }
-
-            // refetch data 
-            var expression = _dynamicPageFilters.Init()
-                .GetByPageId(validator.ValidatedObject.PageId)
-                .GetNotDeleted()
+		public IEnumerable<vBuncisPage> GetPagesNotDeleted(int clientId)
+		{
+			var expression = _dynamicPageFilters.Init()
+				.GetByClientId(clientId)
+				.GetNotDeleted()
 				.FilterExpression;
-            var ping = _pageRepository.FindBy(expression);
-            validator.ValidatedObject.InjectFrom(ping);
 
-            return validator;
-        }
+			var pages = _pageRepository
+				.FilterBy(expression)
+				.OrderBy(o => o.PageName).ToList();
 
-        private void InsertPage(DynamicPage dPage)
-        {
-            dPage.DateCreated = DateTime.UtcNow;
-            dPage.DateLastUpdated = DateTime.UtcNow;
-            _pageRepository.Add(dPage);
-        }
+			var viewModels = pages.Select(o =>
+			{
+				var viewModel = new vBuncisPage();
+				viewModel.InjectFrom(o);
+				return viewModel;
+			}).ToList();
 
-        private void UpdatePage(DynamicPage dPage)
-        {
-            var expression = _dynamicPageFilters.Init()
-                .GetByPageId(dPage.PageId)
-                .GetNotDeleted()
+			return viewModels;
+		}
+
+		public ValidationDictionary<vBuncisPage> SavePage(int clientId, vBuncisPage page)
+		{
+			var validator = new OnSavePageValidator(page);
+			validator.Validate();
+			if (!validator.IsValid)
+			{
+				return validator; // return immediate
+			}
+
+			// rule based            
+			if (page.IsHomePage)
+			{
+				// do here
+			}
+
+			DynamicPage dPage;
+			if (page.PageId <= 0) // insert
+			{
+				// prepare object to save
+				dPage = new DynamicPage();
+				dPage.InjectFrom(page);
+				dPage.ClientId = clientId;
+				dPage.DateCreated = DateTime.UtcNow;
+				dPage.DateLastUpdated = DateTime.UtcNow;
+				_pageRepository.Add(dPage);
+				validator.ValidatedObject.PageId = dPage.PageId; // set the pageId from inserted Id
+			}
+			else // update
+			{
+				var gExpression = _dynamicPageFilters.Init()
+					.GetByPageId(page.PageId)
+					.GetNotDeleted()
+					.FilterExpression;
+
+				dPage = _pageRepository.FindBy(gExpression);
+				if (dPage != null)
+				{
+					// excluded fields
+					var createdDate = dPage.DateCreated;
+					// update data
+					dPage.InjectFrom(dPage);
+					dPage.DateCreated = createdDate;
+					dPage.DateLastUpdated = DateTime.UtcNow;
+					_pageRepository.Update(dPage);
+				}
+			}
+
+			// refetch data 
+			var uExpression = _dynamicPageFilters.Init()
+				.GetByPageId(validator.ValidatedObject.PageId)
+				.GetNotDeleted()
 				.FilterExpression;
-            var fromDb = _pageRepository.FindBy(expression);
-            if (fromDb != null)
-            {
-                // excluded fields
-                var createdDate = fromDb.DateCreated;
-                fromDb.InjectFrom(dPage);
-                fromDb.DateCreated = createdDate;
-                fromDb.DateLastUpdated = DateTime.UtcNow;
-                _pageRepository.Update(fromDb);
-            }
-        }
 
-        public ValidationDictionary<vBuncisPage> DeletePage(int pageId)
-        {
-            vBuncisPage vPage;
-            var expression = _dynamicPageFilters.Init()
-                .GetByPageId(pageId)
-                .GetNotDeleted()
+			var ping = _pageRepository.FindBy(uExpression);
+
+			validator.ValidatedObject.InjectFrom(ping);
+
+			return validator;
+		}
+
+		public ValidationDictionary<vBuncisPage> DeletePage(int pageId)
+		{
+			vBuncisPage vPage = null;
+			var expression = _dynamicPageFilters.Init()
+				.GetByPageId(pageId)
+				.GetNotDeleted()
 				.FilterExpression;
-            var dPage = _pageRepository.FindBy(expression);
-            if (dPage == null)
-            {
-                vPage = null;
-            }
-            else
-            {
-                vPage = new vBuncisPage();
-                vPage.InjectFrom(dPage);
-            }
 
-            var validator = new OnDeletePageValidator(vPage);
-            validator.Validate();
-            if (!validator.IsValid)
-            {
-                return validator;
-            }
+			var dPage = _pageRepository.FindBy(expression);
+			if (dPage != null)
+			{
+				vPage = new vBuncisPage();
+				vPage.InjectFrom(dPage);
+			}
 
-            dPage.IsDeleted = true;
-            _pageRepository.Update(dPage);
-            return validator;
-        }
-    }
+			var validator = new OnDeletePageValidator(vPage);
+			validator.Validate();
+			if (!validator.IsValid)
+			{
+				return validator;
+			}
+
+			if (dPage != null)
+			{
+				dPage.IsDeleted = true;
+				_pageRepository.Update(dPage);
+			}
+
+			return validator;
+		}
+	}
 }

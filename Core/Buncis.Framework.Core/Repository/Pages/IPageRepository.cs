@@ -2,7 +2,7 @@
 
 namespace Buncis.Framework.Core.Repository.Pages
 {
-    public interface IPageRepository : IRepository<DynamicPage>, IReadOnlyRepository<DynamicPage>
+    public interface IPageRepository : IRepository<DynamicPage>
     {
     }
 }
