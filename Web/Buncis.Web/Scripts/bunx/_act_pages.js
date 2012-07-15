@@ -109,7 +109,7 @@
 
         if(isValid) {
             if(oPageId <= 0) {
-                template = $.extend(pTemplate, true);                
+                template = $.extend(true, {}, pTemplate);                
                 wsUrl = insertWebServiceUrl;
                 mode = 'add';
             }
