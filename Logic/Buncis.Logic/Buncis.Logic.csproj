@@ -71,7 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomEventArgs\BuncisPageListingEventArgs.cs" />
+    <Compile Include="DataTransferObject\oBuncisNews.cs" />
     <Compile Include="DataTransferObject\oBuncisPage.cs" />
+    <Compile Include="Models\FakeModel.cs" />
     <Compile Include="Models\Pages\BuncisPageListingModel.cs" />
     <Compile Include="Models\Pages\DynamicPageModel.cs" />
     <Compile Include="Presenters\LogicPresenter.cs" />

@@ -17,8 +17,6 @@ namespace Buncis.Web.Base
             Initialize(this, new EventArgs());
         }
 
-
-
         protected IUserProfile CurrentProfile
         {
             get

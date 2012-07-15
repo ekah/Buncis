@@ -84,6 +84,7 @@
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\Membership\IMembershipRoleRepository.cs" />
     <Compile Include="Repository\Membership\IMembershipUserRepository.cs" />
+    <Compile Include="Repository\News\INewsRepository.cs" />
     <Compile Include="Repository\Pages\IPageRepository.cs" />
     <Compile Include="Resources\QueryStrings.Designer.cs">
       <DependentUpon>QueryStrings.resx</DependentUpon>
@@ -101,9 +102,11 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\News\INewsService.cs" />
     <Compile Include="Services\ValidationDictionary.cs" />
     <Compile Include="Services\Pages\IDynamicPageService.cs" />
     <Compile Include="SupportClasses\Response.cs" />
+    <Compile Include="ViewModel\vBuncisNews.cs" />
     <Compile Include="ViewModel\vBuncisPage.cs" />
   </ItemGroup>
   <ItemGroup>
