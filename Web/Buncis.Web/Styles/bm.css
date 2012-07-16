@@ -1,11 +1,9 @@
-﻿body
-{
+﻿body {
     margin: 0px;
     padding: 0px;
     font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;
     font-size: 13px;
-    color: #fff;    
-    
+    color: #fff;       
 	background: rgb(48,34,47); /* Old browsers */
 	background: -moz-linear-gradient(left,  rgba(48,34,47,1) 0%, rgba(45,24,21,1) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(48,34,47,1)), color-stop(100%,rgba(45,24,21,1))); /* Chrome,Safari4+ */
@@ -16,32 +14,37 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30222f', endColorstr='#2d1815',GradientType=1 ); /* IE6-9 */
 }
 
-a 
-{
+a {
     text-decoration: none;
     color: #fff;
 }
-
+p, li {
+	line-height: 1.4em; 
+}
 
 /* #region page components */
 .body {
-	background: transparent url("/images/bm/bg_bm_02.jpg") repeat-y;
-	width: 1024px;
+	background: transparent url("/images/bm/bg.png") no-repeat;
+	width: 1004px;
 	margin: 0px auto;
 	/*min-height: 968px; /* don't forget to remove this */
 }
-
-.wrapper {
+.body2 {
+	background: transparent url("/images/bm/bg3.png") repeat-y;
+	width: 1004px;
+	margin: 0px auto;
+}
+.wrapper {		
 	width: 960px;
 	margin: 0px auto;
 }
 .header {
-	padding: 10px 0px;
+	padding: 10px 0px 0px 0px;
 }
 .header h1 {
 	padding: 0px;
 	margin: 0px;
-	font-size: 64px;	
+	font-size: 44px;	
 	text-decoration: none;
 	font-weight: 100;
 	letter-spacing: 0px;
@@ -49,10 +52,10 @@ a
 .header-desc{ 
 	text-decoration: none;
 	font-weight: bold;
-	font-size: 20px;	
+	font-size: 16px;	
 }
 .aux-menu {
-	padding: 5px 0px;		
+	padding: 0px 0px 0px 0px;		
 	width: 100%;
 }
 .aux-menu span {
@@ -64,10 +67,18 @@ a
 }
 .content-top {
 	display: block;	
-	height: 400px;
+	height: 395px;
 }
 .clearFloats {
 	clear: both;
+}
+.content-mid {
+	display: block;
+	height: 185px;
+}
+.content-bottom {
+	display: block;
+	height: 450px;	
 }
 /* #endregion */
 
@@ -78,9 +89,9 @@ a
 	margin: 0px;
 	padding: 0px;
 	border: 1px solid #aaa;
-	border-radius: 8px;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;	
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;	
 }
 
 .frame {	
@@ -88,9 +99,9 @@ a
 	opacity: 0.2;
 	-moz-opacity: 0.2;
 	filter:alpha(opacity=20); /* For IE8 and earlier */		
-	border-radius: 8px;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;	
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;	
 }
 
 .frame-inside {
@@ -101,9 +112,33 @@ a
 	color: #fff;
 	position: absolute;
 	border: 1px solid #aaa;
-	border-radius: 8px;	
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;		
+	border-radius: 5px;	
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;		
+}
+.frame-label {
+	position: absolute;
+	top: -10px;
+	font-size: 1.2em;
+	background-color: #bbb;
+	height: 30px;
+	z-index: 5555;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	color: black;
+	padding: 5px;
+}
+.frame-label img {
+	display: block;
+	padding-top: 4px;
+	float: left;
+}
+.frame-label span {
+	display: block;	
+	float: left;
+	margin: 8px 10px 0px;
+	line-height: 1em;
 }
 /* #endregion */
 
@@ -132,7 +167,7 @@ a
 .menu-container {
 	width: 960px;
 	height: 5em;
-	padding: 1em 0em;
+	padding: 10px 0px 15px;
 }
 .menu {
 	width: 960px;
@@ -171,6 +206,7 @@ a
 	font-size: 2em;
 	text-align: center;	
 	line-height: 1.5em;
+	font-weight: bold;
 }
 /* #endregion */
 
@@ -188,10 +224,191 @@ a
 	top: 20px;	
 	left: 20px;
 }
+.quotes-content {
+	margin: 10px;
+	padding: 10px;
+	font-size: 1.1em;
+	color: #ccc;
+}
+.quotes-frame-label {	
+	left: 190px;
+}
 /* #endregion *?
 
-/* #endregion */
+/* #region daily bread */
+.dailyBread {
 	
+}
+.dailyBread-frame {	
+	width: 960px;
+	height: 170px;
+}
+.dailyBread-frameInside {
+	top: 20px;
+	left: 20px;
+	width: 920px;
+	height: 130px;
+}
+.dailyBread-verse {
+	float: left;		
+	width: 80px;
+	padding: 15px 10px 10px;
+	margin: 0px 10px;
+}
+.dailyBread-verse-title {
+	font-size: 50px;	
+	line-height: 50px;
+	color: #ccc;
+}
+.dailyBread-verse-num span {
+	float: left;
+	display: block;
+	font-size: 30px;
+	color: #ccc;
+}
+.dailyBread-verse-num-left {
+	float:left;
+	font-size: 30px;
+	padding: 0px 5px;
+	color: #ccc;
+}
+.dailyBread-verse-num-right {
+	float: left;
+	font-size: 30px;
+	padding: 0px 5px;
+	color: #ccc;
+}
+.dailyBread-content {
+	float: left;		
+	width: 580px;
+	margin: 20px 0px 10px;
+	font-size: 1.1em;
+	color: #ccc;
+}
+.dailyBread-pic {
+	float: left;
+	margin: 20px 10px 10px;	
+	padding: 0px 10px;
+}
+.dailyBread-frame-label {
+	left: 800px;
+}
+/* #endregion */
+
+/* #region Article */
+.article {
+
+}
+.article-frame {
+	width: 630px;
+	height: 360px;
+}
+.article-frameInside {
+	top: 20px;
+	left: 20px;
+	width: 590px;
+	height: 320px;	
+}
+.article-content {
+	padding: 0px 10px 0px;
+	color: #ccc;
+}
+.article-frame-label {
+	left: 495px;
+}
+/* #endregion */
+
+/* #region feeds */
+.feeds {
+	margin-left: 640px;	
+}
+.feeds-frame {
+	width: 320px;
+	height: 490px;
+}
+.feeds-frameInside {
+	top:20px;
+	left: 20px;
+	width: 280px;
+	height: 450px;
+}
+.feeds-content {
+	color: #ccc;
+}
+.feeds-frame-label {
+	left: 185px;
+}
+/* #endregion */
+
+/* #endregion */
+
+	
+.spc-buttons {
+	position: absolute;
+	margin-top: 370px;
+	
+}
+.big-icon {
+	float:left;	
+	background: #543654;
+	margin: 0px 4px 0px 4px;
+	width: 160px;
+	height: 100px;
+	padding: 10px 20px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #ccc;
+}	
+.big-icon img {
+
+}
+.big-icon span {
+	display: block;
+	width: 160px;
+	text-align: right;
+	font-size: 1.2em;
+}
+.big-icon-normal {
+	background: #543654;
+}
+.big-icon-hover {
+	cursor: pointer;
+	background: #783547;
+}
+
+
+
+.footer {
+	height: 120px;
+	border-top: 2px solid #aaa;
+	margin-top: 55px;
+	padding-top: 10px;
+}
+.footer .contact-us {
+	float: left;
+	font-size: 1.3em;
+}
+.footer .social {
+	float: left;
+	font-size: 1.3em;
+	margin-left: 40px;
+}
+.footer .social span {
+	display: block;
+	float: left;
+	padding: 0px 4px;
+}
+.footer .copyright {
+	margin-top: 20px;
+	float: right;
+	text-align: right;
+	font-size: 1.3em;
+}
+.footer .copyright span {
+	display: block;	
+}
+
 
 /* #region slider overwrite */
 ul.pagination {
@@ -208,3 +425,19 @@ ul.pagination {
 	top: 150px;
 }
 /* #endslider */
+
+.infoBox {
+	height: 20px;
+	width: 80px;
+	position: fixed;
+	left: 10px;
+	bottom: 0px;
+	padding: 10px;
+	background-color: green;
+	color: white;
+	border: 2px solid white;
+	font-size: 1.2em;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
