@@ -127,7 +127,10 @@
     <Content Include="Images\bm\announcements_pic.png" />
     <Content Include="Images\bm\article-label.png" />
     <Content Include="Images\bm\bg.png" />
+    <Content Include="Images\bm\bg2.png" />
     <Content Include="Images\bm\bg3.png" />
+    <Content Include="Images\bm\bg4.png" />
+    <Content Include="Images\bm\bg5.png" />
     <Content Include="Images\bm\bg_bm_02.jpg" />
     <Content Include="Images\bm\bible-label.png" />
     <Content Include="Images\bm\community_pic.png" />
@@ -305,6 +308,7 @@
     <Content Include="Styles\colorbox\images\border1.png" />
     <Content Include="Styles\colorbox\images\border2.png" />
     <Content Include="Styles\colorbox\images\loading.gif" />
+    <Content Include="Styles\cssreset-min.css" />
     <Content Include="Styles\iButton\jquery.ibutton.css" />
     <Content Include="Styles\jHtmlArea\jHtmlArea.ColorPickerMenu.css" />
     <Content Include="Styles\jHtmlArea\jHtmlArea.css" />

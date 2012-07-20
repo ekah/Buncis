@@ -10,6 +10,8 @@
         }(window._news = window._news || {}));
 
     </script>
+
+    <script src="/Scripts/bunx/ember/handlebars-1.0.0.beta.6.js" type="text/javascript"></script>
 	<script src="/Scripts/bunx/ember/ember-0.9.8.1.js" type="text/javascript"></script>
     <script src="/Scripts/bunx/_act_news.js" type="text/javascript"></script>
 </asp:Content>
@@ -22,7 +24,18 @@
             
         </div>
         <div class="innerContent">
-            
+            <script type="text/x-handlebars" data-template-name="news-list">
+		      <h2>My News</h2>
+		      <ul>
+		        {{#each News.newsListController}}
+		          {{#view News.NewsListView contentBinding="this"}}
+		            {{#with content}}
+		              <li><span>{{ newsTitle }}</span></li>              
+		            {{/with}}
+		          {{/view}}
+		        {{/each}}
+		      </ul>    
+		    </script>
         </div>
     </div>
 

@@ -151,7 +151,7 @@
 						<div class="big-icon"><img src="/images/bm/community_pic.png" /><span>Communities</span></div>
 						<div class="clearFloats"></div>
 					</div>
-				</div>
+				</div>				
 				<div class="footer">
 					<div class="contact-us">
 						Contact Us: <br/>
@@ -170,10 +170,10 @@
 					<div class="clearFloats"></div>
 				</div>
 			</div>
-		</div>
+		</div>	
 	</form>
 	<div class="infoBox">
-		See more
+		Scroll Down
 	</div>
 </body>
 </html>
