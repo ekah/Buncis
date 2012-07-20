@@ -144,7 +144,7 @@ namespace Buncis.Web.Common.Membership
             }
         }
 
-		public IList<MembershipRole> Roles
+		public IEnumerable<MembershipRole> Roles
 		{
 			get
 			{

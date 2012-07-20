@@ -15,7 +15,7 @@ namespace Buncis.Framework.Core.Membership
 		bool IsApproved { get; }
 		DateTime? LastLoginDate { get; }
 		int ClientId { get; }
-		IList<MembershipRole> Roles { get; }
+		IEnumerable<MembershipRole> Roles { get; }
 		string UserName { get; }
 		bool IsAnonymous { get; }
 	}
