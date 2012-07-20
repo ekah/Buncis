@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Buncis.Logic.DataTransferObject
+namespace Buncis.Web.Common.DataTransferObject
 {
 	public class oBuncisNews
 	{

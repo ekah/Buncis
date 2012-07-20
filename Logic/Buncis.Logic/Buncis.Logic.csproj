@@ -71,15 +71,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomEventArgs\BuncisPageListingEventArgs.cs" />
-    <Compile Include="DataTransferObject\oBuncisNews.cs" />
-    <Compile Include="DataTransferObject\oBuncisPage.cs" />
     <Compile Include="Models\FakeModel.cs" />
     <Compile Include="Models\Pages\BuncisPageListingModel.cs" />
     <Compile Include="Models\Pages\DynamicPageModel.cs" />
+    <Compile Include="Presenters\FakePresenter.cs" />
     <Compile Include="Presenters\LogicPresenter.cs" />
     <Compile Include="Presenters\Pages\BuncisPageListingPresenter.cs" />
     <Compile Include="Presenters\Pages\DynamicPagePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\IFakeView.cs" />
     <Compile Include="Views\Pages\IDynamicPageView.cs" />
     <Compile Include="Views\Pages\IBuncisPageListingView.cs" />
   </ItemGroup>

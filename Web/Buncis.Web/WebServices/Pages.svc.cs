@@ -2,8 +2,8 @@
 using System.Linq;
 using Buncis.Framework.Core.SupportClasses;
 using Buncis.Framework.Core.Infrastructure.IoC;
+using Buncis.Web.Common.DataTransferObject;
 using Omu.ValueInjecter;
-using Buncis.Logic.DataTransferObject;
 using Buncis.Framework.Core.Services.Pages;
 using Buncis.Framework.Core.ViewModel;
 

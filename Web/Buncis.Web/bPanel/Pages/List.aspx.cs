@@ -12,7 +12,7 @@ using System.Web.UI.HtmlControls;
 namespace Buncis.Web.bPanel.Pages
 {
     [PresenterBinding(typeof(BuncisPageListingPresenter), ViewType = typeof(IBuncisPageListingView))]
-    public partial class List : BaseLogicPage<BuncisPageListingModel>, IBuncisPageListingView
+	public partial class List : BaseLogicPage<BuncisPageListingModel>, IBuncisPageListingView
     {
         public void BindViewData()
         {

@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using Buncis.Framework.Core.SupportClasses;
-using Buncis.Logic.DataTransferObject;
+using Buncis.Web.Common.DataTransferObject;
 
 namespace Buncis.Web.WebServices
 {

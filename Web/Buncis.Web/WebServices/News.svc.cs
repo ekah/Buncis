@@ -6,8 +6,8 @@ using System.ServiceModel;
 using System.Text;
 using Buncis.Framework.Core.Infrastructure.IoC;
 using Buncis.Framework.Core.SupportClasses;
-using Buncis.Logic.DataTransferObject;
 using Buncis.Framework.Core.Services.News;
+using Buncis.Web.Common.DataTransferObject;
 using Omu.ValueInjecter;
 
 namespace Buncis.Web.WebServices
