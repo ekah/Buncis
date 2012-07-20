@@ -66,10 +66,6 @@ namespace Buncis.Web.Common.Membership
             {
                 return MembershipUser.UserId;
             }
-            set
-            {
-                throw new Exception("Cannot set this property");
-            }
         }
 
         public string FirstName
@@ -78,10 +74,6 @@ namespace Buncis.Web.Common.Membership
             {
                 return MembershipUser.FirstName;
             }
-            set
-            {
-                throw new Exception("Cannot set this property");
-            }
         }
 
         public string LastName
@@ -89,10 +81,6 @@ namespace Buncis.Web.Common.Membership
             get
             {
                 return MembershipUser.LastName;
-            }
-            set
-            {
-                throw new Exception("Cannot set this property");
             }
         }
 
@@ -110,19 +98,11 @@ namespace Buncis.Web.Common.Membership
             {
                 return MembershipUser.Email;
             }
-            set
-            {
-                throw new Exception("Cannot set this property");
-            }
         }
 
         public bool IsLocked
         {
             get
-            {
-                throw new NotImplementedException();
-            }
-            set
             {
                 throw new NotImplementedException();
             }
@@ -134,19 +114,11 @@ namespace Buncis.Web.Common.Membership
             {
                 throw new NotImplementedException();
             }
-            set
-            {
-                throw new NotImplementedException();
-            }
         }
 
         public DateTime? LastLoginDate
         {
             get
-            {
-                throw new NotImplementedException();
-            }
-            set
             {
                 throw new NotImplementedException();
             }
@@ -170,10 +142,6 @@ namespace Buncis.Web.Common.Membership
             {
                 return MembershipUser.ClientId;
             }
-            set
-            {
-                throw new Exception("Cannot set this property");
-            }
         }
 
 		public IList<MembershipRole> Roles
@@ -181,34 +149,6 @@ namespace Buncis.Web.Common.Membership
 			get
 			{
 				throw new NotImplementedException();
-			}
-			set
-			{
-				throw new NotImplementedException();
-			}
-		}
-
-		public string UserName
-		{
-			get
-			{
-				return base.UserName;
-			}
-			set
-			{
-				throw new Exception("Cannot set this property");
-			}
-		}
-
-		public bool IsAnonymous
-		{
-			get
-			{
-				return base.IsAnonymous;
-			}
-			set
-			{
-				throw new Exception("Cannot set this property");
 			}
 		}
 	}
