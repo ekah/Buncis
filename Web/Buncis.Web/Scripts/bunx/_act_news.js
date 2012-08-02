@@ -5,19 +5,24 @@ News.NewsItem = Ember.Object.extend({
 	newsTitle: '',
 	newsTeaser: '',
 	newsContent: '',
-	datePublished: '',
+	datePublished: '', // display date as in 4 Aug 2012
 	dateExpired: '',
 	dateCreated: '',
 	dateLastUpdated: '',
 	friendlyUrl: '',
-	oDatePublished: '',
+	oDatePublished: '', // epoch date from server
 	oDateExpired: '',
-	tDatePublished: '',
-	tDateExpired: ''
+	tDatePublished: '', // display date as in 4-8-2012
+	tDateExpired: '',
+	eDatePublished: '', // the actual date object 
+	eDateExpired: '',
+	recentlyAdded: false,
+	recentlyEdited: false
 });
 
 News.newsController = Ember.Object.create({
 	newsList: [],
+	editedNews: {},
 	loadData: function() {
 		this.newsList = [];
 		News.fn.getNews(function(result) {
@@ -32,19 +37,18 @@ News.newsController = Ember.Object.create({
 					oDatePublished: iNewsItem.DatePublished,
 					oDateExpired: iNewsItem.DateExpired,
 					datePublished: iNewsItem.DisplayDatePublished,
-					dateExpired: iNewsItem.DisplayDateExpired,					
-					tDatePublished: window._helpers.convertEpochToString(window._helpers.cleanDotNetDateJson(iNewsItem.DatePublished)),
-					tDateExpired: window._helpers.convertEpochToString(window._helpers.cleanDotNetDateJson(iNewsItem.DateExpired)),
-					//dateCreated: window._helpers.convertEpochToString(window._helpers.cleanDotNetDateJson(iNewsItem.DateCreated)),
-					//dateLastUpdated: window._helpers.convertEpochToString(window._helpers.cleanDotNetDateJson(iNewsItem.DateLastUpdated)),
+					dateExpired: iNewsItem.DisplayDateExpired,		
+					eDatePublished: _helpers.convertEpochToDate(_helpers.cleanDotNetDateJson(iNewsItem.DatePublished)).toString(),
+					eDateExpired: _helpers.convertEpochToDate(_helpers.cleanDotNetDateJson(iNewsItem.DateExpired)).toString(),
+					tDatePublished: _helpers.convertEpochToString(_helpers.cleanDotNetDateJson(iNewsItem.DatePublished)),
+					tDateExpired: _helpers.convertEpochToString(_helpers.cleanDotNetDateJson(iNewsItem.DateExpired)),
 					friendlyUrl: iNewsItem.FriendlyUrl
 				});
 				converted.push(newNewsItem);
 			}
 			News.newsController.set('newsList', converted);
 		});
-	}, 	
-	editedNews: {},
+	},	
 	addNews: function(json) {
 		var newNews = News.NewsItem.create({					
 			newsId: json.NewsId,
@@ -55,25 +59,29 @@ News.newsController = Ember.Object.create({
 			oDateExpired: json.DateExpired,
 			datePublished: json.DisplayDatePublished,
 			dateExpired: json.DisplayDateExpired,					
-			tDatePublished: window._helpers.convertEpochToString(window._helpers.cleanDotNetDateJson(json.DatePublished)),
-			tDateExpired: window._helpers.convertEpochToString(window._helpers.cleanDotNetDateJson(json.DateExpired)),			
-			friendlyUrl: json.FriendlyUrl
+			tDatePublished: _helpers.convertEpochToString(_helpers.cleanDotNetDateJson(json.DatePublished)),
+			tDateExpired: _helpers.convertEpochToString(_helpers.cleanDotNetDateJson(json.DateExpired)),			
+			friendlyUrl: json.FriendlyUrl,
+			recentlyAdded: true,
+			recentlyEdited: false
 		});
 		var list = News.newsController.get('newsList');
 		list.push(newNews);
+		News.newsController.set('newsList', list);
 	}
 });
 
-News.NewsListView = Ember.View.extend({
+News.NewsItemView = Ember.View.extend({
+	tagName:'li',
 	edit: function(event) {
 		var editView = News.NewsItemEditedView.create();				
 		News.newsController.set('editedNews', event.view.content);
 		editView.appendTo(_news._elems.editPopup);		
 
 		News.fn.showFormPopup(_news._elems.editPopup, 'Edit News', 
-			function() {	
-				$(_news._elems.btnSaveNews).attr('rel', 'edit');				
+			function() {									
 				News.fn.prepareEditForm();
+				$(_news._elems.btnSaveNews).attr('rel', 'edit');
 			}, 
 			function() {		
 				editView.remove();
@@ -123,9 +131,6 @@ News.NewsItemEditedView = Ember.View.extend({
 
 		eNews.set('tDatePublished', nPublished);
 		eNews.set('tDateExpired', nExpired);		
-		
-		//eNews.set('datePublished', dPublished);
-		//eNews.set('dateExpired', dExpired);
 
 		eNews.set('oDatePublished', '/Date(' + dPublished.getTime() + stzo + itzo + '00)/');
 		eNews.set('oDateExpired', '/Date(' + dExpired.getTime() + stzo + itzo + '00)/');
@@ -133,6 +138,7 @@ News.NewsItemEditedView = Ember.View.extend({
 		News.fn.saveNews(eNews, function(result) {
 			eNews.set('datePublished', result.DisplayDatePublished);
 			eNews.set('dateExpired', result.DisplayDateExpired);
+			eNews.set('recentlyEdited', true);
 
 			$.colorbox.close();
 
@@ -150,6 +156,8 @@ News.NewsItemEditedView = Ember.View.extend({
             	opacity: 100,
             	className: 'success'
 			});
+
+			//News.newsController.addNews(result);
 		});
 	}
 });
@@ -170,18 +178,17 @@ News.NewsItemEditedView = Ember.View.extend({
 		$(_news._elems.btnAddNews).click(function(event) {
 			event.preventDefault();
 			
-			var editView = News.NewsItemEditedView.create();				
+			var editView = News.NewsItemEditedView.create();
 			var newTemplate = News.NewsItem.create(); 
 			News.newsController.set('editedNews', newTemplate);
 			editView.appendTo(_news._elems.editPopup);		
 
 			News.fn.showFormPopup(_news._elems.editPopup, 'Add News', 
-				function() {	
-					$(_news._elems.btnSaveNews).attr('rel', 'add');
-
+				function() {
 					var currentDate = new Date();
 					var currentDatePlusOneMonth = _helpers.convertEpochToDate((new Date()).setMonth(currentDate.getMonth() + 1));		
 					News.fn.prepareEditForm(currentDate, currentDatePlusOneMonth);
+					$(_news._elems.btnSaveNews).attr('rel', 'add');
 					$(_news._elems.txtDatePublished).val(_helpers.convertDateToString(currentDate));
 					$(_news._elems.txtDateExpired).val(_helpers.convertDateToString(currentDatePlusOneMonth));
 					$(_news._elems.txtDatePublished).attr('rel', currentDate);
@@ -203,7 +210,7 @@ News.NewsItemEditedView = Ember.View.extend({
 	var addWebServiceUrl = '/webservices/news.svc/InsertNews';	
 
 	oFn.prepareEditForm = function(published, expired) {
-		var news = window._news;
+		var news = _news;
 		news.form.reset();
 		if(!news.form.wizardHasBeenInitialized) {
 			news.form.wizard = $(news._elems.newsWizards).smartWizard({
@@ -227,7 +234,7 @@ News.NewsItemEditedView = Ember.View.extend({
 		}
 		news.form.validators = $(news._elems.newsFormElements).validator({
 			effect: 'floatingWall',
-			container: window._elems.errorContainer,
+			container: _elems.errorContainer,
 			errorInputEvent: null,
 		});  
 
@@ -326,6 +333,8 @@ News.NewsItemEditedView = Ember.View.extend({
 		else {
 			wsUrl = addWebServiceUrl;
 		}
+
+		_helpers.blockPopupDefault();
 		$.ajax({
 			type: "POST",
 			url: wsUrl,
@@ -333,7 +342,7 @@ News.NewsItemEditedView = Ember.View.extend({
 			dataType: 'json',
             contentType: 'text/json',
 			success: function (result) {
-				console.log(result);
+				_helpers.unblockPopupDefault();
 				var data = result.d;
 				if (data.IsSuccess) {
 					if(_callback) {
@@ -342,6 +351,7 @@ News.NewsItemEditedView = Ember.View.extend({
 				}
 			},
 			error: function () {
+				_helpers.blockPopupDefault();
 			}
 		});
 	};

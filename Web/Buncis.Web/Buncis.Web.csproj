@@ -205,6 +205,8 @@
     <Content Include="Images\icons\heart.png" />
     <Content Include="Images\icons\hire-me.png" />
     <Content Include="Images\icons\home.png" />
+    <Content Include="Images\icons\ico-news-status-edited.png" />
+    <Content Include="Images\icons\ico-news-status-new.png" />
     <Content Include="Images\icons\illustration.png" />
     <Content Include="Images\icons\invoice.png" />
     <Content Include="Images\icons\issue.png" />

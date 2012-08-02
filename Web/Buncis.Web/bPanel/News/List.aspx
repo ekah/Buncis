@@ -18,7 +18,8 @@
                 newsFormElements: '.form-item :input',
 				newsDate: '.newsDate',
 				btnSaveNews: '#btnSaveNews',
-				btnAddNews: '#aAddNews'
+				btnAddNews: '#aAddNews',
+				newsListWrapper: '.news-list-wrapper'
             };
         }(window._news = window._news || {}));
 
@@ -39,25 +40,36 @@
         <div class="innerContent">
 			<div class="news-list-wrapper">
 				<script type="text/x-handlebars">
-				  <ul>
-					{{#each News.newsController.newsList}}
-						<li>
-						{{#view News.NewsListView contentBinding="this"}}							
-							<div class="news-title">{{content.newsTitle}}</div>
-							<div class="news-teaser">{{content.newsTeaser}}</div>
-							<div class="news-dates">
-								<span>Published: {{content.datePublished}}</span><br/><span>Expired: {{content.dateExpired}}</span>
+					<ul>
+						{{#collection contentBinding="News.newsController.newsList" itemViewClass="News.NewsItemView"}}
+							<div>
+								<div class="left" style="width: 80%">
+									<div class="news-title">{{content.newsTitle}}</div>
+									<div class="news-teaser">{{content.newsTeaser}}</div>
+									<div class="news-dates">
+										<span>Published: {{content.datePublished}}</span><br/><span>Expired: {{content.dateExpired}}</span>
+									</div>
+								</div>
+								<div class="left" style="width:20%">
+									{{#if content.recentlyAdded}}
+									<div class="news-action-info news-recently-added"></div>
+									{{else}}
+										{{#if content.recentlyEdited}}
+										<div class="news-action-info news-edited"></div>
+										{{else}}
+										<div class="news-action-info"></div>
+										{{/if}}
+									{{/if}}
+									<div class="list-action">
+										<a href="javascript:;" {{action "delete" on="click"}}>Delete</a>
+										<a href="javascript:;" {{action "edit" on="click"}}>Edit</a>						
+										<div class="clearFloats"></div>
+									</div>	
+								</div>
 							</div>
-							<div class="list-action">
-								<a href="javascript:;" {{action "delete" on="click"}}>Delete</a>
-								<a href="javascript:;" {{action "edit" on="click"}}>Edit</a>						
-								<div class="clearFloats"></div>
-							</div>							
 							<div class="clearFloats"></div>
-						{{/view}}
-						</li>
-					{{/each}}
-				  </ul>    
+						{{/collection}}
+					</ul>    
 				</script>
 			</div>
         </div>
@@ -96,15 +108,19 @@
                         <div class="left">
                             <div class="form-item">
                                 <label>Date Published</label>
-                                <input type="text" id="txtDatePublished" name="txtDatePublished" required="required" 
-                                    data-message="Date Published is required" {{bindAttr value="newsItemEdited.tDatePublished"}}/>                           
+                                <input type="text" id="txtDatePublished" name="txtDatePublished" 
+									required="required" data-message="Date Published is required" 
+									{{bindAttr value="newsItemEdited.tDatePublished"}} 
+									{{bindAttr rel="newsItemEdited.eDatePublished"}}/>
                             </div>							
                         </div>
                         <div class="left">							
 							<div class="form-item">
 								<label>Date Expired</label>
-								<input type="text" id="txtDateExpired" name="txtDateExpired" required="required" 
-									data-message="Date Expired  is required" {{bindAttr value="newsItemEdited.tDateExpired"}}/>
+								<input type="text" id="txtDateExpired" name="txtDateExpired" 
+									required="required" data-message="Date Expired  is required" 
+									{{bindAttr value="newsItemEdited.tDateExpired"}} 
+									{{bindAttr rel="newsItemEdited.eDateExpired"}} />
 							</div>							
 						</div>		
 						<div class="newsDate left" style="width: 100px; height: 40px; border: solid 1px black; padding: 10px;">Click here to adjust dates</div>	

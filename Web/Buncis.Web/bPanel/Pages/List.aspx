@@ -28,8 +28,7 @@
                 chkIsHomePage: '#chkIsHomePage',
                 btnSavePage: '#btnSavePage',
                 btnEditPage: '#table-pages td a.edit',
-                btnDeletePage: '#table-pages td a.delete',
-                colorboxArea: '#cboxLoadedContent'
+                btnDeletePage: '#table-pages td a.delete'
             };
         }(window._pages = window._pages || {}));
 

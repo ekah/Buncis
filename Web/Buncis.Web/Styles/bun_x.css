@@ -639,11 +639,11 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
 }
 .news-title {
 	font-weight: bold;
-	width: 80%;
+	/*width: 80%;*/
 }
 .news-teaser {
 	margin: 5px 0px 0px 0px;
-	width: 80%;
+	/*width: 80%;*/
 }
 .news-dates {
 	padding: 5px 0px 0px;
@@ -652,6 +652,15 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
 }
 .news-dates span {	
 	padding: 0px 0px 0px 0px;
+}
+.news-action-info {
+	min-height: 50px;
+}
+.news-recently-added {
+	background: transparent url(/images/icons/ico-news-status-new.png) no-repeat;
+}
+.news-edited {
+    background: transparent url(/images/icons/ico-news-status-edited.png) no-repeat;
 }
 /* #endregion */
 

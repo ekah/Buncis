@@ -1,5 +1,6 @@
 ﻿window._elems = {
-	errorContainer: '#errors'
+	errorContainer: '#errors',
+    colorboxArea: '#cboxLoadedContent'
 };
 
 $(document).ready(function () {
@@ -36,6 +37,12 @@ $.tools.validator.addEffect("floatingWall", function (errors, event) {
 
 
 (function(helpers) {
+    helpers.blockPopupDefault = function() {
+        $(_elems.colorboxArea).block();
+    };
+    helpers.unblockPopupDefault = function() {
+        $(_elems.colorboxArea).unblock(); 
+    };
     helpers.animateRow = function(row) {
         $(row).animate({ backgroundColor: '#acfa58' }, 1500)
             .animate({ backgroundColor: 'transparent' }, 1500); 
