@@ -14,6 +14,11 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30222f', endColorstr='#2d1815',GradientType=1 ); /* IE6-9 */
 }
 
+html, button, input, select, textarea {
+	font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
 a {
     text-decoration: none;
     color: #fff;
@@ -114,30 +119,35 @@ p, li {
 	border: 1px solid #aaa;
 	border-radius: 5px;	
 	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;		
+	-webkit-border-radius: 5px;	
+	z-index: 6666;	
 }
 .frame-label {
 	position: absolute;
-	top: -10px;
-	font-size: 1.2em;
+	top: -3px;
+	font-size: 1em;	
 	background-color: #FFF;
-	height: 30px;
+	height: 20px;
 	z-index: 5555;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	-moz-border-top-left-radius: 5px;
+	-moz-border-top-right-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
 	color: black;
-	padding: 5px;
+	padding: 5px 30px;
 }
 .frame-label img {
 	display: block;
 	padding-top: 4px;
 	float: left;
+	display: none;
 }
 .frame-label span {
 	display: block;	
 	float: left;
-	margin: 8px 10px 0px;
+	/*margin: 8px 10px 0px;*/
 	line-height: 1em;
 }
 /* #endregion */

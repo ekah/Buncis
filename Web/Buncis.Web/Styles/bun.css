@@ -9,10 +9,10 @@ body
     color: #333333;
 }
 
-html, body
-{
-    /*height: 100%;*/
-}
+html, button, input, select, textarea {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13px;   
+}   
 
 a {
     text-decoration: none;

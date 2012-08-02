@@ -266,7 +266,9 @@
     <Content Include="Scripts\bunx\common.js" />
     <Content Include="Scripts\bunx\ember\ember-0.9.8.1.js" />
     <Content Include="Scripts\bunx\ember\ember-0.9.8.1.min.js" />
+    <Content Include="Scripts\bunx\ember\handlebars-1.0.0.beta.6.js" />
     <Content Include="Scripts\bunx\_act_news.js" />
+    <Content Include="Scripts\modules\datepicker\datepicker.js" />
     <Content Include="Scripts\modules\jquery.color.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
@@ -287,6 +289,7 @@
     <Content Include="Scripts\modules\jHtmlArea\jquery-ui-1.7.2.custom.min.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <Content Include="Scripts\modules\jquery.dateFormat-1.0.js" />
     <Content Include="Scripts\modules\scrollto\jquery.scrollTo-min.js" />
     <Content Include="Scripts\modules\scrollto\jquery.scrollTo.js" />
     <Content Include="Scripts\modules\showmessage\jquery.showMessage.js" />
@@ -309,6 +312,24 @@
     <Content Include="Styles\colorbox\images\border2.png" />
     <Content Include="Styles\colorbox\images\loading.gif" />
     <Content Include="Styles\cssreset-min.css" />
+    <Content Include="Styles\datepicker\datepicker.css" />
+    <Content Include="Styles\datepicker\images\custom_b.png" />
+    <Content Include="Styles\datepicker\images\custom_bl.png" />
+    <Content Include="Styles\datepicker\images\custom_br.png" />
+    <Content Include="Styles\datepicker\images\custom_l.png" />
+    <Content Include="Styles\datepicker\images\custom_r.png" />
+    <Content Include="Styles\datepicker\images\custom_t.png" />
+    <Content Include="Styles\datepicker\images\custom_tl.png" />
+    <Content Include="Styles\datepicker\images\custom_tr.png" />
+    <Content Include="Styles\datepicker\images\datepicker_b.png" />
+    <Content Include="Styles\datepicker\images\datepicker_bl.png" />
+    <Content Include="Styles\datepicker\images\datepicker_br.png" />
+    <Content Include="Styles\datepicker\images\datepicker_l.png" />
+    <Content Include="Styles\datepicker\images\datepicker_r.png" />
+    <Content Include="Styles\datepicker\images\datepicker_t.png" />
+    <Content Include="Styles\datepicker\images\datepicker_tl.png" />
+    <Content Include="Styles\datepicker\images\datepicker_tr.png" />
+    <Content Include="Styles\datepicker\images\field.png" />
     <Content Include="Styles\iButton\jquery.ibutton.css" />
     <Content Include="Styles\jHtmlArea\jHtmlArea.ColorPickerMenu.css" />
     <Content Include="Styles\jHtmlArea\jHtmlArea.css" />
@@ -520,6 +541,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master\Sandbox.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WebServices\Web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

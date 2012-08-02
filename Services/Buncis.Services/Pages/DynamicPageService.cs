@@ -118,6 +118,7 @@ namespace Buncis.Services.Pages
 					dPage.InjectFrom(dPage);
 					dPage.DateCreated = createdDate;
 					dPage.DateLastUpdated = DateTime.UtcNow;
+                    dPage.IsDeleted = false;
 					_pageRepository.Update(dPage);
 				}
 			}

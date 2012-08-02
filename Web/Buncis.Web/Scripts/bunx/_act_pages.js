@@ -205,8 +205,8 @@
 				var col3 = '<span>' + aData.DisplayDateCreated + '</span>';
 				$('td:eq(3)', nRow).html(col3);
 
-				var col4 = '<a href="javascript:void(0);" rel="' + aData.PageId + '" class="pages delete">Delete</a>';
-				col4 += '<a href="javascript:void(0);" rel="' + aData.PageId + '" class="pages edit">Edit</a>';
+				var col4 = '<a href="javascript:void(0);" rel="' + aData.PageId + '" class="delete">Delete</a>';
+				col4 += '<a href="javascript:void(0);" rel="' + aData.PageId + '" class="edit">Edit</a>';
 				$('td:eq(4)', nRow).html(col4);
 			},
 			"aoColumnDefs": [{ "sClass": "icon-col", "aTargets": [0] }, { "sClass": "action-col", "aTargets": [4]}],
@@ -282,10 +282,18 @@
 		    });
         }
         else {
+            var title = '';
+            if(mode === 'edit') { 
+                title = 'Edit Page';           
+            }
+            else {
+                title = 'Add Page';
+            }
+
 		    $.colorbox({
 			    height: 662,
 			    width: 960,
-			    title: "Add/Edit Page",
+			    title: title,
 			    href: $(pages._elems.pageFormPopup),
 			    inline: true,
 			    overlayClose: false,

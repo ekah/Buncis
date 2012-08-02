@@ -7,6 +7,11 @@ body
     font-size: 13px;
 }
 
+html, button, input, select, textarea {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13px;   
+}
+
 a {
     text-decoration: none;    
 }
@@ -15,9 +20,9 @@ input, textarea, iframe {
 	box-shadow: 0 0 1px #aeaeae;	
 	-webkit-box-shadow: 0 0 1px #aeaeae;	
 	-moz-box-shadow: 0 0 1px #aeaeae;	
-	border-radius: 4px;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 
 iframe {
@@ -26,6 +31,11 @@ iframe {
 
 input:focus, textarea:focus {
     background-color: #FFF8E3;    
+}
+
+textarea {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
 }
 
 
@@ -211,7 +221,7 @@ input:focus, textarea:focus {
 	font-weight: bold;
     display: block;
     background-color: #9a3334;
-	border: solid 1px #333;
+	border: solid 1px #9a3334;
     color: #fff;
     padding: 0.5em 10px;
     height: 2em;
@@ -229,7 +239,7 @@ input:focus, textarea:focus {
     font-weight: bold;
     display: block;
     background-color: #006838;
-	border: solid 1px #333;
+	border: solid 1px #006838;
     color: #fff;
     padding: 0.5em 10px;
     height: 2em;
@@ -247,7 +257,7 @@ input:focus, textarea:focus {
     font-weight: bold;
     display: block;
     background-color: #000;
-	border: solid 1px #bbb;
+	border: solid 1px #000;
     color: #fff;
     padding: 0.5em 10px;
     height: 2em;
@@ -308,6 +318,11 @@ input[type=text].long
     width: 30em;
 }
 
+input[type=text].x-long
+{
+    width: 50em;
+}
+
 label.short
 {
     width: 80px;
@@ -336,9 +351,9 @@ label.long
     box-shadow: 0 0 6px #ccc;
     -moz-box-shadow: 0 0 6px #ccc;
     -webkit-box-shadow: 0 0 6px #ccc;
-    border-radius: 4px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
     z-index: 99999;
 }
 
@@ -439,6 +454,10 @@ label.long
 .clearFloats {
 	clear: both;
 }
+
+.popup-wrapper {
+
+}
 /* #endregion */
 
 
@@ -532,6 +551,9 @@ table.data-table td a.edit, table.data-table td a.delete
 table.data-table td a.edit:hover, table.data-table td a.delete:hover  
 {
     background-color: #cecece;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
 /* #endregion end data table */
 
@@ -579,24 +601,78 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
 
 
 /* #region form pages */
-.form-page .left, .form-page .right {
+.left, .right {
     float: left;    
 }
-.form-page .right {
+.right {
     padding-left: 20px;
 }
+/*
 .form-page textarea {
 	overflow: scroll;
-}
-.form-page textarea.meta-desc 
-{
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-}
+}*/
 .form-page .section-page-content {
     padding: 4px 20px 4px 4px;
 }
 /* #endregion end form pages */
+
+
+/* #region News  */
+.news-list-wrapper {
+	padding: 0px 0px;
+}
+.news-list-wrapper ul {	
+	list-style-type: none;
+	padding: 0px;
+}
+.news-list-wrapper ul li {
+	display: block;
+	padding: 10px;
+	border: solid 1px #ccc;
+	margin: 5px 0px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.news-list-wrapper ul li:hover {
+	background-color: #ddd;
+}
+.news-title {
+	font-weight: bold;
+	width: 80%;
+}
+.news-teaser {
+	margin: 5px 0px 0px 0px;
+	width: 80%;
+}
+.news-dates {
+	padding: 5px 0px 0px;
+	font-size: 0.85em;
+	font-style: italic;
+}
+.news-dates span {	
+	padding: 0px 0px 0px 0px;
+}
+/* #endregion */
+
+
+/* #region list */
+.list-action {
+	float: right;
+	height: 20px;
+}
+.list-action a {
+	display: block;
+	float: right;
+	padding: 5px 10px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.list-action a:hover {
+	background-color: #bbb;
+}
+/* #endregion */
 
 
 /* #region colorbox custom */
@@ -676,9 +752,9 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
     padding: 10px;
     height: 32px;
     width: 160px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
     border: 1px solid #444;
 }
 

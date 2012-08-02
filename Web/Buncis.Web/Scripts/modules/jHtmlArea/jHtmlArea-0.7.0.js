@@ -61,7 +61,7 @@
 				cssLink.href = "/styles/bunIFrame.css";
 				cssLink.rel = "stylesheet";
 				cssLink.type = "text/css";
-				iframe.contents().find('body').get(0).appendChild(cssLink);
+				iframe.contents().find('head').get(0).appendChild(cssLink);
 				// end custom
 
 				if (opts.loaded) { opts.loaded.call(this); }

@@ -45,7 +45,9 @@
     </div>
     <div class="buncisContentBody">
         <div class="actionContent">
-            <a href="javascript:void(0);" id="aAddPage" class="button-action addPage"><span class="icon-plus">Add Page</span></a>
+            <a href="javascript:;" id="aAddPage" class="button-action addPage">
+                <span class="icon-plus">Add Page</span>
+            </a>
         </div>
         <div class="innerContent">
             <table class="data-table table-pages" id="table-pages"> 
@@ -65,11 +67,11 @@
 
     <!-- popup to edit/update page -->
     <div style="display: none">
-		<div id="form-page-popup">
+		<div id="form-page-popup" class="popup-wrapper">
 			<div class="form-page">
 				<div class="popup-button-wrapper buttonContainer">
-					<a href="javascript:void(0);" id="btnClose" class="button-whiteOnRed popup-button-close">Close</a>
-					<a href="javascript:void(0);" id="btnSavePage" class="button-whiteOnGreen" rel="0">Save</a>
+					<a href="javascript:;" id="btnClose" class="button-whiteOnRed popup-button-close">Close</a>
+					<a href="javascript:;" id="btnSavePage" class="button-whiteOnGreen" rel="0">Save</a>
 				</div>
 				<div id="page-wizard" class="swMain">
         			<ul class="page-tabs">
@@ -100,7 +102,7 @@
 								<input type="checkbox" id="chkIsHomePage" />
 							</div>		
 							<div class="form-item">
-								<label>Friendly Url</label>
+								<label>Friendly URL</label>
 								<input type="text" required="required" id="txtPageUrl" class="medium" 
 									name="txtPageUrl" data-message="Page Url is required" />
 							</div>								
@@ -140,11 +142,11 @@
 
     <!-- popup delete page -->
     <div style="display:none">
-        <div id="delete-page-popup">
-            <p>Are you sure you want to delete page <strong><span id="d-pageName"></span></strong> ?</p>
+        <div id="delete-page-popup" class="popup-wrapper">
+            <p>Are you sure you want to delete page <strong><span id="d-pageName"></span></strong>?</p>
             <div class="popup-button-wrapper buttonContainer">
-        	    <a href="javascript:void(0);" id="deletePage-cancel" class="button-whiteOnBlack popup-button-close">No</a>
-                <a href="javascript:void(0);" id="deletePage-confirm" class="button-whiteOnRed">Yes</a>			    
+        	    <a href="javascript:;" id="deletePage-cancel" class="button-whiteOnBlack popup-button-close">No</a>
+                <a href="javascript:;" id="deletePage-confirm" class="button-whiteOnRed">Yes</a>			    
             </div>
         </div>
     </div>

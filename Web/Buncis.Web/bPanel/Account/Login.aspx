@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="/styles/normalize.css" />
 	<link rel="stylesheet" href="/styles/bun_x.css" />
 	<script src="/scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-	<script src="/Scripts/tools/validator.js" type="text/javascript"></script>
+	<script src="/Scripts/modules/tools/validator.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             var validators = $('#loginPanel input').validator();

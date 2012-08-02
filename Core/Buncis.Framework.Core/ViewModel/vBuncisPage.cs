@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Buncis.Framework.Infrastructure.Extensions;
+using Buncis.Framework.Core.Infrastructure.Extensions;
 
 namespace Buncis.Framework.Core.ViewModel
 {
