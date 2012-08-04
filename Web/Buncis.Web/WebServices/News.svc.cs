@@ -49,13 +49,14 @@ namespace Buncis.Web.WebServices
         {
             var service = IoC.Resolve<INewsService>();
             var viewModel = (vBuncisNews)new vBuncisNews().InjectFrom(news);
+
             var result = service.SaveNews(clientId, viewModel);
 
             var response = new Response<oBuncisNews>();
             response.IsSuccess = result.IsValid;
-            response.Message = result.ValidationMessage;
+            response.Message = result.ValidationSummaryToString();
 
-            var responseObject = (oBuncisNews)new oBuncisNews().InjectFrom(result.ValidatedObject);
+            var responseObject = (oBuncisNews)new oBuncisNews().InjectFrom(result.RelatedObject);
             response.ResponseObject = responseObject;
 
             return response;
@@ -65,13 +66,14 @@ namespace Buncis.Web.WebServices
         {
             var service = IoC.Resolve<INewsService>();
             var viewModel = (vBuncisNews)new vBuncisNews().InjectFrom(news);
+
             var result = service.SaveNews(clientId, viewModel);
 
             var response = new Response<oBuncisNews>();
             response.IsSuccess = result.IsValid;
-            response.Message = result.ValidationMessage;
+            response.Message = result.ValidationSummaryToString();
 
-            var responseObject = (oBuncisNews)new oBuncisNews().InjectFrom(result.ValidatedObject);
+            var responseObject = (oBuncisNews)new oBuncisNews().InjectFrom(result.RelatedObject);
             response.ResponseObject = responseObject;
 
             return response;

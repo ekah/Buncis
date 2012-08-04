@@ -103,7 +103,7 @@
     </Compile>
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\News\INewsService.cs" />
-    <Compile Include="Services\ValidationDictionary.cs" />
+    <Compile Include="SupportClasses\ValidationDictionary.cs" />
     <Compile Include="Services\Pages\IDynamicPageService.cs" />
     <Compile Include="SupportClasses\Response.cs" />
     <Compile Include="ViewModel\vBuncisNews.cs" />

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Buncis.Framework.Core.ViewModel;
+using Buncis.Framework.Core.SupportClasses;
 
 namespace Buncis.Framework.Core.Services.Pages
 {

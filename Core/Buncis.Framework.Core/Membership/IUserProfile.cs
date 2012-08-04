@@ -1,6 +1,6 @@
 ﻿using System;
-using Buncis.Data.Domain.Membership;
 using System.Collections.Generic;
+using Buncis.Data.Domain.Membership;
 
 namespace Buncis.Framework.Core.Membership
 {

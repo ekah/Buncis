@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Buncis.Data.Domain.News;
+﻿using Buncis.Data.Domain.News;
 using Buncis.Framework.Core.Repository.News;
 using NHibernate;
 

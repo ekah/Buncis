@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Buncis.Data.Domain.Pages;
+﻿using Buncis.Data.Domain.Pages;
 
 namespace Buncis.Framework.Core.Filters
 {

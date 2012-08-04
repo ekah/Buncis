@@ -29,6 +29,7 @@ namespace Buncis.Data.Repository
 			foreach (T item in items)
 			{
 				_session.Save(item);
+                _session.Refresh(item);
 			}
 		}
 

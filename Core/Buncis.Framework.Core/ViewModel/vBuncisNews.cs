@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Buncis.Framework.Core.Infrastructure.Extensions;
 
 namespace Buncis.Framework.Core.ViewModel

@@ -71,10 +71,6 @@
     <Compile Include="News\NewsService.cs" />
     <Compile Include="Pages\DynamicPageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Validator\News\OnDeleteNewsValidator.cs" />
-    <Compile Include="Validator\News\OnSaveNewsValidator.cs" />
-    <Compile Include="Validator\Pages\OnDeletePageValidator.cs" />
-    <Compile Include="Validator\Pages\OnSavePageValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Buncis.Framework.Core\Buncis.Framework.Core.csproj">
