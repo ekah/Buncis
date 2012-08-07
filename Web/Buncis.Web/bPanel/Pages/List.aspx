@@ -2,41 +2,7 @@
 <%@ Import Namespace="Buncis.Framework.Infrastructure.Extensions" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="contentPlaceholderHead" runat="server">
-    <script type="text/javascript">
-   	
-        (function (pages) {
-            pages._elems = {
-                clientId: <%= CurrentProfile.ClientId %>,
-                pageWizards: '#page-wizard',
-                tablePages: '#table-pages',
-                btnAddPage: '#aAddPage',
-                pageFormPopup: '#form-page-popup',
-                pageFormElements: '.form-page .form-item :input',
-                pageTabs: '.page-tabs',
-                deletePagePopup: '#delete-page-popup',
-                deletedPageName: '#d-pageName',
-                confirmDeletePage: '#deletePage-confirm',
-                cancelDeletePage: '#deletePage-cancel',
-                validated: '.form-page :input, .form-page :textarea',
-                txtPageName: '#txtPageName',
-                txtPageDescription: '#txtPageDescription',
-                txtPageUrl: '#txtPageUrl',
-                txtPageMenuName: '#txtPageMenuName',
-                txtPageMetaTitle: '#txtPageMetaTitle',
-                txtPageMetaDescription: '#txtPageMetaDescription',
-                txtPageContent: '#txtPageContent',
-                chkIsHomePage: '#chkIsHomePage',
-                btnSavePage: '#btnSavePage',
-                btnEditPage: '#table-pages td a.edit',
-                btnDeletePage: '#table-pages td a.delete'
-            };
-        }(window._pages = window._pages || {}));
-
-    </script>
-    <script src="/Scripts/bunx/_act_pages.js" type="text/javascript"></script>
-    <style type="text/css">    
-
-    </style>
+	<script src="/Scripts/bunx/_act_pages.js" type="text/javascript"></script>	
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentPlaceholderMain" runat="server">
     <div class="buncisContentHeader">

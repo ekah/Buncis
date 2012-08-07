@@ -265,6 +265,10 @@
     <Content Include="Images\menu_separator.jpg" />
     <Content Include="Images\menu_separator.png" />
     <Content Include="sandbox\NewsSandbox.aspx" />
+    <Content Include="Scripts\bunx\backbone\backbone-min.js" />
+    <Content Include="Scripts\bunx\backbone\backbone.js" />
+    <Content Include="Scripts\bunx\backbone\underscore-min.js" />
+    <Content Include="Scripts\bunx\backbone\underscore.js" />
     <Content Include="Scripts\bunx\common.js" />
     <Content Include="Scripts\bunx\ember\ember-0.9.8.1.js" />
     <Content Include="Scripts\bunx\ember\ember-0.9.8.1.min.js" />
