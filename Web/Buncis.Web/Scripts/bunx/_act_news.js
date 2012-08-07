@@ -133,19 +133,22 @@
 			_news.fn.saveNews(eNews, function(result) {
 				eNews.set('newsId', result.NewsId);
 				eNews.set('datePublished', result.DisplayDatePublished);
-				eNews.set('dateExpired', result.DisplayDateExpired);
-				eNews.set('recentlyEdited', true);
+				eNews.set('dateExpired', result.DisplayDateExpired);				
 
 				$.colorbox.close();
 
 				var msg = '';
 				if(fMode === 'edit') {
+					eNews.set('recentlyEdited', true);
+
 					msg = 'Succesfully edited News data';
 				}
 				else {
-					msg = 'Succesfully added new News';
+					eNews.set('recentlyAdded', true);
 					_news.newsList.add(eNews);
 					_news.fn.renderListItemView(eNews);
+
+					msg = 'Succesfully added new News';
 				}
 
 				globalShowMessages([msg]);

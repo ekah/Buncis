@@ -16,7 +16,12 @@
 			<div class="news-list-wrapper">				
 				<ul class="newsItem-container">						
 					<script type="text/template" id="news-item-template">
-						<li rel="{{id}}">
+						<li rel="{{id}}" 
+							{% if(attributes.recentlyAdded) { %} 
+								class="added" 
+							{% } else if(attributes.recentlyEdited) { %} 
+								class="edited" 
+							{% } %}>
 							<div>
 								<div class="left" style="width: 80%">
 									<div class="news-title">{{attributes.newsTitle}}</div>
