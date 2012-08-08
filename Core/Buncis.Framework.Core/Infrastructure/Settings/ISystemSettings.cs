@@ -7,5 +7,6 @@
 		//int GlobalItemPerPage { get; set; }
 		int ClientId { get; set; }
 		//int AnonUserId { get; set; }
+
 	}
 }

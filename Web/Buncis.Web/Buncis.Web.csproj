@@ -28,6 +28,20 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PackageAsSingleFile>true</PackageAsSingleFile>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="BuncisConnectionString-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=localhost%3bInitial Catalog=Buncis%3bUser ID=sa%3bPassword=root" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\BuncisConnectionString-Deployment_SchemaAndData.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <ExcludeApp_Data>false</ExcludeApp_Data>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -119,6 +133,7 @@
     <Content Include="bPanel\News\List.aspx" />
     <Content Include="bPanel\NotFound.aspx" />
     <Content Include="bPanel\Pages\List.aspx" />
+    <Content Include="DynamicPageBM.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Images\ajax-loader-2.gif" />
     <Content Include="Images\ajax-loader.gif" />
@@ -264,6 +279,7 @@
     <Content Include="Images\menu_bg.jpg" />
     <Content Include="Images\menu_separator.jpg" />
     <Content Include="Images\menu_separator.png" />
+    <Content Include="robot.txt" />
     <Content Include="sandbox\NewsSandbox.aspx" />
     <Content Include="Scripts\bunx\backbone\backbone-min.js" />
     <Content Include="Scripts\bunx\backbone\backbone.js" />
@@ -408,6 +424,13 @@
     </Compile>
     <Compile Include="bPanel\Pages\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicPageBM.aspx.cs">
+      <DependentUpon>DynamicPageBM.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicPageBM.aspx.designer.cs">
+      <DependentUpon>DynamicPageBM.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master\BMCustom.Master.cs">
       <DependentUpon>BMCustom.Master</DependentUpon>

@@ -5,6 +5,7 @@ using System.Web.UI;
 using Buncis.Framework.Core.Infrastructure.IoC;
 using Buncis.Framework.Core.Resources;
 using Buncis.Framework.Core.Services.Pages;
+using Buncis.Web.Common.Membership;
 
 namespace Buncis.Web.Common.RouteHandler
 {
@@ -43,7 +44,7 @@ namespace Buncis.Web.Common.RouteHandler
 			}
 
 			var pageService = IoC.Resolve<IDynamicPageService>();
-			var clientId = SystemSettings.ClientId;
+			var clientId = (HttpContext.Current.Profile as WebUserProfile).ClientId;
 			var pageFromDb = pageService.GetPageByFriendlyUrl(clientId, pageName);
 			pageId = pageFromDb == null ? (int?)null : pageFromDb.PageId;
 			return pageFromDb != null;

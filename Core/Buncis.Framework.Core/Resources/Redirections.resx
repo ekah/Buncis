@@ -121,6 +121,6 @@
     <value>~/bPanel/Dashboard.aspx</value>
   </data>
   <data name="Page_DynamicPage" xml:space="preserve">
-    <value>~/DynamicPage.aspx</value>
+    <value>~/DynamicPageBM.aspx</value>
   </data>
 </root>
