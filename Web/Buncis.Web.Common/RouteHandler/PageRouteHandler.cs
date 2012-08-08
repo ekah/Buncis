@@ -44,7 +44,7 @@ namespace Buncis.Web.Common.RouteHandler
 			}
 
 			var pageService = IoC.Resolve<IDynamicPageService>();
-			var clientId = (HttpContext.Current.Profile as WebUserProfile).ClientId;
+			var clientId = SystemSettings.ClientId;
 			var pageFromDb = pageService.GetPageByFriendlyUrl(clientId, pageName);
 			pageId = pageFromDb == null ? (int?)null : pageFromDb.PageId;
 			return pageFromDb != null;
