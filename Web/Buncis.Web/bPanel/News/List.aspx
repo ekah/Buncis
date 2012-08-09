@@ -3,7 +3,7 @@
 	<script src="/Scripts/bunx/_act_news.js" type="text/javascript"></script>   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentPlaceholderMain" runat="server">
-	 <div class="buncisContentHeader">
+	<div class="buncisContentHeader">
         <h3>News</h3>
     </div>
     <div class="buncisContentBody">

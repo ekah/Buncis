@@ -674,6 +674,39 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
 /* #endregion */
 
 
+/* #region Articles */
+.article-item-wrapper {
+	display: block;
+	list-style-type: none;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: solid 1px #ccc;
+	background-color: #eee;
+	width: 800px;
+	margin: 5px 0px 0px 0px;
+	padding: 10px;
+}
+.article-item:hover {
+	background-color: #ccc;
+	cursor: pointer;
+}
+.article-title {
+	font-weight: bold;
+}
+.article-info {
+	font-style: italic;
+	font-size: 0.9em;
+	margin: 5px 0px 0px 0px;
+}
+.cloned-view-template {
+	margin-top: 10px;
+	padding-top: 10px;
+	border-top: solid 1px black;
+}
+/* #endregion */
+
+
 /* #region list */
 .list-action {
 	float: right;

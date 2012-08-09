@@ -129,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bPanel\Account\Login.aspx" />
+    <Content Include="bPanel\Articles\List.aspx" />
     <Content Include="bPanel\Dashboard.aspx" />
     <Content Include="bPanel\News\List.aspx" />
     <Content Include="bPanel\NotFound.aspx" />
@@ -289,6 +290,7 @@
     <Content Include="Scripts\bunx\ember\ember-0.9.8.1.js" />
     <Content Include="Scripts\bunx\ember\ember-0.9.8.1.min.js" />
     <Content Include="Scripts\bunx\ember\handlebars-1.0.0.beta.6.js" />
+    <Content Include="Scripts\bunx\_act_articles.js" />
     <Content Include="Scripts\bunx\_act_news.js" />
     <Content Include="Scripts\modules\datepicker\datepicker.js" />
     <Content Include="Scripts\modules\jquery.color.js" />
@@ -396,6 +398,13 @@
     </Compile>
     <Compile Include="bPanel\Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bPanel\Articles\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bPanel\Articles\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
     </Compile>
     <Compile Include="bPanel\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
