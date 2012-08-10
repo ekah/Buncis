@@ -9,6 +9,10 @@
 	<link href="/styles/bm.css" rel="stylesheet" />
 	<script src="/scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
 	<style type="text/css">
+		html, body
+		{
+			height: 100%;
+		}
 		.ulogo {
 			margin: 20px auto 0px;			
 			width: 300px;
@@ -28,7 +32,7 @@
 			-moz-border-radius: 10px;
 			-webkit-border-radius: 10px;
 			border: solid 1px #444;		
-			box-shadow: 0px 0px 5px 2px #444;	
+			box-shadow: 0px 0px 5px 2px #555;	
 		}
 		.comingsoon .uheader {
 			padding: 30px 50px 0px;
@@ -83,9 +87,14 @@
 			margin: auto;
 			padding: 10px;			
 		}
-		.ufooter {			
+		.ufooter 			
+		{
+			/*
 			position: fixed;
 			bottom: 0px;
+			*/
+			padding-top: 30px;
+			padding-bottom: 30px;
 			width: 100%;
 		}
 		.ufooter-wrapper 
@@ -94,12 +103,9 @@
 			margin: 0px auto 0px;						
 			width: 800px;
 			background-color: #504375;
-			border-top-left-radius: 10px;
-			-moz-border-top-left-radius: 10px;
-			-webkit-border-top-left-radius: 10px;			
-			border-top-right-radius: 10px;
-			-moz-border-top-right-radius: 10px;
-			-webkit-border-top-right-radius: 10px;
+			border-radius: 10px;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;						
 		}
 		.ucontact-us {
 			float: left;
