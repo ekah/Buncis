@@ -42,6 +42,8 @@
     </PublishDatabaseSettings>
     <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
     <ExcludeApp_Data>false</ExcludeApp_Data>
+    <PublishDatabases>false</PublishDatabases>
+    <DesktopBuildPackageLocation>..\..\..\Buncis_Published\Buncis.Web.zip</DesktopBuildPackageLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
