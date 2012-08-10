@@ -15,8 +15,12 @@ namespace Buncis.Web.Common.RouteHandler
 
 		public IHttpHandler GetHttpHandler(RequestContext requestContext)
 		{
-			var pageName = ResolvePageNameFromRequest(requestContext);
 			int? pageId;
+			var pageName = ResolvePageNameFromRequest(requestContext);
+			if (pageName.Contains("CommingSoon"))
+			{
+				return CommingSoonPageHandler();
+			}
 
 			if (IsValidPageRequest(pageName, out pageId) && pageId.HasValue)
 			{
@@ -31,6 +35,14 @@ namespace Buncis.Web.Common.RouteHandler
 			var virtualPath = string.Format("{0}", Redirections.Page_DynamicPage);
 			var queryString = string.Format("?{0}={1}", QueryStrings.PageId, pageId);
 			HttpContext.Current.RewritePath(string.Concat(virtualPath, queryString));
+			var page = BuildManager.CreateInstanceFromVirtualPath(virtualPath, typeof(Page)) as Page;
+			return page;
+		}
+
+		private IHttpHandler CommingSoonPageHandler()
+		{
+			var virtualPath = string.Format("{0}", "~/CommingSoon.aspx");
+			HttpContext.Current.RewritePath(virtualPath);
 			var page = BuildManager.CreateInstanceFromVirtualPath(virtualPath, typeof(Page)) as Page;
 			return page;
 		}
@@ -63,7 +75,9 @@ namespace Buncis.Web.Common.RouteHandler
 			var absolutePath = requestContext.HttpContext.Request.Url == null ? string.Empty : requestContext.HttpContext.Request.Url.AbsolutePath;
 			if (absolutePath == "/")
 			{
-				pageName = string.Empty;
+				// CHANGE THIS TO RELEASE PAGE
+				//pageName = string.Empty;
+				pageName = "CommingSoon";
 			}
 			pageName = string.Format("/{0}", pageName);
 			return pageName;

@@ -136,6 +136,7 @@
     <Content Include="bPanel\News\List.aspx" />
     <Content Include="bPanel\NotFound.aspx" />
     <Content Include="bPanel\Pages\List.aspx" />
+    <Content Include="CommingSoon.aspx" />
     <Content Include="DynamicPageBM.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Images\ajax-loader-2.gif" />
@@ -435,6 +436,13 @@
     </Compile>
     <Compile Include="bPanel\Pages\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CommingSoon.aspx.cs">
+      <DependentUpon>CommingSoon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CommingSoon.aspx.designer.cs">
+      <DependentUpon>CommingSoon.aspx</DependentUpon>
     </Compile>
     <Compile Include="DynamicPageBM.aspx.cs">
       <DependentUpon>DynamicPageBM.aspx</DependentUpon>
