@@ -17,11 +17,13 @@
         <div class="innerContent">
             <table class="data-table table-pages" id="table-pages"> 
                 <thead>
-                    <th>&nbsp;</th>
-                    <th>Page</th>
-					<th>Last Updated</th>
-					<th>Created</th>
-                    <th>&nbsp;</th>
+                	<tr>
+						<th>&nbsp;</th>
+						<th>Page</th>
+						<th>Last Updated</th>
+						<th>Created</th>
+						<th>&nbsp;</th>
+					</tr>
                 </thead>               
                 <tbody>                                             
                 </tbody>

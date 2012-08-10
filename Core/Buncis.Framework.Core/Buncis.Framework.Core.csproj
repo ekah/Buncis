@@ -130,6 +130,7 @@
     <EmbeddedResource Include="Resources\QueryStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>QueryStrings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Redirections.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -139,6 +140,7 @@
     <EmbeddedResource Include="Resources\RouteNames.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RouteNames.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
