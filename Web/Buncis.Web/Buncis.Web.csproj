@@ -136,13 +136,14 @@
     <Content Include="bPanel\News\List.aspx" />
     <Content Include="bPanel\NotFound.aspx" />
     <Content Include="bPanel\Pages\List.aspx" />
-    <Content Include="CommingSoon.aspx" />
+    <Content Include="ComingSoon.aspx" />
     <Content Include="DynamicPageBM.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Images\ajax-loader-2.gif" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\arrow-next.png" />
     <Content Include="Images\arrow-prev.png" />
+    <Content Include="Images\bm\construction.png" />
     <Content Include="Images\bm\announcements_pic.png" />
     <Content Include="Images\bm\article-label.png" />
     <Content Include="Images\bm\bg.png" />
@@ -152,6 +153,7 @@
     <Content Include="Images\bm\bg5.png" />
     <Content Include="Images\bm\bg_bm_02.jpg" />
     <Content Include="Images\bm\bible-label.png" />
+    <Content Include="Images\bm\comingsoon.png" />
     <Content Include="Images\bm\community_pic.png" />
     <Content Include="Images\bm\current-label.png" />
     <Content Include="Images\bm\dummy1.png" />
@@ -437,12 +439,12 @@
     <Compile Include="bPanel\Pages\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CommingSoon.aspx.cs">
-      <DependentUpon>CommingSoon.aspx</DependentUpon>
+    <Compile Include="ComingSoon.aspx.cs">
+      <DependentUpon>ComingSoon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CommingSoon.aspx.designer.cs">
-      <DependentUpon>CommingSoon.aspx</DependentUpon>
+    <Compile Include="ComingSoon.aspx.designer.cs">
+      <DependentUpon>ComingSoon.aspx</DependentUpon>
     </Compile>
     <Compile Include="DynamicPageBM.aspx.cs">
       <DependentUpon>DynamicPageBM.aspx</DependentUpon>

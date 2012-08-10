@@ -10,7 +10,7 @@
 namespace Buncis.Web {
     
     
-    public partial class CommingSoon {
+    public partial class ComingSoon {
         
         /// <summary>
         /// Head1 control.

@@ -17,7 +17,7 @@ namespace Buncis.Web.Common.RouteHandler
 		{
 			int? pageId;
 			var pageName = ResolvePageNameFromRequest(requestContext);
-			if (pageName.Contains("CommingSoon"))
+			if (pageName.Contains("ComingSoon"))
 			{
 				return CommingSoonPageHandler();
 			}
@@ -41,7 +41,7 @@ namespace Buncis.Web.Common.RouteHandler
 
 		private IHttpHandler CommingSoonPageHandler()
 		{
-			var virtualPath = string.Format("{0}", "~/CommingSoon.aspx");
+			var virtualPath = string.Format("{0}", "~/ComingSoon.aspx");
 			HttpContext.Current.RewritePath(virtualPath);
 			var page = BuildManager.CreateInstanceFromVirtualPath(virtualPath, typeof(Page)) as Page;
 			return page;
@@ -77,7 +77,7 @@ namespace Buncis.Web.Common.RouteHandler
 			{
 				// CHANGE THIS TO RELEASE PAGE
 				//pageName = string.Empty;
-				pageName = "CommingSoon";
+				pageName = "ComingSoon";
 			}
 			pageName = string.Format("/{0}", pageName);
 			return pageName;

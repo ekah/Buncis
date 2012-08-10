@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Buncis.Web
 {
-	public partial class CommingSoon : System.Web.UI.Page
+	public partial class ComingSoon : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
