@@ -28,7 +28,7 @@ namespace Buncis.Web
 
             DynamicControlsContainer.InitializeDynamicControls();
 
-            var a = typeof(Buncis.Web.Common.WebServices.WebSessionBehaviorExtensionElement).AssemblyQualifiedName;
+            //var a = typeof(Buncis.Web.Common.WebServices.WebSessionBehaviorExtensionElement).AssemblyQualifiedName;
         }
 
         private void Application_End(object sender, EventArgs e)

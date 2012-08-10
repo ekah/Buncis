@@ -26,6 +26,8 @@ namespace Buncis.Web
 			}
 			catch (Exception ex)
 			{
+				// for now remove all error to 404
+				Response.StatusCode = 404;
 			}
 		}
 

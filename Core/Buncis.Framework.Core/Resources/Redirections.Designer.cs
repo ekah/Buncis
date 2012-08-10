@@ -61,6 +61,15 @@ namespace Buncis.Framework.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ~/NotFound.aspx.
+        /// </summary>
+        public static string Page_404 {
+            get {
+                return ResourceManager.GetString("Page_404", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ~/bPanel/Dashboard.aspx.
         /// </summary>
         public static string Page_Buncis_Dashboard {

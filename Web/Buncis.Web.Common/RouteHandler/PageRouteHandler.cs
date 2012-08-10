@@ -43,11 +43,18 @@ namespace Buncis.Web.Common.RouteHandler
 				return false;
 			}
 
-			var pageService = IoC.Resolve<IDynamicPageService>();
-			var clientId = SystemSettings.ClientId;
-			var pageFromDb = pageService.GetPageByFriendlyUrl(clientId, pageName);
-			pageId = pageFromDb == null ? (int?)null : pageFromDb.PageId;
-			return pageFromDb != null;
+			try
+			{
+				var pageService = IoC.Resolve<IDynamicPageService>();
+				var clientId = SystemSettings.ClientId;
+				var pageFromDb = pageService.GetPageByFriendlyUrl(clientId, pageName);
+				pageId = pageFromDb == null ? (int?)null : pageFromDb.PageId;
+				return pageFromDb != null;
+			}
+			catch
+			{
+				return false;
+			}
 		}
 
 		private string ResolvePageNameFromRequest(RequestContext requestContext)
