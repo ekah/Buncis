@@ -97,3 +97,26 @@ function globalShowMessages(msg) {
 		className: 'success'
 	});
 }
+
+
+function globalShowPopup(height, width, selector, title, _completeCallback, _closedCallback) {
+	$.colorbox({
+		height: height,
+		width: width,
+		title: title,
+		href: selector,
+		inline: true,
+		overlayClose: false,
+		scrolling: false,
+		onComplete: function() {
+			if(_completeCallback) {
+				_completeCallback();
+			}
+		},
+		onClosed: function() {
+			if(_closedCallback) {
+				_closedCallback();
+			}
+		}
+	});
+}

@@ -62,19 +62,19 @@
 					<div class="form-item">
 						<label>News Title</label>
 						<input type="text" id="txtNewsTitle" name="txtNewsTitle"
-							data-message="News Title is required" required='required' class="x-long" 
+							data-message="News Title is required" required="required" class="x-long" 
 							value="{{attributes.newsTitle}}" />
 					</div>
 					<div class="form-item">
 						<label>News Teaser</label>
 						<textarea id="txtNewsTeaser" name="txtNewsTeaser" required="required"
-							data-message="News Teaser is required" required" required='required'
+							data-message="News Teaser is required" required="required"
 							style="width:700px; height: 100px;">{{attributes.newsTeaser}}</textarea>
 					</div>
 					<div class="form-item">
 						<label>Friendly URL</label>
 						<input type="text" required="required" id="txtNewsUrl" 
-							class="medium" name="txtNewsUrl" required" required='required'
+							class="medium" name="txtNewsUrl" required" required="required"
 							data-message="News Url is required" value="{{attributes.friendlyUrl}}" />
 					</div>
 					<div class="left">
@@ -99,21 +99,28 @@
 					<div class="clearFloats"></div>						
 				</div>
 				<div id="news-tab2" class="news-tab2">
-					<div class="form-item">
+					<div class="form-item hasHtmlArea">
 						<label>News Content</label>
 						<textarea id="txtNewsContent" 
 							name="txtNewsContent"
 							class="htmlarea"
 							style="width: 870px; height: 350px" 
 							required="required"
-							data-message="News Content is required">{{attributes.newsContent}}
-						</textarea>
+							data-message="News Content is required">{{attributes.newsContent}}</textarea>
 					</div>
 				</div>
 			</div>
 		</script>
-        <div id="news-edit-popup">
-			
-        </div>
+		
+		<script type="text/template" id="news-confirmDelete-popup-template">
+			<p>Are you sure you want to delete news <strong>{{attributes.newsTitle}}</strong>?</p>
+			<div class="popup-button-wrapper buttonContainer">
+        	    <a href="javascript:;" id="deleteNews-cancel" class="button-whiteOnBlack popup-button-close">No</a>
+                <a href="javascript:;" id="deleteNews-confirm" class="button-whiteOnRed">Yes</a>			    
+            </div>
+		</script>
+		
+        <div id="news-edit-popup"></div>
+		<div id="news-delete-popup"></div>
     </div>    
 </asp:Content>

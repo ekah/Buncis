@@ -92,7 +92,7 @@
 						<div class="clearFloats"></div>            
 					</div>
 					<div id="page-tab2" class="page-tab2"> 
-						<div class="form-item section-page-content">
+						<div class="form-item hasHtmlArea">
 							<label>Content</label>
 							<div>
 								<textarea id="txtPageContent" class="htmlarea" name="txtPageContent"

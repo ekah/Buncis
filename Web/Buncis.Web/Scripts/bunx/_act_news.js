@@ -2,6 +2,7 @@
 	oNews._elems = {
 		detailPopup: '#news-detail-popup',
 		editPopup: '#news-edit-popup',
+		deletePopup: '#news-delete-popup',
 		newsWizards: '#news-wizard',
 		txtNewsTitle: '#txtNewsTitle',
 		txtNewsContent: '#txtNewsContent',
@@ -16,6 +17,7 @@
 		btnAddNews: '#aAddNews',
 		newsListWrapper: '.news-list-wrapper',
 		newsEditPopupTemplate: '#news-edit-popup-template',
+		newsConfirmDeletePopupTemplate: '#news-confirmDelete-popup-template',
 		newsItemTemplate: '#news-item-template',
 		newsItemContainer: ".newsItem-container"
 	};
@@ -89,6 +91,22 @@
 					$(popupView.el).empty();
 				}
 			);
+		}, 
+		delete: function(event) {
+			var deletePopupView = new _news.NewsDeleteView({
+				el: $(_news._elems.deletePopup),
+				model: this.model
+			});
+			deletePopupView.render();
+			globalShowPopup(200, 400, _news._elems.deletePopup, 'Delete News', 
+				function() {
+					$.colorbox.resize();					
+				}, 
+				function() {
+					deletePopupView.undelegateEvents();
+					$(deletePopupView.el).empty();
+				}
+			);
 		}
 	});
 	oNews.NewsFormView = Backbone.View.extend({
@@ -140,18 +158,35 @@
 				var msg = '';
 				if(fMode === 'edit') {
 					eNews.set('recentlyEdited', true);
-
 					msg = 'Succesfully edited News data';
 				}
 				else {
 					eNews.set('recentlyAdded', true);
 					_news.newsList.add(eNews);
 					_news.fn.renderListItemView(eNews);
-
 					msg = 'Succesfully added new News';
 				}
-
 				globalShowMessages([msg]);
+			});
+		}
+	});
+	oNews.NewsDeleteView = Backbone.View.extend({
+		events: {
+			'click #deleteNews-confirm': 'cDelete'
+		},
+		render: function(event) {
+			var template = _.template($(_news._elems.newsConfirmDeletePopupTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
+			this.$el.append($(template));
+			return this;
+		},
+		cDelete: function(event) {
+			var newsId = parseInt(this.model.get('newsId'), 10);
+			var newsTitle = this.model.get('newsTitle'); 
+			_news.fn.deleteNews(newsId, function() {
+				_news.newsList.remove(this.model);
+				$(_news._elems.newsItemContainer).find('li[rel="' + newsId + '"]').remove();
+				$.colorbox.close();				
+				globalShowMessages(["System has succesfully deleted News " + newsTitle]);
 			});
 		}
 	});
@@ -160,8 +195,9 @@
 
 (function(oFn) {
 	var listWebServiceUrl = '/webservices/news.svc/bPanelGetNewsList?clientid=' + _elems.clientId;	
-	var editWebServiceUrl = '/webservices/news.svc/UpdateNews';	
-	var addWebServiceUrl = '/webservices/news.svc/InsertNews';	
+	var editWebServiceUrl = '/webservices/news.svc/bPanelUpdateNews';	
+	var addWebServiceUrl = '/webservices/news.svc/bPanelInsertNews';	
+	var deleteWebServiceUrl = '/webservices/news.svc/bPanelDeleteNews';	
 
 	oFn.setupEvents = function() {
 		$(_news._elems.btnAddNews).click(function(event) {
@@ -186,7 +222,7 @@
 			var popupView = new _news.NewsFormView({
 				el: $(_news._elems.editPopup),
 				model: defNewsItem
-			});			
+			});
 			popupView.render();
 
 			_news.fn.showFormPopup(_news._elems.editPopup, 'Add News', 
@@ -260,25 +296,7 @@
 		});
 	};
 	oFn.showFormPopup = function(selector, title, _completeCallback, _closedCallback) {
-		$.colorbox({
-			height: 662,
-			width: 960,
-			title: title,
-			href: selector,
-			inline: true,
-			overlayClose: false,
-			scrolling: false,
-			onComplete: function() {
-				if(_completeCallback) {
-					_completeCallback();
-				}
-			},
-			onClosed: function() {
-				if(_closedCallback) {
-					_closedCallback();
-				}
-			}
-		});
+		globalShowPopup(662, 960, selector, title, _completeCallback, _closedCallback)
 	};
 	oFn.getNews = function(_callback) {
 		$.ajax({
@@ -345,6 +363,34 @@
 			}
 		});
 	};
+	oFn.deleteNews = function(newsId, _callback) {
+		var data = {
+			clientId: -1,
+			newsId: newsId
+		};
+		var jData = JSON.stringify(data);
+
+		_helpers.blockPopupDefault();
+		$.ajax({
+			type: "POST",
+			url: deleteWebServiceUrl,
+			data: jData,
+			dataType: 'json',
+			contentType: 'text/json',
+			success: function (result) {
+				_helpers.unblockPopupDefault();
+				var data = result.d;
+				if (data.IsSuccess) {
+					if(_callback) {
+						_callback(data.ResponseObject);
+					}
+				}
+			},
+			error: function () {
+				_helpers.blockPopupDefault();
+			}
+		});
+	};
 	oFn.loadData = function() {
 		_news.newsList = new _news.NewsCollection();
 		oFn.getNews(function(result) {
@@ -382,6 +428,7 @@
 		});
 		newsItemView.events = {};
 		newsItemView.events['click li[rel="' + cvtNewsItem.id + '"] a.action-edit'] = 'edit';
+		newsItemView.events['click li[rel="' + cvtNewsItem.id + '"] a.action-delete'] = 'delete';
 		newsItemView.delegateEvents();
 		newsItemView.render();
 	};

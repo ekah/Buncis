@@ -53,15 +53,7 @@ namespace Buncis.Web.WebServices
 
 			return response;
 		}
-
-		public Response DeletePage(int clientId, int pageId)
-		{
-			// do use clientId ?
-			var service = IoC.Resolve<IDynamicPageService>();
-			var result = service.DeletePage(pageId);
-			return new Response(result.IsValid, string.Empty);
-		}
-
+		
 		public Response<oBuncisPage> InsertPage(int clientId, oBuncisPage page)
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
@@ -77,6 +69,14 @@ namespace Buncis.Web.WebServices
 			response.ResponseObject = responseObject;
 
 			return response;
+		}
+
+		public Response DeletePage(int clientId, int pageId)
+		{
+			// do use clientId ?
+			var service = IoC.Resolve<IDynamicPageService>();
+			var result = service.DeletePage(pageId);
+			return new Response(result.IsValid, string.Empty);
 		}
 	}
 }

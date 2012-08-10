@@ -21,13 +21,13 @@ namespace Buncis.Web.WebServices
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
         Response<oBuncisPage> UpdatePage(int clientId, oBuncisPage page);
-
-        [OperationContract]
-        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
-        Response DeletePage(int clientId, int pageId);
-
+		
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
         Response<oBuncisPage> InsertPage(int clientId, oBuncisPage page);
+
+		[OperationContract]
+		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
+		Response DeletePage(int clientId, int pageId);
     }
 }

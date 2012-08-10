@@ -611,7 +611,7 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
 .form-page textarea {
 	overflow: scroll;
 }*/
-.form-page .section-page-content {
+div.hasHtmlArea {
 	padding: 4px 20px 4px 4px;
 }
 /* #endregion end form pages */

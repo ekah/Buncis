@@ -107,12 +107,8 @@
 						_helpers.unblockPopupDefault();
 						$.colorbox.close();
 						$(_pages._elems.confirmDeletePage).removeAttr('rel');
-						$('body').showMessage({
-							thisMessage: ["System has successfully deleted page " + _pages.form.deletedPageName],
-							opacity: 100,
-							className: 'success',
-						});
-					}, 1000);               
+						globalShowMessages(["System has successfully deleted page " + _pages.form.deletedPageName]);
+					}, 500);               
 				}
 				else {
 					// show error message here
@@ -170,7 +166,6 @@
 				success: function (result) {                                  
 					if(result.d.IsSuccess) { 
 						var msg = '';
-
 						if(mode === 'add') {     
 							msg = "System has successfully added new page.";
 						}
@@ -179,7 +174,6 @@
 						}
 
 						$.colorbox.close();
-
 						globalShowMessages([msg]);
 
 						if(mode === 'add') {
@@ -282,29 +276,20 @@
 	
 	function showPopup(mode, pageId) {
 		if(mode === 'delete') {
-			$.colorbox({
-				width: 450,
-				height: 200,
-				title: "Delete Page",
-				href: $(pages._elems.deletePagePopup),
-				inline: true,
-				overlayClose: false,
-				scrolling: false,
-				onClosed: function() {
-						   
-				},
-				onLoad: function() {
+			globalShowPopup(200, 450, pages._elems.deletePagePopup, "Delete Page",
+				function() {
 					var td = $(pages._elems.tablePages).find('a.delete[rel="' + pageId + '"]').parent();
 					var tr = $(td).parent();
 					var oTd = $(tr).find('td:nth-child(2)');
 					var el = $(oTd).find('strong');
 					var pageName = $(el).text();
 					$(pages._elems.deletedPageName).text(pageName);
-				},
-				onComplete: function() {
 					$(pages._elems.confirmDeletePage).attr('rel', pageId);
+				},
+				function() {
+
 				}
-			});
+			);
 		}
 		else {
 			var title = '';
@@ -315,23 +300,10 @@
 				title = 'Add Page';
 			}
 
-			$.colorbox({
-				height: 662,
-				width: 960,
-				title: title,
-				href: $(pages._elems.pageFormPopup),
-				inline: true,
-				overlayClose: false,
-				scrolling: false,
-				onClosed: function() {
-					destroyForm();
-				},
-				onLoad: function() { },
-				onComplete: function() {
+			globalShowPopup(662, 960, pages._elems.pageFormPopup, title,
+				function() {
 					preparePopupForm();
-
 					_helpers.blockPopupDefault();
-
 					if(mode === 'edit') {
 						getPage(pageId, function(data) {
 
@@ -350,16 +322,18 @@
 							var dData = data[aPos];
 							pages.form.editedData = dData;
 							
-							setTimeout(function() { _helpers.unblockPopupDefault(); }, 1000);
+							setTimeout(function() { _helpers.unblockPopupDefault(); }, 500);
 						});
 					}
 					else {
 						resetForm();
-
 						setTimeout(function() { _helpers.unblockPopupDefault(); }, 500);
 					}
+				},
+				function() {
+					destroyForm();
 				}
-			});
+			);
 		}
 	}
 
