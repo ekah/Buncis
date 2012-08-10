@@ -30,7 +30,7 @@
 			border: solid 1px #444;		
 			box-shadow: 0px 0px 5px 2px #444;	
 		}
-		.comingsoon .header {
+		.comingsoon .uheader {
 			padding: 30px 50px 0px;
 		}
 		.comingsoon h1 {
@@ -131,7 +131,7 @@
 		<span>Time Flies</span>
 	</div>
 	<div class="comingsoon">
-		<div class="header">
+		<div class="uheader">
 			<h1>Breakthrough Ministry</h1>
 			<h2>We are currently under construction</h2>
 		</div>
