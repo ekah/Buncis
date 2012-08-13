@@ -1,0 +1,64 @@
+﻿<#@ template  debug="true" hostSpecific="true" #>
+<#@ output extension=".aspx" #>
+<div class="buncisContentHeader">
+    <h3><#= this.ModuleName #></h3>
+</div>
+<div class="buncisContentBody">
+    <div class="actionContent">
+        <a href="javascript:void(0);" id="<#= this.AddButtonId #>" class="button-action <#= this.AddButtonClass #>">
+            <span class="icon-plus">Add <#= this.ModuleName #></span>
+        </a>
+    </div>
+	<script type="text/template" id="listing-template"></script>
+    <div class="innerContent"></div>
+</div>
+<div style="display:none">
+	<script type="text/template" id="popup-template">
+		<div class="popup-button-wrapper buttonContainer">
+			<a href="javascript:;" id="btnClose" class="button-whiteOnRed popup-button-close">Close</a>
+			<a href="javascript:;" id="<#= this.ButtonSaveId #>" class="button-whiteOnGreen">Save</a>                
+		</div>
+		<div id="news-wizard" class="swMain">					
+			<ul class="news-tabs">
+				<li><a href="#<#= this.Tab1Id #>" class="tabStart">Section 1: <#= this.Tab1Title #></a></li>
+				<li><a href="#<#= this.Tab2Id #>">Section 2: <#= this.Tab2Title #></a></li>
+			</ul>
+			<div id="<#= this.Tab1Id #>" class="<#= this.Tab1Id #>">
+				<div class="form-item">
+					<label></label>
+					<input type="text" id="" name=""
+						data-message="" required="required" class="x-long" 
+						value="" />
+				</div>					
+				<div class="clearFloats"></div>						
+			</div>
+			<div id="<#= this.Tab2Id #>" class="<#= this.Tab2Id #>">
+				<div class="form-item hasHtmlArea">
+					<label></label>
+					<textarea class="htmlarea"></textarea>
+				</div>
+			</div>
+		</div>
+	</script>
+		
+	<script type="text/template" id="confirm-delete-popup-template">
+		<p>Are you sure you want to delete news <strong></strong>?</p>
+		<div class="popup-button-wrapper buttonContainer">
+        	<a href="javascript:;" id="delete-cancel" class="button-whiteOnBlack popup-button-close">No</a>
+            <a href="javascript:;" id="delete-confirm" class="button-whiteOnRed">Yes</a>			    
+        </div>
+	</script>
+		
+    <div id="edit-popup"></div>
+	<div id="delete-popup"></div>
+</div> 
+<#+
+	string ModuleName = "DailyBread";
+	string AddButtonId = "aAddDailyBread";
+	string AddButtonClass = "addDailyBread";
+	string ButtonSaveId = "btnSaveDailyBread";
+	string Tab1Id = "dailyBread-tab1";
+	string Tab2Id = "dailyBread-tab2";
+	string Tab1Title = "Tab 1";
+	string Tab2Title = "Tab 2";
+#>

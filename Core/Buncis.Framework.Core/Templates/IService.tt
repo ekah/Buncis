@@ -1,0 +1,21 @@
+﻿<#@ template  debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+using System.Collections.Generic;
+using Buncis.Framework.Core.ViewModel;
+using Buncis.Framework.Core.SupportClasses;
+
+namespace Buncis.Framework.Core.Services.<#= this.ModuleName #>
+{
+	public interface I<#= this.ModuleName #>Service
+	{
+		IEnumerable<<#= this.ViewModelName #>> Get<#= this.ModuleName #>sNotDeleted(int clientId);
+		<#= this.ViewModelName #> Get<#= this.ModuleName #>(int newsId);
+		ValidationDictionary<<#= this.ViewModelName #>> Delete<#= this.ModuleName #>(int <#= this.ModuleName.ToLower() #>Id);
+		ValidationDictionary<<#= this.ViewModelName #>> Save<#= this.ModuleName #>(int clientId, <#= this.ViewModelName #> <#= this.ModuleName.ToLower() #>);
+	}
+}
+<#+
+	string ModuleName = "DailyBread";
+	string ViewModelName = "vDailyBread";
+#>
+
