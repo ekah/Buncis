@@ -1,0 +1,136 @@
+﻿<#@ template  debug="true" hostSpecific="true" #>
+<#@ output extension=".tmp" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Omu.ValueInjecter;
+using Buncis.Framework.Core.SupportClasses;
+using Buncis.Framework.Core.Services;
+using Buncis.Framework.Core.Services.<#= this.ModuleName #>;
+using Buncis.Framework.Core.ViewModel;
+using Buncis.Framework.Core.Repository.<#= this.ModuleName #>;
+using Buncis.Data.Domain.<#= this.ModuleName #>;
+using Buncis.Framework.Core.Infrastructure.Extensions;
+
+namespace Buncis.Services.<#= this.ModuleName #>
+{
+    public class <#= this.ModuleName #>Service : BaseService, I<#= this.ModuleName #>Service
+    {
+        private readonly <#= this.RepositoryName #> _<#= this.RepositoryVariableName #>;
+
+        public <#= this.ModuleName #>Service(<#= this.RepositoryName #> <#= this.RepositoryVariableName #>)
+        {
+            _<#= this.RepositoryVariableName #> = <#= this.RepositoryVariableName #>;
+        }
+
+        public IEnumerable<<#= this.ViewModelName #>> Get<#= this.MethodWordPrural #>NotDeleted(int clientId)
+        {
+            var raw = _<#= this.RepositoryVariableName #>.FilterBy(o => !o.IsDeleted).ToList();
+
+            var converted = raw.Select(item =>
+            {
+                var <#= this.ViewModelName #> = new <#= this.ViewModelName #>();
+                <#= this.ViewModelName #>.InjectFrom(item);
+                return <#= this.ViewModelName #>;
+            }).ToList();
+
+            return converted;
+        }
+
+        public <#= this.ViewModelName #> Get<#= this.MethodWord #>(int <#= this.LoweredIdWord #>)
+        {
+            var raw = _<#= this.RepositoryVariableName #>.FindBy(o => !o.IsDeleted && o.<#= this.IdWord #> == <#= this.LoweredIdWord #>);
+
+            var <#= this.ViewModelName #> = new <#= this.ViewModelName #>();
+            <#= this.ViewModelName #>.InjectFrom(raw);
+
+            return <#= this.ViewModelName #>;
+        }
+
+        public ValidationDictionary<<#= this.ViewModelName #>> Delete<#= this.MethodWord #>(int <#= this.LoweredIdWord #>)
+        {
+            var raw = _<#= this.RepositoryVariableName #>.FindBy(o => o.<#= this.IdWord #> == <#= this.LoweredIdWord #>);
+
+            var validator = new ValidationDictionary<<#= this.ViewModelName #>>();
+
+            if (raw != null)
+            {
+                raw.IsDeleted = true;
+
+                _<#= this.RepositoryVariableName #>.Update(raw);
+
+                validator.IsValid = true;
+            }
+            else
+            {
+                validator.IsValid = false;
+                validator.AddError("", "The XX is not available in the database");
+            }
+
+            return validator;
+        }
+
+        public ValidationDictionary<<#= this.ViewModelName #>> Save<#= this.MethodWord #>(int clientId, <#= this.ViewModelName #> <#= this.LoweredModuleName #>)
+        {
+            var validator = new ValidationDictionary<<#= this.ViewModelName #>>();
+            if (<#= this.LoweredModuleName #> == null)
+            {
+                validator.IsValid = false;
+                validator.AddError("", "The XX you're trying to save is null");
+                return validator;
+            }
+
+            // rule based here
+           
+
+            <#= this.Domain #> <#= this.LoweredDomain #> = null;
+            <#= this.ViewModelName #> pinged = null;
+            if (<#= this.LoweredModuleName #>.<#= this.IdWord #> <= 0)
+            {
+                <#= this.LoweredDomain #> = new <#= this.Domain #>();
+                <#= this.LoweredDomain #>.InjectFrom(<#= this.LoweredModuleName #>);
+                <#= this.LoweredDomain #>.DateCreated = DateTime.UtcNow;
+                <#= this.LoweredDomain #>.DateLastUpdated = DateTime.UtcNow;
+                <#= this.LoweredDomain #>.ClientId = clientId;
+
+                _<#= this.RepositoryVariableName #>.Add(<#= this.LoweredDomain #>);
+
+                pinged = Get<#= this.MethodWord #>(<#= this.LoweredDomain #>.<#= this.IdWord #>);
+            }
+            else
+            {
+                <#= this.LoweredDomain #> = _<#= this.RepositoryVariableName #>.FindBy(o => !o.IsDeleted && o.<#= this.IdWord #> == <#= this.LoweredModuleName #>.<#= this.IdWord #>);
+                if (<#= this.LoweredDomain #> != null)
+                {
+                    var createdDate = <#= this.LoweredDomain #>.DateCreated;
+                    <#= this.LoweredDomain #>.InjectFrom(<#= this.LoweredModuleName #>);
+                    <#= this.LoweredDomain #>.DateLastUpdated = DateTime.UtcNow;
+                    <#= this.LoweredDomain #>.DateCreated = createdDate;
+                    <#= this.LoweredDomain #>.IsDeleted = false;
+
+                    _<#= this.RepositoryVariableName #>.Update(<#= this.LoweredDomain #>);
+
+                    pinged = Get<#= this.MethodWord #>(<#= this.LoweredDomain #>.<#= this.IdWord #>);
+                }
+            }
+
+            validator.IsValid = true;
+            validator.RelatedObject = pinged;
+            return validator;
+        }        
+    }
+}
+<#+
+string ModuleName = "DailyBread";
+string RepositoryName = "IDailyBreadItemRepository";
+string RepositoryVariableName = "dailyBreadItemRepository";
+string ViewModelName = "vBuncisDailyBreadItem";
+string MethodWord = "DailyBreadItem";
+string MethodWordPrural = "DailyBreadItems";
+string LoweredIdWord = "dailyBreadId";
+string IdWord = "DailyBreadId";
+string LoweredModuleName = "dailyBread";
+string Domain = "DailyBreadItem";
+string LoweredDomain = "dailyBreadItem";
+#>

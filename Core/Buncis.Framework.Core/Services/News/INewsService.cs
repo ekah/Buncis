@@ -6,11 +6,11 @@ namespace Buncis.Framework.Core.Services.News
 {
 	public interface INewsService
 	{
-		IEnumerable<vBuncisNews> GetNewsNotDeleted(int clientId);
-		vBuncisNews GetNews(int newsId);
-		ValidationDictionary<vBuncisNews> DeleteNews(int newsId);
-		ValidationDictionary<vBuncisNews> SaveNews(int clientId, vBuncisNews news);
+		IEnumerable<vBuncisNewsItem> GetNewsItemsNotDeleted(int clientId);
+		vBuncisNewsItem GetNewsItem(int newsId);
+		ValidationDictionary<vBuncisNewsItem> DeleteNewsItem(int newsId);
+		ValidationDictionary<vBuncisNewsItem> SaveNewsItem(int clientId, vBuncisNewsItem news);
 
-		IEnumerable<vBuncisNews> GetPublishedNews(int clientId);
+		IEnumerable<vBuncisNewsItem> GetPublishedNewsItem(int clientId);
 	}
 }

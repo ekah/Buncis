@@ -24,7 +24,7 @@ namespace Buncis.Web.bPanel.<#= this.ModuleName #>
 	}
 }
 <#+
-	string ModuleName = "DailyBread";
+	string ModuleName = "test";
 #>
 
 

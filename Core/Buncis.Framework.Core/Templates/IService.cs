@@ -2,13 +2,13 @@
 using Buncis.Framework.Core.ViewModel;
 using Buncis.Framework.Core.SupportClasses;
 
-namespace Buncis.Framework.Core.Services.DailyBread
+namespace Buncis.Framework.Core.Services.test
 {
-	public interface IDailyBreadService
+	public interface ItestService
 	{
-		IEnumerable<vDailyBread> GetDailyBreadsNotDeleted(int clientId);
-		vDailyBread GetDailyBread(int newsId);
-		ValidationDictionary<vDailyBread> DeleteDailyBread(int dailybreadId);
-		ValidationDictionary<vDailyBread> SaveDailyBread(int clientId, vDailyBread dailybread);
+		IEnumerable<object> GettestsNotDeleted(int clientId);
+		object Gettest(int newsId);
+		ValidationDictionary<object> Deletetest(int testId);
+		ValidationDictionary<object> Savetest(int clientId, object test);
 	}
 }

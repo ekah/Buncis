@@ -19,7 +19,7 @@ namespace Buncis.Web.WebServices
 		public Response<IEnumerable<oBuncisNews>> bPanelGetNewsList(int clientId)
 		{
 			var newsService = IoC.Resolve<INewsService>();
-			var raw = newsService.GetNewsNotDeleted(clientId);
+			var raw = newsService.GetNewsItemsNotDeleted(clientId);
 			var converted = raw.Select(o =>
 			{
 				var dto = new oBuncisNews();
@@ -48,9 +48,9 @@ namespace Buncis.Web.WebServices
 		public Response<oBuncisNews> bPanelUpdateNews(int clientId, oBuncisNews news)
 		{
 			var service = IoC.Resolve<INewsService>();
-			var viewModel = (vBuncisNews)new vBuncisNews().InjectFrom(news);
+			var viewModel = (vBuncisNewsItem)new vBuncisNewsItem().InjectFrom(news);
 
-			var result = service.SaveNews(clientId, viewModel);
+			var result = service.SaveNewsItem(clientId, viewModel);
 
 			var response = new Response<oBuncisNews>();
 			response.IsSuccess = result.IsValid;
@@ -65,9 +65,9 @@ namespace Buncis.Web.WebServices
 		public Response<oBuncisNews> bPanelInsertNews(int clientId, oBuncisNews news)
 		{
 			var service = IoC.Resolve<INewsService>();
-			var viewModel = (vBuncisNews)new vBuncisNews().InjectFrom(news);
+			var viewModel = (vBuncisNewsItem)new vBuncisNewsItem().InjectFrom(news);
 
-			var result = service.SaveNews(clientId, viewModel);
+			var result = service.SaveNewsItem(clientId, viewModel);
 
 			var response = new Response<oBuncisNews>();
 			response.IsSuccess = result.IsValid;
@@ -82,14 +82,14 @@ namespace Buncis.Web.WebServices
 		public Response bPanelDeleteNews(int clientId, int newsId)
 		{
 			var service = IoC.Resolve<INewsService>();
-			var result = service.DeleteNews(newsId);
+			var result = service.DeleteNewsItem(newsId);
 			return new Response(result.IsValid, string.Empty);
 		}
 
 		public Response<IEnumerable<oBuncisNews>> GetPublishedNewsList(int clientId)
 		{
 			var newsService = IoC.Resolve<INewsService>();
-			var raw = newsService.GetPublishedNews(clientId);
+			var raw = newsService.GetPublishedNewsItem(clientId);
 			var converted = raw.Select(o =>
 			{
 				var dto = new oBuncisNews();

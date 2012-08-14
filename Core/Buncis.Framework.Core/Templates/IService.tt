@@ -15,7 +15,7 @@ namespace Buncis.Framework.Core.Services.<#= this.ModuleName #>
 	}
 }
 <#+
-	string ModuleName = "DailyBread";
-	string ViewModelName = "vDailyBread";
+	string ModuleName = "test";
+	string ViewModelName = "object";
 #>
 

@@ -10,7 +10,7 @@ using Buncis.Web.Base;
 using Buncis.Logic.Views;
 using WebFormsMvp;
 
-namespace Buncis.Web.bPanel.DailyBread
+namespace Buncis.Web.bPanel.test
 {
 	[PresenterBinding(typeof(FakePresenter), ViewType = typeof(IFakeView))]
 	public partial class List : BaseLogicPage<FakeModel>, IFakeView

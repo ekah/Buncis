@@ -80,11 +80,12 @@
     <Compile Include="Membership\IMembership.cs" />
     <Compile Include="Membership\IUserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\DailyBread\IDailyBreadItemRepository.cs" />
     <Compile Include="Repository\IReadOnlyRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\Membership\IMembershipRoleRepository.cs" />
     <Compile Include="Repository\Membership\IMembershipUserRepository.cs" />
-    <Compile Include="Repository\News\INewsRepository.cs" />
+    <Compile Include="Repository\News\INewsItemRepository.cs" />
     <Compile Include="Repository\Pages\IPageRepository.cs" />
     <Compile Include="Resources\QueryStrings.Designer.cs">
       <DependentUpon>QueryStrings.resx</DependentUpon>
@@ -102,6 +103,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\DailyBread\IDailyBreadService.cs" />
     <Compile Include="Services\News\INewsService.cs" />
     <Compile Include="SupportClasses\ValidationDictionary.cs" />
     <Compile Include="Services\Pages\IDynamicPageService.cs" />
@@ -111,8 +113,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IService.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\vBuncisNews.cs" />
+    <Compile Include="ViewModel\vBuncisNewsItem.cs" />
     <Compile Include="ViewModel\vBuncisPage.cs" />
+    <Compile Include="ViewModel\vBuncisDailyBreadItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

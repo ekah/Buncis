@@ -15,20 +15,20 @@ namespace Buncis.Services.News
 {
     public class NewsService : BaseService, INewsService
     {
-        private readonly INewsRepository _newsRepository;
+        private readonly INewsItemRepository _newsRepository;
 
-        public NewsService(INewsRepository newsRepository)
+        public NewsService(INewsItemRepository newsRepository)
         {
             _newsRepository = newsRepository;
         }
 
-        public IEnumerable<vBuncisNews> GetNewsNotDeleted(int clientId)
+        public IEnumerable<vBuncisNewsItem> GetNewsItemsNotDeleted(int clientId)
         {
             var raw = _newsRepository.FilterBy(o => !o.IsDeleted).ToList();
 
             var converted = raw.Select(item =>
             {
-                var vBuncisNews = new vBuncisNews();
+                var vBuncisNews = new vBuncisNewsItem();
                 vBuncisNews.InjectFrom(item);
                 return vBuncisNews;
             }).ToList();
@@ -36,21 +36,21 @@ namespace Buncis.Services.News
             return converted;
         }
 
-        public vBuncisNews GetNews(int newsId)
+        public vBuncisNewsItem GetNewsItem(int newsId)
         {
             var raw = _newsRepository.FindBy(o => !o.IsDeleted && o.NewsId == newsId);
 
-            var vBuncisNews = new vBuncisNews();
+            var vBuncisNews = new vBuncisNewsItem();
             vBuncisNews.InjectFrom(raw);
 
             return vBuncisNews;
         }
 
-        public ValidationDictionary<vBuncisNews> DeleteNews(int newsId)
+        public ValidationDictionary<vBuncisNewsItem> DeleteNewsItem(int newsId)
         {
             var raw = _newsRepository.FindBy(o => o.NewsId == newsId);
 
-            var validator = new ValidationDictionary<vBuncisNews>();
+            var validator = new ValidationDictionary<vBuncisNewsItem>();
 
             if (raw != null)
             {
@@ -69,9 +69,9 @@ namespace Buncis.Services.News
             return validator;
         }
 
-        public ValidationDictionary<vBuncisNews> SaveNews(int clientId, vBuncisNews news)
+        public ValidationDictionary<vBuncisNewsItem> SaveNewsItem(int clientId, vBuncisNewsItem news)
         {
-            var validator = new ValidationDictionary<vBuncisNews>();
+            var validator = new ValidationDictionary<vBuncisNewsItem>();
             if (news == null)
             {
                 validator.IsValid = false;
@@ -84,7 +84,7 @@ namespace Buncis.Services.News
             news.DatePublished = news.DatePublished.DatePart();
 
             NewsItem newsItem = null;
-            vBuncisNews pingedNews = null;
+            vBuncisNewsItem pingedNews = null;
             if (news.NewsId <= 0)
             {
                 newsItem = new NewsItem();
@@ -95,7 +95,7 @@ namespace Buncis.Services.News
 
                 _newsRepository.Add(newsItem);
 
-                pingedNews = GetNews(newsItem.NewsId);
+                pingedNews = GetNewsItem(newsItem.NewsId);
             }
             else
             {
@@ -110,7 +110,7 @@ namespace Buncis.Services.News
 
                     _newsRepository.Update(newsItem);
 
-                    pingedNews = GetNews(newsItem.NewsId);
+                    pingedNews = GetNewsItem(newsItem.NewsId);
                 }
             }
 
@@ -119,13 +119,13 @@ namespace Buncis.Services.News
             return validator;
         }
 
-        public IEnumerable<vBuncisNews> GetPublishedNews(int clientId)
+        public IEnumerable<vBuncisNewsItem> GetPublishedNewsItem(int clientId)
         {
             var raw = _newsRepository.FilterBy(o => !o.IsDeleted && DateTime.UtcNow >= o.DatePublished && DateTime.UtcNow <= o.DateExpired).ToList();
 
             var converted = raw.Select(item =>
             {
-                var vBuncisNews = new vBuncisNews();
+                var vBuncisNews = new vBuncisNewsItem();
                 vBuncisNews.InjectFrom(item);
                 return vBuncisNews;
             }).ToList();
