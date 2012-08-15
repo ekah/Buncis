@@ -108,11 +108,6 @@
     <Compile Include="SupportClasses\ValidationDictionary.cs" />
     <Compile Include="Services\Pages\IDynamicPageService.cs" />
     <Compile Include="SupportClasses\Response.cs" />
-    <Compile Include="Templates\IService.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IService.tt</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\vBuncisNewsItem.cs" />
     <Compile Include="ViewModel\vBuncisPage.cs" />
     <Compile Include="ViewModel\vBuncisDailyBreadItem.cs" />
@@ -158,9 +153,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Templates\IService.tmp">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IService.tt</DependentUpon>
+    </None>
     <None Include="Templates\IService.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IService.cs</LastGenOutput>
+      <LastGenOutput>IService.tmp</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

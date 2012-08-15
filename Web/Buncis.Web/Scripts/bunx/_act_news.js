@@ -15,11 +15,10 @@
 		newsDate: '.newsDate',
 		btnSaveNews: '#btnSaveNews',
 		btnAddNews: '#aAddNews',
-		newsListWrapper: '.news-list-wrapper',
 		newsEditPopupTemplate: '#news-edit-popup-template',
 		newsConfirmDeletePopupTemplate: '#news-confirmDelete-popup-template',
 		newsItemTemplate: '#news-item-template',
-		newsItemContainer: ".newsItem-container"
+		newsItemContainer: '.newsItem-container'
 	};
 	oNews.form = {
 		wizardHasBeenInitialized: false,

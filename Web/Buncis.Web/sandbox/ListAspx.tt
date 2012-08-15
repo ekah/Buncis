@@ -1,5 +1,5 @@
 ﻿<#@ template  debug="true" hostSpecific="true" #>
-<#@ output extension=".aspx" #>
+<#@ output extension=".tmp" #>
 <div class="buncisContentHeader">
     <h3><#= this.ModuleName #></h3>
 </div>

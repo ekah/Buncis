@@ -288,10 +288,10 @@
     <Content Include="Images\menu_separator.jpg" />
     <Content Include="Images\menu_separator.png" />
     <Content Include="robot.txt" />
-    <Content Include="sandbox\ListAspx.aspx">
+    <Content Include="sandbox\actTemplate.js">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ListAspx.tt</DependentUpon>
+      <DependentUpon>actTemplate.tt</DependentUpon>
     </Content>
     <Content Include="sandbox\NewsSandbox.aspx" />
     <Content Include="Scripts\bunx\backbone\backbone-min.js" />
@@ -520,12 +520,6 @@
       <DependentUpon>NotFound.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sandbox\bPanelList.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>bPanelList.tt</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="sandbox\NewsSandbox.aspx.cs">
       <DependentUpon>NewsSandbox.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -616,13 +610,27 @@
     <Content Include="WebServices\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="sandbox\actTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>actTemplate.js</LastGenOutput>
+    </None>
+    <None Include="sandbox\bPanelList.tmp">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bPanelList.tt</DependentUpon>
+    </None>
     <None Include="sandbox\bPanelList.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>bPanelList.cs</LastGenOutput>
+      <LastGenOutput>bPanelList.tmp</LastGenOutput>
+    </None>
+    <None Include="sandbox\ListAspx.tmp">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListAspx.tt</DependentUpon>
     </None>
     <None Include="sandbox\ListAspx.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ListAspx.aspx</LastGenOutput>
+      <LastGenOutput>ListAspx.tmp</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

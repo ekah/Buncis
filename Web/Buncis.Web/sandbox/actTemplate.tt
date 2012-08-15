@@ -1,0 +1,352 @@
+﻿<#@ template  debug="true" hostSpecific="true" #>
+<#@ output extension=".js" #>
+(function (oModule) {
+	oModule._elems = {
+		detailPopup: '#',
+		editPopup: '#',
+		deletePopup: '#',
+		wizards: '#',		
+		tabs: '#',
+		formElements: '.form-item :input',		
+		btnSave: '#',
+		btnAdd: '#',		
+		editPopupTemplate: '#',
+		confirmDeletePopupTemplate: '#',
+		itemTemplate: '#',
+		itemContainer: ''
+	};
+	oModule.form = {
+		wizardHasBeenInitialized: false,
+		validators: {},
+		wizard: {},
+		reset: function() {
+			this.wizardHasBeenInitialized = false;
+			this.validators = {};
+			this.wizard = {};
+		}
+	};
+	oModule.collection = {};
+	oModule.CollectionModel = Backbone.Collection.extend({
+		model: oModule.newsItem,
+		comparator: function(newsItemModel){
+            var newsId = newsItemModel.get('newsId');
+            return -newsId;
+        }
+	});
+	oModule.ItemModel = Backbone.Model.extend({
+		
+	});
+	oModule.ItemView = Backbone.View.extend({
+		initialize: function(){
+			_.bindAll(this, "render");
+			this.model.on('change', this.renderUpdate, this);
+		},
+		renderUpdate: function() {
+			var template = _.template($(<#= this.JSObjectName #>._elems.itemTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
+			$('li[rel="' + this.model.get('newsId') + '"]').replaceWith(template);
+			return this;
+		},
+		render: function(){
+			var template = _.template($(<#= this.JSObjectName #>._elems.itemTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
+			this.$el.prepend($(template));
+			return this;
+		},
+		edit: function(event) {
+			var popupView = new <#= this.JSObjectName #>.NewsFormView({
+				el: $(<#= this.JSObjectName #>._elems.editPopup),
+				model: this.model
+			});			
+			popupView.render();
+
+			<#= this.JSObjectName #>.fn.showFormPopup(<#= this.JSObjectName #>._elems.editPopup, 'Edit News', 
+				function() {
+					<#= this.JSObjectName #>.fn.prepareEditForm();
+					$(<#= this.JSObjectName #>._elems.btnSave).attr('rel', 'edit');
+				}, 
+				function() {
+					popupView.undelegateEvents();
+					$(popupView.el).empty();
+				}
+			);
+		}, 
+		delete: function(event) {
+			var deletePopupView = new <#= this.JSObjectName #>.NewsDeleteView({
+				el: $(<#= this.JSObjectName #>._elems.deletePopup),
+				model: this.model
+			});
+			deletePopupView.render();
+			globalShowPopup(200, 400, <#= this.JSObjectName #>._elems.deletePopup, 'Delete News', 
+				function() {
+					$.colorbox.resize();					
+				}, 
+				function() {
+					deletePopupView.undelegateEvents();
+					$(deletePopupView.el).empty();
+				}
+			);
+		}
+	});
+	oModule.NewsFormView = Backbone.View.extend({
+		events: {
+			'click #btnSave': 'save'
+		},
+		render: function(event) {
+			var template = _.template($(<#= this.JSObjectName #>._elems.editPopupTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
+			this.$el.append($(template));
+			return this;
+		},
+		save: function(event) {
+			var api = <#= this.JSObjectName #>.form.validators.data("validator");
+			var isValid = api.checkValidity();
+			if(!isValid) {
+				return false;
+			}
+			var fMode = $(<#= this.JSObjectName #>._elems.btnSave).attr('rel');
+			var nTitle = $(<#= this.JSObjectName #>._elems.txtNewsTitle).val();
+			var nTeaser = $(<#= this.JSObjectName #>._elems.txtNewsTeaser).val();
+			var nUrl = $(<#= this.JSObjectName #>._elems.txtNewsUrl).val();
+			var nContent = $(<#= this.JSObjectName #>._elems.txtNewsContent).val();
+			var nPublished = $(<#= this.JSObjectName #>._elems.txtDatePublished).val();
+			var nExpired = $(<#= this.JSObjectName #>._elems.txtDateExpired).val();
+			var oPublished = $(<#= this.JSObjectName #>._elems.txtDatePublished).attr('rel');
+			var oExpired = $(<#= this.JSObjectName #>._elems.txtDateExpired).attr('rel');
+			var dPublished = new Date(oPublished);
+			var dExpired = new Date(oExpired);
+			var tzo = parseInt((dPublished.getTimezoneOffset() / (-60)), 10);
+			var itzo = tzo < 10 ? ('0' + tzo) : ('' + tzo);
+			var stzo = tzo < 0 ? '-' : '+';
+			var eNews = this.model;
+			
+			eNews.set('newsTitle', nTitle);
+			eNews.set('newsTeaser', nTeaser);
+			eNews.set('friendlyUrl', nUrl);
+			eNews.set('newsContent', nContent);
+			eNews.set('tDatePublished', nPublished);
+			eNews.set('tDateExpired', nExpired);
+			eNews.set('oDatePublished', '/Date(' + dPublished.getTime() + stzo + itzo + '00)/');
+			eNews.set('oDateExpired', '/Date(' + dExpired.getTime() + stzo + itzo + '00)/');			
+			<#= this.JSObjectName #>.fn.saveNews(eNews, function(result) {
+				eNews.set('newsId', result.NewsId);
+				eNews.set('datePublished', result.DisplayDatePublished);
+				eNews.set('dateExpired', result.DisplayDateExpired);				
+
+				$.colorbox.close();
+
+				var msg = '';
+				if(fMode === 'edit') {
+					eNews.set('recentlyEdited', true);
+					msg = 'Succesfully edited News data';
+				}
+				else {
+					eNews.set('recentlyAdded', true);
+					<#= this.JSObjectName #>.collection.add(eNews);
+					<#= this.JSObjectName #>.fn.renderListItemView(eNews);
+					msg = 'Succesfully added new News';
+				}
+				globalShowMessages([msg]);
+			});
+		}
+	});
+	oModule.NewsDeleteView = Backbone.View.extend({
+		events: {
+			'click #deleteNews-confirm': 'cDelete'
+		},
+		render: function(event) {
+			var template = _.template($(<#= this.JSObjectName #>._elems.confirmDeletePopupTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
+			this.$el.append($(template));
+			return this;
+		},
+		cDelete: function(event) {
+			var newsId = parseInt(this.model.get('newsId'), 10);
+			var newsTitle = this.model.get('newsTitle'); 
+			<#= this.JSObjectName #>.fn.deleteItem(newsId, function() {
+				<#= this.JSObjectName #>.collection.remove(this.model);
+				$(<#= this.JSObjectName #>._elems.itemContainer).find('li[rel="' + newsId + '"]').remove();
+				$.colorbox.close();				
+				globalShowMessages(["System has succesfully deleted News " + newsTitle]);
+			});
+		}
+	});
+}(window.<#= this.JSObjectName #> = window.<#= this.JSObjectName #> || {}));
+
+
+(function(oFn) {
+	var listWebServiceUrl = '' + _elems.clientId;	
+	var editWebServiceUrl = '';	
+	var addWebServiceUrl = '';	
+	var deleteWebServiceUrl = '';	
+
+	oFn.setupEvents = function() {
+		$(<#= this.JSObjectName #>._elems.btnAdd).click(function(event) {
+			event.preventDefault();
+			
+			var defaultItem = new <#= this.JSObjectName #>.ItemModel({
+				
+			});
+			var popupView = new <#= this.JSObjectName #>.FormView({
+				el: $(<#= this.JSObjectName #>._elems.editPopup),
+				model: defaultItem
+			});
+			popupView.render();
+
+			<#= this.JSObjectName #>.fn.showFormPopup(<#= this.JSObjectName #>._elems.editPopup, 'Add News', 
+				function() {
+					<#= this.JSObjectName #>.fn.prepareEditForm();
+				}, 
+				function() {
+					popupView.undelegateEvents();
+					$(popupView.el).empty();
+				}
+			);
+		});	
+	};
+	oFn.prepareEditForm = function() {
+		<#= this.JSObjectName #>.form.reset();
+		if(!<#= this.JSObjectName #>.form.wizardHasBeenInitialized) {
+			<#= this.JSObjectName #>.form.wizard = $(<#= this.JSObjectName #>._elems.wizards).smartWizard({
+				keyNavigation: false,
+				enableAllSteps: true,
+				enableFinishButton: false, 
+				labelNext: '',
+				labelPrevious: '',
+				labelFinish: '',
+				onShowStep: function (step) {
+					// !!! CHANGE THIS !!!
+					if($(<#= this.JSObjectName #>._elems.TEXTAREAHERE).is(':visible')) {
+						$(<#= this.JSObjectName #>._elems.TEXTAREAHERE).htmlarea('dispose'); 
+						$(<#= this.JSObjectName #>._elems.TEXTAREAHERE).htmlarea();
+					}
+				}
+			});
+			<#= this.JSObjectName #>.form.wizardHasBeenInitialized = true;
+		}
+		else {
+			$(<#= this.JSObjectName #>._elems.tabs).find('a.tabStart').click();
+		}
+		<#= this.JSObjectName #>.form.validators = $(<#= this.JSObjectName #>._elems.formElements).validator({
+			effect: 'floatingWall',
+			container: _elems.errorContainer,
+			errorInputEvent: null,
+		});  
+	};
+	oFn.showFormPopup = function(selector, title, _completeCallback, _closedCallback) {
+		globalShowPopup(662, 960, selector, title, _completeCallback, _closedCallback)
+	};
+	oFn.getCollection = function(_callback) {
+		$.ajax({
+			type: "GET",
+			url: listWebServiceUrl,
+			success: function (result) {
+				var data = result.d;
+				if (data.IsSuccess) {
+					if(_callback) {
+						_callback(data.ResponseObject);
+					}
+				}
+			},
+			error: function () {
+			}
+		});
+	};
+	oFn.saveItem = function(oData, _callback) {
+		var sData = {
+			clientId: _elems.clientId,
+			
+		};
+		var jData = JSON.stringify(sData);
+		var wsUrl = '';
+		
+		// determine if edit/add
+		// !!! CHANGE THIS !!!
+		if(sData.ITEMNAMEHERE.IDHERE > 0) { 
+			wsUrl = editWebServiceUrl;			
+		}
+		else {
+			wsUrl = addWebServiceUrl;
+		}
+
+		_helpers.blockPopupDefault();
+		$.ajax({
+			type: "POST",
+			url: wsUrl,
+			data: jData,
+			dataType: 'json',
+			contentType: 'text/json',
+			success: function (result) {
+				_helpers.unblockPopupDefault();
+				var data = result.d;
+				if (data.IsSuccess) {
+					if(_callback) {
+						_callback(data.ResponseObject);
+					}
+				}
+			},
+			error: function () {
+				_helpers.blockPopupDefault();
+			}
+		});
+	};
+	oFn.deleteItem = function(deletedId, _callback) {
+		var data = {
+			clientId: -1,			
+		};
+		
+		var jData = JSON.stringify(data);
+		
+		_helpers.blockPopupDefault();
+
+		$.ajax({
+			type: "POST",
+			url: deleteWebServiceUrl,
+			data: jData,
+			dataType: 'json',
+			contentType: 'text/json',
+			success: function (result) {
+				_helpers.unblockPopupDefault();
+				var data = result.d;
+				if (data.IsSuccess) {
+					if(_callback) {
+						_callback(data.ResponseObject);
+					}
+				}
+			},
+			error: function () {
+				_helpers.blockPopupDefault();
+			}
+		});
+	};
+	oFn.loadData = function() {
+		<#= this.JSObjectName #>.collection = new <#= this.JSObjectName #>.CollectionModel();
+		oFn.getCollection(function(result) {
+			for(var i = 0; i < result.length; i++) {				
+				var item = result[i];
+				// create new model instance
+				var itemModel = new <#= this.JSObjectName #>.ItemModel({
+				});
+
+				// put model instance to collections
+				<#= this.JSObjectName #>.collection.add(itemModel);
+				<#= this.JSObjectName #>.fn.renderListItemView(itemModel);
+			}
+		});
+	};
+	oFn.renderListItemView = function(itemModel) {
+		// set the view and render it
+		var itemView = new <#= this.JSObjectName #>.ItemView({ 
+			el: $(<#= this.JSObjectName #>._elems.itemContainer),
+			model: itemModel,
+			id: 'put id here'
+		});
+		newsItemView.events = {};
+		// put events here
+		itemView.delegateEvents();
+		itemView.render();
+	};
+}(window.<#= this.JSObjectName #>.fn = window.<#= this.JSObjectName #>.fn || {}));
+
+
+$(document).ready(function() {	
+	<#= this.JSObjectName #>.fn.loadData();
+	<#= this.JSObjectName #>.fn.setupEvents();
+});
+

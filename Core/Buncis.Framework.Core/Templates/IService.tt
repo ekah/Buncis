@@ -1,5 +1,5 @@
 ﻿<#@ template  debug="true" hostSpecific="true" #>
-<#@ output extension=".cs" #>
+<#@ output extension=".tmp" #>
 using System.Collections.Generic;
 using Buncis.Framework.Core.ViewModel;
 using Buncis.Framework.Core.SupportClasses;

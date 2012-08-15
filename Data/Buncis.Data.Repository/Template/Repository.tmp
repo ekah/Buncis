@@ -1,0 +1,14 @@
+﻿using Buncis.Data.Domain.Pages;
+using Buncis.Framework.Core.Repository.DailyBread;
+using NHibernate;
+
+namespace Buncis.Data.Repository.DailyBread;
+{
+    public class DailyBreadItemRepository : GenericRepository<DailyBreadItem>, IDailyBreadItemRepository
+    {
+        public DailyBreadItemRepository(ISession session) :
+            base(session)
+        {
+        }
+    }
+}

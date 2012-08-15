@@ -1,0 +1,21 @@
+﻿<#@ template  debug="true" hostSpecific="true" #>
+<#@ output extension=".tmp" #>
+using Buncis.Data.Domain.Pages;
+using Buncis.Framework.Core.Repository.<#= this.ModuleName #>;
+using NHibernate;
+
+namespace Buncis.Data.Repository.<#= this.ModuleName #>;
+{
+    public class <#= this.RepositoryName #> : GenericRepository<<#= this.ModelName #>>, I<#= this.RepositoryName #>
+    {
+        public <#= this.RepositoryName #>(ISession session) :
+            base(session)
+        {
+        }
+    }
+}
+<#+
+	string ModuleName = "DailyBread";
+	string RepositoryName = "DailyBreadItemRepository";
+	string ModelName = "DailyBreadItem";
+#>
