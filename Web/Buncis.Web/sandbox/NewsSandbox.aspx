@@ -21,4 +21,8 @@
 	</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+	<div>
+	<label for="textCheckbox">Test</label>
+	<input type="checkbox" id="testCheckBox" />
+	</div>
 </asp:Content>

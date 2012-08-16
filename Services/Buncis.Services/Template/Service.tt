@@ -84,8 +84,8 @@ namespace Buncis.Services.<#= this.ModuleName #>
             // rule based here
            
 
-            <#= this.Domain #> <#= this.LoweredDomain #> = null;
-            <#= this.ViewModelName #> pinged = null;
+            <#= this.Domain #> <#= this.LoweredDomain #>;           
+ 
             if (<#= this.LoweredModuleName #>.<#= this.IdWord #> <= 0)
             {
                 <#= this.LoweredDomain #> = new <#= this.Domain #>();
@@ -95,8 +95,6 @@ namespace Buncis.Services.<#= this.ModuleName #>
                 <#= this.LoweredDomain #>.ClientId = clientId;
 
                 _<#= this.RepositoryVariableName #>.Add(<#= this.LoweredDomain #>);
-
-                pinged = Get<#= this.MethodWord #>(<#= this.LoweredDomain #>.<#= this.IdWord #>);
             }
             else
             {
@@ -109,12 +107,11 @@ namespace Buncis.Services.<#= this.ModuleName #>
                     <#= this.LoweredDomain #>.DateCreated = createdDate;
                     <#= this.LoweredDomain #>.IsDeleted = false;
 
-                    _<#= this.RepositoryVariableName #>.Update(<#= this.LoweredDomain #>);
-
-                    pinged = Get<#= this.MethodWord #>(<#= this.LoweredDomain #>.<#= this.IdWord #>);
+                    _<#= this.RepositoryVariableName #>.Update(<#= this.LoweredDomain #>);                    
                 }
             }
 
+			var pinged = Get<#= this.MethodWord #>(<#= this.LoweredDomain #>.<#= this.IdWord #>);
             validator.IsValid = true;
             validator.RelatedObject = pinged;
             return validator;

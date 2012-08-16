@@ -63,9 +63,10 @@
             					<label>Name displayed on Menu</label>
     							<input type="text" required="required" id="txtPageMenuName" class="medium" 
 									name="txtPageMenuName" data-message="Page Menu Name is required" />
-            				</div>
+            				</div>            				
                             <div class="form-item">
 								<label>Do you want to make this page as your Home page?</label>
+								<label class="form-item-reset" for="chkIsHomePage">Home Page</label>
 								<input type="checkbox" id="chkIsHomePage" />
 							</div>		
 							<div class="form-item">

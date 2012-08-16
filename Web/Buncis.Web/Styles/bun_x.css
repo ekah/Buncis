@@ -38,6 +38,12 @@ textarea {
 	overflow-x: hidden !important;
 }
 
+label.form-item-reset {
+	display: inline-block !important;	
+	padding: 0px !important;	
+	height: auto !important;
+	line-height: normal; !important;
+}
 
 /* #region login*/
 #loginInfo
@@ -194,10 +200,8 @@ textarea {
 
 .form-item label
 {
-	display: block;
-	/*float: left;*/
-	padding: 1em 0px 0.5em;
-	/*text-align: right;*/
+	display: block;	
+	padding: 1em 0px 0.5em;	
 	font-weight: bold;
 	height: 1em;
 	line-height: 0.75em;

@@ -314,8 +314,6 @@
     <Content Include="Scripts\modules\dataTables\jquery.dataTables.ext.js" />
     <Content Include="Scripts\modules\dataTables\jquery.dataTables.js" />
     <Content Include="Scripts\modules\dataTables\jquery.dataTables.min.js" />
-    <Content Include="Scripts\modules\iButton\jquery.ibutton.js" />
-    <Content Include="Scripts\modules\iButton\jquery.ibutton.min.js" />
     <Content Include="Scripts\modules\jHtmlArea\jHtmlArea-0.7.0.js" />
     <Content Include="Scripts\modules\jHtmlArea\jHtmlArea-0.7.0.min.js" />
     <Content Include="Scripts\modules\jHtmlArea\jHtmlArea.ColorPickerMenu-0.7.0.js" />
@@ -344,7 +342,6 @@
     <Content Include="Styles\colorbox\images\border2.png" />
     <Content Include="Styles\colorbox\images\loading.gif" />
     <Content Include="Styles\cssreset-min.css" />
-    <Content Include="Styles\iButton\jquery.ibutton.css" />
     <Content Include="Styles\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Styles\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Styles\images\ui-bg_glass_55_fbf9ee_1x400.png" />

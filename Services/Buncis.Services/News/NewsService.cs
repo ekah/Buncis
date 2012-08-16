@@ -83,9 +83,8 @@ namespace Buncis.Services.News
             news.DateExpired = news.DateExpired.DatePart();
             news.DatePublished = news.DatePublished.DatePart();
 
-            NewsItem newsItem = null;
-            vBuncisNewsItem pingedNews = null;
-            if (news.NewsId <= 0)
+            NewsItem newsItem;
+        	if (news.NewsId <= 0)
             {
                 newsItem = new NewsItem();
                 newsItem.InjectFrom(news);
@@ -94,8 +93,6 @@ namespace Buncis.Services.News
                 newsItem.ClientId = clientId;
 
                 _newsRepository.Add(newsItem);
-
-                pingedNews = GetNewsItem(newsItem.NewsId);
             }
             else
             {
@@ -109,11 +106,10 @@ namespace Buncis.Services.News
                     newsItem.IsDeleted = false;
 
                     _newsRepository.Update(newsItem);
-
-                    pingedNews = GetNewsItem(newsItem.NewsId);
                 }
             }
 
+			vBuncisNewsItem pingedNews = GetNewsItem(newsItem.NewsId);
             validator.IsValid = true;
             validator.RelatedObject = pingedNews;
             return validator;

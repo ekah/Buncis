@@ -82,8 +82,8 @@ namespace Buncis.Services.DailyBread
             // rule based here
            
 
-            DailyBreadItem dailyBreadItem = null;
-            vBuncisDailyBreadItem pinged = null;
+            DailyBreadItem dailyBreadItem;           
+ 
             if (dailyBread.DailyBreadId <= 0)
             {
                 dailyBreadItem = new DailyBreadItem();
@@ -93,8 +93,6 @@ namespace Buncis.Services.DailyBread
                 dailyBreadItem.ClientId = clientId;
 
                 _dailyBreadItemRepository.Add(dailyBreadItem);
-
-                pinged = GetDailyBreadItem(dailyBreadItem.DailyBreadId);
             }
             else
             {
@@ -107,12 +105,11 @@ namespace Buncis.Services.DailyBread
                     dailyBreadItem.DateCreated = createdDate;
                     dailyBreadItem.IsDeleted = false;
 
-                    _dailyBreadItemRepository.Update(dailyBreadItem);
-
-                    pinged = GetDailyBreadItem(dailyBreadItem.DailyBreadId);
+                    _dailyBreadItemRepository.Update(dailyBreadItem);                    
                 }
             }
 
+			var pinged = GetDailyBreadItem(dailyBreadItem.DailyBreadId);
             validator.IsValid = true;
             validator.RelatedObject = pinged;
             return validator;

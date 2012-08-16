@@ -260,6 +260,7 @@
 		else {
 			$(pages._elems.chkIsHomePage).removeAttr('checked');
 		}
+		$(pages._elems.chkIsHomePage).trigger('change');
 	}
 
 	function resetForm() {
@@ -271,6 +272,7 @@
 		$(pages._elems.txtPageMetaDescription).val('');
 		$(pages._elems.txtPageContent).val('');
 		$(pages._elems.chkIsHomePage).removeAttr('checked');
+		$(pages._elems.txtPageUrl).removeAttr('disabled');
 		$(pages._elems.btnSavePage).attr('rel', '0');
 	}
 	
@@ -302,33 +304,40 @@
 
 			globalShowPopup(662, 960, pages._elems.pageFormPopup, title,
 				function() {
-					preparePopupForm();
-					_helpers.blockPopupDefault();
-					if(mode === 'edit') {
-						getPage(pageId, function(data) {
 
-							bind(data);
-							
-							$(pages._elems.btnSavePage).attr('rel', pageId);
-							
+					preparePopupForm();
+					resetForm();
+					_helpers.blockPopupDefault();
+
+					if(mode === 'edit') {
+						getPage(pageId, function(data) {							
 							var td = $(pages._elems.tablePages).find('a.edit[rel="' + pageId + '"]').parent();
 							var tr = $(td).parent();
+							var aPos, 
+								collection, 
+								dData;
+
+							// bind data to form
+							bind(data);
+
+							// set edited pageId
+							$(pages._elems.btnSavePage).attr('rel', pageId);
+
 							pages.form.editedRow = tr;
-							
-							var aPos = pages.pageTable.fnGetPosition(tr.get(0));
+							aPos = pages.pageTable.fnGetPosition(tr.get(0));
 							pages.form.editedRowPos = aPos;
-							
-							var data = pages.pageTable.fnGetData();
-							var dData = data[aPos];
+							collection = pages.pageTable.fnGetData();
+							dData = collection[aPos];
 							pages.form.editedData = dData;
-							
-							setTimeout(function() { _helpers.unblockPopupDefault(); }, 500);
+
+							$(pages._elems.chkIsHomePage).button();
 						});
 					}
 					else {
-						resetForm();
-						setTimeout(function() { _helpers.unblockPopupDefault(); }, 500);
+						// add form here
 					}
+										
+					setTimeout(function() { _helpers.unblockPopupDefault(); }, 500);
 				},
 				function() {
 					destroyForm();
@@ -368,7 +377,7 @@
 	
 	function destroyForm() {
 		$(pages._elems.txtPageContent).htmlarea('dispose'); 
-
+		$(pages._elems.chkIsHomePage).button('destroy');
 		var api = _pages.form.validators.data("validator");
 		api.destroy();
 		pages.form.validators = {};
@@ -378,36 +387,39 @@
 		$(pages._elems.btnAddPage).click(function () {
 			showPopup('add');
 		});
-		$(pages._elems.chkIsHomePage).iButton({
-			change: function ($input){
-				if($input.is(":checked")) {
-					$(pages._elems.txtPageUrl).val('/');
-					$(pages._elems.txtPageUrl).attr('disabled', 'disabled');
-				}
-				else {
-					$(pages._elems.txtPageUrl).val('');
-					$(pages._elems.txtPageUrl).removeAttr('disabled');
-				}
+		
+		$(document).delegate(pages._elems.chkIsHomePage, 'change', function() {
+			var $self = $(this);
+			if($self.is(":checked")) {
+				$(pages._elems.txtPageUrl).val('/');
+				$(pages._elems.txtPageUrl).attr('disabled', 'disabled');
+			}
+			else {				
+				$(pages._elems.txtPageUrl).removeAttr('disabled');
 			}
 		});
+
 		$(pages._elems.tablePages).delegate(pages._elems.btnEditPage, 'click', function() {
 			var $self = $(this);
 			var pageId = $self.attr('rel');
 
 			showPopup('edit', pageId);
 		});
+
 		$(pages._elems.tablePages).delegate(pages._elems.btnDeletePage, 'click', function() {
 			var $self = $(this);
 			var pageId = $self.attr('rel');
 
 			showPopup('delete', pageId);
 		});
+
 		$(pages._elems.confirmDeletePage).click(function() {
 			var $self = $(this);
 			var pageId = $self.attr('rel');
 
 			deletePage(pageId);
 		});
+
 		$(pages._elems.btnSavePage).click(function() {
 			var $self = $(this);
 			var pageId = parseInt($self.attr('rel'), 10);
