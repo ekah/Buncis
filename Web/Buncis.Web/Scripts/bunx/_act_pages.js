@@ -346,6 +346,7 @@
 				labelNext:'', 
 				labelPrevious:'', 
 				labelFinish:'',
+				transitionEffect: 'slideleft',
 				onShowStep: function (step) {
 					if($(pages._elems.txtPageContent).is(':visible')) {
 						$(pages._elems.txtPageContent).htmlarea('dispose'); 

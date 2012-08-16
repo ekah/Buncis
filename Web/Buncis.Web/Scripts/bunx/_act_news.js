@@ -12,7 +12,6 @@
 		txtDatePublished: '#txtDatePublished',
 		newsTabs: '#news-tabs',
 		newsFormElements: '.form-item :input',
-		newsDate: '.newsDate',
 		btnSaveNews: '#btnSaveNews',
 		btnAddNews: '#aAddNews',
 		newsEditPopupTemplate: '#news-edit-popup-template',
@@ -44,17 +43,17 @@
 		newsTitle: '',
 		newsTeaser: '',
 		newsContent: '',
-		datePublished: '', // display date as in 4 Aug 2012
+		datePublished: '', // display date as in "Mon, 4 Aug 2012 00:00"
 		dateExpired: '',
 		dateCreated: '',
 		dateLastUpdated: '',
 		friendlyUrl: '',
-		oDatePublished: '', // epoch date from server
-		oDateExpired: '',
-		tDatePublished: '', // display date as in 4-8-2012
-		tDateExpired: '',
-		eDatePublished: '', // the actual date object 
-		eDateExpired: '',
+		epochDatePublished: '', // epoch date from server
+		epochDateExpired: '',
+		formattedDatePublished: '', // display date as in 4-8-2012
+		formattedDateExpired: '',
+		actualDatePublished: '', // the actual date object 
+		actualDateExpired: '',
 		recentlyAdded: false,
 		recentlyEdited: false
 	});
@@ -124,29 +123,29 @@
 				return false;
 			}
 			var fMode = $(_news._elems.btnSaveNews).attr('rel');
-			var nTitle = $(_news._elems.txtNewsTitle).val();
-			var nTeaser = $(_news._elems.txtNewsTeaser).val();
-			var nUrl = $(_news._elems.txtNewsUrl).val();
-			var nContent = $(_news._elems.txtNewsContent).val();
-			var nPublished = $(_news._elems.txtDatePublished).val();
-			var nExpired = $(_news._elems.txtDateExpired).val();
-			var oPublished = $(_news._elems.txtDatePublished).attr('rel');
-			var oExpired = $(_news._elems.txtDateExpired).attr('rel');
-			var dPublished = new Date(oPublished);
-			var dExpired = new Date(oExpired);
-			var tzo = parseInt((dPublished.getTimezoneOffset() / (-60)), 10);
+			var title = $(_news._elems.txtNewsTitle).val();
+			var teaser = $(_news._elems.txtNewsTeaser).val();
+			var url = $(_news._elems.txtNewsUrl).val();
+			var content = $(_news._elems.txtNewsContent).val();
+			var formattedPublished = $(_news._elems.txtDatePublished).val();
+			var formattedExpired = $(_news._elems.txtDateExpired).val();
+			var textPublished = $(_news._elems.txtDatePublished).attr('rel');
+			var textExpired = $(_news._elems.txtDateExpired).attr('rel');
+			var datePublished = new Date(textPublished);
+			var dateExpired = new Date(textExpired);
+			var tzo = parseInt((datePublished.getTimezoneOffset() / (-60)), 10);
 			var itzo = tzo < 10 ? ('0' + tzo) : ('' + tzo);
 			var stzo = tzo < 0 ? '-' : '+';
 			var eNews = this.model;
 			
-			eNews.set('newsTitle', nTitle);
-			eNews.set('newsTeaser', nTeaser);
-			eNews.set('friendlyUrl', nUrl);
-			eNews.set('newsContent', nContent);
-			eNews.set('tDatePublished', nPublished);
-			eNews.set('tDateExpired', nExpired);
-			eNews.set('oDatePublished', '/Date(' + dPublished.getTime() + stzo + itzo + '00)/');
-			eNews.set('oDateExpired', '/Date(' + dExpired.getTime() + stzo + itzo + '00)/');			
+			eNews.set('newsTitle', title);
+			eNews.set('newsTeaser', teaser);
+			eNews.set('friendlyUrl', url);
+			eNews.set('newsContent', content);
+			eNews.set('formattedDatePublished', formattedPublished);
+			eNews.set('formattedDateExpired', formattedExpired);
+			eNews.set('epochDatePublished', '/Date(' + datePublished.getTime() + stzo + itzo + '00)/');
+			eNews.set('epochDateExpired', '/Date(' + dateExpired.getTime() + stzo + itzo + '00)/');			
 			_news.fn.saveNews(eNews, function(result) {
 				eNews.set('newsId', result.NewsId);
 				eNews.set('datePublished', result.DisplayDatePublished);
@@ -198,24 +197,38 @@
 	var addWebServiceUrl = '/webservices/news.svc/bPanelInsertNews';	
 	var deleteWebServiceUrl = '/webservices/news.svc/bPanelDeleteNews';	
 
+	function processDataOnDatePickerSelect(selectedDate, elem) {
+		var actualDate = $.datepicker.parseDate('d-m-yy', selectedDate);
+		$(elem).attr('rel', actualDate);
+		$(elem).trigger('change');
+	}
+
+	function dateInputChanged(elem) {
+		var $elem = $(elem);
+		var selectedDate = $elem.val();
+		var actualDate = $.datepicker.parseDate('d-m-yy', selectedDate);
+		var displayDate = $.datepicker.formatDate('D, d M yy', actualDate);
+		$elem.siblings('span').text(displayDate);
+	}
+
 	oFn.setupEvents = function() {
 		$(_news._elems.btnAddNews).click(function(event) {
 			event.preventDefault();
 			var currentDate = new Date();
-			var currentDatePlusOneMonth = _helpers.convertEpochToDate((new Date()).setMonth(currentDate.getMonth() + 1));
+			var currentDatePlusOneMonth = _helpers.dateFn.convertEpochToDate((new Date()).setMonth(currentDate.getMonth() + 1));
 			var defNewsItem = new _news.NewsItem({
 				newsId: -1,
 				newsTitle: '',
 				newsTeaser: '',
 				newsContent: '',
-				oDatePublished: '',
-				oDateExpired: '',
+				epochDatePublished: '',
+				epochDateExpired: '',
 				datePublished: '',
 				dateExpired: '',
-				eDatePublished: currentDate,
-				eDateExpired: currentDatePlusOneMonth,
-				tDatePublished: _helpers.convertDateToString(currentDate),
-				tDateExpired: _helpers.convertDateToString(currentDatePlusOneMonth),
+				actualDatePublished: currentDate,
+				actualDateExpired: currentDatePlusOneMonth,
+				formattedDatePublished: _helpers.dateFn.convertDateToDefaultFormattedString(currentDate),
+				formattedDateExpired: _helpers.dateFn.convertDateToDefaultFormattedString(currentDatePlusOneMonth),
 				friendlyUrl: ''
 			});
 			var popupView = new _news.NewsFormView({
@@ -226,7 +239,9 @@
 
 			_news.fn.showFormPopup(_news._elems.editPopup, 'Add News', 
 				function() {
-					_news.fn.prepareEditForm(currentDate, currentDatePlusOneMonth);
+					_news.fn.prepareEditForm();
+					$(_news._elems.txtDatePublished).trigger('change');
+					$(_news._elems.txtDateExpired).trigger('change');
 				}, 
 				function() {
 					popupView.undelegateEvents();
@@ -234,8 +249,14 @@
 				}
 			);
 		});	
+		$(document).delegate(_news._elems.txtDatePublished, 'change', function() {
+			dateInputChanged(this);
+		});
+		$(document).delegate(_news._elems.txtDateExpired, 'change', function() {
+			dateInputChanged(this);
+		});
 	};
-	oFn.prepareEditForm = function(published, expired) {
+	oFn.prepareEditForm = function() {
 		_news.form.reset();
 		if(!_news.form.wizardHasBeenInitialized) {
 			_news.form.wizard = $(_news._elems.newsWizards).smartWizard({
@@ -245,6 +266,7 @@
 				labelNext: '',
 				labelPrevious: '',
 				labelFinish: '',
+				transitionEffect: 'slideleft',
 				onShowStep: function (step) {
 					if($(_news._elems.txtNewsContent).is(':visible')) {
 						$(_news._elems.txtNewsContent).htmlarea('dispose'); 
@@ -261,36 +283,27 @@
 			effect: 'floatingWall',
 			container: _elems.errorContainer,
 			errorInputEvent: null,
-		});  
-
-		var startDate = '';
-		var endDate = '';
-		var currentDate = new Date();
-		if(published) {			
-			startDate = published.getDate() + '-' + (published.getMonth() + 1) + '-' + published.getFullYear();
-		}
-		else {			
-			startDate = currentDate.getDate() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getFullYear();
-		}
-		if(expired) {
-			endDate = expired.getDate() + '-' + (expired.getMonth() + 1) + '-' + expired.getFullYear();
-		}
-		else {
-			endDate = currentDate.getDate() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getFullYear();	
-		}
+		});
 		
-		$(_news._elems.newsDate).DatePicker({
-			flat: false,
-			date: [startDate, endDate],	
-			current: startDate,
-			format: 'd-m-Y',
-			calendars: 3,
-			mode: 'range',
-			onChange: function(formatted, dates) {
-				$(_news._elems.txtDatePublished).val(formatted[0]);
-				$(_news._elems.txtDateExpired).val(formatted[1]);		
-				$(_news._elems.txtDatePublished).attr('rel', dates[0]);
-				$(_news._elems.txtDateExpired).attr('rel', dates[1]);
+		$(_news._elems.txtDatePublished).datepicker({
+			changeMonth: true,
+			numberOfMonths: 3,
+			dateFormat: 'd-m-yy',
+			onSelect: function(selectedDate) {
+				processDataOnDatePickerSelect(selectedDate, this);
+				$(_news._elems.txtDateExpired).datepicker("option", "minDate", selectedDate);
+				$(_news._elems.txtDateExpired).trigger('change');
+			}
+		});
+		$(_news._elems.txtDateExpired).datepicker({
+			defaultDate: "+1w",
+			changeMonth: true,
+			numberOfMonths: 3,
+			dateFormat: 'd-m-yy',
+			onSelect: function(selectedDate) {
+				processDataOnDatePickerSelect(selectedDate, this);
+				$(_news._elems.txtDatePublished).datepicker("option", "maxDate", selectedDate);
+				$(_news._elems.txtDatePublished).trigger('change');
 			}
 		});
 	};
@@ -328,8 +341,8 @@
 				FriendlyUrl: oData.get('friendlyUrl'),
 				DateCreated: '/Date(1341158400000)/',
 				DateLastUpdated: '/Date(1341158400000)/',
-				DatePublished: oData.get('oDatePublished'),
-				DateExpired: oData.get('oDateExpired')
+				DatePublished: oData.get('epochDatePublished'),
+				DateExpired: oData.get('epochDateExpired')
 			}
 		};
 		var jData = JSON.stringify(sData);
@@ -401,14 +414,14 @@
 					newsTitle: iNewsItem.NewsTitle,
 					newsTeaser: iNewsItem.NewsTeaser,
 					newsContent: iNewsItem.NewsContent,
-					oDatePublished: iNewsItem.DatePublished,
-					oDateExpired: iNewsItem.DateExpired,
+					epochDatePublished: iNewsItem.DatePublished,
+					epochDateExpired: iNewsItem.DateExpired,
 					datePublished: iNewsItem.DisplayDatePublished,
 					dateExpired: iNewsItem.DisplayDateExpired,		
-					eDatePublished: _helpers.convertEpochToDate(_helpers.cleanDotNetDateJson(iNewsItem.DatePublished)).toString(),
-					eDateExpired: _helpers.convertEpochToDate(_helpers.cleanDotNetDateJson(iNewsItem.DateExpired)).toString(),
-					tDatePublished: _helpers.convertEpochToString(_helpers.cleanDotNetDateJson(iNewsItem.DatePublished)),
-					tDateExpired: _helpers.convertEpochToString(_helpers.cleanDotNetDateJson(iNewsItem.DateExpired)),
+					actualDatePublished: _helpers.dateFn.convertEpochToDate(_helpers.dateFn.cleanDotNetDateJson(iNewsItem.DatePublished)).toString(),
+					actualDateExpired: _helpers.dateFn.convertEpochToDate(_helpers.dateFn.cleanDotNetDateJson(iNewsItem.DateExpired)).toString(),
+					formattedDatePublished: _helpers.dateFn.convertEpochToDefaultFormattedString(_helpers.dateFn.cleanDotNetDateJson(iNewsItem.DatePublished)),
+					formattedDateExpired: _helpers.dateFn.convertEpochToDefaultFormattedString(_helpers.dateFn.cleanDotNetDateJson(iNewsItem.DateExpired)),
 					friendlyUrl: iNewsItem.FriendlyUrl
 				});
 

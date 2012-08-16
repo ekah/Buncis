@@ -46,41 +46,41 @@ $.tools.validator.addEffect("floatingWall", function (errors, event) {
 		$(row).animate({ backgroundColor: '#acfa58' }, 1500)
 			.animate({ backgroundColor: 'transparent' }, 1500); 
 	};
-	helpers.cleanDotNetDateJson = function(dateJson) {
-		var frt = parseInt(dateJson.substr(6));
-		return frt;    	
-	};
-	helpers.convertEpochToDate = function(epochDate) {
-		var d = new Date(epochDate);    	
-		return d;
-	};
-	helpers.convertEpochToString = function(epochDate) {
-		var d = new Date(epochDate); 
-					
-		var s = '';
-
-		var dd = d.getDate();
-		if(dd < 10) {
-			s += '0' + dd + '-';
-		} 
-		else {
-			s += dd + '-';
+	helpers.dateFn = {
+		cleanDotNetDateJson: function(dateJson) {
+			var frt = parseInt(dateJson.substr(6));
+			return frt;    	
+		},
+		convertEpochToDate: function(epochDate) {
+			var d = new Date(epochDate);    	
+			return d;
+		},
+		convertEpochToDefaultFormattedString: function(epochDate) {
+			// DEAFULT FORMATTED STRING IS d-m-yy
+			var d = new Date(epochDate); 					
+			var s = '';
+			var dd = d.getDate();
+			if(dd < 10) {
+				s += '' + dd + '-';
+			} 
+			else {
+				s += dd + '-';
+			}
+			var m = (d.getMonth() + 1);
+			if(m < 10) {
+				s += '' + m + '-';	
+			}
+			else {
+				s += m + '-';		
+			}		
+			s += d.getFullYear();
+			return s;
+		},		
+		convertDateToDefaultFormattedString: function(date) {
+			// DEAFULT FORMATTED STRING IS d-m-yy
+			return date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
 		}
-
-		var m = (d.getMonth() + 1);
-		if(m < 10) {
-			s += '0' + m + '-';	
-		}
-		else {
-			s += m + '-';		
-		}
-		
-		s += d.getFullYear();
-		return s;
-	};
-	helpers.convertDateToString = function(date) {
-		return date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
-	};
+	};	
 	helpers.underscoreTemplateSettings = {
 		interpolate : /\{\{(.+?)\}\}/g,     // print value: {{ value_name }}
 		evaluate    : /\{%([\s\S]+?)%\}/g,  // excute code: {% code_to_execute %}

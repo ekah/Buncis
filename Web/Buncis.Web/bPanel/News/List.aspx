@@ -71,18 +71,14 @@
 							data-message="News Teaser is required" required="required"
 							style="width:700px; height: 100px;">{{attributes.newsTeaser}}</textarea>
 					</div>
-					<div class="form-item">
-						<label>Friendly URL</label>
-						<input type="text" required="required" id="txtNewsUrl" 
-							class="medium" name="txtNewsUrl" required" required="required"
-							data-message="News Url is required" value="{{attributes.friendlyUrl}}" />
-					</div>
 					<div class="left">
 						<div class="form-item">
 							<label>Date Published</label>
 							<input type="text" id="txtDatePublished" name="txtDatePublished" 
 								required="required" data-message="Date Published is required" 
-								value="{{attributes.tDatePublished}}" rel="{{attributes.eDatePublished}}" />
+								value="{{attributes.formattedDatePublished}}" rel="{{attributes.actualDatePublished}}" />
+							<br/>
+							<span>{{attributes.datePublished}}</span>
 						</div>							
 					</div>
 					<div class="left">							
@@ -90,13 +86,18 @@
 							<label>Date Expired</label>
 							<input type="text" id="txtDateExpired" name="txtDateExpired" 
 								required="required" data-message="Date Expired  is required" 
-								value="{{attributes.tDateExpired}}" rel="{{attributes.eDateExpired}}" />
+								value="{{attributes.formattedDateExpired}}" rel="{{attributes.actualDateExpired}}" />
+							<br/>
+							<span>{{attributes.dateExpired}}</span>
 						</div>							
-					</div>		
-					<div class="newsDate left" style="width: 100px; height: 40px; border: solid 1px black; padding: 10px;">
-						Click here to adjust dates
 					</div>	
-					<div class="clearFloats"></div>						
+					<div class="clearFloats"></div>
+					<div class="form-item">
+						<label>Friendly URL</label>
+						<input type="text" required="required" id="txtNewsUrl" 
+							class="medium" name="txtNewsUrl" required" required="required"
+							data-message="News Url is required" value="{{attributes.friendlyUrl}}" />
+					</div>				
 				</div>
 				<div id="news-tab2" class="news-tab2">
 					<div class="form-item hasHtmlArea">

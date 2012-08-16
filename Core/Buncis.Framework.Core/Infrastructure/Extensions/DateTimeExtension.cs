@@ -9,10 +9,20 @@ namespace Buncis.Framework.Core.Infrastructure.Extensions
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns></returns>
-        public static string ToLongFormatString(this DateTime input)
+        public static string ToBuncisLongFormatString(this DateTime input)
         {
             return input.ToString("ddd, dd MMM yyyy HH:mm");
         }
+
+		/// <summary>
+		/// Toes the short format string.
+		/// </summary>
+		/// <param name="input">The input.</param>
+		/// <returns></returns>
+		public static string ToBuncisShortFormatString(this DateTime input)
+		{
+			return input.ToString("ddd, dd MMM yyyy");
+		}
 
         /// <summary>
         /// Dates the part.

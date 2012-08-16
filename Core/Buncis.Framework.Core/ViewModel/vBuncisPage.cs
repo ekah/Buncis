@@ -30,14 +30,14 @@ namespace Buncis.Framework.Core.ViewModel
 		{
 			get
 			{
-				return DateCreated.ToLongFormatString();
+				return DateCreated.ToBuncisLongFormatString();
 			}
 		}
 		public string DisplayDateLastUpdated
 		{
 			get
 			{
-				return DateLastUpdated.ToLongFormatString();
+				return DateLastUpdated.ToBuncisLongFormatString();
 			}
 		}
 		public string FriendlyUrl { get; set; }

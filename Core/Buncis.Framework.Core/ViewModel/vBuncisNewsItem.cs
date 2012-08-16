@@ -14,7 +14,7 @@ namespace Buncis.Framework.Core.ViewModel
         {
             get
             {
-                return DatePublished.DatePart().ToLongFormatString();
+                return DatePublished.DatePart().ToBuncisShortFormatString();
             }
         }
         public DateTime DateExpired { get; set; }
@@ -22,7 +22,7 @@ namespace Buncis.Framework.Core.ViewModel
         {
             get
             {
-                return DateExpired.DatePart().ToLongFormatString();
+				return DateExpired.DatePart().ToBuncisShortFormatString();
             }
         }
         public string FriendlyUrl { get; set; }
@@ -31,7 +31,7 @@ namespace Buncis.Framework.Core.ViewModel
         {
             get
             {
-                return DateCreated.ToLongFormatString();
+                return DateCreated.ToBuncisLongFormatString();
             }
         }
         public DateTime DateLastUpdated { get; set; }
@@ -39,7 +39,7 @@ namespace Buncis.Framework.Core.ViewModel
         {
             get
             {
-                return DateLastUpdated.ToLongFormatString();
+                return DateLastUpdated.ToBuncisLongFormatString();
             }
         }
     }
