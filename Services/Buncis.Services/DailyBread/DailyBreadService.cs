@@ -20,13 +20,13 @@ namespace Buncis.Services.DailyBread
 			_dailyBreadItemRepository = dailyBreadItemRepository;
 		}
 
-		public IEnumerable<vBuncisDailyBreadItem> GetDailyBreadItemsNotDeleted(int clientId)
+		public IEnumerable<ViewModelBuncisDailyBreadItem> GetDailyBreadItemsNotDeleted(int clientId)
 		{
 			var raw = _dailyBreadItemRepository.FilterBy(o => !o.IsDeleted).ToList();
 
 			var converted = raw.Select(item =>
 			{
-				var vBuncisDailyBreadItem = new vBuncisDailyBreadItem();
+				var vBuncisDailyBreadItem = new ViewModelBuncisDailyBreadItem();
 				vBuncisDailyBreadItem.InjectFrom(item);
 				return vBuncisDailyBreadItem;
 			}).ToList();
@@ -34,21 +34,21 @@ namespace Buncis.Services.DailyBread
 			return converted;
 		}
 
-		public vBuncisDailyBreadItem GetDailyBreadItem(int dailyBreadId)
+		public ViewModelBuncisDailyBreadItem GetDailyBreadItem(int dailyBreadId)
 		{
 			var raw = _dailyBreadItemRepository.FindBy(o => !o.IsDeleted && o.DailyBreadId == dailyBreadId);
 
-			var vBuncisDailyBreadItem = new vBuncisDailyBreadItem();
+			var vBuncisDailyBreadItem = new ViewModelBuncisDailyBreadItem();
 			vBuncisDailyBreadItem.InjectFrom(raw);
 
 			return vBuncisDailyBreadItem;
 		}
 
-		public ValidationDictionary<vBuncisDailyBreadItem> DeleteDailyBreadItem(int dailyBreadId)
+		public ValidationDictionary<ViewModelBuncisDailyBreadItem> DeleteDailyBreadItem(int dailyBreadId)
 		{
 			var raw = _dailyBreadItemRepository.FindBy(o => o.DailyBreadId == dailyBreadId);
 
-			var validator = new ValidationDictionary<vBuncisDailyBreadItem>();
+			var validator = new ValidationDictionary<ViewModelBuncisDailyBreadItem>();
 
 			if (raw != null)
 			{
@@ -67,9 +67,9 @@ namespace Buncis.Services.DailyBread
 			return validator;
 		}
 
-		public ValidationDictionary<vBuncisDailyBreadItem> SaveDailyBreadItem(int clientId, vBuncisDailyBreadItem dailyBread)
+		public ValidationDictionary<ViewModelBuncisDailyBreadItem> SaveDailyBreadItem(int clientId, ViewModelBuncisDailyBreadItem dailyBread)
 		{
-			var validator = new ValidationDictionary<vBuncisDailyBreadItem>();
+			var validator = new ValidationDictionary<ViewModelBuncisDailyBreadItem>();
 			if (dailyBread == null)
 			{
 				validator.IsValid = false;

@@ -31,7 +31,7 @@
 	};
 	oNews.newsList = {};
 	oNews.NewsCollection = Backbone.Collection.extend({
-		model: oNews.newsItem,
+		model: oNews.NewsItem,
 		comparator: function(newsItemModel){
             var newsId = newsItemModel.get('newsId');
             return -newsId;
@@ -72,7 +72,7 @@
 			this.$el.prepend($(template));
 			return this;
 		},
-		edit: function(event) {
+		editItem: function(event) {
 			var popupView = new _news.NewsFormView({
 				el: $(_news._elems.editPopup),
 				model: this.model
@@ -90,7 +90,7 @@
 				}
 			);
 		}, 
-		delete: function(event) {
+		deleteItem: function(event) {
 			var deletePopupView = new _news.NewsDeleteView({
 				el: $(_news._elems.deletePopup),
 				model: this.model
@@ -170,14 +170,14 @@
 	});
 	oNews.NewsDeleteView = Backbone.View.extend({
 		events: {
-			'click #deleteNews-confirm': 'cDelete'
+			'click #deleteNews-confirm': 'confirmDelete'
 		},
 		render: function(event) {
 			var template = _.template($(_news._elems.newsConfirmDeletePopupTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
 			return this;
 		},
-		cDelete: function(event) {
+		confirmDelete: function(event) {
 			var newsId = parseInt(this.model.get('newsId'), 10);
 			var newsTitle = this.model.get('newsTitle'); 
 			_news.fn.deleteNews(newsId, function() {
@@ -439,8 +439,8 @@
 			id: 'newsItem-' + cvtNewsItem.id
 		});
 		newsItemView.events = {};
-		newsItemView.events['click li[rel="' + cvtNewsItem.id + '"] a.action-edit'] = 'edit';
-		newsItemView.events['click li[rel="' + cvtNewsItem.id + '"] a.action-delete'] = 'delete';
+		newsItemView.events['click li[rel="' + cvtNewsItem.id + '"] a.action-edit'] = 'editItem';
+		newsItemView.events['click li[rel="' + cvtNewsItem.id + '"] a.action-delete'] = 'deleteItem';
 		newsItemView.delegateEvents();
 		newsItemView.render();
 	};

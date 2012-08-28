@@ -11,61 +11,61 @@ namespace Buncis.Web.WebServices
 {
 	public class Pages : BaseWebService, IPages
 	{
-		public Response<IEnumerable<oBuncisPage>> GetPages(int clientId)
+		public Response<IEnumerable<DtoBuncisPage>> GetPages(int clientId)
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
 			var pages = service.GetPagesNotDeleted(clientId)
 				.OrderByDescending(p => p.IsHomePage)
 				.ThenByDescending(o => o.DateLastUpdated)
 				.ToList();
-			var dto = pages.Select(o => (oBuncisPage)new oBuncisPage().InjectFrom(o)).ToList();
-			var response = new Response<IEnumerable<oBuncisPage>>();
+			var dto = pages.Select(o => (DtoBuncisPage)new DtoBuncisPage().InjectFrom(o)).ToList();
+			var response = new Response<IEnumerable<DtoBuncisPage>>();
 			response.ResponseObject = dto;
 			response.IsSuccess = true;
 			response.Message = string.Empty;
 			return response;
 		}
 
-		public Response<oBuncisPage> GetPage(int clientId, int pageId)
+		public Response<DtoBuncisPage> GetPage(int clientId, int pageId)
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
 			var page = service.GetPage(pageId);
-			var response = new Response<oBuncisPage>();
+			var response = new Response<DtoBuncisPage>();
 			response.IsSuccess = true;
 			response.Message = string.Empty;
-			response.ResponseObject = (oBuncisPage)new oBuncisPage().InjectFrom(page);
+			response.ResponseObject = (DtoBuncisPage)new DtoBuncisPage().InjectFrom(page);
 			return response;
 		}
 
-		public Response<oBuncisPage> UpdatePage(int clientId, oBuncisPage page)
+		public Response<DtoBuncisPage> UpdatePage(int clientId, DtoBuncisPage page)
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
-			var viewModel = (vBuncisPage)new vBuncisPage().InjectFrom(page);
+			var viewModel = (ViewModelBuncisPage)new ViewModelBuncisPage().InjectFrom(page);
 
 			var result = service.SavePage(clientId, viewModel);
 
-			var response = new Response<oBuncisPage>();
+			var response = new Response<DtoBuncisPage>();
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
 
-			var responseObject = (oBuncisPage)new oBuncisPage().InjectFrom(result.RelatedObject);
+			var responseObject = (DtoBuncisPage)new DtoBuncisPage().InjectFrom(result.RelatedObject);
 			response.ResponseObject = responseObject;
 
 			return response;
 		}
 		
-		public Response<oBuncisPage> InsertPage(int clientId, oBuncisPage page)
+		public Response<DtoBuncisPage> InsertPage(int clientId, DtoBuncisPage page)
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
-			var viewModel = (vBuncisPage)new vBuncisPage().InjectFrom(page);
+			var viewModel = (ViewModelBuncisPage)new ViewModelBuncisPage().InjectFrom(page);
 
 			var result = service.SavePage(clientId, viewModel);
 
-			var response = new Response<oBuncisPage>();
+			var response = new Response<DtoBuncisPage>();
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
 
-			var responseObject = (oBuncisPage)new oBuncisPage().InjectFrom(result.RelatedObject);
+			var responseObject = (DtoBuncisPage)new DtoBuncisPage().InjectFrom(result.RelatedObject);
 			response.ResponseObject = responseObject;
 
 			return response;

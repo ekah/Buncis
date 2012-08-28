@@ -16,7 +16,7 @@ namespace Buncis.Web.WebServices
 	{
 		[OperationContract]
 		[WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
-		Response<IEnumerable<oBuncisNews>> bPanelGetNewsList(int clientId);
+		Response<IEnumerable<DtoBuncisNews>> bPanelGetNewsList(int clientId);
 
 		//[OperationContract]
 		//[WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
@@ -24,11 +24,11 @@ namespace Buncis.Web.WebServices
 
 		[OperationContract]
 		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
-		Response<oBuncisNews> bPanelUpdateNews(int clientId, oBuncisNews news);
+		Response<DtoBuncisNews> bPanelUpdateNews(int clientId, DtoBuncisNews news);
 
 		[OperationContract]
 		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
-		Response<oBuncisNews> bPanelInsertNews(int clientId, oBuncisNews news);
+		Response<DtoBuncisNews> bPanelInsertNews(int clientId, DtoBuncisNews news);
 
 		[OperationContract]
 		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
@@ -36,6 +36,6 @@ namespace Buncis.Web.WebServices
 
 		[OperationContract]
 		[WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
-		Response<IEnumerable<oBuncisNews>> GetPublishedNewsList(int clientId);
+		Response<IEnumerable<DtoBuncisNews>> GetPublishedNewsList(int clientId);
 	}
 }

@@ -6,10 +6,10 @@ namespace Buncis.Framework.Core.Services.Pages
 {
 	public interface IDynamicPageService
 	{
-		vBuncisPage GetPageByFriendlyUrl(int clientId, string friendlyUrl);
-		vBuncisPage GetPage(int pageId);
-		IEnumerable<vBuncisPage> GetPagesNotDeleted(int clientId);
-		ValidationDictionary<vBuncisPage> SavePage(int clientId, vBuncisPage page);
-        ValidationDictionary<vBuncisPage> DeletePage(int pageId);
+		ViewModelBuncisPage GetPageByFriendlyUrl(int clientId, string friendlyUrl);
+		ViewModelBuncisPage GetPage(int pageId);
+		IEnumerable<ViewModelBuncisPage> GetPagesNotDeleted(int clientId);
+		ValidationDictionary<ViewModelBuncisPage> SavePage(int clientId, ViewModelBuncisPage page);
+        ValidationDictionary<ViewModelBuncisPage> DeletePage(int pageId);
 	}
 }

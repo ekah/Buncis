@@ -95,8 +95,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataTransferObject\oBuncisNews.cs" />
-    <Compile Include="DataTransferObject\oBuncisPage.cs" />
+    <Compile Include="DataTransferObject\DtoBuncisNews.cs" />
+    <Compile Include="DataTransferObject\DtoBuncisPage.cs" />
     <Compile Include="Exceptions\PageNotFoundException.cs" />
     <Compile Include="Membership\IWebMembership.cs" />
     <Compile Include="Membership\IWebUserProfile.cs" />

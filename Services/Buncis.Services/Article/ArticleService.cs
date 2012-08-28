@@ -80,10 +80,10 @@ namespace Buncis.Services.Article
             }
 
             // rule based here
-           
 
-            ArticleItem articleItem;           
- 
+
+            ArticleItem articleItem;
+
             if (article.ArticleId <= 0)
             {
                 articleItem = new ArticleItem();
@@ -105,14 +105,14 @@ namespace Buncis.Services.Article
                     articleItem.DateCreated = createdDate;
                     articleItem.IsDeleted = false;
 
-                    _articleItemRepository.Update(articleItem);                    
+                    _articleItemRepository.Update(articleItem);
                 }
             }
 
-			var pinged = GetArticleItem(articleItem.ArticleId);
+            var pinged = GetArticleItem(articleItem.ArticleId);
             validator.IsValid = true;
             validator.RelatedObject = pinged;
             return validator;
-        }        
+        }
     }
 }

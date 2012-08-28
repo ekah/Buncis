@@ -27,14 +27,15 @@
 	};
 	oModule.collection = {};
 	oModule.CollectionModel = Backbone.Collection.extend({
-		model: oModule.newsItem,
-		comparator: function(newsItemModel){
-            var newsId = newsItemModel.get('newsId');
-            return -newsId;
+		model: oModule.ItemModel,
+		comparator: function(itemModel){
+			//	!! update !!
+            var id = itemModel.get('ID PROPERTY HERE');
+            return -id;
         }
 	});
 	oModule.ItemModel = Backbone.Model.extend({
-		
+		// PUT MODEL PROPERTY HERE
 	});
 	oModule.ItemView = Backbone.View.extend({
 		initialize: function(){
@@ -43,7 +44,8 @@
 		},
 		renderUpdate: function() {
 			var template = _.template($(<#= this.JSObjectName #>._elems.itemTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
-			$('li[rel="' + this.model.get('newsId') + '"]').replaceWith(template);
+			// EXAMPLE: $('li[rel="' + this.model.get('Id') + '"]').replaceWith(template);
+			// PUT THE ID ON THE ELEMENT LIST HERE
 			return this;
 		},
 		render: function(){
@@ -51,14 +53,14 @@
 			this.$el.prepend($(template));
 			return this;
 		},
-		edit: function(event) {
-			var popupView = new <#= this.JSObjectName #>.NewsFormView({
+		editItem: function(event) {
+			var popupView = new <#= this.JSObjectName #>.FormView({
 				el: $(<#= this.JSObjectName #>._elems.editPopup),
 				model: this.model
 			});			
 			popupView.render();
 
-			<#= this.JSObjectName #>.fn.showFormPopup(<#= this.JSObjectName #>._elems.editPopup, 'Edit News', 
+			<#= this.JSObjectName #>.fn.showFormPopup(<#= this.JSObjectName #>._elems.editPopup, 'Edit ', 
 				function() {
 					<#= this.JSObjectName #>.fn.prepareEditForm();
 					$(<#= this.JSObjectName #>._elems.btnSave).attr('rel', 'edit');
@@ -69,13 +71,13 @@
 				}
 			);
 		}, 
-		delete: function(event) {
-			var deletePopupView = new <#= this.JSObjectName #>.NewsDeleteView({
+		deleteItem: function(event) {
+			var deletePopupView = new <#= this.JSObjectName #>.DeleteView({
 				el: $(<#= this.JSObjectName #>._elems.deletePopup),
 				model: this.model
 			});
 			deletePopupView.render();
-			globalShowPopup(200, 400, <#= this.JSObjectName #>._elems.deletePopup, 'Delete News', 
+			globalShowPopup(200, 400, <#= this.JSObjectName #>._elems.deletePopup, 'Delete ', 
 				function() {
 					$.colorbox.resize();					
 				}, 
@@ -86,9 +88,10 @@
 			);
 		}
 	});
-	oModule.NewsFormView = Backbone.View.extend({
+	oModule.FormView = Backbone.View.extend({
 		events: {
-			'click #btnSave': 'save'
+			//EXAMPLE 'click #btnSave': 'save'
+			// PUT EVENTS HERE
 		},
 		render: function(event) {
 			var template = _.template($(<#= this.JSObjectName #>._elems.editPopupTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
@@ -101,69 +104,48 @@
 			if(!isValid) {
 				return false;
 			}
+			// GET THE DATA FROM UI
 			var fMode = $(<#= this.JSObjectName #>._elems.btnSave).attr('rel');
-			var nTitle = $(<#= this.JSObjectName #>._elems.txtNewsTitle).val();
-			var nTeaser = $(<#= this.JSObjectName #>._elems.txtNewsTeaser).val();
-			var nUrl = $(<#= this.JSObjectName #>._elems.txtNewsUrl).val();
-			var nContent = $(<#= this.JSObjectName #>._elems.txtNewsContent).val();
-			var nPublished = $(<#= this.JSObjectName #>._elems.txtDatePublished).val();
-			var nExpired = $(<#= this.JSObjectName #>._elems.txtDateExpired).val();
-			var oPublished = $(<#= this.JSObjectName #>._elems.txtDatePublished).attr('rel');
-			var oExpired = $(<#= this.JSObjectName #>._elems.txtDateExpired).attr('rel');
-			var dPublished = new Date(oPublished);
-			var dExpired = new Date(oExpired);
-			var tzo = parseInt((dPublished.getTimezoneOffset() / (-60)), 10);
-			var itzo = tzo < 10 ? ('0' + tzo) : ('' + tzo);
-			var stzo = tzo < 0 ? '-' : '+';
-			var eNews = this.model;
+			// SET THE MODEL DATA HERE		
+			var eModel = this.model;			
+			// EXAMPLE model.set('Title', nTitle);
 			
-			eNews.set('newsTitle', nTitle);
-			eNews.set('newsTeaser', nTeaser);
-			eNews.set('friendlyUrl', nUrl);
-			eNews.set('newsContent', nContent);
-			eNews.set('tDatePublished', nPublished);
-			eNews.set('tDateExpired', nExpired);
-			eNews.set('oDatePublished', '/Date(' + dPublished.getTime() + stzo + itzo + '00)/');
-			eNews.set('oDateExpired', '/Date(' + dExpired.getTime() + stzo + itzo + '00)/');			
-			<#= this.JSObjectName #>.fn.saveNews(eNews, function(result) {
-				eNews.set('newsId', result.NewsId);
-				eNews.set('datePublished', result.DisplayDatePublished);
-				eNews.set('dateExpired', result.DisplayDateExpired);				
+			<#= this.JSObjectName #>.fn.saveItem(eModel, function(result) {
 
 				$.colorbox.close();
 
 				var msg = '';
 				if(fMode === 'edit') {
-					eNews.set('recentlyEdited', true);
-					msg = 'Succesfully edited News data';
+					msg = 'Succesfully edited  data';
 				}
 				else {
-					eNews.set('recentlyAdded', true);
-					<#= this.JSObjectName #>.collection.add(eNews);
-					<#= this.JSObjectName #>.fn.renderListItemView(eNews);
-					msg = 'Succesfully added new News';
+					<#= this.JSObjectName #>.collection.add(eModel);
+					<#= this.JSObjectName #>.fn.renderListItemView(eModel);
+					msg = 'Succesfully added new ';
 				}
 				globalShowMessages([msg]);
 			});
 		}
 	});
-	oModule.NewsDeleteView = Backbone.View.extend({
+	oModule.DeleteView = Backbone.View.extend({
 		events: {
-			'click #deleteNews-confirm': 'cDelete'
+			// EXAMPLE: 'click #delete-confirm': 'cDelete'
+			// PUT EVENTS HERE
 		},
 		render: function(event) {
 			var template = _.template($(<#= this.JSObjectName #>._elems.confirmDeletePopupTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
 			return this;
 		},
-		cDelete: function(event) {
-			var newsId = parseInt(this.model.get('newsId'), 10);
-			var newsTitle = this.model.get('newsTitle'); 
-			<#= this.JSObjectName #>.fn.deleteItem(newsId, function() {
+		confirmDelete: function(event) {
+			var id = parseInt(this.model.get('ID PROPERTY HERE'), 10);
+			
+			<#= this.JSObjectName #>.fn.deleteItem(id, function() {
 				<#= this.JSObjectName #>.collection.remove(this.model);
-				$(<#= this.JSObjectName #>._elems.itemContainer).find('li[rel="' + newsId + '"]').remove();
+				//EXAMPLE: $(<#= this.JSObjectName #>._elems.itemContainer).find('li[rel="' + Id + '"]').remove();
+				// REMOVE VIEW FROM COLLECTION
 				$.colorbox.close();				
-				globalShowMessages(["System has succesfully deleted News " + newsTitle]);
+				globalShowMessages(["System has succesfully deleted XXX"]);
 			});
 		}
 	});
@@ -189,7 +171,7 @@
 			});
 			popupView.render();
 
-			<#= this.JSObjectName #>.fn.showFormPopup(<#= this.JSObjectName #>._elems.editPopup, 'Add News', 
+			<#= this.JSObjectName #>.fn.showFormPopup(<#= this.JSObjectName #>._elems.editPopup, 'Add ', 
 				function() {
 					<#= this.JSObjectName #>.fn.prepareEditForm();
 				}, 
@@ -210,11 +192,12 @@
 				labelNext: '',
 				labelPrevious: '',
 				labelFinish: '',
+				transitionEffect: 'slideleft',
 				onShowStep: function (step) {
 					// !!! CHANGE THIS !!!
-					if($(<#= this.JSObjectName #>._elems.TEXTAREAHERE).is(':visible')) {
-						$(<#= this.JSObjectName #>._elems.TEXTAREAHERE).htmlarea('dispose'); 
-						$(<#= this.JSObjectName #>._elems.TEXTAREAHERE).htmlarea();
+					if($(<#= this.JSObjectName #>._elems."TEXTAREAHERE").is(':visible')) {
+						$(<#= this.JSObjectName #>._elems."TEXTAREAHERE").htmlarea('dispose'); 
+						$(<#= this.JSObjectName #>._elems."TEXTAREAHERE").htmlarea();
 					}
 				}
 			});
@@ -258,7 +241,7 @@
 		
 		// determine if edit/add
 		// !!! CHANGE THIS !!!
-		if(sData.ITEMNAMEHERE.IDHERE > 0) { 
+		if(sData."ITEMNAMEHERE.IDHERE" > 0) { 
 			wsUrl = editWebServiceUrl;			
 		}
 		else {
@@ -337,8 +320,9 @@
 			model: itemModel,
 			id: 'put id here'
 		});
-		newsItemView.events = {};
+		itemView.events = {};
 		// put events here
+		// EXAMPLE: ItemView.events['click li[rel="' + Item.id + '"] a.action-edit'] = 'editItem';
 		itemView.delegateEvents();
 		itemView.render();
 	};
@@ -350,3 +334,6 @@ $(document).ready(function() {
 	<#= this.JSObjectName #>.fn.setupEvents();
 });
 
+<#+ 
+	string JSObjectName = "_dailyBread";
+#>

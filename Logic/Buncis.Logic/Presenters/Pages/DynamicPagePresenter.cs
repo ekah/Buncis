@@ -28,7 +28,7 @@ namespace Buncis.Logic.Presenters.Pages
                 throw new PageNotFoundException("The Page is not found in database", pageId);
             }
 
-			View.Model.DynamicPage = new vBuncisPage();
+			View.Model.DynamicPage = new ViewModelBuncisPage();
             View.Model.DynamicPage.InjectFrom(pageFromDb);
             View.BindViewData();
         }

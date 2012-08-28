@@ -294,6 +294,7 @@
       <DependentUpon>actTemplate.tt</DependentUpon>
     </Content>
     <Content Include="sandbox\NewsSandbox.aspx" />
+    <Content Include="Scripts\bunx\_act_dailybread.js" />
     <Content Include="Scripts\bunx\backbone\backbone-min.js" />
     <Content Include="Scripts\bunx\backbone\backbone.js" />
     <Content Include="Scripts\bunx\backbone\underscore-min.js" />
@@ -519,6 +520,11 @@
     <Compile Include="sandbox\SandboxPageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="sandbox\webservice.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>webservice.tt</DependentUpon>
+    </Compile>
     <Compile Include="tests\TestDefault.aspx.cs">
       <DependentUpon>TestDefault.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -620,6 +626,10 @@
     <None Include="sandbox\ListAspx.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ListAspx.tmp</LastGenOutput>
+    </None>
+    <None Include="sandbox\webservice.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>webservice.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

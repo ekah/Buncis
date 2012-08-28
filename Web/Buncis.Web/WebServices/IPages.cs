@@ -12,19 +12,19 @@ namespace Buncis.Web.WebServices
     {
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
-        Response<IEnumerable<oBuncisPage>> GetPages(int clientId);
+        Response<IEnumerable<DtoBuncisPage>> GetPages(int clientId);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
-        Response<oBuncisPage> GetPage(int clientId, int pageId);
+        Response<DtoBuncisPage> GetPage(int clientId, int pageId);
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
-        Response<oBuncisPage> UpdatePage(int clientId, oBuncisPage page);
+        Response<DtoBuncisPage> UpdatePage(int clientId, DtoBuncisPage page);
 		
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
-        Response<oBuncisPage> InsertPage(int clientId, oBuncisPage page);
+        Response<DtoBuncisPage> InsertPage(int clientId, DtoBuncisPage page);
 
 		[OperationContract]
 		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]

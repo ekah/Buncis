@@ -119,15 +119,15 @@ namespace Buncis.Services.<#= this.ModuleName #>
     }
 }
 <#+
-string ModuleName = "DailyBread";
-string RepositoryName = "IDailyBreadItemRepository";
-string RepositoryVariableName = "dailyBreadItemRepository";
-string ViewModelName = "vBuncisDailyBreadItem";
-string MethodWord = "DailyBreadItem";
-string MethodWordPrural = "DailyBreadItems";
-string LoweredIdWord = "dailyBreadId";
-string IdWord = "DailyBreadId";
-string LoweredModuleName = "dailyBread";
-string Domain = "DailyBreadItem";
-string LoweredDomain = "dailyBreadItem";
+string ModuleName = "Article";
+string RepositoryName = "IArticleItemRepository";
+string RepositoryVariableName = "articleItemRepository";
+string ViewModelName = "ViewModelArticleItem";
+string MethodWord = "ArticleItem";
+string MethodWordPrural = "ArticleItems";
+string LoweredIdWord = "articleId";
+string IdWord = "ArticleId";
+string LoweredModuleName = "article";
+string Domain = "ArticleItem";
+string LoweredDomain = "articleItem";
 #>

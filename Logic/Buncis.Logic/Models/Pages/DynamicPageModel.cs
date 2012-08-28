@@ -3,7 +3,7 @@ namespace Buncis.Logic.Models.Pages
 {
     public class DynamicPageModel
     {
-		public vBuncisPage DynamicPage { get; set; }
+		public ViewModelBuncisPage DynamicPage { get; set; }
 		//public int PageId { get; set; }
 		//public string PageName { get; set; }
 		//public string PageContent { get; set; }

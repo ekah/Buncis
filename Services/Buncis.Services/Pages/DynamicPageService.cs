@@ -23,7 +23,7 @@ namespace Buncis.Services.Pages
 			_dynamicPageFilters = dynamicPageFilters;
 		}
 
-		public vBuncisPage GetPageByFriendlyUrl(int clientId, string friendlyUrl)
+		public ViewModelBuncisPage GetPageByFriendlyUrl(int clientId, string friendlyUrl)
 		{
 			var expression = _dynamicPageFilters.Init()
 				.GetByClientId(clientId)
@@ -32,13 +32,13 @@ namespace Buncis.Services.Pages
 
 			var pageFromDb = _pageRepository.FindBy(expression);
 
-			var viewModel = new vBuncisPage();
+			var viewModel = new ViewModelBuncisPage();
 			viewModel.InjectFrom(pageFromDb);
 
 			return viewModel;
 		}
 
-		public vBuncisPage GetPage(int pageId)
+		public ViewModelBuncisPage GetPage(int pageId)
 		{
 			var expression = _dynamicPageFilters.Init()
 				.GetByPageId(pageId)
@@ -47,13 +47,13 @@ namespace Buncis.Services.Pages
 
 			var pageFromDb = _pageRepository.FindBy(expression);
 
-			var viewModel = new vBuncisPage();
+			var viewModel = new ViewModelBuncisPage();
 			viewModel.InjectFrom(pageFromDb);
 
 			return viewModel;
 		}
 
-		public IEnumerable<vBuncisPage> GetPagesNotDeleted(int clientId)
+		public IEnumerable<ViewModelBuncisPage> GetPagesNotDeleted(int clientId)
 		{
 			var expression = _dynamicPageFilters.Init()
 				.GetByClientId(clientId)
@@ -66,7 +66,7 @@ namespace Buncis.Services.Pages
 
 			var viewModels = pages.Select(o =>
 			{
-				var viewModel = new vBuncisPage();
+				var viewModel = new ViewModelBuncisPage();
 				viewModel.InjectFrom(o);
 				return viewModel;
 			}).ToList();
@@ -74,10 +74,10 @@ namespace Buncis.Services.Pages
 			return viewModels;
 		}
 
-		public ValidationDictionary<vBuncisPage> SavePage(int clientId, vBuncisPage page)
+		public ValidationDictionary<ViewModelBuncisPage> SavePage(int clientId, ViewModelBuncisPage page)
 		{
 			// validation first
-			var validator = new ValidationDictionary<vBuncisPage>();
+			var validator = new ValidationDictionary<ViewModelBuncisPage>();
 			if (page == null)
 			{
 				validator.IsValid = false;
@@ -127,13 +127,13 @@ namespace Buncis.Services.Pages
 				}
 			}
 
-			vBuncisPage pingedPaged = GetPage(dPage.PageId);
+			ViewModelBuncisPage pingedPaged = GetPage(dPage.PageId);
 			validator.IsValid = true;
 			validator.RelatedObject = pingedPaged;
 			return validator;
 		}
 
-		public ValidationDictionary<vBuncisPage> DeletePage(int pageId)
+		public ValidationDictionary<ViewModelBuncisPage> DeletePage(int pageId)
 		{
 			var expression = _dynamicPageFilters.Init()
 				.GetByPageId(pageId)
@@ -142,7 +142,7 @@ namespace Buncis.Services.Pages
 
 			var dPage = _pageRepository.FindBy(expression);
 
-			var validator = new ValidationDictionary<vBuncisPage>();
+			var validator = new ValidationDictionary<ViewModelBuncisPage>();
 
 			if (dPage != null)
 			{

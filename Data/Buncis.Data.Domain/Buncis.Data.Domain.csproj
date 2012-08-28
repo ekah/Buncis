@@ -67,7 +67,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Article\ArticleItem.cs" />
     <Compile Include="DailyBread\DailyBreadItem.cs" />
+    <Compile Include="Mappings\ArticleModuleMapper.cs" />
     <Compile Include="Mappings\DailyBreadModuleMapper.cs" />
     <Compile Include="Mappings\MembershipMappper.cs" />
     <Compile Include="Membership\MembershipRole.cs" />
