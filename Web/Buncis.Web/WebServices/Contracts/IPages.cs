@@ -12,22 +12,22 @@ namespace Buncis.Web.WebServices.Contracts
     {
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
-        Response<IEnumerable<DtoBuncisPage>> GetPages(int clientId);
+        Response<IEnumerable<DtoBuncisPage>> BPGetPages(int clientId);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
-        Response<DtoBuncisPage> GetPage(int clientId, int pageId);
+        Response<DtoBuncisPage> BPGetPage(int clientId, int pageId);
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
-        Response<DtoBuncisPage> UpdatePage(int clientId, DtoBuncisPage page);
+        Response<DtoBuncisPage> BPUpdatePage(int clientId, DtoBuncisPage page);
 		
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
-        Response<DtoBuncisPage> InsertPage(int clientId, DtoBuncisPage page);
+        Response<DtoBuncisPage> BPInsertPage(int clientId, DtoBuncisPage page);
 
 		[OperationContract]
 		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
-		Response DeletePage(int clientId, int pageId);
+		Response BPDeletePage(int clientId, int pageId);
     }
 }

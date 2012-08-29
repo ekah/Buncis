@@ -26,11 +26,11 @@
 		btnDeletePage: '#table-pages td a.delete'
 	};
 
-	var listWebServiceUrl = '/webservices/pages.svc/getpages?clientid=' + _elems.clientId;
-	var singleWebServiceUrl = '/webservices/pages.svc/getpage?clientid=' + _elems.clientId;
-	var deleteWebServiceUrl = '/webservices/pages.svc/deletepage';
-	var updateWebServiceUrl = '/webservices/pages.svc/updatepage';
-	var insertWebServiceUrl = '/webservices/pages.svc/insertpage';
+	var listWebServiceUrl = '/webservices/pages.svc/bpgetpages?clientid=' + _elems.clientId;
+	var singleWebServiceUrl = '/webservices/pages.svc/bpgetpage?clientid=' + _elems.clientId;
+	var deleteWebServiceUrl = '/webservices/pages.svc/bpdeletepage';
+	var updateWebServiceUrl = '/webservices/pages.svc/bpupdatepage';
+	var insertWebServiceUrl = '/webservices/pages.svc/bpinsertpage';
 	
 	var pTemplate = {
 		PageId: 0,

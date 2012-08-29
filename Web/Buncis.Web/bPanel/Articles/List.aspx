@@ -1,11 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Buncis.Master" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="Buncis.Web.bPanel.Articles.List" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="contentPlaceholderHead" runat="server">
 	<script src="/Scripts/bunx/_act_articles.js" type="text/javascript"></script>
-	<script type="text/template" id="article-item-template">
-		<li rel={{cid}}>
-			<p>Title</p>
-		</li>
-	</script>
+	
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentPlaceholderMain" runat="server">
 	<div class="buncisContentHeader">
@@ -18,35 +14,31 @@
             </a>
         </div>
         <div class="innerContent">
-			<div class="article-list-wrapper">
-				<ul class="test">
-				</ul>
-				<div style="display:none">
-					<ul class="article-list">
-						<li class="article-item-wrapper">
-							<div class="article-item">
-								<div class="left" style="width:90%">
-									<div class="article-title">Distinctively underwhelm efficient experiences without.</div>
-									<div class="article-teaser">Authoritatively benchmark plug-and-play leadership skills vis-a-vis seamless quality vectors. Continually pontificate intermandated services before intuitive models.</div>
-									<div class="article-info">
-										<div>Conveniently impact business process improvements.</div>
-										<div>Conveniently impact business process improvements.</div>
-									</div>
-								</div>
-								<div class="left">
-									right
-								</div>
-								<div style="clear:both"></div>
-							</div>
-							<div class="article-edit-container"></div>
-						</li>				
-					</ul>
-				</div>
-			</div>
+			<ul class="article-list" id="article-list-container">
+								
+			</ul>
         </div>
     </div>
 	
 	<div style="display:none">
+        <script type="text/template" id="article-item-template">
+            <li class="article-item-wrapper" rel="{{cid}}">
+				<div class="article-item">
+					<div class="left" style="width:90%">
+						<div class="article-title">{{attributes.articleTitle}}</div>
+						<div class="article-teaser">[TEASER HERE]</div>
+						<div class="article-info">
+							<div>[INFO HERE]</div>
+							<div>[INFO HERE 2]</div>
+						</div>
+					</div>
+					<div class="left">
+						[ACTIONS HERE]
+					</div>
+					<div style="clear:both"></div>
+				</div>				
+			</li>
+        </script>
 		<script type="text/template" id="article-edit-template">
 			<div>
 				<a href="#" class="close-view-area">Cancel</a>

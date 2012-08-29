@@ -21,7 +21,7 @@ namespace Buncis.Web.WebServices
 {
 	public class <#= this.ModuleName #> : BaseWebService, I<#= this.ModuleName #>
 	{
-		public Response<IEnumerable<<#= this.DtoClassName #>>> Get<#= this.PruralMethodWords #>(int clientId)
+		public Response<IEnumerable<<#= this.DtoClassName #>>> BPGet<#= this.PruralMethodWords #>(int clientId)
 		{
 			var service = IoC.Resolve<<#= this.ServiceInterface #>>();
 			var data = service.PUTGETMETHODHERE(clientId)
@@ -37,7 +37,7 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 
-		public Response<<#= this.DtoClassName #>> Get<#= this.MethodWords #>(int clientId, int <#= this.IdWords #>)
+		public Response<<#= this.DtoClassName #>> BPGet<#= this.MethodWords #>(int clientId, int <#= this.IdWords #>)
 		{
 			var service = IoC.Resolve<<#= this.ServiceInterface #>>();
 			var data = service.PUTMETHODHERE(<#= this.IdWords #>);
@@ -48,7 +48,7 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 
-		public Response<<#= this.DtoClassName #>> Update<#= this.MethodWords #>(int clientId, <#= this.DtoClassName #> <#= this.ObjectParamWords #>)
+		public Response<<#= this.DtoClassName #>> BPUpdate<#= this.MethodWords #>(int clientId, <#= this.DtoClassName #> <#= this.ObjectParamWords #>)
 		{
 			var service = IoC.Resolve<<#= this.ServiceInterface #>>();
 			var viewModel = (<#= this.ViewModelName #>)new <#= this.ViewModelName #>().InjectFrom(<#= this.ObjectParamWords #>);
@@ -65,7 +65,7 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 		
-		public Response<<#= this.DtoClassName #>> Insert<#= this.MethodWords #>(int clientId, <#= this.DtoClassName #> <#= this.ObjectParamWords #>)
+		public Response<<#= this.DtoClassName #>> BPInsert<#= this.MethodWords #>(int clientId, <#= this.DtoClassName #> <#= this.ObjectParamWords #>)
 		{
 			var service = IoC.Resolve<<#= this.ServiceInterface #>>();
 			var viewModel = (<#= this.ViewModelName #>)new <#= this.ViewModelName #>().InjectFrom(<#= this.ObjectParamWords #>);
@@ -82,7 +82,7 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 
-		public Response Delete<#= this.MethodWords #>(int clientId, int <#= this.IdWords #>)
+		public Response BPDelete<#= this.MethodWords #>(int clientId, int <#= this.IdWords #>)
 		{
 			// do use clientId ?
 			var service = IoC.Resolve<<#= this.ServiceInterface #>>();

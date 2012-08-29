@@ -43,20 +43,19 @@ $(document).ready(function () {
 
 */
 
-
 (function (oModule) {
-	oModule._elems = {			
-		editSection: '#article-edit-section',
-		editContainer: '.article-edit-container',
-		editSectionTemplate: '#article-edit-template',
-		deletePopup: '#',
-		confirmDeletePopupTemplate: '#',		
+	oModule._elems = {
 		tabs: '#',
 		formElements: '.form-item :input',		
 		btnSave: '#',
-		btnAdd: '#',		
-		itemTemplate: '#',
-		itemContainer: ''
+		btnAdd: '#',
+		addContainer: '#',
+		itemTemplate: '#article-item-template',
+		itemContainer: '#article-list-container',
+		editContainer: '#',
+		editTemplate: '#article-edit-template',
+		deletePopup: '#',
+		confirmDeletePopupTemplate: '#'
 	};
 	oModule.form = {
 		validators: {},
@@ -74,7 +73,7 @@ $(document).ready(function () {
         }
 	});
 	oModule.ItemModel = Backbone.Model.extend({
-		// PUT MODEL PROPERTY HERE
+		articleTitle: ''
 	});
 	oModule.ItemView = Backbone.View.extend({
 		initialize: function(){
@@ -94,20 +93,20 @@ $(document).ready(function () {
 		},
 		editItem: function(event) {
 			var editView = new _articles.FormView({
-				el: $(_articles._elems.editSection),
+				el: $(_articles._elems.editContainer),
 				model: this.model
 			});			
 			editView.render();
 
-			
+			// DO POST PROCESSING OF THE FORM VIEW HERE
 		}, 
-		/*
 		deleteItem: function(event) {
 			var deletePopupView = new _articles.DeleteView({
 				el: $(_articles._elems.deletePopup),
 				model: this.model
 			});
 			deletePopupView.render();
+
 			globalShowPopup(200, 400, _articles._elems.deletePopup, 'Delete ', 
 				function() {
 					$.colorbox.resize();					
@@ -117,7 +116,7 @@ $(document).ready(function () {
 					$(deletePopupView.el).empty();
 				}
 			);
-		}*/
+		}
 	});
 	oModule.FormView = Backbone.View.extend({
 		events: {
@@ -125,11 +124,10 @@ $(document).ready(function () {
 			// PUT EVENTS HERE
 		},
 		render: function(event) {
-			var template = _.template($(_articles._elems.editSectionTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
+			var template = _.template($(_articles._elems.editTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
 			return this;
 		},
-		/*
 		save: function(event) {
 			var api = _articles.form.validators.data("validator");
 			var isValid = api.checkValidity();
@@ -144,8 +142,9 @@ $(document).ready(function () {
 			
 			_articles.fn.saveItem(eModel, function(result) {
 
-				$.colorbox.close();
+				// POST PROCESSING AFTER SAVE
 
+				// code below: Show message
 				var msg = '';
 				if(fMode === 'edit') {
 					msg = 'Successfully edited  data';
@@ -158,9 +157,7 @@ $(document).ready(function () {
 				globalShowMessages([msg]);
 			});
 		}
-		*/
 	});
-	/*
 	oModule.DeleteView = Backbone.View.extend({
 		events: {
 			// EXAMPLE: 'click #delete-confirm': 'cDelete'
@@ -178,83 +175,43 @@ $(document).ready(function () {
 				_articles.collection.remove(this.model);
 				//EXAMPLE: $(_articles._elems.itemContainer).find('li[rel="' + Id + '"]').remove();
 				// REMOVE VIEW FROM COLLECTION
-				$.colorbox.close();				
+				
+				// POST PROCESSING AFTER SUCCSES DELETE
+						
 				globalShowMessages(["System has successfully deleted XXX"]);
 			});
 		}
 	});
-	*/
 }(window._articles = window._articles || {}));
 
 
 (function(oFn) {
-	var listWebServiceUrl = '/webservices/articles.svc/GetArticles?clientId=' + _elems.clientId;	
+	var listWebServiceUrl = '/webservices/articles.svc/BPGetArticles?clientId=' + _elems.clientId;	
 	var editWebServiceUrl = '';	
 	var addWebServiceUrl = '';	
 	var deleteWebServiceUrl = '';	
 
 	oFn.setupEvents = function() {
 		$(_articles._elems.btnAdd).click(function(event) {
-			event.preventDefault();
-			/*
-			var defaultItem = new _articles.ItemModel({
-				
-			});
-			var popupView = new _articles.FormView({
-				el: $(_articles._elems.editPopup),
+			event.preventDefault();			
+			var defaultItem = new _articles.ItemModel({});
+			var addView = new _articles.FormView({
+				el: $(_articles._elems.addContainer),
 				model: defaultItem
 			});
-			popupView.render();
+			addView.render();
 
-			_articles.fn.showFormPopup(_articles._elems.editPopup, 'Add ', 
-				function() {
-					_articles.fn.prepareEditForm();
-				}, 
-				function() {
-					popupView.undelegateEvents();
-					$(popupView.el).empty();
-				}
-			);
-			*/
+			// DO POST PROCESS AFTER ADD VIEW IS ADDED TO STAGE
 		});	
 	};
-	oFn.prepareEditForm = function() {
+	oFn.prepareForm = function() {
 		_articles.form.reset();
-		/*
-		if(!_articles.form.wizardHasBeenInitialized) {
-			_articles.form.wizard = $(_articles._elems.wizards).smartWizard({
-				keyNavigation: false,
-				enableAllSteps: true,
-				enableFinishButton: false, 
-				labelNext: '',
-				labelPrevious: '',
-				labelFinish: '',
-				transitionEffect: 'slideleft',
-				onShowStep: function (step) {
-					// !!! CHANGE THIS !!!
-					if($(_articles._elems."TEXTAREAHERE").is(':visible')) {
-						$(_articles._elems."TEXTAREAHERE").htmlarea('dispose'); 
-						$(_articles._elems."TEXTAREAHERE").htmlarea();
-					}
-				}
-			});
-			_articles.form.wizardHasBeenInitialized = true;
-		}
-		else {
-			$(_articles._elems.tabs).find('a.tabStart').click();
-		}
 		_articles.form.validators = $(_articles._elems.formElements).validator({
 			effect: 'floatingWall',
 			container: _elems.errorContainer,
 			errorInputEvent: null,
-		});  
-		*/
-	};
-	/*
-	oFn.showFormPopup = function(selector, title, _completeCallback, _closedCallback) {
-		globalShowPopup(662, 960, selector, title, _completeCallback, _closedCallback)
-	};
-	*/
+		});  		
+	};	
 	oFn.getCollection = function(_callback) {
 		$.ajax({
 			type: "GET",
@@ -270,24 +227,24 @@ $(document).ready(function () {
 			error: function () {
 			}
 		});
-	};
-	/*
+	};	
 	oFn.saveItem = function(oData, _callback) {
 		var sData = {
 			clientId: _elems.clientId,
-			
+			// PUT DATE OBJECT HERE
 		};
 		var jData = JSON.stringify(sData);
 		var wsUrl = '';
 		
 		// determine if edit/add
 		// !!! CHANGE THIS !!!
-		if(sData."ITEMNAMEHERE.IDHERE" > 0) { 
-			wsUrl = editWebServiceUrl;			
-		}
-		else {
-			wsUrl = addWebServiceUrl;
-		}
+		
+        //        if(sData."ITEMNAMEHERE.IDHERE" > 0) { 
+        //			wsUrl = editWebServiceUrl;			
+        //		}
+        //		else {
+        //			wsUrl = addWebServiceUrl;
+        //		}
 
 		_helpers.blockPopupDefault();
 		$.ajax({
@@ -313,12 +270,11 @@ $(document).ready(function () {
 	oFn.deleteItem = function(deletedId, _callback) {
 		var data = {
 			clientId: -1,			
-		};
-		
+			// PUT DELETED ID HERE
+		};		
 		var jData = JSON.stringify(data);
 		
 		_helpers.blockPopupDefault();
-
 		$.ajax({
 			type: "POST",
 			url: deleteWebServiceUrl,
@@ -339,7 +295,6 @@ $(document).ready(function () {
 			}
 		});
 	};
-	*/
 	oFn.loadData = function() {
 		_articles.collection = new _articles.CollectionModel();
 		oFn.getCollection(function(result) {
@@ -347,7 +302,7 @@ $(document).ready(function () {
 				var item = result[i];
 				// create new model instance
 				var itemModel = new _articles.ItemModel({
-					// fill out model properties here
+					articleTitle: item.ArticleTitle
 				});
 
 				// put model instance to collections

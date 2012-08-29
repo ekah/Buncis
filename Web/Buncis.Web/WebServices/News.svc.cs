@@ -17,7 +17,7 @@ namespace Buncis.Web.WebServices
 	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "News" in code, svc and config file together.
 	public class News : BaseWebService, INews
 	{
-		public Response<IEnumerable<DtoBuncisNews>> bPanelGetNewsList(int clientId)
+		public Response<IEnumerable<DtoBuncisNews>> BPGetNewsList(int clientId)
 		{
 			var newsService = IoC.Resolve<INewsService>();
 			var raw = newsService.GetAvailableNewsItems(clientId);
@@ -35,18 +35,7 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 
-		//public Response<oBuncisNews> bPanelGetNews(int clientId, int newsId)
-		//{
-		//    var newsService = IoC.Resolve<INewsService>();
-		//    var raw = newsService.GetNews(newsId);
-		//    var response = new Response<oBuncisNews>();
-		//    response.IsSuccess = true;
-		//    response.Message = string.Empty;
-		//    response.ResponseObject = (oBuncisNews)new oBuncisNews().InjectFrom(raw);
-		//    return response;
-		//}
-
-		public Response<DtoBuncisNews> bPanelUpdateNews(int clientId, DtoBuncisNews news)
+		public Response<DtoBuncisNews> BPUpdateNews(int clientId, DtoBuncisNews news)
 		{
 			var service = IoC.Resolve<INewsService>();
 			var viewModel = (ViewModelBuncisNewsItem)new ViewModelBuncisNewsItem().InjectFrom(news);
@@ -63,7 +52,7 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 
-		public Response<DtoBuncisNews> bPanelInsertNews(int clientId, DtoBuncisNews news)
+		public Response<DtoBuncisNews> BPInsertNews(int clientId, DtoBuncisNews news)
 		{
 			var service = IoC.Resolve<INewsService>();
 			var viewModel = (ViewModelBuncisNewsItem)new ViewModelBuncisNewsItem().InjectFrom(news);
@@ -80,7 +69,7 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 
-		public Response bPanelDeleteNews(int clientId, int newsId)
+		public Response BPDeleteNews(int clientId, int newsId)
 		{
 			var service = IoC.Resolve<INewsService>();
 			var result = service.DeleteNewsItem(newsId);

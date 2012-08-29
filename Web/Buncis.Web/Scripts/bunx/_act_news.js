@@ -192,10 +192,10 @@
 
 
 (function(oFn) {
-	var listWebServiceUrl = '/webservices/news.svc/bPanelGetNewsList?clientid=' + _elems.clientId;	
-	var editWebServiceUrl = '/webservices/news.svc/bPanelUpdateNews';	
-	var addWebServiceUrl = '/webservices/news.svc/bPanelInsertNews';	
-	var deleteWebServiceUrl = '/webservices/news.svc/bPanelDeleteNews';	
+	var listWebServiceUrl = '/webservices/news.svc/BPGetNewsList?clientid=' + _elems.clientId;	
+	var editWebServiceUrl = '/webservices/news.svc/BPUpdateNews';	
+	var addWebServiceUrl = '/webservices/news.svc/BPInsertNews';	
+	var deleteWebServiceUrl = '/webservices/news.svc/BPDeleteNews';	
 
 	function processDataOnDatePickerSelect(selectedDate, elem) {
 		var actualDate = $.datepicker.parseDate('d-m-yy', selectedDate);

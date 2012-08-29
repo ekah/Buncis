@@ -12,7 +12,7 @@ namespace Buncis.Web.WebServices
 {
 	public class Pages : BaseWebService, IPages
 	{
-		public Response<IEnumerable<DtoBuncisPage>> GetPages(int clientId)
+		public Response<IEnumerable<DtoBuncisPage>> BPGetPages(int clientId)
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
 			var pages = service.GetAvailablePages(clientId)
@@ -27,7 +27,7 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 
-		public Response<DtoBuncisPage> GetPage(int clientId, int pageId)
+		public Response<DtoBuncisPage> BPGetPage(int clientId, int pageId)
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
 			var page = service.GetPage(pageId);
@@ -38,7 +38,7 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 
-		public Response<DtoBuncisPage> UpdatePage(int clientId, DtoBuncisPage page)
+		public Response<DtoBuncisPage> BPUpdatePage(int clientId, DtoBuncisPage page)
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
 			var viewModel = (ViewModelBuncisPage)new ViewModelBuncisPage().InjectFrom(page);
@@ -55,7 +55,7 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 		
-		public Response<DtoBuncisPage> InsertPage(int clientId, DtoBuncisPage page)
+		public Response<DtoBuncisPage> BPInsertPage(int clientId, DtoBuncisPage page)
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
 			var viewModel = (ViewModelBuncisPage)new ViewModelBuncisPage().InjectFrom(page);
@@ -72,7 +72,7 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 
-		public Response DeletePage(int clientId, int pageId)
+		public Response BPDeletePage(int clientId, int pageId)
 		{
 			// do use clientId ?
 			var service = IoC.Resolve<IDynamicPageService>();

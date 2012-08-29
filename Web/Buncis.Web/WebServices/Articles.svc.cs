@@ -13,7 +13,7 @@ namespace Buncis.Web.WebServices
 {
 	public class Articles : BaseWebService, IArticles
 	{
-		public Response<IEnumerable<DtoBuncisArticle>> GetArticles(int clientId)
+		public Response<IEnumerable<DtoBuncisArticle>> BPGetArticles(int clientId)
 		{
 			var service = IoC.Resolve<IArticleService>();
 			var data = service.GetAvailableArticleItems(clientId)
@@ -28,7 +28,7 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 
-		public Response<DtoBuncisArticle> GetArticle(int clientId, int articleId)
+		public Response<DtoBuncisArticle> BPGetArticle(int clientId, int articleId)
 		{
 			var service = IoC.Resolve<IArticleService>();
 			var data = service.GetArticleItem(articleId);
@@ -39,7 +39,7 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 
-		public Response<DtoBuncisArticle> UpdateArticle(int clientId, DtoBuncisArticle article)
+		public Response<DtoBuncisArticle> BPUpdateArticle(int clientId, DtoBuncisArticle article)
 		{
 			var service = IoC.Resolve<IArticleService>();
 			var viewModel = (ViewModelBuncisArticleItem)new ViewModelBuncisArticleItem().InjectFrom(article);
@@ -56,7 +56,7 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 
-		public Response<DtoBuncisArticle> InsertArticle(int clientId, DtoBuncisArticle article)
+		public Response<DtoBuncisArticle> BPInsertArticle(int clientId, DtoBuncisArticle article)
 		{
 			var service = IoC.Resolve<IArticleService>();
 			var viewModel = (ViewModelBuncisArticleItem)new ViewModelBuncisArticleItem().InjectFrom(article);
@@ -73,7 +73,7 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 
-		public Response DeleteArticle(int clientId, int articleId)
+		public Response BPDeleteArticle(int clientId, int articleId)
 		{
 			// do use clientId ?
 			var service = IoC.Resolve<IArticleService>();
