@@ -38,15 +38,16 @@
 								</div>
 								<div style="clear:both"></div>
 							</div>
-							<div class="view-container"></div>
+							<div class="article-edit-container"></div>
 						</li>				
 					</ul>
 				</div>
 			</div>
         </div>
     </div>
+	
 	<div style="display:none">
-		<div class="article-view-template">
+		<script type="text/template" id="article-edit-template">
 			<div>
 				<a href="#" class="close-view-area">Cancel</a>
 				<a href="#">Save</a>
@@ -66,7 +67,10 @@
 			<div>
 				<label>Article Content:</label>
 				<textarea id="txtArticleContent" name="txtArticleContent"></textarea>
-			</div>
+			</div>		
+		</script>		
+		<div id="article-edit-section">
+			
 		</div>
 	</div>
 </asp:Content>

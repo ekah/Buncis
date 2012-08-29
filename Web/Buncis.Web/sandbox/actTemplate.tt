@@ -116,12 +116,12 @@
 
 				var msg = '';
 				if(fMode === 'edit') {
-					msg = 'Succesfully edited  data';
+					msg = 'Successfully edited  data';
 				}
 				else {
 					<#= this.JSObjectName #>.collection.add(eModel);
 					<#= this.JSObjectName #>.fn.renderListItemView(eModel);
-					msg = 'Succesfully added new ';
+					msg = 'Successfully added new ';
 				}
 				globalShowMessages([msg]);
 			});
@@ -145,7 +145,7 @@
 				//EXAMPLE: $(<#= this.JSObjectName #>._elems.itemContainer).find('li[rel="' + Id + '"]').remove();
 				// REMOVE VIEW FROM COLLECTION
 				$.colorbox.close();				
-				globalShowMessages(["System has succesfully deleted XXX"]);
+				globalShowMessages(["System has successfully deleted XXX"]);
 			});
 		}
 	});

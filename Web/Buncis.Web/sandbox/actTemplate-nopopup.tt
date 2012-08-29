@@ -1,54 +1,10 @@
-/*
-(function (oArticle) {
-
-	var oCollection = {};
-
-	oArticle._elems = {
-		clonedClass: 'cloned-view-template',
-		clonnedSelector: '.cloned-view-template',
-		templateClass: '.article-view-template',
-		templateSelector: '.article-view-template',
-		viewAreaContainerSelector: '.view-container',
-		viewAreaCloseButtonSelector: '.close-view-area',
-		articleItemSelector: '.article-item'
-	};
-	
-	function setupEvents() {
-		$(_article._elems.viewAreaCloseButtonSelector).click(function (evt) {
-			evt.preventDefault();
-			$(_article._elems.clonnedSelector).remove();
-		});
-		$(_article._elems.articleItemSelector).click(function (evt) {
-			var $self = $(this);
-			
-			var container = $self.parent().find(_article._elems.viewAreaContainerSelector);
-			var existing = $self.parent().find(_article._elems.clonnedSelector);
-			if (existing.length) {
-				return false;
-			}
-
-			cloned.removeClass(templateClass);
-			cloned.addClass(clonedClass);
-			cloned.appendTo(container).slideDown('slow');
-
-		});
-	}
-
-
-} (window._article = window._article || {}));
-
-$(document).ready(function () {
-	_article.init();
-});
-
-*/
-
-
+﻿<#@ template  debug="true" hostSpecific="true" #>
+<#@ output extension=".js" #>
 (function (oModule) {
 	oModule._elems = {			
-		editSection: '#article-edit-section',
-		editContainer: '.article-edit-container',
-		editSectionTemplate: '#article-edit-template',
+		editSection: '#',
+		editContainer: '',
+		editSectionTemplate: '#',
 		deletePopup: '#',
 		confirmDeletePopupTemplate: '#',		
 		tabs: '#',
@@ -82,19 +38,19 @@ $(document).ready(function () {
 			this.model.on('change', this.renderUpdate, this);
 		},
 		renderUpdate: function() {
-			var template = _.template($(_articles._elems.itemTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
+			var template = _.template($(<#= this.JSObjectName #>._elems.itemTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
 			// EXAMPLE: $('li[rel="' + this.model.get('Id') + '"]').replaceWith(template);
 			// PUT THE ID ON THE ELEMENT LIST HERE
 			return this;
 		},
 		render: function(){
-			var template = _.template($(_articles._elems.itemTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
+			var template = _.template($(<#= this.JSObjectName #>._elems.itemTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.prepend($(template));
 			return this;
 		},
 		editItem: function(event) {
-			var editView = new _articles.FormView({
-				el: $(_articles._elems.editSection),
+			var editView = new <#= this.JSObjectName #>.FormView({
+				el: $(<#= this.JSObjectName #>._elems.editSection),
 				model: this.model
 			});			
 			editView.render();
@@ -103,12 +59,12 @@ $(document).ready(function () {
 		}, 
 		/*
 		deleteItem: function(event) {
-			var deletePopupView = new _articles.DeleteView({
-				el: $(_articles._elems.deletePopup),
+			var deletePopupView = new <#= this.JSObjectName #>.DeleteView({
+				el: $(<#= this.JSObjectName #>._elems.deletePopup),
 				model: this.model
 			});
 			deletePopupView.render();
-			globalShowPopup(200, 400, _articles._elems.deletePopup, 'Delete ', 
+			globalShowPopup(200, 400, <#= this.JSObjectName #>._elems.deletePopup, 'Delete ', 
 				function() {
 					$.colorbox.resize();					
 				}, 
@@ -125,24 +81,24 @@ $(document).ready(function () {
 			// PUT EVENTS HERE
 		},
 		render: function(event) {
-			var template = _.template($(_articles._elems.editSectionTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
+			var template = _.template($(<#= this.JSObjectName #>._elems.editSectionTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
 			return this;
 		},
 		/*
 		save: function(event) {
-			var api = _articles.form.validators.data("validator");
+			var api = <#= this.JSObjectName #>.form.validators.data("validator");
 			var isValid = api.checkValidity();
 			if(!isValid) {
 				return false;
 			}
 			// GET THE DATA FROM UI
-			var fMode = $(_articles._elems.btnSave).attr('rel');
+			var fMode = $(<#= this.JSObjectName #>._elems.btnSave).attr('rel');
 			// SET THE MODEL DATA HERE		
 			var eModel = this.model;			
 			// EXAMPLE model.set('Title', nTitle);
 			
-			_articles.fn.saveItem(eModel, function(result) {
+			<#= this.JSObjectName #>.fn.saveItem(eModel, function(result) {
 
 				$.colorbox.close();
 
@@ -151,8 +107,8 @@ $(document).ready(function () {
 					msg = 'Successfully edited  data';
 				}
 				else {
-					_articles.collection.add(eModel);
-					_articles.fn.renderListItemView(eModel);
+					<#= this.JSObjectName #>.collection.add(eModel);
+					<#= this.JSObjectName #>.fn.renderListItemView(eModel);
 					msg = 'Successfully added new ';
 				}
 				globalShowMessages([msg]);
@@ -167,16 +123,16 @@ $(document).ready(function () {
 			// PUT EVENTS HERE
 		},
 		render: function(event) {
-			var template = _.template($(_articles._elems.confirmDeletePopupTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
+			var template = _.template($(<#= this.JSObjectName #>._elems.confirmDeletePopupTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
 			return this;
 		},
 		confirmDelete: function(event) {
 			var id = parseInt(this.model.get('ID PROPERTY HERE'), 10);
 			
-			_articles.fn.deleteItem(id, function() {
-				_articles.collection.remove(this.model);
-				//EXAMPLE: $(_articles._elems.itemContainer).find('li[rel="' + Id + '"]').remove();
+			<#= this.JSObjectName #>.fn.deleteItem(id, function() {
+				<#= this.JSObjectName #>.collection.remove(this.model);
+				//EXAMPLE: $(<#= this.JSObjectName #>._elems.itemContainer).find('li[rel="' + Id + '"]').remove();
 				// REMOVE VIEW FROM COLLECTION
 				$.colorbox.close();				
 				globalShowMessages(["System has successfully deleted XXX"]);
@@ -184,31 +140,31 @@ $(document).ready(function () {
 		}
 	});
 	*/
-}(window._articles = window._articles || {}));
+}(window.<#= this.JSObjectName #> = window.<#= this.JSObjectName #> || {}));
 
 
 (function(oFn) {
-	var listWebServiceUrl = '/webservices/articles.svc/GetArticles?clientId=' + _elems.clientId;	
+	var listWebServiceUrl = '' + _elems.clientId;	
 	var editWebServiceUrl = '';	
 	var addWebServiceUrl = '';	
 	var deleteWebServiceUrl = '';	
 
 	oFn.setupEvents = function() {
-		$(_articles._elems.btnAdd).click(function(event) {
+		$(<#= this.JSObjectName #>._elems.btnAdd).click(function(event) {
 			event.preventDefault();
 			/*
-			var defaultItem = new _articles.ItemModel({
+			var defaultItem = new <#= this.JSObjectName #>.ItemModel({
 				
 			});
-			var popupView = new _articles.FormView({
-				el: $(_articles._elems.editPopup),
+			var popupView = new <#= this.JSObjectName #>.FormView({
+				el: $(<#= this.JSObjectName #>._elems.editPopup),
 				model: defaultItem
 			});
 			popupView.render();
 
-			_articles.fn.showFormPopup(_articles._elems.editPopup, 'Add ', 
+			<#= this.JSObjectName #>.fn.showFormPopup(<#= this.JSObjectName #>._elems.editPopup, 'Add ', 
 				function() {
-					_articles.fn.prepareEditForm();
+					<#= this.JSObjectName #>.fn.prepareEditForm();
 				}, 
 				function() {
 					popupView.undelegateEvents();
@@ -219,10 +175,10 @@ $(document).ready(function () {
 		});	
 	};
 	oFn.prepareEditForm = function() {
-		_articles.form.reset();
+		<#= this.JSObjectName #>.form.reset();
 		/*
-		if(!_articles.form.wizardHasBeenInitialized) {
-			_articles.form.wizard = $(_articles._elems.wizards).smartWizard({
+		if(!<#= this.JSObjectName #>.form.wizardHasBeenInitialized) {
+			<#= this.JSObjectName #>.form.wizard = $(<#= this.JSObjectName #>._elems.wizards).smartWizard({
 				keyNavigation: false,
 				enableAllSteps: true,
 				enableFinishButton: false, 
@@ -232,18 +188,18 @@ $(document).ready(function () {
 				transitionEffect: 'slideleft',
 				onShowStep: function (step) {
 					// !!! CHANGE THIS !!!
-					if($(_articles._elems."TEXTAREAHERE").is(':visible')) {
-						$(_articles._elems."TEXTAREAHERE").htmlarea('dispose'); 
-						$(_articles._elems."TEXTAREAHERE").htmlarea();
+					if($(<#= this.JSObjectName #>._elems."TEXTAREAHERE").is(':visible')) {
+						$(<#= this.JSObjectName #>._elems."TEXTAREAHERE").htmlarea('dispose'); 
+						$(<#= this.JSObjectName #>._elems."TEXTAREAHERE").htmlarea();
 					}
 				}
 			});
-			_articles.form.wizardHasBeenInitialized = true;
+			<#= this.JSObjectName #>.form.wizardHasBeenInitialized = true;
 		}
 		else {
-			$(_articles._elems.tabs).find('a.tabStart').click();
+			$(<#= this.JSObjectName #>._elems.tabs).find('a.tabStart').click();
 		}
-		_articles.form.validators = $(_articles._elems.formElements).validator({
+		<#= this.JSObjectName #>.form.validators = $(<#= this.JSObjectName #>._elems.formElements).validator({
 			effect: 'floatingWall',
 			container: _elems.errorContainer,
 			errorInputEvent: null,
@@ -341,25 +297,25 @@ $(document).ready(function () {
 	};
 	*/
 	oFn.loadData = function() {
-		_articles.collection = new _articles.CollectionModel();
+		<#= this.JSObjectName #>.collection = new <#= this.JSObjectName #>.CollectionModel();
 		oFn.getCollection(function(result) {
 			for(var i = 0; i < result.length; i++) {				
 				var item = result[i];
 				// create new model instance
-				var itemModel = new _articles.ItemModel({
+				var itemModel = new <#= this.JSObjectName #>.ItemModel({
 					// fill out model properties here
 				});
 
 				// put model instance to collections
-				_articles.collection.add(itemModel);
-				_articles.fn.renderListItemView(itemModel);
+				<#= this.JSObjectName #>.collection.add(itemModel);
+				<#= this.JSObjectName #>.fn.renderListItemView(itemModel);
 			}
 		});
 	};
 	oFn.renderListItemView = function(itemModel) {
 		// set the view and render it
-		var itemView = new _articles.ItemView({ 
-			el: $(_articles._elems.itemContainer),
+		var itemView = new <#= this.JSObjectName #>.ItemView({ 
+			el: $(<#= this.JSObjectName #>._elems.itemContainer),
 			model: itemModel,
 			id: 'put id here'
 		});
@@ -369,11 +325,14 @@ $(document).ready(function () {
 		itemView.delegateEvents();
 		itemView.render();
 	};
-}(window._articles.fn = window._articles.fn || {}));
+}(window.<#= this.JSObjectName #>.fn = window.<#= this.JSObjectName #>.fn || {}));
 
 
 $(document).ready(function() {	
-	_articles.fn.loadData();
-	_articles.fn.setupEvents();
+	<#= this.JSObjectName #>.fn.loadData();
+	<#= this.JSObjectName #>.fn.setupEvents();
 });
 
+<#+ 
+	string JSObjectName = "_articles";
+#>

@@ -1,54 +1,8 @@
-/*
-(function (oArticle) {
-
-	var oCollection = {};
-
-	oArticle._elems = {
-		clonedClass: 'cloned-view-template',
-		clonnedSelector: '.cloned-view-template',
-		templateClass: '.article-view-template',
-		templateSelector: '.article-view-template',
-		viewAreaContainerSelector: '.view-container',
-		viewAreaCloseButtonSelector: '.close-view-area',
-		articleItemSelector: '.article-item'
-	};
-	
-	function setupEvents() {
-		$(_article._elems.viewAreaCloseButtonSelector).click(function (evt) {
-			evt.preventDefault();
-			$(_article._elems.clonnedSelector).remove();
-		});
-		$(_article._elems.articleItemSelector).click(function (evt) {
-			var $self = $(this);
-			
-			var container = $self.parent().find(_article._elems.viewAreaContainerSelector);
-			var existing = $self.parent().find(_article._elems.clonnedSelector);
-			if (existing.length) {
-				return false;
-			}
-
-			cloned.removeClass(templateClass);
-			cloned.addClass(clonedClass);
-			cloned.appendTo(container).slideDown('slow');
-
-		});
-	}
-
-
-} (window._article = window._article || {}));
-
-$(document).ready(function () {
-	_article.init();
-});
-
-*/
-
-
-(function (oModule) {
+﻿(function (oModule) {
 	oModule._elems = {			
-		editSection: '#article-edit-section',
-		editContainer: '.article-edit-container',
-		editSectionTemplate: '#article-edit-template',
+		editSection: '#',
+		editContainer: '',
+		editSectionTemplate: '#',
 		deletePopup: '#',
 		confirmDeletePopupTemplate: '#',		
 		tabs: '#',
@@ -188,7 +142,7 @@ $(document).ready(function () {
 
 
 (function(oFn) {
-	var listWebServiceUrl = '/webservices/articles.svc/GetArticles?clientId=' + _elems.clientId;	
+	var listWebServiceUrl = '' + _elems.clientId;	
 	var editWebServiceUrl = '';	
 	var addWebServiceUrl = '';	
 	var deleteWebServiceUrl = '';	

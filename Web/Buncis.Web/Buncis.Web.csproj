@@ -288,6 +288,11 @@
     <Content Include="Images\menu_separator.jpg" />
     <Content Include="Images\menu_separator.png" />
     <Content Include="robot.txt" />
+    <Content Include="sandbox\actTemplate-nopopup.js">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>actTemplate-nopopup.tt</DependentUpon>
+    </Content>
     <Content Include="sandbox\actTemplate.js">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -605,6 +610,10 @@
     <Content Include="WebServices\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="sandbox\actTemplate-nopopup.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>actTemplate-nopopup.js</LastGenOutput>
+    </None>
     <None Include="sandbox\actTemplate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>actTemplate.js</LastGenOutput>
