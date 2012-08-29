@@ -28,3 +28,4 @@ _ReSharper*/
 /_UpgradeReport_Files/*
 UpgradeLog.XML
 buncis.log
+*.bak
