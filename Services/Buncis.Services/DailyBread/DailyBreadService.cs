@@ -20,7 +20,7 @@ namespace Buncis.Services.DailyBread
 			_dailyBreadItemRepository = dailyBreadItemRepository;
 		}
 
-		public IEnumerable<ViewModelBuncisDailyBreadItem> GetDailyBreadItemsNotDeleted(int clientId)
+		public IEnumerable<ViewModelBuncisDailyBreadItem> GetAvailableDailyBreadItems(int clientId)
 		{
 			var raw = _dailyBreadItemRepository.FilterBy(o => !o.IsDeleted).ToList();
 

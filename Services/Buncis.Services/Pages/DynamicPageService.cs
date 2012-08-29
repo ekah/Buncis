@@ -53,7 +53,7 @@ namespace Buncis.Services.Pages
 			return viewModel;
 		}
 
-		public IEnumerable<ViewModelBuncisPage> GetPagesNotDeleted(int clientId)
+		public IEnumerable<ViewModelBuncisPage> GetAvailablePages(int clientId)
 		{
 			var expression = _dynamicPageFilters.Init()
 				.GetByClientId(clientId)

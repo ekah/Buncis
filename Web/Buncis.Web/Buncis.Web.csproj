@@ -381,6 +381,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="WebServices\Articles.svc" />
     <Content Include="WebServices\News.svc" />
     <Content Include="WebServices\Pages.svc" />
   </ItemGroup>
@@ -520,11 +521,6 @@
     <Compile Include="sandbox\SandboxPageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="sandbox\webservice.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>webservice.tt</DependentUpon>
-    </Compile>
     <Compile Include="tests\TestDefault.aspx.cs">
       <DependentUpon>TestDefault.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -546,9 +542,13 @@
     <Compile Include="UserControls\News\NewsList.ascx.designer.cs">
       <DependentUpon>NewsList.ascx</DependentUpon>
     </Compile>
+    <Compile Include="WebServices\Articles.svc.cs">
+      <DependentUpon>Articles.svc</DependentUpon>
+    </Compile>
     <Compile Include="WebServices\BaseWebService.cs" />
-    <Compile Include="WebServices\INews.cs" />
-    <Compile Include="WebServices\IPages.cs" />
+    <Compile Include="WebServices\Contracts\IArticles.cs" />
+    <Compile Include="WebServices\Contracts\INews.cs" />
+    <Compile Include="WebServices\Contracts\IPages.cs" />
     <Compile Include="WebServices\News.svc.cs">
       <DependentUpon>News.svc</DependentUpon>
     </Compile>
@@ -618,6 +618,15 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>bPanelList.tmp</LastGenOutput>
     </None>
+    <None Include="sandbox\IWebservice.tmp">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IWebservice.tt</DependentUpon>
+    </None>
+    <None Include="sandbox\IWebservice.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IWebservice.tmp</LastGenOutput>
+    </None>
     <None Include="sandbox\ListAspx.tmp">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -627,9 +636,14 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ListAspx.tmp</LastGenOutput>
     </None>
-    <None Include="sandbox\webservice.tt">
+    <None Include="sandbox\Webservice1.tmp">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Webservice.tt</DependentUpon>
+    </None>
+    <None Include="sandbox\Webservice.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>webservice.cs</LastGenOutput>
+      <LastGenOutput>Webservice1.tmp</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

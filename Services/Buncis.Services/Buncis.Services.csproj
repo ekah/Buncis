@@ -67,7 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Article\ArticleService.cs" />
+    <Compile Include="Articles\ArticleService.cs" />
     <Compile Include="DailyBread\DailyBreadService.cs" />
     <Compile Include="Filters\DynamicPageFilters.cs" />
     <Compile Include="News\NewsService.cs" />

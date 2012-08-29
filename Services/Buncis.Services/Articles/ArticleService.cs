@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Buncis.Data.Domain.Articles;
+using Buncis.Framework.Core.Repository.Articles;
+using Buncis.Framework.Core.Services.Articles;
 using Omu.ValueInjecter;
 using Buncis.Framework.Core.SupportClasses;
 using Buncis.Framework.Core.Services;
-using Buncis.Framework.Core.Services.Article;
 using Buncis.Framework.Core.ViewModel;
-using Buncis.Framework.Core.Repository.Article;
-using Buncis.Data.Domain.Article;
-using Buncis.Framework.Core.Infrastructure.Extensions;
 
-namespace Buncis.Services.Article
+namespace Buncis.Services.Articles
 {
     public class ArticleService : BaseService, IArticleService
     {
@@ -22,13 +20,13 @@ namespace Buncis.Services.Article
             _articleItemRepository = articleItemRepository;
         }
 
-        public IEnumerable<ViewModelArticleItem> GetAvailableArticleItems(int clientId)
+        public IEnumerable<ViewModelBuncisArticleItem> GetAvailableArticleItems(int clientId)
         {
             var raw = _articleItemRepository.FilterBy(o => !o.IsDeleted).ToList();
 
             var converted = raw.Select(item =>
             {
-                var ViewModelArticleItem = new ViewModelArticleItem();
+                var ViewModelArticleItem = new ViewModelBuncisArticleItem();
                 ViewModelArticleItem.InjectFrom(item);
                 return ViewModelArticleItem;
             }).ToList();
@@ -36,21 +34,21 @@ namespace Buncis.Services.Article
             return converted;
         }
 
-        public ViewModelArticleItem GetArticleItem(int articleId)
+        public ViewModelBuncisArticleItem GetArticleItem(int articleId)
         {
             var raw = _articleItemRepository.FindBy(o => !o.IsDeleted && o.ArticleId == articleId);
 
-            var ViewModelArticleItem = new ViewModelArticleItem();
+            var ViewModelArticleItem = new ViewModelBuncisArticleItem();
             ViewModelArticleItem.InjectFrom(raw);
 
             return ViewModelArticleItem;
         }
 
-        public ValidationDictionary<ViewModelArticleItem> DeleteArticleItem(int articleId)
+        public ValidationDictionary<ViewModelBuncisArticleItem> DeleteArticleItem(int articleId)
         {
             var raw = _articleItemRepository.FindBy(o => o.ArticleId == articleId);
 
-            var validator = new ValidationDictionary<ViewModelArticleItem>();
+            var validator = new ValidationDictionary<ViewModelBuncisArticleItem>();
 
             if (raw != null)
             {
@@ -69,9 +67,9 @@ namespace Buncis.Services.Article
             return validator;
         }
 
-        public ValidationDictionary<ViewModelArticleItem> SaveArticleItem(int clientId, ViewModelArticleItem article)
+        public ValidationDictionary<ViewModelBuncisArticleItem> SaveArticleItem(int clientId, ViewModelBuncisArticleItem article)
         {
-            var validator = new ValidationDictionary<ViewModelArticleItem>();
+            var validator = new ValidationDictionary<ViewModelBuncisArticleItem>();
             if (article == null)
             {
                 validator.IsValid = false;
@@ -80,10 +78,10 @@ namespace Buncis.Services.Article
             }
 
             // rule based here
-           
 
-            ArticleItem articleItem;           
- 
+
+            ArticleItem articleItem;
+
             if (article.ArticleId <= 0)
             {
                 articleItem = new ArticleItem();
@@ -105,14 +103,14 @@ namespace Buncis.Services.Article
                     articleItem.DateCreated = createdDate;
                     articleItem.IsDeleted = false;
 
-                    _articleItemRepository.Update(articleItem);                    
+                    _articleItemRepository.Update(articleItem);
                 }
             }
 
-			var pinged = GetArticleItem(articleItem.ArticleId);
+            var pinged = GetArticleItem(articleItem.ArticleId);
             validator.IsValid = true;
             validator.RelatedObject = pinged;
             return validator;
-        }        
+        }
     }
 }

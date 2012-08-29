@@ -22,7 +22,7 @@ namespace Buncis.Services.News
             _newsRepository = newsRepository;
         }
 
-        public IEnumerable<ViewModelBuncisNewsItem> GetNewsItemsNotDeleted(int clientId)
+        public IEnumerable<ViewModelBuncisNewsItem> GetAvailableNewsItems(int clientId)
         {
             var raw = _newsRepository.FilterBy(o => !o.IsDeleted).ToList();
 

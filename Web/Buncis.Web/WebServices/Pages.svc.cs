@@ -3,6 +3,7 @@ using System.Linq;
 using Buncis.Framework.Core.SupportClasses;
 using Buncis.Framework.Core.Infrastructure.IoC;
 using Buncis.Web.Common.DataTransferObject;
+using Buncis.Web.WebServices.Contracts;
 using Omu.ValueInjecter;
 using Buncis.Framework.Core.Services.Pages;
 using Buncis.Framework.Core.ViewModel;
@@ -14,7 +15,7 @@ namespace Buncis.Web.WebServices
 		public Response<IEnumerable<DtoBuncisPage>> GetPages(int clientId)
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
-			var pages = service.GetPagesNotDeleted(clientId)
+			var pages = service.GetAvailablePages(clientId)
 				.OrderByDescending(p => p.IsHomePage)
 				.ThenByDescending(o => o.DateLastUpdated)
 				.ToList();

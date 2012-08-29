@@ -8,7 +8,7 @@ namespace Buncis.Framework.Core.Services.<#= this.ModuleName #>
 {
 	public interface I<#= this.ModuleName #>Service
 	{
-		IEnumerable<<#= this.ViewModelName #>> Get<#= this.MethodSuffixName #>sNotDeleted(int clientId);
+		IEnumerable<<#= this.ViewModelName #>> GetAvailable<#= this.MethodSuffixName #>s(int clientId);
 		<#= this.ViewModelName #> Get<#= this.MethodSuffixName #>(int newsId);
 		ValidationDictionary<<#= this.ViewModelName #>> Delete<#= this.MethodSuffixName #>(int <#= this.MethodSuffixName.ToLower() #>Id);
 		ValidationDictionary<<#= this.ViewModelName #>> Save<#= this.MethodSuffixName #>(int clientId, <#= this.ViewModelName #> <#= this.MethodSuffixName.ToLower() #>);

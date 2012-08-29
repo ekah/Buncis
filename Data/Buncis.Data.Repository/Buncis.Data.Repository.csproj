@@ -67,7 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Article\ArticleItemRepository.cs" />
+    <Compile Include="Articles\ArticleItemRepository.cs" />
     <Compile Include="DailyBread\DailyBreadItemRepository.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="Membership\MembershipRoleRepository.cs" />

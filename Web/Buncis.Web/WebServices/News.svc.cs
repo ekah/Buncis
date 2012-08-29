@@ -8,6 +8,7 @@ using Buncis.Framework.Core.Infrastructure.IoC;
 using Buncis.Framework.Core.SupportClasses;
 using Buncis.Framework.Core.Services.News;
 using Buncis.Web.Common.DataTransferObject;
+using Buncis.Web.WebServices.Contracts;
 using Omu.ValueInjecter;
 using Buncis.Framework.Core.ViewModel;
 
@@ -19,7 +20,7 @@ namespace Buncis.Web.WebServices
 		public Response<IEnumerable<DtoBuncisNews>> bPanelGetNewsList(int clientId)
 		{
 			var newsService = IoC.Resolve<INewsService>();
-			var raw = newsService.GetNewsItemsNotDeleted(clientId);
+			var raw = newsService.GetAvailableNewsItems(clientId);
 			var converted = raw.Select(o =>
 			{
 				var dto = new DtoBuncisNews();

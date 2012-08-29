@@ -24,7 +24,7 @@ namespace Buncis.Services.<#= this.ModuleName #>
             _<#= this.RepositoryVariableName #> = <#= this.RepositoryVariableName #>;
         }
 
-        public IEnumerable<<#= this.ViewModelName #>> Get<#= this.MethodWordPrural #>NotDeleted(int clientId)
+        public IEnumerable<<#= this.ViewModelName #>> GetAvailable<#= this.MethodWordPrural #>(int clientId)
         {
             var raw = _<#= this.RepositoryVariableName #>.FilterBy(o => !o.IsDeleted).ToList();
 

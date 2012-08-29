@@ -6,7 +6,7 @@ namespace Buncis.Framework.Core.Services.Article
 {
 	public interface IArticleService
 	{
-		IEnumerable<ViewModelArticleItem> GetArticleItemsNotDeleted(int clientId);
+		IEnumerable<ViewModelArticleItem> GetAvailableArticleItems(int clientId);
 		ViewModelArticleItem GetArticleItem(int newsId);
 		ValidationDictionary<ViewModelArticleItem> DeleteArticleItem(int articleitemId);
 		ValidationDictionary<ViewModelArticleItem> SaveArticleItem(int clientId, ViewModelArticleItem articleitem);

@@ -67,7 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Article\ArticleItem.cs" />
+    <Compile Include="Articles\ArticleItem.cs" />
     <Compile Include="DailyBread\DailyBreadItem.cs" />
     <Compile Include="Mappings\ArticleModuleMapper.cs" />
     <Compile Include="Mappings\DailyBreadModuleMapper.cs" />
