@@ -1,0 +1,104 @@
+﻿<#@ template  debug="true" hostSpecific="true" #>
+<#@ output extension=".tmp" #>
+<#@ Assembly Name="System.Core.dll" #>
+<#@ Assembly Name="System.Windows.Forms.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+using System.Collections.Generic;
+using System.Linq;
+using Buncis.Framework.Core.SupportClasses;
+using Buncis.Framework.Core.Infrastructure.IoC;
+using Buncis.Web.Common.DataTransferObject;
+using Omu.ValueInjecter;
+using Buncis.Framework.Core.Services.Pages;
+using Buncis.Framework.Core.ViewModel;
+
+namespace Buncis.Web.WebServices
+{
+	public class <#= this.ModuleName #> : BaseWebService, I<#= this.ModuleName #>
+	{
+		public Response<IEnumerable<<#= this.DtoClassName #>>> Get<#= this.PruralMethodWords #>(int clientId)
+		{
+			var service = IoC.Resolve<<#= this.ServiceInterface #>>();
+			var data = service.PUTGETMETHODHERE(clientId)
+				.OrderByDescending(p => p.IsHomePage)
+				.ThenByDescending(o => o.DateLastUpdated)
+				.ToList();
+
+			var dto = data.Select(o => (<#= this.DtoClassName #>)new <#= this.DtoClassName #>().InjectFrom(o)).ToList();
+			var response = new Response<IEnumerable<<#= this.DtoClassName #>>>();
+			response.ResponseObject = dto;
+			response.IsSuccess = true;
+			response.Message = string.Empty;
+			return response;
+		}
+
+		public Response<<#= this.DtoClassName #>> Get<#= this.MethodWords #>(int clientId, int <#= this.IdWords #>)
+		{
+			var service = IoC.Resolve<<#= this.ServiceInterface #>>();
+			var data = service.PUTMETHODHERE(<#= this.IdWords #>);
+			var response = new Response<<#= this.DtoClassName #>>();
+			response.IsSuccess = true;
+			response.Message = string.Empty;
+			response.ResponseObject = (<#= this.DtoClassName #>)new <#= this.DtoClassName #>().InjectFrom(data);
+			return response;
+		}
+
+		public Response<<#= this.DtoClassName #>> Update<#= this.MethodWords #>(int clientId, <#= this.DtoClassName #> <#= this.ObjectParamWords #>)
+		{
+			var service = IoC.Resolve<<#= this.ServiceInterface #>>();
+			var viewModel = (<#= this.ViewModelName #>)new <#= this.ViewModelName #>().InjectFrom(<#= this.ObjectParamWords #>);
+
+			var result = service.METHODNAMEHERE(clientId, viewModel);
+
+			var response = new Response<<#= this.DtoClassName #>>();
+			response.IsSuccess = result.IsValid;
+			response.Message = result.ValidationSummaryToString();
+
+			var responseObject = (<#= this.DtoClassName #>)new <#= this.DtoClassName #>().InjectFrom(result.RelatedObject);
+			response.ResponseObject = responseObject;
+
+			return response;
+		}
+		
+		public Response<<#= this.DtoClassName #>> Insert<#= this.MethodWords #>(int clientId, <#= this.DtoClassName #> <#= this.ObjectParamWords #>)
+		{
+			var service = IoC.Resolve<<#= this.ServiceInterface #>>();
+			var viewModel = (<#= this.ViewModelName #>)new <#= this.ViewModelName #>().InjectFrom(<#= this.ObjectParamWords #>);
+
+			var result = service.METHODNAMEHERE(clientId, viewModel);
+
+			var response = new Response<<#= this.DtoClassName #>>();
+			response.IsSuccess = result.IsValid;
+			response.Message = result.ValidationSummaryToString();
+
+			var responseObject = (<#= this.DtoClassName #>)new <#= this.DtoClassName #>().InjectFrom(result.RelatedObject);
+			response.ResponseObject = responseObject;
+
+			return response;
+		}
+
+		public Response Delete<#= this.MethodWords #>(int clientId, int <#= this.IdWords #>)
+		{
+			// do use clientId ?
+			var service = IoC.Resolve<<#= this.ServiceInterface #>>();
+			var result = service.METHODNAMEHERE(<#= this.IdWords #>);
+			return new Response(result.IsValid, string.Empty);
+		}
+	}
+}
+
+<#+ 
+	string ModuleName = "Articles";
+	string MethodWords = "Article";
+	string DtoClassName = "DtoBuncisArticle";
+	string PruralMethodWords = "Articles";
+	string ServiceInterface = "IArticleService";
+	string IdWords = "articleId";
+	string ObjectParamWords = "article";
+	string ViewModelName = "ViewModelBuncisArticleItem";
+#>
