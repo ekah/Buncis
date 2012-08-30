@@ -254,6 +254,14 @@ label.long
 	margin: 0px;
 	font-weight: bold;
 }
+.left, .right
+{
+	float: left;
+}
+.right
+{
+	padding-left: 20px;
+}
 /* #endregion */
 
 
@@ -337,7 +345,13 @@ label.long
 	clear: both;
 }
 .popup-wrapper
+{		
+	overflow: hidden !important;		
+}
+.popup-content 
 {
+	overflow: hidden !important;	
+	min-height: 510px;
 }
 /* #endregion */
 
@@ -476,21 +490,13 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
 
 
 /* #region form pages */
-.left, .right
-{
-	float: left;
-}
-.right
-{
-	padding-left: 20px;
-}
-/*
-.form-page textarea {
-	overflow: scroll;
-}*/
 div.hasHtmlArea
 {
 	padding: 4px 20px 4px 4px;
+}
+.htmlarea {
+	width: 850px;
+	height: 340px;
 }
 /* #endregion end form pages */
 
@@ -643,11 +649,15 @@ div.hasHtmlArea
 
 /* #region colorbox custom */
 .popup-button-wrapper
-{
-	margin: 0px !important;
-	padding: 0px !important;
+{		
+	margin: 0px 10px 5px 0px !important;
+	padding: 0px !important;		
+	float: right;
 	height: 40px;
-	position: relative;
+	/*position: relative;*/
+}
+#cboxLoadedContent {
+	/*overflow-y: auto !important;*/
 }
 /* #endregion end colorbox custom */
 
@@ -760,4 +770,16 @@ div.hasHtmlArea
 	z-index: 99999 !important;
 	font-size: 12px !important;
 }
+/* #endregion */
+
+
+/* #region jhtmlarea override */
+/*
+div.jHtmlArea { 
+	display: inline block;
+	width: 90% !important;
+}
+div.jHtmlArea iframe { 	
+	width: 90%;
+}*/
 /* #endregion */

@@ -96,7 +96,7 @@
 				model: this.model
 			});
 			deletePopupView.render();
-			globalShowPopup(200, 400, _news._elems.deletePopup, 'Delete News', 
+			globalShowPopup(210, 400, _news._elems.deletePopup, 'Delete News', 
 				function() {
 					$.colorbox.resize();					
 				}, 

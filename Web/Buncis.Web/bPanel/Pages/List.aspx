@@ -35,11 +35,7 @@
     <!-- popup to edit/update page -->
     <div style="display: none">
 		<div id="form-page-popup" class="popup-wrapper">
-			<div class="form-page">
-				<div class="popup-button-wrapper buttonContainer">
-					<a href="javascript:;" id="btnClose" class="button-whiteOnRed popup-button-close">Close</a>
-					<a href="javascript:;" id="btnSavePage" class="button-whiteOnGreen" rel="0">Save</a>
-				</div>
+			<div class="form-page popup-content">
 				<div id="page-wizard" class="swMain">
         			<ul class="page-tabs">
     					<li><a href="#page-tab1" class="tabStart">Section 1: Page Information</a></li>
@@ -97,13 +93,17 @@
 							<label>Content</label>
 							<div>
 								<textarea id="txtPageContent" class="htmlarea" name="txtPageContent"
-									style="width: 870px; height: 350px" required="required"
-									data-message="Page Content is required">
+									required="required" data-message="Page Content is required">
 								</textarea>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="clearFloats"></div>
+			<div class="popup-button-wrapper buttonContainer">
+				<a href="javascript:;" id="btnClose" class="button-whiteOnRed popup-button-close">Close</a>
+				<a href="javascript:;" id="btnSavePage" class="button-whiteOnGreen" rel="0">Save</a>
 			</div>
 		</div>
     </div>

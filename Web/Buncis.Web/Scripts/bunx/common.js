@@ -13,27 +13,16 @@ $(document).ready(function () {
 	})
 });
 
-
 $.tools.validator.addEffect("floatingWall", function (errors, event) {
-
-	// get the message wall
-	var floatingWall = $(this.getConf().container).fadeIn();
-
-	var innerWall = floatingWall.find('.innerWall');
-
-	// remove all existing messages
-	innerWall.find("p").remove();
-
-	// add new ones
+	var concatenated = '';
 	$.each(errors, function (index, error) {
-		innerWall.append("<p>" + error.messages[0] + "</p>");
+		concatenated += "<p>" + error.messages[0] + "</p>";
 	});
-
-	// the effect does nothing when all inputs are valid
+	//toastr.options.positionClass = 'toast-top-left';
+	toastr.error(concatenated, 'Oops! Please fix this first.')
 }, function (inputs) {
 
 });
-
 
 (function(helpers) {
 	helpers.blockPopupDefault = function() {
@@ -88,16 +77,16 @@ $.tools.validator.addEffect("floatingWall", function (errors, event) {
 	};
 })(window._helpers = window._helpers || {})
 
-
 function globalShowMessages(msg) {
-	$('.buncisContent').showMessage({
-		thisMessage: msg,
-		position: 'fixed',
-		opacity: 100,
-		className: 'success'
-	});
+	var messages = '';
+	if(Object.prototype.toString.call(msg) === '[object Array]') {
+		for (var i = 0; i < msg.length; i++) {
+			messages += '<p>' + msg[i] + '</p>';
+		}
+	}
+	//toastr.options.positionClass = 'toast-top-left';
+	toastr.success(messages, 'It\' a Success!');
 }
-
 
 function globalShowPopup(height, width, selector, title, _completeCallback, _closedCallback) {
 	$.colorbox({

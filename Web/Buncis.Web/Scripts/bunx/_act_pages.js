@@ -304,12 +304,10 @@
 
 			globalShowPopup(662, 960, pages._elems.pageFormPopup, title,
 				function() {
-
 					preparePopupForm();
 					resetForm();
-					_helpers.blockPopupDefault();
-
 					if(mode === 'edit') {
+						_helpers.blockPopupDefault();
 						getPage(pageId, function(data) {							
 							var td = $(pages._elems.tablePages).find('a.edit[rel="' + pageId + '"]').parent();
 							var tr = $(td).parent();
@@ -332,12 +330,11 @@
 
 							$(pages._elems.chkIsHomePage).button();
 						});
+						setTimeout(function() { _helpers.unblockPopupDefault(); }, 500);
 					}
 					else {
 						// add form here
 					}
-										
-					setTimeout(function() { _helpers.unblockPopupDefault(); }, 500);
 				},
 				function() {
 					destroyForm();
