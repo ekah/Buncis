@@ -328,12 +328,14 @@
 							dData = collection[aPos];
 							pages.form.editedData = dData;
 
-							$(pages._elems.chkIsHomePage).button();
+							// post after setting value
+							//$(pages._elems.chkIsHomePage).button();
 						});
 						setTimeout(function() { _helpers.unblockPopupDefault(); }, 500);
 					}
 					else {
 						// add form here
+						//$(pages._elems.chkIsHomePage).button();
 					}
 				},
 				function() {
@@ -370,6 +372,8 @@
 			container: window._elems.errorContainer,
 			errorInputEvent: null,
 		});  
+		
+		$(pages._elems.chkIsHomePage).button();
 	}
 	
 	function destroyForm() {
