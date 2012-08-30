@@ -23,8 +23,8 @@
 	<div style="display:none">
         <script type="text/template" id="article-item-template">
             <li class="article-item-wrapper" rel="{{cid}}">
-				<div class="article-item">
-					<div class="left" style="width:90%">
+				<div class="article-item list-item">
+					<div class="left leftSection">
 						<div class="article-title">{{attributes.articleTitle}}</div>
 						<div class="article-teaser">[TEASER HERE]</div>
 						<div class="article-info">
@@ -32,10 +32,14 @@
 							<div>[INFO HERE 2]</div>
 						</div>
 					</div>
-					<div class="left">
-						[ACTIONS HERE]
+					<div class="left rightSection">
+						<div class="list-action">
+							<a href="javascript:;" class="action-delete delete">Delete</a>
+							<a href="javascript:;" class="action-edit edit">Edit</a>
+							<div class="clearFloats"></div>
+						</div>
 					</div>
-					<div style="clear:both"></div>
+					<div class="clearFloats"></div>
 				</div>				
 			</li>
         </script>

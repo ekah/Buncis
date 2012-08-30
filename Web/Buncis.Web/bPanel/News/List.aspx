@@ -22,8 +22,8 @@
 							{% } else if(attributes.recentlyEdited) { %} 
 								class="edited" 
 							{% } %}>
-							<div>
-								<div class="left" style="width: 80%">
+							<div class="list-item">
+								<div class="left leftSection">
 									<div class="news-title">{{attributes.newsTitle}}</div>
 									<div class="news-teaser">{{attributes.newsTeaser}}</div>
 									<div class="news-dates">
@@ -32,10 +32,10 @@
 										<span>Expired: {{attributes.dateExpired}}</span>
 									</div>
 								</div>
-								<div class="left" style="width:20%">								
+								<div class="left rightSection">								
 									<div class="list-action">
-										<a href="javascript:;" class="action-delete">Delete</a>
-										<a href="javascript:;" class="action-edit">Edit</a>						
+										<a href="javascript:;" class="action-delete delete">Delete</a>
+										<a href="javascript:;" class="action-edit edit">Edit</a>						
 										<div class="clearFloats"></div>
 									</div>	
 								</div>

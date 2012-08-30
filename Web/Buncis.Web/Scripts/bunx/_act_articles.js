@@ -73,7 +73,12 @@ $(document).ready(function () {
         }
 	});
 	oModule.ItemModel = Backbone.Model.extend({
-		articleTitle: ''
+		articleId: 0,
+		articleTitle: '',
+		articleTeaser: '',
+		articleContent: '',
+		displayDateCreated: '',
+		displayDateLastUpdated: ''
 	});
 	oModule.ItemView = Backbone.View.extend({
 		initialize: function(){
@@ -300,9 +305,15 @@ $(document).ready(function () {
 		oFn.getCollection(function(result) {
 			for(var i = 0; i < result.length; i++) {				
 				var item = result[i];
+				
 				// create new model instance
 				var itemModel = new _articles.ItemModel({
-					articleTitle: item.ArticleTitle
+					articleId: item.ArticleId,
+					articleTitle: item.ArticleTitle,
+					articleTeaser: item.ArticleTeaser,
+					articleContent: item.ArticleContent,
+					displayDateCreated: item.DisplayDateCreated,
+					displayDateLastUpdated: item.DisplayDateLastUpdated
 				});
 
 				// put model instance to collections
