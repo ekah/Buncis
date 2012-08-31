@@ -61,7 +61,7 @@ p.address {
 }
 .slide1-container
 {
-	background-image: url(/images/impress/Home1.jpg);
+	background-image: url(../images/impress/Home1.jpg);
 }
 
 
@@ -75,7 +75,7 @@ p.address {
 }
 .slide2-container
 {
-	background-image: url(/images/impress/BFC1.jpg);
+	background-image: url(../images/impress/BFC1.jpg);
 }
 
 
@@ -89,7 +89,7 @@ p.address {
 }
 .slide3-container
 {
-	background-image: url(/images/impress/BP2.jpg);	
+	background-image: url(../images/impress/BP2.jpg);	
 }
 
 
@@ -103,7 +103,7 @@ p.address {
 }
 .slide4-container
 {
-	background-image: url(/images/impress/menaradoa2.jpg);	
+	background-image: url(../images/impress/menaradoa2.jpg);	
 }
 
 
@@ -117,7 +117,7 @@ p.address {
 }
 .slide5-container
 {
-	background-image: url(/images/impress/youth39.jpg);	
+	background-image: url(../images/impress/youth39.jpg);	
 }
 
 
@@ -133,7 +133,7 @@ p.address {
 }
 .slide6-container
 {
-	background-image: url(/images/impress/sahabatbaru2.png);	
+	background-image: url(../images/impress/sahabatbaru2.png);	
 }
 .slide6-container ul {
 	list-style-type: square;
@@ -157,7 +157,7 @@ p.address {
 }
 .slide7-container
 {
-	background-image: url(/images/impress/ibadah3.jpg);	
+	background-image: url(../images/impress/ibadah3.jpg);	
 }
 
 .slide8-wrapper
@@ -173,5 +173,5 @@ p.address {
 {
 	background-size: 100%;
 	background-position: 0px -500px;
-	background-image: url(/images/impress/Gbu1.jpg);	
+	background-image: url(../images/impress/Gbu1.jpg);	
 }
