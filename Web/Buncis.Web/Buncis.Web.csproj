@@ -281,6 +281,26 @@
     <Content Include="Images\icons\user.png" />
     <Content Include="Images\icons\world.png" />
     <Content Include="Images\icons\zoom.png" />
+    <Content Include="Images\impress\BFC1.jpg" />
+    <Content Include="Images\impress\BFC2.jpg" />
+    <Content Include="Images\impress\BP1.jpg" />
+    <Content Include="Images\impress\BP2.jpg" />
+    <Content Include="Images\impress\Gbu1.jpg" />
+    <Content Include="Images\impress\Godblessyou2.jpg" />
+    <Content Include="Images\impress\Home1.jpg" />
+    <Content Include="Images\impress\ibadah3.jpg" />
+    <Content Include="Images\impress\Ibadah4.jpg" />
+    <Content Include="Images\impress\Ibadah1.jpg" />
+    <Content Include="Images\impress\Ibadah2.jpg" />
+    <Content Include="Images\impress\MenaraDoa1.jpg" />
+    <Content Include="Images\impress\MenaraDoa2.jpg" />
+    <Content Include="Images\impress\SahabatBaru1.jpg" />
+    <Content Include="Images\impress\SahabatBaru2.png" />
+    <Content Include="Images\impress\Tambahan1.jpg" />
+    <Content Include="Images\impress\Tambahan2.jpg" />
+    <Content Include="Images\impress\Youth.png" />
+    <Content Include="Images\impress\Youth2.jpg" />
+    <Content Include="Images\impress\youth39.jpg" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logo_bg.jpg" />
     <Content Include="Images\logo_text.png" />
@@ -298,6 +318,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>actTemplate.tt</DependentUpon>
     </Content>
+    <Content Include="sandbox\impress-try1.html" />
     <Content Include="sandbox\NewsSandbox.aspx" />
     <Content Include="Scripts\bunx\_act_dailybread.js" />
     <Content Include="Scripts\bunx\backbone\backbone-min.js" />
@@ -307,6 +328,7 @@
     <Content Include="Scripts\bunx\common.js" />
     <Content Include="Scripts\bunx\_act_articles.js" />
     <Content Include="Scripts\bunx\_act_news.js" />
+    <Content Include="Scripts\impress.js" />
     <Content Include="Scripts\jquery-ui-1.8.23.custom.min.js" />
     <Content Include="Scripts\modules\jquery.color.js" />
     <Content Include="Scripts\json2.js" />
@@ -356,6 +378,7 @@
     <Content Include="Styles\images\ui-icons_454545_256x240.png" />
     <Content Include="Styles\images\ui-icons_888888_256x240.png" />
     <Content Include="Styles\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Styles\impress-try1.css" />
     <Content Include="Styles\jHtmlArea\jHtmlArea.ColorPickerMenu.css" />
     <Content Include="Styles\jHtmlArea\jHtmlArea.css" />
     <Content Include="Styles\jHtmlArea\jHtmlArea.Editor.css" />
