@@ -366,10 +366,13 @@ table.data-table
 }
 table.data-table thead tr th
 {
-	padding: 0px 0px 0px 15px;
+	padding: 10px 5px;
 	text-align: left;
-	color: #f9f9f9;
-	background-color: #000;
+	color: #111;
+	background-color: #ddd;
+	font-weight: bold;	
+	border-bottom: solid 2px #777;
+	border-right: solid 2px #fff;
 }
 table.data-table thead tr
 {
@@ -377,7 +380,7 @@ table.data-table thead tr
 }
 table.data-table tbody tr td
 {
-	padding: 5px 0px 5px 15px;
+	padding: 5px;
 	text-align: left;
 	border-bottom: 1px solid #aaa;
 }
@@ -396,6 +399,7 @@ table.data-table tbody tr
 table.data-table tbody tr:hover
 {
 	background-color: #e5e5e5 !important;
+	cursor: pointer;
 }
 table.data-table tbody tr.odd
 {
@@ -408,43 +412,44 @@ table.data-table tbody, table.data-table thead
 table.data-table tbody tr td.icon-col
 {
 	width: 1%;
+	padding: 5px 10px !important;
 }
 table.data-table td.action-col
 {
-	padding: 0px 10px;
-	width: 130px;
+	padding: 0px 5px;
+	/*width: 130px;*/
 	text-align: right;
 }
-table.data-table td a.edit
-{
-	color: #006400;
-}
-table.data-table td a.delete
-{
-	color: #8b0000;
-}
-table.data-table td a.edit, table.data-table td a.delete
-{
+table.data-table td.action-col a.action {
 	text-decoration: none;
 	display: block;
 	float: right;
 	font-weight: bold;
-	height: 25px;
-	padding: 5px 10px 5px;
+	height: auto;
+	padding: 5px;
 	margin-left: 5px;
 	line-height: 2em;
 }
-table.data-table td a.edit:hover, table.data-table td a.delete:hover
+table.data-table td.action-col a.action:hover
 {
 	background-color: #cecece;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
+table.data-table td.action-col a.edit
+{
+	color: #0E4EAD;
+}
+table.data-table td.action-col a.delete
+{
+	color: #8b0000;
+}
 /* #endregion end data table */
 
 
 /* #region pages table */
+/*
 table.data-table.table-pages tr td:nth-child(2)
 {
 	width: 40%;
@@ -453,6 +458,7 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
 {
 	width: 20%;
 }
+*/
 /* #endregion end pages table */
 
 
@@ -461,7 +467,8 @@ table.data-table.table-pages tr td:nth-child(3), table.data-table.table-pages tr
 {
 	height: 2em;
 	padding: 0.5em;
-	background-color: #c0c0c0;
+	background-color: #ddd;
+	border-top: solid 2px #777;
 }
 .dataTables_info
 {
@@ -615,7 +622,7 @@ div.hasHtmlArea
 	float: right;
 	height: 20px;
 }
-.list-action a
+.list-action a.action
 {
 	display: block;
 	float: right;
@@ -626,13 +633,13 @@ div.hasHtmlArea
 	font-weight: bold;
 	text-decoration: none;
 }
-.list-action a:hover
+.list-action a.action:hover
 {
-	background-color: #bbb;
+	background-color: #cecece;
 }
 .list-action a.edit
 {
-	color: #006400;
+	color: #0E4EAD;
 }
 .list-action a.delete
 {

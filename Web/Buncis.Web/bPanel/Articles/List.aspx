@@ -34,8 +34,8 @@
 					</div>
 					<div class="left rightSection">
 						<div class="list-action">
-							<a href="javascript:;" class="action-delete delete">Delete</a>
-							<a href="javascript:;" class="action-edit edit">Edit</a>
+							<a href="javascript:;" class="action action-delete delete">Delete</a>
+							<a href="javascript:;" class="action action-edit edit">Edit</a>
 							<div class="clearFloats"></div>
 						</div>
 					</div>

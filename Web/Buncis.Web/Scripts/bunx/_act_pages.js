@@ -224,8 +224,8 @@
 				var col3 = '<span>' + aData.DisplayDateCreated + '</span>';
 				$('td:eq(3)', nRow).html(col3);
 
-				var col4 = '<a href="javascript:void(0);" rel="' + aData.PageId + '" class="delete">Delete</a>';
-				col4 += '<a href="javascript:void(0);" rel="' + aData.PageId + '" class="edit">Edit</a>';
+				var col4 = '<a href="javascript:void(0);" rel="' + aData.PageId + '" class="action delete"><span>Delete</span></a>';
+				col4 += '<a href="javascript:void(0);" rel="' + aData.PageId + '" class="action edit"><span>Edit</span></a>';
 				$('td:eq(4)', nRow).html(col4);
 			},
 			"aoColumnDefs": [{ "sClass": "icon-col", "aTargets": [0] }, { "sClass": "action-col", "aTargets": [4]}],
