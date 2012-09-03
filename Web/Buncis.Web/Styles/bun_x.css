@@ -5,6 +5,7 @@ body
 	padding: 0px;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 13px;
+	text-decoration: none;
 }
 html, button, input, select, textarea
 {
@@ -235,7 +236,7 @@ label.long
 {
 	height: 1.5em;
 	background-color: #666;
-	font-size: 11px;
+	/*font-size: 11px;*/
 	border: 1px solid #bababa;
 	padding: 4px 10px;
 	color: #eee;
@@ -383,7 +384,7 @@ table.data-table tbody tr td
 table.data-table tbody tr td span.info
 {
 	font-style: italic;
-	font-size: 0.9em;
+	/*font-size: 1em;*/
 }
 table.data-table tbody tr
 {
@@ -402,7 +403,7 @@ table.data-table tbody tr.odd
 }
 table.data-table tbody, table.data-table thead
 {
-	font-size: 1em;
+	/*font-size: 1em;*/
 }
 table.data-table tbody tr td.icon-col
 {
@@ -523,7 +524,7 @@ div.hasHtmlArea
 }
 .news-list-wrapper ul li:hover
 {
-	background-color: #ddd !important;
+	background-color: #eee;
 	cursor: pointer;
 }
 .news-list-wrapper ul li.edited
@@ -545,7 +546,7 @@ div.hasHtmlArea
 .news-dates
 {
 	padding: 5px 0px 0px;
-	font-size: 0.85em;
+	/*font-size: 1em;*/
 	font-style: italic;
 }
 .news-dates span
@@ -585,8 +586,8 @@ div.hasHtmlArea
 }
 .article-item-wrapper:hover
 {
-	background-color: #ccc;
-	cursor: default;
+	background-color: #eee;
+	cursor: pointer;
 }
 .article-title
 {
@@ -601,7 +602,7 @@ div.hasHtmlArea
 .article-info
 {
 	font-style: italic;
-	font-size: 0.9em;
+	/*font-size: 1em;*/
 	margin: 5px 0px 0px 0px;
 	padding: 5px;
 }
@@ -720,7 +721,7 @@ div.hasHtmlArea
 	float: left;
 	height: 32px;
 	padding: 0px 20px;
-	font-size: 16px;
+	/*font-size: 12px;*/
 	font-weight: bold;
 	line-height: 30px;
 }
@@ -768,7 +769,7 @@ div.hasHtmlArea
 #ui-datepicker-div
 {
 	z-index: 99999 !important;
-	font-size: 12px !important;
+	font-size: 10px !important;
 }
 /* #endregion */
 
