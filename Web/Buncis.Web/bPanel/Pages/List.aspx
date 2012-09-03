@@ -5,16 +5,18 @@
 	<script src="/Scripts/bunx/_act_pages.js" type="text/javascript"></script>	
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentPlaceholderMain" runat="server">
-	<div class="buncisContentHeader">
-		<h3>Pages</h3>
+	<div class="buncisContentHeader row">
+		<div class="span12">
+			<h2>Pages</h2>
+		</div>
 	</div>
-	<div class="buncisContentBody">
-		<div class="actionContent">
+	<div class="buncisContentBody row">
+		<div class="actionContent span12">
 			<a href="javascript:;" id="aAddPage" class="button-action addPage">
 				<span class="icon-plus">Add Page</span>
 			</a>
 		</div>
-		<div class="innerContent">
+		<div class="innerContent span12">
 			<table class="data-table table-pages" id="table-pages"> 
 				<colgroup>
 					<col width="1%"</col>
@@ -34,21 +36,23 @@
 				</thead>               
 				<tbody>                                             
 				</tbody>
-			</table>
-			<div class="clearFloats"></div>
+			</table>			
 		</div>
 	</div>
 
 	<!-- popup to edit/update page -->
-	<div style="display: none">
-		<div id="form-page-popup" class="popup-wrapper">
-			<div class="form-page popup-content">
-				<div id="page-wizard" class="swMain">
-					<ul class="page-tabs">
-						<li><a href="#page-tab1" class="tabStart">Section 1: Page Information</a></li>
-						<li><a href="#page-tab2">Section 2: Page Content</a></li>
-					</ul>
-					<div id="page-tab1" class="page-tab1">
+	<div id="form-page-popup" class="popup-wrapper modal hide fade">
+		<div class="modal-header">
+			<h3>Modal header</h3>
+		</div>
+		<div class="form-page popup-content modal-body">
+			<div id="page-wizard" class="swMain">
+				<ul class="nav nav-tabs" id="page-tabs">
+					<li><a href="#page-tab1" class="tabStart active">Section 1: Page Information</a></li>
+					<li><a href="#page-tab2" class="hasEditor">Section 2: Page Content</a></li>
+				</ul>
+				<div class="tab-content">
+					<div id="page-tab1" class="page-tab1 tab-pane active">
 						<div class="left">
 							<div class="form-item">
 								<label>Name</label>
@@ -95,7 +99,7 @@
 						</div>
 						<div class="clearFloats"></div>            
 					</div>
-					<div id="page-tab2" class="page-tab2"> 
+					<div id="page-tab2" class="page-tab2 tab-pane">
 						<div class="form-item hasHtmlArea">
 							<label>Content</label>
 							<div>
@@ -107,22 +111,24 @@
 					</div>
 				</div>
 			</div>
-			<div class="clearFloats"></div>
-			<div class="popup-button-wrapper buttonContainer">
-				<a href="javascript:;" id="btnClose" class="button-whiteOnRed popup-button-close">Close</a>
-				<a href="javascript:;" id="btnSavePage" class="button-whiteOnGreen" rel="0">Save</a>
-			</div>
+		</div>
+		<div class="popup-button-wrapper buttonContainer modal-footer">
+			<a href="javascript:;" id="btnClose" class="button-whiteOnRed popup-button-close">Close</a>
+			<a href="javascript:;" id="btnSavePage" class="button-whiteOnGreen" rel="0">Save</a>
 		</div>
 	</div>
 
 	<!-- popup delete page -->
-	<div style="display:none">
-		<div id="delete-page-popup" class="popup-wrapper">
+	<div id="delete-page-popup" class="popup-wrapper modal hide fade">
+		<div class="modal-header">
+			<h3>Modal header</h3>
+		</div>
+		<div class="modal-body">
 			<p>Are you sure you want to delete page <strong><span id="d-pageName"></span></strong>?</p>
-			<div class="popup-button-wrapper buttonContainer">
-				<a href="javascript:;" id="deletePage-cancel" class="button-whiteOnBlack popup-button-close">No</a>
-				<a href="javascript:;" id="deletePage-confirm" class="button-whiteOnRed">Yes</a>			    
-			</div>
+		</div>
+		<div class="popup-button-wrapper buttonContainer modal-footer">
+			<a href="javascript:;" id="deletePage-cancel" class="button-whiteOnBlack popup-button-close">No</a>
+			<a href="javascript:;" id="deletePage-confirm" class="button-whiteOnRed">Yes</a>			    
 		</div>
 	</div>
 </asp:Content>

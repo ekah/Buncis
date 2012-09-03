@@ -7,7 +7,7 @@
 		btnAddPage: '#aAddPage',
 		pageFormPopup: '#form-page-popup',
 		pageFormElements: '.form-page .form-item :input',
-		pageTabs: '.page-tabs',
+		pageTabs: '#page-tabs',
 		deletePagePopup: '#delete-page-popup',
 		deletedPageName: '#d-pageName',
 		confirmDeletePage: '#deletePage-confirm',
@@ -278,7 +278,7 @@
 	
 	function showPopup(mode, pageId) {
 		if(mode === 'delete') {
-			globalShowPopup(200, 450, pages._elems.deletePagePopup, "Delete Page",
+			globalShowPopup(450, 200, pages._elems.deletePagePopup, "Delete Page",
 				function() {
 					var td = $(pages._elems.tablePages).find('a.delete[rel="' + pageId + '"]').parent();
 					var tr = $(td).parent();
@@ -302,7 +302,7 @@
 				title = 'Add Page';
 			}
 
-			globalShowPopup(662, 960, pages._elems.pageFormPopup, title,
+			globalShowPopup(960, 662, pages._elems.pageFormPopup, title,
 				function() {
 					preparePopupForm();
 					resetForm();
@@ -346,6 +346,7 @@
 	}
 
 	function preparePopupForm() {
+		/*
 		if(!pages.form.wizardHasBeenInitialized) {
 			pages.form.wizard = $(pages._elems.pageWizards).smartWizard({
 				keyNavigation: false,
@@ -367,6 +368,20 @@
 		else {
 			$(pages._elems.pageTabs).find('a.tabStart').click();
 		}
+		*/
+
+		$(pages._elems.pageTabs + ' a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+
+		$(pages._elems.pageTabs + ' a.hasEditor').on('shown', function (e) {
+			if($(pages._elems.txtPageContent).is(':visible')) {
+				$(pages._elems.txtPageContent).htmlarea('dispose'); 
+				$(pages._elems.txtPageContent).htmlarea();
+			}
+		});
+
 		pages.form.validators = $(pages._elems.pageFormElements).validator({
 			effect: 'floatingWall',
 			container: window._elems.errorContainer,

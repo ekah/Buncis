@@ -88,7 +88,29 @@ function globalShowMessages(msg) {
 	toastr.success(messages, 'It\' a Success!');
 }
 
-function globalShowPopup(height, width, selector, title, _completeCallback, _closedCallback) {
+function globalShowPopup(width, height, selector, title, _completeCallback, _closedCallback) {
+	$(selector).modal({
+		keyboard: false,
+		backdrop: false,
+		show: false
+	})
+
+	$(selector).on('shown', function() {
+		$(selector).find('.modal-header h3').html(title);
+		if(_completeCallback) {
+			_completeCallback();
+		}
+	});
+
+	$(selector).on('hidden', function() {
+		if(_closedCallback) {
+			_closedCallback();
+		}
+	});
+
+	$(selector).modal('show');
+
+	/*
 	$.colorbox({
 		height: height,
 		width: width,
@@ -108,4 +130,5 @@ function globalShowPopup(height, width, selector, title, _completeCallback, _clo
 			}
 		}
 	});
+	*/
 }

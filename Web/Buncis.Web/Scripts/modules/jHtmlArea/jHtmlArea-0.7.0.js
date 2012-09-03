@@ -58,7 +58,7 @@
 
 				// custom
 				var cssLink = document.createElement("link")
-				cssLink.href = "/styles/bunIFrame.css";
+				cssLink.href = "/styles/bun_xiframe.css";
 				cssLink.rel = "stylesheet";
 				cssLink.type = "text/css";
 				iframe.contents().find('head').get(0).appendChild(cssLink);

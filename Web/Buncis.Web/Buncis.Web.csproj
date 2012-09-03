@@ -130,6 +130,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="bootstrap\css\bootstrap.css" />
+    <Content Include="bootstrap\css\bootstrap.min.css" />
+    <Content Include="bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="bootstrap\js\bootstrap.js" />
+    <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bPanel\Account\Login.aspx" />
     <Content Include="bPanel\Articles\List.aspx" />
     <Content Include="bPanel\DailyBread\List.aspx" />
@@ -357,11 +365,16 @@
     <Content Include="Scripts\modules\tools\scrollable.js" />
     <Content Include="Scripts\modules\tools\scrollable.navigator.js" />
     <Content Include="Scripts\spin.js" />
-    <Content Include="Styles\bunIFrame.css" />
+    <Content Include="Styles\bun_xarticles.css" />
+    <Content Include="Styles\bun_xiframe.css" />
     <Content Include="Scripts\modules\tools\validator.js" />
     <Content Include="Styles\bm.css" />
+    <Content Include="Styles\bun_xcommon.css" />
     <Content Include="Styles\bun_x.css" />
     <Content Include="Styles\bun.css" />
+    <Content Include="Styles\bun_xnews.css" />
+    <Content Include="Styles\bun_xpages.css" />
+    <Content Include="Styles\bun_x_bak.css" />
     <Content Include="Styles\colorbox\colorbox.css" />
     <Content Include="Styles\colorbox\images\border1.png" />
     <Content Include="Styles\colorbox\images\border2.png" />
