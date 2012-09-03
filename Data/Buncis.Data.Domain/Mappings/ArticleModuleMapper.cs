@@ -12,6 +12,7 @@ namespace Buncis.Data.Domain.Mappings
             Id(x => x.ArticleId).GeneratedBy.Identity().Column("ArticleId");
             Map(x => x.ArticleTitle).Column("ArticleTitle").Not.Nullable().Length(250);
             Map(x => x.ArticleTeaser).Column("ArticleTeaser").Not.Nullable().Length(500);
+            Map(x => x.ArticleUrl).Column("FriendlyUrl").Not.Nullable().Length(250);
             Map(x => x.ArticleContent).Column("ArticleContent").Not.Nullable().CustomType("StringClob");
             Map(x => x.DateCreated).Column("DateCreated").Not.Nullable();
             Map(x => x.DateLastUpdated).Column("DateLastUpdated").Not.Nullable();

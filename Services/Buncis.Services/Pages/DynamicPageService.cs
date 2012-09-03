@@ -23,11 +23,11 @@ namespace Buncis.Services.Pages
 			_dynamicPageFilters = dynamicPageFilters;
 		}
 
-		public ViewModelBuncisPage GetPageByFriendlyUrl(int clientId, string friendlyUrl)
+		public ViewModelBuncisPage GetPageByPageUrl(int clientId, string pageUrl)
 		{
 			var expression = _dynamicPageFilters.Init()
 				.GetByClientId(clientId)
-				.GetByFriendlyUrl(friendlyUrl)
+                .GetByPageUrl(pageUrl)
 				.FilterExpression;
 
 			var pageFromDb = _pageRepository.FindBy(expression);

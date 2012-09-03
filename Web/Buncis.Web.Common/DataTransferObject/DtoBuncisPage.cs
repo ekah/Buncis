@@ -12,7 +12,7 @@
 		public string MetaDescription { get; set; }
 		public string DisplayDateCreated { get; set; }
 		public string DisplayDateLastUpdated { get; set; }
-		public string FriendlyUrl { get; set; }
+		public string PageUrl { get; set; }
 		public bool IsHomePage { get; set; }
 	}
 }

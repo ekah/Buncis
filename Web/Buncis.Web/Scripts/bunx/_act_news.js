@@ -47,7 +47,7 @@
 		dateExpired: '',
 		dateCreated: '',
 		dateLastUpdated: '',
-		friendlyUrl: '',
+		newsUrl: '',
 		epochDatePublished: '', // epoch date from server
 		epochDateExpired: '',
 		formattedDatePublished: '', // display date as in 4-8-2012
@@ -140,7 +140,7 @@
 			
 			eNews.set('newsTitle', title);
 			eNews.set('newsTeaser', teaser);
-			eNews.set('friendlyUrl', url);
+			eNews.set('newsUrl', url);
 			eNews.set('newsContent', content);
 			eNews.set('formattedDatePublished', formattedPublished);
 			eNews.set('formattedDateExpired', formattedExpired);
@@ -229,7 +229,7 @@
 				actualDateExpired: currentDatePlusOneMonth,
 				formattedDatePublished: _helpers.dateFn.convertDateToDefaultFormattedString(currentDate),
 				formattedDateExpired: _helpers.dateFn.convertDateToDefaultFormattedString(currentDatePlusOneMonth),
-				friendlyUrl: ''
+				newsUrl: ''
 			});
 			var popupView = new _news.NewsFormView({
 				el: $(_news._elems.editPopup),
@@ -338,7 +338,7 @@
 				DisplayDatePublished: '',
 				DisplayDateExpired: '',
 				DisplayDateLastUpdated: '',
-				FriendlyUrl: oData.get('friendlyUrl'),
+				NewsUrl: oData.get('newsUrl'),
 				DateCreated: '/Date(1341158400000)/',
 				DateLastUpdated: '/Date(1341158400000)/',
 				DatePublished: oData.get('epochDatePublished'),
@@ -422,7 +422,7 @@
 					actualDateExpired: _helpers.dateFn.convertEpochToDate(_helpers.dateFn.cleanDotNetDateJson(iNewsItem.DateExpired)).toString(),
 					formattedDatePublished: _helpers.dateFn.convertEpochToDefaultFormattedString(_helpers.dateFn.cleanDotNetDateJson(iNewsItem.DatePublished)),
 					formattedDateExpired: _helpers.dateFn.convertEpochToDefaultFormattedString(_helpers.dateFn.cleanDotNetDateJson(iNewsItem.DateExpired)),
-					friendlyUrl: iNewsItem.FriendlyUrl
+					newsUrl: iNewsItem.NewsUrl
 				});
 
 				// put model instance to collections

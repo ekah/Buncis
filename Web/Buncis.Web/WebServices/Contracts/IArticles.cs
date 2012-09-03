@@ -28,6 +28,6 @@ namespace Buncis.Web.WebServices.Contracts
 
 		[OperationContract]
 		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
-		Response BPDeleteArticle(int clientId, int newsId);
+        Response BPDeleteArticle(int clientId, int articleId);
 	}
 }

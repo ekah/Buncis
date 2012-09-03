@@ -7,7 +7,7 @@ namespace Buncis.Framework.Core.Filters
         IDynamicPageFilters Init();
         IDynamicPageFilters GetByClientId(int clientId);
         IDynamicPageFilters GetByPageId(int pageId);
-        IDynamicPageFilters GetByFriendlyUrl(string friendlyUrl);
+        IDynamicPageFilters GetByPageUrl(string pageUrl);
         IDynamicPageFilters GetNotDeleted();
     }
 }

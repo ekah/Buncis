@@ -11,7 +11,7 @@ namespace Buncis.Data.Domain.DailyBread
         public virtual string DailyBreadTitle { get; set; }
         public virtual string DailyBreadSummary { get; set; }
         public virtual string DailyBreadContent { get; set; }
-        public virtual string FriendlyUrl { get; set; }
+        public virtual string DailyBreadUrl { get; set; }
         public virtual int ClientId { get; set; }
         public virtual bool IsDeleted { get; set; }
         public virtual DateTime DateCreated { get; set; }

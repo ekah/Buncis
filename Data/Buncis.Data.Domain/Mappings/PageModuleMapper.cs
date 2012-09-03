@@ -14,7 +14,7 @@ namespace Buncis.Data.Domain.Mappings
             Map(x => x.PageMenuName).Column("PageMenuName").Not.Nullable().Length(50);
             Map(x => x.PageDescription).Column("PageDescription").Length(500);
             Map(x => x.PageContent).Column("PageContent").Not.Nullable().CustomType("StringClob");
-            Map(x => x.FriendlyUrl).Column("FriendlyUrl").Not.Nullable().Length(1000);
+            Map(x => x.PageUrl).Column("FriendlyUrl").Not.Nullable().Length(1000);
             Map(x => x.ParentPageId).Column("ParentPageId");
             Map(x => x.MetaTitle).Column("MetaTitle").Not.Nullable().Length(255);
             Map(x => x.MetaDescription).Column("MetaDescription").Not.Nullable().Length(500);

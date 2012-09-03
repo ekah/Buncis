@@ -93,7 +93,7 @@
 							<label>Friendly URL</label>
 							<input type="text" required="required" id="txtNewsUrl" 
 								class="medium" name="txtNewsUrl" required" required="required"
-								data-message="News Url is required" value="{{attributes.friendlyUrl}}" />
+								data-message="News Url is required" value="{{attributes.newsUrl}}" />
 						</div>				
 					</div>
 					<div id="news-tab2" class="news-tab2">
@@ -123,7 +123,7 @@
             </div>
 		</script>
 		
-        <div id="news-edit-popup"></div>
-		<div id="news-delete-popup"></div>
+        <div id="news-edit-popup" class="popup-wrapper"></div>
+		<div id="news-delete-popup" class="popup-wrapper"></div>
     </div>    
 </asp:Content>

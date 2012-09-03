@@ -12,7 +12,7 @@ namespace Buncis.Data.Domain.News
 		public virtual DateTime DateExpired { get; set; }
 		public virtual int ClientId { get; set; }
 		public virtual bool IsDeleted { get; set; }
-		public virtual string FriendlyUrl { get; set; }
+        public virtual string NewsUrl { get; set; }
 		public virtual DateTime DateCreated { get; set; }
 		public virtual DateTime DateLastUpdated { get; set; }
 	}

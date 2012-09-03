@@ -84,7 +84,7 @@ namespace Buncis.Services.News
             news.DatePublished = news.DatePublished.DatePart();
 
             NewsItem newsItem;
-        	if (news.NewsId <= 0)
+            if (news.NewsId <= 0)
             {
                 newsItem = new NewsItem();
                 newsItem.InjectFrom(news);
@@ -109,7 +109,7 @@ namespace Buncis.Services.News
                 }
             }
 
-			ViewModelBuncisNewsItem pingedNews = GetNewsItem(newsItem.NewsId);
+            ViewModelBuncisNewsItem pingedNews = GetNewsItem(newsItem.NewsId);
             validator.IsValid = true;
             validator.RelatedObject = pingedNews;
             return validator;

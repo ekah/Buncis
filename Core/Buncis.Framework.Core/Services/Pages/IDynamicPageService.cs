@@ -6,7 +6,7 @@ namespace Buncis.Framework.Core.Services.Pages
 {
 	public interface IDynamicPageService
 	{
-		ViewModelBuncisPage GetPageByFriendlyUrl(int clientId, string friendlyUrl);
+		ViewModelBuncisPage GetPageByPageUrl(int clientId, string pageUrl);
 		ViewModelBuncisPage GetPage(int pageId);
 		IEnumerable<ViewModelBuncisPage> GetAvailablePages(int clientId);
 		ValidationDictionary<ViewModelBuncisPage> SavePage(int clientId, ViewModelBuncisPage page);

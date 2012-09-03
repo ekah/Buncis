@@ -62,10 +62,10 @@ namespace Buncis.Services.Filters
 			return this;
 		}
 
-		public IDynamicPageFilters GetByFriendlyUrl(string friendlyUrl)
+		public IDynamicPageFilters GetByPageUrl(string pageUrl)
 		{
-			Expression urlProperty = Expression.Property(argParam, "FriendlyUrl");
-			ConstantExpression val1 = Expression.Constant(friendlyUrl, typeof(string));
+			Expression urlProperty = Expression.Property(argParam, "PageUrl");
+            ConstantExpression val1 = Expression.Constant(pageUrl, typeof(string));
 			Expression e1 = Expression.Equal(urlProperty, val1);
 
 			_expression = Expression.AndAlso(_expression, e1);

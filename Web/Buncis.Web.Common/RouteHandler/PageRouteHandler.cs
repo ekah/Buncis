@@ -59,7 +59,7 @@ namespace Buncis.Web.Common.RouteHandler
 			{
 				var pageService = IoC.Resolve<IDynamicPageService>();
 				var clientId = SystemSettings.ClientId;
-				var pageFromDb = pageService.GetPageByFriendlyUrl(clientId, pageName);
+				var pageFromDb = pageService.GetPageByPageUrl(clientId, pageName);
 				pageId = pageFromDb == null ? (int?)null : pageFromDb.PageId;
 				return pageFromDb != null;
 			}

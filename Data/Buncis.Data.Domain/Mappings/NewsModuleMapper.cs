@@ -17,7 +17,7 @@ namespace Buncis.Data.Domain.Mappings
 			Map(x => x.DateExpired).Column("DateExpired").Not.Nullable();
             Map(x => x.ClientId).Column("ClientId").Not.Nullable();
             Map(x => x.IsDeleted).Column("IsDeleted").Not.Nullable();
-            Map(x => x.FriendlyUrl).Column("FriendlyUrl").Not.Nullable().Length(250);
+            Map(x => x.NewsUrl).Column("FriendlyUrl").Not.Nullable().Length(250);
 			Map(x => x.DateCreated).Column("DateCreated").Not.Nullable();
 			Map(x => x.DateLastUpdated).Column("DateLastUpdated").Not.Nullable();
         }

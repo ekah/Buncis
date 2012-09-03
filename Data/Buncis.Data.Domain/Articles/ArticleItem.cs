@@ -7,6 +7,7 @@ namespace Buncis.Data.Domain.Articles
         public virtual int ArticleId { get; set; }
         public virtual string ArticleTitle { get; set; }
         public virtual string ArticleTeaser { get; set; }
+        public virtual string ArticleUrl { get; set; }
         public virtual string ArticleContent { get; set; }
         public virtual DateTime DateCreated { get; set; }
         public virtual DateTime DateLastUpdated { get; set; }

@@ -186,6 +186,9 @@ label.form-item-reset
 
 
 /* #region form */
+.standard-form 
+{
+}
 .form-item
 {
 	padding: 4px;

@@ -43,7 +43,7 @@
 		MetaDescription: "",
 		DisplayDateCreated: "",
 		DisplayDateLastUpdated: "",
-		FriendlyUrl: "",
+		PageUrl: "",
 		IsHomePage: false,
 	};
 
@@ -149,7 +149,7 @@
 			template.PageContent = $(pages._elems.txtPageContent).val();
 			template.MetaTitle = $(pages._elems.txtPageMetaTitle).val();
 			template.MetaDescription = $(pages._elems.txtPageMetaDescription).val();
-			template.FriendlyUrl = $(pages._elems.txtPageUrl).val();
+			template.PageUrl = $(pages._elems.txtPageUrl).val();
 			template.IsHomePage = $(pages._elems.chkIsHomePage).is(':checked');
 
 			oData = {
@@ -249,7 +249,7 @@
 	function bind(data) {
 		$(pages._elems.txtPageName).val(data.PageName);
 		$(pages._elems.txtPageDescription).val(data.PageDescription);
-		$(pages._elems.txtPageUrl).val(data.FriendlyUrl);
+		$(pages._elems.txtPageUrl).val(data.PageUrl);
 		$(pages._elems.txtPageMenuName).val(data.PageMenuName);
 		$(pages._elems.txtPageMetaTitle).val(data.MetaTitle);
 		$(pages._elems.txtPageMetaDescription).val(data.MetaDescription);

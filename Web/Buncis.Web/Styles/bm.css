@@ -4,14 +4,8 @@
     font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;
     font-size: 13px;
     color: #fff;       
-	background: rgb(48,34,47); /* Old browsers */
-	background: -moz-linear-gradient(left,  rgba(48,34,47,1) 0%, rgba(45,24,21,1) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(48,34,47,1)), color-stop(100%,rgba(45,24,21,1))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(left,  rgba(48,34,47,1) 0%,rgba(45,24,21,1) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(left,  rgba(48,34,47,1) 0%,rgba(45,24,21,1) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(left,  rgba(48,34,47,1) 0%,rgba(45,24,21,1) 100%); /* IE10+ */
-	background: linear-gradient(left,  rgba(48,34,47,1) 0%,rgba(45,24,21,1) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30222f', endColorstr='#2d1815',GradientType=1 ); /* IE6-9 */
+	background: transparent url("/images/bm/bg-full.jpg") no-repeat;
+	background-size: cover;
 }
 
 html, button, input, select, textarea {
@@ -28,17 +22,19 @@ p, li {
 }
 
 /* #region page components */
-.body {
-	background: transparent url("/images/bm/bg.png") no-repeat;
+.body {	
 	width: 1004px;
-	margin: 0px auto;
+	margin: 0px auto;	
+	-moz-background-size: cover;
+	-webkit-background-size: cover; 
 	/*min-height: 968px; /* don't forget to remove this */
 }
+/*
 .body2 {
 	background: transparent url("/images/bm/bg5.png") repeat-y;
 	width: 1004px;
 	margin: 0px auto;
-}
+}*/
 .wrapper {		
 	width: 960px;
 	margin: 0px auto;

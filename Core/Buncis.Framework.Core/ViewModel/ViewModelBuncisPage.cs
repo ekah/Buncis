@@ -40,12 +40,12 @@ namespace Buncis.Framework.Core.ViewModel
 				return DateLastUpdated.ToBuncisLongFormatString();
 			}
 		}
-		public string FriendlyUrl { get; set; }
+        public string PageUrl { get; set; }
 		public bool IsHomePage
 		{
 			get
 			{
-				return FriendlyUrl.Equals("/", StringComparison.OrdinalIgnoreCase);
+                return PageUrl.Equals("/", StringComparison.OrdinalIgnoreCase);
 			}
 		}
 	}

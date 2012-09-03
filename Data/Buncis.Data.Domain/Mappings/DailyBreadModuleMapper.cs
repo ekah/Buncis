@@ -17,7 +17,7 @@ namespace Buncis.Data.Domain.Mappings
             Map(x => x.DailyBreadTitle).Column("DailyBreadTitle").Not.Nullable().Length(250);
             Map(x => x.DailyBreadSummary).Column("DailyBreadSummary").Not.Nullable().Length(500);
             Map(x => x.DailyBreadContent).Column("DailyBreadContent").Not.Nullable().CustomType("StringClob");
-            Map(x => x.FriendlyUrl).Column("FriendlyUrl").Not.Nullable().Length(250);
+            Map(x => x.DailyBreadUrl).Column("FriendlyUrl").Not.Nullable().Length(250);
             Map(x => x.ClientId).Column("ClientId").Not.Nullable();
             Map(x => x.IsDeleted).Column("IsDeleted").Not.Nullable();
             Map(x => x.DateCreated).Column("DateCreated").Not.Nullable();

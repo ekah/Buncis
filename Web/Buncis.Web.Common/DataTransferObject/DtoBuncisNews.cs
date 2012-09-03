@@ -12,7 +12,7 @@ namespace Buncis.Web.Common.DataTransferObject
         public string DisplayDatePublished { get; set; }
         public string DisplayDateExpired { get; set; }
         public string DisplayDateLastUpdated { get; set; }
-        public string FriendlyUrl { get; set; }
+        public string NewsUrl { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateLastUpdated { get; set; }
         public DateTime DatePublished { get; set; }

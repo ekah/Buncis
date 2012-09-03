@@ -145,6 +145,7 @@
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\arrow-next.png" />
     <Content Include="Images\arrow-prev.png" />
+    <Content Include="Images\bm\bg-full.jpg" />
     <Content Include="Images\bm\construction.png" />
     <Content Include="Images\bm\announcements_pic.png" />
     <Content Include="Images\bm\article-label.png" />

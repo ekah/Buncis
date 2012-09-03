@@ -108,10 +108,7 @@
 						</div>
 					</div> 
 				</div>	
-			</div>					
-		</div>
-		<div class="body2">
-			<div class="wrapper">
+
 				<div class="content-bottom">
 					<div class="frame-container article">
 						<div class="frame-label article-frame-label"><img src="/images/bm/article-label.png"/><span>Articles</span></div>
@@ -150,7 +147,8 @@
 						<div class="big-icon"><img src="/images/bm/community_pic.png" /><span>Communities</span></div>
 						<div class="clearFloats"></div>
 					</div>
-				</div>				
+				</div>		
+                		
 				<div class="footer">
 					<div class="contact-us">
 						Contact Us: <br/>

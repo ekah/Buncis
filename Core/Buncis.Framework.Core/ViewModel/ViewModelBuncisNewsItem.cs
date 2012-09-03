@@ -25,7 +25,7 @@ namespace Buncis.Framework.Core.ViewModel
 				return DateExpired.DatePart().ToBuncisShortFormatString();
             }
         }
-        public string FriendlyUrl { get; set; }
+        public string NewsUrl { get; set; }
         public DateTime DateCreated { get; set; }
         public string DisplayDateCreated
         {
