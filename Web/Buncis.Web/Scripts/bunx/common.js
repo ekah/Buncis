@@ -1,6 +1,6 @@
 ﻿window._elems = window._elems || {};
 window._elems.errorContainer = '#errors';
-window._elems.colorboxArea = '#cboxLoadedContent';
+window._elems.colorboxArea = '.modal-body';
 
 $(document).ready(function () {
 	$('table.data-table tbody tr:nth-child(odd)').addClass('odd');
@@ -93,7 +93,15 @@ function globalShowPopup(width, height, selector, title, _completeCallback, _clo
 		keyboard: false,
 		backdrop: false,
 		show: false
-	})
+	}).css({
+		width: 'auto',
+		'margin-left': function () {
+			return -($(this).width() / 2);
+		},
+		'top': function () {
+			return (($(window).height() - $('.modal').height()) / 2);
+		}
+	});
 
 	$(selector).on('shown', function() {
 		$(selector).find('.modal-header h3').html(title);
@@ -109,26 +117,4 @@ function globalShowPopup(width, height, selector, title, _completeCallback, _clo
 	});
 
 	$(selector).modal('show');
-
-	/*
-	$.colorbox({
-		height: height,
-		width: width,
-		title: title,
-		href: selector,
-		inline: true,
-		overlayClose: false,
-		scrolling: false,
-		onComplete: function() {
-			if(_completeCallback) {
-				_completeCallback();
-			}
-		},
-		onClosed: function() {
-			if(_closedCallback) {
-				_closedCallback();
-			}
-		}
-	});
-	*/
 }

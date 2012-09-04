@@ -24,11 +24,13 @@
 		<div class="container login-container">
 			<div id="topBarWrapper" class="row">
 				<div class="span12">
-					<div id="topBar" class="row well well-small">					
-						<div id="logo" class="span4"><img src="/images/logo.png" alt="Buncis Logo" /></div>
-						<div id="loginInfo" class="span3 offset3 pull-right">Login Info goes here</div>
-						<div class="clearfix"></div>
-					</div>		
+					<div class="well well-small">
+						<div id="topBar" class="row">
+							<div id="logo" class="span4"><img src="/images/logo.png" alt="Buncis Logo" /></div>
+							<div id="loginInfo" class="span3 offset3 pull-right">Login Info goes here</div>
+							<div class="clearfix"></div>
+						</div>		
+					</div>
 				</div>
 			</div>
 			<div id="contentWrapper" class="row">
@@ -53,7 +55,7 @@
 												data-message="Password is required"/>
 										</div>
 									</div>		
-									<div class="form-item buttonContainer">
+									<div class="form-item buttonContainer pull-right">
 										<input type="submit" class="button-gray login btn btn-primary" id="btnLogin" runat="server" clientidmode="Static" value="Login" />
 										<input type="button" class="button-gray login btn" value="Reset" />
 									</div>

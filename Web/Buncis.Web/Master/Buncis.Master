@@ -44,28 +44,36 @@
 </head>
 <body class="buncisBody">
 	<form id="form1" runat="server">
-	<div class="container">
-		<div id="topBarWrapper" class="row">
-			<div class="span12">
-				<div id="topBar" class="row well well-small">
-					<div id="logo" class="span4"><img src="/images/logo.png" alt="Buncis Logo" /></div>
-					<div id="loginInfo" class="span3 offset3">
-						<bun:LoginInfo runat="server" id="loginInfo1" clientidmode="Static"></bun:LoginInfo>
-					</div>
-					<div class="clearFloats"></div>
-				</div>		
+	<div id="topBarWrapper">
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+					<div id="topBar" class="row">
+						<div id="logo" class="span4">
+							<!--<img src="/images/logo.png" alt="Buncis Logo" />-->
+						</div>
+						<div id="loginInfo" class="span3 offset4">
+							<bun:LoginInfo runat="server" id="loginInfo1" clientidmode="Static"></bun:LoginInfo>
+						</div>
+						<div class="clearFloats"></div>
+					</div>		
+				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="buncisContent span12">
-				<asp:ContentPlaceHolder ID="contentPlaceholderMain" runat="server"></asp:ContentPlaceHolder>
-			</div>
-		</div>		
-		<div id="errors" style="display:none">
-			<div class="wall-close"><a href="javascript:void(0);"><span class="icon-wallclose">&nbsp;</span></a></div>
-			<div class="wallWrapper">
-				<h3><strong>Oops! Please fix this first</strong></h3>
-				<div class="innerWall"></div>
+	</div>
+	<div id="bpanel-content">
+		<div class="container">
+			<div class="row">
+				<div class="buncisContent span12">
+					<asp:ContentPlaceHolder ID="contentPlaceholderMain" runat="server"></asp:ContentPlaceHolder>
+				</div>
+			</div>		
+			<div id="errors" style="display:none">
+				<div class="wall-close"><a href="javascript:void(0);"><span class="icon-wallclose">&nbsp;</span></a></div>
+				<div class="wallWrapper">
+					<h3><strong>Oops! Please fix this first</strong></h3>
+					<div class="innerWall"></div>
+				</div>
 			</div>
 		</div>
 	</div>

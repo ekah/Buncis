@@ -306,6 +306,7 @@
 				function() {
 					preparePopupForm();
 					resetForm();
+					
 					if(mode === 'edit') {
 						_helpers.blockPopupDefault();
 						getPage(pageId, function(data) {							
@@ -327,15 +328,11 @@
 							collection = pages.pageTable.fnGetData();
 							dData = collection[aPos];
 							pages.form.editedData = dData;
-
-							// post after setting value
-							//$(pages._elems.chkIsHomePage).button();
 						});
 						setTimeout(function() { _helpers.unblockPopupDefault(); }, 500);
 					}
 					else {
 						// add form here
-						//$(pages._elems.chkIsHomePage).button();
 					}
 				},
 				function() {
@@ -345,43 +342,31 @@
 		}
 	}
 
-	function preparePopupForm() {
-		/*
-		if(!pages.form.wizardHasBeenInitialized) {
-			pages.form.wizard = $(pages._elems.pageWizards).smartWizard({
-				keyNavigation: false,
-				enableAllSteps: true,
-				enableFinishButton: false,
-				labelNext:'', 
-				labelPrevious:'', 
-				labelFinish:'',
-				transitionEffect: 'slideleft',
-				onShowStep: function (step) {
-					if($(pages._elems.txtPageContent).is(':visible')) {
-						$(pages._elems.txtPageContent).htmlarea('dispose'); 
-						$(pages._elems.txtPageContent).htmlarea();
-					}
-				}
-			});
-			pages.form.wizardHasBeenInitialized = true;
-		}
-		else {
-			$(pages._elems.pageTabs).find('a.tabStart').click();
-		}
-		*/
-
-		$(pages._elems.pageTabs + ' a').click(function (e) {
-			e.preventDefault();
-			$(this).tab('show');
+	function preparePopupForm() {	
+		$(pages._elems.pageTabs + ' a').on('click', function (evt) {
+			evt.preventDefault();
+			
+			$(".tab-pane").removeClass("active");
+			$(".tab-btn").removeClass("active");
+			
+			$(this).parent().addClass("active in");
+			$($(this).attr('href')).addClass("active");
+			
+			if($(this).hasClass('hasEditor')) {
+				$(pages._elems.txtPageContent).htmlarea('dispose'); 
+				$(pages._elems.txtPageContent).htmlarea();
+			}
 		});
-
+		
 		$(pages._elems.pageTabs + ' a.hasEditor').on('shown', function (e) {
 			if($(pages._elems.txtPageContent).is(':visible')) {
 				$(pages._elems.txtPageContent).htmlarea('dispose'); 
 				$(pages._elems.txtPageContent).htmlarea();
 			}
 		});
-
+		
+		$(pages._elems.pageTabs + ' a:first').trigger('click');
+		
 		pages.form.validators = $(pages._elems.pageFormElements).validator({
 			effect: 'floatingWall',
 			container: window._elems.errorContainer,

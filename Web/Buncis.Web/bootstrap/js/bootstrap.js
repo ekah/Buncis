@@ -174,12 +174,12 @@
  /* BUTTON PUBLIC CLASS DEFINITION
   * ============================== */
 
-  var Button = function (element, options) {
+  var Bs_Button = function (element, options) {
     this.$element = $(element)
-    this.options = $.extend({}, $.fn.button.defaults, options)
+    this.options = $.extend({}, $.fn.bs_button.defaults, options)
   }
 
-  Button.prototype.setState = function (state) {
+  Bs_Button.prototype.setState = function (state) {
     var d = 'disabled'
       , $el = this.$element
       , data = $el.data()
@@ -198,7 +198,7 @@
     }, 0)
   }
 
-  Button.prototype.toggle = function () {
+  Bs_Button.prototype.toggle = function () {
     var $parent = this.$element.parent('[data-toggle="buttons-radio"]')
 
     $parent && $parent
@@ -212,22 +212,22 @@
  /* BUTTON PLUGIN DEFINITION
   * ======================== */
 
-  $.fn.button = function (option) {
+  $.fn.bs_button = function (option) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('button')
         , options = typeof option == 'object' && option
-      if (!data) $this.data('button', (data = new Button(this, options)))
+      if (!data) $this.data('button', (data = new Bs_Button(this, options)))
       if (option == 'toggle') data.toggle()
       else if (option) data.setState(option)
     })
   }
 
-  $.fn.button.defaults = {
+  $.fn.bs_button.defaults = {
     loadingText: 'loading...'
   }
 
-  $.fn.button.Constructor = Button
+  $.fn.bs_button.Constructor = Bs_Button
 
 
  /* BUTTON DATA-API
@@ -237,7 +237,7 @@
     $('body').on('click.button.data-api', '[data-toggle^=button]', function ( e ) {
       var $btn = $(e.target)
       if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
-      $btn.button('toggle')
+      $btn.bs_Button('toggle')
     })
   })
 

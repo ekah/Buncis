@@ -32,7 +32,7 @@
 			-moz-border-radius: 10px;
 			-webkit-border-radius: 10px;
 			border: solid 1px #444;		
-			box-shadow: 0px 0px 5px 2px #555;	
+			box-shadow: 0px 0px 5px 2px #fff;	
 		}
 		.comingsoon .uheader {
 			padding: 30px 50px 0px;
