@@ -2,7 +2,7 @@
 
 (function (pages) {
 	pages._elems = pages._elems || {
-		pageWizards: '#page-wizard',
+		//pageWizards: '#page-wizard',
 		tablePages: '#table-pages',
 		btnAddPage: '#aAddPage',
 		pageFormPopup: '#form-page-popup',
@@ -212,7 +212,7 @@
 				{ "mDataProp": null }
 			],
 			"fnRowCallback": function (nRow, aData, iDisplayIndex) {                
-				var col0class = aData.IsHomePage ? 'icon icon-home' : 'icon icon-file';
+				var col0class = aData.IsHomePage ? 'icon-home' : 'icon-file';
 				var col0 = '<a href="javascript:void(0);" class="pages view" rel="' + aData.PageId + '">';
 				col0 += '<i class="' + col0class + '">&nbsp;</i>';
                 col0 += '</a>';
@@ -442,8 +442,8 @@
 	};
 
 	pages.form = {
-		wizard: {},
-		wizardHasBeenInitialized: false,
+		//wizard: {},
+		//wizardHasBeenInitialized: false,
 		validators: {},
 		deletedPageName: '',   
 		editedRow: {},

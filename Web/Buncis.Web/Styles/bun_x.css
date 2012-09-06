@@ -107,3 +107,41 @@ a.action {
 .dataTables_paginate.paging_full_numbers span a.paginate_active {
 	font-weight: bold;
 }
+.tableFoot {
+	height: 2em;
+	padding: 0.5em;
+	background-color: #fff;
+	border-top: solid 2px #777;
+}
+ul.list-item-container {
+    list-style-type: none;
+	padding: 0px;
+	margin: 20px 10px !important;
+}
+li.list-item {
+    display: block;
+	padding: 10px;
+	border: solid 1px #E1E1E8;
+	margin: 5px 0px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+li.list-item:hover {
+    background-color: #eee;
+	cursor: pointer;
+}
+.list-action {
+    float: right;
+}
+.list-item .leftSection {
+	width:80%;
+	border-right:#dddddd solid 1px;
+	padding-right: 10px;
+}
+.list-item .rightSection {
+	width:18%;
+}
+#ui-datepicker-div {
+	font-size: 11px !important;
+}

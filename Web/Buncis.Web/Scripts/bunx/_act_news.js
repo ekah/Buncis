@@ -3,7 +3,7 @@
 		detailPopup: '#news-detail-popup',
 		editPopup: '#news-edit-popup',
 		deletePopup: '#news-delete-popup',
-		newsWizards: '#news-wizard',
+		//newsWizards: '#news-wizard',
 		txtNewsTitle: '#txtNewsTitle',
 		txtNewsContent: '#txtNewsContent',
 		txtNewsTeaser: '#txtNewsTeaser',
@@ -17,16 +17,16 @@
 		newsEditPopupTemplate: '#news-edit-popup-template',
 		newsConfirmDeletePopupTemplate: '#news-confirmDelete-popup-template',
 		newsItemTemplate: '#news-item-template',
-		newsItemContainer: '.newsItem-container'
+		newsItemContainer: '.news-item-container'
 	};
 	oNews.form = {
-		wizardHasBeenInitialized: false,
+		//wizardHasBeenInitialized: false,
 		validators: {},
-		wizard: {},
+		//wizard: {},
 		reset: function() {
-			this.wizardHasBeenInitialized = false;
+			//this.wizardHasBeenInitialized = false;
 			this.validators = {};
-			this.wizard = {};
+			//this.wizard = {};
 		}
 	};
 	oNews.newsList = {};
@@ -98,7 +98,6 @@
 			deletePopupView.render();
 			globalShowPopup(210, 400, _news._elems.deletePopup, 'Delete News', 
 				function() {
-					$.colorbox.resize();					
 				}, 
 				function() {
 					deletePopupView.undelegateEvents();
@@ -147,13 +146,11 @@
 			eNews.set('epochDatePublished', '/Date(' + datePublished.getTime() + stzo + itzo + '00)/');
 			eNews.set('epochDateExpired', '/Date(' + dateExpired.getTime() + stzo + itzo + '00)/');			
 			_news.fn.saveNews(eNews, function(result) {
-				eNews.set('newsId', result.NewsId);
-				eNews.set('datePublished', result.DisplayDatePublished);
-				eNews.set('dateExpired', result.DisplayDateExpired);				
-
-				$.colorbox.close();
-
 				var msg = '';
+                eNews.set('newsId', result.NewsId);
+				eNews.set('datePublished', result.DisplayDatePublished);
+				eNews.set('dateExpired', result.DisplayDateExpired);
+                globalClosePopup();				
 				if(fMode === 'edit') {
 					eNews.set('recentlyEdited', true);
 					msg = 'Succesfully edited News data';
@@ -183,7 +180,7 @@
 			_news.fn.deleteNews(newsId, function() {
 				_news.newsList.remove(this.model);
 				$(_news._elems.newsItemContainer).find('li[rel="' + newsId + '"]').remove();
-				$.colorbox.close();				
+                globalClosePopup();
 				globalShowMessages(["System has succesfully deleted News " + newsTitle]);
 			});
 		}
@@ -257,28 +254,32 @@
 		});
 	};
 	oFn.prepareEditForm = function() {
-		_news.form.reset();
-		if(!_news.form.wizardHasBeenInitialized) {
-			_news.form.wizard = $(_news._elems.newsWizards).smartWizard({
-				keyNavigation: false,
-				enableAllSteps: true,
-				enableFinishButton: false, 
-				labelNext: '',
-				labelPrevious: '',
-				labelFinish: '',
-				transitionEffect: 'slideleft',
-				onShowStep: function (step) {
-					if($(_news._elems.txtNewsContent).is(':visible')) {
-						$(_news._elems.txtNewsContent).htmlarea('dispose'); 
-						$(_news._elems.txtNewsContent).htmlarea();
-					}
-				}
-			});
-			_news.form.wizardHasBeenInitialized = true;
-		}
-		else {
-			$(_news._elems.newsTabs).find('a.tabStart').click();
-		}
+		_news.form.reset();       
+
+        $(_news._elems.newsTabs + ' a').on('click', function (evt) {
+			evt.preventDefault();
+			
+			$(".tab-pane").removeClass("active");
+			$(".tab-btn").removeClass("active");
+			
+			$(this).parent().addClass("active in");
+			$($(this).attr('href')).addClass("active");
+			
+			if($(this).hasClass('hasEditor')) {
+				$(_news._elems.txtNewsContent).htmlarea('dispose'); 
+				$(_news._elems.txtNewsContent).htmlarea();
+			}
+		});
+		
+		$(_news._elems.newsTabs + ' a.hasEditor').on('shown', function (e) {
+			if($(_news._elems.txtNewsContent).is(':visible')) {
+				$(_news._elems.txtNewsContent).htmlarea('dispose'); 
+				$(_news._elems.txtNewsContent).htmlarea();
+			}
+		});
+		
+		$(_news._elems.newsTabs + ' a:first').trigger('click');
+
 		_news.form.validators = $(_news._elems.newsFormElements).validator({
 			effect: 'floatingWall',
 			container: _elems.errorContainer,
@@ -308,7 +309,7 @@
 		});
 	};
 	oFn.showFormPopup = function(selector, title, _completeCallback, _closedCallback) {
-		globalShowPopup(662, 960, selector, title, _completeCallback, _closedCallback)
+		globalShowPopup(960, 640, selector, title, _completeCallback, _closedCallback)
 	};
 	oFn.getNews = function(_callback) {
 		$.ajax({

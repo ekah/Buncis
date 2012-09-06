@@ -14,13 +14,13 @@
 		<div class="span12">
 			<div class="buncisContentBody well well-small">                
 				<div class="actionContent pull-right">
-					<a href="javascript:;" id="aAddPage" class="button-action addPage btn btn-warning">
+					<a href="javascript:;" id="aAddPage" class="addPage btn btn-warning">
 						<i class="icon-plus"></i>&nbsp;<span>Add Page</span>
 					</a>
 				</div>
                 <div class="clearfix"></div>   
 				<div class="innerContent">
-					<table class="data-table table-pages table table-striped table-hover table-condensed" id="table-pages"> 
+					<table class="table table-striped table-hover table-condensed" id="table-pages"> 
 						<colgroup>
 							<col width="1%"</col>
 							<col width="40%"</col>
@@ -41,7 +41,6 @@
 						</tbody>
 					</table>			
 				</div>
-                <div class="clearfix"></div>
 			</div>
 		</div>
 	</div>
@@ -52,7 +51,6 @@
 			<h3>Modal header</h3>
 		</div>
 		<div class="form-page popup-content modal-body">
-			<!--<div id="page-wizard" class="swMain"></div>-->
 			<ul class="nav nav-tabs" id="page-tabs">
 				<li class="tab-btn"><a href="#page-tab1" class="tabStart">Section 1: Page Information</a></li>
 				<li class="tab-btn"><a href="#page-tab2" class="hasEditor">Section 2: Page Content</a></li>
@@ -60,10 +58,11 @@
 			<!-- tabs -->
 			<div class="tab-content">
 				<div id="page-tab1" class="page-tab1 tab-pane">
-					<div class="left pull-left">
+					<div class="pull-left">
 						<div class="form-item">
-							<label>Name</label>
-							<input type="text" required="required" id="txtPageName" class="medium" 
+							<label>Page Name</label>
+							<input type="text" required="required" 
+                                id="txtPageName" class="input-xxlarge" 
 								name="txtPageName" data-message="Page Name is required" />
 						</div>
 						<div class="form-item">
@@ -76,8 +75,9 @@
 						</div>
 						<div class="form-item">
 							<label>Name displayed on Menu</label>
-							<input type="text" required="required" id="txtPageMenuName" class="medium" 
-								name="txtPageMenuName" data-message="Page Menu Name is required" />
+							<input type="text" 
+                                id="txtPageMenuName" name="txtPageMenuName" class="medium" 								 
+                                required="required" `data-message="Page Menu Name is required" />
 						</div>            				
 						<div class="form-item">
 							<label>Do you want to make this page as your Home page?</label>
@@ -86,15 +86,17 @@
 						</div>		
 						<div class="form-item">
 							<label>Friendly URL</label>
-							<input type="text" required="required" id="txtPageUrl" class="medium" 
-								name="txtPageUrl" data-message="Page Url is required" />
+							<input type="text" id="txtPageUrl" name="txtPageUrl" 
+                                class="input-xlarge" 
+                                required="required" data-message="Page Url is required" />
 						</div>								
 					</div>
-					<div class="right pull-left">
+					<div class="pull-left">
 						<div class="form-item">
 							<label>Page Meta Title</label>
-							<input type="text" required="required" id="txtPageMetaTitle" class="long" 
-								name="txtPageMetaTitle" data-message="Page Meta Title is required" />
+							<input type="text" 
+                                id="txtPageMetaTitle" name="txtPageMetaTitle" class="long" 
+								required="required" data-message="Page Meta Title is required" />
 						</div>
 						<div class="form-item">
 							<label>Page Meta Description</label>
@@ -105,7 +107,7 @@
 							</textarea>
 						</div>		
 					</div>
-					<div class="clearFloats"></div>            
+					<div class="clearfix"></div>            
 				</div>
 				<div id="page-tab2" class="page-tab2 tab-pane">
 					<div class="form-item hasHtmlArea">
@@ -120,9 +122,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="popup-button-wrapper buttonContainer modal-footer">
-			<a href="javascript:;" id="btnSavePage" class="btn btn-success" rel="0">Save</a>
-			<a href="javascript:;" id="btnClose" class="popup-button-close btn btn-danger">Close</a>
+		<div class="modal-footer">
+			<a href="javascript:;" id="btnSavePage" class="btn btn-primary" rel="0">Save</a>
+			<a href="javascript:;" id="btnClose" class="popup-button-close btn btn-inverse">Close</a>
 		</div>
 	</div>
 
@@ -135,8 +137,8 @@
 			<p>Are you sure you want to delete page <strong><span id="d-pageName"></span></strong>?</p>
 		</div>
 		<div class="popup-button-wrapper buttonContainer modal-footer">			
-			<a href="javascript:;" id="deletePage-confirm" class="button-whiteOnRed btn btn-primary">Yes</a>			    
-            <a href="javascript:;" id="deletePage-cancel" class="button-whiteOnBlack popup-button-close btn btn-inverse">No</a>
+			<a href="javascript:;" id="deletePage-confirm" class="btn btn-primary">Yes</a>			    
+            <a href="javascript:;" id="deletePage-cancel" class="popup-button-close btn btn-inverse">No</a>
 		</div>
 	</div>
 </asp:Content>

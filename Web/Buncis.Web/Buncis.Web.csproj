@@ -355,15 +355,11 @@
     <Content Include="Scripts\modules\tools\scrollable.js" />
     <Content Include="Scripts\modules\tools\scrollable.navigator.js" />
     <Content Include="Scripts\spin.js" />
-    <Content Include="Styles\bun_xarticles.css" />
     <Content Include="Styles\bun_xiframe.css" />
     <Content Include="Scripts\modules\tools\validator.js" />
     <Content Include="Styles\bm.css" />
-    <Content Include="Styles\bun_xcommon.css" />
     <Content Include="Styles\bun_x.css" />
     <Content Include="Styles\bun.css" />
-    <Content Include="Styles\bun_xnews.css" />
-    <Content Include="Styles\bun_xpages.css" />
     <Content Include="Styles\bun_x_bak.css" />
     <Content Include="Styles\colorbox\colorbox.css" />
     <Content Include="Styles\colorbox\images\border1.png" />
