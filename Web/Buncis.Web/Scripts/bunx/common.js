@@ -1,16 +1,18 @@
 ﻿window._elems = window._elems || {};
 window._elems.errorContainer = '#errors';
 window._elems.colorboxArea = '.modal-body';
+window.activeModals = '';
 
 $(document).ready(function () {
-	$('table.data-table tbody tr:nth-child(odd)').addClass('odd');
+    $('table.data-table tbody tr:nth-child(odd)').addClass('odd');
 
-	$('body').delegate('.popup-button-close', 'click', function () {
-		$.colorbox.close();
-	});
-	$('.wall-close a').click(function () {
-		$('#errors').hide();
-	})
+    $('body').delegate('.popup-button-close', 'click', function () {
+        //$.colorbox.close();
+        globalClosePopup();
+    });
+    $('.wall-close a').click(function () {
+        $('#errors').hide();
+    })
 });
 
 $.tools.validator.addEffect("floatingWall", function (errors, event) {
@@ -88,18 +90,23 @@ function globalShowMessages(msg) {
 	toastr.success(messages, 'It\' a Success!');
 }
 
+function globalClosePopup() {    
+    $(window.activeModals).modal('hide');    
+    window.activeModals = '';
+}
+
 function globalShowPopup(width, height, selector, title, _completeCallback, _closedCallback) {
 	$(selector).modal({
 		keyboard: false,
 		backdrop: false,
 		show: false
 	}).css({
-		width: 'auto',
+        width: 'auto',
 		'margin-left': function () {
 			return -($(this).width() / 2);
 		},
 		'top': function () {
-			return (($(window).height() - $('.modal').height()) / 2);
+			return (($(window).height() - $(this).height()) / 2);
 		}
 	});
 
@@ -114,7 +121,10 @@ function globalShowPopup(width, height, selector, title, _completeCallback, _clo
 		if(_closedCallback) {
 			_closedCallback();
 		}
+        $(selector).unbind('shown');
+        $(selector).unbind('hidden');
 	});
 
-	$(selector).modal('show');
+    $(selector).modal('show');
+    window.activeModals = selector;
 }

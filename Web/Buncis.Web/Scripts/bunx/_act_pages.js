@@ -105,10 +105,10 @@
 					
 					setTimeout(function() { 
 						_helpers.unblockPopupDefault();
-						$.colorbox.close();
+						globalClosePopup();
 						$(_pages._elems.confirmDeletePage).removeAttr('rel');
 						globalShowMessages(["System has successfully deleted page " + _pages.form.deletedPageName]);
-					}, 500);               
+					}, 0);               
 				}
 				else {
 					// show error message here
@@ -157,13 +157,16 @@
 				page: template
 			};
 
+            _helpers.blockPopupDefault();
+
 			$.ajax({
 				type: "POST",
 				url: wsUrl,
 				data: JSON.stringify(oData),
 				dataType: 'json',
 				contentType: 'text/json',
-				success: function (result) {                                  
+				success: function (result) {    
+                    _helpers.unblockPopupDefault();                              
 					if(result.d.IsSuccess) { 
 						var msg = '';
 						if(mode === 'add') {     
@@ -173,7 +176,7 @@
 							msg = "System has successfully edited page data.";
 						}
 
-						$.colorbox.close();
+						globalClosePopup();
 						globalShowMessages([msg]);
 
 						if(mode === 'add') {
@@ -191,7 +194,7 @@
 					}
 				},
 				error: function () {
-						
+					_helpers.unblockPopupDefault();
 				}
 			});
 		}
@@ -209,13 +212,14 @@
 				{ "mDataProp": null }
 			],
 			"fnRowCallback": function (nRow, aData, iDisplayIndex) {                
-				var col0class = aData.IsHomePage ? 'icon icon-home' : 'icon icon-pages';
+				var col0class = aData.IsHomePage ? 'icon icon-home' : 'icon icon-file';
 				var col0 = '<a href="javascript:void(0);" class="pages view" rel="' + aData.PageId + '">';
-				col0 += '<span runat="server" class="' + col0class + '">&nbsp;</span></a>';
+				col0 += '<i class="' + col0class + '">&nbsp;</i>';
+                col0 += '</a>';
 				$('td:eq(0)', nRow).html(col0);
 
 				var col1 = '<span><strong>' + aData.PageName + '</strong></span><br/>';
-				col1 += '<span class="info">' + aData.PageTeaser + '</span>';
+				col1 += '<span class="info" rel="tooltip" title="' + aData.PageDescription + '">' + aData.PageTeaser + '</span>';
 				$('td:eq(1)', nRow).html(col1);
 
 				var col2 = '<span>' + aData.DisplayDateLastUpdated + '</span>';
@@ -224,11 +228,15 @@
 				var col3 = '<span>' + aData.DisplayDateCreated + '</span>';
 				$('td:eq(3)', nRow).html(col3);
 
-				var col4 = '<a href="javascript:void(0);" rel="' + aData.PageId + '" class="action delete"><span>Delete</span></a>';
-				col4 += '<a href="javascript:void(0);" rel="' + aData.PageId + '" class="action edit"><span>Edit</span></a>';
+				var col4 = '';
+                col4 += '<a href="javascript:void(0);" rel="' + aData.PageId + '" class="action edit btn btn-info"><span>Edit</span></a>';
+                col4 += '<a href="javascript:void(0);" rel="' + aData.PageId + '" class="action delete btn btn-danger"><span>Delete</span></a>';
 				$('td:eq(4)', nRow).html(col4);
 			},
-			"aoColumnDefs": [{ "sClass": "icon-col", "aTargets": [0] }, { "sClass": "action-col", "aTargets": [4]}],
+			"aoColumnDefs": [
+                { "sClass": "", "aTargets": [0] }, 
+                { "sClass": "action-col", "aTargets": [4]}
+            ],
 			"bStateSave": false,
 			"bFilter": true,
 			"bSort": true,
@@ -278,7 +286,7 @@
 	
 	function showPopup(mode, pageId) {
 		if(mode === 'delete') {
-			globalShowPopup(450, 200, pages._elems.deletePagePopup, "Delete Page",
+			globalShowPopup(420, 100, pages._elems.deletePagePopup, "Delete Page",
 				function() {
 					var td = $(pages._elems.tablePages).find('a.delete[rel="' + pageId + '"]').parent();
 					var tr = $(td).parent();
@@ -300,13 +308,11 @@
 			}
 			else {
 				title = 'Add Page';
-			}
-
-			globalShowPopup(960, 662, pages._elems.pageFormPopup, title,
+			}            
+            resetForm();
+			globalShowPopup(960, 640, pages._elems.pageFormPopup, title,
 				function() {
-					preparePopupForm();
-					resetForm();
-					
+					preparePopupForm();                    
 					if(mode === 'edit') {
 						_helpers.blockPopupDefault();
 						getPage(pageId, function(data) {							
@@ -329,7 +335,7 @@
 							dData = collection[aPos];
 							pages.form.editedData = dData;
 						});
-						setTimeout(function() { _helpers.unblockPopupDefault(); }, 500);
+						setTimeout(function() { _helpers.unblockPopupDefault(); }, 0);
 					}
 					else {
 						// add form here
@@ -377,6 +383,7 @@
 	}
 	
 	function destroyForm() {
+        console.log('called1');
 		$(pages._elems.txtPageContent).htmlarea('dispose'); 
 		$(pages._elems.chkIsHomePage).button('destroy');
 		var api = _pages.form.validators.data("validator");

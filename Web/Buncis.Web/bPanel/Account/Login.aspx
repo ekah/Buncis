@@ -20,52 +20,52 @@
     </script>
 </head>
 <body class="buncisBody">
-	<form runat="server" id="formLogin" clientidmode="Static">
-		<div class="container login-container">
-			<div id="topBarWrapper" class="row">
-				<div class="span12">
-					<div class="well well-small">
-						<div id="topBar" class="row">
-							<div id="logo" class="span4"><img src="/images/logo.png" alt="Buncis Logo" /></div>
-							<div id="loginInfo" class="span3 offset3 pull-right">Login Info goes here</div>
-							<div class="clearfix"></div>
-						</div>		
-					</div>
-				</div>
-			</div>
-			<div id="contentWrapper" class="row">
-				<div class="span12"> 
-					<div class="row">
-						<div class="span4 offset4">
-							<fieldset id="loginPanel" class="well well-large">	
-								<div>			
-									<div class="form-item">
-										<label class="medium">Username</label>
-										<div>
-											<input runat="server" id="txtUsername" type="text"
-												required="required" class="medium" clientidmode="Static" 
-												data-message="Username is required"/>
-										</div>
-									</div>
-									<div class="form-item">
-										<label class="medium">Password</label>
-										<div>
-											<input runat="server" id="txtPassword" type="text"
-												required="required" class="medium" clientidmode="Static" 
-												data-message="Password is required"/>
-										</div>
-									</div>		
-									<div class="form-item buttonContainer pull-right">
-										<input type="submit" class="button-gray login btn btn-primary" id="btnLogin" runat="server" clientidmode="Static" value="Login" />
-										<input type="button" class="button-gray login btn" value="Reset" />
+	<form runat="server" id="formLogin" clientidmode="Static">		
+		<div id="topBarWrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="span12">				        
+					    <div id="topBar" class="row">
+						    <div id="logo" class="span4"><img src="/images/logo.png" alt="Buncis Logo" /></div>
+						    <div id="loginInfo" class="span3 offset3 pull-right">Login Info goes here</div>
+						    <div class="clearfix"></div>
+					    </div>
+			        </div>
+                </div>
+            </div>			
+		</div>
+		<div id="contentWrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="span4 offset4">
+						<fieldset id="loginPanel" class="well well-large">	
+							<div>			
+								<div class="form-item">
+									<label class="medium">Username</label>
+									<div>
+										<input runat="server" id="txtUsername" type="text"
+											required="required" class="medium" clientidmode="Static" 
+											data-message="Username is required"/>
 									</div>
 								</div>
-							</fieldset>
-						</div>
+								<div class="form-item">
+									<label class="medium">Password</label>
+									<div>
+										<input runat="server" id="txtPassword" type="text"
+											required="required" class="medium" clientidmode="Static" 
+											data-message="Password is required"/>
+									</div>
+								</div>		
+								<div class="form-item buttonContainer pull-right">
+									<input type="submit" class="button-gray login btn btn-primary" id="btnLogin" runat="server" clientidmode="Static" value="Login" />
+									<input type="button" class="button-gray login btn" value="Reset" />
+								</div>
+							</div>
+						</fieldset>
 					</div>
-				</div>
-			</div>
-		</div>
+                </div>
+            </div>			
+		</div>		
 	</form>
 </body>
 </html>

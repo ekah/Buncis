@@ -1,9 +1,11 @@
-﻿body, html, form {
-	margin: 0px;
+﻿body, form {
+	margin: 0px !important;
 	padding: 0px;
 	height: 100%;
 }
-
+html, body, form, #bpanel-content {
+    min-height: 768px !important;
+}
 .buncisBody {
 	background: #fff;
 }
@@ -30,7 +32,7 @@
 #loginInfo {
 	margin-top: 10px;
 	padding: 20px;
-	color: #000;
+	color: #fff;
 	text-align: right;
 }
 #loginInfo ul {
@@ -54,8 +56,13 @@ body .popup-wrapper {
 }
 .popup-content {
 	overflow: hidden !important;	
-	min-height: 510px;
-	min-width: 910px;
+	min-height: 500px !important;
+	width: 910px !important;
+}
+.popup-content-small {
+    overflow: hidden !important;
+    min-height: 80px !important;
+    width: 400px !important;
 }
 .ui-widget {
 	font-size: 1em !important;
@@ -66,5 +73,37 @@ body .popup-wrapper {
 }
 .htmlarea {
 	width: 850px;
-	height: 400px;
+	height: 380px;
+}
+a.action {
+    margin-left:4px;
+}
+.fade {
+    opacity: 0;
+    -webkit-transition: opacity 0.1s linear !important;
+        -moz-transition: opacity 0.1s linear !important;
+        -ms-transition: opacity 0.1s linear !important;
+        -o-transition: opacity 0.1s linear !important;
+            transition: opacity 0.1s linear !important;
+}
+.dataTables_length select {
+    width: auto !important;
+}
+.dataTables_info {
+	float: left;
+}
+.dataTables_paginate.paging_full_numbers {
+	float: right;
+}
+.dataTables_paginate.paging_full_numbers a:hover {
+	cursor: pointer;
+}
+.dataTables_paginate.paging_full_numbers a.previous, .dataTables_paginate.paging_full_numbers a.next, .dataTables_paginate.paging_full_numbers a.last, .dataTables_paginate.paging_full_numbers a.first {
+	padding: 0px 5px;
+}
+.dataTables_paginate.paging_full_numbers span a.paginate_active, .dataTables_paginate.paging_full_numbers span a.paginate_button {
+	padding: 0px 5px;
+}
+.dataTables_paginate.paging_full_numbers span a.paginate_active {
+	font-weight: bold;
 }

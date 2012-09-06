@@ -12,24 +12,25 @@
 			</div>
 		</div>
 		<div class="span12">
-			<div class="buncisContentBody well well-small">
-				<div class="actionContent">
-					<a href="javascript:;" id="aAddPage" class="button-action addPage">
-						<span class="icon-plus">Add Page</span>
+			<div class="buncisContentBody well well-small">                
+				<div class="actionContent pull-right">
+					<a href="javascript:;" id="aAddPage" class="button-action addPage btn btn-warning">
+						<i class="icon-plus"></i>&nbsp;<span>Add Page</span>
 					</a>
-				</div>		
+				</div>
+                <div class="clearfix"></div>   
 				<div class="innerContent">
-					<table class="data-table table-pages" id="table-pages"> 
+					<table class="data-table table-pages table table-striped table-hover table-condensed" id="table-pages"> 
 						<colgroup>
 							<col width="1%"</col>
 							<col width="40%"</col>
 							<col width="20%"</col>
 							<col width="20%"</col>
-							<col width="15%"</col>
+							<col width="16%"</col>
 						</colgroup>
 						<thead>
 							<tr>
-								<th class="icon-col">&nbsp;</th>
+								<th>&nbsp;</th>
 								<th>Page</th>
 								<th>Last Updated</th>
 								<th>Created</th>
@@ -40,6 +41,7 @@
 						</tbody>
 					</table>			
 				</div>
+                <div class="clearfix"></div>
 			</div>
 		</div>
 	</div>
@@ -129,12 +131,12 @@
 		<div class="modal-header">
 			<h3>Modal header</h3>
 		</div>
-		<div class="modal-body">
+		<div class="modal-body popup-content-small">
 			<p>Are you sure you want to delete page <strong><span id="d-pageName"></span></strong>?</p>
 		</div>
-		<div class="popup-button-wrapper buttonContainer modal-footer">
-			<a href="javascript:;" id="deletePage-cancel" class="button-whiteOnBlack popup-button-close">No</a>
-			<a href="javascript:;" id="deletePage-confirm" class="button-whiteOnRed">Yes</a>			    
+		<div class="popup-button-wrapper buttonContainer modal-footer">			
+			<a href="javascript:;" id="deletePage-confirm" class="button-whiteOnRed btn btn-primary">Yes</a>			    
+            <a href="javascript:;" id="deletePage-cancel" class="button-whiteOnBlack popup-button-close btn btn-inverse">No</a>
 		</div>
 	</div>
 </asp:Content>
