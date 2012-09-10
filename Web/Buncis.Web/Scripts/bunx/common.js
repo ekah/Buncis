@@ -4,23 +4,23 @@ window._elems.colorboxArea = '.modal-body';
 window.activeModals = '';
 
 $(document).ready(function () {
-    $('table.data-table tbody tr:nth-child(odd)').addClass('odd');
+	$('table.data-table tbody tr:nth-child(odd)').addClass('odd');
 
-    $('body').delegate('.popup-button-close', 'click', function () {
-        //$.colorbox.close();
-        globalClosePopup();
-    });
-    $('.wall-close a').click(function () {
-        $('#errors').hide();
-    })
+	$('body').delegate('.popup-button-close', 'click', function () {
+		//$.colorbox.close();
+		globalClosePopup();
+	});
+	$('.wall-close a').click(function () {
+		$('#errors').hide();
+	})
 });
 
 $.tools.validator.addEffect("floatingWall", function (errors, event) {
 	var concatenated = '';
 	$.each(errors, function (index, error) {
-		concatenated += "<p>" + error.messages[0] + "</p>";
+		concatenated += "<div>" + error.messages[0] + "</div>";
 	});
-	//toastr.options.positionClass = 'toast-top-left';
+	toastr.options.timeOut = 8000;
 	toastr.error(concatenated, 'Oops! Please fix this first.')
 }, function (inputs) {
 
@@ -83,16 +83,16 @@ function globalShowMessages(msg) {
 	var messages = '';
 	if(Object.prototype.toString.call(msg) === '[object Array]') {
 		for (var i = 0; i < msg.length; i++) {
-			messages += '<p>' + msg[i] + '</p>';
+			messages += '<div>' + msg[i] + '</div>';
 		}
 	}
-	//toastr.options.positionClass = 'toast-top-left';
+	toastr.options.timeOut = 8000;
 	toastr.success(messages, 'It\' a Success!');
 }
 
 function globalClosePopup() {    
-    $(window.activeModals).modal('hide');    
-    window.activeModals = '';
+	$(window.activeModals).modal('hide');    
+	window.activeModals = '';
 }
 
 function globalShowPopup(width, height, selector, title, _completeCallback, _closedCallback) {
@@ -101,7 +101,7 @@ function globalShowPopup(width, height, selector, title, _completeCallback, _clo
 		backdrop: false,
 		show: false
 	}).css({
-        width: 'auto',
+		width: 'auto',
 		'margin-left': function () {
 			return -($(this).width() / 2);
 		},
@@ -121,10 +121,10 @@ function globalShowPopup(width, height, selector, title, _completeCallback, _clo
 		if(_closedCallback) {
 			_closedCallback();
 		}
-        $(selector).unbind('shown');
-        $(selector).unbind('hidden');
+		$(selector).unbind('shown');
+		$(selector).unbind('hidden');
 	});
 
-    $(selector).modal('show');
-    window.activeModals = selector;
+	$(selector).modal('show');
+	window.activeModals = selector;
 }

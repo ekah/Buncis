@@ -317,6 +317,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>actTemplate.tt</DependentUpon>
     </Content>
+    <Content Include="sandbox\BackboneRouterTest.aspx" />
     <Content Include="sandbox\impress-try1.html" />
     <Content Include="sandbox\NewsSandbox.aspx" />
     <Content Include="Scripts\bunx\_act_dailybread.js" />
@@ -535,6 +536,13 @@
       <DependentUpon>NotFound.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sandbox\BackboneRouterTest.aspx.cs">
+      <DependentUpon>BackboneRouterTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sandbox\BackboneRouterTest.aspx.designer.cs">
+      <DependentUpon>BackboneRouterTest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="sandbox\NewsSandbox.aspx.cs">
       <DependentUpon>NewsSandbox.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

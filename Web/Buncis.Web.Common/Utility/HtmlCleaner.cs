@@ -14,11 +14,10 @@ namespace Buncis.Web.Common.Utility
 		public static void Render(HtmlTextWriter secondWriter, HtmlTextWriter originalWriter)
 		{
 			var html = secondWriter.InnerWriter.ToString();
-			html = html.Replace("\r\n", string.Empty);
+			//html = html.Replace("\r\n", string.Empty);
 			//html = html.Replace("\t", string.Empty);
 			//html = REGEX_BETWEEN_TAGS.Replace(html, "><");
 			//html = REGEX_LINE_BREAKS.Replace(html, String.Empty);
-
 			originalWriter.Write(html.Trim());
 		}
 	}
