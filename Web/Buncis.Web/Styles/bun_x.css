@@ -6,6 +6,9 @@
 html, body, form, #bpanel-content {
 	min-height: 768px !important;
 }
+dl {
+	margin: 0px !important;
+}
 .buncisBody {
 	background: #fff;
 }
@@ -38,8 +41,8 @@ html, body, form, #bpanel-content {
 	margin-top: 30px;
 }
 #loginInfo {
-	margin-top: 10px;
-	padding: 20px;
+	margin-top: 0px;
+	padding: 10px;
 	color: #fff;
 	text-align: right;
 }
@@ -128,9 +131,9 @@ ul.list-item-container {
 }
 li.list-item {
 	display: block;
-	padding: 10px;
+	padding: 5px 10px;
 	border: solid 1px #E1E1E8;
-	margin: 5px 0px;
+	margin-bottom: 5px;	
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -143,7 +146,7 @@ li.list-item:hover {
 	float: right;
 }
 .list-item .leftSection {
-	width:80%;
+	width:76%;
 	border-right:#dddddd solid 1px;
 	padding-right: 10px;
 }

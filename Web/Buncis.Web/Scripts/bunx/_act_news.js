@@ -1,9 +1,30 @@
 ﻿(function (oNews) {
+	var newsRouter = {};
+	var activeFormView = {};
+	oNews.NewsRouter = Backbone.Router.extend({
+		routes: {
+			"home": "home",
+			"edit/:query": "edit", 
+			"add": "add", 
+		},
+		home: function() {
+			$('#homeSection').show();
+			$('#news-edit-popup').hide();
+		},
+		edit: function(query) {
+			var newsId = query;
+			$('#homeSection').hide();
+			$('#news-edit-popup').show();
+		},
+		add: function() {
+			$('#homeSection').hide();
+			$('#news-edit-popup').show();
+		}
+	});
 	oNews._elems = {
 		detailPopup: '#news-detail-popup',
 		editPopup: '#news-edit-popup',
 		deletePopup: '#news-delete-popup',
-		//newsWizards: '#news-wizard',
 		txtNewsTitle: '#txtNewsTitle',
 		txtNewsContent: '#txtNewsContent',
 		txtNewsTeaser: '#txtNewsTeaser',
@@ -20,22 +41,18 @@
 		newsItemContainer: '.news-item-container'
 	};
 	oNews.form = {
-		//wizardHasBeenInitialized: false,
 		validators: {},
-		//wizard: {},
 		reset: function() {
-			//this.wizardHasBeenInitialized = false;
 			this.validators = {};
-			//this.wizard = {};
 		}
 	};
 	oNews.newsList = {};
 	oNews.NewsCollection = Backbone.Collection.extend({
 		model: oNews.NewsItem,
 		comparator: function(newsItemModel){
-            var newsId = newsItemModel.get('newsId');
-            return -newsId;
-        }
+			var newsId = newsItemModel.get('newsId');
+			return -newsId;
+		}
 	});
 	oNews.NewsItem = Backbone.Model.extend({
 		idAttribute: 'newsId',
@@ -55,7 +72,8 @@
 		actualDatePublished: '', // the actual date object 
 		actualDateExpired: '',
 		recentlyAdded: false,
-		recentlyEdited: false
+		recentlyEdited: false,
+		ordinal: -1
 	});
 	oNews.NewsItemView = Backbone.View.extend({
 		initialize: function(){
@@ -69,39 +87,35 @@
 		},
 		render: function(){
 			var template = _.template($(_news._elems.newsItemTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
-			this.$el.prepend($(template));
+			this.$el.append($(template));
 			return this;
 		},
 		editItem: function(event) {
-			var popupView = new _news.NewsFormView({
+			// navigate
+			_news.newsRouter.navigate("edit/" + this.model.id, {trigger: true});
+			
+			var editView = new _news.NewsFormView({
 				el: $(_news._elems.editPopup),
 				model: this.model
 			});			
-			popupView.render();
-
-			_news.fn.showFormPopup(_news._elems.editPopup, 'Edit News', 
-				function() {
-					_news.fn.prepareEditForm();
-					$(_news._elems.btnSaveNews).attr('rel', 'edit');
-				}, 
-				function() {
-					popupView.undelegateEvents();
-					$(popupView.el).empty();
-				}
-			);
+			editView.render();
+			oNews.activeFormView = editView;
+			$(editView.el).find('h3').text('Edit News');
+			_news.fn.prepareEditForm();
+			$(_news._elems.btnSaveNews).attr('rel', 'edit');
 		}, 
 		deleteItem: function(event) {
-			var deletePopupView = new _news.NewsDeleteView({
+			var deleteView = new _news.NewsDeleteView({
 				el: $(_news._elems.deletePopup),
 				model: this.model
 			});
-			deletePopupView.render();
+			deleteView.render();
 			globalShowPopup(210, 400, _news._elems.deletePopup, 'Delete News', 
 				function() {
 				}, 
 				function() {
-					deletePopupView.undelegateEvents();
-					$(deletePopupView.el).empty();
+					deleteView.undelegateEvents();
+					$(deleteView.el).empty();
 				}
 			);
 		}
@@ -113,6 +127,7 @@
 		render: function(event) {
 			var template = _.template($(_news._elems.newsEditPopupTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
+			$.scrollTo(0, 0);
 			return this;
 		},
 		save: function(event) {
@@ -147,10 +162,12 @@
 			eNews.set('epochDateExpired', '/Date(' + dateExpired.getTime() + stzo + itzo + '00)/');			
 			_news.fn.saveNews(eNews, function(result) {
 				var msg = '';
-                eNews.set('newsId', result.NewsId);
+				eNews.set('newsId', result.NewsId);
 				eNews.set('datePublished', result.DisplayDatePublished);
 				eNews.set('dateExpired', result.DisplayDateExpired);
-                globalClosePopup();				
+				
+				$('#btnClose').trigger('click');
+				
 				if(fMode === 'edit') {
 					eNews.set('recentlyEdited', true);
 					msg = 'Succesfully edited News data';
@@ -158,9 +175,14 @@
 				else {
 					eNews.set('recentlyAdded', true);
 					_news.newsList.add(eNews);
+					eNews.set('ordinal', _news.newsList.length);
 					_news.fn.renderListItemView(eNews);
 					msg = 'Succesfully added new News';
 				}
+				
+				var affected = $(_news._elems.newsItemContainer).find('li[rel="' + result.NewsId + '"]');
+				$.scrollTo(affected);
+
 				globalShowMessages([msg]);
 			});
 		}
@@ -180,7 +202,7 @@
 			_news.fn.deleteNews(newsId, function() {
 				_news.newsList.remove(this.model);
 				$(_news._elems.newsItemContainer).find('li[rel="' + newsId + '"]').remove();
-                globalClosePopup();
+				globalClosePopup();
 				globalShowMessages(["System has succesfully deleted News " + newsTitle]);
 			});
 		}
@@ -208,7 +230,7 @@
 		$elem.siblings('span').text(displayDate);
 	}
 
-	oFn.setupEvents = function() {
+	function setupEvents() {
 		$(_news._elems.btnAddNews).click(function(event) {
 			event.preventDefault();
 			var currentDate = new Date();
@@ -228,23 +250,21 @@
 				formattedDateExpired: _helpers.dateFn.convertDateToDefaultFormattedString(currentDatePlusOneMonth),
 				newsUrl: ''
 			});
-			var popupView = new _news.NewsFormView({
+			
+			// navigate first
+			_news.newsRouter.navigate("add", {trigger: true});
+
+			// post navigate
+			var addView = new _news.NewsFormView({
 				el: $(_news._elems.editPopup),
 				model: defNewsItem
 			});
-			popupView.render();
-
-			_news.fn.showFormPopup(_news._elems.editPopup, 'Add News', 
-				function() {
-					_news.fn.prepareEditForm();
-					$(_news._elems.txtDatePublished).trigger('change');
-					$(_news._elems.txtDateExpired).trigger('change');
-				}, 
-				function() {
-					popupView.undelegateEvents();
-					$(popupView.el).empty();
-				}
-			);
+			addView.render();
+			_news.activeFormView = addView;
+			$(addView.el).find('h3').text('Add News');
+			_news.fn.prepareEditForm();
+			$(_news._elems.txtDatePublished).trigger('change');
+			$(_news._elems.txtDateExpired).trigger('change');
 		});	
 		$(document).delegate(_news._elems.txtDatePublished, 'change', function() {
 			dateInputChanged(this);
@@ -252,11 +272,47 @@
 		$(document).delegate(_news._elems.txtDateExpired, 'change', function() {
 			dateInputChanged(this);
 		});
+		$(document).delegate('#btnClose', 'click', function () {
+			_news.activeFormView.undelegateEvents();
+			$(_news.activeFormView.el).empty();
+			_news.newsRouter.navigate("home", {trigger: true});
+		});
+	}
+	
+	function loadData() {
+		_news.newsList = new _news.NewsCollection();
+		oFn.getNews(function(result) {
+			for(var i = 0; i < result.length; i++) {				
+				var iNewsItem = result[i];
+				// create new model instance
+				var cvtNewsItem = new _news.NewsItem({
+					newsId: iNewsItem.NewsId,
+					newsTitle: iNewsItem.NewsTitle,
+					newsTeaser: iNewsItem.NewsTeaser,
+					newsContent: iNewsItem.NewsContent,
+					epochDatePublished: iNewsItem.DatePublished,
+					epochDateExpired: iNewsItem.DateExpired,
+					datePublished: iNewsItem.DisplayDatePublished,
+					dateExpired: iNewsItem.DisplayDateExpired,		
+					actualDatePublished: _helpers.dateFn.convertEpochToDate(_helpers.dateFn.cleanDotNetDateJson(iNewsItem.DatePublished)).toString(),
+					actualDateExpired: _helpers.dateFn.convertEpochToDate(_helpers.dateFn.cleanDotNetDateJson(iNewsItem.DateExpired)).toString(),
+					formattedDatePublished: _helpers.dateFn.convertEpochToDefaultFormattedString(_helpers.dateFn.cleanDotNetDateJson(iNewsItem.DatePublished)),
+					formattedDateExpired: _helpers.dateFn.convertEpochToDefaultFormattedString(_helpers.dateFn.cleanDotNetDateJson(iNewsItem.DateExpired)),
+					newsUrl: iNewsItem.NewsUrl,
+					ordinal: i + 1
+				});
+
+				// put model instance to collections
+				_news.newsList.add(cvtNewsItem);
+				_news.fn.renderListItemView(cvtNewsItem);
+			}
+		});
 	};
+
 	oFn.prepareEditForm = function() {
 		_news.form.reset();       
 
-        $(_news._elems.newsTabs + ' a').on('click', function (evt) {
+		$(_news._elems.newsTabs + ' a').on('click', function (evt) {
 			evt.preventDefault();
 			
 			$(".tab-pane").removeClass("active");
@@ -266,13 +322,6 @@
 			$($(this).attr('href')).addClass("active");
 			
 			if($(this).hasClass('hasEditor')) {
-				$(_news._elems.txtNewsContent).htmlarea('dispose'); 
-				$(_news._elems.txtNewsContent).htmlarea();
-			}
-		});
-		
-		$(_news._elems.newsTabs + ' a.hasEditor').on('shown', function (e) {
-			if($(_news._elems.txtNewsContent).is(':visible')) {
 				$(_news._elems.txtNewsContent).htmlarea('dispose'); 
 				$(_news._elems.txtNewsContent).htmlarea();
 			}
@@ -307,9 +356,6 @@
 				$(_news._elems.txtDatePublished).trigger('change');
 			}
 		});
-	};
-	oFn.showFormPopup = function(selector, title, _completeCallback, _closedCallback) {
-		globalShowPopup(960, 640, selector, title, _completeCallback, _closedCallback)
 	};
 	oFn.getNews = function(_callback) {
 		$.ajax({
@@ -404,34 +450,6 @@
 			}
 		});
 	};
-	oFn.loadData = function() {
-		_news.newsList = new _news.NewsCollection();
-		oFn.getNews(function(result) {
-			for(var i = 0; i < result.length; i++) {				
-				var iNewsItem = result[i];
-				// create new model instance
-				var cvtNewsItem = new _news.NewsItem({
-					newsId: iNewsItem.NewsId,
-					newsTitle: iNewsItem.NewsTitle,
-					newsTeaser: iNewsItem.NewsTeaser,
-					newsContent: iNewsItem.NewsContent,
-					epochDatePublished: iNewsItem.DatePublished,
-					epochDateExpired: iNewsItem.DateExpired,
-					datePublished: iNewsItem.DisplayDatePublished,
-					dateExpired: iNewsItem.DisplayDateExpired,		
-					actualDatePublished: _helpers.dateFn.convertEpochToDate(_helpers.dateFn.cleanDotNetDateJson(iNewsItem.DatePublished)).toString(),
-					actualDateExpired: _helpers.dateFn.convertEpochToDate(_helpers.dateFn.cleanDotNetDateJson(iNewsItem.DateExpired)).toString(),
-					formattedDatePublished: _helpers.dateFn.convertEpochToDefaultFormattedString(_helpers.dateFn.cleanDotNetDateJson(iNewsItem.DatePublished)),
-					formattedDateExpired: _helpers.dateFn.convertEpochToDefaultFormattedString(_helpers.dateFn.cleanDotNetDateJson(iNewsItem.DateExpired)),
-					newsUrl: iNewsItem.NewsUrl
-				});
-
-				// put model instance to collections
-				_news.newsList.add(cvtNewsItem);
-				_news.fn.renderListItemView(cvtNewsItem);
-			}
-		});
-	};
 	oFn.renderListItemView = function(cvtNewsItem) {
 		// set the view and render it
 		var newsItemView = new _news.NewsItemView({ 
@@ -445,11 +463,17 @@
 		newsItemView.delegateEvents();
 		newsItemView.render();
 	};
+	oFn.init = function () {
+		_news.newsRouter = new _news.NewsRouter();
+		loadData();
+		setupEvents();
+		Backbone.history.start();
+		_news.newsRouter.navigate("home", {trigger: true});
+	}
 }(window._news.fn = window._news.fn || {}));
 
 
 $(document).ready(function() {	
-	_news.fn.loadData();
-	_news.fn.setupEvents();
+	_news.fn.init();
 });
 
