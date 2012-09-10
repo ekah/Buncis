@@ -49,13 +49,12 @@
 										</div>
 										<div class="pull-right rightSection">								
 											<div class="list-action">
-												<a href="javascript:;" class="action action-edit edit btn btn-info">Edit</a> 
-												<a href="javascript:;" class="action action-delete delete btn btn-danger">Delete</a>										        
+												<a href="javascript:;" class="action edit btn btn-info">Edit</a> 
+												<a href="javascript:;" class="action delete btn btn-danger">Delete</a>										        
 											</div>	
-											<div class="clearfix"></div>
 										</div>
+										<div class="clearfix"></div>
 									</div>
-									<div class="clearfix"></div>
 								</li>
 							</script>
 						</ul>
@@ -142,10 +141,15 @@
 		
 		<!-- template delete news -->
 		<script type="text/template" id="news-confirmDelete-popup-template">
-			<p>Are you sure you want to delete news <strong>{{attributes.newsTitle}}</strong>?</p>
-			<div class="popup-button-wrapper buttonContainer">
-				<a href="javascript:;" id="deleteNews-cancel" class="popup-button-close">No</a>
-				<a href="javascript:;" id="deleteNews-confirm" class="">Yes</a>			    
+			<div class="modal-header">
+				<h3>Modal header</h3>
+			</div>
+			<div class="modal-body popup-content-small">
+				<p>Are you sure you want to delete news <strong>{{attributes.newsTitle}}</strong>?</p>
+			</div>			
+			<div class="buttonContainer modal-footer">
+				<a href="javascript:;" id="deleteNews-confirm" class="btn btn-primary">Yes</a>
+				<a href="javascript:;" id="deleteNews-cancel" class="popup-button-close btn btn-inverse">No</a>
 			</div>
 		</script>
 	</div>    

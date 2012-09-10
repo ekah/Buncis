@@ -21,8 +21,8 @@
 		txtPageContent: '#txtPageContent',
 		chkIsHomePage: '#chkIsHomePage',
 		btnSavePage: '#btnSavePage',
-		btnEditPage: '#table-pages td a.edit',
-		btnDeletePage: '#table-pages td a.delete'
+		btnEditPage: '#table-pages td a.action.edit',
+		btnDeletePage: '#table-pages td a.action.delete'
 	};
 
 	var listWebServiceUrl = '/webservices/pages.svc/bpgetpages?clientid=' + _elems.clientId;
@@ -361,6 +361,8 @@
 			// add form here
 			preparePopupForm();
 		}
+
+		$.scrollTo(0, 0);
 	}
 
 	function preparePopupForm() {	
@@ -440,7 +442,8 @@
 			savePage(pageId);
 		});
 		
-		$('#btnClose').click(function () {
+		$('#btnClose').click(function (evt) {
+			evt.preventDefault();
 			destroyForm();
 			pageRouter.navigate("home", {trigger: true});
 		});

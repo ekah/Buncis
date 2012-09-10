@@ -1,9 +1,30 @@
 (function (oModule) {
+	oModule.ModuleRouter = Backbone.Router.extend({
+		routes: {
+			"home": "home",
+			"edit/:query": "edit", 
+			"add": "add", 
+		},
+		home: function() {
+			$('#homeSection').show();
+			$('#article-edit-section').hide();
+		},
+		edit: function(query) {
+			var articleId = query;
+			$('#homeSection').hide();
+			$('#article-edit-section').show();
+		},
+		add: function() {
+			$('#homeSection').hide();
+			$('#article-edit-section').show();
+		}
+	});
+	oModule.router = {};
+	oModule.activeView = {};
 	oModule._elems = {
-		tabs: '#',
 		formElements: '.form-item :input',		
 		btnAdd: '#aAddArticle',
-		addContainer: '.add-item-container',
+		formContainer: '#article-edit-section',
 		itemTemplate: '#article-item-template',
 		itemContainer: '#article-list-container',
 		editTemplate: '#article-edit-template',
@@ -26,10 +47,10 @@
 		articleUrl: '',
 		articleContent: '',
 		displayDateCreated: '',
-		displayDateLastUpdated: ''
+		displayDateLastUpdated: '',
+		ordinal: -1
 	});
 	oModule.ItemView = Backbone.View.extend({
-		editContainerSelector: '',        
 		initialize: function(){
 			_.bindAll(this, "render");
 			this.model.on('change', this.renderUpdate, this);
@@ -48,20 +69,24 @@
 		},
 		editItem: function(event) {
 			var $model = this.model;
-			var $parent = $('li[rel="' + $model.id + '"]');            
+			var $parent = $('li[rel="' + $model.id + '"]');
+
+			_articles.router.navigate("edit/" +  $model.id, {trigger: true});
+
 			var editView = new _articles.FormView({
-				el: $(this.editContainerSelector), 
+				el: $(oModule._elems.formContainer), 
 				model: $model
 			});			
 			editView.events = {};
-			editView.formMode = 'edit';	
-			editView.events['click li[rel="' + $model.id + '"] a.close-view-area'] = 'close';
-			editView.events['click li[rel="' + $model.id + '"] a.btnSave'] = 'save';
+			editView.formMode = 'edit';
+			editView.events['click ' + _articles._elems.formContainer + ' a.close-view-area'] = 'close';
+			editView.events['click ' + _articles._elems.formContainer + ' a.btnSave'] = 'save';
 			editView.delegateEvents();
 			editView.render();
 
+			oModule.activeView = editView;
+			$(editView.el).find('h3').text('Edit Article');			
 			oModule.fn.prepareForm(editView);
-						
 			$.scrollTo($parent);
 		}, 
 		deleteItem: function(event) {
@@ -73,7 +98,6 @@
 
 			globalShowPopup(200, 400, _articles._elems.deletePopup, 'Delete Article', 
 				function() {
-					$.colorbox.resize();					
 				}, 
 				function() {
 					deletePopupView.undelegateEvents();
@@ -116,6 +140,11 @@
 			_articles.fn.saveItem(eModel, function(result) {
 				// code below: Show message
 				var msg = '';
+
+				eModel.set('articleId', result.ArticleId);
+
+				$('#btnClose').trigger('click');
+
 				if(fMode === 'edit') {
 					msg = 'Successfully edited  data';
 					self.closeView();
@@ -127,11 +156,16 @@
 					self.closeView();            
 					oModule.fn.animateItem(eModel);
 				}
-				globalShowMessages([msg]);				
+
+				var affected = $(_articles._elems.itemContainer).find('li[rel="' + result.ArticleId + '"]');
+				$.scrollTo(affected);
+
+				globalShowMessages([msg]);
 			});
 		},
 		close: function(event) {
-			this.closeView();            
+			this.closeView();
+			_articles.router.navigate("home", {trigger: true});
 			oModule.fn.animateItem($model);
 		},
 		closeView: function() {
@@ -154,7 +188,6 @@
 			_articles.fn.deleteItem(id, function() {                
 				_articles.collection.remove(this.model);
 				$(_articles._elems.itemContainer).find('li[rel="' + id + '"]').remove();
-				$.colorbox.close();
 				globalShowMessages(["System has successfully deleted article " + articleTitle]);                
 			});
 		}
@@ -168,48 +201,31 @@
 	var addWebServiceUrl = '/webservices/articles.svc/BPInsertArticle';	
 	var deleteWebServiceUrl = '/webservices/articles.svc/BPDeleteArticle';	
 
-	oFn.setupEvents = function() {
-		$(_articles._elems.btnAdd).click(function(event) {
-			event.preventDefault();			
-			var defaultItem = new _articles.ItemModel({
-				articleId: -1,
-				articleTitle: '',
-				articleTeaser: '',
-				articleUrl: '',
-				articleContent: '',
-				displayDateCreated: '',
-				displayDateLastUpdated: ''
-			});
-			var addView = new _articles.FormView({
-				el: $(_articles._elems.addContainer),
-				model: defaultItem,
-			});
-			addView.events = {};
-			addView.formMode = 'add';
-			addView.events['click ' + _articles._elems.addContainer +  ' a.close-view-area'] = 'close';
-			addView.events['click ' + _articles._elems.addContainer + ' a.btnSave'] = 'save';
-			addView.delegateEvents();            
-			addView.render();
+	function loadData() {
+		_articles.collection = new _articles.CollectionModel();
+		getCollection(function(result) {
+			for(var i = 0; i < result.length; i++) {				
+				var item = result[i];
+				
+				// create new model instance
+				var itemModel = new _articles.ItemModel({
+					articleId: item.ArticleId,
+					articleTitle: item.ArticleTitle,
+					articleTeaser: item.ArticleTeaser,
+					articleUrl: item.ArticleUrl,
+					articleContent: item.ArticleContent,
+					displayDateCreated: item.DisplayDateCreated,
+					displayDateLastUpdated: item.DisplayDateLastUpdated
+				});
 
-			oFn.prepareForm(addView);
-		});      
-	};
-	oFn.prepareForm = function($view) {
-		var $model = $view.model;
-		var $target = $view.$el;
-		$view.reset();
-		$view.validators = $target.find(_articles._elems.formElements).validator({
-			effect: 'floatingWall',
-			container: _elems.errorContainer,
-			errorInputEvent: null,
-		});        
-		var $tContent = $target.find('#txtArticleContent-' + $model.id);
-		if($tContent.is(':visible')) {
-			$tContent.htmlarea('dispose'); 
-			$tContent.htmlarea();
-		}
-	};	
-	oFn.getCollection = function(_callback) {
+				// put model instance to collections
+				_articles.collection.add(itemModel);
+				_articles.fn.renderListItemView(itemModel);
+			}
+		});
+	}
+
+	function getCollection(_callback) {
 		$.ajax({
 			type: "GET",
 			url: listWebServiceUrl,
@@ -224,7 +240,55 @@
 			error: function () {
 			}
 		});
-	};	
+	}
+
+	function setupEvents() {
+		$(_articles._elems.btnAdd).click(function(event) {
+			event.preventDefault();			
+			var defaultItem = new _articles.ItemModel({
+				articleId: -1,
+				articleTitle: '',
+				articleTeaser: '',
+				articleUrl: '',
+				articleContent: '',
+				displayDateCreated: '',
+				displayDateLastUpdated: ''
+			});
+
+			_articles.router.navigate("add", {trigger: true});
+
+			var addView = new _articles.FormView({
+				el: $(_articles._elems.formContainer),
+				model: defaultItem,
+			});
+			addView.events = {};
+			addView.formMode = 'add';
+			addView.events['click ' + _articles._elems.formContainer + ' a.close-view-area'] = 'close';
+			addView.events['click ' + _articles._elems.formContainer + ' a.btnSave'] = 'save';
+			addView.delegateEvents();            
+			addView.render();
+
+			_articles.activeView = addView;
+			$(addView.el).find('h3').text('Add Article');			
+			oFn.prepareForm(addView);
+		});		
+	}
+
+	oFn.prepareForm = function($view) {
+		var $model = $view.model;
+		var $target = $view.$el;
+		$view.reset();
+		$view.validators = $target.find(_articles._elems.formElements).validator({
+			effect: 'floatingWall',
+			container: _elems.errorContainer,
+			errorInputEvent: null,
+		});        
+		var $tContent = $target.find('#txtArticleContent-' + $model.id);
+		if($tContent.is(':visible')) {
+			$tContent.htmlarea('dispose'); 
+			$tContent.htmlarea();
+		}
+	};		
 	oFn.saveItem = function(oData, _callback) {
 		var sData = {
 			clientId: _elems.clientId,
@@ -251,7 +315,7 @@
 			wsUrl = addWebServiceUrl;
 		}
 
-		_helpers.blockPopupDefault();
+		
 		$.ajax({
 			type: "POST",
 			url: wsUrl,
@@ -259,7 +323,6 @@
 			dataType: 'json',
 			contentType: 'text/json',
 			success: function (result) {
-				_helpers.unblockPopupDefault();
 				var data = result.d;
 				if (data.IsSuccess) {
 					if(_callback) {
@@ -268,7 +331,7 @@
 				}
 			},
 			error: function () {
-				_helpers.blockPopupDefault();
+				
 			}
 		});
 	};
@@ -304,30 +367,7 @@
 		var $target = $('li[rel="' + $model.id + '"]');
 		$.scrollTo($target);
 		window._helpers.animateRow($target);
-	};
-	oFn.loadData = function() {
-		_articles.collection = new _articles.CollectionModel();
-		oFn.getCollection(function(result) {
-			for(var i = 0; i < result.length; i++) {				
-				var item = result[i];
-				
-				// create new model instance
-				var itemModel = new _articles.ItemModel({
-					articleId: item.ArticleId,
-					articleTitle: item.ArticleTitle,
-					articleTeaser: item.ArticleTeaser,
-					articleUrl: item.ArticleUrl,
-					articleContent: item.ArticleContent,
-					displayDateCreated: item.DisplayDateCreated,
-					displayDateLastUpdated: item.DisplayDateLastUpdated
-				});
-
-				// put model instance to collections
-				_articles.collection.add(itemModel);
-				_articles.fn.renderListItemView(itemModel);
-			}
-		});
-	};
+	};	
 	oFn.renderListItemView = function(itemModel) {
 		// set the view and render it
 		var itemView = new _articles.ItemView({ 
@@ -336,17 +376,22 @@
 			id: 'articleItem-' + itemModel.id
 		});
 		itemView.events = {};	
-		itemView.editContainerSelector = 'li[rel="' + itemModel.id + '"] div.edit-item-container';	
-		itemView.events['click li[rel="' + itemModel.id + '"] a.action-edit'] = 'editItem';
-		itemView.events['click li[rel="' + itemModel.id + '"] a.action-delete'] = 'deleteItem';
+		itemView.events['click li[rel="' + itemModel.id + '"] a.action.edit'] = 'editItem';
+		itemView.events['click li[rel="' + itemModel.id + '"] a.action.delete'] = 'deleteItem';
 		itemView.delegateEvents();
 		itemView.render();
+	};
+	oFn.init = function() {
+		_articles.router = new _articles.ModuleRouter();
+		loadData();
+		setupEvents();
+		Backbone.history.start();
+		_articles.router.navigate("home", {trigger: true});
 	};
 }(window._articles.fn = window._articles.fn || {}));
 
 
 $(document).ready(function() {	
-	_articles.fn.loadData();
-	_articles.fn.setupEvents();
+	_articles.fn.init();	
 });
 

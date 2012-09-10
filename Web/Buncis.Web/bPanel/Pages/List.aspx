@@ -139,7 +139,7 @@
 		<div class="modal-body popup-content-small">
 			<p>Are you sure you want to delete page <strong><span id="d-pageName"></span></strong>?</p>
 		</div>
-		<div class="popup-button-wrapper buttonContainer modal-footer">
+		<div class="buttonContainer modal-footer">
 			<a href="javascript:;" id="deletePage-confirm" class="btn btn-primary">Yes</a>
 			<a href="javascript:;" id="deletePage-cancel" class="popup-button-close btn btn-inverse">No</a>
 		</div>

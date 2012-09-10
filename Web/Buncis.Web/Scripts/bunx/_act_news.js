@@ -272,7 +272,8 @@
 		$(document).delegate(_news._elems.txtDateExpired, 'change', function() {
 			dateInputChanged(this);
 		});
-		$(document).delegate('#btnClose', 'click', function () {
+		$(document).delegate('#btnClose', 'click', function (evt) {
+			evt.preventDefault();
 			_news.activeFormView.undelegateEvents();
 			$(_news.activeFormView.el).empty();
 			_news.newsRouter.navigate("home", {trigger: true});
@@ -401,7 +402,6 @@
 			wsUrl = addWebServiceUrl;
 		}
 
-		_helpers.blockPopupDefault();
 		$.ajax({
 			type: "POST",
 			url: wsUrl,
@@ -409,7 +409,6 @@
 			dataType: 'json',
 			contentType: 'text/json',
 			success: function (result) {
-				_helpers.unblockPopupDefault();
 				var data = result.d;
 				if (data.IsSuccess) {
 					if(_callback) {
@@ -418,7 +417,6 @@
 				}
 			},
 			error: function () {
-				_helpers.blockPopupDefault();
 			}
 		});
 	};
@@ -458,8 +456,8 @@
 			id: 'newsItem-' + cvtNewsItem.id
 		});
 		newsItemView.events = {};
-		newsItemView.events['click li[rel="' + cvtNewsItem.id + '"] a.action-edit'] = 'editItem';
-		newsItemView.events['click li[rel="' + cvtNewsItem.id + '"] a.action-delete'] = 'deleteItem';
+		newsItemView.events['click li[rel="' + cvtNewsItem.id + '"] a.action.edit'] = 'editItem';
+		newsItemView.events['click li[rel="' + cvtNewsItem.id + '"] a.action.delete'] = 'deleteItem';
 		newsItemView.delegateEvents();
 		newsItemView.render();
 	};
