@@ -11,11 +11,12 @@
 		</div>	
 		<div class="span12">
 			<div class="buncisContentBody well well-small">
-				<div class="actionContent">
+				<div class="actionContent pull-right">
 					<a href="javascript:void(0);" id="aAddArticle" class="btn btn-warning addArticle">
-						<span class="icon-plus">Add Article</span>
+						<i class="icon-plus"></i>&nbsp;<span>Add Article</span>
 					</a>
 				</div>
+				<div class="clearfix"></div>
 				<div class="innerContent">
 					<ul class="list-item-container" id="article-list-container">
 								
@@ -40,7 +41,7 @@
 						</div>
 					</div>
 					<div class="pull-right rightSection">
-						<div class="list-action">
+						<div class="pull-right">
 							<a href="javascript:;" class="action edit btn btn-info">Edit</a>
 							<a href="javascript:;" class="action delete btn btn-danger">Delete</a>
 						</div>
@@ -81,7 +82,7 @@
 						<label>Article Content:</label>
 						<textarea id="txtArticleContent-{{id}}" name="txtArticleContent-{{id}}" 
 							cols"45" row="150"
-							class="htmlarea" required="required"
+							class="" required="required"
 							data-message="Article Content is required">{{attributes.articleContent}}</textarea>
 					</div>		
 				</div>

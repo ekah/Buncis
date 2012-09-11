@@ -22,11 +22,11 @@
 						<ul class="news-item-container list-item-container">
 							<script type="text/template" id="news-item-template">
 								<li rel="{{id}}" class="list-item">
-									<div>
+									<div class="row">
 										<div class="pull-left">
 											<span class="badge badge-info">{{attributes.ordinal}}</span>
 										</div>
-										<div class="pull-left leftSection">
+										<div class="leftSection pull=left span9">
 											<dl class="dl-horizontal">
 												<dt>Title</dt>
 												<dd class="newsTitle">{{attributes.newsTitle}}</dd>
@@ -47,8 +47,8 @@
 											</div>
 											<div class="clearfix"></div>
 										</div>
-										<div class="pull-right rightSection">								
-											<div class="list-action">
+										<div class="span1">
+											<div class="pull-right">
 												<a href="javascript:;" class="action edit btn btn-info">Edit</a> 
 												<a href="javascript:;" class="action delete btn btn-danger">Delete</a>										        
 											</div>	
@@ -121,7 +121,7 @@
 							</div>
 							<div class="form-item hasHtmlArea">
 								<label>News Content</label>
-								<textarea id="txtNewsContent" name="txtNewsContent" class="htmlarea"
+								<textarea id="txtNewsContent" name="txtNewsContent" class=""
 									rows="45" cols="150"
 									required="required" data-message="News Content is required">{{attributes.newsContent}}</textarea>
 							</div>

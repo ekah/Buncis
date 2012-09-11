@@ -6,24 +6,32 @@
 html, body, form, #bpanel-content {
 	min-height: 768px !important;
 }
+iframe {
+	border: 1px solid #ccc !important;
+	outline: #555 none 0px !important;
+	outline-color: #555 !important;	
+	color: #555 !important;
+	outline-offset: 0px !important;
+	outline: thin dotted #333;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.0742188) 0px 1px 1px 0px inset, rgba(81, 166, 236, 0.269531) 0px 0px 4px 0px !important;
+	-moz-box-shadow: rgba(0, 0, 0, 0.0742188) 0px 1px 1px 0px inset, rgba(81, 166, 236, 0.269531) 0px 0px 4px 0px !important;
+	box-shadow: rgba(0, 0, 0, 0.0742188) 0px 1px 1px 0px inset, rgba(81, 166, 236, 0.269531) 0px 0px 4px 0px !important;
+}
 dl {
 	margin: 0px !important;
 }
 .buncisBody {
 	background: #fff;
 }
-#bpanel-header {	
-	width: 100%;	
+#bpanel-header {
+	width: 100%;
 	background-color: #111;
 }
 #bpanel-content {
-	width: 100%;	
-	background-color: #eee;
-	height: 100%;
+	
 }
 #bpanel-footer {
-	min-height: 100px;
-	background-color: #d5d5d5;
+	
 }
 .buncisContentHeader {
 	background-color: #f5f5f5;
@@ -72,12 +80,9 @@ body .popup-wrapper {
 	font-size: 1em !important;
 }
 .form-item {
-	padding: 4px;
+	margin-top: 10px;
+	padding: 0px 5px;
 	overflow: auto;
-}
-.htmlarea {
-	width: 850px;
-	height: 550px;
 }
 a.action {
 	margin-left:4px;
@@ -135,20 +140,13 @@ li.list-item:hover {
 	background-color: #eee;
 	cursor: pointer;
 }
-.list-action {
-	float: right;
-}
 .list-item .leftSection {
-	width:76%;
 	border-right:#dddddd solid 1px;
-	padding-right: 10px;
-}
-.list-item .rightSection {
-	width:18%;
+	padding-right: 5px;
 }
 #ui-datepicker-div {
 	font-size: 11px !important;
 }
-.autoTextarea {
-	width: auto;
+.htmlarea {
+	min-height: 300px;
 }

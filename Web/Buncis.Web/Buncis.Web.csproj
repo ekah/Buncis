@@ -327,10 +327,6 @@
     <Content Include="Scripts\modules\dataTables\jquery.dataTables.ext.js" />
     <Content Include="Scripts\modules\dataTables\jquery.dataTables.js" />
     <Content Include="Scripts\modules\dataTables\jquery.dataTables.min.js" />
-    <Content Include="Scripts\modules\jHtmlArea\jHtmlArea-0.7.0.js" />
-    <Content Include="Scripts\modules\jHtmlArea\jHtmlArea-0.7.0.min.js" />
-    <Content Include="Scripts\modules\jHtmlArea\jHtmlArea.ColorPickerMenu-0.7.0.js" />
-    <Content Include="Scripts\modules\jHtmlArea\jHtmlArea.ColorPickerMenu-0.7.0.min.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
     <Content Include="Scripts\modules\list\list.min.js" />
@@ -341,6 +337,11 @@
     <Content Include="Scripts\modules\tools\scrollable.autoscroll.js" />
     <Content Include="Scripts\modules\tools\scrollable.js" />
     <Content Include="Scripts\modules\tools\scrollable.navigator.js" />
+    <Content Include="Scripts\modules\wysihtml5\dist\bootstrap-wysihtml5.js" />
+    <Content Include="Scripts\modules\wysihtml5\dist\wysihtml5-0.3.0.js" />
+    <Content Include="Scripts\modules\wysihtml5\dist\wysihtml5-0.3.0.min.js" />
+    <Content Include="Scripts\modules\wysihtml5\parser_rules\advanced.js" />
+    <Content Include="Scripts\modules\wysihtml5\parser_rules\simple.js" />
     <Content Include="Styles\bun_xiframe.css" />
     <Content Include="Scripts\modules\tools\validator.js" />
     <Content Include="Styles\bm.css" />
@@ -361,20 +362,18 @@
     <Content Include="Styles\images\ui-icons_888888_256x240.png" />
     <Content Include="Styles\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Styles\impress-try1.css" />
-    <Content Include="Styles\jHtmlArea\jHtmlArea.ColorPickerMenu.css" />
-    <Content Include="Styles\jHtmlArea\jHtmlArea.css" />
-    <Content Include="Styles\jHtmlArea\jHtmlArea.Editor.css" />
-    <Content Include="Styles\jHtmlArea\jHtmlArea.png" />
-    <Content Include="Styles\jHtmlArea\jHtmlArea_Toolbar_Group_BG.png" />
-    <Content Include="Styles\jHtmlArea\jHtmlArea_Toolbar_Group__Btn_Select_BG.png" />
     <Content Include="Styles\jquery-ui-1.8.23.custom.css" />
     <Content Include="Styles\nivoslider\nivo-slider.css" />
     <Content Include="Styles\normalize.css" />
     <Content Include="Styles\toastr\toastr-responsive.css" />
     <Content Include="Styles\toastr\toastr.css" />
     <Content Include="Styles\tools\tabs-no-images.css" />
+    <Content Include="Styles\wysihtml5\bootstrap-wysihtml5.css" />
+    <Content Include="Styles\wysihtml5\prettify.css" />
+    <Content Include="Styles\wysihtml5\wysiwyg-color.css" />
     <Content Include="tests\TestDefault.aspx" />
     <Content Include="UserControls\Component\LoginInfo.ascx" />
+    <Content Include="UserControls\Component\WysiwygToolbar.ascx" />
     <Content Include="UserControls\News\NewsList.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -552,6 +551,13 @@
     </Compile>
     <Compile Include="UserControls\Component\LoginInfo.ascx.designer.cs">
       <DependentUpon>LoginInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Component\WysiwygToolbar.ascx.cs">
+      <DependentUpon>WysiwygToolbar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Component\WysiwygToolbar.ascx.designer.cs">
+      <DependentUpon>WysiwygToolbar.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\News\NewsList.ascx.cs">
       <DependentUpon>NewsList.ascx</DependentUpon>

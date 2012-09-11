@@ -37,7 +37,7 @@
 				<div id="dailyBread-tab2" class="dailyBread-tab2">
 					<div class="form-item hasHtmlArea">
 						<label></label>
-						<textarea class="htmlarea"></textarea>
+						<textarea class=""></textarea>
 					</div>
 				</div>
 			</div>

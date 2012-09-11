@@ -279,7 +279,7 @@
 		$(pages._elems.txtPageMenuName).val(data.PageMenuName);
 		$(pages._elems.txtPageMetaTitle).val(data.MetaTitle);
 		$(pages._elems.txtPageMetaDescription).val(data.MetaDescription);
-		$(pages._elems.txtPageContent).val(data.PageContent);
+		$(pages._elems.txtPageContent).data("wysihtml5").editor.setValue(data.PageContent);
 		if(data.IsHomePage) {
 			$(pages._elems.chkIsHomePage).attr('checked','checked');
 		}
@@ -331,6 +331,7 @@
 		$('#form-page-popup h3').text(title);
 		
 		resetForm();
+		preparePopupForm();
 		
 		if(mode === 'edit') {
 			getPage(pageId, function(data) {
@@ -352,14 +353,10 @@
 				collection = pages.pageTable.fnGetData();
 				dData = collection[aPos];
 				pages.form.editedData = dData;
-				
-				// init form -- must be after bind data
-				preparePopupForm();
 			});
 		}
 		else {
-			// add form here
-			preparePopupForm();
+			$(pages._elems.txtPageContent).data("wysihtml5").editor.setValue('');
 		}
 
 		$.scrollTo(0, 0);
@@ -376,8 +373,18 @@
 			$($(this).attr('href')).addClass("active");
 			
 			if($(this).hasClass('hasEditor')) {
-				$(pages._elems.txtPageContent).htmlarea('dispose'); 
-				$(pages._elems.txtPageContent).htmlarea();
+				if(!pages.form.isEditorReady) {
+					$(pages._elems.txtPageContent).wysihtml5({
+						"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+						"emphasis": true, //Italics, bold, etc. Default true
+						"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+						"html": true, //Button which allows you to edit the generated HTML. Default false
+						"link": true, //Button to insert a link. Default true
+						"image": true, //Button to insert an image. Default true
+						"color": true //Button to change color of font  
+					});	
+					pages.form.isEditorReady = true;
+				}
 			}
 		});
 		
@@ -393,7 +400,6 @@
 	}
 	
 	function destroyForm() {
-		$(pages._elems.txtPageContent).htmlarea('dispose'); 
 		$(pages._elems.chkIsHomePage).button('destroy');
 		var api = _pages.form.validators.data("validator");
 		api.destroy();
@@ -458,6 +464,7 @@
 	};
 
 	pages.form = {
+		isEditorReady: false,
 		validators: {},
 		deletedPageName: '',   
 		editedRow: {},

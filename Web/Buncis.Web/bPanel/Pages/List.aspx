@@ -19,28 +19,26 @@
 					</a>
 				</div>
 				<div class="clearfix"></div>   
-				<div class="innerContent">
-					<table class="table table-striped table-hover table-condensed" id="table-pages"> 
-						<colgroup>
-							<col width="1%"</col>
-							<col width="40%"</col>
-							<col width="20%"</col>
-							<col width="20%"</col>
-							<col width="16%"</col>
-						</colgroup>
-						<thead>
-							<tr>
-								<th>&nbsp;</th>
-								<th>Page</th>
-								<th>Last Updated</th>
-								<th>Created</th>
-								<th>&nbsp;</th>
-							</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
-				</div>
+				<table class="table table-striped table-hover table-condensed" id="table-pages"> 
+					<colgroup>
+						<col width="1%"</col>
+						<col width="40%"</col>
+						<col width="20%"</col>
+						<col width="20%"</col>
+						<col width="16%"</col>
+					</colgroup>
+					<thead>
+						<tr>
+							<th>&nbsp;</th>
+							<th>Page</th>
+							<th>Last Updated</th>
+							<th>Created</th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
@@ -55,66 +53,68 @@
 		</div>
 		<div class="span12">
 			<div class="form-page buncisContentBody well well-small">
-				<ul class="nav nav-tabs" id="page-tabs">
-					<li class="tab-btn"><a href="#page-tab1" class="tabStart hasEditor">Page Information</a></li>
-				</ul>
-				<div class="tab-content">
-					<div id="page-tab1" class="page-tab1 tab-pane">
-						<div class="pull-left">
-							<div class="form-item">
-								<label>Page Name</label>
-								<input type="text" id="txtPageName" name="txtPageName" 
-									class="input-xxlarge"
-									required="required" data-message="Page Name is required" />
-							</div>
-							<div class="form-item">
-								<label>Page Description</label>
-								<textarea id="txtPageDescription" name="txtPageDescription" 
-									rows="6" cols="120" class="autoTextarea"
-									required="required" data-message="Page Description is required">
-								</textarea>
-							</div>
-							<div class="form-item">
-								<label>Name displayed in Menu</label>
-								<input type="text" id="txtPageMenuName" name="txtPageMenuName" 
-									class="medium"
-									required="required" `data-message="Page Menu Name is required" />
-							</div>
-							<div class="form-item">
-								<label>Do you want to make this page as your Home page?</label>
-								<label class="form-item-reset" for="chkIsHomePage">Home Page</label>
-								<input type="checkbox" id="chkIsHomePage" class="btn" />
-							</div>
-							<div class="form-item">
-								<label>Friendly URL</label>
-								<input type="text" id="txtPageUrl" name="txtPageUrl" 
-									class="input-xlarge" 
-									required="required" data-message="Page Url is required" />
-							</div>
-						</div>
-						<div class="pull-left">
-							<div class="form-item">
-								<label>Page Meta Title</label>
-								<input type="text" 
-									id="txtPageMetaTitle" name="txtPageMetaTitle" class="input-xxlarge" 
-									required="required" data-message="Page Meta Title is required" />
-							</div>
-							<div class="form-item">
-								<label>Page Meta Description</label>
-								<textarea id="txtPageMetaDescription" name="txtPageMetaDescription"
-									class="autoTextarea" rows="6" cols="120" 
-									required="required" data-message="Page Meta Description is required">
-								</textarea>
-							</div>		
-						</div>
-						<div class="clearfix"></div>
-						<div class="form-item hasHtmlArea">
-							<label>Content</label>
-							<div>
-								<textarea id="txtPageContent" name="txtPageContent"
-									class="htmlarea" rows="45" cols="150"
-									required="required" data-message="Page Content is required">
-								</textarea>
+				<div class="row">
+					<div class="span12">
+						<ul class="nav nav-tabs" id="page-tabs">
+							<li class="tab-btn"><a href="#page-tab1" class="tabStart hasEditor">Page Information</a></li>
+						</ul>	
+					</div>
+					<div class="tab-content span12">
+						<div id="page-tab1" class="page-tab1 tab-pane">
+							<div class="row">
+								<div class="form-item span11">
+									<label>Page Name</label>
+									<input type="text" id="txtPageName" name="txtPageName" 
+										class="input-xxlarge"
+										required="required" data-message="Page Name is required" />
+								</div>
+								<div class="form-item span11">
+									<label>Page Description</label>
+									<textarea id="txtPageDescription" name="txtPageDescription" 
+										rows="6" cols="120" class="span10"
+										required="required" data-message="Page Description is required">
+									</textarea>
+								</div>
+								<div class="form-item span11">
+									<label>Name displayed in Menu</label>
+									<input type="text" id="txtPageMenuName" name="txtPageMenuName" 
+										class="medium"
+										required="required" `data-message="Page Menu Name is required" />
+								</div>
+								<div class="form-item span11">
+									<label>Do you want to make this page as your Home page?</label>
+									<label class="form-item-reset" for="chkIsHomePage">Home Page</label>
+									<input type="checkbox" id="chkIsHomePage" class="btn" />
+								</div>
+								<div class="form-item span11">
+									<label>Friendly URL</label>
+									<input type="text" id="txtPageUrl" name="txtPageUrl" 
+										class="input-xlarge" 
+										required="required" data-message="Page Url is required" />
+								</div>
+								<div class="form-item span11">
+									<label>Page Meta Title</label>
+									<input type="text" 
+										id="txtPageMetaTitle" name="txtPageMetaTitle" class="input-xxlarge" 
+										required="required" data-message="Page Meta Title is required" />
+								</div>
+								<div class="form-item span11">
+									<label>Page Meta Description</label>
+									<textarea id="txtPageMetaDescription" name="txtPageMetaDescription"
+										class="span10" rows="6" cols="120" 
+										required="required" data-message="Page Meta Description is required">
+									</textarea>
+								</div>
+								<div class="form-item hasHtmlArea span11">
+									<label>Content</label>
+									<div> 
+										<bun:WysiwygToolbar runat="server" ID="pageWysiwygToolbar" />
+										<textarea id="txtPageContent" name="txtPageContent"
+											class="htmlarea span10" rows="30" cols="150"
+											required="required" data-message="Page Content is required">
+										</textarea>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
