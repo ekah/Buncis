@@ -346,10 +346,9 @@
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
     <Content Include="Scripts\modules\list\list.min.js" />
+    <Content Include="Scripts\modules\nivoslider\jquery.nivo.slider.js" />
     <Content Include="Scripts\modules\scrollto\jquery.scrollTo-min.js" />
     <Content Include="Scripts\modules\scrollto\jquery.scrollTo.js" />
-    <Content Include="Scripts\modules\slides\slides.jquery.js" />
-    <Content Include="Scripts\modules\slides\slides.min.jquery.js" />
     <Content Include="Scripts\modules\smartWizard\jquery.smartWizard-2.0.js" />
     <Content Include="Scripts\modules\smartWizard\jquery.smartWizard-2.0.min.js" />
     <Content Include="Scripts\modules\toastr\toastr.js" />
@@ -388,6 +387,7 @@
     <Content Include="Styles\jHtmlArea\jHtmlArea_Toolbar_Group_BG.png" />
     <Content Include="Styles\jHtmlArea\jHtmlArea_Toolbar_Group__Btn_Select_BG.png" />
     <Content Include="Styles\jquery-ui-1.8.23.custom.css" />
+    <Content Include="Styles\nivoslider\nivo-slider.css" />
     <Content Include="Styles\normalize.css" />
     <Content Include="Styles\smartWizard\images\loader.gif" />
     <Content Include="Styles\smartWizard\smart_wizard.css" />

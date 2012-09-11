@@ -1,25 +1,24 @@
 ﻿body {
-    margin: 0px;
-    padding: 0px;
-    font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;
-    font-size: 13px;
-    color: #fff;       
+	margin: 0px;
+	padding: 0px;
+	font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #fff;       
 	background: transparent url("/images/bm/bg-full.jpg") no-repeat;
 	background-size: cover;
 }
-
 html, button, input, select, textarea {
 	font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;
-    font-size: 13px;
+	font-size: 13px;
 }
-
 a {
-    text-decoration: none;
-    color: #fff;
+	text-decoration: none;
+	color: #fff;
 }
 p, li {
 	line-height: 1.4em; 
 }
+
 
 /* #region page components */
 .body {	
@@ -356,15 +355,10 @@ p, li {
 }
 .big-icon {
 	float:left;	
-	background: #543654;
 	margin: 0px 4px 0px 4px;
 	width: 160px;
 	height: 100px;
 	padding: 10px 20px;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border: 1px solid #ccc;
 }	
 .big-icon img {
 
@@ -376,13 +370,12 @@ p, li {
 	font-size: 1.2em;
 }
 .big-icon-normal {
-	background: #543654;
+
 }
 .big-icon-hover {
 	cursor: pointer;
-	background: #783547;
+	background: #543654;
 }
-
 
 
 .footer {
@@ -430,7 +423,8 @@ ul.pagination {
 	left: -40px;
 	top: 150px;
 }
-/* #endslider */
+/* #endregion slider */
+
 
 .infoBox {	
 	width: 100px;
