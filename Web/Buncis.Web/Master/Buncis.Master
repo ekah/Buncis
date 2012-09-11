@@ -6,12 +6,8 @@
 <head runat="server">
 	<title>Buncis</title>
 	<link href="/Styles/jHtmlArea/jHtmlArea.css" rel="stylesheet" type="text/css" />
-	<!--<link href="/Styles/colorbox/colorbox.css" rel="stylesheet" type="text/css" />-->
-	<!--<link href="/styles/normalize.css" rel="stylesheet" type="text/css" />-->
 	<link href="/styles/bun_x.css" rel="stylesheet" type="text/css" />
 	<link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-	<!--<link href="/Styles/tools/tabs-no-images.css" rel="stylesheet" type="text/css" />-->
-	<!--<link href="/Styles/smartWizard/smart_wizard.css" rel="stylesheet" type="text/css" />-->
 	<link href="/Styles/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css" />
 	<link href="/Styles/toastr/toastr.css" rel="stylesheet" type="text/css" />
 
@@ -22,13 +18,11 @@
 	<script src="/Scripts/modules/scrollto/jquery.scrollTo-min.js" type="text/javascript"></script>
 	<script src="/Scripts/modules/tools/validator.js" type="text/javascript"></script>   
 	<script src="/Scripts/bunx/common.js" type="text/javascript"></script>
-	<!--<script src="/Scripts/modules/colorbox/jquery.colorbox-min.js" type="text/javascript"></script>-->
 	<script src="/Scripts/modules/jHtmlArea/jHtmlArea-0.7.0.min.js" type="text/javascript"></script>
 	<script src="/Scripts/modules/dataTables/jquery.dataTables.min.js" type="text/javascript"></script>
 	<script src="/Scripts/modules/dataTables/jquery.dataTables.ext.js" type="text/javascript"></script>
 	<script src="/Scripts/modules/blockui/jquery.blockUI.js" type="text/javascript"></script>
 	<script src="/Scripts/json2.js" type="text/javascript"></script>
-	<!--<script src="/Scripts/modules/smartWizard/jquery.smartWizard-2.0.js" type="text/javascript"></script>-->
 	<script src="/Scripts/bunx/backbone/underscore.js" type="text/javascript"></script>
 	<script src="/Scripts/bunx/backbone/backbone.js" type="text/javascript"></script>
 	<script src="/Scripts/modules/toastr/toastr.js" type="text/javascript"></script>
