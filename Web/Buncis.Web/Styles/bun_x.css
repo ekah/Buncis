@@ -41,15 +41,8 @@ dl {
 	margin-top: 30px;
 }
 #loginInfo {
-	margin-top: 0px;
-	padding: 10px;
-	color: #fff;
-	text-align: right;
-}
-#loginInfo ul {
-	list-style: none;
-	margin: 0px;
-	padding: 0px;
+	height: 100%;
+	margin-top: 30px;
 }
 .error {
 	height: 1.5em;

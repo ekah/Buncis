@@ -6,42 +6,42 @@ using Buncis.Web.Common.Membership;
 
 namespace Buncis.Web.bPanel.Account
 {
-    public partial class Login : Page
-    {
-        protected override void OnInit(EventArgs e)
-        {
-            base.OnInit(e);
+	public partial class Login : Page
+	{
+		protected override void OnInit(EventArgs e)
+		{
+			base.OnInit(e);
 
-            SetupEventHandlers();
-        }
+			SetupEventHandlers();
+		}
 
-        private void SetupEventHandlers()
-        {
-            btnLogin.ServerClick += new EventHandler(btnLogin_ServerClick);
-        }
+		private void SetupEventHandlers()
+		{
+			btnLogin.ServerClick += new EventHandler(btnLogin_ServerClick);
+		}
 
-        void btnLogin_ServerClick(object sender, EventArgs e)
-        {
-           var loginResponse = WebMembershipProvider.Instance.DoLogin(txtUsername.Value, txtPassword.Value);
-           if (!loginResponse.IsSuccess)
-           {
-               
-           }
-        }
+		void btnLogin_ServerClick(object sender, EventArgs e)
+		{
+		   var loginResponse = WebMembershipProvider.Instance.DoLogin(txtUsername.Value, txtPassword.Value);
+		   if (!loginResponse.IsSuccess)
+		   {
+			   
+		   }
+		}
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
+		protected void Page_Load(object sender, EventArgs e)
+		{
 
-        }
+		}
 
-        protected override void Render(HtmlTextWriter writer)
-        {
-            using (var htmlwriter = new HtmlTextWriter(new StringWriter()))
-            {
-                base.Render(htmlwriter);
+		protected override void Render(HtmlTextWriter writer)
+		{
+			using (var htmlwriter = new HtmlTextWriter(new StringWriter()))
+			{
+				base.Render(htmlwriter);
 
-                HtmlCleaner.Render(htmlwriter, writer);
-            }
-        }
-    }
+				HtmlCleaner.Render(htmlwriter, writer);
+			}
+		}
+	}
 }

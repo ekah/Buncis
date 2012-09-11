@@ -139,6 +139,7 @@
     <Content Include="bootstrap\js\bootstrap.js" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bPanel\Account\Login.aspx" />
+    <Content Include="bPanel\Account\Logout.aspx" />
     <Content Include="bPanel\Articles\List.aspx" />
     <Content Include="bPanel\DailyBread\List.aspx" />
     <Content Include="bPanel\Dashboard.aspx" />
@@ -151,9 +152,7 @@
     <Content Include="googlec4cc9f14e1c6cee4.html" />
     <Content Include="Images\ajax-loader-2.gif" />
     <Content Include="Images\ajax-loader.gif" />
-    <Content Include="Images\arrow-next.png" />
-    <Content Include="Images\arrow-prev.png" />
-    <Content Include="Images\bm\bg-full.jpg" />
+    <Content Include="Images\bm\bg-full2.jpg" />
     <Content Include="Images\bm\construction.png" />
     <Content Include="Images\bm\announcements_pic.png" />
     <Content Include="Images\bm\article-label.png" />
@@ -162,7 +161,6 @@
     <Content Include="Images\bm\bg3.png" />
     <Content Include="Images\bm\bg4.png" />
     <Content Include="Images\bm\bg5.png" />
-    <Content Include="Images\bm\bg_bm_02.jpg" />
     <Content Include="Images\bm\bible-label.png" />
     <Content Include="Images\bm\comingsoon.png" />
     <Content Include="Images\bm\community_pic.png" />
@@ -178,15 +176,8 @@
     <Content Include="Images\bm\schedule_pic.png" />
     <Content Include="Images\bm\twitter_pic.png" />
     <Content Include="Images\bm\verse.jpg" />
-    <Content Include="Images\body_bg.jpg" />
-    <Content Include="Images\body_bg.png" />
     <Content Include="Images\body_bg2.png" />
-    <Content Include="Images\header_bg.jpg" />
-    <Content Include="Images\header_bg.png" />
-    <Content Include="Images\header_bg2.png" />
     <Content Include="Images\header_bg3.png" />
-    <Content Include="Images\ibutton-slider-default.png" />
-    <Content Include="Images\ibutton-slider-giva-original.png" />
     <Content Include="Images\icons\close_exit_delete.png" />
     <Content Include="Images\icons\address.png" />
     <Content Include="Images\icons\administrative-docs.png" />
@@ -304,7 +295,6 @@
     <Content Include="Images\logo_bg.jpg" />
     <Content Include="Images\logo_text.png" />
     <Content Include="Images\menu_bg.jpg" />
-    <Content Include="Images\menu_separator.jpg" />
     <Content Include="Images\menu_separator.png" />
     <Content Include="robot.txt" />
     <Content Include="sandbox\actTemplate-nopopup.js">
@@ -415,6 +405,13 @@
     </Compile>
     <Compile Include="bPanel\Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bPanel\Account\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bPanel\Account\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="bPanel\Articles\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>

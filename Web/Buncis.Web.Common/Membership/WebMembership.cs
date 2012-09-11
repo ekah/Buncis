@@ -9,16 +9,16 @@ namespace Buncis.Web.Common.Membership
 {
 	internal class WebMembership : IWebMembership
 	{
-		public int? LoggedInUserId
-		{
-			get
-			{
-				int? v = null;
-				if (LoggedInUserProfile != null)
-					v = LoggedInUserProfile.UserId;
-				return v;
-			}
-		}
+		//public int? LoggedInUserId
+		//{
+		//    get
+		//    {
+		//        int? v = null;
+		//        if (LoggedInWebUserProfile != null)
+		//            v = LoggedInWebUserProfile.UserId;
+		//        return v;
+		//    }
+		//}
 
 		public IWebUserProfile LoggedInWebUserProfile
 		{
@@ -28,13 +28,13 @@ namespace Buncis.Web.Common.Membership
 			}
 		}
 
-		public IUserProfile LoggedInUserProfile
-		{
-			get
-			{
-				throw new Exception("Use LoggedInWebUserProfile");
-			}
-		}
+		//public IUserProfile LoggedInUserProfile
+		//{
+		//    get
+		//    {
+		//        throw new Exception("Use LoggedInWebUserProfile");
+		//    }
+		//}
 
 		public bool UserHasAccessToModule(ApplicationModule module)
 		{
@@ -58,7 +58,16 @@ namespace Buncis.Web.Common.Membership
 
 		public Response DoLogout(int userId)
 		{
-			throw new NotImplementedException();
+			try
+			{
+				FormsAuthentication.SignOut();
+
+				return new Response(true, string.Empty);
+			}
+			catch (Exception ex)
+			{
+				return new Response(false, ex.Message);
+			}
 		}
 	}
 }

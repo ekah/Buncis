@@ -41,19 +41,14 @@
 	<form id="form1" runat="server">
 		<div id="bpanel-header">
 			<div class="container">
-				<div class="row">
-					<div class="span12">
-						<div id="topBar" class="row">
-							<div id="logo" class="span4">
-								<%--<img src="/images/logo.png" alt="Buncis Logo" />--%>
-							</div>
-							<div id="loginInfo" class="span3 offset4">
-								<bun:LoginInfo runat="server" id="loginInfo1" clientidmode="Static"></bun:LoginInfo>
-							</div>
-							<div class="clearFloats"></div>
-						</div>		
+				<div id="topBar" class="row">
+					<div id="logo" class="span4">
+						<img src="/images/logo.png" alt="Buncis Logo" />
 					</div>
-				</div>
+					<div id="loginInfo" class="span3 offset5">
+						<bun:LoginInfo runat="server" id="loginInfo1" clientidmode="Static"></bun:LoginInfo>
+					</div>
+				</div>		
 			</div>
 		</div>
 		<div id="bpanel-content">

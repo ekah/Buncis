@@ -17,18 +17,18 @@ namespace Buncis.Web.Common.Membership
 		private readonly IMembershipRoleRepository _membershipRoleRepository;
 		private readonly ISystemSettings _systemSettings;
 
-        private Security.MembershipUser _systemMembershipUser;
-        public Security.MembershipUser SystemMembershipUser
-        {
-            get
-            {
-                if (_systemMembershipUser == null)
-                {
-                    _systemMembershipUser = Security.Membership.GetUser();
-                }
-                return _systemMembershipUser;
-            }
-        }
+		private Security.MembershipUser _systemMembershipUser;
+		public Security.MembershipUser SystemMembershipUser
+		{
+			get
+			{
+				if (_systemMembershipUser == null)
+				{
+					_systemMembershipUser = Security.Membership.GetUser();
+				}
+				return _systemMembershipUser;
+			}
+		}
 
 		public WebUserProfile()
 		{
@@ -60,89 +60,89 @@ namespace Buncis.Web.Common.Membership
 		}
 
 
-        public int UserId
-        {
-            get
-            {
-                return MembershipUser.UserId;
-            }
-        }
+		public int UserId
+		{
+			get
+			{
+				return MembershipUser.UserId;
+			}
+		}
 
-        public string FirstName
-        {
-            get
-            {
-                return MembershipUser.FirstName;
-            }
-        }
+		public string FirstName
+		{
+			get
+			{
+				return MembershipUser.FirstName;
+			}
+		}
 
-        public string LastName
-        {
-            get
-            {
-                return MembershipUser.LastName;
-            }
-        }
+		public string LastName
+		{
+			get
+			{
+				return MembershipUser.LastName;
+			}
+		}
 
-        public string FullName
-        {
-            get
-            {
-                return string.Format("{0} {1}", FirstName, LastName).TrimEnd();
-            }
-        }
+		public string FullName
+		{
+			get
+			{
+				return string.Format("{0} {1}", FirstName, LastName).TrimEnd();
+			}
+		}
 
-        public string Email
-        {
-            get
-            {
-                return MembershipUser.Email;
-            }
-        }
+		public string Email
+		{
+			get
+			{
+				return MembershipUser.Email;
+			}
+		}
 
-        public bool IsLocked
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+		public bool IsLocked
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+		}
 
-        public bool IsApproved
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+		public bool IsApproved
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+		}
 
-        public DateTime? LastLoginDate
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+		public DateTime? LastLoginDate
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+		}
 
-        public int RandomSeed
-        {
-            get
-            {
-                return Convert.ToInt32(base["RandomSeed"]);
-            }
-            set
-            {
-                base["RandomSeed"] = value;
-            }
-        }
+		public int RandomSeed
+		{
+			get
+			{
+				return Convert.ToInt32(base["RandomSeed"]);
+			}
+			set
+			{
+				base["RandomSeed"] = value;
+			}
+		}
 
-        public int ClientId
-        {
-            get
-            {
-                return MembershipUser.ClientId;
-            }
-        }
+		public int ClientId
+		{
+			get
+			{
+				return MembershipUser.ClientId;
+			}
+		}
 
 		public IEnumerable<MembershipRole> Roles
 		{

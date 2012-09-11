@@ -123,6 +123,9 @@
   <data name="Page_Buncis_Dashboard" xml:space="preserve">
     <value>~/bPanel/Dashboard.aspx</value>
   </data>
+  <data name="Page_Buncis_Login" xml:space="preserve">
+    <value>~/bPanel/</value>
+  </data>
   <data name="Page_DynamicPage" xml:space="preserve">
     <value>~/DynamicPageBM.aspx</value>
   </data>

@@ -79,6 +79,15 @@ namespace Buncis.Framework.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ~/bPanel/.
+        /// </summary>
+        public static string Page_Buncis_Login {
+            get {
+                return ResourceManager.GetString("Page_Buncis_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ~/DynamicPageBM.aspx.
         /// </summary>
         public static string Page_DynamicPage {
