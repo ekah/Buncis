@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Buncis.Master" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="Buncis.Web.bPanel.Pages.List" %>
 <%@ Import Namespace="Buncis.Framework.Core.Infrastructure.Extensions" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="contentPlaceholderHead" runat="server">
 	<script src="/Scripts/bunx/_act_pages.js" type="text/javascript"></script>	
 </asp:Content>
@@ -106,7 +105,7 @@
 									</textarea>
 								</div>
 								<div class="form-item hasHtmlArea span11">
-									<label>Content</label>
+									<label>Page Content</label>
 									<div> 
 										<bun:WysiwygToolbar runat="server" ID="pageWysiwygToolbar" />
 										<textarea id="txtPageContent" name="txtPageContent"

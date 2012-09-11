@@ -102,6 +102,7 @@
 			oNews.activeFormView = editView;
 			$(editView.el).find('h3').text('Edit News');
 			_news.fn.prepareEditForm();
+			//$(pages._elems.txtPageContent).data("wysihtml5").editor.setValue(data.PageContent);
 			$(_news._elems.btnSaveNews).attr('rel', 'edit');
 		}, 
 		deleteItem: function(event) {
@@ -263,6 +264,7 @@
 			_news.activeFormView = addView;
 			$(addView.el).find('h3').text('Add News');
 			_news.fn.prepareEditForm();
+			//$(_news._elems.txtNewsContent).data("wysihtml5").editor.setValue(defNewsItem.newsContent);
 			$(_news._elems.txtDatePublished).trigger('change');
 			$(_news._elems.txtDateExpired).trigger('change');
 		});	
@@ -323,8 +325,15 @@
 			$($(this).attr('href')).addClass("active");
 			
 			if($(this).hasClass('hasEditor')) {
-				$(_news._elems.txtNewsContent).htmlarea('dispose'); 
-				$(_news._elems.txtNewsContent).htmlarea();
+				$(_news._elems.txtNewsContent).wysihtml5({
+					"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+					"emphasis": true, //Italics, bold, etc. Default true
+					"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+					"html": true, //Button which allows you to edit the generated HTML. Default false
+					"link": true, //Button to insert a link. Default true
+					"image": true, //Button to insert an image. Default true
+					"color": true //Button to change color of font  
+				});	
 			}
 		});
 		
@@ -401,7 +410,7 @@
 		else {
 			wsUrl = addWebServiceUrl;
 		}
-
+		_helpers.blockBuncisContentBodyDefault();
 		$.ajax({
 			type: "POST",
 			url: wsUrl,
@@ -410,6 +419,7 @@
 			contentType: 'text/json',
 			success: function (result) {
 				var data = result.d;
+				_helpers.unblockBuncisContentBodyDefault();
 				if (data.IsSuccess) {
 					if(_callback) {
 						_callback(data.ResponseObject);
@@ -417,6 +427,7 @@
 				}
 			},
 			error: function () {
+				_helpers.unblockBuncisContentBodyDefault();
 			}
 		});
 	};

@@ -48,7 +48,7 @@
 			<div class="container">
 				<div class="row">
 					<div id="logo" class="span4">
-						<img src="/images/logo.png" alt="Buncis Logo" />
+						<%--<img src="/images/logo.png" alt="Buncis Logo" />--%>
 					</div>
 					<div id="loginInfo" class="span3 offset5">
 						<bun:LoginInfo runat="server" id="loginInfo1" clientidmode="Static"></bun:LoginInfo>

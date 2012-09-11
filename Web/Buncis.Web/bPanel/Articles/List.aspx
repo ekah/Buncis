@@ -17,11 +17,9 @@
 					</a>
 				</div>
 				<div class="clearfix"></div>
-				<div class="innerContent">
-					<ul class="list-item-container" id="article-list-container">
+				<ul class="list-item-container" id="article-list-container">
 								
-					</ul>
-				</div>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -32,19 +30,22 @@
 	<div style="display:none">
 		<script type="text/template" id="article-item-template">
 			<li class="list-item" rel="{{id}}">
-				<div class="">
-					<div class="pull-left leftSection">
+				<div class="row">
+					<div class="span9 leftSection">
 						<div class=""><strong>{{attributes.articleTitle}}</strong></div>
 						<div class="">{{attributes.articleTeaser}}</div>
-						<div class="">
-							
-						</div>
+						<div class=""></div>
 					</div>
-					<div class="pull-right rightSection">
-						<div class="pull-right">
-							<a href="javascript:;" class="action edit btn btn-info">Edit</a>
-							<a href="javascript:;" class="action delete btn btn-danger">Delete</a>
-						</div>
+					<div class="span2 pull-right rightSection">
+						<div class="btn-group">
+							<a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+								Action&nbsp;<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="javascript:;" class="action edit">Edit</a></li>
+								<li><a href="javascript:;" class="action delete">Delete</a></li>
+							</ul>
+						</div>							
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -59,39 +60,41 @@
 			</div>
 			<div class="span12">
 				<div class="buncisContentBody well well-small">
-					<div class="form-item">
-						<label>Article Title:</label>					
-						<input type="text" id="txtArticleTitle-{{id}}" name="txtArticleTitle-{{id}}" 
-							class="input-xxlarge" value="{{attributes.articleTitle}}"
-							required="required" data-message="Article Title is required"></input>
+					<div class="row">
+						<div class="form-item span11">
+							<label>Article Title:</label>					
+							<input type="text" id="txtArticleTitle-{{id}}" name="txtArticleTitle-{{id}}" 
+								class="input-xxlarge" value="{{attributes.articleTitle}}"
+								required="required" data-message="Article Title is required"></input>
+						</div>
+						<div class="form-item span11">
+							<label>Article Teaser:</label>
+							<textarea id="txtArticleTeaser-{{id}}" name="txtArticleTeaser-{{id}}" 
+								cols="120" rows="6" class="span10"
+								required="required"
+								data-message="Article Teaser is required">{{attributes.articleTeaser}}</textarea>
+						</div>				
+						<div class="form-item span11">
+							<label>Friendly Url:</label>
+							<input type="text" id="txtArticleUrl-{{id}}" name="txtArticleUrl-{{id}}" 
+								class="input-xxlarge" value="{{attributes.articleUrl}}"
+								required="required" data-message="Article Url is required"></input>
+						</div>
+						<div class="form-item hasHtmlArea span11">
+							<label>Article Content:</label>
+							<textarea id="txtArticleContent-{{id}}" name="txtArticleContent-{{id}}" 
+								cols"45" row="150" class="htmlarea span10"
+								required="required"
+								data-message="Article Content is required">{{attributes.articleContent}}</textarea>
+						</div>		
 					</div>
-					<div class="form-item">
-						<label>Article Teaser:</label>
-						<textarea id="txtArticleTeaser-{{id}}" name="txtArticleTeaser-{{id}}" 
-							cols="120" rows="6"
-							required="required"
-							data-message="Article Teaser is required">{{attributes.articleTeaser}}</textarea>
-					</div>				
-					<div class="form-item">
-						<label>Friendly Url:</label>
-						<input type="text" id="txtArticleUrl-{{id}}" name="txtArticleUrl-{{id}}" 
-							class="input-xlarge" value="{{attributes.articleUrl}}"
-							required="required" data-message="Article Url is required"></input>
-					</div>
-					<div class="form-item hasHtmlArea">
-						<label>Article Content:</label>
-						<textarea id="txtArticleContent-{{id}}" name="txtArticleContent-{{id}}" 
-							cols"45" row="150"
-							class="" required="required"
-							data-message="Article Content is required">{{attributes.articleContent}}</textarea>
-					</div>		
 				</div>
 			</div>	
 			<div class="span12">
 				<div class="well well-small buncisButtonContainer">
 					<div class="pull-right">
 						<a href="javascript:;" class="btnSave btn btn-primary">Save</a>
-						<a href="javascript:;" class="close-view-area btn btn-error">Close</a>
+						<a href="javascript:;" class="close-view-area btn btn-inverse">Close</a>
 					</div>
 				</div>
 			</div>

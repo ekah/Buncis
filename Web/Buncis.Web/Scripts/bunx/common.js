@@ -33,6 +33,12 @@ $.tools.validator.addEffect("floatingWall", function (errors, event) {
 	helpers.unblockPopupDefault = function() {
 		$(_elems.colorboxArea).unblock(); 
 	};
+	helpers.blockBuncisContentBodyDefault = function() {
+		$('.buncisContentBody').block();
+	};
+	helpers.unblockBuncisContentBodyDefault = function() {
+		$('.buncisContentBody').unblock();
+	};	 
 	helpers.animateRow = function(row) {
 		$(row).animate({ backgroundColor: '#acfa58' }, 1500)
 			.animate({ backgroundColor: 'transparent' }, 1500); 

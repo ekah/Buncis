@@ -178,6 +178,7 @@
 				page: template
 			};
 
+			_helpers.blockBuncisContentBodyDefault();
 			$.ajax({
 				type: "POST",
 				url: wsUrl,
@@ -185,7 +186,7 @@
 				dataType: 'json',
 				contentType: 'text/json',
 				success: function (result) {    
-					if(result.d.IsSuccess) { 
+					if(result.d.IsSuccess) {
 						var msg = '';
 						if(mode === 'add') {     
 							msg = "System has successfully added new page.";
@@ -193,6 +194,7 @@
 						else {
 							msg = "System has successfully edited page data.";
 						}
+						_helpers.unblockBuncisContentBodyDefault();
 						globalShowMessages([msg]);
 						
 						pageRouter.navigate("home", {trigger: true});
@@ -209,10 +211,11 @@
 					}
 					else {
 						// show error message here
+						_helpers.unblockBuncisContentBodyDefault();
 					}
 				},
 				error: function () {
-					
+					_helpers.unblockBuncisContentBodyDefault();
 				}
 			});
 		}

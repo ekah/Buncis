@@ -119,6 +119,7 @@
 		render: function(event) {
 			var template = _.template($(_articles._elems.editTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
+			$.scrollTo(0, 0);
 			return this;
 		},
 		save: function(event) {         
@@ -140,33 +141,26 @@
 			_articles.fn.saveItem(eModel, function(result) {
 				// code below: Show message
 				var msg = '';
-
+				
 				eModel.set('articleId', result.ArticleId);
 
-				$('#btnClose').trigger('click');
-
 				if(fMode === 'edit') {
-					msg = 'Successfully edited  data';
-					self.closeView();
+					msg = 'Successfully edited article data';
+					self.close();
 				}
 				else {
 					_articles.collection.add(eModel);
 					_articles.fn.renderListItemView(eModel);
-					msg = 'Successfully added new ';
-					self.closeView();            
-					oModule.fn.animateItem(eModel);
+					msg = 'Successfully added new article';
+					self.close();            
 				}
-
-				var affected = $(_articles._elems.itemContainer).find('li[rel="' + result.ArticleId + '"]');
-				$.scrollTo(affected);
-
 				globalShowMessages([msg]);
 			});
 		},
 		close: function(event) {
 			this.closeView();
 			_articles.router.navigate("home", {trigger: true});
-			oModule.fn.animateItem($model);
+			oModule.fn.animateItem(this.model);
 		},
 		closeView: function() {
 			this.undelegateEvents();
@@ -282,12 +276,16 @@
 			effect: 'floatingWall',
 			container: _elems.errorContainer,
 			errorInputEvent: null,
-		});        
-		var $tContent = $target.find('#txtArticleContent-' + $model.id);
-		if($tContent.is(':visible')) {
-			$tContent.htmlarea('dispose'); 
-			$tContent.htmlarea();
-		}
+		});
+		$target.find('textarea[id*="txtArticleContent"]').wysihtml5({
+			"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+			"emphasis": true, //Italics, bold, etc. Default true
+			"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+			"html": true, //Button which allows you to edit the generated HTML. Default false
+			"link": true, //Button to insert a link. Default true
+			"image": true, //Button to insert an image. Default true
+			"color": true //Button to change color of font  
+		});	
 	};		
 	oFn.saveItem = function(oData, _callback) {
 		var sData = {
@@ -315,7 +313,7 @@
 			wsUrl = addWebServiceUrl;
 		}
 
-		
+		_helpers.blockBuncisContentBodyDefault();
 		$.ajax({
 			type: "POST",
 			url: wsUrl,
@@ -324,6 +322,7 @@
 			contentType: 'text/json',
 			success: function (result) {
 				var data = result.d;
+				_helpers.unblockBuncisContentBodyDefault();
 				if (data.IsSuccess) {
 					if(_callback) {
 						_callback(data.ResponseObject);
@@ -331,7 +330,7 @@
 				}
 			},
 			error: function () {
-				
+				_helpers.unblockBuncisContentBodyDefault();
 			}
 		});
 	};
@@ -365,7 +364,9 @@
 	};
 	oFn.animateItem = function($model) {
 		var $target = $('li[rel="' + $model.id + '"]');
-		$.scrollTo($target);
+		if($target.length) {
+			$.scrollTo($target);
+		}
 		window._helpers.animateRow($target);
 	};	
 	oFn.renderListItemView = function(itemModel) {

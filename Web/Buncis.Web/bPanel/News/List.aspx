@@ -17,48 +17,47 @@
 					</a>
 				</div>
 				<div class="clearfix"></div>
-				<div class="innerContent">
-					<div class="news-list-wrapper">				
-						<ul class="news-item-container list-item-container">
-							<script type="text/template" id="news-item-template">
-								<li rel="{{id}}" class="list-item">
-									<div class="row">
-										<div class="pull-left">
-											<span class="badge badge-info">{{attributes.ordinal}}</span>
-										</div>
-										<div class="leftSection pull=left span9">
-											<dl class="dl-horizontal">
-												<dt>Title</dt>
-												<dd class="newsTitle">{{attributes.newsTitle}}</dd>
-												<dt>Teaser</dt>
-												<dd>{{attributes.newsTeaser}}</dd>
-												<dt>Published</dt>
-												<dd>{{attributes.datePublished}}</dd>
-												<dt>Expired</dt>
-												<dd>{{attributes.dateExpired}}</dd>
-											</dl>
-											<div class="pull-right">
-											{% if(attributes.recentlyAdded) { %} 
-												<span class="label label-inverse">Recently Added</span>
-											{% } %} 
-											{% if(attributes.recentlyEdited) { %} 
-												<span class="label">Recently Edited</span>
-											{% } %}   
-											</div>
-											<div class="clearfix"></div>
-										</div>
-										<div class="span1">
-											<div class="pull-right">
-												<a href="javascript:;" class="action edit btn btn-info">Edit</a> 
-												<a href="javascript:;" class="action delete btn btn-danger">Delete</a>										        
-											</div>	
+				<div class="news-list-wrapper">				
+					<ul class="news-item-container list-item-container">
+						<script type="text/template" id="news-item-template">
+							<li rel="{{id}}" class="list-item">
+								<div class="row">
+									<div class="span1">
+										<span class="badge badge-info">{{attributes.ordinal}}</span>
+									</div>
+									<div class="leftSection span8">
+										<div><strong>{{attributes.newsTitle}}</strong></div>
+										<p></p>
+										<div>{{attributes.newsTeaser}}</div>
+										<p></p>
+										<div><strong>Published:</strong>&nbsp;{{attributes.datePublished}}</div>
+										<div><strong>Expired:</strong>&nbsp;{{attributes.dateExpired}}</div>
+										<div class="pull-right">
+										{% if(attributes.recentlyAdded) { %} 
+											<span class="label label-inverse">Recently Added</span>
+										{% } %} 
+										{% if(attributes.recentlyEdited) { %} 
+											<span class="label">Recently Edited</span>
+										{% } %}   
 										</div>
 										<div class="clearfix"></div>
 									</div>
-								</li>
-							</script>
-						</ul>
-					</div>
+									<div class="rightSection span2 pull-right">
+										<div class="btn-group">
+											<a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+												Action&nbsp;<span class="caret"></span>
+											</a>
+											<ul class="dropdown-menu">
+												<li><a href="javascript:;" class="action edit">Edit</a></li>
+												<li><a href="javascript:;" class="action delete">Delete</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</li>
+						</script>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -74,58 +73,59 @@
 			</div>
 			<div class="span12">			
 				<div class="buncisContentBody well well-small">
-					<ul id="news-tabs" class="nav nav-tabs">
-						<li class="tab-btn"><a href="#news-tab1" class="tabStart hasEditor">Section 1: News Information</a></li>
-					</ul>
-					<div class="tab-content">
-						<div id="news-tab1" class="news-tab1 tab-pane">
-							<div class="form-item">
-								<label>News Title</label>
-								<input type="text" id="txtNewsTitle" name="txtNewsTitle"
-									data-message="News Title is required" required="required" 
-									class="input-xxlarge" 
-									value="{{attributes.newsTitle}}" />
-							</div>
-							<div class="form-item">
-								<label>News Teaser</label>
-								<textarea id="txtNewsTeaser" name="txtNewsTeaser" 
-									required="required" data-message="News Teaser is required" required="required"
-									class="autoTextarea" cols="120" rows="6">{{attributes.newsTeaser}}</textarea>
-							</div>
-							<div class="pull-left">
-								<div class="form-item">
-									<label>Date Published</label>
-									<input type="text" id="txtDatePublished" name="txtDatePublished" 
-										required="required" data-message="Date Published is required"                                     
-										value="{{attributes.formattedDatePublished}}" 
-										rel="{{attributes.actualDatePublished}}" class="input-medium" />
-									<span class="input-medium uneditable-input">{{attributes.datePublished}}</span>
-								</div>							
-							</div>
-							<div class="pull-left">							
-								<div class="form-item">
-									<label>Date Expired</label>
-									<input type="text" id="txtDateExpired" name="txtDateExpired" 
-										required="required" data-message="Date Expired  is required" 
-										value="{{attributes.formattedDateExpired}}" 
-										rel="{{attributes.actualDateExpired}}" class="input-medium" />
-									<span class="input-medium uneditable-input">{{attributes.dateExpired}}</span>
-								</div>							
-							</div>
-							<div class="clearfix"></div>
-							<div class="form-item">
-								<label>Friendly URL</label>
-								<input type="text" id="txtNewsUrl" name="txtNewsUrl"
-									class="input-xlarge" 
-									required="required" data-message="News Url is required" value="{{attributes.newsUrl}}" />
-							</div>
-							<div class="form-item hasHtmlArea">
-								<label>News Content</label>
-								<textarea id="txtNewsContent" name="txtNewsContent" class=""
-									rows="45" cols="150"
-									required="required" data-message="News Content is required">{{attributes.newsContent}}</textarea>
-							</div>
-						</div>						
+					<div class="row">
+						<div class="span12">
+							<ul id="news-tabs" class="nav nav-tabs">
+								<li class="tab-btn"><a href="#news-tab1" class="tabStart hasEditor">News Information</a></li>
+							</ul>
+						</div>
+						<div class="tab-content span12">
+							<div id="news-tab1" class="news-tab1 tab-pane">
+								<div class="row">
+									<div class="form-item span11">
+										<label>News Title</label>
+										<input type="text" id="txtNewsTitle" name="txtNewsTitle"
+											data-message="News Title is required" required="required" 
+											class="input-xxlarge" 
+											value="{{attributes.newsTitle}}" />
+									</div>
+									<div class="form-item span11">
+										<label>News Teaser</label>
+										<textarea id="txtNewsTeaser" name="txtNewsTeaser" 
+											required="required" data-message="News Teaser is required" 
+											class="span10" cols="120" rows="6">{{attributes.newsTeaser}}</textarea>
+									</div>
+									<div class="form-item span5">
+										<label>Date Published</label>
+										<input type="text" id="txtDatePublished" name="txtDatePublished" 
+											required="required" data-message="Date Published is required"                                     
+											value="{{attributes.formattedDatePublished}}" 
+											rel="{{attributes.actualDatePublished}}" class="input-medium" />
+										<span class="input-medium uneditable-input">{{attributes.datePublished}}</span>
+									</div>							
+									<div class="form-item span5">
+										<label>Date Expired</label>
+										<input type="text" id="txtDateExpired" name="txtDateExpired" 
+											required="required" data-message="Date Expired  is required" 
+											value="{{attributes.formattedDateExpired}}" 
+											rel="{{attributes.actualDateExpired}}" class="input-medium" />
+										<span class="input-medium uneditable-input">{{attributes.dateExpired}}</span>
+									</div>							
+									<div class="form-item span11">
+										<label>Friendly URL</label>
+										<input type="text" id="txtNewsUrl" name="txtNewsUrl"
+											class="input-xlarge" 
+											required="required" data-message="News Url is required" value="{{attributes.newsUrl}}" />
+									</div>
+									<div class="form-item hasHtmlArea span11">
+										<label>News Content</label>
+										<textarea id="txtNewsContent" name="txtNewsContent" 
+											class="htmlarea span10" rows="45" cols="150"
+											required="required" data-message="News Content is required">{{attributes.newsContent}}</textarea>
+									</div>
+								</div>
+							</div>						
+						</div>
 					</div>
 				</div>
 			</div>
