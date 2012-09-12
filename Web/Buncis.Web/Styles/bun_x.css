@@ -4,7 +4,7 @@
 	height: 100%;
 }
 html, body, form, #bpanel-content {
-	min-height: 768px !important;
+	min-height: 1200px !important;
 }
 iframe {
 	border: 1px solid #ccc !important;

@@ -68,19 +68,19 @@
 					<div class="buncis-menu">
 						<a class="close" href="#" id="closeMenu">&times;</a>
 						<ul class="thumbnails">
-							<li class="span2">
+							<li class="span1">
 								<a href="/bPanel/News/List.aspx" class="thumbnail">
 									<img src="/Images/menu/news.png" alt="News">
 									<p>News</p>
 								</a>
 							</li>
-							<li class="span2">
+							<li class="span1">
 								<a href="/bPanel/Pages/List.aspx" class="thumbnail">
 									<img src="/Images/menu/pages.png" alt="Pages">
 									<p>Pages</p>
 								</a>
 							</li>
-							<li class="span2">
+							<li class="span1">
 								<a href="/bPanel/Articles/List.aspx" class="thumbnail">
 									<img src="/Images/menu/articles.png" alt="Articles">
 									<p>Articles</p>
