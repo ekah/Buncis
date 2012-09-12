@@ -31,8 +31,7 @@
 			border-radius: 10px;
 			-moz-border-radius: 10px;
 			-webkit-border-radius: 10px;
-			border: solid 1px #444;		
-			box-shadow: 0px 0px 5px 2px #fff;	
+			background-color: #504375;
 		}
 		.comingsoon .uheader {
 			padding: 30px 50px 0px;
@@ -127,11 +126,11 @@
 	</style>
 </head>
 <body>
-	<div class="uTop">
+	<%--<div class="uTop">
 		<div class="ufloat">
 			<img src="/images/bm/construction.png"/>
 		</div>
-	</div>
+	</div>--%>
 	<div class="ulogo">
 		<img src="/images/bm/comingsoon.png" />
 		<span>Time Flies</span>

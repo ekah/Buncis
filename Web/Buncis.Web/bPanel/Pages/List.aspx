@@ -88,7 +88,7 @@
 								<div class="form-item span11">
 									<label>Friendly URL</label>
 									<input type="text" id="txtPageUrl" name="txtPageUrl" 
-										class="input-xlarge" 
+										class="input-xxlarge" 
 										required="required" data-message="Page Url is required" />
 								</div>
 								<div class="form-item span11">

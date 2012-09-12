@@ -84,10 +84,9 @@
 								<div class="row">
 									<div class="form-item span11">
 										<label>News Title</label>
-										<input type="text" id="txtNewsTitle" name="txtNewsTitle"
+										<textarea id="txtNewsTitle" name="txtNewsTitle"
 											data-message="News Title is required" required="required" 
-											class="input-xxlarge" 
-											value="{{attributes.newsTitle}}" />
+											class="span10" rows="3" cols=120">{{attributes.newsTitle}}</textarea>
 									</div>
 									<div class="form-item span11">
 										<label>News Teaser</label>
@@ -114,7 +113,7 @@
 									<div class="form-item span11">
 										<label>Friendly URL</label>
 										<input type="text" id="txtNewsUrl" name="txtNewsUrl"
-											class="input-xlarge" 
+											class="input-xxlarge" 
 											required="required" data-message="News Url is required" value="{{attributes.newsUrl}}" />
 									</div>
 									<div class="form-item hasHtmlArea span11">
