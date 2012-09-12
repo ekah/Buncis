@@ -70,8 +70,8 @@
 				</div>
 				
 				<div class="aux-menu">
-					<span><a href="javascript:void(0);">Signup</a></span>
-					<span><a href="javascript:void(0);">Login</a></span>					
+					<span><a href="#">Signup</a></span>
+					<span><a href="#">Login</a></span>					
 					<div class="clearFloats"></div>
 				</div>
 
@@ -80,12 +80,12 @@
 						<div class="frame menu-frame"></div>
 						<div class="frame-inside menu-inside">
 							<ul>
-								<li><a href="javascript:void(0);">Home</a></li>
-								<li><a href="javascript:void(0);">Daily Bread</a></li>
-								<li><a href="javascript:void(0);">Articles</a></li>
-								<li><a href="javascript:void(0);">News</a></li>
-								<li><a href="javascript:void(0);">Events</a></li>
-								<li><a href="javascript:void(0);">About Us</a></li>
+								<li><a href="#">Home</a></li>
+								<li><a href="#">Daily Bread</a></li>
+								<li><a href="#">Articles</a></li>
+								<li><a href="#">News</a></li>
+								<li><a href="#">Events</a></li>
+								<li><a href="#">About Us</a></li>
 							</ul>
 						</div>
 					</div>
@@ -103,8 +103,8 @@
 									<img src="/images/bm/dummy4.png" />
 								</div>
 							</div>
-							<a href="javascript:void(0);" id="novaPrev" class="prev"><img src="/images/bm/previous.png" width="32" height="32" alt="Previous"></a>
-							<a href="javascript:void(0);" id="novaNext" class="next"><img src="/images/bm/next.png" width="32" height="32" alt="Next"></a>
+							<a href="#" id="novaPrev" class="prev"><img src="/images/bm/previous.png" width="32" height="32" alt="Previous"></a>
+							<a href="#" id="novaNext" class="next"><img src="/images/bm/next.png" width="32" height="32" alt="Next"></a>
 						</div>
 					</div>
 					<div class="frame-container quotes">

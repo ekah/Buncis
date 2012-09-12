@@ -181,9 +181,7 @@
 					msg = 'Succesfully added new News';
 				}
 				
-				var affected = $(_news._elems.newsItemContainer).find('li[rel="' + result.NewsId + '"]');
-				$.scrollTo(affected);
-
+				oNews.fn.animateItem(eNews);
 				globalShowMessages([msg]);
 			});
 		}
@@ -311,7 +309,14 @@
 			}
 		});
 	};
-
+	
+	oFn.animateItem = function($model) {
+		var $target = $('li[rel="' + $model.id + '"]');
+		if($target.length) {
+			$.scrollTo($target);
+		}
+		window._helpers.animateRow($target);
+	};	
 	oFn.prepareEditForm = function() {
 		_news.form.reset();       
 

@@ -188,23 +188,26 @@
 				success: function (result) {    
 					if(result.d.IsSuccess) {
 						var msg = '';
+						_helpers.unblockBuncisContentBodyDefault();
 						if(mode === 'add') {     
 							msg = "System has successfully added new page.";
 						}
 						else {
 							msg = "System has successfully edited page data.";
 						}
-						_helpers.unblockBuncisContentBodyDefault();
 						globalShowMessages([msg]);
 						
 						pageRouter.navigate("home", {trigger: true});
 						
 						if(mode === 'add') {
 							var added = pages.pageTable.fnAddDataAndDisplay(result.d.ResponseObject);
+							pages.pageTable.fnDisplayRow(added.nTr);
 							$.scrollTo(added.nTr);
 						}
 						else {
-							pages.pageTable.fnUpdate(result.d.ResponseObject, pages.form.editedRowPos);
+							trace(pages.form.editedRow);
+							pages.pageTable.fnUpdate(result.d.ResponseObject, pages.form.editedRowPos, false, true);
+							pages.pageTable.fnDisplayRow(pages.pageTable.fnGetNodes()[pages.form.editedRowPos]);
 							$.scrollTo(pages.form.editedRow);
 							window._helpers.animateRow(pages.form.editedRow);
 						}
@@ -234,7 +237,7 @@
 			],
 			"fnRowCallback": function (nRow, aData, iDisplayIndex) {                
 				var col0class = aData.IsHomePage ? 'icon-home' : 'icon-file';
-				var col0 = '<a href="javascript:void(0);" class="pages view" rel="' + aData.PageId + '">';
+				var col0 = '<a href="#" class="pages view" rel="' + aData.PageId + '">';
 				col0 += '<i class="' + col0class + '">&nbsp;</i>';
 				col0 += '</a>';
 				$('td:eq(0)', nRow).html(col0);
@@ -250,8 +253,8 @@
 				$('td:eq(3)', nRow).html(col3);
 
 				var col4 = '';
-				col4 += '<a href="javascript:void(0);" rel="' + aData.PageId + '" class="action edit btn btn-info"><span>Edit</span></a>';
-				col4 += '<a href="javascript:void(0);" rel="' + aData.PageId + '" class="action delete btn btn-danger"><span>Delete</span></a>';
+				col4 += '<a href="#" rel="' + aData.PageId + '" class="action edit btn btn-info"><span>Edit</span></a>';
+				col4 += '<a href="#" rel="' + aData.PageId + '" class="action delete btn btn-danger"><span>Delete</span></a>';
 				$('td:eq(4)', nRow).html(col4);
 			},
 			"aoColumnDefs": [
@@ -282,7 +285,10 @@
 		$(pages._elems.txtPageMenuName).val(data.PageMenuName);
 		$(pages._elems.txtPageMetaTitle).val(data.MetaTitle);
 		$(pages._elems.txtPageMetaDescription).val(data.MetaDescription);
+		trace('setting  page content value to: ' + data.PageContent);
+		$(pages._elems.txtPageContent).val(data.PageContent);
 		$(pages._elems.txtPageContent).data("wysihtml5").editor.setValue(data.PageContent);
+		trace('done! setting  page content value');
 		if(data.IsHomePage) {
 			$(pages._elems.chkIsHomePage).attr('checked','checked');
 		}
@@ -330,19 +336,18 @@
 		else {
 			title = 'Add Page';
 		}
-		
 		$('#form-page-popup h3').text(title);
 		
+		trace('preparing forms');
 		resetForm();
 		preparePopupForm();
+		trace('done! preparing forms');
 		
 		if(mode === 'edit') {
 			getPage(pageId, function(data) {
 				var td = $(pages._elems.tablePages).find('a.edit[rel="' + pageId + '"]').parent();
 				var tr = $(td).parent();
-				var aPos, 
-					collection, 
-					dData;
+				var aPos, collection, dData;
 
 				// bind data to form
 				bind(data);
@@ -377,6 +382,7 @@
 			
 			if($(this).hasClass('hasEditor')) {
 				if(!pages.form.isEditorReady) {
+					trace('creating page content wysiwyg');
 					$(pages._elems.txtPageContent).wysihtml5({
 						"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
 						"emphasis": true, //Italics, bold, etc. Default true
@@ -387,6 +393,7 @@
 						"color": true //Button to change color of font  
 					});	
 					pages.form.isEditorReady = true;
+					trace('done! creating page content wysiwyg');
 				}
 			}
 		});
@@ -410,7 +417,8 @@
 	}
 
 	function setupEvents() {
-		$(pages._elems.btnAddPage).click(function () {
+		$(pages._elems.btnAddPage).click(function (evt) {
+			evt.preventDefault();
 			pageRouter.navigate("add", {trigger: true});
 		});
 		
@@ -425,26 +433,30 @@
 			}
 		});
 
-		$(pages._elems.tablePages).delegate(pages._elems.btnEditPage, 'click', function() {
+		$(pages._elems.tablePages).delegate(pages._elems.btnEditPage, 'click', function(evt) {
+			evt.preventDefault();
 			var $self = $(this);
 			var pageId = $self.attr('rel');
 			pageRouter.navigate("edit/" + pageId, {trigger: true});
 		});
 
-		$(pages._elems.tablePages).delegate(pages._elems.btnDeletePage, 'click', function() {
+		$(pages._elems.tablePages).delegate(pages._elems.btnDeletePage, 'click', function(evt) {
+			evt.preventDefault();
 			var $self = $(this);
 			var pageId = $self.attr('rel');
 			showDeletePopup(pageId);
 		});
 
-		$(pages._elems.confirmDeletePage).click(function() {
+		$(pages._elems.confirmDeletePage).click(function(evt) {
+			evt.preventDefault();
 			var $self = $(this);
 			var pageId = $self.attr('rel');
 
 			deletePage(pageId);
 		});
 
-		$(pages._elems.btnSavePage).click(function() {
+		$(pages._elems.btnSavePage).click(function(evt) {
+			evt.preventDefault();
 			var $self = $(this);
 			var pageId = parseInt($self.attr('rel'), 10);
 			

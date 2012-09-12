@@ -13,7 +13,7 @@
 		<div class="span12">
 			<div class="buncisContentBody well well-small">                
 				<div class="actionContent pull-right">
-					<a href="javascript:;" id="aAddPage" class="addPage btn btn-warning">
+					<a href="#" id="aAddPage" class="addPage btn btn-warning">
 						<i class="icon-plus"></i>&nbsp;<span>Add Page</span>
 					</a>
 				</div>
@@ -123,8 +123,8 @@
 		<div class="span12">
 			<div class="well well-small buncisButtonContainer">
 				<div class="pull-right">
-					<a href="javascript:;" id="btnSavePage" class="btn btn-primary" rel="0">Save</a>
-					<a href="javascript:;" id="btnClose" class="popup-button-close btn btn-inverse">Close</a>
+					<a href="#" id="btnSavePage" class="btn btn-primary" rel="0">Save</a>
+					<a href="#" id="btnClose" class="popup-button-close btn btn-inverse">Close</a>
 				</div>
 			</div>
 		</div>
@@ -139,8 +139,8 @@
 			<p>Are you sure you want to delete page <strong><span id="d-pageName"></span></strong>?</p>
 		</div>
 		<div class="buttonContainer modal-footer">
-			<a href="javascript:;" id="deletePage-confirm" class="btn btn-primary">Yes</a>
-			<a href="javascript:;" id="deletePage-cancel" class="popup-button-close btn btn-inverse">No</a>
+			<a href="#" id="deletePage-confirm" class="btn btn-primary">Yes</a>
+			<a href="#" id="deletePage-cancel" class="popup-button-close btn btn-inverse">No</a>
 		</div>
 	</div>
 </asp:Content>

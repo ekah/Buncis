@@ -3,16 +3,47 @@ window._elems.errorContainer = '#errors';
 window._elems.colorboxArea = '.modal-body';
 window.activeModals = '';
 
+function trace(s) {
+	try { console.log(s); } catch (e) { }
+}
+
 $(document).ready(function () {
 	$('table.data-table tbody tr:nth-child(odd)').addClass('odd');
 
-	$('body').delegate('.popup-button-close', 'click', function () {
-		//$.colorbox.close();
+	$('body').delegate('.popup-button-close', 'click', function (evt) {
+		evt.preventDefault();
 		globalClosePopup();
 	});
-	$('.wall-close a').click(function () {
+	$('.wall-close a').click(function (evt) {
+		evt.preventDefault();
 		$('#errors').hide();
 	})
+
+	$('#openMenu').click(function (evt) {
+		evt.preventDefault();
+		if ($('.buncis-menu-container').is(':visible')) {
+			$('.buncis-menu-container').slideUp(1000);
+		}
+		else {
+			$('.buncis-menu-container').slideDown(1000);
+		}
+	});
+
+	$('#closeMenu').click(function (evt) {
+		evt.preventDefault();
+		$('.buncis-menu-container').slideUp(1000);
+	});
+
+	(function () {
+		var currentUrl = window.location.pathname;
+		trace(currentUrl);
+		if (currentUrl === '/bPanel/dashboard.aspx' || currentUrl === '/bPanel/') {
+			$('.buncis-menu-container').show();
+		}
+		else {
+			$('.buncis-menu-container').hide();
+		}
+	} ());
 });
 
 $.tools.validator.addEffect("floatingWall", function (errors, event) {
@@ -40,8 +71,11 @@ $.tools.validator.addEffect("floatingWall", function (errors, event) {
 		$('.buncisContentBody').unblock();
 	};	 
 	helpers.animateRow = function(row) {
-		$(row).animate({ backgroundColor: '#acfa58' }, 1500)
-			.animate({ backgroundColor: 'transparent' }, 1500); 
+		$(row)
+			.animate({ backgroundColor: '#acfa58' }, 1000)
+			.animate({ backgroundColor: '#fff' }, 1000, function () {
+				$(this).css('background-color', '');
+			});
 	};
 	helpers.dateFn = {
 		cleanDotNetDateJson: function(dateJson) {

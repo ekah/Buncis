@@ -12,7 +12,7 @@
 		<div class="span12">
 			<div class="buncisContentBody well well-small">
 				<div class="actionContent pull-right">
-					<a href="javascript:void(0);" id="aAddArticle" class="btn btn-warning addArticle">
+					<a href="#" id="aAddArticle" class="btn btn-warning addArticle">
 						<i class="icon-plus"></i>&nbsp;<span>Add Article</span>
 					</a>
 				</div>
@@ -30,22 +30,25 @@
 	<div style="display:none">
 		<script type="text/template" id="article-item-template">
 			<li class="list-item" rel="{{id}}">
-				<div class="row">
-					<div class="span9 leftSection">
+				<div class="row-fluid">
+					<div class="span10 leftSection">
 						<div class=""><strong>{{attributes.articleTitle}}</strong></div>
 						<div class="">{{attributes.articleTeaser}}</div>
 						<div class=""></div>
 					</div>
-					<div class="span2 pull-right rightSection">
-						<div class="btn-group">
-							<a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
-								Action&nbsp;<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li><a href="javascript:;" class="action edit">Edit</a></li>
-								<li><a href="javascript:;" class="action delete">Delete</a></li>
-							</ul>
-						</div>							
+					<div class="span1 rightSection">
+						<div class="btn-toolbar">
+							<div class="btn-group">
+								<button class="btn btn-info">Action</button>
+								<button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#" class="action edit">Edit</a></li>
+									<li><a href="#" class="action delete">Delete</a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -93,8 +96,8 @@
 			<div class="span12">
 				<div class="well well-small buncisButtonContainer">
 					<div class="pull-right">
-						<a href="javascript:;" class="btnSave btn btn-primary">Save</a>
-						<a href="javascript:;" class="close-view-area btn btn-inverse">Close</a>
+						<a href="#" class="btnSave btn btn-primary">Save</a>
+						<a href="#" class="close-view-area btn btn-inverse">Close</a>
 					</div>
 				</div>
 			</div>
@@ -108,8 +111,8 @@
 				<p>Are you sure you want to delete article <strong>{{attributes.articleTitle}}</strong>?</p>
 			</div>
 			<div class="buttonContainer modal-footer">				
-				<a href="javascript:;" id="deleteArticle-confirm" class="btn btn-primary">Yes</a>			    
-				<a href="javascript:;" id="deleteArticle-cancel" class="popup-button-close btn btn-inverse">No</a>
+				<a href="#" id="deleteArticle-confirm" class="btn btn-primary">Yes</a>			    
+				<a href="#" id="deleteArticle-cancel" class="popup-button-close btn btn-inverse">No</a>
 			</div>
 		</script>
 	</div>

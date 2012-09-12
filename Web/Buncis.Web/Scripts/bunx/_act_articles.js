@@ -64,7 +64,7 @@
 		},
 		render: function(){
 			var template = _.template($(_articles._elems.itemTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
-			this.$el.prepend($(template));
+			this.$el.append($(template));
 			return this;
 		},
 		editItem: function(event) {
@@ -182,6 +182,7 @@
 			_articles.fn.deleteItem(id, function() {                
 				_articles.collection.remove(this.model);
 				$(_articles._elems.itemContainer).find('li[rel="' + id + '"]').remove();
+				globalClosePopup();
 				globalShowMessages(["System has successfully deleted article " + articleTitle]);                
 			});
 		}

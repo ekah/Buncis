@@ -12,7 +12,7 @@
 		<div class="span12">
 			<div class="buncisContentBody well well-small">
 				<div class="actionContent pull-right">
-					<a href="javascript:void(0);" id="aAddNews" class="addNews btn btn-warning">
+					<a href="#" id="aAddNews" class="addNews btn btn-warning">
 						<i class="icon-plus"></i>&nbsp;<span>Add News</span>
 					</a>
 				</div>
@@ -21,11 +21,8 @@
 					<ul class="news-item-container list-item-container">
 						<script type="text/template" id="news-item-template">
 							<li rel="{{id}}" class="list-item">
-								<div class="row">
-									<div class="span1">
-										<span class="badge badge-info">{{attributes.ordinal}}</span>
-									</div>
-									<div class="leftSection span8">
+								<div class="row-fluid">
+									<div class="leftSection span10">
 										<div><strong>{{attributes.newsTitle}}</strong></div>
 										<p></p>
 										<div>{{attributes.newsTeaser}}</div>
@@ -42,15 +39,18 @@
 										</div>
 										<div class="clearfix"></div>
 									</div>
-									<div class="rightSection span2 pull-right">
-										<div class="btn-group">
-											<a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
-												Action&nbsp;<span class="caret"></span>
-											</a>
-											<ul class="dropdown-menu">
-												<li><a href="javascript:;" class="action edit">Edit</a></li>
-												<li><a href="javascript:;" class="action delete">Delete</a></li>
-											</ul>
+									<div class="rightSection span1">
+										<div class="btn-toolbar">
+											<div class="btn-group">
+												<button class="btn btn-info">Action</button>
+												<button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+													<span class="caret"></span>
+												</button>
+												<ul class="dropdown-menu">
+													<li><a href="#" class="action edit">Edit</a></li>
+													<li><a href="#" class="action delete">Delete</a></li>
+												</ul>
+											</div>
 										</div>
 									</div>
 									<div class="clearfix"></div>
@@ -132,8 +132,8 @@
 			<div class="span12">
 				<div class="well well-small buncisButtonContainer">
 					<div class="pull-right">
-						<a href="javascript:;" id="btnSaveNews" class="btn btn-primary">Save</a>                
-						<a href="javascript:;" id="btnClose" class="popup-button-close btn btn-inverse">Close</a>
+						<a href="#" id="btnSaveNews" class="btn btn-primary">Save</a>                
+						<a href="#" id="btnClose" class="popup-button-close btn btn-inverse">Close</a>
 					</div>
 				</div>
 			</div>
@@ -148,8 +148,8 @@
 				<p>Are you sure you want to delete news <strong>{{attributes.newsTitle}}</strong>?</p>
 			</div>			
 			<div class="buttonContainer modal-footer">
-				<a href="javascript:;" id="deleteNews-confirm" class="btn btn-primary">Yes</a>
-				<a href="javascript:;" id="deleteNews-cancel" class="popup-button-close btn btn-inverse">No</a>
+				<a href="#" id="deleteNews-confirm" class="btn btn-primary">Yes</a>
+				<a href="#" id="deleteNews-cancel" class="popup-button-close btn btn-inverse">No</a>
 			</div>
 		</script>
 	</div>    

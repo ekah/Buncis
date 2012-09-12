@@ -294,6 +294,9 @@
     <Content Include="Images\logo.png" />
     <Content Include="Images\logo_bg.jpg" />
     <Content Include="Images\logo_text.png" />
+    <Content Include="Images\menu\articles.png" />
+    <Content Include="Images\menu\pages.png" />
+    <Content Include="Images\menu\news.png" />
     <Content Include="Images\menu_bg.jpg" />
     <Content Include="Images\menu_separator.png" />
     <Content Include="robot.txt" />

@@ -7,7 +7,7 @@
 	</div>
 	<div class="buncisContentBody">
 		<div class="actionContent">
-			<a href="javascript:void(0);" id="aAddDailyBread" class="button-action addDailyBread">
+			<a href="#" id="aAddDailyBread" class="button-action addDailyBread">
 				<span class="icon-plus">Add DailyBread</span>
 			</a>
 		</div>
@@ -17,8 +17,8 @@
 	<div style="display:none">
 		<script type="text/template" id="popup-template">
 			<div class="popup-button-wrapper buttonContainer">
-				<a href="javascript:;" id="btnClose" class="button-whiteOnRed popup-button-close">Close</a>
-				<a href="javascript:;" id="btnSaveDailyBread" class="button-whiteOnGreen">Save</a>                
+				<a href="#" id="btnClose" class="button-whiteOnRed popup-button-close">Close</a>
+				<a href="#" id="btnSaveDailyBread" class="button-whiteOnGreen">Save</a>                
 			</div>
 			<div id="news-wizard" class="swMain">					
 				<ul class="news-tabs">
@@ -46,8 +46,8 @@
 		<script type="text/template" id="confirm-delete-popup-template">
 			<p>Are you sure you want to delete news <strong></strong>?</p>
 			<div class="popup-button-wrapper buttonContainer">
-				<a href="javascript:;" id="delete-cancel" class="button-whiteOnBlack popup-button-close">No</a>
-				<a href="javascript:;" id="delete-confirm" class="button-whiteOnRed">Yes</a>			    
+				<a href="#" id="delete-cancel" class="button-whiteOnBlack popup-button-close">No</a>
+				<a href="#" id="delete-confirm" class="button-whiteOnRed">Yes</a>			    
 			</div>
 		</script>
 		
