@@ -6,7 +6,6 @@ using Buncis.Framework.Core.Infrastructure.IoC;
 using Buncis.Web.Common.DataTransferObject;
 using Buncis.Web.WebServices.Contracts;
 using Omu.ValueInjecter;
-using Buncis.Framework.Core.Services.Pages;
 using Buncis.Framework.Core.ViewModel;
 
 namespace Buncis.Web.WebServices

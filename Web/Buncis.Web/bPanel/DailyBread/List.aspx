@@ -2,18 +2,28 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="contentPlaceholderHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentPlaceholderMain" runat="server">
-	<div class="buncisContentHeader">
-		<h3>DailyBread</h3>
-	</div>
-	<div class="buncisContentBody">
-		<div class="actionContent">
-			<a href="#" id="aAddDailyBread" class="button-action addDailyBread">
-				<span class="icon-plus">Add DailyBread</span>
-			</a>
+	<div id="homeSection" class="row">
+		<div class="span12">
+			<div class="buncisContentHeader well well-small">
+				<h3>DailyBread</h3>
+			</div>
 		</div>
-		<script type="text/template" id="listing-template"></script>
-		<div class="innerContent"></div>
 	</div>
+	<div class="span12">
+		<div class="buncisContentBody well well-small">
+			<div class="actionContent pull-right">
+				<a href="#" id="aAddDailyBread" class="btn btn-warning addDailyBread">
+					<i class="icon-plus"></i>&nbsp;<span>Add Daily Bread</span>
+				</a>
+			</div>
+			<div class="clearfix"></div>
+			<ul class="list-item-container" id="dailyBread-list-container"></ul>
+		</div>
+	</div>
+	
+	<div id="edit-section" class="row"></div>
+	<div id="delete-popup" class="popup-wrapper modal hide fade"></div>
+
 	<div style="display:none">
 		<script type="text/template" id="popup-template">
 			<div class="popup-button-wrapper buttonContainer">
@@ -50,8 +60,5 @@
 				<a href="#" id="delete-confirm" class="button-whiteOnRed">Yes</a>			    
 			</div>
 		</script>
-		
-		<div id="edit-popup"></div>
-		<div id="delete-popup"></div>
 	</div>
 </asp:Content>

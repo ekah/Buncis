@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataTransferObject\DtoBuncisArticle.cs" />
+    <Compile Include="DataTransferObject\DtoBuncisDailyBread.cs" />
     <Compile Include="DataTransferObject\DtoBuncisNews.cs" />
     <Compile Include="DataTransferObject\DtoBuncisPage.cs" />
     <Compile Include="Exceptions\PageNotFoundException.cs" />
