@@ -36,7 +36,7 @@
 		PageName: "",
 		PageMenuName: "",
 		PageDescription: "",
-		PageTeaser: "",
+		//PageTeaser: "",
 		PageContent: "",
 		MetaTitle: "",
 		MetaDescription: "",
@@ -243,7 +243,7 @@
 				$('td:eq(0)', nRow).html(col0);
 
 				var col1 = '<span><strong>' + aData.PageName + '</strong></span><br/>';
-				col1 += '<span class="info" rel="tooltip" title="' + aData.PageDescription + '">' + aData.PageTeaser + '</span>';
+				col1 += '<span class="page-description" rel="tooltip" title="' + aData.PageDescription + '">' + aData.PageDescription + '</span>';
 				$('td:eq(1)', nRow).html(col1);
 
 				var col2 = '<span>' + aData.DisplayDateLastUpdated + '</span>';
@@ -274,7 +274,10 @@
 					"sLast": "Last&raquo;"
 				}
 			},
-			"sDom": 'lrt<"tableFoot"ip>'
+			"sDom": 'lrt<"tableFoot"ip>',
+			"fnDrawCallback": function(oSettings) {
+				globalTruncate('td span.page-description');
+			}
 		});
 	}
 

@@ -66,9 +66,9 @@
 					<div class="row">
 						<div class="form-item span11">
 							<label>Article Title:</label>					
-							<input type="text" id="txtArticleTitle-{{id}}" name="txtArticleTitle-{{id}}" 
-								class="input-xxlarge" value="{{attributes.articleTitle}}"
-								required="required" data-message="Article Title is required"></input>
+							<textarea type="text" id="txtArticleTitle-{{id}}" name="txtArticleTitle-{{id}}" 
+								class="span10" cols="120" rows="3"
+								required="required" data-message="Article Title is required">{{attributes.articleTitle}}</textarea>
 						</div>
 						<div class="form-item span11">
 							<label>Article Teaser:</label>

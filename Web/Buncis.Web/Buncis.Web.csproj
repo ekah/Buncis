@@ -130,6 +130,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="1140grid\css\1140.css" />
+    <Content Include="1140grid\css\ie.css" />
+    <Content Include="1140grid\css\styles.css" />
+    <Content Include="1140grid\js\css3-mediaqueries.js" />
     <Content Include="bootstrap\css\bootstrap-responsive.css" />
     <Content Include="bootstrap\css\bootstrap-responsive.min.css" />
     <Content Include="bootstrap\css\bootstrap.css" />
@@ -340,6 +344,7 @@
     <Content Include="Scripts\modules\tools\scrollable.autoscroll.js" />
     <Content Include="Scripts\modules\tools\scrollable.js" />
     <Content Include="Scripts\modules\tools\scrollable.navigator.js" />
+    <Content Include="Scripts\modules\trunk8.js" />
     <Content Include="Scripts\modules\wysihtml5\dist\bootstrap-wysihtml5.js" />
     <Content Include="Scripts\modules\wysihtml5\dist\wysihtml5-0.3.0.js" />
     <Content Include="Scripts\modules\wysihtml5\dist\wysihtml5-0.3.0.min.js" />
@@ -351,6 +356,7 @@
     <Content Include="Styles\bun_x.css" />
     <Content Include="Styles\bun.css" />
     <Content Include="Styles\bun_x_bak.css" />
+    <Content Include="Styles\bm_bak.css" />
     <Content Include="Styles\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Styles\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Styles\images\ui-bg_glass_55_fbf9ee_1x400.png" />
