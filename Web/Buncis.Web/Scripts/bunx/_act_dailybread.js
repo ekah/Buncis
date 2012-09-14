@@ -28,12 +28,24 @@
 		model: oModule.ItemModel,
 		comparator: function(itemModel){
 			//	!! update !!
-            var id = itemModel.get('ID PROPERTY HERE');
-            return -id;
-        }
+			var id = itemModel.get('ID PROPERTY HERE');
+			return -id;
+		}
 	});
 	oModule.ItemModel = Backbone.Model.extend({
-		// PUT MODEL PROPERTY HERE
+		idAttribute: 'dailyBreadId',
+		dailyBreadId: 0,
+		dailyBreadTitle: '',
+		dailyBreadSummary: '',
+		dailyBreadContent: '',
+		dailyBreadUrl: '',
+		displayDateCreated: '',
+		displayDateLastUpdated: '',
+		dailyBreadBook: '',
+		dailyBreadBookChapter: 0,
+		dailyBreadBookVerse1: 0,
+		dailyBreadBookVerse2: 0,
+		dailyBreadBookContent: ''
 	});
 	oModule.ItemView = Backbone.View.extend({
 		initialize: function(){

@@ -297,9 +297,9 @@
 				ArticleTeaser: oData.get('articleTeaser'),
 				ArticleUrl: oData.get('articleUrl'),
 				ArticleContent: oData.get('articleContent'),
-				DateCreated: '/Date(1341158400000)/',
+				//DateCreated: '/Date(1341158400000)/',
 				DisplayDateCreated: '',
-				DateLastUpdated: '/Date(1341158400000)/',
+				//DateLastUpdated: '/Date(1341158400000)/',
 				DisplayDateLastUpdated: ''
 			}
 		};

@@ -23,8 +23,41 @@
 	
 	<div id="edit-section" class="row"></div>
 	<div id="delete-popup" class="popup-wrapper modal hide fade"></div>
-
+	
 	<div style="display:none">
+		<script type="text/template" id="item-template">
+			<li class="list-item" rel="{{id}}">
+				<div class="row-fluid">
+					<div class="span3">
+						<div class=""><strong>{{attributes.dailyBreadBook}}</strong></div>
+						<div class=""><strong>{{attributes.dailyBreadBookChapter}} : {{attributes.dailyBreadBookVerse1}}-{{attributes.dailyBreadBookVerse2}}</strong></div>
+					</div>
+					<div class="span7 leftSection">
+						<div class=""><strong>{{attributes.dailyBreadTitle}}</strong></div>
+						<div class="">{{attributes.dailyBreadSummary}}</div>
+						<div class="">{{attributes.dailyBreadContent}}</div>
+						<p></p>
+						<div><strong>Created Date:</strong>&nbsp;{{attributes.displayDateCreated}}</div>						
+					</div>
+					<div class="span1 rightSection">
+						<div class="btn-toolbar">
+							<div class="btn-group">
+								<button class="btn btn-info">Action</button>
+								<button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#" class="action edit">Edit</a></li>
+									<li><a href="#" class="action delete">Delete</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</li>
+		</script>
+
 		<script type="text/template" id="popup-template">
 			<div class="popup-button-wrapper buttonContainer">
 				<a href="#" id="btnClose" class="button-whiteOnRed popup-button-close">Close</a>

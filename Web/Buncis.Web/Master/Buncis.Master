@@ -57,7 +57,7 @@
 						</div>
 					</div>
 					<div class="span2 offset9 menu-toggle">
-						<a href="#" id="openMenu"><span><strong>Open Menu</strong></span></a>
+						<a href="#" id="openMenu"><span><i class="icon icon-arrow-down"></i>&nbsp;<strong>Open Menu</strong></span></a>
 					</div>
 				</div>
 			</div>

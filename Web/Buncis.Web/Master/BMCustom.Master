@@ -98,7 +98,7 @@
 			<div class="row section">
 				<div class="eightcol">
 					<div class="alpha10 round5border">
-						<div class="slider-wrapper frame-inside">
+						<div class="slider-wrapper frame-inside round5">
 							<div style="float: right;position: relative;left: -50%;">
 								<div style="position: relative; left:50%;">
 									<div class="sliderNav-left">
@@ -124,7 +124,7 @@
 				</div>
 				<div class="fourcol last">
 					<div class="alpha10 round5border">
-						<div class="quotes-content frame-inside">
+						<div class="quotes-content frame-inside round5">
 							<div class="frame-title alpha10">Quotes</div>
 							<div>The longest journey is the journey inwards. Of him who has chosen his destiny, Who has started upon his quest for the source of his being.</div>
 						</div>	
@@ -134,7 +134,7 @@
 			<div class="row section">
 				<div class="twelvecol">
 					<div class="alpha10 round5border">
-						<div class="daily-bread-container frame-inside">
+						<div class="daily-bread-container frame-inside round5">
 							<div class="frame-title alpha10">Daily Bread</div>
 							<div class="threecol">
 								<div class="verse-title">Mat</div>
@@ -156,7 +156,7 @@
 			<div class="row section">
 				<div class="twelvecol last">
 					<div class="alpha10 round5border">
-						<div class="article-content frame-inside">
+						<div class="article-content frame-inside round5">
 							<div class="frame-title alpha10">Recent Article</div>
 							<div>
 								<p>Appropriately coordinate next-generation methodologies before orthogonal products. Distinctively transition client-centric web-readiness before optimal benefits. Interactively promote adaptive users rather than mission-critical e-business. Appropriately underwhelm front-end e-business after error-free systems. Competently recaptiualize front-end products whereas competitive sources.</p>
@@ -170,7 +170,7 @@
 			<div class="row section">
 				<div class="twelvecol">
 					<div class="alpha10 round5border">
-						<div class="add-nav frame-inside">
+						<div class="add-nav frame-inside round5">
 							<div class="frame-title alpha10">Browse More</div>
 							<div class="big-icon twocol">
 								<a href="#">

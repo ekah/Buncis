@@ -154,6 +154,7 @@
     <Content Include="DynamicPageBM.aspx" />
     <Content Include="Global.asax" />
     <Content Include="googlec4cc9f14e1c6cee4.html" />
+    <Content Include="HomeBM.aspx" />
     <Content Include="Images\ajax-loader-2.gif" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\bm\bg-full3.jpg" />
@@ -478,12 +479,26 @@
     <Compile Include="DynamicPageBM.aspx.designer.cs">
       <DependentUpon>DynamicPageBM.aspx</DependentUpon>
     </Compile>
+    <Compile Include="HomeBM.aspx.cs">
+      <DependentUpon>HomeBM.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomeBM.aspx.designer.cs">
+      <DependentUpon>HomeBM.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\BMCustom.Master.cs">
       <DependentUpon>BMCustom.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Master\BMCustom.Master.designer.cs">
       <DependentUpon>BMCustom.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\BMTwoColumns.Master.cs">
+      <DependentUpon>BMTwoColumns.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\BMTwoColumns.Master.designer.cs">
+      <DependentUpon>BMTwoColumns.Master</DependentUpon>
     </Compile>
     <Compile Include="Master\Buncis.Master.cs">
       <DependentUpon>Buncis.Master</DependentUpon>
@@ -643,6 +658,7 @@
     <Content Include="WebServices\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Master\BMTwoColumns.Master" />
     <None Include="sandbox\actTemplate-nopopup.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>actTemplate-nopopup.js</LastGenOutput>

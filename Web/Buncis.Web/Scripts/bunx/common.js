@@ -89,16 +89,28 @@ $(document).ready(function () {
 	$('#openMenu').click(function (evt) {
 		evt.preventDefault();
 		if ($('.buncis-menu-container').is(':visible')) {
-			$('.buncis-menu-container').slideUp(1000);
+			$('.buncis-menu-container').slideUp(400, function () {
+				$('#openMenu').find('i').addClass('icon-arrow-down');
+				$('#openMenu').find('i').removeClass('icon-arrow-up');
+				$('#openMenu').find('strong').text('Open Menu');
+			});
 		}
 		else {
-			$('.buncis-menu-container').slideDown(1000);
+			$('.buncis-menu-container').slideDown(400, function () {
+				$('#openMenu').find('i').removeClass('icon-arrow-down');
+				$('#openMenu').find('i').addClass('icon-arrow-up');
+				$('#openMenu').find('strong').text('Close Menu');
+			});
 		}
 	});
 
 	$('#closeMenu').click(function (evt) {
 		evt.preventDefault();
-		$('.buncis-menu-container').slideUp(1000);
+		$('.buncis-menu-container').slideUp(400, function () {
+			$('#openMenu').find('i').addClass('icon-arrow-down');
+			$('#openMenu').find('i').removeClass('icon-arrow-up');
+			$('#openMenu').find('strong').text('Open Menu');
+		});
 	});
 
 	(function () {

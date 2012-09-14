@@ -62,8 +62,8 @@
 		newsContent: '',
 		datePublished: '', // display date as in "Mon, 4 Aug 2012 00:00"
 		dateExpired: '',
-		dateCreated: '',
-		dateLastUpdated: '',
+		//dateCreated: '',
+		//dateLastUpdated: '',
 		newsUrl: '',
 		epochDatePublished: '', // epoch date from server
 		epochDateExpired: '',
@@ -401,8 +401,8 @@
 				DisplayDateExpired: '',
 				DisplayDateLastUpdated: '',
 				NewsUrl: oData.get('newsUrl'),
-				DateCreated: '/Date(1341158400000)/',
-				DateLastUpdated: '/Date(1341158400000)/',
+				//DateCreated: '/Date(1341158400000)/',
+				//DateLastUpdated: '/Date(1341158400000)/',
 				DatePublished: oData.get('epochDatePublished'),
 				DateExpired: oData.get('epochDateExpired')
 			}
