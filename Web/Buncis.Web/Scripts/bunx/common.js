@@ -189,6 +189,13 @@ $.tools.validator.addEffect("floatingWall", function (errors, event) {
 		convertDateToDefaultFormattedString: function(date) {
 			// DEAFULT FORMATTED STRING IS d-m-yy
 			return date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+		},
+		convertDateStringToEpochString: function(fDate) {
+			var oDate = new Date(fDate);
+			var tzo = parseInt((oDate.getTimezoneOffset() / (-60)), 10);
+			var itzo = tzo < 10 ? ('0' + tzo) : ('' + tzo);
+			var stzo = tzo < 0 ? '-' : '+';
+			return '/Date(' + oDate.getTime() + stzo + itzo + '00)/'
 		}
 	};	
 	helpers.underscoreTemplateSettings = {

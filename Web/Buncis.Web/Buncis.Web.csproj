@@ -395,7 +395,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="WebServices\Articles.svc" />
-    <Content Include="WebServices\DailyBread.svc" />
+    <Content Include="WebServices\DailyBreads.svc" />
     <Content Include="WebServices\News.svc" />
     <Content Include="WebServices\Pages.svc" />
   </ItemGroup>
@@ -598,10 +598,10 @@
     <Compile Include="WebServices\Contracts\IArticles.cs" />
     <Compile Include="WebServices\Contracts\INews.cs" />
     <Compile Include="WebServices\Contracts\IPages.cs" />
-    <Compile Include="WebServices\DailyBread.svc.cs">
-      <DependentUpon>DailyBread.svc</DependentUpon>
+    <Compile Include="WebServices\DailyBreads.svc.cs">
+      <DependentUpon>DailyBreads.svc</DependentUpon>
     </Compile>
-    <Compile Include="WebServices\Contracts\IDailyBread.cs" />
+    <Compile Include="WebServices\Contracts\IDailyBreads.cs" />
     <Compile Include="WebServices\News.svc.cs">
       <DependentUpon>News.svc</DependentUpon>
     </Compile>

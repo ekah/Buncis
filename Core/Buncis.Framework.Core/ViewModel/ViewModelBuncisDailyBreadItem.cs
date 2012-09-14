@@ -30,6 +30,14 @@ namespace Buncis.Framework.Core.ViewModel
 				return DateLastUpdated.ToBuncisLongFormatString();
 			}
 		}
+		public DateTime DatePublished { get; set; }
+		public string DisplayDatePublished
+		{
+			get
+			{
+				return DatePublished.ToBuncisShortFormatString();
+			}
+		}
 		public string DailyBreadBook { get; set; }
 		public int DailyBreadBookChapter { get; set; }
 		public int DailyBreadBookVerse1 { get; set; }

@@ -1,34 +1,19 @@
 ﻿(function (oModule) {
 	oModule._elems = {
-		detailPopup: '#',
-		editPopup: '#',
-		deletePopup: '#',
-		wizards: '#',		
-		tabs: '#',
-		formElements: '.form-item :input',		
-		btnSave: '#',
-		btnAdd: '#',		
-		editPopupTemplate: '#',
-		confirmDeletePopupTemplate: '#',
-		itemTemplate: '#',
-		itemContainer: ''
-	};
-	oModule.form = {
-		wizardHasBeenInitialized: false,
-		validators: {},
-		wizard: {},
-		reset: function() {
-			this.wizardHasBeenInitialized = false;
-			this.validators = {};
-			this.wizard = {};
-		}
+		formContainer: '#edit-section',
+		deletePopup: '#delete-popup',
+		formElements: '.form-item :input',
+		btnAdd: '#aAddDailyBread',
+		editTemplate: '#edit-template',
+		confirmDeletePopupTemplate: '#confirm-delete-popup-template',
+		itemTemplate: '#item-template',
+		itemContainer: '#dailyBread-list-container'
 	};
 	oModule.collection = {};
 	oModule.CollectionModel = Backbone.Collection.extend({
 		model: oModule.ItemModel,
 		comparator: function(itemModel){
-			//	!! update !!
-			var id = itemModel.get('ID PROPERTY HERE');
+			var id = itemModel.get('dailyBreadId');
 			return -id;
 		}
 	});
@@ -41,6 +26,10 @@
 		dailyBreadUrl: '',
 		displayDateCreated: '',
 		displayDateLastUpdated: '',
+		displayDatePublished: '',
+		epochDatePublished: '',
+		formattedDatePublished: '',
+		actualDatePublished: null,
 		dailyBreadBook: '',
 		dailyBreadBookChapter: 0,
 		dailyBreadBookVerse1: 0,
@@ -54,8 +43,9 @@
 		},
 		renderUpdate: function() {
 			var template = _.template($(_dailyBread._elems.itemTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
-			// EXAMPLE: $('li[rel="' + this.model.get('Id') + '"]').replaceWith(template);
-			// PUT THE ID ON THE ELEMENT LIST HERE
+			var $item = $(_dailyBread._elems.itemContainer).find('li[rel="' + this.model.id + '"]');
+			$item.replaceWith(template);
+			oModule.fn.animateItem(this.model);
 			return this;
 		},
 		render: function(){
@@ -63,23 +53,17 @@
 			this.$el.prepend($(template));
 			return this;
 		},
-		editItem: function(event) {
-			var popupView = new _dailyBread.FormView({
-				el: $(_dailyBread._elems.editPopup),
-				model: this.model
-			});			
-			popupView.render();
+		editItem: function(event) {			
+			// put router here
 
-			_dailyBread.fn.showFormPopup(_dailyBread._elems.editPopup, 'Edit ', 
-				function() {
-					_dailyBread.fn.prepareEditForm();
-					$(_dailyBread._elems.btnSave).attr('rel', 'edit');
-				}, 
-				function() {
-					popupView.undelegateEvents();
-					$(popupView.el).empty();
-				}
-			);
+			var editView = new _dailyBread.FormView({
+				el: $(_dailyBread._elems.formContainer),
+				model: this.model
+			});
+			editView.formMode = 'edit';
+			editView.render();
+			_dailyBread.fn.prepareForm(editView);
+			$(editView.el).find('h3').text('Edit Daily Bread');
 		}, 
 		deleteItem: function(event) {
 			var deletePopupView = new _dailyBread.DeleteView({
@@ -87,9 +71,8 @@
 				model: this.model
 			});
 			deletePopupView.render();
-			globalShowPopup(200, 400, _dailyBread._elems.deletePopup, 'Delete ', 
+			globalShowPopup(200, 400, _dailyBread._elems.deletePopup, 'Delete Daily Bread', 
 				function() {
-					$.colorbox.resize();					
 				}, 
 				function() {
 					deletePopupView.undelegateEvents();
@@ -99,48 +82,72 @@
 		}
 	});
 	oModule.FormView = Backbone.View.extend({
+		formMode: '',
+		validators: {},
+		reset: function() {
+			this.validators = {};
+		},
 		events: {
-			//EXAMPLE 'click #btnSave': 'save'
-			// PUT EVENTS HERE
+			'click a.close-view-area': 'close',
+			'click a#btnSaveDailyBread': 'save'
 		},
 		render: function(event) {
-			var template = _.template($(_dailyBread._elems.editPopupTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
+			var template = _.template($(_dailyBread._elems.editTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
+			$.scrollTo(0, 0);
 			return this;
 		},
 		save: function(event) {
-			var api = _dailyBread.form.validators.data("validator");
+			trace('save called');
+			var self = this;
+			var api = this.validators.data("validator");
 			var isValid = api.checkValidity();
 			if(!isValid) {
 				return false;
 			}
-			// GET THE DATA FROM UI
-			var fMode = $(_dailyBread._elems.btnSave).attr('rel');
-			// SET THE MODEL DATA HERE		
-			var eModel = this.model;			
-			// EXAMPLE model.set('Title', nTitle);
+			var fMode = this.formMode;
+			var eModel = this.model;	
+			var textPublished = $('#txtDailyBreadPublishedDate').attr('rel');
+			var epochDate = _helpers.dateFn.convertDateStringToEpochString(textPublished);
+			eModel.set('dailyBreadTitle', this.$el.find('#txtDailyBreadTitle').val());
+			eModel.set('dailyBreadSummary', this.$el.find('#txtDailyBreadSummary').val());
+			eModel.set('dailyBreadContent', this.$el.find('#txtDailyBreadContent').val());
+			eModel.set('dailyBreadUrl', this.$el.find('#txtDailyBreadUrl').val());
+			eModel.set('epochDatePublished', epochDate);
+			eModel.set('dailyBreadBook', this.$el.find('#selDailyBreadBook').val());
+			eModel.set('dailyBreadBookChapter', this.$el.find('#txtDailyBreadBookChapter').val());
+			eModel.set('dailyBreadBookVerse1', this.$el.find('#txtDailyBreadBookVerse1').val());
+			eModel.set('dailyBreadBookVerse2', this.$el.find('#txtDailyBreadBookVerse2').val());
+			eModel.set('dailyBreadBookContent', this.$el.find('#txtDailyBreadBookContent').val());
 			
 			_dailyBread.fn.saveItem(eModel, function(result) {
-
-				$.colorbox.close();
-
 				var msg = '';
+				eModel.set('dailyBreadId', result.DailyBreadId);
+				eModel.set('displayDateCreated', result.DisplayDateCreated);
+				eModel.set('displayDatePublished', result.DisplayDatePublished);
 				if(fMode === 'edit') {
-					msg = 'Succesfully edited  data';
+					msg = 'Succesfully edited daily bread data';
+					self.close();
 				}
 				else {
 					_dailyBread.collection.add(eModel);
 					_dailyBread.fn.renderListItemView(eModel);
-					msg = 'Succesfully added new ';
+					msg = 'Succesfully added new daily bread';
+					self.close();
 				}
 				globalShowMessages([msg]);
 			});
+		},
+		close: function(event) {
+			this.undelegateEvents();
+			$(this.el).empty();
+			//put router to home here
+			oModule.fn.animateItem(this.model);
 		}
 	});
 	oModule.DeleteView = Backbone.View.extend({
 		events: {
-			// EXAMPLE: 'click #delete-confirm': 'cDelete'
-			// PUT EVENTS HERE
+			'click #delete-confirm': 'confirmDelete'
 		},
 		render: function(event) {
 			var template = _.template($(_dailyBread._elems.confirmDeletePopupTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
@@ -148,14 +155,13 @@
 			return this;
 		},
 		confirmDelete: function(event) {
-			var id = parseInt(this.model.get('ID PROPERTY HERE'), 10);
-			
+			var id = parseInt(this.model.id, 10);	
+			var title = this.model.get('dailyBreadTitle');
 			_dailyBread.fn.deleteItem(id, function() {
 				_dailyBread.collection.remove(this.model);
-				//EXAMPLE: $(_dailyBread._elems.itemContainer).find('li[rel="' + Id + '"]').remove();
-				// REMOVE VIEW FROM COLLECTION
-				$.colorbox.close();				
-				globalShowMessages(["System has succesfully deleted XXX"]);
+				$(_dailyBread._elems.itemContainer).find('li[rel="' + id + '"]').remove();
+				globalClosePopup();
+				globalShowMessages(["System has successfully deleted daily bread " + title]);
 			});
 		}
 	});
@@ -163,67 +169,78 @@
 
 
 (function(oFn) {
-	var listWebServiceUrl = '' + _elems.clientId;	
-	var editWebServiceUrl = '';	
-	var addWebServiceUrl = '';	
-	var deleteWebServiceUrl = '';	
+	var listWebServiceUrl = '/webservices/dailybreads.svc/BPGetDailyBreads?clientId=' + _elems.clientId;
+	var editWebServiceUrl = '/webservices/dailybreads.svc/BPUpdateDailyBread';	
+	var addWebServiceUrl = '/webservices/dailybreads.svc/BPInsertDailyBread';	
+	var deleteWebServiceUrl = '/webservices/dailybreads.svc/BPDeleteDailyBread';	
 
 	oFn.setupEvents = function() {
+		log('setupEvents called');
 		$(_dailyBread._elems.btnAdd).click(function(event) {
-			event.preventDefault();
-			
+			log('add daily bread');
+			event.preventDefault();	
 			var defaultItem = new _dailyBread.ItemModel({
-				
+				dailyBreadId: 0,
+				dailyBreadTitle: '',
+				dailyBreadSummary: '',
+				dailyBreadContent: '',
+				dailyBreadUrl: '',
+				displayDateCreated: '',
+				displayDateLastUpdated: '',
+				displayDatePublished: '',
+				epochDatePublished: '',
+				formattedDatePublished: '',
+				dailyBreadBook: '',
+				dailyBreadBookChapter: 0,
+				dailyBreadBookVerse1: 0,
+				dailyBreadBookVerse2: 0,
+				dailyBreadBookContent: ''
 			});
-			var popupView = new _dailyBread.FormView({
-				el: $(_dailyBread._elems.editPopup),
+			var addView = new _dailyBread.FormView({
+				el: $(_dailyBread._elems.formContainer),
 				model: defaultItem
 			});
-			popupView.render();
-
-			_dailyBread.fn.showFormPopup(_dailyBread._elems.editPopup, 'Add ', 
-				function() {
-					_dailyBread.fn.prepareEditForm();
-				}, 
-				function() {
-					popupView.undelegateEvents();
-					$(popupView.el).empty();
-				}
-			);
+			addView.formMode = 'add';
+			addView.render();
+			$(addView.el).find('h3').text('Add Daily Bread');
+			oFn.prepareForm(addView);
 		});	
+		$(document).delegate('#txtDailyBreadPublishedDate', 'change', function() {
+			var $elem = $(this);
+			var selectedDate = $elem.val();
+			var actualDate = $.datepicker.parseDate('d-m-yy', selectedDate);
+			var displayDate = $.datepicker.formatDate('D, d M yy', actualDate);
+			$elem.siblings('span').text(displayDate);
+		});
 	};
-	oFn.prepareEditForm = function() {
-		_dailyBread.form.reset();
-		if(!_dailyBread.form.wizardHasBeenInitialized) {
-			_dailyBread.form.wizard = $(_dailyBread._elems.wizards).smartWizard({
-				keyNavigation: false,
-				enableAllSteps: true,
-				enableFinishButton: false, 
-				labelNext: '',
-				labelPrevious: '',
-				labelFinish: '',
-				transitionEffect: 'slideleft',
-				onShowStep: function (step) {
-					// !!! CHANGE THIS !!!
-					if($(_dailyBread._elems."TEXTAREAHERE").is(':visible')) {
-						$(_dailyBread._elems."TEXTAREAHERE").htmlarea('dispose'); 
-						$(_dailyBread._elems."TEXTAREAHERE").htmlarea();
-					}
-				}
-			});
-			_dailyBread.form.wizardHasBeenInitialized = true;
-		}
-		else {
-			$(_dailyBread._elems.tabs).find('a.tabStart').click();
-		}
-		_dailyBread.form.validators = $(_dailyBread._elems.formElements).validator({
+	oFn.prepareForm = function($view) {
+		var $model = $view.model;
+		var $target = $view.$el;
+		$view.reset();
+		$view.validators = $target.find(_dailyBread._elems.formElements).validator({
 			effect: 'floatingWall',
-			container: _elems.errorContainer,
+			container: window._elems.errorContainer,
 			errorInputEvent: null,
-		});  
-	};
-	oFn.showFormPopup = function(selector, title, _completeCallback, _closedCallback) {
-		globalShowPopup(662, 960, selector, title, _completeCallback, _closedCallback)
+		});
+		$target.find('textarea[id*="txtDailyBreadContent"]').wysihtml5({
+			"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+			"emphasis": true, //Italics, bold, etc. Default true
+			"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+			"html": true, //Button which allows you to edit the generated HTML. Default false
+			"link": true, //Button to insert a link. Default true
+			"image": true, //Button to insert an image. Default true
+			"color": true //Button to change color of font  
+		});
+		$('#txtDailyBreadPublishedDate').datepicker({
+			changeMonth: true,
+			numberOfMonths: 1,
+			dateFormat: 'd-m-yy',
+			onSelect: function(selectedDate) {
+				var actualDate = $.datepicker.parseDate('d-m-yy', selectedDate);
+				$(this).attr('rel', actualDate);
+				$(this).trigger('change');
+			}
+		});
 	};
 	oFn.getCollection = function(_callback) {
 		$.ajax({
@@ -242,23 +259,36 @@
 		});
 	};
 	oFn.saveItem = function(oData, _callback) {
+		trace('save item');
+		trace(oData);
 		var sData = {
 			clientId: _elems.clientId,
-			
+			dailyBread: {
+				DailyBreadId: oData.get('dailyBreadId'),
+				DailyBreadTitle: oData.get('dailyBreadTitle'),
+				DailyBreadSummary: oData.get('dailyBreadSummary'),
+				DailyBreadContent: oData.get('dailyBreadContent'),
+				DailyBreadUrl: oData.get('dailyBreadUrl'),
+				DisplayDateCreated: '',
+				DisplayDateLastUpdated: '',
+				DatePublished: oData.get('epochDatePublished'),
+				DisplayDatePublished: '',
+				DailyBreadBook: oData.get('dailyBreadBook'),
+				DailyBreadBookChapter: oData.get('dailyBreadBookChapter'),
+				DailyBreadBookVerse1: oData.get('dailyBreadBookVerse1'),
+				DailyBreadBookVerse2: oData.get('dailyBreadBookVerse2'),
+				DailyBreadBookContent: oData.get('dailyBreadBookContent')
+			}
 		};
 		var jData = JSON.stringify(sData);
 		var wsUrl = '';
-		
-		// determine if edit/add
-		// !!! CHANGE THIS !!!
-		if(sData."ITEMNAMEHERE.IDHERE" > 0) { 
+		if(sData.dailyBread.DailyBreadId > 0) { 
 			wsUrl = editWebServiceUrl;			
 		}
 		else {
 			wsUrl = addWebServiceUrl;
 		}
-
-		_helpers.blockPopupDefault();
+		_helpers.blockBuncisContentBodyDefault();
 		$.ajax({
 			type: "POST",
 			url: wsUrl,
@@ -266,7 +296,7 @@
 			dataType: 'json',
 			contentType: 'text/json',
 			success: function (result) {
-				_helpers.unblockPopupDefault();
+				_helpers.unblockBuncisContentBodyDefault();
 				var data = result.d;
 				if (data.IsSuccess) {
 					if(_callback) {
@@ -275,13 +305,14 @@
 				}
 			},
 			error: function () {
-				_helpers.blockPopupDefault();
+				_helpers.unblockBuncisContentBodyDefault();
 			}
 		});
 	};
 	oFn.deleteItem = function(deletedId, _callback) {
 		var data = {
-			clientId: -1,			
+			clientId: -1,
+			dailyBreadId: deletedId
 		};
 		
 		var jData = JSON.stringify(data);
@@ -311,10 +342,27 @@
 	oFn.loadData = function() {
 		_dailyBread.collection = new _dailyBread.CollectionModel();
 		oFn.getCollection(function(result) {
+			log(result);
 			for(var i = 0; i < result.length; i++) {				
 				var item = result[i];
 				// create new model instance
 				var itemModel = new _dailyBread.ItemModel({
+					dailyBreadId: item.DailyBreadId,
+					dailyBreadTitle: item.DailyBreadTitle,
+					dailyBreadSummary: item.DailyBreadSummary,
+					dailyBreadContent: item.DailyBreadContent,
+					dailyBreadUrl: item.DailyBreadUrl,
+					displayDateCreated: item.DisplayDateCreated,
+					displayDateLastUpdated: item.DisplayDateLastUpdated,
+					displayDatePublished: item.DisplayDatePublished,
+					epochDatePublished: item.DatePublished,
+					formattedDatePublished: _helpers.dateFn.convertEpochToDefaultFormattedString(_helpers.dateFn.cleanDotNetDateJson(item.DatePublished)),
+					actualDatePublished: _helpers.dateFn.convertEpochToDate(_helpers.dateFn.cleanDotNetDateJson(item.DatePublished)).toString(),
+					dailyBreadBook: item.DailyBreadBook,
+					dailyBreadBookChapter: item.DailyBreadBookChapter,
+					dailyBreadBookVerse1: item.DailyBreadBookVerse1,
+					dailyBreadBookVerse2: item.DailyBreadBookVerse2,
+					dailyBreadBookContent: item.DailyBreadBookContent
 				});
 
 				// put model instance to collections
@@ -328,14 +376,21 @@
 		var itemView = new _dailyBread.ItemView({ 
 			el: $(_dailyBread._elems.itemContainer),
 			model: itemModel,
-			id: 'put id here'
+			id: 'dailyBreadItem-' + itemModel.id
 		});
 		itemView.events = {};
-		// put events here
-		// EXAMPLE: ItemView.events['click li[rel="' + Item.id + '"] a.action-edit'] = 'editItem';
+		itemView.events['click li[rel="' + itemModel.id + '"] a.action.edit'] = 'editItem';
+		itemView.events['click li[rel="' + itemModel.id + '"] a.action.delete'] = 'deleteItem';
 		itemView.delegateEvents();
 		itemView.render();
 	};
+	oFn.animateItem = function($model) {
+		var $target = $('li[rel="' + $model.id + '"]');
+		if($target.length) {
+			$.scrollTo($target);
+		}
+		window._helpers.animateRow($target);
+	};	
 }(window._dailyBread.fn = window._dailyBread.fn || {}));
 
 

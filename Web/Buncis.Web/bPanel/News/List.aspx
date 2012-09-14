@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Buncis.Master" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="Buncis.Web.bPanel.News.List" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="contentPlaceholderHead" runat="server">
-	<script src="/Scripts/bunx/_act_news.js" type="text/javascript"></script>   
+	<script src="/Scripts/bunx/_act_news.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentPlaceholderMain" runat="server">
 	<div id="homeSection" class="row" style="display: none">
@@ -97,10 +97,10 @@
 									<div class="form-item span5">
 										<label>Date Published</label>
 										<input type="text" id="txtDatePublished" name="txtDatePublished" 
-											required="required" data-message="Date Published is required"                                     
+											required="required" data-message="Date Published is required"
 											value="{{attributes.formattedDatePublished}}" 
 											rel="{{attributes.actualDatePublished}}" class="input-medium" />
-										<span class="input-medium uneditable-input">{{attributes.datePublished}}</span>
+										<span class="input-medium uneditable-input help-inline">{{attributes.datePublished}}</span>
 									</div>							
 									<div class="form-item span5">
 										<label>Date Expired</label>
@@ -108,7 +108,7 @@
 											required="required" data-message="Date Expired  is required" 
 											value="{{attributes.formattedDateExpired}}" 
 											rel="{{attributes.actualDateExpired}}" class="input-medium" />
-										<span class="input-medium uneditable-input">{{attributes.dateExpired}}</span>
+										<span class="input-medium uneditable-input help-inline">{{attributes.dateExpired}}</span>
 									</div>							
 									<div class="form-item span11">
 										<label>Friendly URL</label>

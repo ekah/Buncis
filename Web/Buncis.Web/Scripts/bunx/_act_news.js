@@ -145,12 +145,9 @@
 			var formattedPublished = $(_news._elems.txtDatePublished).val();
 			var formattedExpired = $(_news._elems.txtDateExpired).val();
 			var textPublished = $(_news._elems.txtDatePublished).attr('rel');
+			var epochPublished = _helpers.dateFn.convertDateStringToEpochString(textPublished);
 			var textExpired = $(_news._elems.txtDateExpired).attr('rel');
-			var datePublished = new Date(textPublished);
-			var dateExpired = new Date(textExpired);
-			var tzo = parseInt((datePublished.getTimezoneOffset() / (-60)), 10);
-			var itzo = tzo < 10 ? ('0' + tzo) : ('' + tzo);
-			var stzo = tzo < 0 ? '-' : '+';
+			var epochExpired = _helpers.dateFn.convertDateStringToEpochString(textExpired);			
 			var eNews = this.model;
 			
 			eNews.set('newsTitle', title);
@@ -159,8 +156,8 @@
 			eNews.set('newsContent', content);
 			eNews.set('formattedDatePublished', formattedPublished);
 			eNews.set('formattedDateExpired', formattedExpired);
-			eNews.set('epochDatePublished', '/Date(' + datePublished.getTime() + stzo + itzo + '00)/');
-			eNews.set('epochDateExpired', '/Date(' + dateExpired.getTime() + stzo + itzo + '00)/');			
+			eNews.set('epochDatePublished', epochPublished);
+			eNews.set('epochDateExpired', epochExpired);
 			_news.fn.saveNews(eNews, function(result) {
 				var msg = '';
 				eNews.set('newsId', result.NewsId);
@@ -346,7 +343,7 @@
 
 		_news.form.validators = $(_news._elems.newsFormElements).validator({
 			effect: 'floatingWall',
-			container: _elems.errorContainer,
+			container: window._elems.errorContainer,
 			errorInputEvent: null,
 		});
 		

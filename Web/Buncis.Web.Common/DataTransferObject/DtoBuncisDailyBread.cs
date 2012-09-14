@@ -14,6 +14,8 @@ namespace Buncis.Web.Common.DataTransferObject
 		public string DailyBreadUrl { get; set; }
 		public string DisplayDateCreated { get; set; }
 		public string DisplayDateLastUpdated { get; set; }
+		public DateTime DatePublished { get; set; }
+		public string DisplayDatePublished { get; set; }
 		public string DailyBreadBook { get; set; }
 		public int DailyBreadBookChapter { get; set; }
 		public int DailyBreadBookVerse1 { get; set; }

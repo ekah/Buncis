@@ -5,7 +5,7 @@
 <head runat="server">
 	<title>Breakthrough Ministries</title>
 	
-	<meta name="viewport" content="width=device.width, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<link href="/1140grid/css/1140.css" rel="stylesheet" type="text/css" />
 	<link href="/1140grid/css/styles.css" rel="stylesheet" type="text/css" />

@@ -20,7 +20,6 @@
 		}
 	});
 	oModule.router = {};
-	oModule.activeView = {};
 	oModule._elems = {
 		formElements: '.form-item :input',		
 		btnAdd: '#aAddArticle',
@@ -68,14 +67,10 @@
 			return this;
 		},
 		editItem: function(event) {
-			var $model = this.model;
-			var $parent = $('li[rel="' + $model.id + '"]');
-
-			_articles.router.navigate("edit/" +  $model.id, {trigger: true});
-
+			_articles.router.navigate("edit/" +  this.model.id, {trigger: true});
 			var editView = new _articles.FormView({
 				el: $(oModule._elems.formContainer), 
-				model: $model
+				model: this.model
 			});			
 			editView.events = {};
 			editView.formMode = 'edit';
@@ -83,11 +78,8 @@
 			editView.events['click ' + _articles._elems.formContainer + ' a.btnSave'] = 'save';
 			editView.delegateEvents();
 			editView.render();
-
-			oModule.activeView = editView;
-			$(editView.el).find('h3').text('Edit Article');			
+			$(editView.el).find('h3').text('Edit Article');
 			oModule.fn.prepareForm(editView);
-			$.scrollTo($parent);
 		}, 
 		deleteItem: function(event) {
 			var deletePopupView = new _articles.DeleteView({
@@ -129,9 +121,7 @@
 			if(!isValid) {
 				return false;
 			}
-			// GET THE DATA FROM UI
 			var fMode = this.formMode;
-			// SET THE MODEL DATA HERE	            	
 			var eModel = this.model;            
 			eModel.set('articleTitle', this.$el.find('[id*="txtArticleTitle"]').val());
 			eModel.set('articleTeaser', this.$el.find('[id*="txtArticleTeaser"]').val());
@@ -141,9 +131,7 @@
 			_articles.fn.saveItem(eModel, function(result) {
 				// code below: Show message
 				var msg = '';
-				
 				eModel.set('articleId', result.ArticleId);
-
 				if(fMode === 'edit') {
 					msg = 'Successfully edited article data';
 					self.close();
@@ -158,13 +146,10 @@
 			});
 		},
 		close: function(event) {
-			this.closeView();
-			_articles.router.navigate("home", {trigger: true});
-			oModule.fn.animateItem(this.model);
-		},
-		closeView: function() {
 			this.undelegateEvents();
 			$(this.el).empty();
+			_articles.router.navigate("home", {trigger: true});
+			oModule.fn.animateItem(this.model);
 		}
 	});
 	oModule.DeleteView = Backbone.View.extend({
@@ -199,9 +184,8 @@
 	function loadData() {
 		_articles.collection = new _articles.CollectionModel();
 		getCollection(function(result) {
-			for(var i = 0; i < result.length; i++) {				
+			for(var i = 0; i < result.length; i++) {
 				var item = result[i];
-				
 				// create new model instance
 				var itemModel = new _articles.ItemModel({
 					articleId: item.ArticleId,
@@ -263,7 +247,6 @@
 			addView.delegateEvents();            
 			addView.render();
 
-			_articles.activeView = addView;
 			$(addView.el).find('h3').text('Add Article');			
 			oFn.prepareForm(addView);
 		});		
@@ -275,7 +258,7 @@
 		$view.reset();
 		$view.validators = $target.find(_articles._elems.formElements).validator({
 			effect: 'floatingWall',
-			container: _elems.errorContainer,
+			container: window._elems.errorContainer,
 			errorInputEvent: null,
 		});
 		$target.find('textarea[id*="txtArticleContent"]').wysihtml5({
