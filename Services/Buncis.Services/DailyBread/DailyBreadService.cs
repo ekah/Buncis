@@ -22,7 +22,7 @@ namespace Buncis.Services.DailyBread
 
 		public IEnumerable<ViewModelBuncisDailyBreadItem> GetAvailableDailyBreadItems(int clientId)
 		{
-			var raw = _dailyBreadItemRepository.FilterBy(o => !o.IsDeleted).ToList();
+			var raw = _dailyBreadItemRepository.FilterBy(o => !o.IsDeleted && o.ClientId == clientId).ToList();
 
 			var converted = raw.Select(item =>
 			{
@@ -107,7 +107,7 @@ namespace Buncis.Services.DailyBread
 				}
 			}
 
-			var pinged = GetDailyBreadItem(dailyBreadItem.DailyBreadId); 
+			var pinged = GetDailyBreadItem(dailyBreadItem.DailyBreadId);
 			validator.IsValid = true;
 			validator.RelatedObject = pinged;
 			return validator;

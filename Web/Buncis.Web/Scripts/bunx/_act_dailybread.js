@@ -1,4 +1,5 @@
 ﻿(function (oModule) {
+	var router = {};
 	oModule._elems = {
 		formContainer: '#edit-section',
 		deletePopup: '#delete-popup',
@@ -9,6 +10,25 @@
 		itemTemplate: '#item-template',
 		itemContainer: '#dailyBread-list-container'
 	};
+	oModule.Router = Backbone.Router.extend({
+		routes: {
+			"home": "home",
+			"edit/:query": "edit", 
+			"add": "add", 
+		},
+		home: function() {
+			$('#homeSection').show();
+			$('#edit-section').hide();
+		},
+		edit: function(query) {
+			$('#homeSection').hide();
+			$('#edit-section').show();
+		},
+		add: function() {
+			$('#homeSection').hide();
+			$('#edit-section').show();
+		}
+	});
 	oModule.collection = {};
 	oModule.CollectionModel = Backbone.Collection.extend({
 		model: oModule.ItemModel,
@@ -54,7 +74,7 @@
 			return this;
 		},
 		editItem: function(event) {			
-			// put router here
+			_dailyBread.router.navigate("edit/" + this.model.id, {trigger: true});
 
 			var editView = new _dailyBread.FormView({
 				el: $(_dailyBread._elems.formContainer),
@@ -141,7 +161,7 @@
 		close: function(event) {
 			this.undelegateEvents();
 			$(this.el).empty();
-			//put router to home here
+			_dailyBread.router.navigate("home", {trigger: true});
 			oModule.fn.animateItem(this.model);
 		}
 	});
@@ -169,16 +189,16 @@
 
 
 (function(oFn) {
-	var listWebServiceUrl = '/webservices/dailybreads.svc/BPGetDailyBreads?clientId=' + _elems.clientId;
-	var editWebServiceUrl = '/webservices/dailybreads.svc/BPUpdateDailyBread';	
-	var addWebServiceUrl = '/webservices/dailybreads.svc/BPInsertDailyBread';	
-	var deleteWebServiceUrl = '/webservices/dailybreads.svc/BPDeleteDailyBread';	
+	var listWebServiceUrl = '/webservices/dailybread.svc/BPGetDailyBreadList?clientId=' + _elems.clientId;
+	var editWebServiceUrl = '/webservices/dailybread.svc/BPUpdateDailyBread';	
+	var addWebServiceUrl = '/webservices/dailybread.svc/BPInsertDailyBread';	
+	var deleteWebServiceUrl = '/webservices/dailybread.svc/BPDeleteDailyBread';	
 
 	oFn.setupEvents = function() {
 		log('setupEvents called');
 		$(_dailyBread._elems.btnAdd).click(function(event) {
 			log('add daily bread');
-			event.preventDefault();	
+			event.preventDefault();				
 			var defaultItem = new _dailyBread.ItemModel({
 				dailyBreadId: 0,
 				dailyBreadTitle: '',
@@ -196,6 +216,7 @@
 				dailyBreadBookVerse2: 0,
 				dailyBreadBookContent: ''
 			});
+			_dailyBread.router.navigate("add", {trigger: true});
 			var addView = new _dailyBread.FormView({
 				el: $(_dailyBread._elems.formContainer),
 				model: defaultItem
@@ -391,11 +412,17 @@
 		}
 		window._helpers.animateRow($target);
 	};	
+	oFn.init = function () {
+		_dailyBread.router = new _dailyBread.Router();
+		_dailyBread.fn.loadData();
+		_dailyBread.fn.setupEvents();	
+		Backbone.history.start();
+		_dailyBread.router.navigate("home", {trigger: true});
+	};
 }(window._dailyBread.fn = window._dailyBread.fn || {}));
 
 
 $(document).ready(function() {	
-	_dailyBread.fn.loadData();
-	_dailyBread.fn.setupEvents();
+	_dailyBread.fn.init();
 });
 

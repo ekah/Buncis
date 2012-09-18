@@ -26,7 +26,7 @@
 				<div class="row">
 					<div class="span12">				        
 						<div id="topBar" class="row">
-							<div id="logo" class="span4"><img src="/images/logo.png" alt="Buncis Logo" /></div>
+							<div id="logo" class="span4"><%--<img src="/images/logo.png" alt="Buncis Logo" />--%></div>
 							<div id="loginInfo" class="span3 offset3 pull-right">Login Info goes here</div>
 							<div class="clearfix"></div>
 						</div>

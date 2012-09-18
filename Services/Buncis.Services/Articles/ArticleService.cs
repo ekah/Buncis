@@ -11,106 +11,106 @@ using Buncis.Framework.Core.ViewModel;
 
 namespace Buncis.Services.Articles
 {
-    public class ArticleService : BaseService, IArticleService
-    {
-        private readonly IArticleItemRepository _articleItemRepository;
+	public class ArticleService : BaseService, IArticleService
+	{
+		private readonly IArticleItemRepository _articleItemRepository;
 
-        public ArticleService(IArticleItemRepository articleItemRepository)
-        {
-            _articleItemRepository = articleItemRepository;
-        }
+		public ArticleService(IArticleItemRepository articleItemRepository)
+		{
+			_articleItemRepository = articleItemRepository;
+		}
 
-        public IEnumerable<ViewModelBuncisArticleItem> GetAvailableArticleItems(int clientId)
-        {
-            var raw = _articleItemRepository.FilterBy(o => !o.IsDeleted).ToList();
+		public IEnumerable<ViewModelBuncisArticleItem> GetAvailableArticleItems(int clientId)
+		{
+			var raw = _articleItemRepository.FilterBy(o => !o.IsDeleted && o.ClientId == clientId).ToList();
 
-            var converted = raw.Select(item =>
-            {
-                var ViewModelArticleItem = new ViewModelBuncisArticleItem();
-                ViewModelArticleItem.InjectFrom(item);
-                return ViewModelArticleItem;
-            }).ToList();
+			var converted = raw.Select(item =>
+			{
+				var ViewModelArticleItem = new ViewModelBuncisArticleItem();
+				ViewModelArticleItem.InjectFrom(item);
+				return ViewModelArticleItem;
+			}).ToList();
 
-            return converted;
-        }
+			return converted;
+		}
 
-        public ViewModelBuncisArticleItem GetArticleItem(int articleId)
-        {
-            var raw = _articleItemRepository.FindBy(o => !o.IsDeleted && o.ArticleId == articleId);
+		public ViewModelBuncisArticleItem GetArticleItem(int articleId)
+		{
+			var raw = _articleItemRepository.FindBy(o => !o.IsDeleted && o.ArticleId == articleId);
 
-            var ViewModelArticleItem = new ViewModelBuncisArticleItem();
-            ViewModelArticleItem.InjectFrom(raw);
+			var ViewModelArticleItem = new ViewModelBuncisArticleItem();
+			ViewModelArticleItem.InjectFrom(raw);
 
-            return ViewModelArticleItem;
-        }
+			return ViewModelArticleItem;
+		}
 
-        public ValidationDictionary<ViewModelBuncisArticleItem> DeleteArticleItem(int articleId)
-        {
-            var raw = _articleItemRepository.FindBy(o => o.ArticleId == articleId);
+		public ValidationDictionary<ViewModelBuncisArticleItem> DeleteArticleItem(int articleId)
+		{
+			var raw = _articleItemRepository.FindBy(o => o.ArticleId == articleId);
 
-            var validator = new ValidationDictionary<ViewModelBuncisArticleItem>();
+			var validator = new ValidationDictionary<ViewModelBuncisArticleItem>();
 
-            if (raw != null)
-            {
-                raw.IsDeleted = true;
+			if (raw != null)
+			{
+				raw.IsDeleted = true;
 
-                _articleItemRepository.Update(raw);
+				_articleItemRepository.Update(raw);
 
-                validator.IsValid = true;
-            }
-            else
-            {
-                validator.IsValid = false;
-                validator.AddError("", "The XX is not available in the database");
-            }
+				validator.IsValid = true;
+			}
+			else
+			{
+				validator.IsValid = false;
+				validator.AddError("", "The XX is not available in the database");
+			}
 
-            return validator;
-        }
+			return validator;
+		}
 
-        public ValidationDictionary<ViewModelBuncisArticleItem> SaveArticleItem(int clientId, ViewModelBuncisArticleItem article)
-        {
-            var validator = new ValidationDictionary<ViewModelBuncisArticleItem>();
-            if (article == null)
-            {
-                validator.IsValid = false;
-                validator.AddError("", "The XX you're trying to save is null");
-                return validator;
-            }
+		public ValidationDictionary<ViewModelBuncisArticleItem> SaveArticleItem(int clientId, ViewModelBuncisArticleItem article)
+		{
+			var validator = new ValidationDictionary<ViewModelBuncisArticleItem>();
+			if (article == null)
+			{
+				validator.IsValid = false;
+				validator.AddError("", "The XX you're trying to save is null");
+				return validator;
+			}
 
-            // rule based here
+			// rule based here
 
 
-            ArticleItem articleItem;
+			ArticleItem articleItem;
 
-            if (article.ArticleId <= 0)
-            {
-                articleItem = new ArticleItem();
-                articleItem.InjectFrom(article);
-                articleItem.DateCreated = DateTime.UtcNow;
-                articleItem.DateLastUpdated = DateTime.UtcNow;
-                articleItem.ClientId = clientId;
+			if (article.ArticleId <= 0)
+			{
+				articleItem = new ArticleItem();
+				articleItem.InjectFrom(article);
+				articleItem.DateCreated = DateTime.UtcNow;
+				articleItem.DateLastUpdated = DateTime.UtcNow;
+				articleItem.ClientId = clientId;
 
-                _articleItemRepository.Add(articleItem);
-            }
-            else
-            {
-                articleItem = _articleItemRepository.FindBy(o => !o.IsDeleted && o.ArticleId == article.ArticleId);
-                if (articleItem != null)
-                {
-                    var createdDate = articleItem.DateCreated;
-                    articleItem.InjectFrom(article);
-                    articleItem.DateLastUpdated = DateTime.UtcNow;
-                    articleItem.DateCreated = createdDate;
-                    articleItem.IsDeleted = false;
+				_articleItemRepository.Add(articleItem);
+			}
+			else
+			{
+				articleItem = _articleItemRepository.FindBy(o => !o.IsDeleted && o.ArticleId == article.ArticleId);
+				if (articleItem != null)
+				{
+					var createdDate = articleItem.DateCreated;
+					articleItem.InjectFrom(article);
+					articleItem.DateLastUpdated = DateTime.UtcNow;
+					articleItem.DateCreated = createdDate;
+					articleItem.IsDeleted = false;
 
-                    _articleItemRepository.Update(articleItem);
-                }
-            }
+					_articleItemRepository.Update(articleItem);
+				}
+			}
 
-            var pinged = GetArticleItem(articleItem.ArticleId);
-            validator.IsValid = true;
-            validator.RelatedObject = pinged;
-            return validator;
-        }
-    }
+			var pinged = GetArticleItem(articleItem.ArticleId);
+			validator.IsValid = true;
+			validator.RelatedObject = pinged;
+			return validator;
+		}
+	}
 }
