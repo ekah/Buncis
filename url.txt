@@ -1,0 +1,4 @@
+/[page name]
+/news/[calculatedid+catid]/[news title]
+/article/[calculatedid+catid]/[article title]
+/dailybread/[calculatedid+catid]/[article title]
