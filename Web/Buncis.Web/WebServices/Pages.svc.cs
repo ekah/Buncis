@@ -19,7 +19,7 @@ namespace Buncis.Web.WebServices
 				.OrderByDescending(p => p.IsHomePage)
 				.ThenByDescending(o => o.DateLastUpdated)
 				.ToList();
-			var dto = pages.Select(o => (DtoBuncisPage)new DtoBuncisPage().InjectFrom(o)).ToList();
+			var dto = pages.Select(o => new DtoBuncisPage().InjectFrom(o) as DtoBuncisPage).ToList();
 			var response = new Response<IEnumerable<DtoBuncisPage>>();
 			response.ResponseObject = dto;
 			response.IsSuccess = true;
@@ -34,14 +34,14 @@ namespace Buncis.Web.WebServices
 			var response = new Response<DtoBuncisPage>();
 			response.IsSuccess = true;
 			response.Message = string.Empty;
-			response.ResponseObject = (DtoBuncisPage)new DtoBuncisPage().InjectFrom(page);
+			response.ResponseObject = new DtoBuncisPage().InjectFrom(page) as DtoBuncisPage;
 			return response;
 		}
 
 		public Response<DtoBuncisPage> BPUpdatePage(int clientId, DtoBuncisPage page)
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
-			var viewModel = (ViewModelBuncisPage)new ViewModelBuncisPage().InjectFrom(page);
+			var viewModel = new ViewModelBuncisPage().InjectFrom(page) as ViewModelBuncisPage;
 
 			var result = service.SavePage(clientId, viewModel);
 
@@ -49,16 +49,16 @@ namespace Buncis.Web.WebServices
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
 
-			var responseObject = (DtoBuncisPage)new DtoBuncisPage().InjectFrom(result.RelatedObject);
+			var responseObject = new DtoBuncisPage().InjectFrom(result.RelatedObject) as DtoBuncisPage;
 			response.ResponseObject = responseObject;
 
 			return response;
 		}
-		
+
 		public Response<DtoBuncisPage> BPInsertPage(int clientId, DtoBuncisPage page)
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
-			var viewModel = (ViewModelBuncisPage)new ViewModelBuncisPage().InjectFrom(page);
+			var viewModel = new ViewModelBuncisPage().InjectFrom(page) as ViewModelBuncisPage;
 
 			var result = service.SavePage(clientId, viewModel);
 
@@ -66,7 +66,7 @@ namespace Buncis.Web.WebServices
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
 
-			var responseObject = (DtoBuncisPage)new DtoBuncisPage().InjectFrom(result.RelatedObject);
+			var responseObject = new DtoBuncisPage().InjectFrom(result.RelatedObject) as DtoBuncisPage;
 			response.ResponseObject = responseObject;
 
 			return response;

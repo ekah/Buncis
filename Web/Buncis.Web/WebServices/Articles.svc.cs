@@ -7,6 +7,7 @@ using Buncis.Web.Common.DataTransferObject;
 using Buncis.Web.WebServices.Contracts;
 using Omu.ValueInjecter;
 using Buncis.Framework.Core.ViewModel;
+using Buncis.Framework.Core.SupportClasses.Injector;
 
 namespace Buncis.Web.WebServices
 {
@@ -19,7 +20,7 @@ namespace Buncis.Web.WebServices
 				.OrderByDescending(p => p.ArticleTitle)
 				.ToList();
 
-			var dto = data.Select(o => (DtoBuncisArticle)new DtoBuncisArticle().InjectFrom(o)).ToList();
+			var dto = data.Select(o => new DtoBuncisArticle().InjectFrom<CloneInjection>(o) as DtoBuncisArticle).ToList();
 			var response = new Response<IEnumerable<DtoBuncisArticle>>();
 			response.ResponseObject = dto;
 			response.IsSuccess = true;
@@ -34,14 +35,14 @@ namespace Buncis.Web.WebServices
 			var response = new Response<DtoBuncisArticle>();
 			response.IsSuccess = true;
 			response.Message = string.Empty;
-			response.ResponseObject = (DtoBuncisArticle)new DtoBuncisArticle().InjectFrom(data);
+			response.ResponseObject = new DtoBuncisArticle().InjectFrom<CloneInjection>(data) as DtoBuncisArticle;
 			return response;
 		}
 
 		public Response<DtoBuncisArticle> BPUpdateArticle(int clientId, DtoBuncisArticle article)
 		{
 			var service = IoC.Resolve<IArticleService>();
-			var viewModel = (ViewModelBuncisArticleItem)new ViewModelBuncisArticleItem().InjectFrom(article);
+			var viewModel = new ViewModelBuncisArticleItem().InjectFrom<CloneInjection>(article) as ViewModelBuncisArticleItem;
 
 			var result = service.SaveArticleItem(clientId, viewModel);
 
@@ -49,7 +50,7 @@ namespace Buncis.Web.WebServices
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
 
-			var responseObject = (DtoBuncisArticle)new DtoBuncisArticle().InjectFrom(result.RelatedObject);
+			var responseObject = new DtoBuncisArticle().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisArticle;
 			response.ResponseObject = responseObject;
 
 			return response;
@@ -58,7 +59,7 @@ namespace Buncis.Web.WebServices
 		public Response<DtoBuncisArticle> BPInsertArticle(int clientId, DtoBuncisArticle article)
 		{
 			var service = IoC.Resolve<IArticleService>();
-			var viewModel = (ViewModelBuncisArticleItem)new ViewModelBuncisArticleItem().InjectFrom(article);
+			var viewModel = new ViewModelBuncisArticleItem().InjectFrom<CloneInjection>(article) as ViewModelBuncisArticleItem;
 
 			var result = service.SaveArticleItem(clientId, viewModel);
 
@@ -66,7 +67,7 @@ namespace Buncis.Web.WebServices
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
 
-			var responseObject = (DtoBuncisArticle)new DtoBuncisArticle().InjectFrom(result.RelatedObject);
+			var responseObject = new DtoBuncisArticle().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisArticle;
 			response.ResponseObject = responseObject;
 
 			return response;

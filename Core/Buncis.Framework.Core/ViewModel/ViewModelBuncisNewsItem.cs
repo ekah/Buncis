@@ -42,5 +42,6 @@ namespace Buncis.Framework.Core.ViewModel
 				return DateLastUpdated.ToBuncisLongFormatString();
 			}
 		}
+		public ViewModelBuncisNewsCategory NewsCategory { get; set; }
 	}
 }

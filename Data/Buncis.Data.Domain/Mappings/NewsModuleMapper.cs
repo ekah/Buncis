@@ -20,6 +20,7 @@ namespace Buncis.Data.Domain.Mappings
 			Map(x => x.NewsUrl).Column("FriendlyUrl").Not.Nullable().Length(250);
 			Map(x => x.DateCreated).Column("DateCreated").Not.Nullable();
 			Map(x => x.DateLastUpdated).Column("DateLastUpdated").Not.Nullable();
+			References(o => o.NewsCategory, "NewsCategoryId");
 		}
 	}
 

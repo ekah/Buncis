@@ -1,0 +1,4 @@
+- date on daily bread not bind
+- category for news and article
+- url int(ID) algorithm
+- FE for everything

@@ -7,6 +7,7 @@ using Buncis.Web.Common.DataTransferObject;
 using Buncis.Web.WebServices.Contracts;
 using Omu.ValueInjecter;
 using Buncis.Framework.Core.ViewModel;
+using Buncis.Framework.Core.SupportClasses.Injector;
 
 namespace Buncis.Web.WebServices
 {
@@ -34,7 +35,7 @@ namespace Buncis.Web.WebServices
 		public Response<DtoBuncisNews> BPUpdateNews(int clientId, DtoBuncisNews news)
 		{
 			var service = IoC.Resolve<INewsService>();
-			var viewModel = (ViewModelBuncisNewsItem)new ViewModelBuncisNewsItem().InjectFrom(news);
+			var viewModel = new ViewModelBuncisNewsItem().InjectFrom<CloneInjection>(news) as ViewModelBuncisNewsItem;
 
 			var result = service.SaveNewsItem(clientId, viewModel);
 
@@ -42,7 +43,7 @@ namespace Buncis.Web.WebServices
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
 
-			var responseObject = (DtoBuncisNews)new DtoBuncisNews().InjectFrom(result.RelatedObject);
+			var responseObject = new DtoBuncisNews().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisNews;
 			response.ResponseObject = responseObject;
 
 			return response;
@@ -51,7 +52,7 @@ namespace Buncis.Web.WebServices
 		public Response<DtoBuncisNews> BPInsertNews(int clientId, DtoBuncisNews news)
 		{
 			var service = IoC.Resolve<INewsService>();
-			var viewModel = (ViewModelBuncisNewsItem)new ViewModelBuncisNewsItem().InjectFrom(news);
+			var viewModel = new ViewModelBuncisNewsItem().InjectFrom<CloneInjection>(news) as ViewModelBuncisNewsItem;
 
 			var result = service.SaveNewsItem(clientId, viewModel);
 
@@ -59,7 +60,7 @@ namespace Buncis.Web.WebServices
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
 
-			var responseObject = (DtoBuncisNews)new DtoBuncisNews().InjectFrom(result.RelatedObject);
+			var responseObject = new DtoBuncisNews().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisNews;
 			response.ResponseObject = responseObject;
 
 			return response;
@@ -79,7 +80,7 @@ namespace Buncis.Web.WebServices
 			var converted = raw.Select(o =>
 			{
 				var dto = new DtoBuncisNews();
-				dto.InjectFrom(o);
+				dto.InjectFrom<CloneInjection>(o);
 				return dto;
 			}).ToList();
 

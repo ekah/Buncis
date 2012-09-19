@@ -26,7 +26,7 @@ namespace Buncis.Web.WebServices
 				.OrderByDescending(p => p.DateCreated)
 				.ToList();
 
-			var dto = data.Select(o => (DtoBuncisDailyBread)new DtoBuncisDailyBread().InjectFrom(o)).ToList();
+			var dto = data.Select(o => new DtoBuncisDailyBread().InjectFrom(o) as DtoBuncisDailyBread).ToList();
 			var response = new Response<IEnumerable<DtoBuncisDailyBread>>();
 			response.ResponseObject = dto;
 			response.IsSuccess = true;
@@ -41,14 +41,14 @@ namespace Buncis.Web.WebServices
 			var response = new Response<DtoBuncisDailyBread>();
 			response.IsSuccess = true;
 			response.Message = string.Empty;
-			response.ResponseObject = (DtoBuncisDailyBread)new DtoBuncisDailyBread().InjectFrom(data);
+			response.ResponseObject = new DtoBuncisDailyBread().InjectFrom(data) as DtoBuncisDailyBread;
 			return response;
 		}
 
 		public Response<DtoBuncisDailyBread> BPUpdateDailyBread(int clientId, DtoBuncisDailyBread dailyBread)
 		{
 			var service = IoC.Resolve<IDailyBreadService>();
-			var viewModel = (ViewModelBuncisDailyBreadItem)new ViewModelBuncisDailyBreadItem().InjectFrom(dailyBread);
+			var viewModel = new ViewModelBuncisDailyBreadItem().InjectFrom(dailyBread) as ViewModelBuncisDailyBreadItem;
 
 			var result = service.SaveDailyBreadItem(clientId, viewModel);
 
@@ -56,7 +56,7 @@ namespace Buncis.Web.WebServices
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
 
-			var responseObject = (DtoBuncisDailyBread)new DtoBuncisDailyBread().InjectFrom(result.RelatedObject);
+			var responseObject = new DtoBuncisDailyBread().InjectFrom(result.RelatedObject) as DtoBuncisDailyBread;
 			response.ResponseObject = responseObject;
 
 			return response;
@@ -65,7 +65,7 @@ namespace Buncis.Web.WebServices
 		public Response<DtoBuncisDailyBread> BPInsertDailyBread(int clientId, DtoBuncisDailyBread dailyBread)
 		{
 			var service = IoC.Resolve<IDailyBreadService>();
-			var viewModel = (ViewModelBuncisDailyBreadItem)new ViewModelBuncisDailyBreadItem().InjectFrom(dailyBread);
+			var viewModel = new ViewModelBuncisDailyBreadItem().InjectFrom(dailyBread) as ViewModelBuncisDailyBreadItem;
 
 			var result = service.SaveDailyBreadItem(clientId, viewModel);
 
@@ -73,7 +73,7 @@ namespace Buncis.Web.WebServices
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
 
-			var responseObject = (DtoBuncisDailyBread)new DtoBuncisDailyBread().InjectFrom(result.RelatedObject);
+			var responseObject = new DtoBuncisDailyBread().InjectFrom(result.RelatedObject) as DtoBuncisDailyBread;
 			response.ResponseObject = responseObject;
 
 			return response;

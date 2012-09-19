@@ -17,5 +17,6 @@ namespace Buncis.Web.Common.DataTransferObject
 		//public DateTime DateLastUpdated { get; set; }
 		public DateTime DatePublished { get; set; }
 		public DateTime DateExpired { get; set; }
+		public DtoBuncisNewsCategory NewsCategory { get; set; }
 	}
 }

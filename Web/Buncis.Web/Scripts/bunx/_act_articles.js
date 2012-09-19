@@ -184,6 +184,7 @@
 	function loadData() {
 		_articles.collection = new _articles.CollectionModel();
 		getCollection(function(result) {
+			trace(result);
 			for(var i = 0; i < result.length; i++) {
 				var item = result[i];
 				// create new model instance

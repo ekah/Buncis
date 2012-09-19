@@ -83,6 +83,7 @@
 			editView.formMode = 'edit';
 			editView.render();
 			_dailyBread.fn.prepareForm(editView);
+			$(editView.el).find('#selDailyBreadBook').val(this.model.get('dailyBreadBook'));
 			$(editView.el).find('h3').text('Edit Daily Bread');
 		}, 
 		deleteItem: function(event) {

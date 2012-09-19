@@ -280,7 +280,8 @@
 	function loadData() {
 		_news.newsList = new _news.NewsCollection();
 		oFn.getNews(function(result) {
-			for(var i = 0; i < result.length; i++) {				
+			trace(result);
+			for(var i = 0; i < result.length; i++) {
 				var iNewsItem = result[i];
 				// create new model instance
 				var cvtNewsItem = new _news.NewsItem({

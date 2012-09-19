@@ -27,7 +27,7 @@ namespace Buncis.Services.Pages
 		{
 			var expression = _dynamicPageFilters.Init()
 				.GetByClientId(clientId)
-                .GetByPageUrl(pageUrl)
+				.GetByPageUrl(pageUrl)
 				.FilterExpression;
 
 			var pageFromDb = _pageRepository.FindBy(expression);

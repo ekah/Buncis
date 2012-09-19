@@ -26,7 +26,6 @@ namespace Buncis.Framework.Core.ViewModel
 				return DateLastUpdated.ToBuncisLongFormatString();
 			}
 		}
-		public int ClientId { get; set; }
 		public ViewModelBuncisArticleCategory ArticleCategory { get; set; }
 	}
 }

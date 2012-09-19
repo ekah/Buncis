@@ -53,6 +53,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Omu.ValueInjecter">
+      <HintPath>..\..\packages\valueinjecter.2.3\lib\Omu.ValueInjecter.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -107,6 +110,7 @@
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\DailyBread\IDailyBreadService.cs" />
     <Compile Include="Services\News\INewsService.cs" />
+    <Compile Include="SupportClasses\Injector\CloneInjection.cs" />
     <Compile Include="SupportClasses\ValidationDictionary.cs" />
     <Compile Include="Services\Pages\IDynamicPageService.cs" />
     <Compile Include="SupportClasses\Response.cs" />
@@ -158,6 +162,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Templates\IService.tmp">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
