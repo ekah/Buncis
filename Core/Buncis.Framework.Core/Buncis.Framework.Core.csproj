@@ -110,10 +110,12 @@
     <Compile Include="SupportClasses\ValidationDictionary.cs" />
     <Compile Include="Services\Pages\IDynamicPageService.cs" />
     <Compile Include="SupportClasses\Response.cs" />
+    <Compile Include="ViewModel\ViewModelBuncisArticleCategory.cs" />
     <Compile Include="ViewModel\ViewModelBuncisArticleItem.cs" />
     <Compile Include="ViewModel\ViewModelBuncisNewsItem.cs" />
     <Compile Include="ViewModel\ViewModelBuncisPage.cs" />
     <Compile Include="ViewModel\ViewModelBuncisDailyBreadItem.cs" />
+    <Compile Include="ViewModel\ViewModelBuncisNewsCategory.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

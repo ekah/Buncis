@@ -7,9 +7,9 @@ using Buncis.Data.Domain.DailyBread;
 
 namespace Buncis.Data.Domain.Mappings
 {
-	public class DailyBreadModuleMapper : ClassMap<DailyBreadItem>
+	public sealed class DailyBreadItemMap : ClassMap<DailyBreadItem>
 	{
-		public DailyBreadModuleMapper()
+		public DailyBreadItemMap()
 		{
 			Table("DailyBread_DailyBreadItem");
 			LazyLoad();

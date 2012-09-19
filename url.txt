@@ -1,4 +1,7 @@
 /[page name]
-/news/[calculatedid+catid]/[news title]
-/article/[calculatedid+catid]/[article title]
-/dailybread/[calculatedid+catid]/[article title]
+/[YEAR]/[MONTH]/[DAY]/20/[calculatedid+catid]/[news title] << NEWS 
+/[YEAR]/[MONTH]/[DAY]/30/[calculatedid+catid]/[article title] << ARTICLES
+/[YEAR]/[MONTH]/[DAY]/50/[calculatedid+catid]/[dailybread title] << DAILY BREAD
+
+
+
