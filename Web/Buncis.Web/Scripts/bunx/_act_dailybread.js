@@ -85,6 +85,7 @@
 			_dailyBread.fn.prepareForm(editView);
 			$(editView.el).find('#selDailyBreadBook').val(this.model.get('dailyBreadBook'));
 			$(editView.el).find('h3').text('Edit Daily Bread');
+			trace(this.model);
 		}, 
 		deleteItem: function(event) {
 			var deletePopupView = new _dailyBread.DeleteView({
@@ -146,6 +147,9 @@
 				eModel.set('dailyBreadId', result.DailyBreadId);
 				eModel.set('displayDateCreated', result.DisplayDateCreated);
 				eModel.set('displayDatePublished', result.DisplayDatePublished);
+				eModel.set('formattedDatePublished', _helpers.dateFn.convertEpochToDefaultFormattedString(_helpers.dateFn.cleanDotNetDateJson(result.DatePublished)));
+				eModel.set('actualDatePublished', _helpers.dateFn.convertEpochToDate(_helpers.dateFn.cleanDotNetDateJson(result.DatePublished)).toString());
+					
 				if(fMode === 'edit') {
 					msg = 'Succesfully edited daily bread data';
 					self.close();

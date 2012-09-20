@@ -19,8 +19,8 @@ namespace Buncis.Web.WebServices
 			var data = service.GetAvailableArticleItems(clientId)
 				.OrderByDescending(p => p.ArticleTitle)
 				.ToList();
-
 			var dto = data.Select(o => new DtoBuncisArticle().InjectFrom<CloneInjection>(o) as DtoBuncisArticle).ToList();
+			
 			var response = new Response<IEnumerable<DtoBuncisArticle>>();
 			response.ResponseObject = dto;
 			response.IsSuccess = true;
@@ -32,6 +32,7 @@ namespace Buncis.Web.WebServices
 		{
 			var service = IoC.Resolve<IArticleService>();
 			var data = service.GetArticleItem(articleId);
+			
 			var response = new Response<DtoBuncisArticle>();
 			response.IsSuccess = true;
 			response.Message = string.Empty;
@@ -43,16 +44,14 @@ namespace Buncis.Web.WebServices
 		{
 			var service = IoC.Resolve<IArticleService>();
 			var viewModel = new ViewModelBuncisArticleItem().InjectFrom<CloneInjection>(article) as ViewModelBuncisArticleItem;
-
 			var result = service.SaveArticleItem(clientId, viewModel);
-
+			
 			var response = new Response<DtoBuncisArticle>();
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
-
+			
 			var responseObject = new DtoBuncisArticle().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisArticle;
 			response.ResponseObject = responseObject;
-
 			return response;
 		}
 
@@ -60,7 +59,6 @@ namespace Buncis.Web.WebServices
 		{
 			var service = IoC.Resolve<IArticleService>();
 			var viewModel = new ViewModelBuncisArticleItem().InjectFrom<CloneInjection>(article) as ViewModelBuncisArticleItem;
-
 			var result = service.SaveArticleItem(clientId, viewModel);
 
 			var response = new Response<DtoBuncisArticle>();

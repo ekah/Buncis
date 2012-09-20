@@ -13,7 +13,6 @@ namespace Buncis.Framework.Core.ViewModel
 		public string DailyBreadSummary { get; set; }
 		public string DailyBreadContent { get; set; }
 		public string DailyBreadUrl { get; set; }
-		public int ClientId { get; set; }
 		public DateTime DateCreated { get; set; }
 		public string DisplayDateCreated
 		{

@@ -114,12 +114,24 @@
     <Compile Include="SupportClasses\ValidationDictionary.cs" />
     <Compile Include="Services\Pages\IDynamicPageService.cs" />
     <Compile Include="SupportClasses\Response.cs" />
-    <Compile Include="ViewModel\ViewModelBuncisArticleCategory.cs" />
-    <Compile Include="ViewModel\ViewModelBuncisArticleItem.cs" />
-    <Compile Include="ViewModel\ViewModelBuncisNewsItem.cs" />
-    <Compile Include="ViewModel\ViewModelBuncisPage.cs" />
-    <Compile Include="ViewModel\ViewModelBuncisDailyBreadItem.cs" />
-    <Compile Include="ViewModel\ViewModelBuncisNewsCategory.cs" />
+    <Compile Include="ViewModel\ViewModelBuncisArticleCategory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ViewModelBuncisArticleItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ViewModelBuncisDailyBreadItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ViewModelBuncisNewsCategory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ViewModelBuncisNewsItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ViewModelBuncisPage.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -176,6 +188,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -25,8 +25,8 @@ namespace Buncis.Web.WebServices
 			var data = service.GetAvailableDailyBreadItems(clientId)
 				.OrderByDescending(p => p.DateCreated)
 				.ToList();
-
 			var dto = data.Select(o => new DtoBuncisDailyBread().InjectFrom(o) as DtoBuncisDailyBread).ToList();
+			
 			var response = new Response<IEnumerable<DtoBuncisDailyBread>>();
 			response.ResponseObject = dto;
 			response.IsSuccess = true;
@@ -38,6 +38,7 @@ namespace Buncis.Web.WebServices
 		{
 			var service = IoC.Resolve<IDailyBreadService>();
 			var data = service.GetDailyBreadItem(dailyBreadId);
+		
 			var response = new Response<DtoBuncisDailyBread>();
 			response.IsSuccess = true;
 			response.Message = string.Empty;
@@ -49,7 +50,6 @@ namespace Buncis.Web.WebServices
 		{
 			var service = IoC.Resolve<IDailyBreadService>();
 			var viewModel = new ViewModelBuncisDailyBreadItem().InjectFrom(dailyBread) as ViewModelBuncisDailyBreadItem;
-
 			var result = service.SaveDailyBreadItem(clientId, viewModel);
 
 			var response = new Response<DtoBuncisDailyBread>();
@@ -66,7 +66,6 @@ namespace Buncis.Web.WebServices
 		{
 			var service = IoC.Resolve<IDailyBreadService>();
 			var viewModel = new ViewModelBuncisDailyBreadItem().InjectFrom(dailyBread) as ViewModelBuncisDailyBreadItem;
-
 			var result = service.SaveDailyBreadItem(clientId, viewModel);
 
 			var response = new Response<DtoBuncisDailyBread>();

@@ -20,6 +20,7 @@ namespace Buncis.Web.WebServices
 				.ThenByDescending(o => o.DateLastUpdated)
 				.ToList();
 			var dto = pages.Select(o => new DtoBuncisPage().InjectFrom(o) as DtoBuncisPage).ToList();
+			
 			var response = new Response<IEnumerable<DtoBuncisPage>>();
 			response.ResponseObject = dto;
 			response.IsSuccess = true;
@@ -31,6 +32,7 @@ namespace Buncis.Web.WebServices
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
 			var page = service.GetPage(pageId);
+		
 			var response = new Response<DtoBuncisPage>();
 			response.IsSuccess = true;
 			response.Message = string.Empty;
@@ -42,7 +44,6 @@ namespace Buncis.Web.WebServices
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
 			var viewModel = new ViewModelBuncisPage().InjectFrom(page) as ViewModelBuncisPage;
-
 			var result = service.SavePage(clientId, viewModel);
 
 			var response = new Response<DtoBuncisPage>();
@@ -59,7 +60,6 @@ namespace Buncis.Web.WebServices
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
 			var viewModel = new ViewModelBuncisPage().InjectFrom(page) as ViewModelBuncisPage;
-
 			var result = service.SavePage(clientId, viewModel);
 
 			var response = new Response<DtoBuncisPage>();
