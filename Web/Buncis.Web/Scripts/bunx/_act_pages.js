@@ -19,7 +19,7 @@
 		txtPageMetaTitle: '#txtPageMetaTitle',
 		txtPageMetaDescription: '#txtPageMetaDescription',
 		txtPageContent: '#txtPageContent',
-		chkIsHomePage: '#chkIsHomePage',
+		chkIsHomePage: '#btnHomePage',
 		btnSavePage: '#btnSavePage',
 		btnEditPage: '#table-pages td a.action.edit',
 		btnDeletePage: '#table-pages td a.action.delete'
@@ -171,7 +171,7 @@
 			template.MetaTitle = $(pages._elems.txtPageMetaTitle).val();
 			template.MetaDescription = $(pages._elems.txtPageMetaDescription).val();
 			template.PageUrl = $(pages._elems.txtPageUrl).val();
-			template.IsHomePage = $(pages._elems.chkIsHomePage).is(':checked');
+			template.IsHomePage = $(pages._elems.chkIsHomePage).hasClass('active');
 
 			oData = {
 				clientId: _elems.clientId,
@@ -288,17 +288,21 @@
 		$(pages._elems.txtPageMenuName).val(data.PageMenuName);
 		$(pages._elems.txtPageMetaTitle).val(data.MetaTitle);
 		$(pages._elems.txtPageMetaDescription).val(data.MetaDescription);
-		trace('setting  page content value to: ' + data.PageContent);
+		//trace('setting  page content value to: ' + data.PageContent);
 		$(pages._elems.txtPageContent).val(data.PageContent);
 		$(pages._elems.txtPageContent).data("wysihtml5").editor.setValue(data.PageContent);
-		trace('done! setting  page content value');
+		//trace('done! setting  page content value');
 		if(data.IsHomePage) {
-			$(pages._elems.chkIsHomePage).attr('checked','checked');
+			//trace('ishomepage');
+			$(pages._elems.chkIsHomePage).addClass('active');
+			$(pages._elems.txtPageUrl).val('/');
+			$(pages._elems.txtPageUrl).attr('disabled', 'disabled');
 		}
 		else {
-			$(pages._elems.chkIsHomePage).removeAttr('checked');
+			//trace('isnothomepage');
+			$(pages._elems.chkIsHomePage).removeClass('active');
+			$(pages._elems.txtPageUrl).removeAttr('disabled');
 		}
-		$(pages._elems.chkIsHomePage).trigger('change');
 	}
 
 	function resetForm() {
@@ -309,7 +313,7 @@
 		$(pages._elems.txtPageMetaTitle).val('');
 		$(pages._elems.txtPageMetaDescription).val('');
 		$(pages._elems.txtPageContent).val('');
-		$(pages._elems.chkIsHomePage).removeAttr('checked');
+		$(pages._elems.chkIsHomePage).removeClass('active');
 		$(pages._elems.txtPageUrl).removeAttr('disabled');
 		$(pages._elems.btnSavePage).attr('rel', '0');
 	}
@@ -341,10 +345,10 @@
 		}
 		$('#form-page-popup h3').text(title);
 		
-		trace('preparing forms');
+		//trace('preparing forms');
 		resetForm();
 		preparePopupForm();
-		trace('done! preparing forms');
+		//trace('done! preparing forms');
 		
 		if(mode === 'edit') {
 			getPage(pageId, function(data) {
@@ -385,7 +389,7 @@
 			
 			if($(this).hasClass('hasEditor')) {
 				if(!pages.form.isEditorReady) {
-					trace('creating page content wysiwyg');
+					//trace('creating page content wysiwyg');
 					$(pages._elems.txtPageContent).wysihtml5({
 						"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
 						"emphasis": true, //Italics, bold, etc. Default true
@@ -396,7 +400,7 @@
 						"color": true //Button to change color of font  
 					});	
 					pages.form.isEditorReady = true;
-					trace('done! creating page content wysiwyg');
+					//trace('done! creating page content wysiwyg');
 				}
 			}
 		});
@@ -408,12 +412,9 @@
 			container: window._elems.errorContainer,
 			errorInputEvent: null,
 		});  
-		
-		$(pages._elems.chkIsHomePage).button();
 	}
 	
 	function destroyForm() {
-		$(pages._elems.chkIsHomePage).button('destroy');
 		var api = _pages.form.validators.data("validator");
 		api.destroy();
 		pages.form.validators = {};
@@ -425,9 +426,10 @@
 			pageRouter.navigate("add", {trigger: true});
 		});
 		
-		$(document).delegate(pages._elems.chkIsHomePage, 'change', function() {
+		$(document).delegate(pages._elems.chkIsHomePage, 'click', function() {
 			var $self = $(this);
-			if($self.is(":checked")) {
+			$(this).button('toggle');
+			if($self.hasClass("active")) {
 				$(pages._elems.txtPageUrl).val('/');
 				$(pages._elems.txtPageUrl).attr('disabled', 'disabled');
 			}

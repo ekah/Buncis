@@ -12,7 +12,7 @@
 		<div class="span12">
 			<div class="buncisContentBody well well-small">
 				<div class="actionContent pull-right">
-					<a href="#" id="aAddArticle" class="btn btn-warning addArticle">
+					<a href="#" id="aAddArticle" class="btn btn-warning">
 						<i class="icon-plus"></i>&nbsp;<span>Add Article</span>
 					</a>
 				</div>
@@ -122,18 +122,27 @@
 		
 		<script type="text/template" id="category-template">
 			<div>
-				<a href="#" id="aAddArticleCategory" class="btn btn-warning addArticleCategory">
-					<i class="icon-plus"></i>&nbsp;<span>Add Article Category</span>
-				</a>
-			</div>
-			<div>
-				<div id="article-category" class="btn-group" data-toggle="buttons-radio">
+				<div id="radioArticleCategory" class="btn-group" data-toggle="buttons-radio">
 				{% for (var i = 0; i < attributes.articleCategories.length; i++) { %}
-					<button type="button" class="btn btn-primary">
+					<button type="button" class="btn" 
+						data-categoryid="{{attributes.articleCategories[i].attributes.articleCategoryId}}">
 						{{attributes.articleCategories[i].attributes.articleCategoryName}}
 					</button>
 				{% } %}
 				</div>
+			</div>
+			<p></p>
+			<div class="form-inline">
+				<a href="#" id="aAddArticleCategory" class="btn btn-warning">
+					<i class="icon-plus"></i>&nbsp;<span>Add Article Category</span>
+				</a>
+				<span class="add-category-section" style="display:none">
+					<input type="text" id="txtArticleCategoryName" name="txtArticleCategoryName"
+						class=""></input>
+					<a href="#" id="aSaveArticleCategory" class="btn btn-success">
+						<i class="icon-plus"></i>&nbsp;<span>Save</span>
+					</a>
+				</span>
 			</div>
 		</script>
 	</div>

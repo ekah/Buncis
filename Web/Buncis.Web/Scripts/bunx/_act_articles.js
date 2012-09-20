@@ -31,7 +31,7 @@
 		confirmDeletePopupTemplate: '#article-confirmDelete-popup-template'
 	};	
 	oModule.collection = {};
-	oModule.colArticleCategory = {};
+	oModule.articleCategoryList = {};
 	oModule.CollectionModel = Backbone.Collection.extend({
 		model: oModule.ItemModel,
 		comparator: function(itemModel){
@@ -117,7 +117,7 @@
 			
 			var articleCategoryView = new _articles.ArticleCategoryView({
 				el: this.$('#article-category-container'),
-				model: _articles.colArticleCategory
+				model: _articles.articleCategoryList
 			});
 			this.articleCategoryView = articleCategoryView;
 			articleCategoryView.render();
@@ -197,7 +197,8 @@
 			this.model.on('change', this.renderUpdate, this);
 		},
 		events: {
-			'click a#aAddArticleCategory': 'addCategory'
+			'click a#aAddArticleCategory': 'addCategory',
+			'click a#aSaveArticleCategory': 'saveCategory'
 		},
 		render: function(){
 			var template = _.template($('#category-template').html(), this.model, _helpers.underscoreTemplateSettings);
@@ -206,12 +207,26 @@
 		},
 		addCategory: function (event) {
 			event.preventDefault();
-			trace(event);
-			trace("add category clicked");	
+			if($('.add-category-section').is(':visible')) {
+				$('.add-category-section').hide();
+			}
+			else {
+				$('.add-category-section').show();
+			}
 		},
 		close: function (event) {
 			this.undelegateEvents();
 			$(this.el).empty();
+		},
+		saveCategory: function(event) {
+			event.preventDefault();
+			var categoryName = $('#txtArticleCategoryName').val();
+			if(categoryName && categoryName.length > 0) {
+				$('.add-category-section').hide();
+				_articles.fn.insertArticleCategory(categoryName, function(result) {
+					trace(result);
+				});
+			}
 		}
 	});
 }(window._articles = window._articles || {}));
@@ -223,11 +238,12 @@
 	var addWebServiceUrl = '/webservices/articles.svc/BPInsertArticle';	
 	var deleteWebServiceUrl = '/webservices/articles.svc/BPDeleteArticle';	
 	var listArticleCategoryUrl = '/webservices/articles.svc/BPGetArticleCategories?clientId=' + _elems.clientId;	
+	var addArticleCategoryUrl = '/webservices/articles.svc/BPInsertArticleCategory';
 
 	function loadData() {
 		_articles.collection = new _articles.CollectionModel();
 		getCollection(function(result) {
-			trace(result);
+			//trace(result);
 			for(var i = 0; i < result.length; i++) {
 				var item = result[i];
 				// create new model instance
@@ -246,7 +262,7 @@
 				_articles.fn.renderListItemView(itemModel);
 			}
 			getArticleCategories(function (articleCategories) {
-				trace(articleCategories);
+				//trace(articleCategories);
 				var articleCategoryListModel = new _articles.ArticleCategoryListModel({
 					articleCategories: []
 				});
@@ -258,8 +274,8 @@
 					});
 					articleCategoryListModel.attributes.articleCategories.push(articleCategoryModel);
 				}
-				trace(articleCategoryListModel);
-				_articles.colArticleCategory = articleCategoryListModel;
+				//trace(articleCategoryListModel);
+				_articles.articleCategoryList = articleCategoryListModel;
 			});
 		});
 	}
@@ -449,6 +465,39 @@
 		setupEvents();
 		Backbone.history.start();
 		_articles.router.navigate("home", {trigger: true});
+	};
+	oFn.insertArticleCategory = function(cateogryName, _callback) {
+		var sData = {
+			clientId: _elems.clientId,
+			articleCategory: {
+				ArticleCategoryId: 0,
+				ArticleCategoryName: cateogryName,
+				ArticleCategoryDescription: cateogryName
+			}
+		};
+		var jData = JSON.stringify(sData);
+		var wsUrl = addArticleCategoryUrl;		
+
+		_helpers.blockBuncisContentBodyDefault();
+		$.ajax({
+			type: "POST",
+			url: wsUrl,
+			data: jData,
+			dataType: 'json',
+			contentType: 'text/json',
+			success: function (result) {
+				var data = result.d;
+				_helpers.unblockBuncisContentBodyDefault();
+				if (data.IsSuccess) {
+					if(_callback) {
+						_callback(data.ResponseObject);
+					}
+				}
+			},
+			error: function () {
+				_helpers.unblockBuncisContentBodyDefault();
+			}
+		});
 	};
 }(window._articles.fn = window._articles.fn || {}));
 

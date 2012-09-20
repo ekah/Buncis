@@ -12,7 +12,7 @@
 		<div class="span12">
 			<div class="buncisContentBody well well-small">
 				<div class="actionContent pull-right">
-					<a href="#" id="aAddNews" class="addNews btn btn-warning">
+					<a href="#" id="aAddNews" class="btn btn-warning">
 						<i class="icon-plus"></i>&nbsp;<span>Add News</span>
 					</a>
 				</div>

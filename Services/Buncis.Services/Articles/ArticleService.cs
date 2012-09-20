@@ -129,5 +129,34 @@ namespace Buncis.Services.Articles
 
 			return converted;
 		}
+
+		public ValidationDictionary<ViewModelArticleCategory> InsertArticleCategory(int clientId,
+			ViewModelArticleCategory articleCategoryViewModel)
+		{
+			var validator = new ValidationDictionary<ViewModelArticleCategory>();
+			if (articleCategoryViewModel == null)
+			{
+				validator.IsValid = false;
+				validator.AddError("", "The XX you're trying to save is null");
+				return validator;
+			}
+
+			// rule based here
+
+
+			var articleCategory = new ArticleCategory();
+			articleCategory.InjectFrom(articleCategoryViewModel);
+			articleCategory.DateCreated = DateTime.UtcNow;
+			articleCategory.DateLastUpdated = DateTime.UtcNow;
+			articleCategory.ClientId = clientId;
+
+			_articleCategoryRepository.Add(articleCategory);
+
+			var rawPinged = _articleCategoryRepository.FindBy(o => o.ArticleCategoryId == articleCategory.ArticleCategoryId);
+			var pinged = new ViewModelArticleCategory().InjectFrom(rawPinged) as ViewModelArticleCategory;
+			validator.IsValid = true;
+			validator.RelatedObject = pinged;
+			return validator;
+		}
 	}
 }

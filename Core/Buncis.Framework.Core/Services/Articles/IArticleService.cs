@@ -11,5 +11,7 @@ namespace Buncis.Framework.Core.Services.Articles
 		ValidationDictionary<ViewModelArticleItem> DeleteArticleItem(int articleitemId);
 		ValidationDictionary<ViewModelArticleItem> SaveArticleItem(int clientId, ViewModelArticleItem articleitem);
 		IEnumerable<ViewModelArticleCategory> GetArticleCategories(int clientId);
+		ValidationDictionary<ViewModelArticleCategory> InsertArticleCategory(int clientId,
+		   ViewModelArticleCategory articleCategoryViewModel);
 	}
 }

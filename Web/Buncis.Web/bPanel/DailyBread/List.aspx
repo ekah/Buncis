@@ -12,7 +12,7 @@
 		<div class="span12">
 			<div class="buncisContentBody well well-small">
 				<div class="actionContent pull-right">
-					<a href="#" id="aAddDailyBread" class="btn btn-warning addDailyBread">
+					<a href="#" id="aAddDailyBread" class="btn btn-warning">
 						<i class="icon-plus"></i>&nbsp;<span>Add Daily Bread</span>
 					</a>
 				</div>
@@ -101,98 +101,101 @@
 							<span class="input-medium uneditable-input help-inline">{{attributes.displayDatePublished}}</span>
 						</div>
 						<div class="form-item span11">
-							<label>Daily Bread Bible:</label>					
-							<span class="uneditable-input help-inline">Book of:&nbsp;</span>
-							<select id="selDailyBreadBook" name="selDailyBreadBook" 
-								required="required" data-message="Daily Bible Book is required">
-								<optgroup label="Old Testament (Perjanjian Lama)">
-									<option value="Genesis">Genesis (Kejadian)</option>
-									<option value="Exodus">Exodus (Keluaran)</option>
-									<option value="Leviticus">Leviticus (Imamat)</option>
-									<option value="Numbers">Numbers (Bilangan)</option>
-									<option value="Deuteronomy">Deuteronomy (Ulangan)</option>
-									<option value="Joshua">Joshua (Yosua)</option>
-									<option value="Judges">Judges (Hakim Hakim)</option>
-									<option value="Ruth">Ruth (Rut)</option>
-									<option value="1 Samuel">1 Samuel (1 Samuel)</option>
-									<option value="2 Samuel">2 Samuel (2 Samuel)</option>
-									<option value="1 Kings">1 Kings (1 Raja Raja)</option>
-									<option value="2 Kings">2 Kings (2 Raja Raja)</option>
-									<option value="1 Chronicles">1 Chronicles (1 Tawarikh)</option>
-									<option value="2 Chronicles">2 Chronicles (2 Tawarikh)</option>
-									<option value="Ezra">Ezra (Ezra)</option>
-									<option value="Nehemiah">Nehemiah (Nehemia)</option>
-									<option value="Esther">Esther (Ester)</option>
-									<option value="Job">Job (Ayub)</option>
-									<option value="Psalm">Psalm (Mazmur)</option>
-									<option value="Proverbs">Proverbs (Amsal)</option>
-									<option value="Ecclesiastes">Ecclesiastes (Pengkhotbah)</option>
-									<option value="Song of Solomon">Song of Solomon (Kidung Agung)</option>
-									<option value="Isaiah">Isaiah (Yesaya)</option>
-									<option value="Jeremiah">Jeremiah (Yeremia)</option>
-									<option value="Lamentations">Lamentations (Ratapan)</option>
-									<option value="Ezekiel">Ezekiel (Yehezkiel)</option>
-									<option value="Daniel">Daniel (Daniel)</option>
-									<option value="Hosea">Hosea (Hosea)</option>
-									<option value="Joel">Joel (Yoel)</option>
-									<option value="Amos">Amos (Amos)</option>
-									<option value="Obadiah">Obadiah (Obaja)</option>
-									<option value="Jonah">Jonah (Yunus)</option>
-									<option value="Micah">Micah (Mikha)</option>
-									<option value="Nahum">Nahum (Nahum)</option>
-									<option value="Habakkuk">Habakkuk (Habakuk)</option>
-									<option value="Zephaniah">Zephaniah (Zafanya)</option>
-									<option value="Haggai">Haggai (Hagai)</option>
-									<option value="Zechariah">Zechariah (Zakharia)</option>
-									<option value="Malachi">Malachi (Maleakhi)</option>
-								</optgroup>
-								<optgroup label="New Testament (Perjanjian Baru)">
-									<option value="Matthew">Matthew (Matius)</option>
-									<option value="Mark">Mark (Markus)</option>
-									<option value="Luke">Luke (Lukas)</option>
-									<option value="John">John (Yohanes)</option>
-									<option value="Acts">Acts (Kisah Para Rasul)</option>
-									<option value="Romans">Romans (Roma)</option>
-									<option value="1 Corinthians">1 Corinthians (1 Korintus)</option>
-									<option value="2 Corinthians">2 Corinthians (2 Korintus)</option>
-									<option value="Galatians">Galatians (Galatia)</option>
-									<option value="Ephesians">Ephesians (Efesus)</option>
-									<option value="Philippians">Philippians (Filipi)</option>
-									<option value="Colossians">Colossians (Kolose)</option>
-									<option value="1 Thessalonians">1 Thessalonians (1 Tesalonika)</option>
-									<option value="2 Thessalonians">2 Thessalonians (2 Tesalonika)</option>
-									<option value="1 Timothy">1 Timothy (1 Timotius)</option>
-									<option value="2 Timothy">2 Timothy (2 Timotius)</option>
-									<option value="Titus">Titus (Titus)</option>
-									<option value="Philemon">Philemon (Filemon)</option>
-									<option value="Hebrews">Hebrews (Ibrani)</option>
-									<option value="James">James (Yakobus)</option>
-									<option value="1 Peter">1 Peter (1 Petrus)</option>
-									<option value="2 Peter">2 Peter (2 Petrus)</option>
-									<option value="1 John">1 John (1 Yohanes)</option>
-									<option value="2 John">2 John (2 Yohanes)</option>
-									<option value="3 John">3 John (3 Yohanes)</option>
-									<option value="Jude">Jude (Yudas)</option>
-									<option value="Revelation">Revelation (Wahyu)</option>
-								</optgroup>
-							</select>
-							<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-							<span class="uneditable-input help-inline">Chapter:&nbsp;</span>
-							<input type="text" class="input-mini"
-								value="{{attributes.dailyBreadBookChapter}}"
-								id="txtDailyBreadBookChapter" name="txtDailyBreadBookChapter"
-								required="required" data-message="Daily Bible Book Chapter is required" />
-							<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-							<span class="uneditable-input help-inline">Verse:&nbsp;</span>
-							<input type="text" class="input-mini"
-								value="{{attributes.dailyBreadBookVerse1}}"
-								id="txtDailyBreadBookVerse1" name="txtDailyBreadBookVerse1"
-								required="required" data-message="Daily Bible Book Verse 1 is required" />
-							<span class="uneditable-input help-inline">&nbsp;-&nbsp;</span>
-							<input type="text" class="input-mini"
-								value="{{attributes.dailyBreadBookVerse2}}"
-								id="txtDailyBreadBookVerse2" name="txtDailyBreadBookVerse2"
-								required="required" data-message="Daily Bible Book Verse 2 is required" />
+							<label>Daily Bread Bible:</label>
+							<div class="form-inline">
+								<span class="">Book of:&nbsp;</span>
+								<select id="selDailyBreadBook" name="selDailyBreadBook" 
+									required="required" data-message="Daily Bible Book is required">
+									<optgroup label="Old Testament (Perjanjian Lama)">
+										<option value="Genesis">Genesis (Kejadian)</option>
+										<option value="Exodus">Exodus (Keluaran)</option>
+										<option value="Leviticus">Leviticus (Imamat)</option>
+										<option value="Numbers">Numbers (Bilangan)</option>
+										<option value="Deuteronomy">Deuteronomy (Ulangan)</option>
+										<option value="Joshua">Joshua (Yosua)</option>
+										<option value="Judges">Judges (Hakim Hakim)</option>
+										<option value="Ruth">Ruth (Rut)</option>
+										<option value="1 Samuel">1 Samuel (1 Samuel)</option>
+										<option value="2 Samuel">2 Samuel (2 Samuel)</option>
+										<option value="1 Kings">1 Kings (1 Raja Raja)</option>
+										<option value="2 Kings">2 Kings (2 Raja Raja)</option>
+										<option value="1 Chronicles">1 Chronicles (1 Tawarikh)</option>
+										<option value="2 Chronicles">2 Chronicles (2 Tawarikh)</option>
+										<option value="Ezra">Ezra (Ezra)</option>
+										<option value="Nehemiah">Nehemiah (Nehemia)</option>
+										<option value="Esther">Esther (Ester)</option>
+										<option value="Job">Job (Ayub)</option>
+										<option value="Psalm">Psalm (Mazmur)</option>
+										<option value="Proverbs">Proverbs (Amsal)</option>
+										<option value="Ecclesiastes">Ecclesiastes (Pengkhotbah)</option>
+										<option value="Song of Solomon">Song of Solomon (Kidung Agung)</option>
+										<option value="Isaiah">Isaiah (Yesaya)</option>
+										<option value="Jeremiah">Jeremiah (Yeremia)</option>
+										<option value="Lamentations">Lamentations (Ratapan)</option>
+										<option value="Ezekiel">Ezekiel (Yehezkiel)</option>
+										<option value="Daniel">Daniel (Daniel)</option>
+										<option value="Hosea">Hosea (Hosea)</option>
+										<option value="Joel">Joel (Yoel)</option>
+										<option value="Amos">Amos (Amos)</option>
+										<option value="Obadiah">Obadiah (Obaja)</option>
+										<option value="Jonah">Jonah (Yunus)</option>
+										<option value="Micah">Micah (Mikha)</option>
+										<option value="Nahum">Nahum (Nahum)</option>
+										<option value="Habakkuk">Habakkuk (Habakuk)</option>
+										<option value="Zephaniah">Zephaniah (Zafanya)</option>
+										<option value="Haggai">Haggai (Hagai)</option>
+										<option value="Zechariah">Zechariah (Zakharia)</option>
+										<option value="Malachi">Malachi (Maleakhi)</option>
+									</optgroup>
+									<optgroup label="New Testament (Perjanjian Baru)">
+										<option value="Matthew">Matthew (Matius)</option>
+										<option value="Mark">Mark (Markus)</option>
+										<option value="Luke">Luke (Lukas)</option>
+										<option value="John">John (Yohanes)</option>
+										<option value="Acts">Acts (Kisah Para Rasul)</option>
+										<option value="Romans">Romans (Roma)</option>
+										<option value="1 Corinthians">1 Corinthians (1 Korintus)</option>
+										<option value="2 Corinthians">2 Corinthians (2 Korintus)</option>
+										<option value="Galatians">Galatians (Galatia)</option>
+										<option value="Ephesians">Ephesians (Efesus)</option>
+										<option value="Philippians">Philippians (Filipi)</option>
+										<option value="Colossians">Colossians (Kolose)</option>
+										<option value="1 Thessalonians">1 Thessalonians (1 Tesalonika)</option>
+										<option value="2 Thessalonians">2 Thessalonians (2 Tesalonika)</option>
+										<option value="1 Timothy">1 Timothy (1 Timotius)</option>
+										<option value="2 Timothy">2 Timothy (2 Timotius)</option>
+										<option value="Titus">Titus (Titus)</option>
+										<option value="Philemon">Philemon (Filemon)</option>
+										<option value="Hebrews">Hebrews (Ibrani)</option>
+										<option value="James">James (Yakobus)</option>
+										<option value="1 Peter">1 Peter (1 Petrus)</option>
+										<option value="2 Peter">2 Peter (2 Petrus)</option>
+										<option value="1 John">1 John (1 Yohanes)</option>
+										<option value="2 John">2 John (2 Yohanes)</option>
+										<option value="3 John">3 John (3 Yohanes)</option>
+										<option value="Jude">Jude (Yudas)</option>
+										<option value="Revelation">Revelation (Wahyu)</option>
+									</optgroup>
+								</select>
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span class="">Chapter:&nbsp;</span>
+								<input type="text" class="span1"
+									value="{{attributes.dailyBreadBookChapter}}"
+									id="txtDailyBreadBookChapter" name="txtDailyBreadBookChapter"
+									required="required" data-message="Daily Bible Book Chapter is required" />
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span class="">Verse:&nbsp;</span>
+								<input type="text" class="span1"
+									value="{{attributes.dailyBreadBookVerse1}}"
+									id="txtDailyBreadBookVerse1" name="txtDailyBreadBookVerse1"
+									required="required" data-message="Daily Bible Book Verse 1 is required" />
+								<span class="">&nbsp;-&nbsp;</span>
+								<input type="text" class="span1"
+									value="{{attributes.dailyBreadBookVerse2}}"
+									id="txtDailyBreadBookVerse2" name="txtDailyBreadBookVerse2"
+									required="required" data-message="Daily Bible Book Verse 2 is required" />
+							</div>
+							<p></p>
 							<div>
 								<textarea type="text" id="txtDailyBreadBookContent" name="txtDailyBreadBookContent" 
 									class="span10" cols="120" rows="6"

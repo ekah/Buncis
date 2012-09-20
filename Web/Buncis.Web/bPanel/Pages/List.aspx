@@ -11,9 +11,9 @@
 			</div>
 		</div>
 		<div class="span12">
-			<div class="buncisContentBody well well-small">                
+			<div class="buncisContentBody well well-small">
 				<div class="actionContent pull-right">
-					<a href="#" id="aAddPage" class="addPage btn btn-warning">
+					<a href="#" id="aAddPage" class="btn btn-warning">
 						<i class="icon-plus"></i>&nbsp;<span>Add Page</span>
 					</a>
 				</div>
@@ -82,8 +82,9 @@
 								</div>
 								<div class="form-item span11">
 									<label>Do you want to make this page as your Home page?</label>
-									<label class="form-item-reset" for="chkIsHomePage">Home Page</label>
-									<input type="checkbox" id="chkIsHomePage" class="btn" />
+									<%--<label class="form-item-reset" for="chkIsHomePage">Home Page</label>
+									<input type="checkbox" id="chkIsHomePage" class="btn" />--%>
+									<button id="btnHomePage" type="button" class="btn">Home Page</button>
 								</div>
 								<div class="form-item span11">
 									<label>Friendly URL</label>

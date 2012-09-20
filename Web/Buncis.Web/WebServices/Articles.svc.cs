@@ -93,6 +93,22 @@ namespace Buncis.Web.WebServices
 			response.Message = string.Empty;
 			return response;
 		}
+
+		public Response<DtoBuncisArticleCategory> BPInsertArticleCategory(int clientId, DtoBuncisArticleCategory articleCategory)
+		{
+			var service = IoC.Resolve<IArticleService>();
+			var viewModel = new ViewModelArticleCategory().InjectFrom<CloneInjection>(articleCategory) as ViewModelArticleCategory;
+			var result = service.InsertArticleCategory(clientId, viewModel);
+
+			var response = new Response<DtoBuncisArticleCategory>();
+			response.IsSuccess = result.IsValid;
+			response.Message = result.ValidationSummaryToString();
+
+			var responseObject = new DtoBuncisArticleCategory().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisArticleCategory;
+			response.ResponseObject = responseObject;
+
+			return response;
+		}
 	}
 }
 
