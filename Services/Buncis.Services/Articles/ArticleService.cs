@@ -14,41 +14,44 @@ namespace Buncis.Services.Articles
 	public class ArticleService : BaseService, IArticleService
 	{
 		private readonly IArticleItemRepository _articleItemRepository;
+		private readonly IArticleCategoryRepository _articleCategoryRepository;
 
-		public ArticleService(IArticleItemRepository articleItemRepository)
+		public ArticleService(IArticleItemRepository articleItemRepository,
+			IArticleCategoryRepository articleCategoryRepository)
 		{
 			_articleItemRepository = articleItemRepository;
+			_articleCategoryRepository = articleCategoryRepository;
 		}
 
-		public IEnumerable<ViewModelBuncisArticleItem> GetAvailableArticleItems(int clientId)
+		public IEnumerable<ViewModelArticleItem> GetAvailableArticleItems(int clientId)
 		{
 			var raw = _articleItemRepository.FilterBy(o => !o.IsDeleted && o.ClientId == clientId).ToList();
 
 			var converted = raw.Select(item =>
 			{
-				var ViewModelArticleItem = new ViewModelBuncisArticleItem();
-				ViewModelArticleItem.InjectFrom(item);
-				return ViewModelArticleItem;
+				var viewModelArticleItem = new ViewModelArticleItem();
+				viewModelArticleItem.InjectFrom(item);
+				return viewModelArticleItem;
 			}).ToList();
 
 			return converted;
 		}
 
-		public ViewModelBuncisArticleItem GetArticleItem(int articleId)
+		public ViewModelArticleItem GetArticleItem(int articleId)
 		{
 			var raw = _articleItemRepository.FindBy(o => !o.IsDeleted && o.ArticleId == articleId);
 
-			var ViewModelArticleItem = new ViewModelBuncisArticleItem();
-			ViewModelArticleItem.InjectFrom(raw);
+			var viewModelArticleItem = new ViewModelArticleItem();
+			viewModelArticleItem.InjectFrom(raw);
 
-			return ViewModelArticleItem;
+			return viewModelArticleItem;
 		}
 
-		public ValidationDictionary<ViewModelBuncisArticleItem> DeleteArticleItem(int articleId)
+		public ValidationDictionary<ViewModelArticleItem> DeleteArticleItem(int articleId)
 		{
 			var raw = _articleItemRepository.FindBy(o => o.ArticleId == articleId);
 
-			var validator = new ValidationDictionary<ViewModelBuncisArticleItem>();
+			var validator = new ValidationDictionary<ViewModelArticleItem>();
 
 			if (raw != null)
 			{
@@ -67,9 +70,9 @@ namespace Buncis.Services.Articles
 			return validator;
 		}
 
-		public ValidationDictionary<ViewModelBuncisArticleItem> SaveArticleItem(int clientId, ViewModelBuncisArticleItem article)
+		public ValidationDictionary<ViewModelArticleItem> SaveArticleItem(int clientId, ViewModelArticleItem article)
 		{
-			var validator = new ValidationDictionary<ViewModelBuncisArticleItem>();
+			var validator = new ValidationDictionary<ViewModelArticleItem>();
 			if (article == null)
 			{
 				validator.IsValid = false;
@@ -111,6 +114,20 @@ namespace Buncis.Services.Articles
 			validator.IsValid = true;
 			validator.RelatedObject = pinged;
 			return validator;
+		}
+
+		public IEnumerable<ViewModelArticleCategory> GetArticleCategories(int clientId)
+		{
+			var raw = _articleCategoryRepository.FilterBy(o => !o.IsDeleted && o.ClientId == clientId).ToList();
+
+			var converted = raw.Select(item =>
+			{
+				var viewModelArticleCategory = new ViewModelArticleCategory();
+				viewModelArticleCategory.InjectFrom(item);
+				return viewModelArticleCategory;
+			}).ToList();
+
+			return converted;
 		}
 	}
 }

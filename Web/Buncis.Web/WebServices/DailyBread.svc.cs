@@ -49,7 +49,7 @@ namespace Buncis.Web.WebServices
 		public Response<DtoBuncisDailyBread> BPUpdateDailyBread(int clientId, DtoBuncisDailyBread dailyBread)
 		{
 			var service = IoC.Resolve<IDailyBreadService>();
-			var viewModel = new ViewModelBuncisDailyBreadItem().InjectFrom(dailyBread) as ViewModelBuncisDailyBreadItem;
+			var viewModel = new ViewModelDailyBreadItem().InjectFrom(dailyBread) as ViewModelDailyBreadItem;
 			var result = service.SaveDailyBreadItem(clientId, viewModel);
 
 			var response = new Response<DtoBuncisDailyBread>();
@@ -65,7 +65,7 @@ namespace Buncis.Web.WebServices
 		public Response<DtoBuncisDailyBread> BPInsertDailyBread(int clientId, DtoBuncisDailyBread dailyBread)
 		{
 			var service = IoC.Resolve<IDailyBreadService>();
-			var viewModel = new ViewModelBuncisDailyBreadItem().InjectFrom(dailyBread) as ViewModelBuncisDailyBreadItem;
+			var viewModel = new ViewModelDailyBreadItem().InjectFrom(dailyBread) as ViewModelDailyBreadItem;
 			var result = service.SaveDailyBreadItem(clientId, viewModel);
 
 			var response = new Response<DtoBuncisDailyBread>();

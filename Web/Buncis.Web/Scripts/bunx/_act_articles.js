@@ -31,6 +31,7 @@
 		confirmDeletePopupTemplate: '#article-confirmDelete-popup-template'
 	};	
 	oModule.collection = {};
+	oModule.colArticleCategory = {};
 	oModule.CollectionModel = Backbone.Collection.extend({
 		model: oModule.ItemModel,
 		comparator: function(itemModel){
@@ -104,6 +105,7 @@
 		reset: function() {
 			this.validators = {};
 		},
+		articleCategoryView: {},
 		events: {
 			//EXAMPLE 'click #btnSave': 'save'
 			// PUT EVENTS HERE
@@ -112,6 +114,14 @@
 			var template = _.template($(_articles._elems.editTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
 			$.scrollTo(0, 0);
+			
+			var articleCategoryView = new _articles.ArticleCategoryView({
+				el: this.$('#article-category-container'),
+				model: _articles.colArticleCategory
+			});
+			this.articleCategoryView = articleCategoryView;
+			articleCategoryView.render();
+
 			return this;
 		},
 		save: function(event) {         
@@ -148,6 +158,7 @@
 		close: function(event) {
 			this.undelegateEvents();
 			$(this.el).empty();
+			this.articleCategoryView.close();
 			_articles.router.navigate("home", {trigger: true});
 			oModule.fn.animateItem(this.model);
 		}
@@ -172,6 +183,37 @@
 			});
 		}
 	});
+	oModule.ArticleCategoryListModel = Backbone.Model.extend({
+		articleCategories: null
+	});
+	oModule.ArticleCategoryModel = Backbone.Model.extend({
+		idAttribute: 'articleCategoryId',
+		articleCategoryId: 0,
+		articleCategoryName: ''
+	});
+	oModule.ArticleCategoryView = Backbone.View.extend({
+		initialize: function(){
+			_.bindAll(this, "render");
+			this.model.on('change', this.renderUpdate, this);
+		},
+		events: {
+			'click a#aAddArticleCategory': 'addCategory'
+		},
+		render: function(){
+			var template = _.template($('#category-template').html(), this.model, _helpers.underscoreTemplateSettings);
+			this.$el.append($(template));
+			return this;
+		},
+		addCategory: function (event) {
+			event.preventDefault();
+			trace(event);
+			trace("add category clicked");	
+		},
+		close: function (event) {
+			this.undelegateEvents();
+			$(this.el).empty();
+		}
+	});
 }(window._articles = window._articles || {}));
 
 
@@ -180,6 +222,7 @@
 	var editWebServiceUrl = '/webservices/articles.svc/BPUpdateArticle';	
 	var addWebServiceUrl = '/webservices/articles.svc/BPInsertArticle';	
 	var deleteWebServiceUrl = '/webservices/articles.svc/BPDeleteArticle';	
+	var listArticleCategoryUrl = '/webservices/articles.svc/BPGetArticleCategories?clientId=' + _elems.clientId;	
 
 	function loadData() {
 		_articles.collection = new _articles.CollectionModel();
@@ -202,6 +245,22 @@
 				_articles.collection.add(itemModel);
 				_articles.fn.renderListItemView(itemModel);
 			}
+			getArticleCategories(function (articleCategories) {
+				trace(articleCategories);
+				var articleCategoryListModel = new _articles.ArticleCategoryListModel({
+					articleCategories: []
+				});
+				for(var ac = 0; ac < articleCategories.length; ac++) {
+					var acItem = articleCategories[ac];
+					var articleCategoryModel = new _articles.ArticleCategoryModel({
+						articleCategoryId: acItem.ArticleCategoryId,
+						articleCategoryName: acItem.ArticleCategoryName
+					});
+					articleCategoryListModel.attributes.articleCategories.push(articleCategoryModel);
+				}
+				trace(articleCategoryListModel);
+				_articles.colArticleCategory = articleCategoryListModel;
+			});
 		});
 	}
 
@@ -251,6 +310,23 @@
 			$(addView.el).find('h3').text('Add Article');			
 			oFn.prepareForm(addView);
 		});		
+	}
+	
+	function getArticleCategories(_callback) {
+		$.ajax({
+			type: "GET",
+			url: listArticleCategoryUrl,
+			success: function (result) {
+				var data = result.d;
+				if (data.IsSuccess) {
+					if(_callback) {
+						_callback(data.ResponseObject);
+					}
+				}
+			},
+			error: function () {
+			}
+		});
 	}
 
 	oFn.prepareForm = function($view) {

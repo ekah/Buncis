@@ -83,6 +83,7 @@
     <Compile Include="Membership\IMembership.cs" />
     <Compile Include="Membership\IUserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Articles\IArticleCategoryRepository.cs" />
     <Compile Include="Repository\Articles\IArticleItemRepository.cs" />
     <Compile Include="Repository\DailyBread\IDailyBreadItemRepository.cs" />
     <Compile Include="Repository\IReadOnlyRepository.cs" />
@@ -114,22 +115,22 @@
     <Compile Include="SupportClasses\ValidationDictionary.cs" />
     <Compile Include="Services\Pages\IDynamicPageService.cs" />
     <Compile Include="SupportClasses\Response.cs" />
-    <Compile Include="ViewModel\ViewModelBuncisArticleCategory.cs">
+    <Compile Include="ViewModel\ViewModelArticleCategory.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\ViewModelBuncisArticleItem.cs">
+    <Compile Include="ViewModel\ViewModelArticleItem.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\ViewModelBuncisDailyBreadItem.cs">
+    <Compile Include="ViewModel\ViewModelDailyBreadItem.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\ViewModelBuncisNewsCategory.cs">
+    <Compile Include="ViewModel\ViewModelNewsCategory.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\ViewModelBuncisNewsItem.cs">
+    <Compile Include="ViewModel\ViewModelNewsItem.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\ViewModelBuncisPage.cs">
+    <Compile Include="ViewModel\ViewModelPage.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

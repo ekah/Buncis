@@ -22,35 +22,35 @@ namespace Buncis.Services.News
 			_newsRepository = newsRepository;
 		}
 
-		public IEnumerable<ViewModelBuncisNewsItem> GetAvailableNewsItems(int clientId)
+		public IEnumerable<ViewModelNewsItem> GetAvailableNewsItems(int clientId)
 		{
 			var raw = _newsRepository.FilterBy(o => !o.IsDeleted && o.ClientId == clientId).ToList();
 
 			var converted = raw.Select(item =>
 			{
-				var vBuncisNews = new ViewModelBuncisNewsItem();
-				vBuncisNews.InjectFrom(item);
-				return vBuncisNews;
+				var viewModelNewsItem = new ViewModelNewsItem();
+				viewModelNewsItem.InjectFrom(item);
+				return viewModelNewsItem;
 			}).ToList();
 
 			return converted;
 		}
 
-		public ViewModelBuncisNewsItem GetNewsItem(int newsId)
+		public ViewModelNewsItem GetNewsItem(int newsId)
 		{
 			var raw = _newsRepository.FindBy(o => !o.IsDeleted && o.NewsId == newsId);
 
-			var vBuncisNews = new ViewModelBuncisNewsItem();
-			vBuncisNews.InjectFrom(raw);
+			var viewModelNewsItem = new ViewModelNewsItem();
+			viewModelNewsItem.InjectFrom(raw);
 
-			return vBuncisNews;
+			return viewModelNewsItem;
 		}
 
-		public ValidationDictionary<ViewModelBuncisNewsItem> DeleteNewsItem(int newsId)
+		public ValidationDictionary<ViewModelNewsItem> DeleteNewsItem(int newsId)
 		{
 			var raw = _newsRepository.FindBy(o => o.NewsId == newsId);
 
-			var validator = new ValidationDictionary<ViewModelBuncisNewsItem>();
+			var validator = new ValidationDictionary<ViewModelNewsItem>();
 
 			if (raw != null)
 			{
@@ -69,9 +69,9 @@ namespace Buncis.Services.News
 			return validator;
 		}
 
-		public ValidationDictionary<ViewModelBuncisNewsItem> SaveNewsItem(int clientId, ViewModelBuncisNewsItem news)
+		public ValidationDictionary<ViewModelNewsItem> SaveNewsItem(int clientId, ViewModelNewsItem news)
 		{
-			var validator = new ValidationDictionary<ViewModelBuncisNewsItem>();
+			var validator = new ValidationDictionary<ViewModelNewsItem>();
 			if (news == null)
 			{
 				validator.IsValid = false;
@@ -109,21 +109,21 @@ namespace Buncis.Services.News
 				}
 			}
 
-			ViewModelBuncisNewsItem pingedNews = GetNewsItem(newsItem.NewsId);
+			ViewModelNewsItem pingedNews = GetNewsItem(newsItem.NewsId);
 			validator.IsValid = true;
 			validator.RelatedObject = pingedNews;
 			return validator;
 		}
 
-		public IEnumerable<ViewModelBuncisNewsItem> GetPublishedNewsItem(int clientId)
+		public IEnumerable<ViewModelNewsItem> GetPublishedNewsItem(int clientId)
 		{
 			var raw = _newsRepository.FilterBy(o => !o.IsDeleted && DateTime.UtcNow >= o.DatePublished && DateTime.UtcNow <= o.DateExpired).ToList();
 
 			var converted = raw.Select(item =>
 			{
-				var vBuncisNews = new ViewModelBuncisNewsItem();
-				vBuncisNews.InjectFrom(item);
-				return vBuncisNews;
+				var viewModelNewsItem = new ViewModelNewsItem();
+				viewModelNewsItem.InjectFrom(item);
+				return viewModelNewsItem;
 			}).ToList();
 
 			return converted;

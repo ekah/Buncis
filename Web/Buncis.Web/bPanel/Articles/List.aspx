@@ -76,7 +76,11 @@
 								cols="120" rows="6" class="span10"
 								required="required"
 								data-message="Article Teaser is required">{{attributes.articleTeaser}}</textarea>
-						</div>				
+						</div>
+						<div class="form-item span11">
+							<label>Article Category:</label>
+							<div id="article-category-container"></div>
+						</div>
 						<div class="form-item span11">
 							<label>Friendly Url:</label>
 							<input type="text" id="txtArticleUrl-{{id}}" name="txtArticleUrl-{{id}}" 
@@ -113,6 +117,23 @@
 			<div class="buttonContainer modal-footer">				
 				<a href="#" id="deleteArticle-confirm" class="btn btn-primary">Yes</a>			    
 				<a href="#" id="deleteArticle-cancel" class="popup-button-close btn btn-inverse">No</a>
+			</div>
+		</script>
+		
+		<script type="text/template" id="category-template">
+			<div>
+				<a href="#" id="aAddArticleCategory" class="btn btn-warning addArticleCategory">
+					<i class="icon-plus"></i>&nbsp;<span>Add Article Category</span>
+				</a>
+			</div>
+			<div>
+				<div id="article-category" class="btn-group" data-toggle="buttons-radio">
+				{% for (var i = 0; i < attributes.articleCategories.length; i++) { %}
+					<button type="button" class="btn btn-primary">
+						{{attributes.articleCategories[i].attributes.articleCategoryName}}
+					</button>
+				{% } %}
+				</div>
 			</div>
 		</script>
 	</div>

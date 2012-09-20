@@ -35,7 +35,7 @@ namespace Buncis.Web.WebServices
 		public Response<DtoBuncisNews> BPUpdateNews(int clientId, DtoBuncisNews news)
 		{
 			var service = IoC.Resolve<INewsService>();
-			var viewModel = new ViewModelBuncisNewsItem().InjectFrom<CloneInjection>(news) as ViewModelBuncisNewsItem;
+			var viewModel = new ViewModelNewsItem().InjectFrom<CloneInjection>(news) as ViewModelNewsItem;
 			var result = service.SaveNewsItem(clientId, viewModel);
 
 			var response = new Response<DtoBuncisNews>();
@@ -51,7 +51,7 @@ namespace Buncis.Web.WebServices
 		public Response<DtoBuncisNews> BPInsertNews(int clientId, DtoBuncisNews news)
 		{
 			var service = IoC.Resolve<INewsService>();
-			var viewModel = new ViewModelBuncisNewsItem().InjectFrom<CloneInjection>(news) as ViewModelBuncisNewsItem;
+			var viewModel = new ViewModelNewsItem().InjectFrom<CloneInjection>(news) as ViewModelNewsItem;
 			var result = service.SaveNewsItem(clientId, viewModel);
 
 			var response = new Response<DtoBuncisNews>();

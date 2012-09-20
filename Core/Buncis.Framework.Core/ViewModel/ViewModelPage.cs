@@ -4,7 +4,7 @@ using Buncis.Framework.Core.Infrastructure.Extensions;
 
 namespace Buncis.Framework.Core.ViewModel
 {
-	public class ViewModelBuncisPage
+	public class ViewModelPage
 	{
 		public int PageId { get; set; }
 		public string PageName { get; set; }

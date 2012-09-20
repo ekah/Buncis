@@ -4,11 +4,11 @@ using NHibernate;
 
 namespace Buncis.Data.Repository.Articles
 {
-    public class ArticleItemRepository : GenericRepository<ArticleItem>, IArticleItemRepository
-    {
-        public ArticleItemRepository(ISession session) :
-            base(session)
-        {
-        }
-    }
+	public class ArticleItemRepository : GenericRepository<ArticleItem>, IArticleItemRepository
+	{
+		public ArticleItemRepository(ISession session) :
+			base(session)
+		{
+		}
+	}
 }

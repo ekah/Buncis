@@ -6,7 +6,7 @@ using Buncis.Framework.Core.Infrastructure.Extensions;
 
 namespace Buncis.Framework.Core.ViewModel
 {
-	public class ViewModelBuncisDailyBreadItem
+	public class ViewModelDailyBreadItem
 	{
 		public int DailyBreadId { get; set; }
 		public string DailyBreadTitle { get; set; }

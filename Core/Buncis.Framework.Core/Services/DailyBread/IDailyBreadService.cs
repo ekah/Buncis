@@ -6,9 +6,9 @@ namespace Buncis.Framework.Core.Services.DailyBread
 {
     public interface IDailyBreadService
     {
-        IEnumerable<ViewModelBuncisDailyBreadItem> GetAvailableDailyBreadItems(int clientId);
-        ViewModelBuncisDailyBreadItem GetDailyBreadItem(int dailybreadId);
-        ValidationDictionary<ViewModelBuncisDailyBreadItem> DeleteDailyBreadItem(int dailybreadId);
-        ValidationDictionary<ViewModelBuncisDailyBreadItem> SaveDailyBreadItem(int clientId, ViewModelBuncisDailyBreadItem dailybread);
+        IEnumerable<ViewModelDailyBreadItem> GetAvailableDailyBreadItems(int clientId);
+        ViewModelDailyBreadItem GetDailyBreadItem(int dailybreadId);
+        ValidationDictionary<ViewModelDailyBreadItem> DeleteDailyBreadItem(int dailybreadId);
+        ValidationDictionary<ViewModelDailyBreadItem> SaveDailyBreadItem(int clientId, ViewModelDailyBreadItem dailybread);
     }
 }

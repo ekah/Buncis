@@ -43,7 +43,7 @@ namespace Buncis.Web.WebServices
 		public Response<DtoBuncisPage> BPUpdatePage(int clientId, DtoBuncisPage page)
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
-			var viewModel = new ViewModelBuncisPage().InjectFrom(page) as ViewModelBuncisPage;
+			var viewModel = new ViewModelPage().InjectFrom(page) as ViewModelPage;
 			var result = service.SavePage(clientId, viewModel);
 
 			var response = new Response<DtoBuncisPage>();
@@ -59,7 +59,7 @@ namespace Buncis.Web.WebServices
 		public Response<DtoBuncisPage> BPInsertPage(int clientId, DtoBuncisPage page)
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
-			var viewModel = new ViewModelBuncisPage().InjectFrom(page) as ViewModelBuncisPage;
+			var viewModel = new ViewModelPage().InjectFrom(page) as ViewModelPage;
 			var result = service.SavePage(clientId, viewModel);
 
 			var response = new Response<DtoBuncisPage>();
