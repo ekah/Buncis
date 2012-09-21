@@ -73,7 +73,8 @@
 			this.$el.prepend($(template));
 			return this;
 		},
-		editItem: function(event) {			
+		editItem: function(event) {
+			event.preventDefault();
 			_dailyBread.router.navigate("edit/" + this.model.id, {trigger: true});
 
 			var editView = new _dailyBread.FormView({
@@ -88,6 +89,7 @@
 			trace(this.model);
 		}, 
 		deleteItem: function(event) {
+			event.preventDefault();
 			var deletePopupView = new _dailyBread.DeleteView({
 				el: $(_dailyBread._elems.deletePopup),
 				model: this.model
@@ -120,7 +122,8 @@
 			return this;
 		},
 		save: function(event) {
-			trace('save called');
+			event.preventDefault();
+			//trace('save called');
 			var self = this;
 			var api = this.validators.data("validator");
 			var isValid = api.checkValidity();
@@ -180,6 +183,7 @@
 			return this;
 		},
 		confirmDelete: function(event) {
+			event.preventDefault();
 			var id = parseInt(this.model.id, 10);	
 			var title = this.model.get('dailyBreadTitle');
 			_dailyBread.fn.deleteItem(id, function() {
@@ -202,7 +206,7 @@
 	oFn.setupEvents = function() {
 		log('setupEvents called');
 		$(_dailyBread._elems.btnAdd).click(function(event) {
-			log('add daily bread');
+			//log('add daily bread');
 			event.preventDefault();				
 			var defaultItem = new _dailyBread.ItemModel({
 				dailyBreadId: 0,

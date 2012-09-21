@@ -21,7 +21,7 @@ namespace Buncis.Web.WebServices
 			var converted = raw.Select(o =>
 			{
 				var dto = new DtoBuncisNews();
-				dto.InjectFrom(o);
+				dto.InjectFrom<CloneInjection>(o);
 				return dto;
 			}).ToList();
 
@@ -41,10 +41,11 @@ namespace Buncis.Web.WebServices
 			var response = new Response<DtoBuncisNews>();
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
-
-			var responseObject = new DtoBuncisNews().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisNews;
-			response.ResponseObject = responseObject;
-
+			if (response.IsSuccess)
+			{
+				var responseObject = new DtoBuncisNews().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisNews;
+				response.ResponseObject = responseObject;
+			}
 			return response;
 		}
 
@@ -57,10 +58,11 @@ namespace Buncis.Web.WebServices
 			var response = new Response<DtoBuncisNews>();
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
-
-			var responseObject = new DtoBuncisNews().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisNews;
-			response.ResponseObject = responseObject;
-
+			if (response.IsSuccess)
+			{
+				var responseObject = new DtoBuncisNews().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisNews;
+				response.ResponseObject = responseObject;
+			}
 			return response;
 		}
 
@@ -68,7 +70,7 @@ namespace Buncis.Web.WebServices
 		{
 			var service = IoC.Resolve<INewsService>();
 			var result = service.DeleteNewsItem(newsId);
-			
+
 			return new Response(result.IsValid, string.Empty);
 		}
 

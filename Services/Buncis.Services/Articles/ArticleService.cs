@@ -4,6 +4,7 @@ using System.Linq;
 using Buncis.Data.Domain.Articles;
 using Buncis.Framework.Core.Repository.Articles;
 using Buncis.Framework.Core.Services.Articles;
+using Buncis.Framework.Core.SupportClasses.Injector;
 using Omu.ValueInjecter;
 using Buncis.Framework.Core.SupportClasses;
 using Buncis.Framework.Core.Services;
@@ -30,7 +31,7 @@ namespace Buncis.Services.Articles
 			var converted = raw.Select(item =>
 			{
 				var viewModelArticleItem = new ViewModelArticleItem();
-				viewModelArticleItem.InjectFrom(item);
+				viewModelArticleItem.InjectFrom<CloneInjection>(item);
 				return viewModelArticleItem;
 			}).ToList();
 
@@ -42,7 +43,7 @@ namespace Buncis.Services.Articles
 			var raw = _articleItemRepository.FindBy(o => !o.IsDeleted && o.ArticleId == articleId);
 
 			var viewModelArticleItem = new ViewModelArticleItem();
-			viewModelArticleItem.InjectFrom(raw);
+			viewModelArticleItem.InjectFrom<CloneInjection>(raw);
 
 			return viewModelArticleItem;
 		}
@@ -70,10 +71,10 @@ namespace Buncis.Services.Articles
 			return validator;
 		}
 
-		public ValidationDictionary<ViewModelArticleItem> SaveArticleItem(int clientId, ViewModelArticleItem article)
+		public ValidationDictionary<ViewModelArticleItem> SaveArticleItem(int clientId, ViewModelArticleItem viewModelArticle)
 		{
 			var validator = new ValidationDictionary<ViewModelArticleItem>();
-			if (article == null)
+			if (viewModelArticle == null)
 			{
 				validator.IsValid = false;
 				validator.AddError("", "The XX you're trying to save is null");
@@ -85,10 +86,10 @@ namespace Buncis.Services.Articles
 
 			ArticleItem articleItem;
 
-			if (article.ArticleId <= 0)
+			if (viewModelArticle.ArticleId <= 0)
 			{
 				articleItem = new ArticleItem();
-				articleItem.InjectFrom(article);
+				articleItem.InjectFrom<CloneInjection>(viewModelArticle);
 				articleItem.DateCreated = DateTime.UtcNow;
 				articleItem.DateLastUpdated = DateTime.UtcNow;
 				articleItem.ClientId = clientId;
@@ -97,11 +98,11 @@ namespace Buncis.Services.Articles
 			}
 			else
 			{
-				articleItem = _articleItemRepository.FindBy(o => !o.IsDeleted && o.ArticleId == article.ArticleId);
+				articleItem = _articleItemRepository.FindBy(o => !o.IsDeleted && o.ArticleId == viewModelArticle.ArticleId);
 				if (articleItem != null)
 				{
 					var createdDate = articleItem.DateCreated;
-					articleItem.InjectFrom(article);
+					articleItem.InjectFrom<CloneInjection>(viewModelArticle);
 					articleItem.DateLastUpdated = DateTime.UtcNow;
 					articleItem.DateCreated = createdDate;
 					articleItem.IsDeleted = false;
@@ -131,10 +132,10 @@ namespace Buncis.Services.Articles
 		}
 
 		public ValidationDictionary<ViewModelArticleCategory> InsertArticleCategory(int clientId,
-			ViewModelArticleCategory articleCategoryViewModel)
+			ViewModelArticleCategory viewModelArticleCategory)
 		{
 			var validator = new ValidationDictionary<ViewModelArticleCategory>();
-			if (articleCategoryViewModel == null)
+			if (viewModelArticleCategory == null)
 			{
 				validator.IsValid = false;
 				validator.AddError("", "The XX you're trying to save is null");
@@ -142,10 +143,17 @@ namespace Buncis.Services.Articles
 			}
 
 			// rule based here
-
+			var existingWithSameName = _articleCategoryRepository
+				.FilterBy(o => o.ArticleCategoryName.ToLower() == viewModelArticleCategory.ArticleCategoryName.ToLower() && o.ClientId == clientId);
+			if (existingWithSameName.Any())
+			{
+				validator.IsValid = false;
+				validator.AddError("", "Article Category with same name is already existed");
+				return validator;
+			}
 
 			var articleCategory = new ArticleCategory();
-			articleCategory.InjectFrom(articleCategoryViewModel);
+			articleCategory.InjectFrom(viewModelArticleCategory);
 			articleCategory.DateCreated = DateTime.UtcNow;
 			articleCategory.DateLastUpdated = DateTime.UtcNow;
 			articleCategory.ClientId = clientId;

@@ -48,7 +48,9 @@
 		articleContent: '',
 		displayDateCreated: '',
 		displayDateLastUpdated: '',
-		ordinal: -1
+		ordinal: -1,
+		articleCategoryId: -1,
+		articleCategoryName: ''
 	});
 	oModule.ItemView = Backbone.View.extend({
 		initialize: function(){
@@ -68,7 +70,9 @@
 			return this;
 		},
 		editItem: function(event) {
-			_articles.router.navigate("edit/" +  this.model.id, {trigger: true});
+			event.preventDefault();
+			_articles.router.navigate("edit/" +  this.model.get('articleId'), {trigger: true});
+			
 			var editView = new _articles.FormView({
 				el: $(oModule._elems.formContainer), 
 				model: this.model
@@ -79,10 +83,12 @@
 			editView.events['click ' + _articles._elems.formContainer + ' a.btnSave'] = 'save';
 			editView.delegateEvents();
 			editView.render();
+
 			$(editView.el).find('h3').text('Edit Article');
 			oModule.fn.prepareForm(editView);
 		}, 
 		deleteItem: function(event) {
+			event.preventDefault();
 			var deletePopupView = new _articles.DeleteView({
 				el: $(_articles._elems.deletePopup),
 				model: this.model
@@ -122,9 +128,16 @@
 			this.articleCategoryView = articleCategoryView;
 			articleCategoryView.render();
 
+			// populate with additional data
+			trace(this.model);
+			if(parseInt(this.model.get('articleCategoryId'), 10) > 0) {
+				$('#radioArticleCategory button[data-categoryid=' + this.model.get("articleCategoryId") + ']').addClass('active');
+			}
+
 			return this;
 		},
-		save: function(event) {         
+		save: function(event) {
+			event.preventDefault();
 			var self = this;
 			var api = this.validators.data("validator");
 			var isValid = api.checkValidity();
@@ -132,11 +145,22 @@
 				return false;
 			}
 			var fMode = this.formMode;
-			var eModel = this.model;            
+			var eModel = this.model;
+			
+			var selectedCategoryId = 0;
+			var selectedCategoryName = '';
+			var selectedCategory = $('#radioArticleCategory button.active');
+			if(selectedCategory.length > 0) {
+				selectedCategoryId = parseInt(selectedCategory.attr('data-categoryid'), 10);
+				selectedCategoryName = selectedCategory.val();
+			}
+			
 			eModel.set('articleTitle', this.$el.find('[id*="txtArticleTitle"]').val());
 			eModel.set('articleTeaser', this.$el.find('[id*="txtArticleTeaser"]').val());
 			eModel.set('articleUrl', this.$el.find('[id*="txtArticleUrl"]').val());
 			eModel.set('articleContent', this.$el.find('[id*="txtArticleContent"]').val());
+			eModel.set('articleCategoryId', selectedCategoryId);
+			eModel.set('articleCategoryName', selectedCategoryName);
 			
 			_articles.fn.saveItem(eModel, function(result) {
 				// code below: Show message
@@ -173,6 +197,7 @@
 			return this;
 		},
 		confirmDelete: function(event) {
+			event.preventDefault();
 			var id = parseInt(this.model.get('articleId'), 10);	
 			var articleTitle = this.model.get('articleTitle');
 			_articles.fn.deleteItem(id, function() {                
@@ -184,7 +209,8 @@
 		}
 	});
 	oModule.ArticleCategoryListModel = Backbone.Model.extend({
-		articleCategories: null
+		articleCategories: null,
+		token: ''
 	});
 	oModule.ArticleCategoryModel = Backbone.Model.extend({
 		idAttribute: 'articleCategoryId',
@@ -205,13 +231,23 @@
 			this.$el.append($(template));
 			return this;
 		},
+		renderUpdate: function() {
+			//trace('render update called');
+			var template = _.template($('#category-template').html(), this.model, _helpers.underscoreTemplateSettings);
+			var $item = $('#category-innerWrapper');
+			$item.replaceWith(template);
+			return this;
+		},
 		addCategory: function (event) {
+			//trace('add category');
 			event.preventDefault();
 			if($('.add-category-section').is(':visible')) {
 				$('.add-category-section').hide();
 			}
 			else {
 				$('.add-category-section').show();
+				$('#txtArticleCategoryName').val('');
+				$('#txtArticleCategoryName').focus();
 			}
 		},
 		close: function (event) {
@@ -219,12 +255,20 @@
 			$(this.el).empty();
 		},
 		saveCategory: function(event) {
+			//trace('save category via ajax');
 			event.preventDefault();
+			var $self = this;
 			var categoryName = $('#txtArticleCategoryName').val();
 			if(categoryName && categoryName.length > 0) {
 				$('.add-category-section').hide();
 				_articles.fn.insertArticleCategory(categoryName, function(result) {
-					trace(result);
+					//trace(result);
+					var articleCategoryModel = new _articles.ArticleCategoryModel({
+						articleCategoryId: result.ArticleCategoryId,
+						articleCategoryName: result.ArticleCategoryName
+					});
+					$self.model.attributes.articleCategories.push(articleCategoryModel);
+					$self.model.set('token', (new Date()).toString());
 				});
 			}
 		}
@@ -246,6 +290,7 @@
 			//trace(result);
 			for(var i = 0; i < result.length; i++) {
 				var item = result[i];
+				//trace(item);
 				// create new model instance
 				var itemModel = new _articles.ItemModel({
 					articleId: item.ArticleId,
@@ -256,6 +301,10 @@
 					displayDateCreated: item.DisplayDateCreated,
 					displayDateLastUpdated: item.DisplayDateLastUpdated
 				});
+				if(item.ArticleCategory) {
+					itemModel.set("articleCategoryId", item.ArticleCategory.ArticleCategoryId);
+					itemModel.set("articleCategoryName", item.ArticleCategory.ArticleCategoryName);
+				}
 
 				// put model instance to collections
 				_articles.collection.add(itemModel);
@@ -373,10 +422,13 @@
 				ArticleTeaser: oData.get('articleTeaser'),
 				ArticleUrl: oData.get('articleUrl'),
 				ArticleContent: oData.get('articleContent'),
-				//DateCreated: '/Date(1341158400000)/',
 				DisplayDateCreated: '',
-				//DateLastUpdated: '/Date(1341158400000)/',
-				DisplayDateLastUpdated: ''
+				DisplayDateLastUpdated: '',
+				ArticleCategory: {
+					ArticleCategoryId: oData.get('articleCategoryId'),
+					ArticleCategoryName: oData.get('articleCategoryName'),
+					ArticleCategoryDescription: oData.get('articleCategoryName')
+				} 
 			}
 		};
 		var jData = JSON.stringify(sData);

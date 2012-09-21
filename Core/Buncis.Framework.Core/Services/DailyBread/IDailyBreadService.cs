@@ -9,6 +9,6 @@ namespace Buncis.Framework.Core.Services.DailyBread
         IEnumerable<ViewModelDailyBreadItem> GetAvailableDailyBreadItems(int clientId);
         ViewModelDailyBreadItem GetDailyBreadItem(int dailybreadId);
         ValidationDictionary<ViewModelDailyBreadItem> DeleteDailyBreadItem(int dailybreadId);
-        ValidationDictionary<ViewModelDailyBreadItem> SaveDailyBreadItem(int clientId, ViewModelDailyBreadItem dailybread);
+        ValidationDictionary<ViewModelDailyBreadItem> SaveDailyBreadItem(int clientId, ViewModelDailyBreadItem viewModelDailyBread);
     }
 }

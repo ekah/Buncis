@@ -49,9 +49,11 @@ namespace Buncis.Web.WebServices
 			var response = new Response<DtoBuncisArticle>();
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
-
-			var responseObject = new DtoBuncisArticle().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisArticle;
-			response.ResponseObject = responseObject;
+			if (response.IsSuccess)
+			{
+				var responseObject = new DtoBuncisArticle().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisArticle;
+				response.ResponseObject = responseObject;
+			}
 			return response;
 		}
 
@@ -64,10 +66,11 @@ namespace Buncis.Web.WebServices
 			var response = new Response<DtoBuncisArticle>();
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
-
-			var responseObject = new DtoBuncisArticle().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisArticle;
-			response.ResponseObject = responseObject;
-
+			if (response.IsSuccess)
+			{
+				var responseObject = new DtoBuncisArticle().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisArticle;
+				response.ResponseObject = responseObject;
+			}
 			return response;
 		}
 
@@ -103,9 +106,11 @@ namespace Buncis.Web.WebServices
 			var response = new Response<DtoBuncisArticleCategory>();
 			response.IsSuccess = result.IsValid;
 			response.Message = result.ValidationSummaryToString();
-
-			var responseObject = new DtoBuncisArticleCategory().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisArticleCategory;
-			response.ResponseObject = responseObject;
+			if (response.IsSuccess)
+			{
+				var responseObject = new DtoBuncisArticleCategory().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisArticleCategory;
+				response.ResponseObject = responseObject;
+			}
 
 			return response;
 		}

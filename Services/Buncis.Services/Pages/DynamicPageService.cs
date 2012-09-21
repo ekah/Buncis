@@ -74,11 +74,11 @@ namespace Buncis.Services.Pages
 			return viewModels;
 		}
 
-		public ValidationDictionary<ViewModelPage> SavePage(int clientId, ViewModelPage page)
+		public ValidationDictionary<ViewModelPage> SavePage(int clientId, ViewModelPage viewModelPage)
 		{
 			// validation first
 			var validator = new ValidationDictionary<ViewModelPage>();
-			if (page == null)
+			if (viewModelPage == null)
 			{
 				validator.IsValid = false;
 				validator.AddError("", "Page you're trying to save is null");
@@ -86,18 +86,18 @@ namespace Buncis.Services.Pages
 			}
 
 			// rule based            
-			if (page.IsHomePage)
+			if (viewModelPage.IsHomePage)
 			{
 
 			}
 
 			DynamicPage dPage;
 
-			if (page.PageId <= 0)
+			if (viewModelPage.PageId <= 0)
 			{
 				// prepare object to save
 				dPage = new DynamicPage();
-				dPage.InjectFrom(page);
+				dPage.InjectFrom(viewModelPage);
 				dPage.ClientId = clientId;
 				dPage.DateCreated = DateTime.UtcNow;
 				dPage.DateLastUpdated = DateTime.UtcNow;
@@ -107,7 +107,7 @@ namespace Buncis.Services.Pages
 			else
 			{
 				var gExpression = _dynamicPageFilters.Init()
-					.GetByPageId(page.PageId)
+					.GetByPageId(viewModelPage.PageId)
 					.GetNotDeleted()
 					.FilterExpression;
 
@@ -118,7 +118,7 @@ namespace Buncis.Services.Pages
 					// excluded fields
 					var createdDate = dPage.DateCreated;
 					// update data
-					dPage.InjectFrom(page);
+					dPage.InjectFrom(viewModelPage);
 					dPage.DateCreated = createdDate;
 					dPage.DateLastUpdated = DateTime.UtcNow;
 					dPage.IsDeleted = false;

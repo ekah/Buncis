@@ -9,7 +9,7 @@ namespace Buncis.Framework.Core.Services.News
 		IEnumerable<ViewModelNewsItem> GetAvailableNewsItems(int clientId);
 		ViewModelNewsItem GetNewsItem(int newsId);
 		ValidationDictionary<ViewModelNewsItem> DeleteNewsItem(int newsId);
-		ValidationDictionary<ViewModelNewsItem> SaveNewsItem(int clientId, ViewModelNewsItem news);
+		ValidationDictionary<ViewModelNewsItem> SaveNewsItem(int clientId, ViewModelNewsItem viewModelNews);
 
 		IEnumerable<ViewModelNewsItem> GetPublishedNewsItem(int clientId);
 	}

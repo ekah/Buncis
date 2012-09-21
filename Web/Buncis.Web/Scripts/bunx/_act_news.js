@@ -91,6 +91,7 @@
 			return this;
 		},
 		editItem: function(event) {
+			event.preventDefault();
 			// navigate
 			_news.newsRouter.navigate("edit/" + this.model.id, {trigger: true});
 			
@@ -106,6 +107,7 @@
 			$(_news._elems.btnSaveNews).attr('rel', 'edit');
 		}, 
 		deleteItem: function(event) {
+			event.preventDefault();
 			var deleteView = new _news.NewsDeleteView({
 				el: $(_news._elems.deletePopup),
 				model: this.model
@@ -132,6 +134,7 @@
 			return this;
 		},
 		save: function(event) {
+			event.preventDefault();
 			var api = _news.form.validators.data("validator");
 			var isValid = api.checkValidity();
 			if(!isValid) {
@@ -193,6 +196,7 @@
 			return this;
 		},
 		confirmDelete: function(event) {
+			event.preventDefault();
 			var newsId = parseInt(this.model.get('newsId'), 10);
 			var newsTitle = this.model.get('newsTitle'); 
 			_news.fn.deleteNews(newsId, function() {

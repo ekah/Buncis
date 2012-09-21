@@ -67,10 +67,10 @@ namespace Buncis.Services.DailyBread
 			return validator;
 		}
 
-		public ValidationDictionary<ViewModelDailyBreadItem> SaveDailyBreadItem(int clientId, ViewModelDailyBreadItem dailyBread)
+		public ValidationDictionary<ViewModelDailyBreadItem> SaveDailyBreadItem(int clientId, ViewModelDailyBreadItem viewModelDailyBread)
 		{
 			var validator = new ValidationDictionary<ViewModelDailyBreadItem>();
-			if (dailyBread == null)
+			if (viewModelDailyBread == null)
 			{
 				validator.IsValid = false;
 				validator.AddError("", "The XX you're trying to save is null");
@@ -82,10 +82,10 @@ namespace Buncis.Services.DailyBread
 
 			DailyBreadItem dailyBreadItem;
 
-			if (dailyBread.DailyBreadId <= 0)
+			if (viewModelDailyBread.DailyBreadId <= 0)
 			{
 				dailyBreadItem = new DailyBreadItem();
-				dailyBreadItem.InjectFrom(dailyBread);
+				dailyBreadItem.InjectFrom(viewModelDailyBread);
 				dailyBreadItem.DateCreated = DateTime.UtcNow;
 				dailyBreadItem.DateLastUpdated = DateTime.UtcNow;
 				dailyBreadItem.ClientId = clientId;
@@ -94,11 +94,11 @@ namespace Buncis.Services.DailyBread
 			}
 			else
 			{
-				dailyBreadItem = _dailyBreadItemRepository.FindBy(o => !o.IsDeleted && o.DailyBreadId == dailyBread.DailyBreadId);
+				dailyBreadItem = _dailyBreadItemRepository.FindBy(o => !o.IsDeleted && o.DailyBreadId == viewModelDailyBread.DailyBreadId);
 				if (dailyBreadItem != null)
 				{
 					var createdDate = dailyBreadItem.DateCreated;
-					dailyBreadItem.InjectFrom(dailyBread);
+					dailyBreadItem.InjectFrom(viewModelDailyBread);
 					dailyBreadItem.DateLastUpdated = DateTime.UtcNow;
 					dailyBreadItem.DateCreated = createdDate;
 					dailyBreadItem.IsDeleted = false;

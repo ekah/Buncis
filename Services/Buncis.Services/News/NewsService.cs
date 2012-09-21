@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Buncis.Framework.Core.SupportClasses.Injector;
 using Omu.ValueInjecter;
 using Buncis.Framework.Core.SupportClasses;
 using Buncis.Framework.Core.Services;
@@ -29,7 +30,7 @@ namespace Buncis.Services.News
 			var converted = raw.Select(item =>
 			{
 				var viewModelNewsItem = new ViewModelNewsItem();
-				viewModelNewsItem.InjectFrom(item);
+				viewModelNewsItem.InjectFrom<CloneInjection>(item);
 				return viewModelNewsItem;
 			}).ToList();
 
@@ -41,7 +42,7 @@ namespace Buncis.Services.News
 			var raw = _newsRepository.FindBy(o => !o.IsDeleted && o.NewsId == newsId);
 
 			var viewModelNewsItem = new ViewModelNewsItem();
-			viewModelNewsItem.InjectFrom(raw);
+			viewModelNewsItem.InjectFrom<CloneInjection>(raw);
 
 			return viewModelNewsItem;
 		}
@@ -69,10 +70,10 @@ namespace Buncis.Services.News
 			return validator;
 		}
 
-		public ValidationDictionary<ViewModelNewsItem> SaveNewsItem(int clientId, ViewModelNewsItem news)
+		public ValidationDictionary<ViewModelNewsItem> SaveNewsItem(int clientId, ViewModelNewsItem viewModelNews)
 		{
 			var validator = new ValidationDictionary<ViewModelNewsItem>();
-			if (news == null)
+			if (viewModelNews == null)
 			{
 				validator.IsValid = false;
 				validator.AddError("", "The News you're trying to save is null");
@@ -80,14 +81,14 @@ namespace Buncis.Services.News
 			}
 
 			// rule based here
-			news.DateExpired = news.DateExpired.DatePart();
-			news.DatePublished = news.DatePublished.DatePart();
+			viewModelNews.DateExpired = viewModelNews.DateExpired.DatePart();
+			viewModelNews.DatePublished = viewModelNews.DatePublished.DatePart();
 
 			NewsItem newsItem;
-			if (news.NewsId <= 0)
+			if (viewModelNews.NewsId <= 0)
 			{
 				newsItem = new NewsItem();
-				newsItem.InjectFrom(news);
+				newsItem.InjectFrom<CloneInjection>(viewModelNews);
 				newsItem.DateCreated = DateTime.UtcNow;
 				newsItem.DateLastUpdated = DateTime.UtcNow;
 				newsItem.ClientId = clientId;
@@ -96,11 +97,11 @@ namespace Buncis.Services.News
 			}
 			else
 			{
-				newsItem = _newsRepository.FindBy(o => !o.IsDeleted && o.NewsId == news.NewsId);
+				newsItem = _newsRepository.FindBy(o => !o.IsDeleted && o.NewsId == viewModelNews.NewsId);
 				if (newsItem != null)
 				{
 					var createdDate = newsItem.DateCreated;
-					newsItem.InjectFrom(news);
+					newsItem.InjectFrom<CloneInjection>(viewModelNews);
 					newsItem.DateLastUpdated = DateTime.UtcNow;
 					newsItem.DateCreated = createdDate;
 					newsItem.IsDeleted = false;
@@ -122,7 +123,7 @@ namespace Buncis.Services.News
 			var converted = raw.Select(item =>
 			{
 				var viewModelNewsItem = new ViewModelNewsItem();
-				viewModelNewsItem.InjectFrom(item);
+				viewModelNewsItem.InjectFrom<CloneInjection>(item);
 				return viewModelNewsItem;
 			}).ToList();
 

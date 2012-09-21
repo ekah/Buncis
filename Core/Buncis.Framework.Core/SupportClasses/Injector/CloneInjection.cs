@@ -35,7 +35,6 @@ namespace Buncis.Framework.Core.SupportClasses.Injector
 				return clone;
 			}
 
-
 			if (c.SourceProp.Type.IsGenericType)
 			{
 				//handle IEnumerable<> also ICollection<> IList<> List<>
@@ -61,8 +60,10 @@ namespace Buncis.Framework.Core.SupportClasses.Injector
 			}
 
 			//for simple object types create a new instace and apply the clone injection on it
-			return Activator.CreateInstance(c.SourceProp.Type)
-				.InjectFrom<CloneInjection>(c.SourceProp.Value);
+			// ORI
+			//return Activator.CreateInstance(c.SourceProp.Type).InjectFrom<CloneInjection>(c.SourceProp.Value);
+			var targetInstance = Activator.CreateInstance(c.TargetProp.Type);
+			return targetInstance.InjectFrom<CloneInjection>(c.SourceProp.Value);
 		}
 	}
 }

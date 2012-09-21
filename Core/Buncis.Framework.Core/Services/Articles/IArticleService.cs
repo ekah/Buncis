@@ -9,9 +9,9 @@ namespace Buncis.Framework.Core.Services.Articles
 		IEnumerable<ViewModelArticleItem> GetAvailableArticleItems(int clientId);
 		ViewModelArticleItem GetArticleItem(int newsId);
 		ValidationDictionary<ViewModelArticleItem> DeleteArticleItem(int articleitemId);
-		ValidationDictionary<ViewModelArticleItem> SaveArticleItem(int clientId, ViewModelArticleItem articleitem);
+		ValidationDictionary<ViewModelArticleItem> SaveArticleItem(int clientId, ViewModelArticleItem viewModelArticle);
 		IEnumerable<ViewModelArticleCategory> GetArticleCategories(int clientId);
 		ValidationDictionary<ViewModelArticleCategory> InsertArticleCategory(int clientId,
-		   ViewModelArticleCategory articleCategoryViewModel);
+		   ViewModelArticleCategory viewModelArticleCategory);
 	}
 }

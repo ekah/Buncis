@@ -121,28 +121,30 @@
 		</script>
 		
 		<script type="text/template" id="category-template">
-			<div>
+			<div id="category-innerWrapper">
 				<div id="radioArticleCategory" class="btn-group" data-toggle="buttons-radio">
 				{% for (var i = 0; i < attributes.articleCategories.length; i++) { %}
-					<button type="button" class="btn" 
+					<button type="button" class="btn pull-left" 
+						value="{{attributes.articleCategories[i].attributes.articleCategoryName}}"
 						data-categoryid="{{attributes.articleCategories[i].attributes.articleCategoryId}}">
 						{{attributes.articleCategories[i].attributes.articleCategoryName}}
 					</button>
 				{% } %}
+					<div class="clearfix"></div>
 				</div>
-			</div>
-			<p></p>
-			<div class="form-inline">
-				<a href="#" id="aAddArticleCategory" class="btn btn-warning">
-					<i class="icon-plus"></i>&nbsp;<span>Add Article Category</span>
-				</a>
-				<span class="add-category-section" style="display:none">
-					<input type="text" id="txtArticleCategoryName" name="txtArticleCategoryName"
-						class=""></input>
-					<a href="#" id="aSaveArticleCategory" class="btn btn-success">
-						<i class="icon-plus"></i>&nbsp;<span>Save</span>
+				<p></p>
+				<div class="form-inline">
+					<a href="#" id="aAddArticleCategory" class="btn btn-warning">
+						<i class="icon-plus"></i>&nbsp;<span>Add Article Category</span>
 					</a>
-				</span>
+					<span class="add-category-section" style="display:none">
+						<input type="text" id="txtArticleCategoryName" name="txtArticleCategoryName"
+							class=""></input>
+						<a href="#" id="aSaveArticleCategory" class="btn btn-success">
+							<i class="icon-plus"></i>&nbsp;<span>Save</span>
+						</a>
+					</span>
+				</div>
 			</div>
 		</script>
 	</div>
