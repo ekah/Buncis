@@ -94,6 +94,10 @@
 											required="required" data-message="News Teaser is required" 
 											class="span10" cols="120" rows="6">{{attributes.newsTeaser}}</textarea>
 									</div>
+									<div class="form-item span11">
+										<label>News Category:</label>
+										<div id="news-category-container"></div>
+									</div>
 									<div class="form-item span5">
 										<label>Date Published</label>
 										<input type="text" id="txtDatePublished" name="txtDatePublished" 
@@ -149,6 +153,34 @@
 			<div class="buttonContainer modal-footer">
 				<a href="#" id="deleteNews-confirm" class="btn btn-primary">Yes</a>
 				<a href="#" id="deleteNews-cancel" class="popup-button-close btn btn-inverse">No</a>
+			</div>
+		</script>
+		
+		<script type="text/template" id="category-template">
+			<div id="newsCategory-innerWrapper">
+				<div id="radioNewsCategory" class="btn-group" data-toggle="buttons-radio">
+				{% for (var i = 0; i < attributes.newsCategories.length; i++) { %}
+					<button type="button" class="btn pull-left" 
+						value="{{attributes.newsCategories[i].attributes.newsCategoryName}}"
+						data-categoryid="{{attributes.newsCategories[i].attributes.newsCategoryId}}">
+						{{attributes.newsCategories[i].attributes.newsCategoryName}}
+					</button>
+				{% } %}
+					<div class="clearfix"></div>
+				</div>
+				<p></p>
+				<div class="form-inline">
+					<a href="#" id="aAddNewsCategory" class="btn btn-warning">
+						<i class="icon-plus"></i>&nbsp;<span>Add News Category</span>
+					</a>
+					<span class="add-category-section" style="display:none">
+						<input type="text" id="txtNewsCategoryName" name="txtNewsCategoryName"
+							class=""></input>
+						<a href="#" id="aSaveNewsCategory" class="btn btn-success">
+							<i class="icon-plus"></i>&nbsp;<span>Save</span>
+						</a>
+					</span>
+				</div>
 			</div>
 		</script>
 	</div>    
