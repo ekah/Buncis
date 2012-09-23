@@ -73,6 +73,7 @@
     <Compile Include="GenericRepository.cs" />
     <Compile Include="Membership\MembershipRoleRepository.cs" />
     <Compile Include="Membership\MembershipUserRepository.cs" />
+    <Compile Include="News\NewsCategoryRepository.cs" />
     <Compile Include="News\NewsItemRepository.cs" />
     <Compile Include="Pages\PageRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -180,6 +180,7 @@
 			});
 		},
 		close: function(event) {
+			event.preventDefault();
 			this.undelegateEvents();
 			$(this.el).empty();
 			this.articleCategoryView.close();
@@ -518,13 +519,13 @@
 		Backbone.history.start();
 		_articles.router.navigate("home", {trigger: true});
 	};
-	oFn.insertArticleCategory = function(cateogryName, _callback) {
+	oFn.insertArticleCategory = function(categoryName, _callback) {
 		var sData = {
 			clientId: _elems.clientId,
 			articleCategory: {
 				ArticleCategoryId: 0,
-				ArticleCategoryName: cateogryName,
-				ArticleCategoryDescription: cateogryName
+				ArticleCategoryName: categoryName,
+				ArticleCategoryDescription: categoryName
 			}
 		};
 		var jData = JSON.stringify(sData);

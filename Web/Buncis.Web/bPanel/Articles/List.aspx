@@ -122,7 +122,7 @@
 		
 		<script type="text/template" id="category-template">
 			<div id="category-innerWrapper">
-				<div id="radioArticleCategory" class="btn-group" data-toggle="buttons-radio">
+				<div id="radioNewsCategory" class="btn-group" data-toggle="buttons-radio">
 				{% for (var i = 0; i < attributes.articleCategories.length; i++) { %}
 					<button type="button" class="btn pull-left" 
 						value="{{attributes.articleCategories[i].attributes.articleCategoryName}}"

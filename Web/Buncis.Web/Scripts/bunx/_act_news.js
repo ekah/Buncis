@@ -1,6 +1,7 @@
 ﻿(function (oNews) {
 	var newsRouter = {};
 	var activeFormView = {};
+	oNews.newsCategoryList = {};
 	oNews.NewsRouter = Backbone.Router.extend({
 		routes: {
 			"home": "home",
@@ -75,6 +76,15 @@
 		recentlyEdited: false,
 		ordinal: -1
 	});
+	oNews.NewsCategoryListModel = Backbone.Model.extend({
+		categories: null,
+		token: ''
+	});
+	oNews.NewsCategoryModel = Backbone.Model.extend({
+		idAttribute: 'newsCategoryId',
+		newsCategoryId: 0,
+		newsCategoryName: ''
+	});
 	oNews.NewsItemView = Backbone.View.extend({
 		initialize: function(){
 			_.bindAll(this, "render");
@@ -124,6 +134,7 @@
 		}
 	});
 	oNews.NewsFormView = Backbone.View.extend({
+		categoryView: {},
 		events: {
 			'click #btnSaveNews': 'save'
 		},
@@ -131,6 +142,18 @@
 			var template = _.template($(_news._elems.newsEditPopupTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
 			$.scrollTo(0, 0);
+
+			var categoryView = new _news.CategoryView({
+				el: this.$('#news-category-container'),
+				model: _news.newsCategoryList
+			});
+			this.categoryView = categoryView;
+			categoryView.render();
+
+			if(parseInt(this.model.get('newsCategoryId'), 10) > 0) {
+				$('#radioNewsCategory button[data-categoryid=' + this.model.get("newsCategoryId") + ']').addClass('active');
+			}
+
 			return this;
 		},
 		save: function(event) {
@@ -207,6 +230,59 @@
 			});
 		}
 	});
+	oNews.CategoryView = Backbone.View.extend({
+		initialize: function(){
+			_.bindAll(this, "render");
+			this.model.on('change', this.renderUpdate, this);
+		},
+		events: {
+			'click a#aAddNewsCategory': 'addCategory',
+			'click a#aSaveNewsCategory': 'saveCategory'
+		},
+		render: function(){
+			var template = _.template($('#category-template').html(), this.model, _helpers.underscoreTemplateSettings);
+			this.$el.append($(template));
+			return this;
+		},
+		renderUpdate: function() {
+			var template = _.template($('#category-template').html(), this.model, _helpers.underscoreTemplateSettings);
+			var $item = $('#newsCategory-innerWrapper');
+			$item.replaceWith(template);
+			return this;
+		},
+		addCategory: function (event) {
+			event.preventDefault();
+			if($('.add-category-section').is(':visible')) {
+				$('.add-category-section').hide();
+			}
+			else {
+				$('.add-category-section').show();
+				$('#txtNewsCategoryName').val('');
+				$('#txtNewsCategoryName').focus();
+			}
+		},
+		close: function (event) {
+			this.undelegateEvents();
+			$(this.el).empty();
+		},
+		saveCategory: function(event) {
+			event.preventDefault();
+			var $self = this;
+			var categoryName = $('#txtNewsCategoryName').val();
+			if(categoryName && categoryName.length > 0) {
+				$('.add-category-section').hide();
+				_news.fn.insertCategory(categoryName, function(result) {
+					//trace(result);
+					var categoryModel = new _news.NewsCategoryModel({
+						newsCategoryId: result.NewsCategoryId,
+						newsCategoryName: result.NewsCategoryName
+					});
+					$self.model.attributes.categories.push(categoryModel);
+					$self.model.set('token', (new Date()).toString());
+				});
+			}
+		}
+	});
 }(window._news = window._news || {}));
 
 
@@ -215,6 +291,8 @@
 	var editWebServiceUrl = '/webservices/news.svc/BPUpdateNews';	
 	var addWebServiceUrl = '/webservices/news.svc/BPInsertNews';	
 	var deleteWebServiceUrl = '/webservices/news.svc/BPDeleteNews';	
+	var listNewsCategoryUrl = '/webservices/news.svc/BPGetNewsCategories?clientId=' + _elems.clientId;	
+	var addNewsCategoryUrl = '/webservices/news.svc/BPInsertNewsCategory';
 
 	function processDataOnDatePickerSelect(selectedDate, elem) {
 		var actualDate = $.datepicker.parseDate('d-m-yy', selectedDate);
@@ -277,6 +355,8 @@
 			evt.preventDefault();
 			_news.activeFormView.undelegateEvents();
 			$(_news.activeFormView.el).empty();
+			// close category view
+			_news.activeFormView.categoryView.close();
 			_news.newsRouter.navigate("home", {trigger: true});
 		});
 	}
@@ -309,8 +389,41 @@
 				_news.newsList.add(cvtNewsItem);
 				_news.fn.renderListItemView(cvtNewsItem);
 			}
+
+			// get news category
+			getNewsCategories(function(newsCategories) {
+				var listModel = new _news.NewsCategoryListModel({
+					categories: []
+				});
+				for(var nc = 0; nc < newsCategories.length; nc++) {
+					var ncItem = newsCategories[nc];
+					var categoryModel = new _news.NewsCategoryModel({
+						newsCategoryId: ncItem.NewsCategoryId,
+						newsCategoryName: ncItem.NewsCategoryName
+					});
+					listModel.attributes.categories.push(categoryModel);
+				}
+				_news.newsCategoryList = listModel;
+			});
 		});
 	};
+
+	function getNewsCategories(_callback) {
+		$.ajax({
+			type: "GET",
+			url: listNewsCategoryUrl,
+			success: function (result) {
+				var data = result.d;
+				if (data.IsSuccess) {
+					if(_callback) {
+						_callback(data.ResponseObject);
+					}
+				}
+			},
+			error: function () {
+			}
+		});
+	}
 	
 	oFn.animateItem = function($model) {
 		var $target = $('li[rel="' + $model.id + '"]');
@@ -486,6 +599,39 @@
 		Backbone.history.start();
 		_news.newsRouter.navigate("home", {trigger: true});
 	}
+	oFn.insertCategory = function(categoryName, _callback) {
+		var sData = {
+			clientId: _elems.clientId,
+			newsCategory: {
+				NewsCategoryId: 0,
+				NewsCategoryName: categoryName,
+				NewsCategoryDescription: categoryName
+			}
+		};
+		var jData = JSON.stringify(sData);
+		var wsUrl = addNewsCategoryUrl;		
+
+		_helpers.blockBuncisContentBodyDefault();
+		$.ajax({
+			type: "POST",
+			url: wsUrl,
+			data: jData,
+			dataType: 'json',
+			contentType: 'text/json',
+			success: function (result) {
+				var data = result.d;
+				_helpers.unblockBuncisContentBodyDefault();
+				if (data.IsSuccess) {
+					if(_callback) {
+						_callback(data.ResponseObject);
+					}
+				}
+			},
+			error: function () {
+				_helpers.unblockBuncisContentBodyDefault();
+			}
+		});
+	};
 }(window._news.fn = window._news.fn || {}));
 
 

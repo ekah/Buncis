@@ -17,10 +17,12 @@ namespace Buncis.Services.News
 	public class NewsService : BaseService, INewsService
 	{
 		private readonly INewsItemRepository _newsRepository;
+		private readonly INewsCategoryRepository _newsCategoryRepository;
 
-		public NewsService(INewsItemRepository newsRepository)
+		public NewsService(INewsItemRepository newsRepository, INewsCategoryRepository newsCategoryRepository)
 		{
 			_newsRepository = newsRepository;
+			_newsCategoryRepository = newsCategoryRepository;
 		}
 
 		public IEnumerable<ViewModelNewsItem> GetAvailableNewsItems(int clientId)
@@ -128,6 +130,56 @@ namespace Buncis.Services.News
 			}).ToList();
 
 			return converted;
+		}
+
+
+		public IEnumerable<ViewModelNewsCategory> GetNewsCategories(int clientId)
+		{
+			var raw = _newsCategoryRepository.FilterBy(o => !o.IsDeleted && o.ClientId == clientId).ToList();
+
+			var converted = raw.Select(item =>
+			{
+				var viewModelNewsCategory = new ViewModelNewsCategory();
+				viewModelNewsCategory.InjectFrom(item);
+				return viewModelNewsCategory;
+			}).ToList();
+
+			return converted;
+		}
+
+		public ValidationDictionary<ViewModelNewsCategory> InsertNewsCategory(int clientId, ViewModelNewsCategory viewModelNewsCategory)
+		{
+			var validator = new ValidationDictionary<ViewModelNewsCategory>();
+			if (viewModelNewsCategory == null)
+			{
+				validator.IsValid = false;
+				validator.AddError("", "The XX you're trying to save is null");
+				return validator;
+			}
+
+			// rule based here
+			var existingWithSameName = _newsCategoryRepository
+				.FilterBy(o => o.NewsCategoryName.ToLower() == viewModelNewsCategory.NewsCategoryName.ToLower() && o.ClientId == clientId);
+			if (existingWithSameName.Any())
+			{
+				validator.IsValid = false;
+				validator.AddError("", "Article Category with same name is already existed");
+				return validator;
+			}
+
+			var newsCategory = new NewsCategory();
+			newsCategory.InjectFrom(viewModelNewsCategory);
+			newsCategory.DateCreated = DateTime.UtcNow;
+			newsCategory.DateLastUpdated = DateTime.UtcNow;
+			newsCategory.ClientId = clientId;
+
+			_newsCategoryRepository.Add(newsCategory);
+
+			var rawPinged = _newsCategoryRepository.FindBy(o => o.NewsCategoryId == newsCategory.NewsCategoryId);
+			var pinged = new ViewModelNewsCategory().InjectFrom(rawPinged) as ViewModelNewsCategory;
+			validator.IsValid = true;
+			validator.RelatedObject = pinged;
+			return validator;
 		}
 	}
 }

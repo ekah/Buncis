@@ -91,5 +91,38 @@ namespace Buncis.Web.WebServices
 			response.ResponseObject = converted;
 			return response;
 		}
+
+		public Response<IEnumerable<DtoBuncisNewsCategory>> BPGetNewsCategories(int clientId)
+		{
+			var service = IoC.Resolve<INewsService>();
+			var data = service.GetNewsCategories(clientId)
+				.OrderBy(p => p.NewsCategoryName)
+				.ToList();
+			var dto = data.Select(o => new DtoBuncisNewsCategory().InjectFrom<CloneInjection>(o) as DtoBuncisNewsCategory).ToList();
+
+			var response = new Response<IEnumerable<DtoBuncisNewsCategory>>();
+			response.ResponseObject = dto;
+			response.IsSuccess = true;
+			response.Message = string.Empty;
+			return response;
+		}
+
+		public Response<DtoBuncisNewsCategory> BPInsertNewsCategory(int clientId, DtoBuncisNewsCategory newsCategory)
+		{
+			var service = IoC.Resolve<INewsService>();
+			var viewModel = new ViewModelNewsCategory().InjectFrom<CloneInjection>(newsCategory) as ViewModelNewsCategory;
+			var result = service.InsertNewsCategory(clientId, viewModel);
+
+			var response = new Response<DtoBuncisNewsCategory>();
+			response.IsSuccess = result.IsValid;
+			response.Message = result.ValidationSummaryToString();
+			if (response.IsSuccess)
+			{
+				var responseObject = new DtoBuncisNewsCategory().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisNewsCategory;
+				response.ResponseObject = responseObject;
+			}
+
+			return response;
+		}
 	}
 }

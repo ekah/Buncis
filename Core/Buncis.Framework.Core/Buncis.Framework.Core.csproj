@@ -90,6 +90,7 @@
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\Membership\IMembershipRoleRepository.cs" />
     <Compile Include="Repository\Membership\IMembershipUserRepository.cs" />
+    <Compile Include="Repository\News\INewsCategoryRepository.cs" />
     <Compile Include="Repository\News\INewsItemRepository.cs" />
     <Compile Include="Repository\Pages\IPageRepository.cs" />
     <Compile Include="Resources\QueryStrings.Designer.cs">
