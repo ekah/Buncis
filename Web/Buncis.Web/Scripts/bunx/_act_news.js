@@ -74,7 +74,9 @@
 		actualDateExpired: '',
 		recentlyAdded: false,
 		recentlyEdited: false,
-		ordinal: -1
+		ordinal: -1,
+		newsCategoryId: -1,
+		newsCategoryName: ''
 	});
 	oNews.NewsCategoryListModel = Backbone.Model.extend({
 		categories: null,
@@ -142,7 +144,7 @@
 			var template = _.template($(_news._elems.newsEditPopupTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
 			$.scrollTo(0, 0);
-
+			trace(_news.newsCategoryList);
 			var categoryView = new _news.CategoryView({
 				el: this.$('#news-category-container'),
 				model: _news.newsCategoryList
@@ -176,6 +178,14 @@
 			var epochExpired = _helpers.dateFn.convertDateStringToEpochString(textExpired);			
 			var eNews = this.model;
 			
+			var selectedCategoryId = 0;
+			var selectedCategoryName = '';
+			var selectedCategory = $('#radioNewsCategory button.active');
+			if(selectedCategory.length > 0) {
+				selectedCategoryId = parseInt(selectedCategory.attr('data-categoryid'), 10);
+				selectedCategoryName = selectedCategory.val();
+			}
+			
 			eNews.set('newsTitle', title);
 			eNews.set('newsTeaser', teaser);
 			eNews.set('newsUrl', url);
@@ -184,6 +194,9 @@
 			eNews.set('formattedDateExpired', formattedExpired);
 			eNews.set('epochDatePublished', epochPublished);
 			eNews.set('epochDateExpired', epochExpired);
+			eNews.set('newsCategoryId', selectedCategoryId);
+			eNews.set('newsCategoryName', selectedCategoryName);
+
 			_news.fn.saveNews(eNews, function(result) {
 				var msg = '';
 				eNews.set('newsId', result.NewsId);
@@ -240,6 +253,7 @@
 			'click a#aSaveNewsCategory': 'saveCategory'
 		},
 		render: function(){
+			trace(this.model);
 			var template = _.template($('#category-template').html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
 			return this;
@@ -384,6 +398,10 @@
 					newsUrl: iNewsItem.NewsUrl,
 					ordinal: i + 1
 				});
+				if(iNewsItem.NewsCategory) {
+					itemModel.set("newsCategoryId", item.ArticleCategory.NewsCategoryId);
+					itemModel.set("newsCategoryName", item.ArticleCategory.NewsCategoryName);
+				}
 
 				// put model instance to collections
 				_news.newsList.add(cvtNewsItem);
@@ -519,7 +537,12 @@
 				//DateCreated: '/Date(1341158400000)/',
 				//DateLastUpdated: '/Date(1341158400000)/',
 				DatePublished: oData.get('epochDatePublished'),
-				DateExpired: oData.get('epochDateExpired')
+				DateExpired: oData.get('epochDateExpired'),
+				NewsCategory: {
+					NewsCategoryId: oData.get('newsCategoryId'),
+					NewsCategoryName: oData.get('newsCategoryName'),
+					NewsCategoryDescription: oData.get('newsCategoryName')
+				} 
 			}
 		};
 		var jData = JSON.stringify(sData);

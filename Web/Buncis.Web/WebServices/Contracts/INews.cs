@@ -29,5 +29,13 @@ namespace Buncis.Web.WebServices.Contracts
 		[OperationContract]
 		[WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
 		Response<IEnumerable<DtoBuncisNews>> GetPublishedNewsList(int clientId);
+
+		[OperationContract]
+		[WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
+		Response<IEnumerable<DtoBuncisNewsCategory>> BPGetNewsCategories(int clientId);
+
+		[OperationContract]
+		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
+		Response<DtoBuncisNewsCategory> BPInsertNewsCategory(int clientId, DtoBuncisNewsCategory newsCategory);
 	}
 }

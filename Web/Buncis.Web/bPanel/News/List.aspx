@@ -159,11 +159,11 @@
 		<script type="text/template" id="category-template">
 			<div id="newsCategory-innerWrapper">
 				<div id="radioNewsCategory" class="btn-group" data-toggle="buttons-radio">
-				{% for (var i = 0; i < attributes.newsCategories.length; i++) { %}
+				{% for (var i = 0; i < attributes.categories.length; i++) { %}
 					<button type="button" class="btn pull-left" 
-						value="{{attributes.newsCategories[i].attributes.newsCategoryName}}"
-						data-categoryid="{{attributes.newsCategories[i].attributes.newsCategoryId}}">
-						{{attributes.newsCategories[i].attributes.newsCategoryName}}
+						value="{{attributes.categories[i].attributes.newsCategoryName}}"
+						data-categoryid="{{attributes.categories[i].attributes.newsCategoryId}}">
+						{{attributes.categories[i].attributes.newsCategoryName}}
 					</button>
 				{% } %}
 					<div class="clearfix"></div>

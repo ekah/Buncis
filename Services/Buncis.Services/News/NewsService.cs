@@ -163,7 +163,7 @@ namespace Buncis.Services.News
 			if (existingWithSameName.Any())
 			{
 				validator.IsValid = false;
-				validator.AddError("", "Article Category with same name is already existed");
+				validator.AddError("", "News Category with same name is already existed");
 				return validator;
 			}
 
