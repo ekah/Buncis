@@ -137,7 +137,7 @@
 	</div>
 	<div class="comingsoon">
 		<div class="uheader">
-			<h1>Breakthrough Ministry</h1>
+			<h2>Breakthrough Ministry</h2>
 			<h2>We are currently under construction</h2>
 		</div>
 		<div class="info">
