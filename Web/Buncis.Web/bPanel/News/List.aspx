@@ -89,6 +89,10 @@
 											class="span10" rows="3" cols=120">{{attributes.newsTitle}}</textarea>
 									</div>
 									<div class="form-item span11">
+										<label>Friendly URL</label>
+										<span id="txtNewsUrl" name="txtNewsUrl" class="span10 uneditable-input">{{attributes.newsUrl}}</span>
+									</div>
+									<div class="form-item span11">
 										<label>News Teaser</label>
 										<textarea id="txtNewsTeaser" name="txtNewsTeaser" 
 											required="required" data-message="News Teaser is required" 
@@ -113,12 +117,6 @@
 											value="{{attributes.formattedDateExpired}}" 
 											rel="{{attributes.actualDateExpired}}" class="input-medium" />
 										<span class="input-medium uneditable-input help-inline">{{attributes.dateExpired}}</span>
-									</div>							
-									<div class="form-item span11">
-										<label>Friendly URL</label>
-										<input type="text" id="txtNewsUrl" name="txtNewsUrl"
-											class="input-xxlarge" 
-											required="required" data-message="News Url is required" value="{{attributes.newsUrl}}" />
 									</div>
 									<div class="form-item hasHtmlArea span11">
 										<label>News Content</label>

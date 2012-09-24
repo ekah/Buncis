@@ -88,11 +88,29 @@ namespace Buncis.Framework.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ~/DynamicPageBM.aspx.
+        ///   Looks up a localized string similar to ~/DynamicPage.aspx.
         /// </summary>
         public static string Page_DynamicPage {
             get {
                 return ResourceManager.GetString("Page_DynamicPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ~/HomeBM.aspx.
+        /// </summary>
+        public static string Page_Home {
+            get {
+                return ResourceManager.GetString("Page_Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ~/News/Detail.aspx.
+        /// </summary>
+        public static string Page_NewsDetail {
+            get {
+                return ResourceManager.GetString("Page_NewsDetail", resourceCulture);
             }
         }
     }

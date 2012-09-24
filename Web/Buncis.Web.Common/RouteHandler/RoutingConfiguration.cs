@@ -14,7 +14,14 @@ namespace Buncis.Web.Common.RouteHandler
 			routes.Ignore("webservices/{serviceName}.svc/{*serviceActions}");
 
 			// Register Route for Dynamic Pages
-			var pageRoute = new Route("{*" + QueryStrings.PageName + "}", routeHandlerFactory.GetRouteHandler<PageRouteHandler>());
+			// news route
+			var newsRoute = new Route("{year}/{month}/{day}/20/{" + QueryStrings.NewsDetail_NewsId + "}/{newsTitle}",
+				routeHandlerFactory.GetRouteHandler<NewsRouteHandler>());
+			routes.Add(RouteNames.News, newsRoute);
+
+			// page route
+			var pageRoute = new Route("{*" + QueryStrings.PageName + "}",
+				routeHandlerFactory.GetRouteHandler<PageRouteHandler>());
 			routes.Add(RouteNames.DynamicPage, pageRoute);
 		}
 	}

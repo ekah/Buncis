@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Linq.Expressions;
 using Buncis.Data.Domain.Pages;
-using Buncis.Framework.Core.Filters;
+using Buncis.Framework.Core.SupportClasses.Filters;
 
 namespace Buncis.Services.Filters
 {

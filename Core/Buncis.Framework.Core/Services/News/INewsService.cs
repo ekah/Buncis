@@ -12,7 +12,7 @@ namespace Buncis.Framework.Core.Services.News
 		ValidationDictionary<ViewModelNewsItem> SaveNewsItem(int clientId, ViewModelNewsItem viewModelNews);
 		IEnumerable<ViewModelNewsItem> GetPublishedNewsItem(int clientId);
 		IEnumerable<ViewModelNewsCategory> GetNewsCategories(int clientId);
-		ValidationDictionary<ViewModelNewsCategory> InsertNewsCategory(int clientId,
-		   ViewModelNewsCategory viewModelNewsCategory);
+		ValidationDictionary<ViewModelNewsCategory> InsertNewsCategory(int clientId, ViewModelNewsCategory viewModelNewsCategory);
+		string GetNewsUrl(int newsId, string newsTitle);
 	}
 }

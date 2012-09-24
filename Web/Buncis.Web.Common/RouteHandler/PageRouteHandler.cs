@@ -17,9 +17,15 @@ namespace Buncis.Web.Common.RouteHandler
 		{
 			int? pageId;
 			var pageName = ResolvePageNameFromRequest(requestContext);
+
 			if (pageName.Contains("ComingSoon"))
 			{
 				return CommingSoonPageHandler();
+			}
+
+			if (pageName == "/")
+			{
+				return HomePageHandler();
 			}
 
 			if (IsValidPageRequest(pageName, out pageId) && pageId.HasValue)
@@ -30,11 +36,10 @@ namespace Buncis.Web.Common.RouteHandler
 			return RouteHandlerHelper.GetNotFoundHttpHandler();
 		}
 
-		private IHttpHandler GetDynamicPageHandler(int pageId)
+		private IHttpHandler HomePageHandler()
 		{
-			var virtualPath = string.Format("{0}", Redirections.Page_DynamicPage);
-			var queryString = string.Format("?{0}={1}", QueryStrings.PageId, pageId);
-			HttpContext.Current.RewritePath(string.Concat(virtualPath, queryString));
+			var virtualPath = string.Format("{0}", Redirections.Page_Home);
+			HttpContext.Current.RewritePath(virtualPath);
 			var page = BuildManager.CreateInstanceFromVirtualPath(virtualPath, typeof(Page)) as Page;
 			return page;
 		}
@@ -43,6 +48,15 @@ namespace Buncis.Web.Common.RouteHandler
 		{
 			var virtualPath = string.Format("{0}", "~/ComingSoon.aspx");
 			HttpContext.Current.RewritePath(virtualPath);
+			var page = BuildManager.CreateInstanceFromVirtualPath(virtualPath, typeof(Page)) as Page;
+			return page;
+		}
+
+		private IHttpHandler GetDynamicPageHandler(int pageId)
+		{
+			var virtualPath = string.Format("{0}", Redirections.Page_DynamicPage);
+			var queryString = string.Format("?{0}={1}", QueryStrings.PageId, pageId);
+			HttpContext.Current.RewritePath(string.Concat(virtualPath, queryString));
 			var page = BuildManager.CreateInstanceFromVirtualPath(virtualPath, typeof(Page)) as Page;
 			return page;
 		}
@@ -76,8 +90,8 @@ namespace Buncis.Web.Common.RouteHandler
 			if (absolutePath == "/")
 			{
 				// CHANGE THIS TO RELEASE PAGE
-				//pageName = string.Empty;
-				pageName = "ComingSoon";
+				pageName = string.Empty;
+				//pageName = "ComingSoon";
 			}
 			pageName = string.Format("/{0}", pageName);
 			return pageName;

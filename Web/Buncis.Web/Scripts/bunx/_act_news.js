@@ -144,7 +144,7 @@
 			var template = _.template($(_news._elems.newsEditPopupTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
 			$.scrollTo(0, 0);
-			trace(_news.newsCategoryList);
+			//trace(_news.newsCategoryList);
 			var categoryView = new _news.CategoryView({
 				el: this.$('#news-category-container'),
 				model: _news.newsCategoryList
@@ -168,7 +168,7 @@
 			var fMode = $(_news._elems.btnSaveNews).attr('rel');
 			var title = $(_news._elems.txtNewsTitle).val();
 			var teaser = $(_news._elems.txtNewsTeaser).val();
-			var url = $(_news._elems.txtNewsUrl).val();
+			var url = $(_news._elems.txtNewsUrl).text();
 			var content = $(_news._elems.txtNewsContent).val();
 			var formattedPublished = $(_news._elems.txtDatePublished).val();
 			var formattedExpired = $(_news._elems.txtDateExpired).val();
@@ -202,6 +202,7 @@
 				eNews.set('newsId', result.NewsId);
 				eNews.set('datePublished', result.DisplayDatePublished);
 				eNews.set('dateExpired', result.DisplayDateExpired);
+				eNews.set('newsUrl', result.NewsUrl);
 				
 				$('#btnClose').trigger('click');
 				
@@ -253,7 +254,7 @@
 			'click a#aSaveNewsCategory': 'saveCategory'
 		},
 		render: function(){
-			trace(this.model);
+			//trace(this.model);
 			var template = _.template($('#category-template').html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
 			return this;
@@ -307,6 +308,7 @@
 	var deleteWebServiceUrl = '/webservices/news.svc/BPDeleteNews';	
 	var listNewsCategoryUrl = '/webservices/news.svc/BPGetNewsCategories?clientId=' + _elems.clientId;	
 	var addNewsCategoryUrl = '/webservices/news.svc/BPInsertNewsCategory';
+	var generateUrlWsUrl = '/webservices/news.svc/GetNewsUrl'
 
 	function processDataOnDatePickerSelect(selectedDate, elem) {
 		var actualDate = $.datepicker.parseDate('d-m-yy', selectedDate);
@@ -373,12 +375,34 @@
 			_news.activeFormView.categoryView.close();
 			_news.newsRouter.navigate("home", {trigger: true});
 		});
+		$(document).delegate('#txtNewsTitle', 'blur', function (evt) {
+			evt.preventDefault();
+			//trace(_news.activeFormView);
+			var oData = {
+				newsId: _news.activeFormView.model.get("newsId"),
+				newsTitle: $(this).val()
+			};
+			$.ajax({
+				type: "POST",
+				url: generateUrlWsUrl,
+				data: JSON.stringify(oData),
+				dataType: 'json',
+				contentType: 'text/json',
+				success: function (result) {
+					var data = result.d;
+					trace(data);
+					$('#txtNewsUrl').text(data);
+				},
+				error: function () {
+				}
+			});
+		});
 	}
 	
 	function loadData() {
 		_news.newsList = new _news.NewsCollection();
 		oFn.getNews(function(result) {
-			trace(result);
+			//trace(result);
 			for(var i = 0; i < result.length; i++) {
 				var iNewsItem = result[i];
 				// create new model instance
@@ -399,8 +423,8 @@
 					ordinal: i + 1
 				});
 				if(iNewsItem.NewsCategory) {
-					itemModel.set("newsCategoryId", item.ArticleCategory.NewsCategoryId);
-					itemModel.set("newsCategoryName", item.ArticleCategory.NewsCategoryName);
+					cvtNewsItem.set("newsCategoryId", iNewsItem.NewsCategory.NewsCategoryId);
+					cvtNewsItem.set("newsCategoryName", iNewsItem.NewsCategory.NewsCategoryName);
 				}
 
 				// put model instance to collections

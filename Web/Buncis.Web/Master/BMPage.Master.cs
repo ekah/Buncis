@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Buncis.Web
+namespace Buncis.Web.Master
 {
-	public partial class DynamicPageBM : System.Web.UI.Page
+	public partial class BMPage : System.Web.UI.MasterPage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{

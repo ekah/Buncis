@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Buncis.Framework.Core.SupportClasses.Injector;
+using Buncis.Services.Url;
 using Omu.ValueInjecter;
 using Buncis.Framework.Core.SupportClasses;
 using Buncis.Framework.Core.Services;
@@ -11,6 +12,7 @@ using Buncis.Framework.Core.ViewModel;
 using Buncis.Framework.Core.Repository.News;
 using Buncis.Data.Domain.News;
 using Buncis.Framework.Core.Infrastructure.Extensions;
+using Buncis.Framework.Core.Infrastructure.IoC;
 
 namespace Buncis.Services.News
 {
@@ -18,11 +20,15 @@ namespace Buncis.Services.News
 	{
 		private readonly INewsItemRepository _newsRepository;
 		private readonly INewsCategoryRepository _newsCategoryRepository;
+		private readonly IUrlEngine<NewsItem> _urlEngine;
 
-		public NewsService(INewsItemRepository newsRepository, INewsCategoryRepository newsCategoryRepository)
+		public NewsService(INewsItemRepository newsRepository,
+			INewsCategoryRepository newsCategoryRepository,
+			IUrlEngine<NewsItem> urlEngine)
 		{
 			_newsRepository = newsRepository;
 			_newsCategoryRepository = newsCategoryRepository;
+			_urlEngine = urlEngine;
 		}
 
 		public IEnumerable<ViewModelNewsItem> GetAvailableNewsItems(int clientId)
@@ -112,10 +118,20 @@ namespace Buncis.Services.News
 				}
 			}
 
-			ViewModelNewsItem pingedNews = GetNewsItem(newsItem.NewsId);
+			// update news url
+			UpdateNewsUrl(newsItem.NewsId);
+
+			var pingedNews = GetNewsItem(newsItem.NewsId);
 			validator.IsValid = true;
 			validator.RelatedObject = pingedNews;
 			return validator;
+		}
+
+		private void UpdateNewsUrl(int newsId)
+		{
+			var newsItem = _newsRepository.FindBy(o => o.NewsId == newsId && !o.IsDeleted);
+			newsItem.NewsUrl = _urlEngine.GenerateUrl(newsItem.NewsId, newsItem.NewsTitle, newsItem.DatePublished);
+			_newsRepository.Update(newsItem);
 		}
 
 		public IEnumerable<ViewModelNewsItem> GetPublishedNewsItem(int clientId)
@@ -131,7 +147,6 @@ namespace Buncis.Services.News
 
 			return converted;
 		}
-
 
 		public IEnumerable<ViewModelNewsCategory> GetNewsCategories(int clientId)
 		{
@@ -180,6 +195,11 @@ namespace Buncis.Services.News
 			validator.IsValid = true;
 			validator.RelatedObject = pinged;
 			return validator;
+		}
+
+		public string GetNewsUrl(int newsId, string newsTitle)
+		{
+			return _urlEngine.GenerateUrl(newsId, newsTitle, DateTime.UtcNow);
 		}
 	}
 }

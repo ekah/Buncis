@@ -65,8 +65,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Filters\IDynamicPageFilters.cs" />
-    <Compile Include="Filters\IFilter.cs" />
+    <Compile Include="SupportClasses\Filters\IDynamicPageFilters.cs" />
+    <Compile Include="SupportClasses\Filters\IFilter.cs" />
     <Compile Include="Infrastructure\Settings\AppSettingsPropertySettingsResolver.cs" />
     <Compile Include="Infrastructure\Extensions\DateTimeExtension.cs" />
     <Compile Include="Infrastructure\Settings\ISystemSettings.cs" />
@@ -79,6 +79,7 @@
     <Compile Include="Infrastructure\IoC\IoC.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\Settings\SystemSettings.cs" />
+    <Compile Include="Infrastructure\Utility\UrlUtility.cs" />
     <Compile Include="Membership\Enumeration.cs" />
     <Compile Include="Membership\IMembership.cs" />
     <Compile Include="Membership\IUserProfile.cs" />

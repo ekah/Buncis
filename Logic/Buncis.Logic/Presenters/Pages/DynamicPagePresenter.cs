@@ -9,28 +9,28 @@ using Buncis.Web.Common.Exceptions;
 
 namespace Buncis.Logic.Presenters.Pages
 {
-    public class DynamicPagePresenter : LogicPresenter<IDynamicPageView>
-    {
-        private readonly IDynamicPageService _dynamicPageService;
+	public class DynamicPagePresenter : LogicPresenter<IDynamicPageView>
+	{
+		private readonly IDynamicPageService _dynamicPageService;
 
-        public DynamicPagePresenter(IDynamicPageView view, IDynamicPageService dynamicPageService)
-            : base(view)
-        {
-            _dynamicPageService = dynamicPageService;
-        }
+		public DynamicPagePresenter(IDynamicPageView view, IDynamicPageService dynamicPageService)
+			: base(view)
+		{
+			_dynamicPageService = dynamicPageService;
+		}
 
-        protected override void view_Initialize(object sender, EventArgs e)
-        {
-            var pageId = int.Parse(WebUtil.GetQueryString(QueryStrings.PageId, "-1"));
-            var pageFromDb = _dynamicPageService.GetPage(pageId);
-            if (pageFromDb == null)
-            {
-                throw new PageNotFoundException("The Page is not found in database", pageId);
-            }
+		protected override void view_Initialize(object sender, EventArgs e)
+		{
+			var pageId = int.Parse(WebUtil.GetQueryString(QueryStrings.PageId, "-1"));
+			var pageFromDb = _dynamicPageService.GetPage(pageId);
+			if (pageFromDb == null)
+			{
+				throw new PageNotFoundException("The Page is not found in database", pageId);
+			}
 
 			View.Model.DynamicPage = new ViewModelPage();
-            View.Model.DynamicPage.InjectFrom(pageFromDb);
-            View.BindViewData();
-        }
-    }
+			View.Model.DynamicPage.InjectFrom(pageFromDb);
+			View.BindViewData();
+		}
+	}
 }

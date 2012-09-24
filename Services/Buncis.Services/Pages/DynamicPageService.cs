@@ -5,10 +5,10 @@ using Buncis.Data.Domain.Pages;
 using Buncis.Framework.Core.Services;
 using Buncis.Framework.Core.SupportClasses;
 using Buncis.Framework.Core.Services.Pages;
+using Buncis.Framework.Core.SupportClasses.Filters;
 using Omu.ValueInjecter;
 using Buncis.Framework.Core.Repository.Pages;
 using Buncis.Framework.Core.ViewModel;
-using Buncis.Framework.Core.Filters;
 
 namespace Buncis.Services.Pages
 {
@@ -127,7 +127,7 @@ namespace Buncis.Services.Pages
 				}
 			}
 
-			ViewModelPage pingedPaged = GetPage(dPage.PageId);
+			var pingedPaged = GetPage(dPage.PageId);
 			validator.IsValid = true;
 			validator.RelatedObject = pingedPaged;
 			return validator;

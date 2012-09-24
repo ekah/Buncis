@@ -124,5 +124,11 @@ namespace Buncis.Web.WebServices
 
 			return response;
 		}
+
+		public string GetNewsUrl(int newsId, string newsTitle)
+		{
+			var service = IoC.Resolve<INewsService>();
+			return service.GetNewsUrl(newsId, newsTitle);
+		}
 	}
 }
