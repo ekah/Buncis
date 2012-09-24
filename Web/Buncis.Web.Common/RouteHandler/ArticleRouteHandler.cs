@@ -5,37 +5,35 @@ using System.Text;
 using System.Web;
 using System.Web.Compilation;
 using System.Web.Routing;
-using Buncis.Data.Domain.News;
+using System.Web.UI;
+using Buncis.Data.Domain.Articles;
 using Buncis.Framework.Core.Infrastructure;
 using Buncis.Framework.Core.Infrastructure.IoC;
-using Buncis.Framework.Core.Infrastructure.Utility;
 using Buncis.Framework.Core.Resources;
-using System.Web.UI;
+using Buncis.Framework.Core.Infrastructure.Utility;
 
 namespace Buncis.Web.Common.RouteHandler
 {
-	public class NewsRouteHandler : BaseRouteHandler, IRouteHandler
+	public class ArticleRouteHandler : BaseRouteHandler, IRouteHandler
 	{
 		public IHttpHandler GetHttpHandler(RequestContext requestContext)
 		{
-			var scrambledNewsId = 0;
-			if (requestContext.RouteData.Values[QueryStrings.NewsDetailId] != null)
+			var scrambledArticleId = 0;
+			if (requestContext.RouteData.Values[QueryStrings.ArticleDetailId] != null)
 			{
-				int.TryParse(requestContext.RouteData.Values[QueryStrings.NewsDetailId].ToString(), out scrambledNewsId);
+				int.TryParse(requestContext.RouteData.Values[QueryStrings.ArticleDetailId].ToString(), out scrambledArticleId);
 			}
 
-			var cleanNewsId = UrlUtility.Translate(scrambledNewsId);
+			var cleanNewsId = UrlUtility.Translate(scrambledArticleId);
 			if (cleanNewsId <= 0)
 			{
 				return RouteHandlerHelper.GetNotFoundHttpHandler();
 			}
 
-			var urlEngine = IoC.Resolve<IUrlEngine<NewsItem>>();
+			var urlEngine = IoC.Resolve<IUrlEngine<ArticleItem>>();
 			HttpContext.Current.RewritePath(urlEngine.ResolveUrl(HttpContext.Current.Request.Url.PathAndQuery));
-			var page = BuildManager.CreateInstanceFromVirtualPath(Redirections.Page_NewsDetail, typeof(Page)) as Page;
+			var page = BuildManager.CreateInstanceFromVirtualPath(Redirections.Page_ArticleDetail, typeof(Page)) as Page;
 			return page;
 		}
-
-
 	}
 }

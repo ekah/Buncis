@@ -193,3 +193,20 @@ h1.newsdetail-title {
 	font-size: 2em;
 	line-height: 1.2em;	
 }
+h1.articledetail-title {
+	font-size: 2em;
+	line-height: 1.2em;	
+}
+h1.dailybreaddetail-title {
+	font-size: 2em;
+	line-height: 1.2em;	
+}
+blockquote {
+	border : 1px solid #ccc;
+	margin: 0px;
+	padding: 10px;
+	background-color: #423642;
+	quotes: "\201C" "\201D";
+}
+blockquote:before { content: open-quote; font-weight: bold; }
+blockquote:after { content: close-quote; font-weight: bold; float:right; margin: -10px 0px 0px 0px;}

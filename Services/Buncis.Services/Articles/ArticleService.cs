@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Buncis.Data.Domain.Articles;
+using Buncis.Framework.Core.Infrastructure;
 using Buncis.Framework.Core.Repository.Articles;
 using Buncis.Framework.Core.Services.Articles;
 using Buncis.Framework.Core.SupportClasses.Injector;
@@ -16,12 +17,15 @@ namespace Buncis.Services.Articles
 	{
 		private readonly IArticleItemRepository _articleItemRepository;
 		private readonly IArticleCategoryRepository _articleCategoryRepository;
+		private readonly IUrlEngine<ArticleItem> _urlEngine;
 
 		public ArticleService(IArticleItemRepository articleItemRepository,
-			IArticleCategoryRepository articleCategoryRepository)
+			IArticleCategoryRepository articleCategoryRepository,
+			IUrlEngine<ArticleItem> urlEngine)
 		{
 			_articleItemRepository = articleItemRepository;
 			_articleCategoryRepository = articleCategoryRepository;
+			_urlEngine = urlEngine;
 		}
 
 		public IEnumerable<ViewModelArticleItem> GetAvailableArticleItems(int clientId)
@@ -111,10 +115,21 @@ namespace Buncis.Services.Articles
 				}
 			}
 
+			UpdateArticleUrl(articleItem.ArticleId);
+
 			var pinged = GetArticleItem(articleItem.ArticleId);
 			validator.IsValid = true;
 			validator.RelatedObject = pinged;
 			return validator;
+		}
+
+		private void UpdateArticleUrl(int articleId)
+		{
+			var articleItem = _articleItemRepository.FindBy(o => o.ArticleId == articleId && !o.IsDeleted);
+			articleItem.ArticleUrl = _urlEngine.GenerateUrl(articleItem.ArticleId,
+				articleItem.ArticleTitle,
+				articleItem.DateCreated);
+			_articleItemRepository.Update(articleItem);
 		}
 
 		public IEnumerable<ViewModelArticleCategory> GetArticleCategories(int clientId)
@@ -165,6 +180,11 @@ namespace Buncis.Services.Articles
 			validator.IsValid = true;
 			validator.RelatedObject = pinged;
 			return validator;
+		}
+
+		public string GetArticleUrl(int articleId, string articleTitle)
+		{
+			return _urlEngine.GenerateUrl(articleId, articleTitle, DateTime.UtcNow);
 		}
 	}
 }

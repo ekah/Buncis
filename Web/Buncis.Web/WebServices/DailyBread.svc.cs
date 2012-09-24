@@ -87,6 +87,12 @@ namespace Buncis.Web.WebServices
 			return new Response(result.IsValid, string.Empty);
 		}
 
+		public string GetDailyBreadUrl(int dailyBreadId, string dailyBreadTitle)
+		{
+			var service = IoC.Resolve<IDailyBreadService>();
+			return service.GetDailyBreadUrl(dailyBreadId, dailyBreadTitle);
+		}
+
 		#endregion
 	}
 }

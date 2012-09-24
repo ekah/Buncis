@@ -78,18 +78,15 @@
 								required="required" data-message="Daily Bread Title is required">{{attributes.dailyBreadTitle}}</textarea>
 						</div>
 						<div class="form-item span11">
+							<label>Daily Bread Url:</label>
+							<span id="txtDailyBreadUrl" name="txtDailyBreadUrl" class="span10 uneditable-input">{{attributes.dailyBreadUrl}}</span>
+						</div>
+						<div class="form-item span11">
 							<label>Daily Bread Summary:</label>					
 							<textarea type="text" id="txtDailyBreadSummary" name="txtDailyBreadSummary" 
 								class="span10" cols="120" rows="6"
 								required="required" data-message="Daily Bread Summary is required">{{attributes.dailyBreadSummary}}</textarea>
-						</div>
-						<div class="form-item span11">
-							<label>Daily Bread Url:</label>					
-							<input type="text" id="txtDailyBreadUrl" name="txtDailyBreadUrl" 
-								value="{{attributes.dailyBreadUrl}}"
-								class="input-xxlarge"
-								required="required" data-message="Daily Bread Url is required"/>
-						</div>
+						</div>						
 						<div class="form-item span11">
 							<label>Daily Bread Published Date:</label>					
 							<input type="text" 

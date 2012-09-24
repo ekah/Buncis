@@ -29,5 +29,9 @@ namespace Buncis.Web.WebServices.Contracts
 		[OperationContract]
 		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
 		Response BPDeleteDailyBread(int clientId, int dailyBreadId);
+
+		[OperationContract]
+		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
+		string GetDailyBreadUrl(int dailyBreadId, string dailyBreadTitle);
 	}
 }

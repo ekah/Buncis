@@ -120,11 +120,17 @@
   <data name="Page_404" xml:space="preserve">
     <value>~/NotFound.aspx</value>
   </data>
+  <data name="Page_ArticleDetail" xml:space="preserve">
+    <value>~/Articles/Detail.aspx</value>
+  </data>
   <data name="Page_Buncis_Dashboard" xml:space="preserve">
     <value>~/bPanel/Dashboard.aspx</value>
   </data>
   <data name="Page_Buncis_Login" xml:space="preserve">
     <value>~/bPanel/</value>
+  </data>
+  <data name="Page_DailyBreadDetail" xml:space="preserve">
+    <value>~/DailyBread/Detail.aspx</value>
   </data>
   <data name="Page_DynamicPage" xml:space="preserve">
     <value>~/DynamicPage.aspx</value>

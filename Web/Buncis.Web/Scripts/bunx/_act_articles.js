@@ -81,6 +81,7 @@
 			editView.formMode = 'edit';
 			editView.events['click ' + _articles._elems.formContainer + ' a.close-view-area'] = 'close';
 			editView.events['click ' + _articles._elems.formContainer + ' a.btnSave'] = 'save';
+			editView.events['blur ' + _articles._elems.formContainer + ' [id*="txtArticleTitle"]'] = 'updateUrl';
 			editView.delegateEvents();
 			editView.render();
 
@@ -117,6 +118,7 @@
 			// PUT EVENTS HERE
 		},
 		render: function(event) {
+			var self = this;
 			var template = _.template($(_articles._elems.editTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
 			$.scrollTo(0, 0);
@@ -133,7 +135,7 @@
 			if(parseInt(this.model.get('articleCategoryId'), 10) > 0) {
 				$('#radioArticleCategory button[data-categoryid=' + this.model.get("articleCategoryId") + ']').addClass('active');
 			}
-
+			
 			return this;
 		},
 		save: function(event) {
@@ -157,8 +159,10 @@
 			
 			eModel.set('articleTitle', this.$el.find('[id*="txtArticleTitle"]').val());
 			eModel.set('articleTeaser', this.$el.find('[id*="txtArticleTeaser"]').val());
-			eModel.set('articleUrl', this.$el.find('[id*="txtArticleUrl"]').val());
+			eModel.set('articleUrl', this.$el.find('[id*="txtArticleUrl"]').text());
 			eModel.set('articleContent', this.$el.find('[id*="txtArticleContent"]').val());
+			//trace(selectedCategoryId);
+			//trace(selectedCategoryName);
 			eModel.set('articleCategoryId', selectedCategoryId);
 			eModel.set('articleCategoryName', selectedCategoryName);
 			
@@ -166,6 +170,7 @@
 				// code below: Show message
 				var msg = '';
 				eModel.set('articleId', result.ArticleId);
+				eModel.set('articleUrl', result.ArticleUrl);
 				if(fMode === 'edit') {
 					msg = 'Successfully edited article data';
 					self.close();
@@ -180,12 +185,32 @@
 			});
 		},
 		close: function(event) {
-			event.preventDefault();
 			this.undelegateEvents();
 			$(this.el).empty();
 			this.articleCategoryView.close();
 			_articles.router.navigate("home", {trigger: true});
 			oModule.fn.animateItem(this.model);
+		},
+		updateUrl: function (event) {
+			trace('updateurl called');
+			var self = this;
+			var oData = {
+				articleId: self.model.get("articleId"),
+				articleTitle: self.$el.find('[id*="txtArticleTitle"]').val()
+			};
+			$.ajax({
+				type: "POST",
+				url: '/webservices/articles.svc/GetArticleUrl',
+				data: JSON.stringify(oData),
+				dataType: 'json',
+				contentType: 'text/json',
+				success: function (result) {
+					var data = result.d;
+					self.$el.find('[id*="txtArticleUrl"]').text(data);
+				},
+				error: function () {
+				}
+			});
 		}
 	});
 	oModule.DeleteView = Backbone.View.extend({
@@ -370,12 +395,13 @@
 			addView.formMode = 'add';
 			addView.events['click ' + _articles._elems.formContainer + ' a.close-view-area'] = 'close';
 			addView.events['click ' + _articles._elems.formContainer + ' a.btnSave'] = 'save';
-			addView.delegateEvents();            
+			addView.events['blur ' + _articles._elems.formContainer + ' [id*="txtArticleTitle"]'] = 'updateUrl';
+			addView.delegateEvents();
 			addView.render();
 
 			$(addView.el).find('h3').text('Add Article');			
 			oFn.prepareForm(addView);
-		});		
+		});
 	}
 	
 	function getArticleCategories(_callback) {

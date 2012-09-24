@@ -18,7 +18,7 @@ namespace Buncis.Data.Domain.Mappings
 			Map(x => x.DateLastUpdated).Column("DateLastUpdated").Not.Nullable();
 			Map(x => x.IsDeleted).Column("IsDeleted").Not.Nullable();
 			Map(x => x.ClientId).Column("ClientId").Not.Nullable();
-			References(o => o.ArticleCategory, "ArticleCategoryId");
+			References(o => o.ArticleCategory, "ArticleCategoryId").Cascade.None();
 		}
 
 		public sealed class ArticleCategoryMap : ClassMap<ArticleCategory>

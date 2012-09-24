@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Buncis.Services.Url
+namespace Buncis.Framework.Core.Infrastructure
 {
 	public interface IUrlEngine<T> where T : class
 	{

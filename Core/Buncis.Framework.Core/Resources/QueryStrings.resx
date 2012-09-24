@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NewsDetail_NewsId" xml:space="preserve">
-    <value>ndni</value>
+  <data name="ArticleDetailId" xml:space="preserve">
+    <value>aid</value>
+  </data>
+  <data name="DailyBreadDetailId" xml:space="preserve">
+    <value>dbid</value>
+  </data>
+  <data name="NewsDetailId" xml:space="preserve">
+    <value>ndnid</value>
   </data>
   <data name="PageId" xml:space="preserve">
     <value>pid</value>

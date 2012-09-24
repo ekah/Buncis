@@ -134,6 +134,7 @@
     <Content Include="1140grid\css\ie.css" />
     <Content Include="1140grid\css\styles.css" />
     <Content Include="1140grid\js\css3-mediaqueries.js" />
+    <Content Include="Articles\Detail.aspx" />
     <Content Include="bootstrap\css\bootstrap-responsive.css" />
     <Content Include="bootstrap\css\bootstrap-responsive.min.css" />
     <Content Include="bootstrap\css\bootstrap.css" />
@@ -151,6 +152,7 @@
     <Content Include="bPanel\NotFound.aspx" />
     <Content Include="bPanel\Pages\List.aspx" />
     <Content Include="ComingSoon.aspx" />
+    <Content Include="DailyBread\Detail.aspx" />
     <Content Include="Global.asax" />
     <Content Include="googlec4cc9f14e1c6cee4.html" />
     <Content Include="HomeBM.aspx" />
@@ -400,6 +402,13 @@
     <Content Include="WebServices\Pages.svc" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Articles\Detail.aspx.cs">
+      <DependentUpon>Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Articles\Detail.aspx.designer.cs">
+      <DependentUpon>Detail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Base\BaseLogicPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -471,6 +480,13 @@
     </Compile>
     <Compile Include="ComingSoon.aspx.designer.cs">
       <DependentUpon>ComingSoon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DailyBread\Detail.aspx.cs">
+      <DependentUpon>Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DailyBread\Detail.aspx.designer.cs">
+      <DependentUpon>Detail.aspx</DependentUpon>
     </Compile>
     <Compile Include="HomeBM.aspx.cs">
       <DependentUpon>HomeBM.aspx</DependentUpon>

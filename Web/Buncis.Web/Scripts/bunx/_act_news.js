@@ -308,7 +308,7 @@
 	var deleteWebServiceUrl = '/webservices/news.svc/BPDeleteNews';	
 	var listNewsCategoryUrl = '/webservices/news.svc/BPGetNewsCategories?clientId=' + _elems.clientId;	
 	var addNewsCategoryUrl = '/webservices/news.svc/BPInsertNewsCategory';
-	var generateUrlWsUrl = '/webservices/news.svc/GetNewsUrl'
+	var generateUrlWsUrl = '/webservices/news.svc/GetNewsUrl';
 
 	function processDataOnDatePickerSelect(selectedDate, elem) {
 		var actualDate = $.datepicker.parseDate('d-m-yy', selectedDate);

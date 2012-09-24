@@ -15,9 +15,19 @@ namespace Buncis.Web.Common.RouteHandler
 
 			// Register Route for Dynamic Pages
 			// news route
-			var newsRoute = new Route("{year}/{month}/{day}/20/{" + QueryStrings.NewsDetail_NewsId + "}/{newsTitle}",
+			var newsRoute = new Route("{year}/{month}/{day}/20/{" + QueryStrings.NewsDetailId + "}/{newsTitle}",
 				routeHandlerFactory.GetRouteHandler<NewsRouteHandler>());
 			routes.Add(RouteNames.News, newsRoute);
+
+			// articles route
+			var articlesRoute = new Route("{year}/{month}/{day}/30/{" + QueryStrings.ArticleDetailId + "}/{articleTitle}",
+				routeHandlerFactory.GetRouteHandler<ArticleRouteHandler>());
+			routes.Add(RouteNames.Articles, articlesRoute);
+
+			// daily bread route
+			var dailyBreadRoute = new Route("{year}/{month}/{day}/50/{" + QueryStrings.DailyBreadDetailId + "}/{dailyBreadTitle}",
+				routeHandlerFactory.GetRouteHandler<DailyBreadRouteHandler>());
+			routes.Add(RouteNames.DailyBread, dailyBreadRoute);
 
 			// page route
 			var pageRoute = new Route("{*" + QueryStrings.PageName + "}",

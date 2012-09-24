@@ -104,7 +104,9 @@
     <Compile Include="Exceptions\PageNotFoundException.cs" />
     <Compile Include="Membership\IWebMembership.cs" />
     <Compile Include="Membership\IWebUserProfile.cs" />
+    <Compile Include="RouteHandler\ArticleRouteHandler.cs" />
     <Compile Include="RouteHandler\BaseRouteHandler.cs" />
+    <Compile Include="RouteHandler\DailyBreadRouteHandler.cs" />
     <Compile Include="RouteHandler\NewsRouteHandler.cs" />
     <Compile Include="Utility\CacheUtility.cs" />
     <Compile Include="WebConstants.cs" />

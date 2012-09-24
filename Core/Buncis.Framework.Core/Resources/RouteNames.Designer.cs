@@ -61,6 +61,24 @@ namespace Buncis.Framework.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Articles.
+        /// </summary>
+        public static string Articles {
+            get {
+                return ResourceManager.GetString("Articles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DailyBread.
+        /// </summary>
+        public static string DailyBread {
+            get {
+                return ResourceManager.GetString("DailyBread", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dynamic Page.
         /// </summary>
         public static string DynamicPage {

@@ -61,11 +61,29 @@ namespace Buncis.Framework.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ndni.
+        ///   Looks up a localized string similar to aid.
         /// </summary>
-        public static string NewsDetail_NewsId {
+        public static string ArticleDetailId {
             get {
-                return ResourceManager.GetString("NewsDetail_NewsId", resourceCulture);
+                return ResourceManager.GetString("ArticleDetailId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dbid.
+        /// </summary>
+        public static string DailyBreadDetailId {
+            get {
+                return ResourceManager.GetString("DailyBreadDetailId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ndnid.
+        /// </summary>
+        public static string NewsDetailId {
+            get {
+                return ResourceManager.GetString("NewsDetailId", resourceCulture);
             }
         }
         

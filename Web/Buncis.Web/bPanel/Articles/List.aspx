@@ -71,6 +71,10 @@
 								required="required" data-message="Article Title is required">{{attributes.articleTitle}}</textarea>
 						</div>
 						<div class="form-item span11">
+							<label>Friendly Url:</label>
+							<span id="txtArticleUrl-{{id}}" name="txtArticleUrl-{{id}}" class="span10 uneditable-input">{{attributes.articleUrl}}</span>
+						</div>
+						<div class="form-item span11">
 							<label>Article Teaser:</label>
 							<textarea id="txtArticleTeaser-{{id}}" name="txtArticleTeaser-{{id}}" 
 								cols="120" rows="6" class="span10"
@@ -80,12 +84,6 @@
 						<div class="form-item span11">
 							<label>Article Category:</label>
 							<div id="article-category-container"></div>
-						</div>
-						<div class="form-item span11">
-							<label>Friendly Url:</label>
-							<input type="text" id="txtArticleUrl-{{id}}" name="txtArticleUrl-{{id}}" 
-								class="input-xxlarge" value="{{attributes.articleUrl}}"
-								required="required" data-message="Article Url is required"></input>
 						</div>
 						<div class="form-item hasHtmlArea span11">
 							<label>Article Content:</label>
@@ -122,7 +120,7 @@
 		
 		<script type="text/template" id="category-template">
 			<div id="category-innerWrapper">
-				<div id="radioNewsCategory" class="btn-group" data-toggle="buttons-radio">
+				<div id="radioArticleCategory" class="btn-group" data-toggle="buttons-radio">
 				{% for (var i = 0; i < attributes.articleCategories.length; i++) { %}
 					<button type="button" class="btn pull-left" 
 						value="{{attributes.articleCategories[i].attributes.articleCategoryName}}"

@@ -1,9 +1,12 @@
-﻿using Buncis.Framework.Core.Services.Pages;
+﻿using Buncis.Framework.Core.Infrastructure;
+using Buncis.Framework.Core.Services.Pages;
 using Buncis.Services.Pages;
 using Buncis.Services.Url;
 using StructureMap.Configuration.DSL;
 using StructureMap.Graph;
 using Buncis.Data.Domain.News;
+using Buncis.Data.Domain.Articles;
+using Buncis.Data.Domain.DailyBread;
 
 namespace Buncis.Services.Common
 {
@@ -19,6 +22,8 @@ namespace Buncis.Services.Common
 			});
 
 			For<IUrlEngine<NewsItem>>().Use<NewsUrlEngine>();
+			For<IUrlEngine<ArticleItem>>().Use<ArticleUrlEngine>();
+			For<IUrlEngine<DailyBreadItem>>().Use<DailyBreadUrlEngine>();
 		}
 	}
 }

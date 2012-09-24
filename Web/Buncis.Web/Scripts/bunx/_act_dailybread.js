@@ -54,7 +54,7 @@
 		dailyBreadBookChapter: 0,
 		dailyBreadBookVerse1: 0,
 		dailyBreadBookVerse2: 0,
-		dailyBreadBookContent: ''
+		dailyBreadBookContent: '',
 	});
 	oModule.ItemView = Backbone.View.extend({
 		initialize: function(){
@@ -113,7 +113,8 @@
 		},
 		events: {
 			'click a.close-view-area': 'close',
-			'click a#btnSaveDailyBread': 'save'
+			'click a#btnSaveDailyBread': 'save',
+			'blur #txtDailyBreadTitle': 'updateUrl'
 		},
 		render: function(event) {
 			var template = _.template($(_dailyBread._elems.editTemplate).html(), this.model, _helpers.underscoreTemplateSettings);
@@ -137,7 +138,7 @@
 			eModel.set('dailyBreadTitle', this.$el.find('#txtDailyBreadTitle').val());
 			eModel.set('dailyBreadSummary', this.$el.find('#txtDailyBreadSummary').val());
 			eModel.set('dailyBreadContent', this.$el.find('#txtDailyBreadContent').val());
-			eModel.set('dailyBreadUrl', this.$el.find('#txtDailyBreadUrl').val());
+			eModel.set('dailyBreadUrl', this.$el.find('#txtDailyBreadUrl').text());
 			eModel.set('epochDatePublished', epochDate);
 			eModel.set('dailyBreadBook', this.$el.find('#selDailyBreadBook').val());
 			eModel.set('dailyBreadBookChapter', this.$el.find('#txtDailyBreadBookChapter').val());
@@ -152,6 +153,7 @@
 				eModel.set('displayDatePublished', result.DisplayDatePublished);
 				eModel.set('formattedDatePublished', _helpers.dateFn.convertEpochToDefaultFormattedString(_helpers.dateFn.cleanDotNetDateJson(result.DatePublished)));
 				eModel.set('actualDatePublished', _helpers.dateFn.convertEpochToDate(_helpers.dateFn.cleanDotNetDateJson(result.DatePublished)).toString());
+				eModel.set('dailyBreadUrl', result.DailyBreadUrl);
 					
 				if(fMode === 'edit') {
 					msg = 'Succesfully edited daily bread data';
@@ -171,6 +173,26 @@
 			$(this.el).empty();
 			_dailyBread.router.navigate("home", {trigger: true});
 			oModule.fn.animateItem(this.model);
+		},
+		updateUrl: function (event) {
+			var self = this;
+			var oData = {
+				dailyBreadId: self.model.get("dailyBreadId"),
+				dailyBreadTitle: self.$el.find('#txtDailyBreadTitle').val()
+			};
+			$.ajax({
+				type: "POST",
+				url: '/webservices/dailybread.svc/GetDailyBreadUrl',
+				data: JSON.stringify(oData),
+				dataType: 'json',
+				contentType: 'text/json',
+				success: function (result) {
+					var data = result.d;
+					self.$el.find('#txtDailyBreadUrl').text(data);
+				},
+				error: function () {
+				}
+			});
 		}
 	});
 	oModule.DeleteView = Backbone.View.extend({

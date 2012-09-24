@@ -1,25 +1,26 @@
 ﻿using System;
-using Buncis.Data.Domain.News;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Buncis.Data.Domain.Articles;
 using Buncis.Framework.Core.Infrastructure;
 using Buncis.Framework.Core.Infrastructure.Utility;
 using Buncis.Framework.Core.Resources;
 
 namespace Buncis.Services.Url
 {
-	public class NewsUrlEngine : IUrlEngine<NewsItem>
+	public class ArticleUrlEngine : IUrlEngine<ArticleItem>
 	{
 		public int ModuleId
 		{
 			get
 			{
-				return 20;
+				return 30;
 			}
 		}
 
 		public string GenerateUrl(int id, string title, DateTime date)
 		{
-			// /[YEAR]/[MONTH]/[DAY]/20/[calculatedid+catid]/[news title] << NEWS 
-			// format the url
 			var friendlyUrl = string.Format("/{0}/{1}/{2}/{3}/{4}/{5}",
 				date.Year,
 				date.Month,
@@ -28,13 +29,11 @@ namespace Buncis.Services.Url
 				id > 0 ? UrlUtility.Scramble(id).ToString() : "[TBD]",
 				UrlUtility.CleanTitle(title));
 
-			// return 
 			return friendlyUrl;
 		}
 
 		public string ResolveUrl(string friendlyUrl)
 		{
-			// /[YEAR]/[MONTH]/[DAY]/20/[calculatedid+catid]/[news title] << NEWS 
 			if (friendlyUrl.StartsWith("/"))
 			{
 				friendlyUrl = friendlyUrl.TrimStart('/');
@@ -54,8 +53,8 @@ namespace Buncis.Services.Url
 					var date = new DateTime(year, month, day);
 					var cleanId = UrlUtility.Translate(rawId);
 					return string.Format("{0}?{1}={2}",
-						Redirections.Page_NewsDetail,
-						QueryStrings.NewsDetailId,
+						Redirections.Page_ArticleDetail,
+						QueryStrings.ArticleDetailId,
 						cleanId);
 				}
 				catch

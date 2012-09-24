@@ -22,7 +22,7 @@ namespace Buncis.Logic.Presenters.News
 
 		protected override void view_Initialize(object sender, EventArgs e)
 		{
-			var newsId = int.Parse(WebUtil.GetQueryString(QueryStrings.NewsDetail_NewsId, "-1"));
+			var newsId = int.Parse(WebUtil.GetQueryString(QueryStrings.NewsDetailId, "-1"));
 			var newsItem = _newsService.GetNewsItem(newsId);
 			if (newsItem == null)
 			{

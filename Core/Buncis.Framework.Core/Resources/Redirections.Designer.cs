@@ -70,6 +70,15 @@ namespace Buncis.Framework.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ~/Articles/Detail.aspx.
+        /// </summary>
+        public static string Page_ArticleDetail {
+            get {
+                return ResourceManager.GetString("Page_ArticleDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ~/bPanel/Dashboard.aspx.
         /// </summary>
         public static string Page_Buncis_Dashboard {
@@ -84,6 +93,15 @@ namespace Buncis.Framework.Core.Resources {
         public static string Page_Buncis_Login {
             get {
                 return ResourceManager.GetString("Page_Buncis_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ~/DailyBread/Detail.aspx.
+        /// </summary>
+        public static string Page_DailyBreadDetail {
+            get {
+                return ResourceManager.GetString("Page_DailyBreadDetail", resourceCulture);
             }
         }
         

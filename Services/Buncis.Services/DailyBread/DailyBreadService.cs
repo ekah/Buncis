@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Buncis.Framework.Core.Infrastructure;
 using Omu.ValueInjecter;
 using Buncis.Framework.Core.SupportClasses;
 using Buncis.Framework.Core.Services;
@@ -14,10 +15,13 @@ namespace Buncis.Services.DailyBread
 	public class DailyBreadService : BaseService, IDailyBreadService
 	{
 		private readonly IDailyBreadItemRepository _dailyBreadItemRepository;
+		private readonly IUrlEngine<DailyBreadItem> _urlEngine;
 
-		public DailyBreadService(IDailyBreadItemRepository dailyBreadItemRepository)
+		public DailyBreadService(IDailyBreadItemRepository dailyBreadItemRepository,
+			IUrlEngine<DailyBreadItem> urlEngine)
 		{
 			_dailyBreadItemRepository = dailyBreadItemRepository;
+			_urlEngine = urlEngine;
 		}
 
 		public IEnumerable<ViewModelDailyBreadItem> GetAvailableDailyBreadItems(int clientId)
@@ -107,10 +111,27 @@ namespace Buncis.Services.DailyBread
 				}
 			}
 
+			UpdateDailyBreadUrl(dailyBreadItem.DailyBreadId);
+
 			var pinged = GetDailyBreadItem(dailyBreadItem.DailyBreadId);
 			validator.IsValid = true;
 			validator.RelatedObject = pinged;
 			return validator;
+		}
+
+		private void UpdateDailyBreadUrl(int dailyBreadId)
+		{
+			var dailyBreadItem = _dailyBreadItemRepository.FindBy(o => o.DailyBreadId == dailyBreadId && !o.IsDeleted);
+			var friendlyUrl = _urlEngine.GenerateUrl(dailyBreadItem.DailyBreadId,
+				dailyBreadItem.DailyBreadTitle,
+				dailyBreadItem.DatePublished);
+			dailyBreadItem.DailyBreadUrl = friendlyUrl;
+			_dailyBreadItemRepository.Update(dailyBreadItem);
+		}
+
+		public string GetDailyBreadUrl(int dailyBreadId, string dailyBreadTitle)
+		{
+			return _urlEngine.GenerateUrl(dailyBreadId, dailyBreadTitle, DateTime.UtcNow);
 		}
 	}
 }

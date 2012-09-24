@@ -8,7 +8,7 @@ namespace Buncis.Logic.Presenters
 {
 	public abstract class LogicPresenter<TView> : BasePresenter<TView> where TView : class, ICustomEventView
 	{
-		protected ISystemSettings SystemSettings;
+		//protected ISystemSettings SystemSettings;
 
 		protected int ClientId
 		{
@@ -18,15 +18,15 @@ namespace Buncis.Logic.Presenters
 			}
 		}
 
-		protected LogicPresenter(ISystemSettings systemSettings, TView view)
-			: base(view)
-		{
-			SystemSettings = systemSettings;
+		//protected LogicPresenter(ISystemSettings systemSettings, TView view)
+		//    : base(view)
+		//{
+		//    SystemSettings = systemSettings;
 
-			view.Initialize += view_Initialize;
-		}
+		//    view.Initialize += view_Initialize;
+		//}
 
-        protected LogicPresenter(TView view)
+		protected LogicPresenter(TView view)
 			: base(view)
 		{
 			view.Initialize += view_Initialize;

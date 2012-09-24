@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\IUrlEngine.cs" />
     <Compile Include="SupportClasses\Filters\IDynamicPageFilters.cs" />
     <Compile Include="SupportClasses\Filters\IFilter.cs" />
     <Compile Include="Infrastructure\Settings\AppSettingsPropertySettingsResolver.cs" />

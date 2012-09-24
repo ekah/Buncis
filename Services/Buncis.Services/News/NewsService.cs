@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Buncis.Framework.Core.Infrastructure;
 using Buncis.Framework.Core.SupportClasses.Injector;
 using Buncis.Services.Url;
 using Omu.ValueInjecter;
