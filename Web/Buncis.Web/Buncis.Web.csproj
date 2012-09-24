@@ -141,6 +141,7 @@
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\img\glyphicons-halflings-white.png" />
     <Content Include="bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="bootstrap\js\bootstrap-carousel.js" />
     <Content Include="bootstrap\js\bootstrap.js" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bPanel\Account\Login.aspx" />
@@ -683,6 +684,7 @@
   <ItemGroup>
     <Content Include="Master\BMTwoColumns.Master" />
     <Content Include="Master\BMPage.Master" />
+    <None Include="bootstrap\css\carousel.less" />
     <None Include="sandbox\actTemplate-nopopup.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>actTemplate-nopopup.js</LastGenOutput>
