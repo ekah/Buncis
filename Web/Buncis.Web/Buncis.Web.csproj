@@ -171,10 +171,10 @@
     <Content Include="Images\bm\comingsoon.png" />
     <Content Include="Images\bm\community_pic.png" />
     <Content Include="Images\bm\current-label.png" />
-    <Content Include="Images\bm\dummy1.png" />
-    <Content Include="Images\bm\dummy2.png" />
-    <Content Include="Images\bm\dummy3.png" />
-    <Content Include="Images\bm\dummy4.png" />
+    <Content Include="Images\bm\dummy1.jpg" />
+    <Content Include="Images\bm\dummy11.jpg" />
+    <Content Include="Images\bm\dummy2.jpg" />
+    <Content Include="Images\bm\dummy3.jpg" />
     <Content Include="Images\bm\facebook_pic.png" />
     <Content Include="Images\bm\next.png" />
     <Content Include="Images\bm\previous.png" />
@@ -340,7 +340,6 @@
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
     <Content Include="Scripts\modules\list\list.min.js" />
-    <Content Include="Scripts\modules\nivoslider\jquery.nivo.slider.js" />
     <Content Include="Scripts\modules\scrollto\jquery.scrollTo-min.js" />
     <Content Include="Scripts\modules\scrollto\jquery.scrollTo.js" />
     <Content Include="Scripts\modules\toastr\toastr.js" />
@@ -375,7 +374,6 @@
     <Content Include="Styles\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Styles\impress-try1.css" />
     <Content Include="Styles\jquery-ui-1.8.23.custom.css" />
-    <Content Include="Styles\nivoslider\nivo-slider.css" />
     <Content Include="Styles\normalize.css" />
     <Content Include="Styles\toastr\toastr-responsive.css" />
     <Content Include="Styles\toastr\toastr.css" />

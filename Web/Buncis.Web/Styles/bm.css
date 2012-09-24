@@ -100,24 +100,7 @@ ul.menu li:last-child {
 }
 .slider-wrapper {
 	background-color: transparent !important;
-	padding: 20px 0px !important;
-	margin-left: 0px !important;
-	margin-right: 0px !important;
-}
-.slides_container {
-	background-color: #30222f;
-	float:left;	
-	padding: 5px;
-}
-.sliderNav-left {
-	float: left;
-	margin-right: 5px !important;	
-	margin-top: 160px;
-}
-.sliderNav-right {
-	float:left;	
-	margin-left: 5px !important;	
-	margin-top: 160px;
+	padding: 5px 0px !important;
 }
 .daily-bread-container {
 	min-height: 150px !important;
