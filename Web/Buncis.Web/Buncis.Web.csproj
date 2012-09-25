@@ -64,6 +64,9 @@
     <Reference Include="Castle.DynamicProxy2, Version=2.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\..\Lib\fluentnhibernate\Castle.DynamicProxy2.dll</HintPath>
     </Reference>
+    <Reference Include="dotless.Core">
+      <HintPath>C:\Users\haritian.pinio\Downloads\dotless-v1.3.1.0\dotless.Core.dll</HintPath>
+    </Reference>
     <Reference Include="FluentNHibernate">
       <HintPath>..\..\Lib\fluentnhibernate\FluentNHibernate.dll</HintPath>
     </Reference>
@@ -135,6 +138,10 @@
     <Content Include="1140grid\css\styles.css" />
     <Content Include="1140grid\js\css3-mediaqueries.js" />
     <Content Include="Articles\Detail.aspx" />
+    <Content Include="bootstrap\carousel\bootstrap.css" />
+    <Content Include="bootstrap\carousel\bootstrap.js" />
+    <Content Include="bootstrap\carousel\bootstrap.min.css" />
+    <Content Include="bootstrap\carousel\bootstrap.min.js" />
     <Content Include="bootstrap\css\bootstrap-responsive.css" />
     <Content Include="bootstrap\css\bootstrap-responsive.min.css" />
     <Content Include="bootstrap\css\bootstrap.css" />
@@ -375,6 +382,7 @@
     <Content Include="Styles\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Styles\impress-try1.css" />
     <Content Include="Styles\jquery-ui-1.8.23.custom.css" />
+    <Content Include="Scripts\less-1.3.0.min.js" />
     <Content Include="Styles\normalize.css" />
     <Content Include="Styles\toastr\toastr-responsive.css" />
     <Content Include="Styles\toastr\toastr.css" />
