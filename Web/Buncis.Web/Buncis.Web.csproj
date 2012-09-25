@@ -163,37 +163,37 @@
     <Content Include="DailyBread\Detail.aspx" />
     <Content Include="Global.asax" />
     <Content Include="googlec4cc9f14e1c6cee4.html" />
-    <Content Include="HomeBM.aspx" />
+    <Content Include="Home.aspx" />
     <Content Include="Images\ajax-loader-2.gif" />
     <Content Include="Images\ajax-loader.gif" />
-    <Content Include="Images\bm\bg-full3.jpg" />
-    <Content Include="Images\bm\construction.png" />
-    <Content Include="Images\bm\announcements_pic.png" />
-    <Content Include="Images\bm\article-label.png" />
-    <Content Include="Images\bm\bg.png" />
-    <Content Include="Images\bm\bg2.png" />
-    <Content Include="Images\bm\bg3.png" />
-    <Content Include="Images\bm\bg4.png" />
-    <Content Include="Images\bm\bg5.png" />
-    <Content Include="Images\bm\bible-label.png" />
-    <Content Include="Images\bm\comingsoon.png" />
-    <Content Include="Images\bm\community_pic.png" />
-    <Content Include="Images\bm\current-label.png" />
-    <Content Include="Images\bm\dummy01.jpg" />
-    <Content Include="Images\bm\dummy02.jpg" />
-    <Content Include="Images\bm\dummy03.jpg" />
-    <Content Include="Images\bm\dummy04.jpg" />
-    <Content Include="Images\bm\dummy05.jpg" />
-    <Content Include="Images\bm\dummy06.jpg" />
-    <Content Include="Images\bm\dummy07.jpg" />
-    <Content Include="Images\bm\dummy08.jpg" />
-    <Content Include="Images\bm\facebook_pic.png" />
-    <Content Include="Images\bm\next.png" />
-    <Content Include="Images\bm\previous.png" />
-    <Content Include="Images\bm\quotes-label.png" />
-    <Content Include="Images\bm\schedule_pic.png" />
-    <Content Include="Images\bm\twitter_pic.png" />
-    <Content Include="Images\bm\verse.jpg" />
+    <Content Include="Images\custom\bg-full3.jpg" />
+    <Content Include="Images\custom\construction.png" />
+    <Content Include="Images\custom\announcements_pic.png" />
+    <Content Include="Images\custom\article-label.png" />
+    <Content Include="Images\custom\bg.png" />
+    <Content Include="Images\custom\bg2.png" />
+    <Content Include="Images\custom\bg3.png" />
+    <Content Include="Images\custom\bg4.png" />
+    <Content Include="Images\custom\bg5.png" />
+    <Content Include="Images\custom\bible-label.png" />
+    <Content Include="Images\custom\comingsoon.png" />
+    <Content Include="Images\custom\community_pic.png" />
+    <Content Include="Images\custom\current-label.png" />
+    <Content Include="Images\custom\dummy01.jpg" />
+    <Content Include="Images\custom\dummy02.jpg" />
+    <Content Include="Images\custom\dummy03.jpg" />
+    <Content Include="Images\custom\dummy04.jpg" />
+    <Content Include="Images\custom\dummy05.jpg" />
+    <Content Include="Images\custom\dummy06.jpg" />
+    <Content Include="Images\custom\dummy07.jpg" />
+    <Content Include="Images\custom\dummy08.jpg" />
+    <Content Include="Images\custom\facebook_pic.png" />
+    <Content Include="Images\custom\next.png" />
+    <Content Include="Images\custom\previous.png" />
+    <Content Include="Images\custom\quotes-label.png" />
+    <Content Include="Images\custom\schedule_pic.png" />
+    <Content Include="Images\custom\twitter_pic.png" />
+    <Content Include="Images\custom\verse.jpg" />
     <Content Include="Images\body_bg2.png" />
     <Content Include="Images\header_bg3.png" />
     <Content Include="Images\icons\close_exit_delete.png" />
@@ -366,11 +366,11 @@
     <Content Include="Scripts\modules\wysihtml5\parser_rules\simple.js" />
     <Content Include="Styles\bun_xiframe.css" />
     <Content Include="Scripts\modules\tools\validator.js" />
-    <Content Include="Styles\bm.css" />
+    <Content Include="Styles\custom.css" />
     <Content Include="Styles\bun_x.css" />
     <Content Include="Styles\bun.css" />
-    <Content Include="Styles\bun_x_bak.css" />
-    <Content Include="Styles\bm_bak.css" />
+    <None Include="Styles\bun_x.css.bak" />
+    <None Include="Styles\custom.css.bak" />
     <Content Include="Styles\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Styles\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Styles\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -398,6 +398,7 @@
     <Content Include="UserControls\Articles\RecentArticles.ascx" />
     <Content Include="UserControls\Component\LoginInfo.ascx" />
     <Content Include="UserControls\Component\WysiwygToolbar.ascx" />
+    <Content Include="UserControls\DailyBread\RecentDailyBread.ascx" />
     <Content Include="UserControls\News\NewsList.ascx" />
     <Content Include="UserControls\News\RecentNews.ascx" />
     <Content Include="Web.config">
@@ -501,33 +502,30 @@
     <Compile Include="DailyBread\Detail.aspx.designer.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="HomeBM.aspx.cs">
-      <DependentUpon>HomeBM.aspx</DependentUpon>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="HomeBM.aspx.designer.cs">
-      <DependentUpon>HomeBM.aspx</DependentUpon>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Master\BMCustom.Master.cs">
-      <DependentUpon>BMCustom.Master</DependentUpon>
+    <Compile Include="Master\Custom.Master.cs">
+      <DependentUpon>Custom.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Master\BMCustom.Master.designer.cs">
-      <DependentUpon>BMCustom.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Master\BMPage.Master.cs">
-      <DependentUpon>BMPage.Master</DependentUpon>
+    <Compile Include="Master\CustomPage.Master.cs">
+      <DependentUpon>CustomPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Master\BMPage.Master.designer.cs">
-      <DependentUpon>BMPage.Master</DependentUpon>
+    <Compile Include="Master\CustomPage.Master.designer.cs">
+      <DependentUpon>CustomPage.Master</DependentUpon>
     </Compile>
-    <Compile Include="Master\BMTwoColumns.Master.cs">
-      <DependentUpon>BMTwoColumns.Master</DependentUpon>
+    <Compile Include="Master\CustomTwoColumns.Master.cs">
+      <DependentUpon>CustomTwoColumns.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Master\BMTwoColumns.Master.designer.cs">
-      <DependentUpon>BMTwoColumns.Master</DependentUpon>
+    <Compile Include="Master\CustomTwoColumns.Master.designer.cs">
+      <DependentUpon>CustomTwoColumns.Master</DependentUpon>
     </Compile>
     <Compile Include="Master\Buncis.Master.cs">
       <DependentUpon>Buncis.Master</DependentUpon>
@@ -559,6 +557,9 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Custom.Master.designer.cs">
+      <DependentUpon>Custom.Master</DependentUpon>
     </Compile>
     <Compile Include="Master\Sandbox.Master.cs">
       <DependentUpon>Sandbox.Master</DependentUpon>
@@ -626,6 +627,13 @@
     </Compile>
     <Compile Include="UserControls\Component\WysiwygToolbar.ascx.designer.cs">
       <DependentUpon>WysiwygToolbar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DailyBread\RecentDailyBread.ascx.cs">
+      <DependentUpon>RecentDailyBread.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\DailyBread\RecentDailyBread.ascx.designer.cs">
+      <DependentUpon>RecentDailyBread.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\News\NewsList.ascx.cs">
       <DependentUpon>NewsList.ascx</DependentUpon>
@@ -701,7 +709,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Master\BMCustom.Master" />
+    <Content Include="Master\Custom.Master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master\Sandbox.Master" />
@@ -710,8 +718,8 @@
     <Content Include="WebServices\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Master\BMTwoColumns.Master" />
-    <Content Include="Master\BMPage.Master" />
+    <Content Include="Master\CustomTwoColumns.Master" />
+    <Content Include="Master\CustomPage.Master" />
     <None Include="bootstrap\css\carousel.less" />
     <None Include="sandbox\actTemplate-nopopup.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

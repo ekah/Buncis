@@ -136,7 +136,7 @@
     <value>~/DynamicPage.aspx</value>
   </data>
   <data name="Page_Home" xml:space="preserve">
-    <value>~/HomeBM.aspx</value>
+    <value>~/Home.aspx</value>
   </data>
   <data name="Page_NewsDetail" xml:space="preserve">
     <value>~/News/Detail.aspx</value>

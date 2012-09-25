@@ -1,0 +1,96 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="CustomTwoColumns.Master.cs" Inherits="Buncis.Web.Master.CustomTwoColumns" %>
+
+<!DOCTYPE html>
+<html>
+<head id="Head1" runat="server">
+	<title>Breakthrough Ministries</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link href="/1140grid/css/1140.css" rel="stylesheet" type="text/css" />
+	<link href="/1140grid/css/styles.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/normalize.css" rel="stylesheet" />
+	<link href="/styles/custom.css" rel="stylesheet" />
+	
+	<script src="/scripts/jquery-1.7.2.min.js" type="text/javascript" ></script>
+	<script src="/1140grid/js/css3-mediaqueries.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+		});
+	</script>
+
+	<asp:ContentPlaceHolder ID="head" runat="server">
+	</asp:ContentPlaceHolder>
+</head>
+<body>
+	<form id="form1" runat="server">
+		<div class="container">
+			<div class="row">
+				<div class="twelvecol header last">
+					<h2>Lorem Ipsum</h2>
+					<div>Compellingly synthesize 24/7 methods of empowerment after viral e-services. Holisticly.</div>
+				</div>
+			</div>
+			<div class="row section">
+				<div class="fourcol">
+					<div class="alpha10 round5border">
+						<div class="frame-inside">
+							<ul class="sideMenu">
+								<li>
+									<a href="#">
+										<span>Daily Bread</span>
+										<span class="menuDesc">Keep Faith</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>Search Daily Bread</span>
+										<span class="menuDesc">Find Daily Bread</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>Testimony</span>
+										<span class="menuDesc">Sharing is Caring</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+								    	<span>Devotional</span>
+										<span class="menuDesc">Our Strength</span>
+								    </a>
+								</li>
+								<li>
+									<a href="#">
+										<span>Stories</span>
+										<span class="menuDesc">Life Inspiration</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="eightcol last">
+					<div class="alpha10 round5border">
+						<div class="frame-inside">
+							<%--<p>"What do you know about him?"</p>
+							<p>"What did they TELL you about him? Say that!"</p>
+							<p>"They didn't tell much of anything about him; only I've heard that he's a good whale-hunter, and a good captain to his crew."</p>
+							<p>"That's true, that's true&mdash;yes, both true enough. But you must jump when he gives an order. Step and growl; growl and go&mdash;that's the word with Captain Ahab. But nothing about that thing that happened to him off Cape Horn, long ago, when he lay like dead for three days and nights; nothing about that deadly skrimmage with the Spaniard afore the altar in Santa?&mdash;heard nothing about that, eh? Nothing about the silver calabash he spat into? And nothing about his losing his leg last voyage, according to the prophecy. Didn't ye hear a word about them matters and something more, eh? No, I don't think ye did; how could ye? Who knows it? Not all Nantucket, I guess. But hows'ever, mayhap, ye've heard tell about the leg, and how he lost it; aye, ye have heard of that, I dare say. Oh yes, THAT every one knows a'most&mdash;I mean they know he's only one leg; and that a parmacetti took the other off."</p>
+							<p>"My friend," said I, "what all this gibberish of yours is about, I don't know, and I don't much care; for it seems to me that you must be a little damaged in the head. But if you are speaking of Captain Ahab, of that ship there, the Pequod, then let me tell you, that I know all about the loss of his leg."</p>
+							<p>"ALL about it, eh&mdash;sure you do?&mdash;all?"</p>
+							<p>"Pretty sure."</p>
+							<p>With finger pointed and eye levelled at the Pequod, the beggar-like stranger stood a moment, as if in a troubled reverie; then starting a little, turned and said:&mdash;"Ye've shipped, have ye? Names down on the papers? Well, well, what's signed, is signed; and what's to be, will be; and then again, perhaps it won't be, after all. Anyhow, it's all fixed and arranged a'ready; and some sailors or other must go with him, I suppose; as well these as any other men, God pity 'em! Morning to ye, shipmates, morning; the ineffable heavens bless ye; I'm sorry I stopped ye."</p>
+							<p>"Look here, friend," said I, "if you have anything important to tell us, out with it; but if you are only trying to bamboozle us, you are mistaken in your game; that's all I have to say."</p>
+							<p>"And it's said very well, and I like to hear a chap talk up that way; you are just the man for him&mdash;the likes of ye. Morning to ye, shipmates, morning! Oh! when ye get there, tell 'em I've concluded not to make one of 'em."</p>--%>
+							<asp:ContentPlaceHolder ID="MainPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

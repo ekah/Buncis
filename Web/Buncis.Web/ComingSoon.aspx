@@ -6,7 +6,7 @@
 <head id="Head1" runat="server">
 	<title>Breakthrough Ministries</title>
 	<link href="/styles/normalize.css" rel="stylesheet" />
-	<link href="/styles/bm.css" rel="stylesheet" />
+	<link href="/styles/custom.css" rel="stylesheet" />
 	<script src="/scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
 	<style type="text/css">
 		html, body
@@ -128,11 +128,11 @@
 <body>
 	<%--<div class="uTop">
 		<div class="ufloat">
-			<img src="/images/bm/construction.png"/>
+			<img src="/images/custom/construction.png"/>
 		</div>
 	</div>--%>
 	<div class="ulogo">
-		<img src="/images/bm/comingsoon.png" />
+		<img src="/images/custom/comingsoon.png" />
 		<span>Time Flies</span>
 	</div>
 	<div class="comingsoon">
@@ -154,8 +154,8 @@
 			</div>
 			<div class="usocial">
 				<span>Our Social Network:</span>
-				<span><img src="/images/bm/facebook_pic.png"/></span>
-				<span><img src="/images/bm/twitter_pic.png"/></span>
+				<span><img src="/images/custom/facebook_pic.png"/></span>
+				<span><img src="/images/custom/twitter_pic.png"/></span>
 			</div>
 			<div class="ucopyright">
 				<span>Copyright</span>

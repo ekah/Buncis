@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/BMTwoColumns.Master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/CustomTwoColumns.Master" AutoEventWireup="true"
 	CodeBehind="Detail.aspx.cs" Inherits="Buncis.Web.News.Detail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
