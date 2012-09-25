@@ -180,9 +180,12 @@
     <Content Include="Images\bm\community_pic.png" />
     <Content Include="Images\bm\current-label.png" />
     <Content Include="Images\bm\dummy1.jpg" />
-    <Content Include="Images\bm\dummy11.jpg" />
     <Content Include="Images\bm\dummy2.jpg" />
     <Content Include="Images\bm\dummy3.jpg" />
+    <Content Include="Images\bm\dummy4.jpg" />
+    <Content Include="Images\bm\dummy5.jpg" />
+    <Content Include="Images\bm\dummy6.jpg" />
+    <Content Include="Images\bm\dummy7.jpg" />
     <Content Include="Images\bm\facebook_pic.png" />
     <Content Include="Images\bm\next.png" />
     <Content Include="Images\bm\previous.png" />

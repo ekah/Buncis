@@ -73,9 +73,6 @@
 									<div id="myCarousel" class="carousel slide">
 										<div class="carousel-inner">
 											<div class="item active">
-												<img src="/images/bm/dummy11.jpg" />
-											</div>
-											<div class="item">
 												<img src="/images/bm/dummy1.jpg" />
 											</div>
 											<div class="item">
@@ -83,6 +80,18 @@
 											</div>
 											<div class="item">
 												<img src="/images/bm/dummy3.jpg" />
+											</div>
+											<div class="item">
+												<img src="/images/bm/dummy4.jpg" />
+											</div>
+											<div class="item">
+												<img src="/images/bm/dummy5.jpg" />
+											</div>
+											<div class="item">
+												<img src="/images/bm/dummy6.jpg" />
+											</div>
+											<div class="item">
+												<img src="/images/bm/dummy7.jpg" />
 											</div>
 										</div>
 										<a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
