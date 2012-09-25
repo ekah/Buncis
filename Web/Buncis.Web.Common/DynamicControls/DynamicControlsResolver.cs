@@ -12,7 +12,6 @@ namespace Buncis.Web.Common.DynamicControls
 		{
 			var controlRegex = new Regex(@"(\{\{::\w*::\}\})+");
 			var prevStartIndex = 0;
-			var prevEndIndex = 0;
 
 			var matches = controlRegex.Matches(pageContent);
 			foreach (Match match in matches)
@@ -27,7 +26,7 @@ namespace Buncis.Web.Common.DynamicControls
 				var endIndex = match.Length + startIndex;
 
 				// set prev end index first
-				prevEndIndex = startIndex;
+				var prevEndIndex = startIndex;
 
 				// get the control before match
 				var literal = new Literal();

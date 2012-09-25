@@ -8,6 +8,12 @@ namespace Buncis.Logic.Models.DailyBread
 {
 	public class DailyBreadModel
 	{
-		public ViewModelDailyBreadItem DailyBreadItem { get; set; }
+		public int DailyBreadId { get; set; }
+		public string DailyBreadTitle { get; set; }
+		public string DailyBreadContent { get; set; }
+		public string DailyBreadUrl { get; set; }
+		public DateTime DatePublished { get; set; }
+		public string DailyBreadBible { get; set; }
+		public string DailyBreadBibleContent { get; set; }
 	}
 }

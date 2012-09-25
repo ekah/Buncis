@@ -17,7 +17,7 @@ namespace Buncis.Web.DailyBread
 		{
 			try
 			{
-				InitializeView();
+				GetDailyBreadDetail(this, new EventArgs());
 			}
 			catch (PageNotFoundException pnfex)
 			{
@@ -34,15 +34,21 @@ namespace Buncis.Web.DailyBread
 
 		public void BindViewData()
 		{
-			ltrTitle.Text = string.Format("<a href=\"{0}\">{1}</a>", Model.DailyBreadItem.DailyBreadUrl, Model.DailyBreadItem.DailyBreadTitle);
-			ltrInfo.Text = Model.DailyBreadItem.DatePublished.ToBuncisShortFormatString();
-			ltrContent.Text = Model.DailyBreadItem.DailyBreadContent;
-			ltrBible.Text = string.Format("{0} {1} : {2} - {3}",
-				Model.DailyBreadItem.DailyBreadBook,
-				Model.DailyBreadItem.DailyBreadBookChapter,
-				Model.DailyBreadItem.DailyBreadBookVerse1,
-				Model.DailyBreadItem.DailyBreadBookVerse2);
-			ltrBibleContent.Text = Model.DailyBreadItem.DailyBreadBookContent;
+
+		}
+
+		#endregion
+
+		#region Implementation of IDailyBreadDetailView
+
+		public event EventHandler GetDailyBreadDetail;
+		public void BindDailyBreadDetail()
+		{
+			ltrTitle.Text = string.Format("<a href=\"{0}\">{1}</a>", Model.DailyBreadUrl, Model.DailyBreadTitle);
+			ltrInfo.Text = Model.DatePublished.ToBuncisShortFormatString();
+			ltrContent.Text = Model.DailyBreadContent;
+			ltrBible.Text = Model.DailyBreadBible;
+			ltrBibleContent.Text = Model.DailyBreadBibleContent;
 		}
 
 		#endregion

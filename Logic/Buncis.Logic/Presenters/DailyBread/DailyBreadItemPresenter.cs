@@ -22,9 +22,11 @@ namespace Buncis.Logic.Presenters.DailyBread
 			: base(view)
 		{
 			_dailyBreadService = dailyBreadService;
+
+			view.GetDailyBreadDetail += view_GetDailyBreadDetail;
 		}
 
-		protected override void view_Initialize(object sender, EventArgs e)
+		void view_GetDailyBreadDetail(object sender, EventArgs e)
 		{
 			var dailyBreadId = int.Parse(WebUtil.GetQueryString(QueryStrings.DailyBreadDetailId, "-1"));
 			var dailyBreadItem = _dailyBreadService.GetDailyBreadItem(dailyBreadId);
@@ -33,9 +35,19 @@ namespace Buncis.Logic.Presenters.DailyBread
 				throw new PageNotFoundException("The Page is not found in database", WebUtil.GetCurrentUrl());
 			}
 
-			View.Model.DailyBreadItem = new ViewModelDailyBreadItem();
-			View.Model.DailyBreadItem.InjectFrom<CloneInjection>(dailyBreadItem);
-			View.BindViewData();
+			View.Model.DailyBreadId = dailyBreadItem.DailyBreadId;
+			View.Model.DailyBreadTitle = dailyBreadItem.DailyBreadTitle;
+			View.Model.DailyBreadUrl = dailyBreadItem.DailyBreadUrl;
+			View.Model.DailyBreadContent = dailyBreadItem.DailyBreadContent;
+			View.Model.DailyBreadBible = string.Format("{0} {1} : {2} - {3}",
+				dailyBreadItem.DailyBreadBook,
+				dailyBreadItem.DailyBreadBookChapter,
+				dailyBreadItem.DailyBreadBookVerse1,
+				dailyBreadItem.DailyBreadBookVerse2);
+			View.Model.DailyBreadBibleContent = dailyBreadItem.DailyBreadBookContent;
+			View.Model.DatePublished = dailyBreadItem.DatePublished;
+
+			View.BindDailyBreadDetail();
 		}
 	}
 }

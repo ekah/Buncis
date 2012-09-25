@@ -16,7 +16,7 @@ namespace Buncis.Web.Articles
 		{
 			try
 			{
-				InitializeView();
+				GetArticleDetail(this, new EventArgs());
 			}
 			catch (PageNotFoundException pnfex)
 			{
@@ -33,9 +33,19 @@ namespace Buncis.Web.Articles
 
 		public void BindViewData()
 		{
-			ltrArticleTitle.Text = string.Format("<a href=\"{0}\">{1}</a>", Model.ArticleItem.ArticleUrl, Model.ArticleItem.ArticleTitle);
-			ltrArticleInfo.Text = Model.ArticleItem.DateCreated.ToBuncisShortFormatString();
-			ltrContent.Text = Model.ArticleItem.ArticleContent;
+
+		}
+
+		#endregion
+
+		#region Implementation of IArticleDetailView
+
+		public event EventHandler GetArticleDetail;
+		public void BindArticleDetail()
+		{
+			ltrArticleTitle.Text = string.Format("<a href=\"{0}\">{1}</a>", Model.ArticleUrl, Model.ArticleTitle);
+			ltrArticleInfo.Text = Model.DateCreated.ToBuncisShortFormatString();
+			ltrContent.Text = Model.ArticleContent;
 		}
 
 		#endregion

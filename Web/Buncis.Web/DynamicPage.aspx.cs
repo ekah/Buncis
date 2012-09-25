@@ -35,11 +35,11 @@ namespace Buncis.Web
 
 		public void BindViewData()
 		{
-			Page.Title = Model.DynamicPage.MetaTitle;
-			Page.MetaDescription = Model.DynamicPage.MetaDescription;
+			Page.Title = Model.MetaTitle;
+			Page.MetaDescription = Model.MetaDescription;
 
 			var controlResolver = IoC.Resolve<IDynamicControlsResolver>();
-			controlResolver.ResolveDynamicControls(plcBodyContent, Model.DynamicPage.PageContent);
+			controlResolver.ResolveDynamicControls(plcBodyContent, Model.PageContent);
 		}
 
 		#endregion

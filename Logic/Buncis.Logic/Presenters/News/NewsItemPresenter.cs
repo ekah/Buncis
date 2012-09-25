@@ -18,9 +18,11 @@ namespace Buncis.Logic.Presenters.News
 			: base(view)
 		{
 			_newsService = newsService;
+
+			view.GetNewsDetail += view_GetNewsDetail;
 		}
 
-		protected override void view_Initialize(object sender, EventArgs e)
+		void view_GetNewsDetail(object sender, EventArgs e)
 		{
 			var newsId = int.Parse(WebUtil.GetQueryString(QueryStrings.NewsDetailId, "-1"));
 			var newsItem = _newsService.GetNewsItem(newsId);
@@ -29,9 +31,13 @@ namespace Buncis.Logic.Presenters.News
 				throw new PageNotFoundException("The Page is not found in database", WebUtil.GetCurrentUrl());
 			}
 
-			View.Model.NewsItem = new ViewModelNewsItem();
-			View.Model.NewsItem.InjectFrom<CloneInjection>(newsItem);
-			View.BindViewData();
+			View.Model.DatePublished = newsItem.DatePublished;
+			View.Model.NewsContent = newsItem.NewsContent;
+			View.Model.NewsId = newsItem.NewsId;
+			View.Model.NewsTitle = newsItem.NewsTitle;
+			View.Model.NewsUrl = newsItem.NewsTeaser;
+
+			View.BindNewsDetail();
 		}
 	}
 }

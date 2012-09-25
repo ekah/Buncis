@@ -22,7 +22,7 @@ namespace Buncis.Web.News
 		{
 			try
 			{
-				InitializeView();
+				GetNewsDetail(this, new EventArgs());
 			}
 			catch (PageNotFoundException pnfex)
 			{
@@ -39,9 +39,18 @@ namespace Buncis.Web.News
 
 		public void BindViewData()
 		{
-			ltrNewsTitle.Text = string.Format("<a href=\"{0}\">{1}</a>", Model.NewsItem.NewsUrl, Model.NewsItem.NewsTitle);
-			ltrNewsInfo.Text = Model.NewsItem.DatePublished.ToBuncisShortFormatString();
-			ltrContent.Text = Model.NewsItem.NewsContent;
+		}
+
+		#endregion
+
+		#region Implementation of INewsDetailView
+
+		public event EventHandler GetNewsDetail;
+		public void BindNewsDetail()
+		{
+			ltrNewsTitle.Text = string.Format("<a href=\"{0}\">{1}</a>", Model.NewsUrl, Model.NewsTitle);
+			ltrNewsInfo.Text = Model.DatePublished.ToBuncisShortFormatString();
+			ltrContent.Text = Model.NewsContent;
 		}
 
 		#endregion
