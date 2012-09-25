@@ -7,27 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Buncis.Web {
+namespace Buncis.Web.UserControls.Articles {
     
     
-    public partial class HomeBM {
+    public partial class RecentArticles {
         
         /// <summary>
-        /// recentArticles control.
+        /// rptRecentArticles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Buncis.Web.UserControls.Articles.RecentArticles recentArticles;
-        
-        /// <summary>
-        /// recentNews control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Buncis.Web.UserControls.News.RecentNews recentNews;
+        protected global::System.Web.UI.WebControls.Repeater rptRecentArticles;
     }
 }

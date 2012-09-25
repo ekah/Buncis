@@ -133,5 +133,25 @@ namespace Buncis.Services.DailyBread
 		{
 			return _urlEngine.GenerateUrl(dailyBreadId, dailyBreadTitle, DateTime.UtcNow);
 		}
+
+		/// <summary>
+		/// Get recent daily bread, get top 10 daily bread
+		/// </summary>
+		/// <param name="clientId"></param>
+		/// <returns></returns>
+		public IEnumerable<ViewModelDailyBreadItem> GetRecentDailyBread(int clientId)
+		{
+			var raw = GetAvailableDailyBreadItems(clientId);
+			raw = raw.OrderByDescending(o => o.DatePublished).Take(10).ToList();
+
+			var converted = raw.Select(item =>
+			{
+				var viewModelDailyBreadItem = new ViewModelDailyBreadItem();
+				viewModelDailyBreadItem.InjectFrom(item);
+				return viewModelDailyBreadItem;
+			}).ToList();
+
+			return converted;
+		}
 	}
 }

@@ -7,9 +7,9 @@ using Buncis.Logic.Models.News;
 
 namespace Buncis.Logic.Views.News
 {
-	public interface INewsDetailView : IBindableView<NewsModel>
+	public interface IRecentNewsView : IBindableView<RecentNewsModel>
 	{
-		event EventHandler GetNewsDetail;
-		void BindNewsDetail();
+		event EventHandler GetRecentNews;
+		void BindRecentNews();
 	}
 }

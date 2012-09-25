@@ -186,5 +186,25 @@ namespace Buncis.Services.Articles
 		{
 			return _urlEngine.GenerateUrl(articleId, articleTitle, DateTime.UtcNow);
 		}
+
+		/// <summary>
+		/// Get recent Articles, just get 10 latest
+		/// </summary>
+		/// <param name="clientId"></param>
+		/// <returns></returns>
+		public IEnumerable<ViewModelArticleItem> GetRecentArticles(int clientId)
+		{
+			var raw = GetAvailableArticleItems(clientId);
+			raw = raw.OrderByDescending(o => o.DateCreated).Take(10).ToList();
+
+			var converted = raw.Select(item =>
+			{
+				var viewModelArticleItem = new ViewModelArticleItem();
+				viewModelArticleItem.InjectFrom<CloneInjection>(item);
+				return viewModelArticleItem;
+			}).ToList();
+
+			return converted;
+		} 
 	}
 }

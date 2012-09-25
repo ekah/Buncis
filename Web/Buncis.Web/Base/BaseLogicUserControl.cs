@@ -9,24 +9,22 @@ using System.Web;
 
 namespace Buncis.Web.Base
 {
-    public class BaseLogicUserControl<TModel> : MvpUserControl<TModel>, ICustomEventView where TModel : class, new()
-    {
-        public event EventHandler Initialize;
+	public class BaseLogicUserControl<TModel> : MvpUserControl<TModel>, ICustomEventView where TModel : class, new()
+	{
+		public event EventHandler Initialize;
 
-        protected void InitializeView(object sender, EventArgs e)
-        {
-            Initialize(sender, e);
-        }
+		protected void InitializeView(object sender, EventArgs e)
+		{
+			Initialize(sender, e);
+		}
 
-
-
-        protected IUserProfile CurrentProfile
-        {
-            get
-            {
+		protected IUserProfile CurrentProfile
+		{
+			get
+			{
 				return WebMembershipProvider.Instance.LoggedInWebUserProfile;
-            }
-        }
+			}
+		}
 
-    }
+	}
 }

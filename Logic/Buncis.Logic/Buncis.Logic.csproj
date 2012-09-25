@@ -72,21 +72,30 @@
   <ItemGroup>
     <Compile Include="CustomEventArgs\BuncisPageListingEventArgs.cs" />
     <Compile Include="Models\Articles\ArticleModel.cs" />
+    <Compile Include="Models\Articles\RecentArticlesModel.cs" />
     <Compile Include="Models\DailyBread\DailyBreadModel.cs" />
+    <Compile Include="Models\DailyBread\RecentDailyBreadModel.cs" />
     <Compile Include="Models\FakeModel.cs" />
     <Compile Include="Models\News\NewsModel.cs" />
+    <Compile Include="Models\News\RecentNewsModel.cs" />
     <Compile Include="Models\Pages\DynamicPageModel.cs" />
     <Compile Include="Presenters\Articles\ArticleItemPresenter.cs" />
+    <Compile Include="Presenters\Articles\RecentArticlesPresenter.cs" />
     <Compile Include="Presenters\DailyBread\DailyBreadItemPresenter.cs" />
+    <Compile Include="Presenters\DailyBread\RecentDailyBreadPresenter.cs" />
     <Compile Include="Presenters\FakePresenter.cs" />
     <Compile Include="Presenters\LogicPresenter.cs" />
     <Compile Include="Presenters\News\NewsItemPresenter.cs" />
+    <Compile Include="Presenters\News\RecentNewsPresenter.cs" />
     <Compile Include="Presenters\Pages\DynamicPagePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Articles\IArticleDetailView.cs" />
+    <Compile Include="Views\Articles\IRecentArticlesView.cs" />
     <Compile Include="Views\DailyBread\IDailyBreadDetailView.cs" />
+    <Compile Include="Views\DailyBread\IRecentDailyBreadView.cs" />
     <Compile Include="Views\IFakeView.cs" />
     <Compile Include="Views\News\INewsDetailView.cs" />
+    <Compile Include="Views\News\IRecentNewsView.cs" />
     <Compile Include="Views\Pages\IDynamicPageView.cs" />
   </ItemGroup>
   <ItemGroup />

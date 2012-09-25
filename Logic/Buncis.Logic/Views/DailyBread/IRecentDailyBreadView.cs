@@ -7,9 +7,9 @@ using Buncis.Logic.Models.DailyBread;
 
 namespace Buncis.Logic.Views.DailyBread
 {
-	public interface IDailyBreadDetailView : IBindableView<DailyBreadModel>
+	public interface IRecentDailyBreadView : IBindableView<RecentDailyBreadModel>
 	{
-		event EventHandler GetDailyBreadDetail;
-		void BindDailyBreadDetail();
+		event EventHandler GetRecentDailyBread;
+		void BindRecentDailyBread();
 	}
 }

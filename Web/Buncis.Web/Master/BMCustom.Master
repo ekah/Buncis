@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BMCustom.master.cs" Inherits="Buncis.Web.Master.BMCustom" %>
+﻿<%@ Master Language="C#" AutoEventWireup="True" CodeBehind="BMCustom.master.cs" Inherits="Buncis.Web.Master.BMCustom" %>
 
 <!DOCTYPE html>
 <html>
@@ -73,25 +73,28 @@
 									<div id="myCarousel" class="carousel slide">
 										<div class="carousel-inner">
 											<div class="item active">
-												<img src="/images/bm/dummy1.jpg" />
+												<img src="/images/bm/dummy01.jpg" />
 											</div>
 											<div class="item">
-												<img src="/images/bm/dummy2.jpg" />
+												<img src="/images/bm/dummy02.jpg" />
 											</div>
 											<div class="item">
-												<img src="/images/bm/dummy3.jpg" />
+												<img src="/images/bm/dummy03.jpg" />
 											</div>
 											<div class="item">
-												<img src="/images/bm/dummy4.jpg" />
+												<img src="/images/bm/dummy04.jpg" />
 											</div>
 											<div class="item">
-												<img src="/images/bm/dummy5.jpg" />
+												<img src="/images/bm/dummy05.jpg" />
 											</div>
 											<div class="item">
-												<img src="/images/bm/dummy6.jpg" />
+												<img src="/images/bm/dummy06.jpg" />
 											</div>
 											<div class="item">
-												<img src="/images/bm/dummy7.jpg" />
+												<img src="/images/bm/dummy07.jpg" />
+											</div>
+											<div class="item">
+												<img src="/images/bm/dummy08.jpg" />
 											</div>
 										</div>
 										<a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
@@ -113,11 +116,11 @@
 				</div>--%>
 			</div>
 			<div class="row section">
-				<div class="twelvecol">
-					<div class="alpha10 round5border">
+				<div class="sixcol">
+					<div class="alpha10 round5border frame-wrapper">
 						<div class="daily-bread-container frame-inside round5">
 							<div class="frame-title alpha10">Daily Bread</div>
-							<div class="threecol">
+							<%--<div class="threecol">
 								<div class="verse-title">Mat</div>
 								<div class="verse-num">110&nbsp;:&nbsp;123-144</div>
 							</div>
@@ -126,24 +129,39 @@
 								<br/>
 								Intrinsicly target enterprise-wide technology for backend architectures. Holisticly incentivize backward-compatible processes before equity invested e-business. Seamlessly scale premier channels through client-centered metrics. Quickly reconceptualize leading-edge infomediaries before innovative paradigms. Conveniently procrastinate maintainable sources for frictionless functionalities.
 							</div>
-							<%--<div class="twocol last">
-								<img src="/images/bm/verse.jpg" />
-							</div>--%>
-							<div class="clearfix"></div>
+							<div class="clearfix"></div>--%>
+								<asp:ContentPlaceHolder runat="server" ID="RowOneLeftBox"></asp:ContentPlaceHolder>
 						</div>	
+					</div>
+				</div>
+				<div class="sixcol last">
+					<div class="alpha10 round5border frame-wrapper">
+						<div class="article-content frame-inside round5">
+							<div class="frame-title alpha10">Recent Articles</div>
+								<asp:ContentPlaceHolder runat="server" ID="RowOneRightBox"></asp:ContentPlaceHolder>
+							<%--<div>
+								<p>Appropriately coordinate next-generation methodologies before orthogonal products. Distinctively transition client-centric web-readiness before optimal benefits. Interactively promote adaptive users rather than mission-critical e-business. Appropriately underwhelm front-end e-business after error-free systems. Competently recaptiualize front-end products whereas competitive sources.</p>
+								<p>Enthusiastically syndicate empowered strategic theme areas and client-centric experiences. Progressively implement bricks-and-clicks web-readiness without real-time solutions. Dynamically e-enable world-class products without premium bandwidth. Conveniently impact web-enabled paradigms with economically sound internal or "organic" sources. Appropriately integrate corporate systems rather than timely customer service.</p>
+								<p>Dramatically re-engineer compelling models without an expanded array of ROI. Conveniently fabricate standards compliant systems rather than vertical platforms. Seamlessly fabricate timely technologies rather than holistic internal or "organic" sources. Enthusiastically monetize installed base benefits with emerging leadership. Professionally engineer team driven vortals through bricks-and-clicks niches.</p>
+							</div>--%>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row section">
-				<div class="twelvecol last">
-					<div class="alpha10 round5border">
-						<div class="article-content frame-inside round5">
-							<div class="frame-title alpha10">Recent Article</div>
-							<div>
-								<p>Appropriately coordinate next-generation methodologies before orthogonal products. Distinctively transition client-centric web-readiness before optimal benefits. Interactively promote adaptive users rather than mission-critical e-business. Appropriately underwhelm front-end e-business after error-free systems. Competently recaptiualize front-end products whereas competitive sources.</p>
-								<p>Enthusiastically syndicate empowered strategic theme areas and client-centric experiences. Progressively implement bricks-and-clicks web-readiness without real-time solutions. Dynamically e-enable world-class products without premium bandwidth. Conveniently impact web-enabled paradigms with economically sound internal or "organic" sources. Appropriately integrate corporate systems rather than timely customer service.</p>
-								<p>Dramatically re-engineer compelling models without an expanded array of ROI. Conveniently fabricate standards compliant systems rather than vertical platforms. Seamlessly fabricate timely technologies rather than holistic internal or "organic" sources. Enthusiastically monetize installed base benefits with emerging leadership. Professionally engineer team driven vortals through bricks-and-clicks niches.</p>
-							</div>
+				<div class="sixcol">
+					<div class="alpha10 round5border frame-wrapper">
+						<div class="frame-inside round5">
+							<div class="frame-title alpha10">Latest News</div>
+								<asp:ContentPlaceHolder runat="server" ID="RowTwoLeftSection"></asp:ContentPlaceHolder>
+						</div>	
+					</div>
+				</div>
+				<div class="sixcol last">
+					<div class="alpha10 round5border frame-wrapper">
+						<div class="frame-inside round5">
+							<div class="frame-title alpha10">Row Two Right Section</div>
+								<asp:ContentPlaceHolder runat="server" ID="RowTwoRightSection"></asp:ContentPlaceHolder>
 						</div>
 					</div>
 				</div>

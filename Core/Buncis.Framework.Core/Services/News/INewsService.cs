@@ -14,5 +14,11 @@ namespace Buncis.Framework.Core.Services.News
 		IEnumerable<ViewModelNewsCategory> GetNewsCategories(int clientId);
 		ValidationDictionary<ViewModelNewsCategory> InsertNewsCategory(int clientId, ViewModelNewsCategory viewModelNewsCategory);
 		string GetNewsUrl(int newsId, string newsTitle);
+
+		/// <summary>
+		/// Get Recent News, just get top 10 news
+		/// </summary>
+		/// <returns></returns>
+		IEnumerable<ViewModelNewsItem> GetRecentNews(int clientId);
 	}
 }

@@ -7,9 +7,9 @@ using Buncis.Logic.Models.Articles;
 
 namespace Buncis.Logic.Views.Articles
 {
-	public interface IArticleDetailView : IBindableView<ArticleModel>
+	public interface IRecentArticlesView : IBindableView<RecentArticlesModel>
 	{
-		event EventHandler GetArticleDetail;
-		void BindArticleDetail();
+		event EventHandler GetRecentArticles;
+		void BindRecentArticles();
 	}
 }
