@@ -90,7 +90,7 @@ ul.menu li:last-child {
 	margin: 20px;
 	padding: 20px;
 	background-color: #30222f;
-	min-height: 330px;	
+	/*min-height: 330px;*/
 }
 .frame-title {
 	padding: 10px 5px;
