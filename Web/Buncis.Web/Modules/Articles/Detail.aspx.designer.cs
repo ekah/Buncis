@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Buncis.Web.Articles {
+namespace Buncis.Web.Modules.Articles {
     
     
     public partial class Detail {

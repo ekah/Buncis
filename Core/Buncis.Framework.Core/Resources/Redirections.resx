@@ -121,7 +121,7 @@
     <value>~/NotFound.aspx</value>
   </data>
   <data name="Page_ArticleDetail" xml:space="preserve">
-    <value>~/Articles/Detail.aspx</value>
+    <value>~/Modules/Articles/Detail.aspx</value>
   </data>
   <data name="Page_Buncis_Dashboard" xml:space="preserve">
     <value>~/bPanel/Dashboard.aspx</value>
@@ -130,7 +130,7 @@
     <value>~/bPanel/</value>
   </data>
   <data name="Page_DailyBreadDetail" xml:space="preserve">
-    <value>~/DailyBread/Detail.aspx</value>
+    <value>~/Modules/DailyBread/Detail.aspx</value>
   </data>
   <data name="Page_DynamicPage" xml:space="preserve">
     <value>~/DynamicPage.aspx</value>
@@ -139,6 +139,6 @@
     <value>~/Home.aspx</value>
   </data>
   <data name="Page_NewsDetail" xml:space="preserve">
-    <value>~/News/Detail.aspx</value>
+    <value>~/Modules/News/Detail.aspx</value>
   </data>
 </root>

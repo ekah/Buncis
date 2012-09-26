@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/CustomTwoColumns8s.Master" AutoEventWireup="true" CodeBehind="Detail.aspx.cs" Inherits="Buncis.Web.Articles.Detail" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/CustomTwoColumns8s.Master" AutoEventWireup="true" CodeBehind="Detail.aspx.cs" Inherits="Buncis.Web.Modules.Articles.Detail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainPlaceHolder" runat="server">

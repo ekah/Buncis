@@ -7,28 +7,46 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Buncis.Web.News {
+namespace Buncis.Web.Modules.DailyBread {
     
     
     public partial class Detail {
         
         /// <summary>
-        /// ltrNewsTitle control.
+        /// ltrTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrNewsTitle;
+        protected global::System.Web.UI.WebControls.Literal ltrTitle;
         
         /// <summary>
-        /// ltrNewsInfo control.
+        /// ltrInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrNewsInfo;
+        protected global::System.Web.UI.WebControls.Literal ltrInfo;
+        
+        /// <summary>
+        /// ltrBible control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrBible;
+        
+        /// <summary>
+        /// ltrBibleContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrBibleContent;
         
         /// <summary>
         /// ltrContent control.

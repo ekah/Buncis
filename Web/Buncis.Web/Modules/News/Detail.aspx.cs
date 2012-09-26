@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Buncis.Framework.Core.Infrastructure.Extensions;
 using Buncis.Logic.Views.News;
 using Buncis.Logic.Models.News;
@@ -11,9 +6,8 @@ using Buncis.Web.Base;
 using Buncis.Logic.Presenters.News;
 using Buncis.Web.Common.Exceptions;
 using WebFormsMvp;
-using Buncis.Web.Common.Utility;
 
-namespace Buncis.Web.News
+namespace Buncis.Web.Modules.News
 {
 	[PresenterBinding(typeof(NewsItemPresenter), ViewType = typeof(INewsDetailView))]
 	public partial class Detail : BaseLogicPage<NewsModel>, INewsDetailView

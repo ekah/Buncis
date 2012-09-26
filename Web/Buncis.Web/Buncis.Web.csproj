@@ -137,7 +137,7 @@
     <Content Include="1140grid\css\ie.css" />
     <Content Include="1140grid\css\styles.css" />
     <Content Include="1140grid\js\css3-mediaqueries.js" />
-    <Content Include="Articles\Detail.aspx" />
+    <Content Include="Modules\Articles\Detail.aspx" />
     <Content Include="bootstrap\carousel\bootstrap.css" />
     <Content Include="bootstrap\carousel\bootstrap.js" />
     <Content Include="bootstrap\carousel\bootstrap.min.css" />
@@ -160,7 +160,7 @@
     <Content Include="bPanel\NotFound.aspx" />
     <Content Include="bPanel\Pages\List.aspx" />
     <Content Include="ComingSoon.aspx" />
-    <Content Include="DailyBread\Detail.aspx" />
+    <Content Include="Modules\DailyBread\Detail.aspx" />
     <Content Include="Global.asax" />
     <Content Include="googlec4cc9f14e1c6cee4.html" />
     <Content Include="Home.aspx" />
@@ -322,7 +322,7 @@
     <Content Include="Images\menu\news.png" />
     <Content Include="Images\menu_bg.jpg" />
     <Content Include="Images\menu_separator.png" />
-    <Content Include="News\Detail.aspx" />
+    <Content Include="Modules\News\Detail.aspx" />
     <Content Include="robot.txt" />
     <Content Include="sandbox\actTemplate-nopopup.js">
       <AutoGen>True</AutoGen>
@@ -347,6 +347,7 @@
     <Content Include="Scripts\bunx\_act_news.js" />
     <Content Include="Scripts\impress.js" />
     <Content Include="Scripts\jquery-ui-1.8.23.custom.min.js" />
+    <Content Include="Scripts\jquery.masonry.min.js" />
     <Content Include="Scripts\modules\jquery.color.js" />
     <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\modules\blockui\jquery.blockUI.js" />
@@ -400,9 +401,11 @@
     <Content Include="Styles\wysihtml5\prettify.css" />
     <Content Include="Styles\wysihtml5\wysiwyg-color.css" />
     <Content Include="tests\TestDefault.aspx" />
+    <Content Include="UserControls\Articles\ArticleList.ascx" />
     <Content Include="UserControls\Articles\RecentArticles.ascx" />
     <Content Include="UserControls\Component\LoginInfo.ascx" />
     <Content Include="UserControls\Component\WysiwygToolbar.ascx" />
+    <Content Include="UserControls\DailyBread\DailyBreadList.ascx" />
     <Content Include="UserControls\DailyBread\RecentDailyBread.ascx" />
     <Content Include="UserControls\News\NewsList.ascx" />
     <Content Include="UserControls\News\RecentNews.ascx" />
@@ -421,11 +424,11 @@
     <Content Include="WebServices\Pages.svc" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Articles\Detail.aspx.cs">
+    <Compile Include="Modules\Articles\Detail.aspx.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Articles\Detail.aspx.designer.cs">
+    <Compile Include="Modules\Articles\Detail.aspx.designer.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Base\BaseLogicPage.cs">
@@ -500,11 +503,11 @@
     <Compile Include="ComingSoon.aspx.designer.cs">
       <DependentUpon>ComingSoon.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DailyBread\Detail.aspx.cs">
+    <Compile Include="Modules\DailyBread\Detail.aspx.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DailyBread\Detail.aspx.designer.cs">
+    <Compile Include="Modules\DailyBread\Detail.aspx.designer.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
@@ -594,11 +597,11 @@
     <Compile Include="Master\Sandbox.Master.designer.cs">
       <DependentUpon>Sandbox.Master</DependentUpon>
     </Compile>
-    <Compile Include="News\Detail.aspx.cs">
+    <Compile Include="Modules\News\Detail.aspx.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="News\Detail.aspx.designer.cs">
+    <Compile Include="Modules\News\Detail.aspx.designer.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
     </Compile>
     <Compile Include="NotFound.aspx.cs">
@@ -633,6 +636,13 @@
     <Compile Include="tests\TestDefault.aspx.designer.cs">
       <DependentUpon>TestDefault.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Articles\ArticleList.ascx.cs">
+      <DependentUpon>ArticleList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Articles\ArticleList.ascx.designer.cs">
+      <DependentUpon>ArticleList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Articles\RecentArticles.ascx.cs">
       <DependentUpon>RecentArticles.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -653,6 +663,13 @@
     </Compile>
     <Compile Include="UserControls\Component\WysiwygToolbar.ascx.designer.cs">
       <DependentUpon>WysiwygToolbar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DailyBread\DailyBreadList.ascx.cs">
+      <DependentUpon>DailyBreadList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\DailyBread\DailyBreadList.ascx.designer.cs">
+      <DependentUpon>DailyBreadList.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\DailyBread\RecentDailyBread.ascx.cs">
       <DependentUpon>RecentDailyBread.ascx</DependentUpon>

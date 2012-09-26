@@ -17,6 +17,20 @@ namespace Buncis.Web.Common.DynamicControls
 				RenderTag = "<bun:NewsList runat=\"server\" ID=\"ucNewsList1\" />",
 				ControlPath = "~/UserControls/News/NewsList.ascx"
 			});
+
+			DynamicControls.Add(DynamicControlsLibrary.ARTICLE_LIST, new DynamicControl
+			{
+				ControlKey = "ArticleList",
+				RenderTag = "<bun:ArticleList runat=\"server\" ID=\"ucArticleList1\" />",
+				ControlPath = "~/UserControls/Articles/ArticleList.ascx"
+			});
+
+			DynamicControls.Add(DynamicControlsLibrary.DAILYBREAD_LIST, new DynamicControl
+			{
+				ControlKey = "DailyBreadList",
+				RenderTag = "<bun:DailyBreadList runat=\"server\" ID=\"ucDailyBreadList1\" />",
+				ControlPath = "~/UserControls/DailyBread/DailyBreadList.ascx"
+			});
 		}
 	}
 }

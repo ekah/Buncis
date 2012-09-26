@@ -1,6 +1,5 @@
 ﻿using System;
 using Buncis.Framework.Core.Infrastructure.Extensions;
-using Buncis.Logic.Presenters.News;
 using Buncis.Web.Common.Exceptions;
 using WebFormsMvp;
 using Buncis.Logic.Views.DailyBread;
@@ -8,7 +7,7 @@ using Buncis.Logic.Presenters.DailyBread;
 using Buncis.Logic.Models.DailyBread;
 using Buncis.Web.Base;
 
-namespace Buncis.Web.DailyBread
+namespace Buncis.Web.Modules.DailyBread
 {
 	[PresenterBinding(typeof(DailyBreadItemPresenter), ViewType = typeof(IDailyBreadDetailView))]
 	public partial class Detail : BaseLogicPage<DailyBreadModel>, IDailyBreadDetailView

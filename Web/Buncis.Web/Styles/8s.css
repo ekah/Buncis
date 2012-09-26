@@ -221,3 +221,72 @@ ul.sideMenu li a:hover {
 	padding: 0px;
 	margin: 0px 0px 5px 0px;
 }
+#newslist-container .newslist-item {
+	margin: 15px 10px !important;
+	border: solid 1px rgba(240,232,229,1);
+	float: left;
+	/*width: 200px;*/
+}
+#newslist-container .newslist-item .title {
+	background-color: rgba(7,26,63,1);
+	font-size: 1.2em;
+}
+#newslist-container .newslist-item .title,
+#newslist-container .newslist-item .teaser, 
+#newslist-container .newslist-item .newsitem-footer,
+#newslist-container .newslist-item .info {
+	padding: 5px;
+}
+#newslist-container .newslist-item .info {
+	background-color: rgba(50,51,69,1);
+}
+#newslist-container .newslist-item .newsitem-footer	{
+	text-align: right;
+	background-color: rgba(88,69,55,1);
+}
+#articlelist-container .articlelist-item {
+	margin: 15px 10px !important;
+	border: solid 1px rgba(240,232,229,1);
+	float: left;
+	width: 280px;
+}
+#articlelist-container .articlelist-item .title {
+	background-color: rgba(7,26,63,1);
+	font-size: 1.2em;
+}
+#articlelist-container .articlelist-item .title,
+#articlelist-container .articlelist-item .teaser, 
+#articlelist-container .articlelist-item .newsitem-footer,
+#articlelist-container .articlelist-item .info {
+	padding: 5px;
+}
+#articlelist-container .articlelist-item .info {
+	background-color: rgba(50,51,69,1);
+}
+#articlelist-container .articlelist-item .newsitem-footer {
+	text-align: right;
+	background-color: #ae290a;
+}
+#dailybreadlist-container .dailybreadlist-item {
+	margin: 15px 10px !important;
+	border: solid 1px rgba(240,232,229,1);
+	float: left;
+	width: 430px;
+}
+#dailybreadlist-container .dailybreadlist-item .title {
+	background-color: rgba(7,26,63,1);
+	font-size: 1.2em;
+}
+#dailybreadlist-container .dailybreadlist-item .title,
+#dailybreadlist-container .dailybreadlist-item .teaser, 
+#dailybreadlist-container .dailybreadlist-item .newsitem-footer,
+#dailybreadlist-container .dailybreadlist-item .info {
+	padding: 5px;
+}
+#dailybreadlist-container .dailybreadlist-item .info {
+	background-color: rgba(50,51,69,1);
+}
+#dailybreadlist-container .dailybreadlist-item .newsitem-footer	{
+	text-align: right;
+	background-color: #ef8223;
+}

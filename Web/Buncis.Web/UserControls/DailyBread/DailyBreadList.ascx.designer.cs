@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Buncis.Web.UserControls.News {
+namespace Buncis.Web.UserControls.DailyBread {
     
     
-    public partial class NewsList {
+    public partial class DailyBreadList {
         
         /// <summary>
-        /// rptNewsList control.
+        /// rptDailyBreadlist control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptNewsList;
+        protected global::System.Web.UI.WebControls.Repeater rptDailyBreadlist;
     }
 }

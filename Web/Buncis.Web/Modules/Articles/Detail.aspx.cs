@@ -7,7 +7,7 @@ using Buncis.Web.Common.Exceptions;
 using WebFormsMvp;
 using Buncis.Web.Base;
 
-namespace Buncis.Web.Articles
+namespace Buncis.Web.Modules.Articles
 {
 	[PresenterBinding(typeof(ArticleItemPresenter), ViewType = typeof(IArticleDetailView))]
 	public partial class Detail : BaseLogicPage<ArticleModel>, IArticleDetailView
