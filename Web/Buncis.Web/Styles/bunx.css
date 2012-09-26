@@ -49,8 +49,8 @@ dl {
 	margin-top: 30px;
 }
 #loginInfo {
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 .error {
 	height: 1.5em;
@@ -154,11 +154,13 @@ li.list-item:hover {
 	height: 400px !important;
 }
 .menu-toggle {
-	height: 40px;	
+	height: auto;	
 	background-color: #f5f5f5;
-	border-radius: 4px 4px 0px 0px;
+	border-radius: 4px 4px 4px 4px;
 	text-align: center;
-	line-height: 40px;
+	line-height: 30px;
+	font-size: 0.9em;	
+	margin-top: 34px;
 }
 .menu-toggle a {
 	color: #774F38;

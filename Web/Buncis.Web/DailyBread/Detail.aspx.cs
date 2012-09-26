@@ -49,6 +49,9 @@ namespace Buncis.Web.DailyBread
 			ltrContent.Text = Model.DailyBreadContent;
 			ltrBible.Text = Model.DailyBreadBible;
 			ltrBibleContent.Text = Model.DailyBreadBibleContent;
+
+			Page.Title = Model.DailyBreadTitle;
+			Page.MetaDescription = Model.DailyBreadSummary;
 		}
 
 		#endregion

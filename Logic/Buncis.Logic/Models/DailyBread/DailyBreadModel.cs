@@ -10,6 +10,7 @@ namespace Buncis.Logic.Models.DailyBread
 	{
 		public int DailyBreadId { get; set; }
 		public string DailyBreadTitle { get; set; }
+		public string DailyBreadSummary { get; set; }
 		public string DailyBreadContent { get; set; }
 		public string DailyBreadUrl { get; set; }
 		public DateTime DatePublished { get; set; }

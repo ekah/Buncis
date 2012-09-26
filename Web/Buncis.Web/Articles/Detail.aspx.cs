@@ -46,6 +46,9 @@ namespace Buncis.Web.Articles
 			ltrArticleTitle.Text = string.Format("<a href=\"{0}\">{1}</a>", Model.ArticleUrl, Model.ArticleTitle);
 			ltrArticleInfo.Text = Model.DateCreated.ToBuncisShortFormatString();
 			ltrContent.Text = Model.ArticleContent;
+
+			Page.Title = Model.ArticleTitle;
+			Page.MetaDescription = Model.ArticleSummary;
 		}
 
 		#endregion

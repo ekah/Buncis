@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/CustomTwoColumns.Master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/CustomPage8s.Master" AutoEventWireup="true"
          CodeBehind="NotFound.aspx.cs" Inherits="Buncis.Web.NotFound" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">

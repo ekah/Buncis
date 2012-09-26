@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Custom.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Buncis.Web.Home" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Custom8s.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Buncis.Web.Home" %>
 
 <%@ Register tagPrefix="bun" tagName="RecentNews" src="/UserControls/News/RecentNews.ascx" %>
 <%@ Register tagPrefix="bun" tagName="RecentArticles" src="/UserControls/Articles/RecentArticles.ascx" %>

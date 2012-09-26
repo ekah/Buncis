@@ -166,6 +166,9 @@
     <Content Include="Home.aspx" />
     <Content Include="Images\ajax-loader-2.gif" />
     <Content Include="Images\ajax-loader.gif" />
+    <Content Include="Images\custom\foot_facebook.png" />
+    <Content Include="Images\custom\foot_twitter.png" />
+    <Content Include="Images\custom\foot_google_plus.png" />
     <Content Include="Images\custom\bg-full3.jpg" />
     <Content Include="Images\custom\construction.png" />
     <Content Include="Images\custom\announcements_pic.png" />
@@ -310,9 +313,11 @@
     <Content Include="Images\impress\Tambahan1.jpg" />
     <Content Include="Images\impress\Tambahan2.jpg" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\logo2.jpg" />
     <Content Include="Images\logo_bg.jpg" />
     <Content Include="Images\logo_text.png" />
     <Content Include="Images\menu\articles.png" />
+    <Content Include="Images\menu\daily.png" />
     <Content Include="Images\menu\pages.png" />
     <Content Include="Images\menu\news.png" />
     <Content Include="Images\menu_bg.jpg" />
@@ -364,13 +369,13 @@
     <Content Include="Scripts\modules\wysihtml5\dist\wysihtml5-0.3.0.min.js" />
     <Content Include="Scripts\modules\wysihtml5\parser_rules\advanced.js" />
     <Content Include="Scripts\modules\wysihtml5\parser_rules\simple.js" />
-    <Content Include="Styles\bun_xiframe.css" />
+    <Content Include="Styles\8s.css" />
+    <Content Include="Styles\bunx-iframe.css" />
     <Content Include="Scripts\modules\tools\validator.js" />
     <Content Include="Styles\custom.css" />
-    <Content Include="Styles\bun_x.css" />
+    <Content Include="Styles\bunx.css" />
     <Content Include="Styles\bun.css" />
-    <None Include="Styles\bun_x.css.bak" />
-    <None Include="Styles\custom.css.bak" />
+    <Content Include="Master\Custom8s.Master" />
     <Content Include="Styles\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Styles\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Styles\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -513,12 +518,26 @@
       <DependentUpon>Custom.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Master\Custom8s.Master.cs">
+      <DependentUpon>Custom8s.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Custom8s.Master.designer.cs">
+      <DependentUpon>Custom8s.Master</DependentUpon>
+    </Compile>
     <Compile Include="Master\CustomPage.Master.cs">
       <DependentUpon>CustomPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Master\CustomPage.Master.designer.cs">
       <DependentUpon>CustomPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\CustomPage8s.Master.cs">
+      <DependentUpon>CustomPage8s.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\CustomPage8s.Master.designer.cs">
+      <DependentUpon>CustomPage8s.Master</DependentUpon>
     </Compile>
     <Compile Include="Master\CustomTwoColumns.Master.cs">
       <DependentUpon>CustomTwoColumns.Master</DependentUpon>
@@ -560,6 +579,13 @@
     </Compile>
     <Compile Include="Master\Custom.Master.designer.cs">
       <DependentUpon>Custom.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\CustomTwoColumns8s.Master.cs">
+      <DependentUpon>CustomTwoColumns8s.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\CustomTwoColumns8s.Master.designer.cs">
+      <DependentUpon>CustomTwoColumns8s.Master</DependentUpon>
     </Compile>
     <Compile Include="Master\Sandbox.Master.cs">
       <DependentUpon>Sandbox.Master</DependentUpon>
@@ -721,6 +747,8 @@
     <Content Include="Master\CustomTwoColumns.Master" />
     <Content Include="Master\CustomPage.Master" />
     <None Include="bootstrap\css\carousel.less" />
+    <Content Include="Master\CustomPage8s.Master" />
+    <Content Include="Master\CustomTwoColumns8s.Master" />
     <None Include="sandbox\actTemplate-nopopup.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>actTemplate-nopopup.js</LastGenOutput>

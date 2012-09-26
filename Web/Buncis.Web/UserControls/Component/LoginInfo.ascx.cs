@@ -15,7 +15,7 @@ namespace Buncis.Web.UserControls.Component
 		{
 			if (!IsPostBack)
 			{
-				loginInfoUsername.InnerText = WebMembershipProvider.Instance.LoggedInWebUserProfile.FullName;
+				//loginInfoUsername.InnerText = WebMembershipProvider.Instance.LoggedInWebUserProfile.FullName;
 			}
 		}
 	}

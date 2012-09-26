@@ -1,0 +1,39 @@
+.color1 { color: #e1e1e1}
+.color2 { color: #e8e8e6}
+.color3 { color: #ededed}
+.color4 { color: #efefef}
+.color5 { color: #ececec}
+.color6 { color: #e7e7e7}
+.color7 { color: #e2e2e2}
+
+.color8 { color: #e4e4e4}
+.color9 { color: #343547}
+.color10 { color: #393b4a}
+.color11 { color: #383838}
+.color12 { color: #000000}
+.color13 { color: #eaeaea}
+.color14 { color: #e6e6e6}
+
+.color15 { color: #383a49}
+.color16 { color: #466ab4}
+.color17 { color: #13419f}
+.color18 { color: #171930}
+.color19 { color: #313244}
+.color20 { color: #e8b99d}
+.color21 { color: #1c4b15}
+
+.color22 { color: #24273a}
+.color23 { color: #333446}
+.color24 { color: #d9dee2}
+.color25 { color: #f0e8e5}
+.color26 { color: #121429}
+.color27 { color: #e5e5e5}
+.color28 { color: #323345}
+
+.color29 { color: #282834}
+.color30 { color: #584537}
+.color31 { color: #2352a2}
+.color32 { color: #cecece}
+.color33 { color: #d0d0d0}
+.color34 { color: #c7c7c7}
+.color35 { color: #c6c6c6}

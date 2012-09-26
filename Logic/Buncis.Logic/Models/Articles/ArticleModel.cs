@@ -10,6 +10,7 @@ namespace Buncis.Logic.Models.Articles
 	{
 		public int ArticleId { get; set; }
 		public string ArticleTitle { get; set; }
+		public string ArticleSummary { get; set; }
 		public string ArticleUrl { get; set; }
 		public string ArticleContent { get; set; }
 		public DateTime DateCreated { get; set; }

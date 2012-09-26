@@ -154,7 +154,7 @@
                 "div": 1
             }
         },
-        stylesheets: ["/styles/wysihtml5/wysiwyg-color.css", "/styles/bun_xiframe.css"], // (path_to_project/lib/css/wysiwyg-color.css)
+        stylesheets: ["/styles/wysihtml5/wysiwyg-color.css", "/styles/bunx-iframe.css"], // (path_to_project/lib/css/wysiwyg-color.css)
         locale: "en"
     };
 

@@ -34,6 +34,7 @@ namespace Buncis.Logic.Presenters.Articles
 			View.Model.ArticleTitle = articleItem.ArticleTitle;
 			View.Model.ArticleContent = articleItem.ArticleContent;
 			View.Model.DateCreated = articleItem.DateCreated;
+			View.Model.ArticleSummary = articleItem.ArticleTeaser;
 
 			View.BindArticleDetail();
 		}

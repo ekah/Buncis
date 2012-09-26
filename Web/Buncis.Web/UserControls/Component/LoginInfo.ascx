@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="LoginInfo.ascx.cs" Inherits="Buncis.Web.UserControls.Component.LoginInfo" %>
 
-<div class="btn-toolbar">
+<%--<div class="btn-toolbar">
 	<div class="btn-group">
 		<button class="btn"><span id="loginInfoUsername" runat="server" clientidmode="Static"></span></button>
 		<button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -11,3 +11,6 @@
 		</ul>
 	</div>
 </div>
+--%>
+
+<a href="/bPanel/Account/Logout.aspx" title="Logout" class="btn btn-info">Logout</a>

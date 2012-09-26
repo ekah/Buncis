@@ -6,7 +6,7 @@
 <head runat="server">
 	<title>Buncis</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="/styles/bun_x.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/bunx.css" rel="stylesheet" type="text/css" />
 	<link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
 	<link href="/Styles/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css" />
@@ -48,15 +48,13 @@
 		<div id="bpanel-header">
 			<div class="container">
 				<div class="row">
-					<div class="span12">
-						<div id="logo" class="span4">
-							<%--<img src="/images/logo.png" alt="Buncis Logo" />--%>
-						</div>
-						<div id="loginInfo" class="span3 offset5">
-							<bun:LoginInfo runat="server" id="loginInfo1" clientidmode="Static"></bun:LoginInfo>
-						</div>
+					<div class="span4">
+						<img src="/images/logo2.jpg" alt="Buncis Logo" />
 					</div>
-					<div class="span2 offset9 menu-toggle">
+					<div id="loginInfo" class="span2 offset6">
+						<bun:LoginInfo runat="server" id="loginInfo1" clientidmode="Static"></bun:LoginInfo>
+					</div>
+					<div class="span2 offset6 menu-toggle">
 						<a href="#" id="openMenu"><span><i class="icon icon-arrow-down"></i>&nbsp;<strong>Open Menu</strong></span></a>
 					</div>
 				</div>
@@ -69,22 +67,28 @@
 					<div class="buncis-menu">
 						<a class="close" href="#" id="closeMenu">&times;</a>
 						<ul class="thumbnails">
-							<li class="span1">
+							<li class="span2">
 								<a href="/bPanel/News/List.aspx" class="thumbnail">
 									<img src="/Images/menu/news.png" alt="News">
 									<p>News</p>
 								</a>
 							</li>
-							<li class="span1">
+							<li class="span2">
 								<a href="/bPanel/Pages/List.aspx" class="thumbnail">
 									<img src="/Images/menu/pages.png" alt="Pages">
 									<p>Pages</p>
 								</a>
 							</li>
-							<li class="span1">
+							<li class="span2">
 								<a href="/bPanel/Articles/List.aspx" class="thumbnail">
 									<img src="/Images/menu/articles.png" alt="Articles">
 									<p>Articles</p>
+								</a>
+							</li>
+							<li class="span2">
+								<a href="/bPanel/DailyBread/List.aspx" class="thumbnail">
+									<img src="/Images/menu/daily.png" alt="Daily Bread">
+									<p>Daily Bread</p>
 								</a>
 							</li>
 						</ul>

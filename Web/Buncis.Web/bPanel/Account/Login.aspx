@@ -6,7 +6,7 @@
 <head>
 	<title>Buncis</title>		
 	<!--link rel="stylesheet" href="/styles/normalize.css" /-->
-	<link rel="stylesheet" href="/styles/bun_x.css" />
+	<link rel="stylesheet" href="/styles/bunx.css" />
 	<link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<script src="/scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
 	<script src="/bootstrap/js/bootstrap.js" type="text/javascript"></script>
@@ -51,7 +51,7 @@
 								<div class="form-item">
 									<label class="medium">Password</label>
 									<div>
-										<input runat="server" id="txtPassword" type="text"
+										<input runat="server" id="txtPassword" type="password"
 											required="required" class="medium" clientidmode="Static" 
 											data-message="Password is required"/>
 									</div>

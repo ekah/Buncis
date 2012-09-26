@@ -35,7 +35,8 @@ namespace Buncis.Logic.Presenters.News
 			View.Model.NewsContent = newsItem.NewsContent;
 			View.Model.NewsId = newsItem.NewsId;
 			View.Model.NewsTitle = newsItem.NewsTitle;
-			View.Model.NewsUrl = newsItem.NewsTeaser;
+			View.Model.NewsUrl = newsItem.NewsUrl;
+			View.Model.NewsSummary = newsItem.NewsTeaser;
 
 			View.BindNewsDetail();
 		}

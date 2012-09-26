@@ -51,6 +51,9 @@ namespace Buncis.Web.News
 			ltrNewsTitle.Text = string.Format("<a href=\"{0}\">{1}</a>", Model.NewsUrl, Model.NewsTitle);
 			ltrNewsInfo.Text = Model.DatePublished.ToBuncisShortFormatString();
 			ltrContent.Text = Model.NewsContent;
+
+			Page.Title = Model.NewsTitle;
+			Page.MetaDescription = Model.NewsSummary;
 		}
 
 		#endregion

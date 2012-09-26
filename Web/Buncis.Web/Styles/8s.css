@@ -1,0 +1,223 @@
+﻿body {
+	margin: 0px;
+	padding: 0px;	
+	color: #fff;       
+	/*background: transparent url("/images/custom/bg-full3.jpg") no-repeat center center;*/
+	background-color: #24273a;
+	/*background-size: cover;*/
+}
+body, html, button, input, select, textarea {
+	font-family: "Open Sans","Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+	font-size: 13px;	
+}
+body, html, button, input, select, textarea, div, p, h2, h1, h3 {
+	line-height: 1.5em;
+}
+a {
+	text-decoration: none;
+	color: #fff;
+}
+.clearfix {
+	*zoom: 1;
+	clear: both;
+}
+.box {
+	background-color: #121429;
+}
+.header h2 {	
+	font-size: 3.2em;
+	font-weight: 100;	
+	margin: 0px 0px 0px 0px !important;
+}
+.header div {
+	font-size: 1.2em;
+}
+.aux-menu span 	{
+	display: block;
+	padding: 0px 10px;
+	float: right;	
+}
+ul.menu {
+	overflow: auto;
+	padding: 10px 0px !important;
+	height: auto;
+	margin: 10px 0px;	
+	background-color: #2352a2;
+}
+ul.menu li {
+	list-style-type: none;
+	display: block;
+	float: left;	
+	/*border-right: solid 1px white;*/	
+	padding: 0em 1em;		
+}
+ul.menu li a:hover {
+	background-color: #13419f;
+}
+ul.menu li a {
+	font-size: 1.5em;	
+	display: block;
+	padding: 0.3em 0.5em;
+}
+ul.menu li:last-child {
+	border: none !important;
+}
+.box {
+	
+}
+.box-title {
+	background-color: #121429;
+	font-size: 3em;
+	font-weight: 100 !important;
+	padding: 10px 20px;
+}
+.box-content {
+	padding: 20px;
+	background-color: #2B3761;	
+}
+blockquote {	
+	margin: 0px;
+	padding: 10px;	
+	quotes: "\201C" "\201D";
+}
+blockquote:before { content: open-quote; }
+blockquote:after { content: close-quote; }
+.quotes-box-content {
+	font-size: 1.6em;	
+}
+.section {
+	margin-top: 10px !important;
+}
+.recentdailybread .recentdailybread-item {
+	margin-bottom: 20px;
+}
+.recentdailybread .recentdailybread-dailybreadtitle {
+	font-size: 1.4em;	
+	margin-bottom: 5px;
+}
+.recentdailybread .recentdailybread-dailybreadinfo {
+	font-size: 0.9em;	
+}
+.recentdailybread .recentdailybread-dailybreadsummary {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+.recentdailybread .recentdailybread-footer {
+	float: right;
+	font-size: 0.9em;
+}
+.recentdailybread .recentdailybread-footer a {
+	display: block;
+	padding: 5px;
+	background-color: #466ab4;
+}
+.recentdailybread-dailybreadbible .book {
+	font-size: 1.5em;
+	font-weight: 600;
+}
+.recentdailybread-dailybreadbible .chapterverse {
+	font-size: 2em;
+}
+.recentarticles .recentarticles-item {
+	margin-bottom: 20px;
+}
+.recentarticles .recentarticles-articletitle {
+	font-size: 1.4em;	
+	margin-bottom: 5px;
+}
+.recentarticles .recentarticles-articleinfo {
+	font-size: 0.9em;	
+}
+.recentarticles .recentarticles-articlesummary {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+.recentarticles .recentarticles-footer {
+	float: right;
+	font-size: 0.9em;
+}
+.recentarticles .recentarticles-footer a {
+	display: block;
+	padding: 5px;
+	background-color: #466ab4;	
+}
+.recentnews .recentnews-item {
+	margin-bottom: 20px;
+}
+.recentnews .recentnews-newstitle {
+	font-size: 1.4em;		
+	margin-bottom: 5px;
+}
+.recentnews .recentnews-newsinfo {
+	font-size: 0.9em;	
+}
+.recentnews .recentnews-newssummary {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+.recentnews .recentnews-footer {
+	float: right;
+	font-size: 0.9em;
+}
+.recentnews .recentnews-footer a {
+	display: block;
+	padding: 5px;
+	background-color: #466ab4;	
+}
+.footer {
+	background-color: #1859a9;
+	padding: 20px;	
+}
+.footer .footer-section {
+	font-size: 1.1em !important;
+}
+.height100 {
+	height: 100%;
+}
+.sideMenuContainer {
+	background-color: rgba(28, 75, 21, 1);
+}
+ul.sideMenu {
+	padding: 0px !important;
+	margin:0px !important;
+}
+ul.sideMenu li {
+	list-style-type: none;	
+}
+ul.sideMenu li a {
+	display: block;	
+	padding: 20px;
+}
+ul.sideMenu li a span {
+	display: block;	
+	font-size: 1.5em;
+	line-height: 1.5em;
+}
+ul.sideMenu li a span.menuDesc {
+	font-size: 0.9em;
+	line-height: 1.5em;
+}
+ul.sideMenu li a:hover {
+	border: solid 1px #fff;
+}
+.dailybreaddetail-title {
+	font-size: 2.1em;
+	font-weight: 100 !important;
+	padding: 0px;
+	margin: 0px 0px 5px 0px;
+}
+.dailybreaddetail-bible {
+	font-size: 1.1em;
+}
+.articledetail-title {
+	font-size: 2.1em;
+	font-weight: 100 !important;
+	padding: 0px;
+	margin: 0px 0px 5px 0px;
+}
+.newsdetail-title {
+	font-size: 2.1em;
+	font-weight: 100 !important;
+	padding: 0px;
+	margin: 0px 0px 5px 0px;
+}
