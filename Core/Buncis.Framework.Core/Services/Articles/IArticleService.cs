@@ -16,5 +16,6 @@ namespace Buncis.Framework.Core.Services.Articles
 		string GetArticleUrl(int articleId, string articleTitle);
 		IEnumerable<ViewModelArticleItem> GetRecentArticles(int clientId);
 		IEnumerable<ViewModelArticleItem> GetAvailableArticleItems(int clientId, int categoryId);
+		ValidationDictionary<ViewModelArticleCategory> DeleteArticleCategory(int articleCategoryId);
 	}
 }

@@ -45,5 +45,9 @@ namespace Buncis.Web.WebServices.Contracts
 		[OperationContract]
 		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
 		string GetArticleUrl(int articleId, string articleTitle);
+
+		[OperationContract]
+		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
+		Response BPDeleteArticleCategory(int clientId, int articleCategoryId);
 	}
 }

@@ -216,6 +216,17 @@ function globalShowMessages(msg) {
 	toastr.success(messages, 'It\' a Success!');
 }
 
+function globalShowError(msg) {
+	var messages = '';
+	if (Object.prototype.toString.call(msg) === '[object Array]') {
+		for (var i = 0; i < msg.length; i++) {
+			messages += '<div>' + msg[i] + '</div>';
+		}
+	}
+	toastr.options.timeOut = 8000;
+	toastr.error(messages, 'Something wrong..')
+}
+
 function globalClosePopup() {    
 	$(window.activeModals).modal('hide');    
 	window.activeModals = '';

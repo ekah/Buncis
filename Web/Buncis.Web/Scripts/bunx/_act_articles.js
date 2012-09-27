@@ -9,6 +9,8 @@
 		home: function() {
 			$('#homeSection').show();
 			$('#article-edit-section').hide();
+			$('#article-list-container').show();
+			$('.article-category-section').hide();
 		},
 		edit: function(query) {
 			var articleId = query;
@@ -21,7 +23,7 @@
 		},
 		managecategories: function () {
 			$('#article-list-container').hide();
-			$('#category-management-container').show();
+			$('.article-category-section').show();
 		}
 	});
 	oModule.router = {};

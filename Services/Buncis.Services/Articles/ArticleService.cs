@@ -189,13 +189,16 @@ namespace Buncis.Services.Articles
 
 			// rule based here
 			var existingWithSameName = _articleCategoryRepository
-				.FilterBy(o => o.ArticleCategoryName.ToLower() == viewModelArticleCategory.ArticleCategoryName.ToLower() && o.ClientId == clientId)
+				.FilterBy(o => o.ArticleCategoryName.ToLower() == viewModelArticleCategory.ArticleCategoryName.ToLower()
+					&& o.ClientId == clientId
+					&& !o.IsDeleted)
 				.ToList();
 
 			if (existingWithSameName.Any())
 			{
-				var haveSameId = viewModelArticleCategory.ArticleCategoryId > 0
-					&& existingWithSameName.Any(o => o.ArticleCategoryId != viewModelArticleCategory.ArticleCategoryId);
+				var haveSameId = viewModelArticleCategory.ArticleCategoryId <= 0
+					|| (viewModelArticleCategory.ArticleCategoryId > 0
+						&& existingWithSameName.Any(o => o.ArticleCategoryId != viewModelArticleCategory.ArticleCategoryId));
 				if (haveSameId)
 				{
 					validator.IsValid = false;
@@ -207,7 +210,8 @@ namespace Buncis.Services.Articles
 			ArticleCategory articleCategory;
 			if (viewModelArticleCategory.ArticleCategoryId > 0)
 			{
-				articleCategory = _articleCategoryRepository.FindBy(o => o.ArticleCategoryId == viewModelArticleCategory.ArticleCategoryId);
+				articleCategory = _articleCategoryRepository
+					.FindBy(o => o.ArticleCategoryId == viewModelArticleCategory.ArticleCategoryId);
 				var dateCreated = articleCategory.DateCreated;
 				articleCategory.InjectFrom(viewModelArticleCategory);
 				articleCategory.ClientId = clientId;
@@ -250,6 +254,32 @@ namespace Buncis.Services.Articles
 			}).ToList();
 
 			return converted;
+		}
+
+		public ValidationDictionary<ViewModelArticleCategory> DeleteArticleCategory(int articleCategoryId)
+		{
+			var validator = new ValidationDictionary<ViewModelArticleCategory>();
+			var raw = _articleCategoryRepository.FindBy(o => o.ArticleCategoryId == articleCategoryId);
+			if (raw != null)
+			{
+				raw.IsDeleted = true;
+				_articleCategoryRepository.Update(raw);
+
+				var articles = _articleItemRepository.FilterBy(a => a.ArticleCategory.ArticleCategoryId == articleCategoryId).ToList();
+				foreach (var item in articles)
+				{
+					item.IsDeleted = true;
+					_articleItemRepository.Update(item);
+				}
+
+				validator.IsValid = true;
+			}
+			else
+			{
+				validator.IsValid = false;
+				validator.AddError("", "The XX is not available in the database");
+			}
+			return validator;
 		}
 	}
 }

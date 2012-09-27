@@ -138,6 +138,13 @@ namespace Buncis.Web.WebServices
 
 			return response;
 		}
+
+		public Response BPDeleteArticleCategory(int clientId, int articleCategoryId)
+		{
+			var service = IoC.Resolve<IArticleService>();
+			var result = service.DeleteArticleCategory(articleCategoryId);
+			return new Response(result.IsValid, string.Empty);
+		}
 	}
 }
 

@@ -23,8 +23,23 @@
 				<div class="clearfix"></div>
 				<ul id="article-list-container" class="list-item-container">
 				</ul>
-				<ul id="category-management-container" class="row list-item-container" style="display: none;">
-				</ul>
+				<div class="article-category-section" style="display: none;">
+					<p></p>
+					<div class="buncisButtonContainer">
+						<div class="pull-right">
+							<a href="#" id="mAddArticleCategory" class="btn btn-warning">
+								<i class="icon-plus"></i>&nbsp;<span>Add Article Category</span>
+							</a>
+						</div>
+					</div>
+					<ul id="category-management-container" class="row list-item-container">
+					</ul>
+					<div class="well well-small buncisButtonContainer">
+						<div class="pull-right">
+							<a href="#" class="btnBack btn btn-primary">Back</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -32,6 +47,7 @@
 	<div id="article-edit-section" class="row"></div>
 	<div id="article-delete-popup" class="popup-wrapper modal hide fade"></div>
 	<div id="article-category-edit-popup" class="popup-wrapper modal hide fade"></div>
+	<div id="article-category-delete-popup" class="popup-wrapper modal hide fade"></div>
 
 	<div style="display:none">
 		<script type="text/template" id="article-item-template">
@@ -187,6 +203,19 @@
 			<div class="buttonContainer modal-footer">
 				<a href="#" id="editcategory-save" class="btn btn-primary">Save</a>			    
 				<a href="#" id="editcategory-cancel" class="popup-button-close btn btn-inverse">Cancel</a>
+			</div>
+		</script>
+
+		<script type="text/template" id="article-category-delete-template">
+			<div class="modal-header">
+				<h3>Modal header</h3>
+			</div>
+			<div class="modal-body popup-content-small">
+				<p>Are you sure you want to delete article category <strong>{{attributes.articleCategoryName}}</strong>?</p>
+			</div>
+			<div class="buttonContainer modal-footer">				
+				<a href="#" id="deleteArticleCategory-confirm" class="btn btn-primary">Yes</a>			    
+				<a href="#" id="deleteArticleCategory-cancel" class="popup-button-close btn btn-inverse">No</a>
 			</div>
 		</script>
 	</div>
