@@ -120,6 +120,24 @@ namespace Buncis.Web.WebServices
 			var service = IoC.Resolve<IArticleService>();
 			return service.GetArticleUrl(articleId, articleTitle);
 		}
+
+		public Response<DtoBuncisArticleCategory> BPUpdateArticleCategory(int clientId, DtoBuncisArticleCategory articleCategory)
+		{
+			var service = IoC.Resolve<IArticleService>();
+			var viewModel = new ViewModelArticleCategory().InjectFrom<CloneInjection>(articleCategory) as ViewModelArticleCategory;
+			var result = service.UpdateArticleCategory(clientId, viewModel);
+
+			var response = new Response<DtoBuncisArticleCategory>();
+			response.IsSuccess = result.IsValid;
+			response.Message = result.ValidationSummaryToString();
+			if (response.IsSuccess)
+			{
+				var responseObject = new DtoBuncisArticleCategory().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisArticleCategory;
+				response.ResponseObject = responseObject;
+			}
+
+			return response;
+		}
 	}
 }
 

@@ -167,6 +167,18 @@ namespace Buncis.Services.Articles
 		public ValidationDictionary<ViewModelArticleCategory> InsertArticleCategory(int clientId,
 			ViewModelArticleCategory viewModelArticleCategory)
 		{
+			return SaveArticleCategory(clientId, viewModelArticleCategory);
+		}
+
+		public ValidationDictionary<ViewModelArticleCategory> UpdateArticleCategory(int clientId,
+			ViewModelArticleCategory viewModelArticleCategory)
+		{
+			return SaveArticleCategory(clientId, viewModelArticleCategory);
+		}
+
+		private ValidationDictionary<ViewModelArticleCategory> SaveArticleCategory(int clientId,
+			ViewModelArticleCategory viewModelArticleCategory)
+		{
 			var validator = new ValidationDictionary<ViewModelArticleCategory>();
 			if (viewModelArticleCategory == null)
 			{
@@ -177,21 +189,41 @@ namespace Buncis.Services.Articles
 
 			// rule based here
 			var existingWithSameName = _articleCategoryRepository
-				.FilterBy(o => o.ArticleCategoryName.ToLower() == viewModelArticleCategory.ArticleCategoryName.ToLower() && o.ClientId == clientId);
+				.FilterBy(o => o.ArticleCategoryName.ToLower() == viewModelArticleCategory.ArticleCategoryName.ToLower() && o.ClientId == clientId)
+				.ToList();
+
 			if (existingWithSameName.Any())
 			{
-				validator.IsValid = false;
-				validator.AddError("", "Article Category with same name is already existed");
-				return validator;
+				var haveSameId = viewModelArticleCategory.ArticleCategoryId > 0
+					&& existingWithSameName.Any(o => o.ArticleCategoryId != viewModelArticleCategory.ArticleCategoryId);
+				if (haveSameId)
+				{
+					validator.IsValid = false;
+					validator.AddError("", "Article Category with same name is already existed");
+					return validator;
+				}
 			}
 
-			var articleCategory = new ArticleCategory();
-			articleCategory.InjectFrom(viewModelArticleCategory);
-			articleCategory.DateCreated = DateTime.UtcNow;
-			articleCategory.DateLastUpdated = DateTime.UtcNow;
-			articleCategory.ClientId = clientId;
-
-			_articleCategoryRepository.Add(articleCategory);
+			ArticleCategory articleCategory;
+			if (viewModelArticleCategory.ArticleCategoryId > 0)
+			{
+				articleCategory = _articleCategoryRepository.FindBy(o => o.ArticleCategoryId == viewModelArticleCategory.ArticleCategoryId);
+				var dateCreated = articleCategory.DateCreated;
+				articleCategory.InjectFrom(viewModelArticleCategory);
+				articleCategory.ClientId = clientId;
+				articleCategory.DateLastUpdated = DateTime.UtcNow;
+				articleCategory.DateCreated = dateCreated;
+				_articleCategoryRepository.Update(articleCategory);
+			}
+			else
+			{
+				articleCategory = new ArticleCategory();
+				articleCategory.InjectFrom(viewModelArticleCategory);
+				articleCategory.ClientId = clientId;
+				articleCategory.DateCreated = DateTime.UtcNow;
+				articleCategory.DateLastUpdated = DateTime.UtcNow;
+				_articleCategoryRepository.Add(articleCategory);
+			}
 
 			var rawPinged = _articleCategoryRepository.FindBy(o => o.ArticleCategoryId == articleCategory.ArticleCategoryId);
 			var pinged = new ViewModelArticleCategory().InjectFrom(rawPinged) as ViewModelArticleCategory;
@@ -204,7 +236,7 @@ namespace Buncis.Services.Articles
 		{
 			return _urlEngine.GenerateUrl(articleId, articleTitle, DateTime.UtcNow);
 		}
-		
+
 		public IEnumerable<ViewModelArticleItem> GetRecentArticles(int clientId)
 		{
 			var raw = GetAvailableArticleItems(clientId);

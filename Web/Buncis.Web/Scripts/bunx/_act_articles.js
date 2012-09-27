@@ -4,6 +4,7 @@
 			"home": "home",
 			"edit/:query": "edit", 
 			"add": "add", 
+			"categories": "managecategories"
 		},
 		home: function() {
 			$('#homeSection').show();
@@ -17,6 +18,10 @@
 		add: function() {
 			$('#homeSection').hide();
 			$('#article-edit-section').show();
+		},
+		managecategories: function () {
+			$('#article-list-container').hide();
+			$('#category-management-container').show();
 		}
 	});
 	oModule.router = {};
@@ -140,6 +145,8 @@
 		},
 		save: function(event) {
 			event.preventDefault();
+			var editWebServiceUrl = '/webservices/articles.svc/BPUpdateArticle';	
+			var addWebServiceUrl = '/webservices/articles.svc/BPInsertArticle';	
 			var self = this;
 			var api = this.validators.data("validator");
 			var isValid = api.checkValidity();
@@ -148,6 +155,7 @@
 			}
 			var fMode = this.formMode;
 			var eModel = this.model;
+			var wsUrl = '';
 			
 			var selectedCategoryId = 0;
 			var selectedCategoryName = '';
@@ -156,32 +164,75 @@
 				selectedCategoryId = parseInt(selectedCategory.attr('data-categoryid'), 10);
 				selectedCategoryName = selectedCategory.val();
 			}
+			var articleTitle = this.$el.find('[id*="txtArticleTitle"]').val();
+			var articleTeaser = this.$el.find('[id*="txtArticleTeaser"]').val();
+			var articleUrl = this.$el.find('[id*="txtArticleUrl"]').text();
+			trace(articleUrl);
+			var articleContent = this.$el.find('[id*="txtArticleContent"]').val();
+			var articleCategoryId = selectedCategoryId;
+			var articleCategoryName = selectedCategoryName;
 			
-			eModel.set('articleTitle', this.$el.find('[id*="txtArticleTitle"]').val());
-			eModel.set('articleTeaser', this.$el.find('[id*="txtArticleTeaser"]').val());
-			eModel.set('articleUrl', this.$el.find('[id*="txtArticleUrl"]').text());
-			eModel.set('articleContent', this.$el.find('[id*="txtArticleContent"]').val());
-			//trace(selectedCategoryId);
-			//trace(selectedCategoryName);
-			eModel.set('articleCategoryId', selectedCategoryId);
-			eModel.set('articleCategoryName', selectedCategoryName);
-			
-			_articles.fn.saveItem(eModel, function(result) {
-				// code below: Show message
-				var msg = '';
-				eModel.set('articleId', result.ArticleId);
-				eModel.set('articleUrl', result.ArticleUrl);
-				if(fMode === 'edit') {
-					msg = 'Successfully edited article data';
-					self.close();
+			var sData = {
+				clientId: _elems.clientId,
+				article: {
+					ArticleId: eModel.get('articleId'),
+					ArticleTitle: articleTitle,
+					ArticleTeaser: articleTeaser,
+					ArticleUrl: articleUrl,
+					ArticleContent: articleContent,
+					DisplayDateCreated: '',
+					DisplayDateLastUpdated: '',
+					ArticleCategory: {
+						ArticleCategoryId: articleCategoryId,
+						ArticleCategoryName: articleCategoryName,
+						ArticleCategoryDescription: articleCategoryName
+					} 
 				}
-				else {
-					_articles.collection.add(eModel);
-					_articles.fn.renderListItemView(eModel);
-					msg = 'Successfully added new article';
-					self.close();            
+			};
+			var jData = JSON.stringify(sData);
+			// determine if edit/add
+			if(sData.article.ArticleId > 0) { 
+				wsUrl = editWebServiceUrl;
+			}
+			else {
+				wsUrl = addWebServiceUrl;
+			}
+			_helpers.blockBuncisContentBodyDefault();
+			$.ajax({
+				type: "POST",
+				url: wsUrl,
+				data: jData,
+				dataType: 'json',
+				contentType: 'text/json',
+				success: function (result) {
+					var data = result.d;
+					_helpers.unblockBuncisContentBodyDefault();
+					if (data.IsSuccess) {
+						// code below: Show message
+						var msg = '';
+						eModel.set('articleTitle', articleTitle);
+						eModel.set('articleTeaser', articleTeaser);
+						eModel.set('articleContent', articleContent);
+						eModel.set('articleCategoryId', selectedCategoryId);
+						eModel.set('articleCategoryName', selectedCategoryName);
+						eModel.set('articleId', data.ResponseObject.ArticleId);
+						eModel.set('articleUrl', data.ResponseObject.ArticleUrl);
+						if(fMode === 'edit') {
+							msg = 'Successfully edited article data';
+							self.close();
+						}
+						else {
+							_articles.collection.add(eModel);
+							_articles.fn.renderListItemView(eModel);
+							msg = 'Successfully added new article';
+							self.close();
+						}
+						globalShowMessages([msg]);
+					}
+				},
+				error: function () {
+					_helpers.unblockBuncisContentBodyDefault();
 				}
-				globalShowMessages([msg]);
 			});
 		},
 		close: function(event) {
@@ -304,8 +355,6 @@
 
 (function(oFn) {
 	var listWebServiceUrl = '/webservices/articles.svc/BPGetArticles?clientId=' + _elems.clientId;	
-	var editWebServiceUrl = '/webservices/articles.svc/BPUpdateArticle';	
-	var addWebServiceUrl = '/webservices/articles.svc/BPInsertArticle';	
 	var deleteWebServiceUrl = '/webservices/articles.svc/BPDeleteArticle';	
 	var listArticleCategoryUrl = '/webservices/articles.svc/BPGetArticleCategories?clientId=' + _elems.clientId;	
 	var addArticleCategoryUrl = '/webservices/articles.svc/BPInsertArticleCategory';
@@ -336,7 +385,7 @@
 				_articles.collection.add(itemModel);
 				_articles.fn.renderListItemView(itemModel);
 			}
-			getArticleCategories(function (articleCategories) {
+			_articles.fn.getArticleCategories(function (articleCategories) {
 				//trace(articleCategories);
 				var articleCategoryListModel = new _articles.ArticleCategoryListModel({
 					articleCategories: []
@@ -404,7 +453,7 @@
 		});
 	}
 	
-	function getArticleCategories(_callback) {
+	oFn.getArticleCategories = function(_callback) {
 		$.ajax({
 			type: "GET",
 			url: listArticleCategoryUrl,
@@ -419,8 +468,7 @@
 			error: function () {
 			}
 		});
-	}
-
+	};
 	oFn.prepareForm = function($view) {
 		var $model = $view.model;
 		var $target = $view.$el;
@@ -440,56 +488,6 @@
 			"color": true //Button to change color of font  
 		});	
 	};		
-	oFn.saveItem = function(oData, _callback) {
-		var sData = {
-			clientId: _elems.clientId,
-			article: {
-				ArticleId: oData.get('articleId'),
-				ArticleTitle: oData.get('articleTitle'),
-				ArticleTeaser: oData.get('articleTeaser'),
-				ArticleUrl: oData.get('articleUrl'),
-				ArticleContent: oData.get('articleContent'),
-				DisplayDateCreated: '',
-				DisplayDateLastUpdated: '',
-				ArticleCategory: {
-					ArticleCategoryId: oData.get('articleCategoryId'),
-					ArticleCategoryName: oData.get('articleCategoryName'),
-					ArticleCategoryDescription: oData.get('articleCategoryName')
-				} 
-			}
-		};
-		var jData = JSON.stringify(sData);
-		var wsUrl = '';
-		
-		// determine if edit/add				
-		if(sData.article.ArticleId > 0) { 
-			wsUrl = editWebServiceUrl;			
-		}
-		else {
-			wsUrl = addWebServiceUrl;
-		}
-
-		_helpers.blockBuncisContentBodyDefault();
-		$.ajax({
-			type: "POST",
-			url: wsUrl,
-			data: jData,
-			dataType: 'json',
-			contentType: 'text/json',
-			success: function (result) {
-				var data = result.d;
-				_helpers.unblockBuncisContentBodyDefault();
-				if (data.IsSuccess) {
-					if(_callback) {
-						_callback(data.ResponseObject);
-					}
-				}
-			},
-			error: function () {
-				_helpers.unblockBuncisContentBodyDefault();
-			}
-		});
-	};
 	oFn.deleteItem = function(deletedId, _callback) {
 		var data = {
 			clientId: -1,			

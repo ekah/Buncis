@@ -17,7 +17,7 @@
 					</a>
 				</div>
 				<div class="clearfix"></div>
-				<ul class="list-item-container" id="dailyBread-list-container"></ul>
+				<ul id="dailyBread-list-container" class="list-item-container"></ul>
 			</div>
 		</div>
 	</div>	

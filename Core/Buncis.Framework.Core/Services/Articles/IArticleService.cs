@@ -12,10 +12,9 @@ namespace Buncis.Framework.Core.Services.Articles
 		ValidationDictionary<ViewModelArticleItem> SaveArticleItem(int clientId, ViewModelArticleItem viewModelArticle);
 		IEnumerable<ViewModelArticleCategory> GetArticleCategories(int clientId);
 		ValidationDictionary<ViewModelArticleCategory> InsertArticleCategory(int clientId, ViewModelArticleCategory viewModelArticleCategory);
+		ValidationDictionary<ViewModelArticleCategory> UpdateArticleCategory(int clientId, ViewModelArticleCategory viewModelArticleCategory);
 		string GetArticleUrl(int articleId, string articleTitle);
-		
 		IEnumerable<ViewModelArticleItem> GetRecentArticles(int clientId);
-
 		IEnumerable<ViewModelArticleItem> GetAvailableArticleItems(int clientId, int categoryId);
 	}
 }

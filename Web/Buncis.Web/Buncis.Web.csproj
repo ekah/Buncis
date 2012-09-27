@@ -337,6 +337,7 @@
     <Content Include="sandbox\BackboneRouterTest.aspx" />
     <Content Include="sandbox\impress-try1.html" />
     <Content Include="sandbox\NewsSandbox.aspx" />
+    <Content Include="Scripts\bunx\_act_articles_category.js" />
     <Content Include="Scripts\bunx\_act_dailybread.js" />
     <Content Include="Scripts\bunx\backbone\backbone-min.js" />
     <Content Include="Scripts\bunx\backbone\backbone.js" />

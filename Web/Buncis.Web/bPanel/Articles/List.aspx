@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Buncis.Master" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="Buncis.Web.bPanel.Articles.List" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="contentPlaceholderHead" runat="server">
-	<script src="/Scripts/bunx/_act_articles.js" type="text/javascript"></script>	
+	<script src="/Scripts/bunx/_act_articles.js" type="text/javascript"></script>
+	<script src="/Scripts/bunx/_act_articles_category.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentPlaceholderMain" runat="server">
 	<div id="homeSection" class="row">
@@ -15,10 +16,14 @@
 					<a href="#" id="aAddArticle" class="btn btn-warning">
 						<i class="icon-plus"></i>&nbsp;<span>Add Article</span>
 					</a>
+					<a href="#" id="aManageCategories" class="btn btn-warning">
+						<i class="icon-th-list"></i>&nbsp;<span>Manage Article Categories</span>
+					</a>
 				</div>
 				<div class="clearfix"></div>
-				<ul class="list-item-container" id="article-list-container">
-								
+				<ul id="article-list-container" class="list-item-container">
+				</ul>
+				<ul id="category-management-container" class="row list-item-container" style="display: none;">
 				</ul>
 			</div>
 		</div>
@@ -26,6 +31,7 @@
 	
 	<div id="article-edit-section" class="row"></div>
 	<div id="article-delete-popup" class="popup-wrapper modal hide fade"></div>
+	<div id="article-category-edit-popup" class="popup-wrapper modal hide fade"></div>
 
 	<div style="display:none">
 		<script type="text/template" id="article-item-template">
@@ -143,6 +149,44 @@
 						</a>
 					</span>
 				</div>
+			</div>
+		</script>
+		
+		<script type="text/template" id="category-management-template">
+			<li class="span3 list-item" rel="{{id}}">
+				<span>
+					{{attributes.articleCategoryName}}
+				</span>
+				<a href="#" class="pull-right action delete-category">
+					<i class="icon-remove"></i>&nbsp;<span></span>
+				</a>
+				<a href="#" class="pull-right action edit-category">
+					<i class="icon-pencil"></i>&nbsp;<span></span>
+				</a>
+			</li>
+		</script>
+		
+		<script type="text/template" id="edit-category-template">
+			<div class="modal-header">
+				<h3>Modal header</h3>
+			</div>
+			<div class="modal-body popup-content-small">
+				<div class="form-item">
+					<label>Category Name:</label>
+					<input type="text" id="txtCategoryName" name="txtCategoryName" 
+						required="required" data-message="Category Name is required"
+						value="{{attributes.articleCategoryName}}" class="input-xlarge" />
+				</div>
+				<div class="form-item">
+					<label>Category Description:</label>
+					<input type="text" id="txtCategoryDescription" name="txtCategoryDescription" 
+						required="required" data-message="Category Description is required"
+						value="{{attributes.articleCategoryDescription}}" class="input-xlarge" />
+				</div>
+			</div>
+			<div class="buttonContainer modal-footer">
+				<a href="#" id="editcategory-save" class="btn btn-primary">Save</a>			    
+				<a href="#" id="editcategory-cancel" class="popup-button-close btn btn-inverse">Cancel</a>
 			</div>
 		</script>
 	</div>
