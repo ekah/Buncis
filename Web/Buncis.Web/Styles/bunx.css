@@ -52,6 +52,9 @@ dl {
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
+#loginInfo a {
+	float: right;	
+} 
 .error {
 	height: 1.5em;
 	margin-left: 15px;
@@ -156,7 +159,7 @@ li.list-item:hover {
 .menu-toggle {
 	height: auto;	
 	background-color: #f5f5f5;
-	border-radius: 4px 4px 4px 4px;
+	border-radius: 4px 4px 0px 0px;
 	text-align: center;
 	line-height: 30px;
 	font-size: 0.9em;	

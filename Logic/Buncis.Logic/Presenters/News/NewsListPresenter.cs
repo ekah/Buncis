@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Buncis.Logic.Views.News;
 using Buncis.Framework.Core.Services.News;
 using Buncis.Logic.CustomEventArgs;
@@ -23,7 +21,9 @@ namespace Buncis.Logic.Presenters.News
 		void view_GetNewsList(object sender, EventArgs e)
 		{
 			var ae = e as NewsListEventArgs;
-			var newsData = _newsService.GetPublishedNewsItem(ae.ClientId);
+			var newsData = ae.CategoryId > 0
+				? _newsService.GetAvailableNewsItems(ae.ClientId, ae.CategoryId)
+				: _newsService.GetPublishedNewsItem(ae.ClientId);
 			newsData = newsData.OrderByDescending(o => o.DatePublished).ToList();
 
 			View.Model.NewsItems = newsData;

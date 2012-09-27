@@ -14,24 +14,24 @@
 					<div class="teaser">
 						<%# Eval("NewsTeaser") %>
 					</div>
-					<div class="newsitem-footer">
+					<div class="item-footer">
 						<a href='<%# Eval("NewsUrl") %>' title="Read More">Read More</a>
 					</div>
 				</div>
 			</ItemTemplate>
 		</asp:Repeater>
-	<div>
+	</div>
 </div>
 
 <script type="text/javascript" src="/Scripts/jquery.masonry.min.js"></script>
 
 <script type="text/javascript">
-	(function($) {
+	(function ($) {
 		var $container = $('#newslist-container');
 		$container.masonry({
-			itemSelector : '.newslist-item',
+			itemSelector: '.newslist-item',
 			isAnimated: true
 		});
 		$(window).trigger("resize");
-	}(window.jQuery));
+	} (window.jQuery));
 </script>

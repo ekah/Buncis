@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Buncis.Logic.CustomEventArgs
+namespace Buncis.Web.Common.DynamicControls.Parameters.Articles
 {
-	public class ArticleListEventArgs : EventArgs
+	public class ArticleListParameter
 	{
-		public int ClientId { get; set; }
 		public int CategoryId { get; set; }
 	}
 }

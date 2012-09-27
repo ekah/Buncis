@@ -44,15 +44,15 @@
 				</div>
 			</div>
 
-			<div class="row section">
+			<%--<div class="row section">
 				<div class="twelvecol last aux-menu">
 					<span><a href="#">Signup</a></span>
 					<span><a href="#">Login</a></span>
 					<div class="clearfix"></div>
 				</div>
-			</div>
+			</div>--%>
 
-			<div class="row section">
+			<%--<div class="row section">
 				<div class="twelvecol last">
 					<div class="menu-container">
 						<ul class="menu">
@@ -63,7 +63,7 @@
 						</ul>
 					</div>
 				</div>
-			</div>
+			</div>--%>
 
 			<div class="row section">
 				<div class="twelvecol last">
@@ -106,20 +106,31 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="row section">
+				<div class="sixcol">
+					<div class="box quotes-container">
+						<%--<div class="box-title">Quotes</div>--%>
+						<div class="box-content quotes-box-content"><blockquote>The longest journey is the journey inwards. Of him who has chosen his destiny, Who has started upon his quest for the source of his being.</blockquote></div>
+					</div>	
+				</div>
+				<div class="sixcol last">
+					<div>
+						<div class="twelvecol last frontmenu"><a href="/DailyBread">Daily Bread</a></div>
+						<div class="twelvecol last frontmenu"><a href="/Articles">Articles</a></div>
+						<div class="twelvecol last frontmenu"><a href="/News">News</a></div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
 
 			<div class="row section">
-				<div class="eightcol">
+				<div class="twelvecol last">
 					<div class="box">
 						<div class="box-title">Daily Bread</div>
 						<div class="box-content"><asp:ContentPlaceHolder runat="server" ID="RowOne"></asp:ContentPlaceHolder></div>
 					</div>	
 				</div>
-				<div class="fourcol last">
-					<div class="box">
-						<div class="box-title">Quotes</div>
-						<div class="box-content quotes-box-content"><blockquote>The longest journey is the journey inwards. Of him who has chosen his destiny, Who has started upon his quest for the source of his being.</blockquote></div>
-					</div>	
-				</div>	
 			</div>
 			
 			<div class="row section">

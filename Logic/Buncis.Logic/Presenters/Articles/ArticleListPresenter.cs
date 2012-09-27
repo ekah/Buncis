@@ -16,14 +16,16 @@ namespace Buncis.Logic.Presenters.Articles
 			: base(view)
 		{
 			_articleService = articleService;
-			
+
 			view.GetArticleList += view_GetArticleList;
 		}
 
 		void view_GetArticleList(object sender, EventArgs e)
 		{
 			var ae = e as ArticleListEventArgs;
-			var data = _articleService.GetAvailableArticleItems(ae.ClientId);
+			var data = ae.CategoryId > 0
+				? _articleService.GetAvailableArticleItems(ae.ClientId, ae.CategoryId)
+				: _articleService.GetAvailableArticleItems(ae.ClientId);
 			data = data.OrderByDescending(o => o.DateCreated).ToList();
 
 			View.Model.ArticleItems = data;

@@ -16,9 +16,15 @@ namespace Buncis.Web.UserControls.Articles
 	[PresenterBinding(typeof(ArticleListPresenter), ViewType = typeof(IArticleListView))]
 	public partial class ArticleList : BaseLogicUserControl<ArticleListModel>, IArticleListView
 	{
+		public int CategoryId { get; set; }
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			GetArticleList(this, new ArticleListEventArgs { ClientId = CurrentProfile.ClientId });
+			GetArticleList(this, new ArticleListEventArgs
+									{
+										ClientId = CurrentProfile.ClientId,
+										CategoryId = CategoryId
+									});
 		}
 
 		#region Implementation of IBindableView<ArticleListModel>

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Buncis.Web.Common.DynamicControls.Controls.Articles;
+using Buncis.Web.Common.DynamicControls.Controls.News;
+using Buncis.Web.Common.DynamicControls.Controls.DailyBread;
 
 namespace Buncis.Web.Common.DynamicControls
 {
@@ -11,26 +14,14 @@ namespace Buncis.Web.Common.DynamicControls
 		public static void InitializeDynamicControls()
 		{
 			// todo: probably can change the key to guid
-			DynamicControls.Add(DynamicControlsLibrary.NEWS_LIST, new DynamicControl
-			{
-				ControlKey = "NewsList",
-				RenderTag = "<bun:NewsList runat=\"server\" ID=\"ucNewsList1\" />",
-				ControlPath = "~/UserControls/News/NewsList.ascx"
-			});
+			var newsListControl = new NewsListControl();
+			DynamicControls.Add(newsListControl.ControlKey, newsListControl);
 
-			DynamicControls.Add(DynamicControlsLibrary.ARTICLE_LIST, new DynamicControl
-			{
-				ControlKey = "ArticleList",
-				RenderTag = "<bun:ArticleList runat=\"server\" ID=\"ucArticleList1\" />",
-				ControlPath = "~/UserControls/Articles/ArticleList.ascx"
-			});
+			var articleListControl = new ArticleListControl();
+			DynamicControls.Add(articleListControl.ControlKey, articleListControl);
 
-			DynamicControls.Add(DynamicControlsLibrary.DAILYBREAD_LIST, new DynamicControl
-			{
-				ControlKey = "DailyBreadList",
-				RenderTag = "<bun:DailyBreadList runat=\"server\" ID=\"ucDailyBreadList1\" />",
-				ControlPath = "~/UserControls/DailyBread/DailyBreadList.ascx"
-			});
+			var dailyBreadListControl = new DailyBreadListControl();
+			DynamicControls.Add(dailyBreadListControl.ControlKey, dailyBreadListControl);
 		}
 	}
 }

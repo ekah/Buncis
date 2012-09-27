@@ -46,6 +46,24 @@ namespace Buncis.Services.News
 			return converted;
 		}
 
+		public IEnumerable<ViewModelNewsItem> GetAvailableNewsItems(int clientId, int categoryId)
+		{
+			var raw = _newsRepository
+				.FilterBy(o => !o.IsDeleted
+					&& o.ClientId == clientId
+					&& o.NewsCategory.NewsCategoryId == categoryId)
+				.ToList();
+
+			var converted = raw.Select(item =>
+			{
+				var viewModelNewsItem = new ViewModelNewsItem();
+				viewModelNewsItem.InjectFrom<CloneInjection>(item);
+				return viewModelNewsItem;
+			}).ToList();
+
+			return converted;
+		}
+
 		public ViewModelNewsItem GetNewsItem(int newsId)
 		{
 			var raw = _newsRepository.FindBy(o => !o.IsDeleted && o.NewsId == newsId);
@@ -206,14 +224,10 @@ namespace Buncis.Services.News
 			return _urlEngine.GenerateUrl(newsId, newsTitle, DateTime.UtcNow);
 		}
 
-		/// <summary>
-		/// Get Recent News, just get top 10 news
-		/// </summary>
-		/// <returns></returns>
 		public IEnumerable<ViewModelNewsItem> GetRecentNews(int clientId)
 		{
 			var raw = GetPublishedNewsItem(clientId);
-			raw = raw.OrderByDescending(o => o.DateCreated).Take(10).ToList();
+			raw = raw.OrderByDescending(o => o.DateCreated).Take(5).ToList();
 
 			var converted = raw.Select(item =>
 			{

@@ -13,12 +13,9 @@ namespace Buncis.Framework.Core.Services.Articles
 		IEnumerable<ViewModelArticleCategory> GetArticleCategories(int clientId);
 		ValidationDictionary<ViewModelArticleCategory> InsertArticleCategory(int clientId, ViewModelArticleCategory viewModelArticleCategory);
 		string GetArticleUrl(int articleId, string articleTitle);
-
-		/// <summary>
-		/// Get recent Articles, 10 latest articles
-		/// </summary>
-		/// <param name="clientId"></param>
-		/// <returns></returns>
+		
 		IEnumerable<ViewModelArticleItem> GetRecentArticles(int clientId);
+
+		IEnumerable<ViewModelArticleItem> GetAvailableArticleItems(int clientId, int categoryId);
 	}
 }

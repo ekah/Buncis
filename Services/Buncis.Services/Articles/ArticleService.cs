@@ -42,6 +42,24 @@ namespace Buncis.Services.Articles
 			return converted;
 		}
 
+		public IEnumerable<ViewModelArticleItem> GetAvailableArticleItems(int clientId, int categoryId)
+		{
+			var raw = _articleItemRepository
+				.FilterBy(o => !o.IsDeleted
+					&& o.ClientId == clientId
+					&& o.ArticleCategory.ArticleCategoryId == categoryId)
+				.ToList();
+
+			var converted = raw.Select(item =>
+			{
+				var viewModelArticleItem = new ViewModelArticleItem();
+				viewModelArticleItem.InjectFrom<CloneInjection>(item);
+				return viewModelArticleItem;
+			}).ToList();
+
+			return converted;
+		}
+
 		public ViewModelArticleItem GetArticleItem(int articleId)
 		{
 			var raw = _articleItemRepository.FindBy(o => !o.IsDeleted && o.ArticleId == articleId);
@@ -186,16 +204,11 @@ namespace Buncis.Services.Articles
 		{
 			return _urlEngine.GenerateUrl(articleId, articleTitle, DateTime.UtcNow);
 		}
-
-		/// <summary>
-		/// Get recent Articles, just get 10 latest
-		/// </summary>
-		/// <param name="clientId"></param>
-		/// <returns></returns>
+		
 		public IEnumerable<ViewModelArticleItem> GetRecentArticles(int clientId)
 		{
 			var raw = GetAvailableArticleItems(clientId);
-			raw = raw.OrderByDescending(o => o.DateCreated).Take(10).ToList();
+			raw = raw.OrderByDescending(o => o.DateCreated).Take(5).ToList();
 
 			var converted = raw.Select(item =>
 			{
@@ -205,6 +218,6 @@ namespace Buncis.Services.Articles
 			}).ToList();
 
 			return converted;
-		} 
+		}
 	}
 }

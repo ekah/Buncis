@@ -101,6 +101,12 @@
     <Compile Include="DataTransferObject\DtoBuncisNews.cs" />
     <Compile Include="DataTransferObject\DtoBuncisPage.cs" />
     <Compile Include="DataTransferObject\DtoBuncisNewsCategory.cs" />
+    <Compile Include="DynamicControls\Controls\Articles\ArticleListControl.cs" />
+    <Compile Include="DynamicControls\Controls\DailyBread\DailyBreadListControl.cs" />
+    <Compile Include="DynamicControls\Controls\News\NewsListControl.cs" />
+    <Compile Include="DynamicControls\Parameters\Articles\ArticleListParameter.cs" />
+    <Compile Include="DynamicControls\Parameters\DailyBread\DailyBreadListParameter.cs" />
+    <Compile Include="DynamicControls\Parameters\News\NewsListParameter.cs" />
     <Compile Include="Exceptions\PageNotFoundException.cs" />
     <Compile Include="Membership\IWebMembership.cs" />
     <Compile Include="Membership\IWebUserProfile.cs" />
@@ -112,7 +118,6 @@
     <Compile Include="WebConstants.cs" />
     <Compile Include="DynamicControls\DynamicControlsContainer.cs" />
     <Compile Include="DynamicControls\DynamicControl.cs" />
-    <Compile Include="DynamicControls\DynamicControlsLibrary.cs" />
     <Compile Include="DynamicControls\IDynamicControlsResolver.cs" />
     <Compile Include="DynamicControls\DynamicControlsResolver.cs" />
     <Compile Include="Extensions\DropDownListExtension.cs" />

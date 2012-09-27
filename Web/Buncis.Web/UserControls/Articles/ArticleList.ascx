@@ -14,7 +14,7 @@
 					<div class="teaser">
 						<%# Eval("ArticleTeaser") %>
 					</div>
-					<div class="newsitem-footer">
+					<div class="item-footer">
 						<a href='<%# Eval("ArticleUrl") %>' title="Read More">Read More</a>
 					</div>
 				</div>

@@ -6,15 +6,22 @@ using Buncis.Logic.Presenters.News;
 using Buncis.Logic.Views.News;
 using WebFormsMvp;
 using Buncis.Logic.Models.News;
+using Buncis.Web.Common.DynamicControls.Controls.News;
 
 namespace Buncis.Web.UserControls.News
 {
 	[PresenterBinding(typeof(NewsListPresenter), ViewType = typeof(INewsListView))]
 	public partial class NewsList : BaseLogicUserControl<NewsListModel>, INewsListView
 	{
+		public int CategoryId { get; set; }
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			GetNewsList(this, new NewsListEventArgs { ClientId = CurrentProfile.ClientId });
+			GetNewsList(this, new NewsListEventArgs
+								{
+									ClientId = CurrentProfile.ClientId,
+									CategoryId = CategoryId
+								});
 		}
 
 		#region Implementation of IBindableView<NewsListModel>

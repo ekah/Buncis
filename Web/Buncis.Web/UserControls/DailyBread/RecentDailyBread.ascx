@@ -4,14 +4,14 @@
 	<asp:Repeater runat="server" ID="rptRecentDailyBread">
 		<ItemTemplate>
 			<div class="recentdailybread-item">
-				<div class="row">
-					<div class="recentdailybread-dailybreadbible threecol last">
+				<div class="">
+					<div class="recentdailybread-dailybreadbible fourcol last">
 						<div class="book"><%# Eval("DailyBreadBook")%></div>
 						<div class="chapterverse">
 							<%# string.Format("{0}:{1}-{2}", Eval("DailyBreadBookChapter"), Eval("DailyBreadBookVerse1"), Eval("DailyBreadBookVerse2"))%>
 						</div>
 					</div>
-					<div class="recentdailybread-content fivecol last">
+					<div class="recentdailybread-content eightcol last">
 						<div class="recentdailybread-dailybreadtitle">
 							<a href='<%# Eval("DailyBreadUrl") %>'><%# Eval("DailyBreadTitle")%></a>
 						</div>
@@ -21,6 +21,7 @@
 							<a href='<%# Eval("DailyBreadUrl") %>'>Read More</a>
 						</div>
 					</div>
+					<div class="clearfix"></div>
 				</div>
 			</div>
 		</ItemTemplate>

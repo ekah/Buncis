@@ -88,11 +88,13 @@ blockquote:after { content: close-quote; }
 .section {
 	margin-top: 10px !important;
 }
+/******* recent daily bread ********/
 .recentdailybread .recentdailybread-item {
 	margin-bottom: 20px;
 }
 .recentdailybread .recentdailybread-dailybreadbible {
 	margin-right: 10px;
+	text-align: center;
 }
 .recentdailybread .recentdailybread-dailybreadtitle {
 	font-size: 1.4em;	
@@ -112,15 +114,17 @@ blockquote:after { content: close-quote; }
 .recentdailybread .recentdailybread-footer a {
 	display: block;
 	padding: 5px;
+	margin-top: 5px;
 	background-color: #466ab4;
 }
 .recentdailybread-dailybreadbible .book {
-	font-size: 1.5em;
-	font-weight: 600;
+	font-size: 2em;	
 }
 .recentdailybread-dailybreadbible .chapterverse {
 	font-size: 2em;
 }
+/******* end recent daily bread ********/
+/******* recent articles ********/
 .recentarticles .recentarticles-item {
 	margin-bottom: 20px;
 }
@@ -140,10 +144,13 @@ blockquote:after { content: close-quote; }
 	font-size: 0.9em;
 }
 .recentarticles .recentarticles-footer a {
+	margin-top: 5px;
 	display: block;
 	padding: 5px;
 	background-color: #466ab4;	
 }
+/******* end recent articles ********/
+/******* recent news ********/
 .recentnews .recentnews-item {
 	margin-bottom: 20px;
 }
@@ -164,9 +171,11 @@ blockquote:after { content: close-quote; }
 }
 .recentnews .recentnews-footer a {
 	display: block;
+	margin-top: 5px;
 	padding: 5px;
 	background-color: #466ab4;	
 }
+/******* end recent news ********/
 .footer {
 	background-color: #1859a9;
 	padding: 20px;	
@@ -193,11 +202,11 @@ ul.sideMenu li a {
 }
 ul.sideMenu li a span {
 	display: block;	
-	font-size: 1.5em;
+	font-size: 1.8em;
 	line-height: 1.5em;
 }
 ul.sideMenu li a span.menuDesc {
-	font-size: 0.9em;
+	font-size: 1.2em;
 	line-height: 1.5em;
 }
 ul.sideMenu li a:hover {
@@ -229,27 +238,28 @@ ul.sideMenu li a:hover {
 	padding:5px !important;
 }
 #newslist-container .newslist-item {
-	margin: 2px 2px !important;
+	background-color: rgba(7,26,63,1);
+	margin: 2px !important;
 	float: left;
-	width: 270px;
+	width: 250px;
+	padding: 10px;
 }
 #newslist-container .newslist-item .title {	
 	font-size: 1.4em;
 }
-#newslist-container .newslist-item .title,
 #newslist-container .newslist-item .teaser, 
+#newslist-container .newslist-item .item-footer,
 #newslist-container .newslist-item .info {
-	background-color: rgba(7,26,63,1);
+	float:right;
 }
-#newslist-container .newslist-item .title,
-#newslist-container .newslist-item .teaser, 
-#newslist-container .newslist-item .newsitem-footer,
-#newslist-container .newslist-item .info {
+#newslist-container .newslist-item .item-footer {
+	margin-top: 5px;	
+}
+#newslist-container .newslist-item .item-footer	a {
+	display: block;
 	padding: 5px;
-}
-#newslist-container .newslist-item .newsitem-footer	{
-	text-align: right;
-	background-color: rgba(88,69,55,1);
+	background-color: #466ab4;	
+	margin: 5px 0px;
 }
 /******* End News List *********/
 /******* article list *********/
@@ -257,27 +267,28 @@ ul.sideMenu li a:hover {
 	padding:5px !important;
 }
 #articlelist-container .articlelist-item {
+	background-color: rgba(7,26,63,1);
 	margin: 2px !important;
 	float: left;
-	width: 270px;
+	width: 250px;
+	padding: 10px;
 }
 #articlelist-container .articlelist-item .title {
-	font-size: 1.5em;
+	font-size: 1.4em;
 }
-#articlelist-container .articlelist-item .title,
-#articlelist-container .articlelist-item .teaser, 
-#articlelist-container .articlelist-item .info {
-	background-color: rgba(7,26,63,1);
+#articlelist-container .articlelist-item .info,
+#articlelist-container .articlelist-item .teaser,
+#articlelist-container .articlelist-item .item-footer {
+	margin-top: 5px;	
 }
-#articlelist-container .articlelist-item .title,
-#articlelist-container .articlelist-item .teaser, 
-#articlelist-container .articlelist-item .newsitem-footer,
-#articlelist-container .articlelist-item .info {
+#articlelist-container .articlelist-item .item-footer {
+	float:right;
+}
+#articlelist-container .articlelist-item .item-footer a {	
+	display: block;
 	padding: 5px;
-}
-#articlelist-container .articlelist-item .newsitem-footer {
-	text-align: right;
-	background-color: #ae290a;
+	background-color: #466ab4;
+	margin: 5px 0px;
 }
 /******* end article list *********/
 /******** daily bread list **********/
@@ -287,24 +298,34 @@ ul.sideMenu li a:hover {
 #dailybreadlist-container .dailybreadlist-item {
 	margin: 2px !important;
 	float: left;
-	width: 270px;
-}
-#dailybreadlist-container .dailybreadlist-item .title {
-	font-size: 1.5em;
-}
-#dailybreadlist-container .dailybreadlist-item .title,
-#dailybreadlist-container .dailybreadlist-item .teaser, 
-#dailybreadlist-container .dailybreadlist-item .info {
+	width: 250px;
+	padding: 10px;
 	background-color: rgba(7,26,63,1);
 }
-#dailybreadlist-container .dailybreadlist-item .title,
-#dailybreadlist-container .dailybreadlist-item .teaser, 
-#dailybreadlist-container .dailybreadlist-item .newsitem-footer,
-#dailybreadlist-container .dailybreadlist-item .info {
-	padding: 5px;
+#dailybreadlist-container .dailybreadlist-item .title {
+	font-size: 1.4em;
 }
-#dailybreadlist-container .dailybreadlist-item .newsitem-footer	{
-	text-align: right;
-	background-color: #ef8223;
+#dailybreadlist-container .dailybreadlist-item .teaser, 
+#dailybreadlist-container .dailybreadlist-item .item-footer,
+#dailybreadlist-container .dailybreadlist-item .info {
+	margin-top: 5px;
+}
+#dailybreadlist-container .dailybreadlist-item .item-footer	{
+	float: right;
+}
+#dailybreadlist-container .dailybreadlist-item .item-footer a {
+	display: block;
+	padding: 5px;
+	background-color: #466ab4;
+	margin: 5px 0px;
 }
 /******** end daily bread list **********/
+.frontmenu {
+	padding: 15px 20px;
+	background-color: #22598f;
+	margin: 2px;
+	font-size: 2em;
+}
+.quotes-container {
+	font-size: 1.3em;
+}
