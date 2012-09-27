@@ -91,6 +91,9 @@ blockquote:after { content: close-quote; }
 .recentdailybread .recentdailybread-item {
 	margin-bottom: 20px;
 }
+.recentdailybread .recentdailybread-dailybreadbible {
+	margin-right: 10px;
+}
 .recentdailybread .recentdailybread-dailybreadtitle {
 	font-size: 1.4em;	
 	margin-bottom: 5px;
@@ -221,15 +224,22 @@ ul.sideMenu li a:hover {
 	padding: 0px;
 	margin: 0px 0px 5px 0px;
 }
-#newslist-container .newslist-item {
-	margin: 15px 10px !important;
-	border: solid 1px rgba(240,232,229,1);
-	float: left;
-	/*width: 200px;*/
+/******* News List *********/
+.newslist-wrapper {
+	padding:5px !important;
 }
-#newslist-container .newslist-item .title {
+#newslist-container .newslist-item {
+	margin: 2px 2px !important;
+	float: left;
+	width: 270px;
+}
+#newslist-container .newslist-item .title {	
+	font-size: 1.4em;
+}
+#newslist-container .newslist-item .title,
+#newslist-container .newslist-item .teaser, 
+#newslist-container .newslist-item .info {
 	background-color: rgba(7,26,63,1);
-	font-size: 1.2em;
 }
 #newslist-container .newslist-item .title,
 #newslist-container .newslist-item .teaser, 
@@ -237,22 +247,27 @@ ul.sideMenu li a:hover {
 #newslist-container .newslist-item .info {
 	padding: 5px;
 }
-#newslist-container .newslist-item .info {
-	background-color: rgba(50,51,69,1);
-}
 #newslist-container .newslist-item .newsitem-footer	{
 	text-align: right;
 	background-color: rgba(88,69,55,1);
 }
+/******* End News List *********/
+/******* article list *********/
+.articlelist-wrapper {
+	padding:5px !important;
+}
 #articlelist-container .articlelist-item {
-	margin: 15px 10px !important;
-	border: solid 1px rgba(240,232,229,1);
+	margin: 2px !important;
 	float: left;
-	width: 280px;
+	width: 270px;
 }
 #articlelist-container .articlelist-item .title {
+	font-size: 1.5em;
+}
+#articlelist-container .articlelist-item .title,
+#articlelist-container .articlelist-item .teaser, 
+#articlelist-container .articlelist-item .info {
 	background-color: rgba(7,26,63,1);
-	font-size: 1.2em;
 }
 #articlelist-container .articlelist-item .title,
 #articlelist-container .articlelist-item .teaser, 
@@ -260,22 +275,27 @@ ul.sideMenu li a:hover {
 #articlelist-container .articlelist-item .info {
 	padding: 5px;
 }
-#articlelist-container .articlelist-item .info {
-	background-color: rgba(50,51,69,1);
-}
 #articlelist-container .articlelist-item .newsitem-footer {
 	text-align: right;
 	background-color: #ae290a;
 }
+/******* end article list *********/
+/******** daily bread list **********/
+.dailybreadlist-wrapper {
+	padding:5px !important;
+}
 #dailybreadlist-container .dailybreadlist-item {
-	margin: 15px 10px !important;
-	border: solid 1px rgba(240,232,229,1);
+	margin: 2px !important;
 	float: left;
-	width: 430px;
+	width: 270px;
 }
 #dailybreadlist-container .dailybreadlist-item .title {
+	font-size: 1.5em;
+}
+#dailybreadlist-container .dailybreadlist-item .title,
+#dailybreadlist-container .dailybreadlist-item .teaser, 
+#dailybreadlist-container .dailybreadlist-item .info {
 	background-color: rgba(7,26,63,1);
-	font-size: 1.2em;
 }
 #dailybreadlist-container .dailybreadlist-item .title,
 #dailybreadlist-container .dailybreadlist-item .teaser, 
@@ -283,10 +303,8 @@ ul.sideMenu li a:hover {
 #dailybreadlist-container .dailybreadlist-item .info {
 	padding: 5px;
 }
-#dailybreadlist-container .dailybreadlist-item .info {
-	background-color: rgba(50,51,69,1);
-}
 #dailybreadlist-container .dailybreadlist-item .newsitem-footer	{
 	text-align: right;
 	background-color: #ef8223;
 }
+/******** end daily bread list **********/

@@ -45,8 +45,7 @@
 			</div>
 
 			<div class="row section">
-				<div class="tencol">&nbsp;</div>
-				<div class="twocol last aux-menu">
+				<div class="twelvecol last aux-menu">
 					<span><a href="#">Signup</a></span>
 					<span><a href="#">Login</a></span>
 					<div class="clearfix"></div>
@@ -57,12 +56,10 @@
 				<div class="twelvecol last">
 					<div class="menu-container">
 						<ul class="menu">
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Daily Bread</a></li>
-							<li><a href="#">Articles</a></li>
-							<li><a href="#">News</a></li>
-							<li><a href="#">Events</a></li>
-							<li><a href="#">About Us</a></li>
+							<li><a href="/">Home</a></li>
+							<li><a href="/DailyBread">Daily Bread</a></li>
+							<li><a href="/Articles">Articles</a></li>
+							<li><a href="/News">News</a></li>
 						</ul>
 					</div>
 				</div>
@@ -139,35 +136,6 @@
 					</div>
 				</div>
 			</div>
-
-			<%--<div class="row section">
-				<div class="twelvecol">
-					<div class="alpha10 round5border">
-						<div class="add-nav frame-inside round5">
-							<div class="frame-title alpha10">Browse More</div>
-							<div class="big-icon twocol">
-								<a href="#">
-									<img src="/images/custom/announcements_pic.png" />
-									<div>Announcements</div>
-								</a>
-							</div>
-							<div class="big-icon twocol">
-								<a href="#">
-									<img src="/images/custom/schedule_pic.png" />
-									<div>Schedules</div>
-								</a>
-							</div>
-							<div class="big-icon twocol">
-								<a href="#">
-									<img src="/images/custom/community_pic.png" />
-									<div>Communities</div>
-								</a>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-					</div>
-				</div>
-			</div>--%>
 
 			<div class="row section">
 				<div class="twelvecol footer last">

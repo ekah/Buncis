@@ -347,6 +347,9 @@
     <Content Include="Scripts\bunx\_act_news.js" />
     <Content Include="Scripts\impress.js" />
     <Content Include="Scripts\jquery-ui-1.8.23.custom.min.js" />
+    <Content Include="Scripts\jquery.isotope.js" />
+    <Content Include="Scripts\jquery.isotope.min.js" />
+    <Content Include="Scripts\jquery.masonry.js" />
     <Content Include="Scripts\jquery.masonry.min.js" />
     <Content Include="Scripts\modules\jquery.color.js" />
     <Content Include="Scripts\json2.js" />

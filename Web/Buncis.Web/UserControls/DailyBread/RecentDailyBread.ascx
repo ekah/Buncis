@@ -5,15 +5,13 @@
 		<ItemTemplate>
 			<div class="recentdailybread-item">
 				<div class="row">
-					<div class="threecol">
-						<div class="recentdailybread-dailybreadbible">
-							<div class="book"><%# Eval("DailyBreadBook")%></div>
-							<div class="chapterverse">
-								<%# string.Format("{0}:{1}-{2}", Eval("DailyBreadBookChapter"), Eval("DailyBreadBookVerse1"), Eval("DailyBreadBookVerse2"))%>
-							</div>
+					<div class="recentdailybread-dailybreadbible threecol last">
+						<div class="book"><%# Eval("DailyBreadBook")%></div>
+						<div class="chapterverse">
+							<%# string.Format("{0}:{1}-{2}", Eval("DailyBreadBookChapter"), Eval("DailyBreadBookVerse1"), Eval("DailyBreadBookVerse2"))%>
 						</div>
 					</div>
-					<div class="sixcol last">
+					<div class="recentdailybread-content fivecol last">
 						<div class="recentdailybread-dailybreadtitle">
 							<a href='<%# Eval("DailyBreadUrl") %>'><%# Eval("DailyBreadTitle")%></a>
 						</div>
@@ -22,7 +20,6 @@
 						<div class="recentdailybread-footer">
 							<a href='<%# Eval("DailyBreadUrl") %>'>Read More</a>
 						</div>
-						<div class="clearfix"></div>		
 					</div>
 				</div>
 			</div>

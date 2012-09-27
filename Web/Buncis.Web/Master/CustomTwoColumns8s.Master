@@ -39,12 +39,10 @@
 				<div class="twelvecol last">
 					<div class="menu-container">
 						<ul class="menu">
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Daily Bread</a></li>
-							<li><a href="#">Articles</a></li>
-							<li><a href="#">News</a></li>
-							<li><a href="#">Events</a></li>
-							<li><a href="#">About Us</a></li>
+							<li><a href="/">Home</a></li>
+							<li><a href="/DailyBread">Daily Bread</a></li>
+							<li><a href="/Articles">Articles</a></li>
+							<li><a href="/News">News</a></li>
 						</ul>
 					</div>
 				</div>
