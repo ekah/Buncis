@@ -126,19 +126,20 @@
 				</div>
 			</div>--%>
 
-			<div class="row section">
+			<%--<div class="row section">
 				<div class="twelvecol last">
 					<div class="box">
 						<div class="box-title">Daily Bread</div>
 						<div class="box-content"><asp:ContentPlaceHolder runat="server" ID="RowOne"></asp:ContentPlaceHolder></div>
 					</div>	
 				</div>
-			</div>
+			</div>--%>
 			
 			<div class="row section">
 				<div class="sixcol">
 					<div class="box">
-						<div class="box-title">Latest News</div>
+						<%--<div class="box-title">Latest News</div>--%>
+						<div class="box-title">Daily Bread</div>
 						<div class="box-content"><asp:ContentPlaceHolder runat="server" ID="RowTwoLeftSection"></asp:ContentPlaceHolder></div>
 					</div>
 				</div>

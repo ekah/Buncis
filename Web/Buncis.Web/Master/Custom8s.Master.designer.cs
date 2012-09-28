@@ -58,15 +58,6 @@ namespace Buncis.Web.Master {
         protected global::Buncis.Web.UserControls.Component.PageMenu pageMenu1;
         
         /// <summary>
-        /// RowOne control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder RowOne;
-        
-        /// <summary>
         /// RowTwoLeftSection control.
         /// </summary>
         /// <remarks>

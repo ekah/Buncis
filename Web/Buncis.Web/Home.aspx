@@ -8,11 +8,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainPlaceHolder" runat="server">
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="RowOne" runat="server">
+<%--<asp:Content ID="Content3" ContentPlaceHolderID="RowOne" runat="server">
 	<bun:RecentDailyBread runat="server" ID="recentDailyBread" />
-</asp:Content>
+</asp:Content>--%>
 <asp:Content ID="Content5" ContentPlaceHolderID="RowTwoLeftSection" runat="server">
-	<bun:RecentNews runat="server" ID="recentNews" />
+	<%--<bun:RecentNews runat="server" ID="recentNews" />--%>
+	<bun:RecentDailyBread runat="server" ID="recentDailyBread" />
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="RowTwoRightSection" runat="server">
 	<bun:RecentArticles runat="server" ID="recentArticles" />	

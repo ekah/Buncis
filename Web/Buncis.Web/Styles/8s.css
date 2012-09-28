@@ -96,6 +96,11 @@ blockquote:after { content: close-quote; }
 	margin-right: 10px;
 	text-align: center;
 }
+.recentdailybread .recentdailybread-dailybreadbible2 {
+	font-size: 1.2em;
+	font-weight: bolder;
+	margin-top: 10px; 
+}
 .recentdailybread .recentdailybread-dailybreadtitle {
 	font-size: 1.4em;	
 	margin-bottom: 5px;
@@ -118,10 +123,10 @@ blockquote:after { content: close-quote; }
 	background-color: #466ab4;
 }
 .recentdailybread-dailybreadbible .book {
-	font-size: 2em;	
+	font-size: 1.5em;	
 }
 .recentdailybread-dailybreadbible .chapterverse {
-	font-size: 2em;
+	font-size: 1.5em;
 }
 /******* end recent daily bread ********/
 /******* recent articles ********/

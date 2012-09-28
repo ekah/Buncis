@@ -22,15 +22,6 @@ namespace Buncis.Web {
         protected global::Buncis.Web.UserControls.DailyBread.RecentDailyBread recentDailyBread;
         
         /// <summary>
-        /// recentNews control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Buncis.Web.UserControls.News.RecentNews recentNews;
-        
-        /// <summary>
         /// recentArticles control.
         /// </summary>
         /// <remarks>

@@ -8,7 +8,7 @@
 				<li><a href="/">Home</a></li>
 				<li><a href="/DailyBread">Daily Bread</a></li>
 				<li><a href="/Articles">Articles</a></li>
-				<li><a href="/News">News</a></li>
+				<%--<li><a href="/News">News</a></li>--%>
 			</ul>
 		</div>
 	</div>
