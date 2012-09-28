@@ -208,7 +208,8 @@ namespace Buncis.Services.News
 			var existingWithSameName = _newsCategoryRepository
 				.FilterBy(o => o.NewsCategoryName.ToLower() == viewModelNewsCategory.NewsCategoryName.ToLower()
 					&& o.ClientId == clientId
-					&& !o.IsDeleted);
+					&& !o.IsDeleted)
+				.ToList();
 
 			if (existingWithSameName.Any())
 			{
@@ -224,7 +225,7 @@ namespace Buncis.Services.News
 			}
 
 			NewsCategory newsCategory;
-			if (viewModelNewsCategory.NewsCategoryId >= 0)
+			if (viewModelNewsCategory.NewsCategoryId > 0)
 			{
 				newsCategory = _newsCategoryRepository.FindBy(o => o.NewsCategoryId == viewModelNewsCategory.NewsCategoryId);
 				var dateCreated = newsCategory.DateCreated;

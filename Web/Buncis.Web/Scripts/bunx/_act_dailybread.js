@@ -1,5 +1,5 @@
 ﻿(function (oModule) {
-	var router = {};
+	//oModule.router = {};
 	oModule._elems = {
 		formContainer: '#edit-section',
 		deletePopup: '#delete-popup',
@@ -10,25 +10,25 @@
 		itemTemplate: '#item-template',
 		itemContainer: '#dailyBread-list-container'
 	};
-	oModule.Router = Backbone.Router.extend({
-		routes: {
-			"home": "home",
-			"edit/:query": "edit", 
-			"add": "add", 
-		},
-		home: function() {
-			$('#homeSection').show();
-			$('#edit-section').hide();
-		},
-		edit: function(query) {
-			$('#homeSection').hide();
-			$('#edit-section').show();
-		},
-		add: function() {
-			$('#homeSection').hide();
-			$('#edit-section').show();
-		}
-	});
+//	oModule.Router = Backbone.Router.extend({
+//		routes: {
+//			"home": "home",
+//			"edit/:query": "edit", 
+//			"add": "add", 
+//		},
+//		home: function() {
+//			$('#homeSection').show();
+//			$('#edit-section').hide();
+//		},
+//		edit: function(query) {
+//			$('#homeSection').hide();
+//			$('#edit-section').show();
+//		},
+//		add: function() {
+//			$('#homeSection').hide();
+//			$('#edit-section').show();
+//		}
+//	});
 	oModule.collection = {};
 	oModule.CollectionModel = Backbone.Collection.extend({
 		model: oModule.ItemModel,
@@ -75,7 +75,10 @@
 		},
 		editItem: function(event) {
 			event.preventDefault();
-			_dailyBread.router.navigate("edit/" + this.model.id, {trigger: true});
+			
+			//_dailyBread.router.navigate("edit/" + this.model.id, {trigger: true});
+			$('#homeSection').hide();
+			$('#edit-section').show();
 
 			var editView = new _dailyBread.FormView({
 				el: $(_dailyBread._elems.formContainer),
@@ -171,7 +174,11 @@
 		close: function(event) {
 			this.undelegateEvents();
 			$(this.el).empty();
-			_dailyBread.router.navigate("home", {trigger: true});
+			
+			//_dailyBread.router.navigate("home", {trigger: true});
+			$('#homeSection').show();
+			$('#edit-section').hide();
+
 			oModule.fn.animateItem(this.model);
 		},
 		updateUrl: function (event) {
@@ -247,7 +254,11 @@
 				dailyBreadBookVerse2: 0,
 				dailyBreadBookContent: ''
 			});
-			_dailyBread.router.navigate("add", {trigger: true});
+			
+			//_dailyBread.router.navigate("add", {trigger: true});
+			$('#homeSection').hide();
+			$('#edit-section').show();
+			
 			var addView = new _dailyBread.FormView({
 				el: $(_dailyBread._elems.formContainer),
 				model: defaultItem
@@ -444,11 +455,13 @@
 		window._helpers.animateRow($target);
 	};	
 	oFn.init = function () {
-		_dailyBread.router = new _dailyBread.Router();
+		//_dailyBread.router = new _dailyBread.Router();
 		_dailyBread.fn.loadData();
 		_dailyBread.fn.setupEvents();	
-		Backbone.history.start();
-		_dailyBread.router.navigate("home", {trigger: true});
+		//Backbone.history.start();
+		//_dailyBread.router.navigate("home", {trigger: true});
+		$('#homeSection').show();
+		$('#edit-section').hide();
 	};
 }(window._dailyBread.fn = window._dailyBread.fn || {}));
 

@@ -46,29 +46,29 @@
 		IsHomePage: false,
 	};
 	
-	var pageRouter = {};
-	var PagesRouter = Backbone.Router.extend({
-		routes: {
-			"home": "home",
-			"edit/:query": "edit", 
-			"add": "add", 
-		},
-		home: function() {
-			$('#homeSection').show();
-			$('#form-page-popup').hide();
-		},
-		edit: function(query) {
-			var pageId = query;
-			$('#homeSection').hide();
-			$('#form-page-popup').show();
-			initAddOrEditSection('edit', pageId);
-		},
-		add: function() {
-			$('#homeSection').hide();
-			$('#form-page-popup').show();
-			initAddOrEditSection('add');
-		}
-	});
+	//var pageRouter = {};
+//	var PagesRouter = Backbone.Router.extend({
+//		routes: {
+//			"home": "home",
+//			"edit/:query": "edit", 
+//			"add": "add", 
+//		},
+//		home: function() {
+//			$('#homeSection').show();
+//			$('#form-page-popup').hide();
+//		},
+//		edit: function(query) {
+//			var pageId = query;
+//			$('#homeSection').hide();
+//			$('#form-page-popup').show();
+//			initAddOrEditSection('edit', pageId);
+//		},
+//		add: function() {
+//			$('#homeSection').hide();
+//			$('#form-page-popup').show();
+//			initAddOrEditSection('add');
+//		}
+//	});
 
 	function getPages(callback) {
 		$.ajax({
@@ -197,7 +197,9 @@
 						}
 						globalShowMessages([msg]);
 						
-						pageRouter.navigate("home", {trigger: true});
+						//pageRouter.navigate("home", {trigger: true});
+						$('#homeSection').show();
+						$('#form-page-popup').hide();
 						
 						if(mode === 'add') {
 							var added = pages.pageTable.fnAddDataAndDisplay(result.d.ResponseObject);
@@ -423,7 +425,10 @@
 	function setupEvents() {
 		$(pages._elems.btnAddPage).click(function (evt) {
 			evt.preventDefault();
-			pageRouter.navigate("add", {trigger: true});
+			//pageRouter.navigate("add", {trigger: true});
+			$('#homeSection').hide();
+			$('#form-page-popup').show();
+			initAddOrEditSection('add');
 		});
 		
 		$(document).delegate(pages._elems.chkIsHomePage, 'click', function() {
@@ -442,7 +447,10 @@
 			evt.preventDefault();
 			var $self = $(this);
 			var pageId = $self.attr('rel');
-			pageRouter.navigate("edit/" + pageId, {trigger: true});
+			//pageRouter.navigate("edit/" + pageId, {trigger: true});
+			$('#homeSection').hide();
+			$('#form-page-popup').show();
+			initAddOrEditSection('edit', pageId);
 		});
 
 		$(pages._elems.tablePages).delegate(pages._elems.btnDeletePage, 'click', function(evt) {
@@ -471,16 +479,20 @@
 		$('#btnClose').click(function (evt) {
 			evt.preventDefault();
 			destroyForm();
-			pageRouter.navigate("home", {trigger: true});
+			//pageRouter.navigate("home", {trigger: true});
+			$('#homeSection').show();
+			$('#form-page-popup').hide();
 		});
 	}
 
 	pages.init = function () {
 		getPages(render);
 		setupEvents();
-		pageRouter = new PagesRouter();
-		Backbone.history.start();
-		pageRouter.navigate("home", {trigger: true});
+		//pageRouter = new PagesRouter();
+		//Backbone.history.start();
+		//pageRouter.navigate("home", {trigger: true});
+		$('#homeSection').show();
+		$('#form-page-popup').hide();
 	};
 
 	pages.form = {
