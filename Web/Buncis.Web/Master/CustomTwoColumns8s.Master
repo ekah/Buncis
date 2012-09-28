@@ -47,17 +47,13 @@
 					</div>
 				</div>
 			</div>--%>
+			
+			<bun:PageMenu runat="server" ID="pageMenu1"></bun:PageMenu>
 
 			<div class="row section">
 				<div class="fourcol">
 					<div class="height100 sideMenuContainer">
 						<ul class="sideMenu">
-							<%--<li>
-								<a href="#">
-									<span>Daily Bread</span>
-									<span class="menuDesc">Keep Faith</span>
-								</a>
-							</li>
 							<li>
 								<a href="#">
 									<span>Testimony</span>
@@ -66,7 +62,7 @@
 							</li>
 							<li>
 								<a href="#">
-								    <span>Devotional</span>
+									<span>Devotional</span>
 									<span class="menuDesc">Our Strength</span>
 								</a>
 							</li>
@@ -74,30 +70,6 @@
 								<a href="#">
 									<span>Stories</span>
 									<span class="menuDesc">Life Inspiration</span>
-								</a>
-							</li>--%>
-							<li>
-								<a href="/">
-									<span>Home</span>
-									<span class="menuDesc">Home Screen</span>
-								</a>
-							</li>
-							<li>
-								<a href="/DailyBread">
-									<span>Daily Bread</span>
-									<span class="menuDesc">Everyday Strength</span>
-								</a>
-							</li>
-							<li>
-								<a href="/Articles">
-								    <span>Articles</span>
-									<span class="menuDesc">Sharing is Caring</span>
-								</a>
-							</li>
-							<li>
-								<a href="/News">
-									<span>News</span>
-									<span class="menuDesc">Enrich Knowledge</span>
 								</a>
 							</li>
 						</ul>

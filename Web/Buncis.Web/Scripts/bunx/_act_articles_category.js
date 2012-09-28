@@ -232,10 +232,11 @@
 		});
 		$(document).delegate('.btnBack', 'click', function (evt) {
 			evt.preventDefault();
-			oModule.router.navigate("home", { trigger: true });
 			for (var i = 0; i < oModule.categoryManagementView.length; i++) {
 				oModule.categoryManagementView[i].close();
 			}
+			oModule.router.navigate("home", { trigger: true });
+			_articles.fn.reset();
 		});
 		$(document).delegate('#editcategory-cancel', 'click', function (evt) {
 			evt.preventDefault();

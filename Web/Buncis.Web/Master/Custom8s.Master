@@ -64,6 +64,8 @@
 					</div>
 				</div>
 			</div>--%>
+			
+			<bun:PageMenu runat="server" ID="pageMenu1"></bun:PageMenu>
 
 			<div class="row section">
 				<div class="twelvecol last">
@@ -107,10 +109,10 @@
 				</div>
 			</div>
 			
-			<div class="row section">
+			<%--<div class="row section">
 				<div class="sixcol">
 					<div class="box quotes-container">
-						<%--<div class="box-title">Quotes</div>--%>
+						<div class="box-title">Quotes</div>
 						<div class="box-content quotes-box-content"><blockquote>The longest journey is the journey inwards. Of him who has chosen his destiny, Who has started upon his quest for the source of his being.</blockquote></div>
 					</div>	
 				</div>
@@ -122,7 +124,7 @@
 						<div class="clearfix"></div>
 					</div>
 				</div>
-			</div>
+			</div>--%>
 
 			<div class="row section">
 				<div class="twelvecol last">

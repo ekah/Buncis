@@ -35,7 +35,7 @@
 				</div>
 			</div>
 			
-			<div class="row section">
+			<%--<div class="row section">
 				<div class="twelvecol last">
 					<div class="menu-container">
 						<ul class="menu">
@@ -46,7 +46,9 @@
 						</ul>
 					</div>
 				</div>
-			</div>
+			</div>--%>
+			
+			<bun:PageMenu runat="server" ID="pageMenu1"></bun:PageMenu>
 			
 			<div class="row">
 				<div class="twelvecol last">

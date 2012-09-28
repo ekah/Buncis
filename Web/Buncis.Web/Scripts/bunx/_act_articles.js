@@ -37,6 +37,7 @@
 		deletePopup: '#article-delete-popup',
 		confirmDeletePopupTemplate: '#article-confirmDelete-popup-template'
 	};	
+	oModule.itemViewCollection = [];
 	oModule.collection = {};
 	oModule.articleCategoryList = {};
 	oModule.CollectionModel = Backbone.Collection.extend({
@@ -78,6 +79,7 @@
 		},
 		editItem: function(event) {
 			event.preventDefault();
+			trace('edit article');
 			_articles.router.navigate("edit/" +  this.model.get('articleId'), {trigger: true});
 			
 			var editView = new _articles.FormView({
@@ -111,6 +113,10 @@
 					$(deletePopupView.el).empty();
 				}
 			);
+		},
+		close: function () {
+			this.undelegateEvents();
+			$(this.el).empty();
 		}
 	});
 	oModule.FormView = Backbone.View.extend({
@@ -138,7 +144,7 @@
 			articleCategoryView.render();
 
 			// populate with additional data
-			trace(this.model);
+			//trace(this.model);
 			if(parseInt(this.model.get('articleCategoryId'), 10) > 0) {
 				$('#radioArticleCategory button[data-categoryid=' + this.model.get("articleCategoryId") + ']').addClass('active');
 			}
@@ -537,6 +543,7 @@
 		itemView.events['click li[rel="' + itemModel.id + '"] a.action.delete'] = 'deleteItem';
 		itemView.delegateEvents();
 		itemView.render();
+		_articles.itemViewCollection.push(itemView);
 	};
 	oFn.init = function() {
 		_articles.router = new _articles.ModuleRouter();
@@ -577,6 +584,12 @@
 				_helpers.unblockBuncisContentBodyDefault();
 			}
 		});
+	};
+	oFn.reset = function() {
+		for (var i = 0; i < _articles.itemViewCollection.length; i++) {
+			_articles.itemViewCollection[i].close();
+		}
+		loadData();
 	};
 }(window._articles.fn = window._articles.fn || {}));
 

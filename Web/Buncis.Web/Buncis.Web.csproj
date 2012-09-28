@@ -137,6 +137,7 @@
     <Content Include="1140grid\css\ie.css" />
     <Content Include="1140grid\css\styles.css" />
     <Content Include="1140grid\js\css3-mediaqueries.js" />
+    <Content Include="Images\000000.png" />
     <Content Include="Modules\Articles\Detail.aspx" />
     <Content Include="bootstrap\carousel\bootstrap.css" />
     <Content Include="bootstrap\carousel\bootstrap.js" />
@@ -408,6 +409,7 @@
     <Content Include="UserControls\Articles\ArticleList.ascx" />
     <Content Include="UserControls\Articles\RecentArticles.ascx" />
     <Content Include="UserControls\Component\LoginInfo.ascx" />
+    <Content Include="UserControls\Component\PageMenu.ascx" />
     <Content Include="UserControls\Component\WysiwygToolbar.ascx" />
     <Content Include="UserControls\DailyBread\DailyBreadList.ascx" />
     <Content Include="UserControls\DailyBread\RecentDailyBread.ascx" />
@@ -660,6 +662,13 @@
     </Compile>
     <Compile Include="UserControls\Component\LoginInfo.ascx.designer.cs">
       <DependentUpon>LoginInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Component\PageMenu.ascx.cs">
+      <DependentUpon>PageMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Component\PageMenu.ascx.designer.cs">
+      <DependentUpon>PageMenu.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Component\WysiwygToolbar.ascx.cs">
       <DependentUpon>WysiwygToolbar.ascx</DependentUpon>
