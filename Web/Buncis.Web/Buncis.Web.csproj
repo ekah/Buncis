@@ -324,6 +324,7 @@
     <Content Include="Images\menu_bg.jpg" />
     <Content Include="Images\menu_separator.png" />
     <Content Include="Modules\News\Detail.aspx" />
+    <Content Include="README.txt" />
     <Content Include="robot.txt" />
     <Content Include="sandbox\actTemplate-nopopup.js">
       <AutoGen>True</AutoGen>
