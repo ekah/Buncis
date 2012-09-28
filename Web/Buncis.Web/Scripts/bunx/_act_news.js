@@ -1,25 +1,61 @@
 ﻿(function (oNews) {
-	var newsRouter = {};
-	var activeFormView = {};
+	oNews.activeFormView = null;
+	oNews.newsRouter = {};
 	oNews.newsCategoryList = {};
+	oNews.itemViewCollection = [];
 	oNews.NewsRouter = Backbone.Router.extend({
 		routes: {
 			"home": "home",
 			"edit/:query": "edit", 
 			"add": "add", 
+			"categories": "managecategories"
 		},
 		home: function() {
 			$('#homeSection').show();
 			$('#news-edit-popup').hide();
+			$('.news-list-wrapper').show();
+			$('.news-category-management').hide();
+			oNews.fn.renderData();
 		},
 		edit: function(query) {
-			var newsId = query;
+			var newsId = parseInt(query, 10);
 			$('#homeSection').hide();
 			$('#news-edit-popup').show();
+			
+			if(oNews.activeFormView) {
+				oNews.activeFormView.close();
+				oNews.activeFormView.categoryView.close();
+				oNews.activeFormView = null;
+			}
+			
+			for (var i = 0; i < oNews.itemViewCollection.length; i++) {
+				if(oNews.itemViewCollection[i].newsId === newsId) {
+					oNews.itemViewCollection[i].editData();
+				}
+			}
 		},
 		add: function() {
 			$('#homeSection').hide();
 			$('#news-edit-popup').show();
+
+			if(oNews.activeFormView) {
+				oNews.activeFormView.close();
+				oNews.activeFormView.categoryView.close();
+				oNews.activeFormView = null;
+			}
+
+			oNews.fn.renderAddView();
+		},
+		managecategories: function () {
+			trace('categories');
+			$('#news-edit-popup').hide();
+			$('#homeSection').show();
+			$('.news-list-wrapper').hide();
+			$('.news-category-management').show();
+			
+			if(oNews._categories) {
+				oNews._categories.loadData();
+			}
 		}
 	});
 	oNews._elems = {
@@ -88,6 +124,7 @@
 		newsCategoryName: ''
 	});
 	oNews.NewsItemView = Backbone.View.extend({
+		newsId: -1,
 		initialize: function(){
 			_.bindAll(this, "render");
 			this.model.on('change', this.renderUpdate, this);
@@ -106,7 +143,8 @@
 			event.preventDefault();
 			// navigate
 			_news.newsRouter.navigate("edit/" + this.model.id, {trigger: true});
-			
+		}, 
+		editData: function () {
 			var editView = new _news.NewsFormView({
 				el: $(_news._elems.editPopup),
 				model: this.model
@@ -115,9 +153,8 @@
 			oNews.activeFormView = editView;
 			$(editView.el).find('h3').text('Edit News');
 			_news.fn.prepareEditForm();
-			//$(pages._elems.txtPageContent).data("wysihtml5").editor.setValue(data.PageContent);
 			$(_news._elems.btnSaveNews).attr('rel', 'edit');
-		}, 
+		},
 		deleteItem: function(event) {
 			event.preventDefault();
 			var deleteView = new _news.NewsDeleteView({
@@ -133,6 +170,10 @@
 					$(deleteView.el).empty();
 				}
 			);
+		},
+		close: function () {
+			this.undelegateEvents();
+			$(this.el).empty();
 		}
 	});
 	oNews.NewsFormView = Backbone.View.extend({
@@ -160,6 +201,9 @@
 		},
 		save: function(event) {
 			event.preventDefault();
+			
+			var editWebServiceUrl = '/webservices/news.svc/BPUpdateNews';	
+			var addWebServiceUrl = '/webservices/news.svc/BPInsertNews';	
 			var api = _news.form.validators.data("validator");
 			var isValid = api.checkValidity();
 			if(!isValid) {
@@ -186,41 +230,91 @@
 				selectedCategoryName = selectedCategory.val();
 			}
 			
-			eNews.set('newsTitle', title);
-			eNews.set('newsTeaser', teaser);
-			eNews.set('newsUrl', url);
-			eNews.set('newsContent', content);
-			eNews.set('formattedDatePublished', formattedPublished);
-			eNews.set('formattedDateExpired', formattedExpired);
-			eNews.set('epochDatePublished', epochPublished);
-			eNews.set('epochDateExpired', epochExpired);
-			eNews.set('newsCategoryId', selectedCategoryId);
-			eNews.set('newsCategoryName', selectedCategoryName);
-
-			_news.fn.saveNews(eNews, function(result) {
-				var msg = '';
-				eNews.set('newsId', result.NewsId);
-				eNews.set('datePublished', result.DisplayDatePublished);
-				eNews.set('dateExpired', result.DisplayDateExpired);
-				eNews.set('newsUrl', result.NewsUrl);
-				
-				$('#btnClose').trigger('click');
-				
-				if(fMode === 'edit') {
-					eNews.set('recentlyEdited', true);
-					msg = 'Succesfully edited News data';
+			var sData = {
+				clientId: _elems.clientId,
+				news: {
+					NewsId: eNews.get('newsId'),
+					NewsTitle: title,
+					NewsTeaser: teaser,
+					NewsContent: content,
+					DisplayDateCreated: '',
+					DisplayDatePublished: '',
+					DisplayDateExpired: '',
+					DisplayDateLastUpdated: '',
+					NewsUrl: url,
+					DatePublished: epochPublished,
+					DateExpired: epochExpired,
+					NewsCategory: {
+						NewsCategoryId: selectedCategoryId,
+						NewsCategoryName: selectedCategoryName,
+						NewsCategoryDescription: selectedCategoryName
+					} 
 				}
-				else {
-					eNews.set('recentlyAdded', true);
-					_news.newsList.add(eNews);
-					eNews.set('ordinal', _news.newsList.length);
-					_news.fn.renderListItemView(eNews);
-					msg = 'Succesfully added new News';
-				}
+			};
+			var jData = JSON.stringify(sData);
+			var wsUrl = '';
+			if(sData.news.NewsId > 0) {
+				wsUrl = editWebServiceUrl;
+			}
+			else {
+				wsUrl = addWebServiceUrl;
+			}
+			_helpers.blockBuncisContentBodyDefault();
+			$.ajax({
+				type: "POST",
+				url: wsUrl,
+				data: jData,
+				dataType: 'json',
+				contentType: 'text/json',
+				success: function (result) {
+					var data = result.d;
+					_helpers.unblockBuncisContentBodyDefault();
+					if (data.IsSuccess) {
+						var msg = '';
+						
+						eNews.set('newsTitle', title);
+						eNews.set('newsTeaser', teaser);
+						eNews.set('newsContent', content);
+						eNews.set('formattedDatePublished', formattedPublished);
+						eNews.set('formattedDateExpired', formattedExpired);
+						eNews.set('epochDatePublished', epochPublished);
+						eNews.set('epochDateExpired', epochExpired);
+						eNews.set('newsCategoryId', selectedCategoryId);
+						eNews.set('newsCategoryName', selectedCategoryName);
+						
+						eNews.set('newsId', data.ResponseObject.NewsId);
+						eNews.set('datePublished', data.ResponseObject.DisplayDatePublished);
+						eNews.set('dateExpired', data.ResponseObject.DisplayDateExpired);
+						eNews.set('newsUrl', data.ResponseObject.NewsUrl);
 				
-				oNews.fn.animateItem(eNews);
-				globalShowMessages([msg]);
+						$('#btnClose').trigger('click');
+				
+						if(fMode === 'edit') {
+							eNews.set('recentlyEdited', true);
+							msg = 'Succesfully edited News data';
+						}
+						else {
+							eNews.set('recentlyAdded', true);
+							_news.newsList.add(eNews);
+							
+							eNews.set('ordinal', _news.newsList.length);
+							_news.fn.renderListItemView(eNews);
+							
+							msg = 'Succesfully added new News';
+						}
+				
+						oNews.fn.animateItem(eNews);
+						globalShowMessages([msg]);
+					}
+				},
+				error: function () {
+					_helpers.unblockBuncisContentBodyDefault();
+				}
 			});
+		},
+		close: function () {
+			this.undelegateEvents();
+			$(this.el).empty();
 		}
 	});
 	oNews.NewsDeleteView = Backbone.View.extend({
@@ -303,8 +397,6 @@
 
 (function(oFn) {
 	var listWebServiceUrl = '/webservices/news.svc/BPGetNewsList?clientid=' + _elems.clientId;	
-	var editWebServiceUrl = '/webservices/news.svc/BPUpdateNews';	
-	var addWebServiceUrl = '/webservices/news.svc/BPInsertNews';	
 	var deleteWebServiceUrl = '/webservices/news.svc/BPDeleteNews';	
 	var listNewsCategoryUrl = '/webservices/news.svc/BPGetNewsCategories?clientId=' + _elems.clientId;	
 	var addNewsCategoryUrl = '/webservices/news.svc/BPInsertNewsCategory';
@@ -327,39 +419,7 @@
 	function setupEvents() {
 		$(_news._elems.btnAddNews).click(function(event) {
 			event.preventDefault();
-			var currentDate = new Date();
-			var currentDatePlusOneMonth = _helpers.dateFn.convertEpochToDate((new Date()).setMonth(currentDate.getMonth() + 1));
-			var defNewsItem = new _news.NewsItem({
-				newsId: -1,
-				newsTitle: '',
-				newsTeaser: '',
-				newsContent: '',
-				epochDatePublished: '',
-				epochDateExpired: '',
-				datePublished: '',
-				dateExpired: '',
-				actualDatePublished: currentDate,
-				actualDateExpired: currentDatePlusOneMonth,
-				formattedDatePublished: _helpers.dateFn.convertDateToDefaultFormattedString(currentDate),
-				formattedDateExpired: _helpers.dateFn.convertDateToDefaultFormattedString(currentDatePlusOneMonth),
-				newsUrl: ''
-			});
-			
-			// navigate first
 			_news.newsRouter.navigate("add", {trigger: true});
-
-			// post navigate
-			var addView = new _news.NewsFormView({
-				el: $(_news._elems.editPopup),
-				model: defNewsItem
-			});
-			addView.render();
-			_news.activeFormView = addView;
-			$(addView.el).find('h3').text('Add News');
-			_news.fn.prepareEditForm();
-			//$(_news._elems.txtNewsContent).data("wysihtml5").editor.setValue(defNewsItem.newsContent);
-			$(_news._elems.txtDatePublished).trigger('change');
-			$(_news._elems.txtDateExpired).trigger('change');
 		});	
 		$(document).delegate(_news._elems.txtDatePublished, 'change', function() {
 			dateInputChanged(this);
@@ -369,10 +429,9 @@
 		});
 		$(document).delegate('#btnClose', 'click', function (evt) {
 			evt.preventDefault();
-			_news.activeFormView.undelegateEvents();
-			$(_news.activeFormView.el).empty();
-			// close category view
+			_news.activeFormView.close();
 			_news.activeFormView.categoryView.close();
+			_news.activeFormView = null;
 			_news.newsRouter.navigate("home", {trigger: true});
 		});
 		$(document).delegate('#txtNewsTitle', 'blur', function (evt) {
@@ -399,10 +458,10 @@
 		});
 	}
 	
-	function loadData() {
+	function loadData(callback) {
 		_news.newsList = new _news.NewsCollection();
 		oFn.getNews(function(result) {
-			//trace(result);
+			trace(result);
 			for(var i = 0; i < result.length; i++) {
 				var iNewsItem = result[i];
 				// create new model instance
@@ -429,11 +488,10 @@
 
 				// put model instance to collections
 				_news.newsList.add(cvtNewsItem);
-				_news.fn.renderListItemView(cvtNewsItem);
 			}
 
 			// get news category
-			getNewsCategories(function(newsCategories) {
+			oFn.getNewsCategories(function(newsCategories) {
 				var listModel = new _news.NewsCategoryListModel({
 					categories: []
 				});
@@ -446,11 +504,53 @@
 					listModel.attributes.categories.push(categoryModel);
 				}
 				_news.newsCategoryList = listModel;
+				
+				if(typeof callback === "function") {
+					callback();
+				}
 			});
 		});
+	}
+	
+	oFn.renderAddView = function () {
+		var currentDate = new Date();
+		var currentDatePlusOneMonth = _helpers.dateFn.convertEpochToDate((new Date()).setMonth(currentDate.getMonth() + 1));
+		var defNewsItem = new _news.NewsItem({
+			newsId: -1,
+			newsTitle: '',
+			newsTeaser: '',
+			newsContent: '',
+			epochDatePublished: '',
+			epochDateExpired: '',
+			datePublished: '',
+			dateExpired: '',
+			actualDatePublished: currentDate,
+			actualDateExpired: currentDatePlusOneMonth,
+			formattedDatePublished: _helpers.dateFn.convertDateToDefaultFormattedString(currentDate),
+			formattedDateExpired: _helpers.dateFn.convertDateToDefaultFormattedString(currentDatePlusOneMonth),
+			newsUrl: ''
+		});
+		
+		var addView = new _news.NewsFormView({
+			el: $(_news._elems.editPopup),
+			model: defNewsItem
+		});
+		addView.render();
+		_news.activeFormView = addView;
+		$(addView.el).find('h3').text('Add News');
+		_news.fn.prepareEditForm();
+		$(_news._elems.txtDatePublished).trigger('change');
+		$(_news._elems.txtDateExpired).trigger('change');
 	};
-
-	function getNewsCategories(_callback) {
+	oFn.renderData = function() {
+		//trace(_news.newsList);
+		oFn.reset();
+		_news.newsList.each(function (elem) {
+			//trace(elem);
+			_news.fn.renderListItemView(elem);	
+		});
+	};
+	oFn.getNewsCategories = function(_callback) {
 		$.ajax({
 			type: "GET",
 			url: listNewsCategoryUrl,
@@ -465,8 +565,7 @@
 			error: function () {
 			}
 		});
-	}
-	
+	};
 	oFn.animateItem = function($model) {
 		var $target = $('li[rel="' + $model.id + '"]');
 		if($target.length) {
@@ -545,59 +644,6 @@
 			}
 		});
 	};
-	oFn.saveNews = function(oData, _callback) {
-		var sData = {
-			clientId: _elems.clientId,
-			news: {
-				NewsId: oData.get('newsId'),
-				NewsTitle: oData.get('newsTitle'),
-				NewsTeaser: oData.get('newsTeaser'),
-				NewsContent: oData.get('newsContent'),
-				DisplayDateCreated: '',
-				DisplayDatePublished: '',
-				DisplayDateExpired: '',
-				DisplayDateLastUpdated: '',
-				NewsUrl: oData.get('newsUrl'),
-				//DateCreated: '/Date(1341158400000)/',
-				//DateLastUpdated: '/Date(1341158400000)/',
-				DatePublished: oData.get('epochDatePublished'),
-				DateExpired: oData.get('epochDateExpired'),
-				NewsCategory: {
-					NewsCategoryId: oData.get('newsCategoryId'),
-					NewsCategoryName: oData.get('newsCategoryName'),
-					NewsCategoryDescription: oData.get('newsCategoryName')
-				} 
-			}
-		};
-		var jData = JSON.stringify(sData);
-		var wsUrl = '';
-		if(sData.news.NewsId > 0) {
-			wsUrl = editWebServiceUrl;			
-		}
-		else {
-			wsUrl = addWebServiceUrl;
-		}
-		_helpers.blockBuncisContentBodyDefault();
-		$.ajax({
-			type: "POST",
-			url: wsUrl,
-			data: jData,
-			dataType: 'json',
-			contentType: 'text/json',
-			success: function (result) {
-				var data = result.d;
-				_helpers.unblockBuncisContentBodyDefault();
-				if (data.IsSuccess) {
-					if(_callback) {
-						_callback(data.ResponseObject);
-					}
-				}
-			},
-			error: function () {
-				_helpers.unblockBuncisContentBodyDefault();
-			}
-		});
-	};
 	oFn.deleteNews = function(newsId, _callback) {
 		var data = {
 			clientId: -1,
@@ -627,24 +673,27 @@
 		});
 	};
 	oFn.renderListItemView = function(cvtNewsItem) {
-		// set the view and render it
+		//trace(cvtNewsItem);
 		var newsItemView = new _news.NewsItemView({ 
 			el: $(_news._elems.newsItemContainer),
 			model: cvtNewsItem,
 			id: 'newsItem-' + cvtNewsItem.id
 		});
+		newsItemView.newsId = cvtNewsItem.id;
 		newsItemView.events = {};
 		newsItemView.events['click li[rel="' + cvtNewsItem.id + '"] a.action.edit'] = 'editItem';
 		newsItemView.events['click li[rel="' + cvtNewsItem.id + '"] a.action.delete'] = 'deleteItem';
 		newsItemView.delegateEvents();
 		newsItemView.render();
+		_news.itemViewCollection.push(newsItemView);
 	};
 	oFn.init = function () {
 		_news.newsRouter = new _news.NewsRouter();
-		loadData();
-		setupEvents();
-		Backbone.history.start();
-		_news.newsRouter.navigate("home", {trigger: true});
+		loadData(function () {
+			setupEvents();	
+			Backbone.history.start();
+			_news.newsRouter.navigate("home", {trigger: true});
+		});
 	}
 	oFn.insertCategory = function(categoryName, _callback) {
 		var sData = {
@@ -678,6 +727,12 @@
 				_helpers.unblockBuncisContentBodyDefault();
 			}
 		});
+	};
+	oFn.reset = function() {
+		for (var i = 0; i < _news.itemViewCollection.length; i++) {
+			_news.itemViewCollection[i].close();
+		}
+		_news.itemViewCollection = [];
 	};
 }(window._news.fn = window._news.fn || {}));
 

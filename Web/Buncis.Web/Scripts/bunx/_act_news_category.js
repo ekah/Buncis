@@ -3,20 +3,20 @@
 	oModule.categoryManagementView = [];
 	oModule.editCategoryView = {};
 	oModule.collection = {};
-	oModule.ArticleCategoryCollectionModel = Backbone.Collection.extend({
-		model: oModule.ArticleCategoryModel,
+	oModule.CategoryCollectionModel = Backbone.Collection.extend({
+		model: oModule.NewsCategoryModel,
 		comparator: function (model) {
-			var id = model.get('articleCategoryId');
+			var id = model.get('newsCategoryId');
 			return -id;
 		}
 	});
-	oModule.ArticleCategoryModel = Backbone.Model.extend({
-		idAttribute: 'articleCategoryId',
-		articleCategoryId: -1,
-		articleCategoryName: '',
-		articleCategoryDescription: ''
+	oModule.NewsCategoryModel = Backbone.Model.extend({
+		idAttribute: 'newsCategoryId',
+		newsCategoryId: -1,
+		newsCategoryName: '',
+		newsCategoryDescription: ''
 	});
-	oModule.ArticleCategoryView = Backbone.View.extend({
+	oModule.NewsCategoryView = Backbone.View.extend({
 		initialize: function () {
 			_.bindAll(this, "render");
 			this.model.on('change', this.renderUpdate, this);
@@ -36,12 +36,12 @@
 			event.preventDefault();
 			trace("edit category");
 			var editView = new oModule.EditCategoryView({
-				el: $('#article-category-edit-popup'),
+				el: $('#news-category-edit-popup'),
 				model: this.model
 			});
 			editView.render();
 			oModule.editCategoryView = editView;
-			globalShowPopup(200, 400, '#article-category-edit-popup', 'Edit Article Category',
+			globalShowPopup(200, 400, '#news-category-edit-popup', 'Edit News Category',
 				function () {
 				},
 				function () {
@@ -53,12 +53,12 @@
 			event.preventDefault();
 			trace("delete category");
 			var deletePopupView = new oModule.DeleteCategoryView({
-				el: $('#article-category-delete-popup'),
+				el: $('#news-category-delete-popup'),
 				model: this.model
 			});
 			deletePopupView.render();
 
-			globalShowPopup(200, 400, '#article-category-delete-popup', 'Delete Article Category',
+			globalShowPopup(200, 400, '#news-category-delete-popup', 'Delete News Category',
 				function () {
 				},
 				function () {
@@ -91,23 +91,23 @@
 
 			var self = this;
 			var eModel = this.model;
-			var fMode = parseInt(eModel.get('articleCategoryId'), 10) > 0 ? "edit" : "add";
-			var articleCategoryName = this.$el.find('#txtCategoryName').val();
-			var articleCategoryDescription = this.$el.find('#txtCategoryDescription').val();
+			var fMode = parseInt(eModel.get('newsCategoryId'), 10) > 0 ? "edit" : "add";
+			var newsCategoryName = this.$el.find('#txtCategoryName').val();
+			var newsCategoryDescription = this.$el.find('#txtCategoryDescription').val();
 			_helpers.blockPopupDefault();
 
 			var sData = {
 				clientId: _elems.clientId,
-				articleCategory: {
-					ArticleCategoryId: eModel.get('articleCategoryId'),
-					ArticleCategoryName: articleCategoryName,
-					ArticleCategoryDescription: articleCategoryDescription
+				newsCategory: {
+					NewsCategoryId: eModel.get('newsCategoryId'),
+					NewsCategoryName: newsCategoryName,
+					NewsCategoryDescription: newsCategoryDescription
 				}
 			};
 
 			$.ajax({
 				type: "POST",
-				url: '/webservices/articles.svc/BPUpdateArticleCategory',
+				url: '/webservices/news.svc/BPUpdateNewsCategory',
 				data: JSON.stringify(sData),
 				dataType: 'json',
 				contentType: 'text/json',
@@ -116,17 +116,17 @@
 					var data = result.d;
 					_helpers.unblockPopupDefault();
 					if (data.IsSuccess) {
-						eModel.set('articleCategoryId', data.ResponseObject.ArticleCategoryId);
-						eModel.set('articleCategoryName', articleCategoryName);
-						eModel.set('articleCategoryDescription', articleCategoryDescription);
+						eModel.set('newsCategoryId', data.ResponseObject.NewsCategoryId);
+						eModel.set('newsCategoryName', newsCategoryName);
+						eModel.set('newsCategoryDescription', newsCategoryDescription);
 						if (fMode === 'edit') {
-							msg = 'Successfully edited article category';
+							msg = 'Successfully edited news category';
 							self.close();
 						}
 						else {
 							oModule.collection.add(eModel);
 							renderCategoryItemView(eModel);
-							msg = 'Successfully added new article category';
+							msg = 'Successfully added new news category';
 							self.close();
 						}
 						globalShowMessages([msg]);
@@ -148,26 +148,26 @@
 	});
 	oModule.DeleteCategoryView = Backbone.View.extend({
 		events: {
-			'click #deleteArticleCategory-confirm': 'confirmDelete'
+			'click #deleteCategory-confirm': 'confirmDelete'
 		},
 		render: function (event) {
-			var template = _.template($('#article-category-delete-template').html(), this.model, _helpers.underscoreTemplateSettings);
+			var template = _.template($('#category-delete-template').html(), this.model, _helpers.underscoreTemplateSettings);
 			this.$el.append($(template));
 			return this;
 		},
 		confirmDelete: function (event) {
 			event.preventDefault();
 			var self = this;
-			var id = parseInt(this.model.get('articleCategoryId'), 10);
-			var name = this.model.get('articleCategoryName');
+			var id = parseInt(this.model.get('newsCategoryId'), 10);
+			var name = this.model.get('newsCategoryName');
 			var sdata = {
 				clientId: -1,
-				articleCategoryId: id
+				newsCategoryId: id
 			};
 			var jData = JSON.stringify(sdata);
 			$.ajax({
 				type: "POST",
-				url: '/webservices/articles.svc/BPDeleteArticleCategory',
+				url: '/webservices/news.svc/BPDeleteNewsCategory',
 				data: jData,
 				dataType: 'json',
 				contentType: 'text/json',
@@ -177,7 +177,7 @@
 						oModule.collection.remove(self.model);
 						$('#category-management-container').find('li[rel="' + id + '"]').remove();
 						globalClosePopup();
-						globalShowMessages(["System has successfully deleted article category " + name]);
+						globalShowMessages(["System has successfully deleted news category " + name]);
 					}
 					else {
 						globalShowError([data.Message]);
@@ -194,24 +194,25 @@
 		}
 	});
 
-	function loadData() {
-		_articles._categories.collection = new _articles._categories.ArticleCategoryCollectionModel();
-		_articles.fn.getArticleCategories(function (articleCategories) {
-			for (var ac = 0; ac < articleCategories.length; ac++) {
-				var acItem = articleCategories[ac];
-				var articleCategoryModel = new _articles._categories.ArticleCategoryModel({
-					articleCategoryId: acItem.ArticleCategoryId,
-					articleCategoryName: acItem.ArticleCategoryName,
-					articleCategoryDescription: acItem.ArticleCategoryDescription
+	oModule.loadData = function () {
+		oModule.reset();
+		_news._categories.collection = new _news._categories.CategoryCollectionModel();
+		_news.fn.getNewsCategories(function (newsCategories) {
+			for (var ac = 0; ac < newsCategories.length; ac++) {
+				var acItem = newsCategories[ac];
+				var categoryModel = new _news._categories.NewsCategoryModel({
+					newsCategoryId: acItem.NewsCategoryId,
+					newsCategoryName: acItem.NewsCategoryName,
+					newsCategoryDescription: acItem.NewsCategoryDescription
 				});
-				_articles._categories.collection.add(articleCategoryModel);
-				renderCategoryItemView(articleCategoryModel);
+				_news._categories.collection.add(categoryModel);
+				renderCategoryItemView(categoryModel);
 			}
 		});
-	}
+	};
 
 	function renderCategoryItemView(itemModel) {
-		var itemView = new oModule.ArticleCategoryView({
+		var itemView = new oModule.NewsCategoryView({
 			el: $('#category-management-container'),
 			model: itemModel,
 			id: 'category-' + itemModel.id
@@ -227,39 +228,37 @@
 	function setupEvents() {
 		$('#aManageCategories').click(function (evt) {
 			evt.preventDefault();
+			trace('manage news categories');
 			oModule.router.navigate("categories", { trigger: true });
-			loadData();
+			//loadData();
 		});
 		$(document).delegate('.btnBack', 'click', function (evt) {
 			evt.preventDefault();
-			for (var i = 0; i < oModule.categoryManagementView.length; i++) {
-				oModule.categoryManagementView[i].close();
-			}
+			oModule.reset();
 			oModule.router.navigate("home", { trigger: true });
-			_articles.fn.reset();
 		});
 		$(document).delegate('#editcategory-cancel', 'click', function (evt) {
 			evt.preventDefault();
 			oModule.editCategoryView.close();
 		});
-		$(document).delegate('#mAddArticleCategory', 'click', function (evt) {
+		$(document).delegate('#mAddNewsCategory', 'click', function (evt) {
 			evt.preventDefault();
 
-			var defaultItem = new oModule.ArticleCategoryModel({
-				articleCategoryId: -1,
-				articleCategoryName: '',
-				articleCategoryDescription: ''
+			var defaultItem = new oModule.NewsCategoryModel({
+				newsCategoryId: -1,
+				newsCategoryName: '',
+				newsCategoryDescription: ''
 			});
 
 			var addView = new oModule.EditCategoryView({
-				el: $('#article-category-edit-popup'),
+				el: $('#news-category-edit-popup'),
 				model: defaultItem
 			});
 			addView.render();
 
 			oModule.editCategoryView = addView;
 
-			globalShowPopup(200, 400, '#article-category-edit-popup', 'Add Article Category',
+			globalShowPopup(200, 400, '#news-category-edit-popup', 'Add News Category',
 				function () {
 				},
 				function () {
@@ -268,15 +267,20 @@
 			);
 		});
 	}
-
+	oModule.reset = function () {
+		for (var i = 0; i < oModule.categoryManagementView.length; i++) {
+			oModule.categoryManagementView[i].close();
+		}
+		oModule.categoryManagementView = [];
+	};
 	oModule.init = function () {
-		oModule.router = _articles.router;
+		oModule.router = _news.newsRouter;
 		trace(oModule.router);
 		setupEvents();
 	};
-} (window._articles._categories = window._articles._categories || {}));
+} (window._news._categories = window._news._categories || {}));
 
 
 $(document).ready(function () {
-	_articles._categories.init();
+	_news._categories.init();
 });

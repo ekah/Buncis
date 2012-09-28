@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Buncis.Master" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="Buncis.Web.bPanel.News.List" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="contentPlaceholderHead" runat="server">
 	<script src="/Scripts/bunx/_act_news.js" type="text/javascript"></script>
+	<script src="/Scripts/bunx/_act_news_category.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentPlaceholderMain" runat="server">
 	<div id="homeSection" class="row" style="display: none">
@@ -15,55 +16,76 @@
 					<a href="#" id="aAddNews" class="btn btn-warning">
 						<i class="icon-plus"></i>&nbsp;<span>Add News</span>
 					</a>
+					<a href="#" id="aManageCategories" class="btn btn-warning">
+						<i class="icon-th-list"></i>&nbsp;<span>Manage News Categories</span>
+					</a>
 				</div>
 				<div class="clearfix"></div>
 				<div class="news-list-wrapper">				
 					<ul class="news-item-container list-item-container">
-						<script type="text/template" id="news-item-template">
-							<li rel="{{id}}" class="list-item">
-								<div class="row-fluid">
-									<div class="leftSection span10">
-										<div><strong>{{attributes.newsTitle}}</strong></div>
-										<p></p>
-										<div>{{attributes.newsTeaser}}</div>
-										<p></p>
-										<div><strong>Published:</strong>&nbsp;{{attributes.datePublished}}</div>
-										<div><strong>Expired:</strong>&nbsp;{{attributes.dateExpired}}</div>
-										<div class="pull-right">
-										{% if(attributes.recentlyAdded) { %} 
-											<span class="label label-inverse">Recently Added</span>
-										{% } %} 
-										{% if(attributes.recentlyEdited) { %} 
-											<span class="label">Recently Edited</span>
-										{% } %}   
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="rightSection span1">
-										<div class="btn-toolbar">
-											<div class="btn-group">
-												<button class="btn btn-info">Action</button>
-												<button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-													<span class="caret"></span>
-												</button>
-												<ul class="dropdown-menu">
-													<li><a href="#" class="action edit">Edit</a></li>
-													<li><a href="#" class="action delete">Delete</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</li>
-						</script>
 					</ul>
+				</div>
+				<div class="news-category-management">
+					<p></p>
+					<div class="buncisButtonContainer">
+						<div class="pull-right">
+							<a href="#" id="mAddNewsCategory" class="btn btn-warning">
+								<i class="icon-plus"></i>&nbsp;<span>Add News Category</span>
+							</a>
+						</div>
+					</div>
+					<ul id="category-management-container" class="row list-item-container">
+					</ul>
+					<div class="well well-small buncisButtonContainer">
+						<div class="pull-right">
+							<a href="#" class="btnBack btn btn-primary">Back</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	
 	<div style="display:none">
+		<script type="text/template" id="news-item-template">
+			<li rel="{{id}}" class="list-item">
+				<div class="row-fluid">
+					<div class="leftSection span10">
+						<div><strong>{{attributes.newsTitle}}</strong></div>
+						<p></p>
+						<div>{{attributes.newsTeaser}}</div>
+						<p></p>
+						<div>Published:&nbsp;{{attributes.datePublished}}</div>
+						<div>Expired:&nbsp;{{attributes.dateExpired}}</div>
+						<div class="pull-right">
+						{% if(attributes.recentlyAdded) { %} 
+							<span class="label label-inverse">Recently Added</span>
+						{% } %} 
+						{% if(attributes.recentlyEdited) { %} 
+							<span class="label">Recently Edited</span>
+						{% } %}   
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="rightSection span1">
+						<div class="btn-toolbar">
+							<div class="btn-group">
+								<button class="btn btn-info">Action</button>
+								<button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#" class="action edit">Edit</a></li>
+									<li><a href="#" class="action delete">Delete</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</li>
+		</script>
+
 		<!-- template add/edit news -->
 		<script type="text/template" id="news-edit-popup-template">		
 			<div class="span12">
@@ -181,8 +203,62 @@
 				</div>
 			</div>
 		</script>
+		
+		<script type="text/template" id="category-management-template">
+			<li class="span3 list-item" rel="{{id}}">
+				<span>
+					{{attributes.newsCategoryName}}
+				</span>
+				<a href="#" class="pull-right action delete-category">
+					<i class="icon-remove"></i>&nbsp;<span></span>
+				</a>
+				<a href="#" class="pull-right action edit-category">
+					<i class="icon-pencil"></i>&nbsp;<span></span>
+				</a>
+			</li>
+		</script>
+		
+		<script type="text/template" id="edit-category-template">
+			<div class="modal-header">
+				<h3>Modal header</h3>
+			</div>
+			<div class="modal-body popup-content-small">
+				<div class="form-item">
+					<label>Category Name:</label>
+					<input type="text" id="txtCategoryName" name="txtCategoryName" 
+						required="required" data-message="Category Name is required"
+						value="{{attributes.newsCategoryName}}" class="input-xlarge" />
+				</div>
+				<div class="form-item">
+					<label>Category Description:</label>
+					<input type="text" id="txtCategoryDescription" name="txtCategoryDescription" 
+						required="required" data-message="Category Description is required"
+						value="{{attributes.newsCategoryDescription}}" class="input-xlarge" />
+				</div>
+			</div>
+			<div class="buttonContainer modal-footer">
+				<a href="#" id="editcategory-save" class="btn btn-primary">Save</a>			    
+				<a href="#" id="editcategory-cancel" class="popup-button-close btn btn-inverse">Cancel</a>
+			</div>
+		</script>
+
+		<script type="text/template" id="category-delete-template">
+			<div class="modal-header">
+				<h3>Modal header</h3>
+			</div>
+			<div class="modal-body popup-content-small">
+				<p>Are you sure you want to delete news category <strong>{{attributes.newsCategoryName}}</strong>?</p>
+			</div>
+			<div class="buttonContainer modal-footer">				
+				<a href="#" id="deleteCategory-confirm" class="btn btn-primary">Yes</a>			    
+				<a href="#" id="deleteCategory-cancel" class="popup-button-close btn btn-inverse">No</a>
+			</div>
+		</script>
 	</div>    
 
 	<div id="news-edit-popup" class="row"></div>
 	<div id="news-delete-popup" class="popup-wrapper modal hide fade"></div>
+	<div id="news-category-edit-popup" class="popup-wrapper modal hide fade"></div>
+	<div id="news-category-delete-popup" class="popup-wrapper modal hide fade"></div>
+
 </asp:Content>

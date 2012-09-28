@@ -348,6 +348,7 @@
     <Content Include="Scripts\bunx\common.js" />
     <Content Include="Scripts\bunx\_act_articles.js" />
     <Content Include="Scripts\bunx\_act_news.js" />
+    <Content Include="Scripts\bunx\_act_news_category.js" />
     <Content Include="Scripts\impress.js" />
     <Content Include="Scripts\jquery-ui-1.8.23.custom.min.js" />
     <Content Include="Scripts\jquery.isotope.js" />
