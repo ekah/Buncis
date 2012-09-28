@@ -138,6 +138,10 @@
     <Content Include="1140grid\css\styles.css" />
     <Content Include="1140grid\js\css3-mediaqueries.js" />
     <Content Include="Images\000000.png" />
+    <Content Include="Images\custom\nature1.jpg" />
+    <Content Include="Images\custom\nature2.jpg" />
+    <Content Include="Images\custom\nature3.jpg" />
+    <Content Include="Images\custom\nature4.jpg" />
     <Content Include="Modules\Articles\Detail.aspx" />
     <Content Include="bootstrap\carousel\bootstrap.css" />
     <Content Include="bootstrap\carousel\bootstrap.js" />
