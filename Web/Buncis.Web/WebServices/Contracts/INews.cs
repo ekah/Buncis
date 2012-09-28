@@ -40,6 +40,10 @@ namespace Buncis.Web.WebServices.Contracts
 
 		[OperationContract]
 		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
+		Response<DtoBuncisNewsCategory> BPUpdateNewsCategory(int clientId, DtoBuncisNewsCategory newsCategory);
+
+		[OperationContract]
+		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
 		string GetNewsUrl(int newsId, string newsTitle);
 	}
 }

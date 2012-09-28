@@ -1,5 +1,5 @@
 ﻿(function (oModule) {
-	oModule.router = {};
+	//oModule.router = {};
 	oModule.categoryManagementView = [];
 	oModule.editCategoryView = {};
 	oModule.collection = {};
@@ -227,7 +227,9 @@
 	function setupEvents() {
 		$('#aManageCategories').click(function (evt) {
 			evt.preventDefault();
-			oModule.router.navigate("categories", { trigger: true });
+			//oModule.router.navigate("categories", { trigger: true });
+			$('#article-list-container').hide();
+			$('.article-category-section').show();
 			loadData();
 		});
 		$(document).delegate('.btnBack', 'click', function (evt) {
@@ -235,8 +237,12 @@
 			for (var i = 0; i < oModule.categoryManagementView.length; i++) {
 				oModule.categoryManagementView[i].close();
 			}
-			oModule.router.navigate("home", { trigger: true });
-			_articles.fn.reset();
+			//oModule.router.navigate("home", { trigger: true });
+			$('#homeSection').show();
+			$('#article-edit-section').hide();
+			$('#article-list-container').show();
+			$('.article-category-section').hide();
+			_articles.fn.loadData();
 		});
 		$(document).delegate('#editcategory-cancel', 'click', function (evt) {
 			evt.preventDefault();
@@ -263,15 +269,15 @@
 				function () {
 				},
 				function () {
-					editView.close();
+					addView.close();
 				}
 			);
 		});
 	}
 
 	oModule.init = function () {
-		oModule.router = _articles.router;
-		trace(oModule.router);
+		//oModule.router = _articles.router;
+		//trace(oModule.router);
 		setupEvents();
 	};
 } (window._articles._categories = window._articles._categories || {}));

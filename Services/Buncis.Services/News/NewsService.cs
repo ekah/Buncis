@@ -186,6 +186,16 @@ namespace Buncis.Services.News
 
 		public ValidationDictionary<ViewModelNewsCategory> InsertNewsCategory(int clientId, ViewModelNewsCategory viewModelNewsCategory)
 		{
+			return SaveNewsCategory(clientId, viewModelNewsCategory);
+		}
+
+		public ValidationDictionary<ViewModelNewsCategory> UpdateNewsCategory(int clientId, ViewModelNewsCategory viewModelNewsCategory)
+		{
+			return SaveNewsCategory(clientId, viewModelNewsCategory);
+		}
+
+		private ValidationDictionary<ViewModelNewsCategory> SaveNewsCategory(int clientId, ViewModelNewsCategory viewModelNewsCategory)
+		{
 			var validator = new ValidationDictionary<ViewModelNewsCategory>();
 			if (viewModelNewsCategory == null)
 			{
@@ -196,21 +206,43 @@ namespace Buncis.Services.News
 
 			// rule based here
 			var existingWithSameName = _newsCategoryRepository
-				.FilterBy(o => o.NewsCategoryName.ToLower() == viewModelNewsCategory.NewsCategoryName.ToLower() && o.ClientId == clientId);
+				.FilterBy(o => o.NewsCategoryName.ToLower() == viewModelNewsCategory.NewsCategoryName.ToLower()
+					&& o.ClientId == clientId
+					&& !o.IsDeleted);
+
 			if (existingWithSameName.Any())
 			{
-				validator.IsValid = false;
-				validator.AddError("", "News Category with same name is already existed");
-				return validator;
+				var haveSameId = viewModelNewsCategory.NewsCategoryId <= 0
+					|| (viewModelNewsCategory.NewsCategoryId > 0
+						&& existingWithSameName.Any(o => o.NewsCategoryId != viewModelNewsCategory.NewsCategoryId));
+				if (haveSameId)
+				{
+					validator.IsValid = false;
+					validator.AddError("", "News Category with same name is already existed");
+					return validator;
+				}
 			}
 
-			var newsCategory = new NewsCategory();
-			newsCategory.InjectFrom(viewModelNewsCategory);
-			newsCategory.DateCreated = DateTime.UtcNow;
-			newsCategory.DateLastUpdated = DateTime.UtcNow;
-			newsCategory.ClientId = clientId;
-
-			_newsCategoryRepository.Add(newsCategory);
+			NewsCategory newsCategory;
+			if (viewModelNewsCategory.NewsCategoryId >= 0)
+			{
+				newsCategory = _newsCategoryRepository.FindBy(o => o.NewsCategoryId == viewModelNewsCategory.NewsCategoryId);
+				var dateCreated = newsCategory.DateCreated;
+				newsCategory.InjectFrom(viewModelNewsCategory);
+				newsCategory.ClientId = clientId;
+				newsCategory.DateLastUpdated = DateTime.UtcNow;
+				newsCategory.DateCreated = dateCreated;
+				_newsCategoryRepository.Update(newsCategory);
+			}
+			else
+			{
+				newsCategory = new NewsCategory();
+				newsCategory.InjectFrom(viewModelNewsCategory);
+				newsCategory.DateCreated = DateTime.UtcNow;
+				newsCategory.DateLastUpdated = DateTime.UtcNow;
+				newsCategory.ClientId = clientId;
+				_newsCategoryRepository.Add(newsCategory);
+			}
 
 			var rawPinged = _newsCategoryRepository.FindBy(o => o.NewsCategoryId == newsCategory.NewsCategoryId);
 			var pinged = new ViewModelNewsCategory().InjectFrom(rawPinged) as ViewModelNewsCategory;

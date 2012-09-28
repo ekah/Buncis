@@ -1,32 +1,32 @@
 (function (oModule) {
-	oModule.ModuleRouter = Backbone.Router.extend({
-		routes: {
-			"home": "home",
-			"edit/:query": "edit", 
-			"add": "add", 
-			"categories": "managecategories"
-		},
-		home: function() {
-			$('#homeSection').show();
-			$('#article-edit-section').hide();
-			$('#article-list-container').show();
-			$('.article-category-section').hide();
-		},
-		edit: function(query) {
-			var articleId = query;
-			$('#homeSection').hide();
-			$('#article-edit-section').show();
-		},
-		add: function() {
-			$('#homeSection').hide();
-			$('#article-edit-section').show();
-		},
-		managecategories: function () {
-			$('#article-list-container').hide();
-			$('.article-category-section').show();
-		}
-	});
-	oModule.router = {};
+	//	oModule.ModuleRouter = Backbone.Router.extend({
+	//		routes: {
+	//			"home": "home",
+	//			"edit/:query": "edit", 
+	//			"add": "add", 
+	//			"categories": "managecategories"
+	//		},
+	//		home: function() {
+	//			$('#homeSection').show();
+	//			$('#article-edit-section').hide();
+	//			$('#article-list-container').show();
+	//			$('.article-category-section').hide();
+	//		},
+	//		edit: function(query) {
+	//			var articleId = query;
+	//			$('#homeSection').hide();
+	//			$('#article-edit-section').show();
+	//		},
+	//		add: function() {
+	//			$('#homeSection').hide();
+	//			$('#article-edit-section').show();
+	//		},
+	//		managecategories: function () {
+	//			$('#article-list-container').hide();
+	//			$('.article-category-section').show();
+	//		}
+	//	});
+	//oModule.router = {};
 	oModule._elems = {
 		formElements: '.form-item :input',		
 		btnAdd: '#aAddArticle',
@@ -80,7 +80,10 @@
 		editItem: function(event) {
 			event.preventDefault();
 			trace('edit article');
-			_articles.router.navigate("edit/" +  this.model.get('articleId'), {trigger: true});
+			
+			//_articles.router.navigate("edit/" +  this.model.get('articleId'), {trigger: true});
+			$('#homeSection').hide();
+			$('#article-edit-section').show();
 			
 			var editView = new _articles.FormView({
 				el: $(oModule._elems.formContainer), 
@@ -247,7 +250,13 @@
 			this.undelegateEvents();
 			$(this.el).empty();
 			this.articleCategoryView.close();
-			_articles.router.navigate("home", {trigger: true});
+			
+			//_articles.router.navigate("home", {trigger: true});
+			$('#homeSection').show();
+			$('#article-edit-section').hide();
+			$('#article-list-container').show();
+			$('.article-category-section').hide();
+			
 			oModule.fn.animateItem(this.model);
 		},
 		updateUrl: function (event) {
@@ -366,8 +375,60 @@
 	var deleteWebServiceUrl = '/webservices/articles.svc/BPDeleteArticle';	
 	var listArticleCategoryUrl = '/webservices/articles.svc/BPGetArticleCategories?clientId=' + _elems.clientId;	
 	var addArticleCategoryUrl = '/webservices/articles.svc/BPInsertArticleCategory';
+	
+	function getCollection(_callback) {
+		$.ajax({
+			type: "GET",
+			url: listWebServiceUrl,
+			success: function (result) {
+				var data = result.d;
+				if (data.IsSuccess) {
+					if(_callback) {
+						_callback(data.ResponseObject);
+					}
+				}
+			},
+			error: function () {
+			}
+		});
+	}
 
-	function loadData() {
+	function setupEvents() {
+		$(_articles._elems.btnAdd).click(function(event) {
+			event.preventDefault();			
+			var defaultItem = new _articles.ItemModel({
+				articleId: -1,
+				articleTitle: '',
+				articleTeaser: '',
+				articleUrl: '',
+				articleContent: '',
+				displayDateCreated: '',
+				displayDateLastUpdated: ''
+			});
+
+			//_articles.router.navigate("add", {trigger: true});
+			$('#homeSection').hide();
+			$('#article-edit-section').show();
+			
+			var addView = new _articles.FormView({
+				el: $(_articles._elems.formContainer),
+				model: defaultItem,
+			});
+			addView.events = {};
+			addView.formMode = 'add';
+			addView.events['click ' + _articles._elems.formContainer + ' a.close-view-area'] = 'close';
+			addView.events['click ' + _articles._elems.formContainer + ' a.btnSave'] = 'save';
+			addView.events['blur ' + _articles._elems.formContainer + ' [id*="txtArticleTitle"]'] = 'updateUrl';
+			addView.delegateEvents();
+			addView.render();
+
+			$(addView.el).find('h3').text('Add Article');			
+			oFn.prepareForm(addView);
+		});
+	}
+	
+	oFn.loadData = function(callback) {
+		oFn.reset();
 		_articles.collection = new _articles.CollectionModel();
 		getCollection(function(result) {
 			//trace(result);
@@ -408,59 +469,13 @@
 				}
 				//trace(articleCategoryListModel);
 				_articles.articleCategoryList = articleCategoryListModel;
-			});
-		});
-	}
-
-	function getCollection(_callback) {
-		$.ajax({
-			type: "GET",
-			url: listWebServiceUrl,
-			success: function (result) {
-				var data = result.d;
-				if (data.IsSuccess) {
-					if(_callback) {
-						_callback(data.ResponseObject);
-					}
+				
+				if(typeof callback === 'function') {
+					callback();
 				}
-			},
-			error: function () {
-			}
-		});
-	}
-
-	function setupEvents() {
-		$(_articles._elems.btnAdd).click(function(event) {
-			event.preventDefault();			
-			var defaultItem = new _articles.ItemModel({
-				articleId: -1,
-				articleTitle: '',
-				articleTeaser: '',
-				articleUrl: '',
-				articleContent: '',
-				displayDateCreated: '',
-				displayDateLastUpdated: ''
 			});
-
-			_articles.router.navigate("add", {trigger: true});
-
-			var addView = new _articles.FormView({
-				el: $(_articles._elems.formContainer),
-				model: defaultItem,
-			});
-			addView.events = {};
-			addView.formMode = 'add';
-			addView.events['click ' + _articles._elems.formContainer + ' a.close-view-area'] = 'close';
-			addView.events['click ' + _articles._elems.formContainer + ' a.btnSave'] = 'save';
-			addView.events['blur ' + _articles._elems.formContainer + ' [id*="txtArticleTitle"]'] = 'updateUrl';
-			addView.delegateEvents();
-			addView.render();
-
-			$(addView.el).find('h3').text('Add Article');			
-			oFn.prepareForm(addView);
 		});
-	}
-	
+	};
 	oFn.getArticleCategories = function(_callback) {
 		$.ajax({
 			type: "GET",
@@ -546,11 +561,16 @@
 		_articles.itemViewCollection.push(itemView);
 	};
 	oFn.init = function() {
-		_articles.router = new _articles.ModuleRouter();
-		loadData();
-		setupEvents();
-		Backbone.history.start();
-		_articles.router.navigate("home", {trigger: true});
+		//_articles.router = new _articles.ModuleRouter();
+		oFn.loadData(function() {
+			setupEvents();	
+			$('#homeSection').show();
+			$('#article-edit-section').hide();
+			$('#article-list-container').show();
+			$('.article-category-section').hide();
+		});
+		//Backbone.history.start();
+		//_articles.router.navigate("home", {trigger: true});
 	};
 	oFn.insertArticleCategory = function(categoryName, _callback) {
 		var sData = {
@@ -589,7 +609,6 @@
 		for (var i = 0; i < _articles.itemViewCollection.length; i++) {
 			_articles.itemViewCollection[i].close();
 		}
-		loadData();
 	};
 }(window._articles.fn = window._articles.fn || {}));
 

@@ -13,10 +13,9 @@ namespace Buncis.Framework.Core.Services.News
 		IEnumerable<ViewModelNewsItem> GetPublishedNewsItem(int clientId);
 		IEnumerable<ViewModelNewsCategory> GetNewsCategories(int clientId);
 		ValidationDictionary<ViewModelNewsCategory> InsertNewsCategory(int clientId, ViewModelNewsCategory viewModelNewsCategory);
+		ValidationDictionary<ViewModelNewsCategory> UpdateNewsCategory(int clientId, ViewModelNewsCategory viewModelNewsCategory);
 		string GetNewsUrl(int newsId, string newsTitle);
-		
 		IEnumerable<ViewModelNewsItem> GetRecentNews(int clientId);
-
 		IEnumerable<ViewModelNewsItem> GetAvailableNewsItems(int clientId, int categoryId);
 	}
 }

@@ -125,6 +125,24 @@ namespace Buncis.Web.WebServices
 			return response;
 		}
 
+		public Response<DtoBuncisNewsCategory> BPUpdateNewsCategory(int clientId, DtoBuncisNewsCategory newsCategory)
+		{
+			var service = IoC.Resolve<INewsService>();
+			var viewModel = new ViewModelNewsCategory().InjectFrom<CloneInjection>(newsCategory) as ViewModelNewsCategory;
+			var result = service.UpdateNewsCategory(clientId, viewModel);
+
+			var response = new Response<DtoBuncisNewsCategory>();
+			response.IsSuccess = result.IsValid;
+			response.Message = result.ValidationSummaryToString();
+			if (response.IsSuccess)
+			{
+				var responseObject = new DtoBuncisNewsCategory().InjectFrom<CloneInjection>(result.RelatedObject) as DtoBuncisNewsCategory;
+				response.ResponseObject = responseObject;
+			}
+
+			return response;
+		}
+
 		public string GetNewsUrl(int newsId, string newsTitle)
 		{
 			var service = IoC.Resolve<INewsService>();
