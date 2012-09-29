@@ -16,7 +16,11 @@
 	body {
 		
 	}
-
+	
+	.carousel-caption div, .carousel-caption h4 {
+		line-height: 1.2em;
+		font-size: 0.7em;
+	}
 }
 
 

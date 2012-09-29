@@ -4,9 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head id="Head1" runat="server">
-	<title>Buncis - Share Your Stories</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content="Daily Bread for our strength, stories and testimonies for our inspiration and motivation. Sharing is caring."/>
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet">
 
 	<link href="/bootstrap/carousel/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -40,8 +38,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="twelvecol header last">
-					<h2>Lorem Ipsum</h2>
-					<div>Compellingly synthesize 24/7 methods of empowerment after viral e-services. Holisticly.</div>
+					<h2><%= Buncis.Framework.Core.Resources.PageComponent.PageHeading %></h2>
+					<div><%= Buncis.Framework.Core.Resources.PageComponent.PageHeadingDescription %></div>
 				</div>
 			</div>
 
@@ -79,28 +77,28 @@
 											<img src="/images/custom/nature1.jpg" />
 											<div class="carousel-caption">
 												<h4>Jeremiah 29:11</h4>
-												<p>For I know the plans I have for you, declares the LORD, plans for welfare and not for evil, to give you a future and a hope.</p>
+												<div>For I know the plans I have for you, declares the LORD, plans for welfare and not for evil, to give you a future and a hope.</div>
 											</div>
 										</div>
 										<div class="item">
 											<img src="/images/custom/nature2.jpg" />
 											<div class="carousel-caption">
 												<h4>Isaiah 41:10</h4>
-												<p>Fear not, for I am with you;  be not dismayed, for I am your God; I will strengthen you, I will help you,  I will uphold you with my righteous right hand.</p>
+												<div>Fear not, for I am with you;  be not dismayed, for I am your God; I will strengthen you, I will help you,  I will uphold you with my righteous right hand.</div>
 											</div>
 										</div>
 										<div class="item">
 											<img src="/images/custom/nature3.jpg" />
 											<div class="carousel-caption">
 												<h4>Revelation 21:4</h4>
-												<p>He will wipe away every tear from their eyes, and death shall be no more, neither shall there be mourning, nor crying, nor pain anymore, for the former things have passed away.</p>
+												<div>He will wipe away every tear from their eyes, and death shall be no more, neither shall there be mourning, nor crying, nor pain anymore, for the former things have passed away.</div>
 											</div>
 										</div>
 										<div class="item">
 											<img src="/images/custom/nature4.jpg" />
 											<div class="carousel-caption">
 												<h4>Psalm 136:26</h4>
-												<p>Give thanks to the God of heaven, for his steadfast love endures forever.</p>
+												<div>Give thanks to the God of heaven, for his steadfast love endures forever.</div>
 											</div>
 										</div>
 									</div>

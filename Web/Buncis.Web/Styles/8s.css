@@ -334,7 +334,7 @@ ul.sideMenu li a:hover {
 .quotes-container {
 	font-size: 1.3em;
 }
-.carousel-caption p, .carousel-caption h4 {
+.carousel-caption div, .carousel-caption h4 {
 	line-height: 1.5em;
-	font-size: 1.5em;
+	font-size: 1.5em;	
 }

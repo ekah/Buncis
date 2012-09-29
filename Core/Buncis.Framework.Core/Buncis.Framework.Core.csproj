@@ -66,6 +66,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\IUrlEngine.cs" />
+    <Compile Include="Resources\PageComponent.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PageComponent.resx</DependentUpon>
+    </Compile>
     <Compile Include="SupportClasses\Filters\IDynamicPageFilters.cs" />
     <Compile Include="SupportClasses\Filters\IFilter.cs" />
     <Compile Include="Infrastructure\Settings\AppSettingsPropertySettingsResolver.cs" />
@@ -155,6 +160,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\PageComponent.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PageComponent.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\QueryStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>QueryStrings.Designer.cs</LastGenOutput>

@@ -328,6 +328,7 @@
     <Content Include="Images\menu_bg.jpg" />
     <Content Include="Images\menu_separator.png" />
     <Content Include="Modules\News\Detail.aspx" />
+    <Content Include="Open\ServiceProvider.svc" />
     <Content Include="README.txt" />
     <Content Include="robot.txt" />
     <Content Include="sandbox\actTemplate-nopopup.js">
@@ -343,6 +344,7 @@
     <Content Include="sandbox\BackboneRouterTest.aspx" />
     <Content Include="sandbox\impress-try1.html" />
     <Content Include="sandbox\NewsSandbox.aspx" />
+    <Content Include="sandbox\TestProvider.aspx" />
     <Content Include="Scripts\bunx\_act_articles_category.js" />
     <Content Include="Scripts\bunx\_act_dailybread.js" />
     <Content Include="Scripts\bunx\backbone\backbone-min.js" />
@@ -623,6 +625,12 @@
     <Compile Include="NotFound.aspx.designer.cs">
       <DependentUpon>NotFound.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Open\IServiceProvider.cs" />
+    <Compile Include="Open\Provider.cs" />
+    <Compile Include="Open\ProviderCategory.cs" />
+    <Compile Include="Open\ServiceProvider.svc.cs">
+      <DependentUpon>ServiceProvider.svc</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sandbox\BackboneRouterTest.aspx.cs">
       <DependentUpon>BackboneRouterTest.aspx</DependentUpon>
@@ -640,6 +648,13 @@
     </Compile>
     <Compile Include="sandbox\SandboxPageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sandbox\TestProvider.aspx.cs">
+      <DependentUpon>TestProvider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sandbox\TestProvider.aspx.designer.cs">
+      <DependentUpon>TestProvider.aspx</DependentUpon>
     </Compile>
     <Compile Include="tests\TestDefault.aspx.cs">
       <DependentUpon>TestDefault.aspx</DependentUpon>
