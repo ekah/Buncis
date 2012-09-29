@@ -4,10 +4,12 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.ServiceModel.Activation;
 
 namespace Buncis.Web.Open
 {
 	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ServiceProvider" in code, svc and config file together.
+	[AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
 	public class ServiceProvider : IServiceProvider
 	{
 		public IEnumerable<Provider> GetProvider(float langitude, float latitude)

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
-  <publishProfile publishUrl="D:\Projects\Buncis_Published" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+  <publishProfile publishUrl="D:\Projects\Buncis_Published" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
     <file relUrl="bootstrap/carousel/bootstrap.min.css" publishTime="09/25/2012 22:34:29" />
     <file relUrl="Images/logo.png" publishTime="09/11/2012 07:51:59" />
     <file relUrl="Images/custom/dummy08.jpg" publishTime="09/27/2012 22:27:39" />
@@ -139,7 +139,7 @@
     <file relUrl="Styles/images/ui-icons_888888_256x240.png" publishTime="09/11/2012 07:51:59" />
     <file relUrl="Images/custom/dummy03.jpg" publishTime="09/27/2012 22:27:39" />
     <file relUrl="bin/Buncis.Logic.dll" publishTime="09/29/2012 13:38:28" />
-    <file relUrl="Web.config" publishTime="09/29/2012 12:58:21" />
+    <file relUrl="Web.config" publishTime="09/29/2012 13:58:38" />
     <file relUrl="Styles/bunx.css" publishTime="09/27/2012 22:27:39" />
     <file relUrl="bootstrap/css/bootstrap.min.css" publishTime="09/20/2012 21:36:54" />
     <file relUrl="Images/icons/donate.png" publishTime="09/11/2012 07:51:59" />
@@ -218,7 +218,7 @@
     <file relUrl="WebServices/Pages.svc" publishTime="09/11/2012 07:52:00" />
     <file relUrl="Scripts/modules/toastr/toastr.js" publishTime="09/11/2012 07:51:59" />
     <file relUrl="Scripts/bunx/_act_articles_category.js" publishTime="09/29/2012 11:36:45" />
-    <file relUrl="bin/Buncis.Web.dll" publishTime="09/29/2012 13:39:51" />
+    <file relUrl="bin/Buncis.Web.dll" publishTime="09/29/2012 13:58:17" />
     <file relUrl="Images/icons/networking.png" publishTime="09/11/2012 07:51:59" />
     <file relUrl="Scripts/jquery-1.7.2.js" publishTime="09/11/2012 07:51:59" />
     <file relUrl="Styles/custom.css" publishTime="09/25/2012 23:55:56" />
