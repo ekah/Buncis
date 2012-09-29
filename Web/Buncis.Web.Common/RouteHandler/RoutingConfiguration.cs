@@ -12,6 +12,7 @@ namespace Buncis.Web.Common.RouteHandler
 			var routeHandlerFactory = new RouteHandlerFactory();
 
 			routes.Ignore("webservices/{serviceName}.svc/{*serviceActions}");
+			routes.Ignore("open/{serviceName}.svc/{*serviceActions}");
 
 			// Register Route for Dynamic Pages
 			// news route
