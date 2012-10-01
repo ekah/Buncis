@@ -7,45 +7,63 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Buncis.Web.Modules.Articles {
+namespace Buncis.Web.Master {
     
     
-    public partial class Detail {
+    public partial class Parent {
         
         /// <summary>
-        /// ltrArticleTitle control.
+        /// Head1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrArticleTitle;
+        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
         
         /// <summary>
-        /// ltrArticleInfo control.
+        /// metaFBOpenGraph control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrArticleInfo;
+        protected global::System.Web.UI.WebControls.Literal metaFBOpenGraph;
         
         /// <summary>
-        /// ltrSocial control.
+        /// ParentHeadPlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrSocial;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ParentHeadPlaceHolder;
         
         /// <summary>
-        /// ltrContent control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrContent;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
+        /// pageMenu1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Buncis.Web.UserControls.Component.PageMenu pageMenu1;
+        
+        /// <summary>
+        /// ParentMainPlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ParentMainPlaceHolder;
     }
 }

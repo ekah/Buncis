@@ -28,6 +28,15 @@
 			clean = clean.Replace("\"", "-");
 			clean = clean.Replace("\\", "-");
 			clean = clean.Replace("/", "-");
+			clean = clean.Replace(":", "-");
+
+			clean = clean.Replace("--", "-");
+			clean = clean.Replace("---", "-");
+			clean = clean.Replace("----", "-");
+			clean = clean.Replace("-----", "-");
+
+			clean = clean.TrimStart('-');
+			clean = clean.TrimEnd('-');
 
 			return clean;
 		}

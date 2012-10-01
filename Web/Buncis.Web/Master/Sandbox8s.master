@@ -1,0 +1,5 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Master/Parent.Master" AutoEventWireup="true" CodeBehind="Sandbox8s.master.cs" Inherits="Buncis.Web.Master.Sandbox8s" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ParentHeadPlaceHolder" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ParentMainPlaceHolder" runat="server">
+</asp:Content>

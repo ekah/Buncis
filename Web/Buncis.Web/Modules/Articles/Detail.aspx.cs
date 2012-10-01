@@ -6,6 +6,7 @@ using Buncis.Logic.Models.Articles;
 using Buncis.Web.Common.Exceptions;
 using WebFormsMvp;
 using Buncis.Web.Base;
+using Buncis.Web.Common.Utility;
 
 namespace Buncis.Web.Modules.Articles
 {
@@ -43,12 +44,16 @@ namespace Buncis.Web.Modules.Articles
 		public event EventHandler GetArticleDetail;
 		public void BindArticleDetail()
 		{
-			ltrArticleTitle.Text = string.Format("<a href=\"{0}\">{1}</a>", Model.ArticleUrl, Model.ArticleTitle);
+			ltrArticleTitle.Text = string.Format(@"<a href=""{0}"">{1}</a>", Model.ArticleUrl, Model.ArticleTitle);
 			ltrArticleInfo.Text = Model.DateCreated.ToBuncisShortFormatString();
 			ltrContent.Text = Model.ArticleContent;
 
 			Page.Title = Model.ArticleTitle;
 			Page.MetaDescription = Model.ArticleSummary;
+
+			ltrSocial.Text = WebUtil.GetSocialBar(Model.ArticleUrl);
+
+			WebUtil.PutFBOpenGraphMetaTag(this.Page, Model.ArticleTitle, Model.ArticleSummary, Model.ArticleUrl);
 		}
 
 		#endregion

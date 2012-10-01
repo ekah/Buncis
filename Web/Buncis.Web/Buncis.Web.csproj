@@ -74,6 +74,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\fluentnhibernate\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\..\Lib\fluentnhibernate\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
@@ -137,8 +138,11 @@
     <Content Include="1140grid\css\ie.css" />
     <Content Include="1140grid\css\styles.css" />
     <Content Include="1140grid\js\css3-mediaqueries.js" />
+    <Content Include="channel.html" />
     <Content Include="google09f5b5dbd0a1c13e.html" />
     <Content Include="Images\000000.png" />
+    <Content Include="Images\custom\dailybread.jpg" />
+    <Content Include="Images\custom\dailybread_sm.jpg" />
     <Content Include="Images\custom\nature1.jpg" />
     <Content Include="Images\custom\nature2.jpg" />
     <Content Include="Images\custom\nature3.jpg" />
@@ -330,7 +334,7 @@
     <Content Include="Modules\News\Detail.aspx" />
     <Content Include="Open\ServiceProvider.svc" />
     <Content Include="README.txt" />
-    <Content Include="robot.txt" />
+    <Content Include="robots.txt" />
     <Content Include="sandbox\actTemplate-nopopup.js">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -437,6 +441,20 @@
     <Content Include="WebServices\Pages.svc" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Master\Parent.Master.cs">
+      <DependentUpon>Parent.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Parent.Master.designer.cs">
+      <DependentUpon>Parent.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Sandbox8s.master.cs">
+      <DependentUpon>Sandbox8s.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Sandbox8s.master.designer.cs">
+      <DependentUpon>Sandbox8s.master</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Articles\Detail.aspx.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -792,6 +810,8 @@
     <None Include="bootstrap\css\carousel.less" />
     <Content Include="Master\CustomPage8s.Master" />
     <Content Include="Master\CustomTwoColumns8s.Master" />
+    <Content Include="Master\Parent.Master" />
+    <Content Include="Master\Sandbox8s.master" />
     <None Include="sandbox\actTemplate-nopopup.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>actTemplate-nopopup.js</LastGenOutput>

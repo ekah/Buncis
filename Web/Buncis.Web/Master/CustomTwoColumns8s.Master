@@ -1,117 +1,39 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="CustomTwoColumns8s.master.cs" Inherits="Buncis.Web.Master.CustomTwoColumns8s" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" MasterPageFile="~/Master/Parent.Master" CodeBehind="CustomTwoColumns8s.master.cs" Inherits="Buncis.Web.Master.CustomTwoColumns8s" %>
 
 
-<!DOCTYPE html>
-<html>
-<head id="Head1" runat="server">
-	<title>Buncis</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet">
-
-	<link href="/1140grid/css/1140.css" rel="stylesheet" type="text/css" />
-	<link href="/1140grid/css/styles.css" rel="stylesheet" type="text/css" />
-	<link href="/styles/normalize.css" rel="stylesheet" />
-	<link href="/styles/8s.css" rel="stylesheet" />
-	
-	<script src="/scripts/jquery-1.7.2.min.js" type="text/javascript" ></script>
-	<script src="/1140grid/js/css3-mediaqueries.js" type="text/javascript"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function () {
-
-		});
-	</script>
-
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-35190811-1']);
-		_gaq.push(['_trackPageview']);
-
-		(function () {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	</script>
-
+<asp:Content runat="server" ID="Content1" ContentPlaceHolderID="ParentHeadPlaceHolder">
 	<asp:ContentPlaceHolder ID="head" runat="server">
 	</asp:ContentPlaceHolder>
-</head>
-<body>
-	<form id="form1" runat="server">
-		<div class="container">
-			<div class="row">
-				<div class="twelvecol header last">
-					<h2><%= Buncis.Framework.Core.Resources.PageComponent.PageHeading %></h2>
-					<div><%= Buncis.Framework.Core.Resources.PageComponent.PageHeadingDescription %></div>
-				</div>
-			</div>
-			
-			<%--<div class="row section">
-				<div class="twelvecol last">
-					<div class="menu-container">
-						<ul class="menu">
-							<li><a href="/">Home</a></li>
-							<li><a href="/DailyBread">Daily Bread</a></li>
-							<li><a href="/Articles">Articles</a></li>
-							<li><a href="/News">News</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>--%>
-			
-			<bun:PageMenu runat="server" ID="pageMenu1"></bun:PageMenu>
-
-			<div class="row section">
-				<div class="fourcol">
-					<div class="height100 sideMenuContainer">
-						<ul class="sideMenu">
-							<li>
-								<a href="#">
-									<span>Testimony</span>
-									<span class="menuDesc">Sharing is Caring</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<span>Devotional</span>
-									<span class="menuDesc">Our Strength</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<span>Stories</span>
-									<span class="menuDesc">Life Inspiration</span>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="eightcol last">
-					<asp:ContentPlaceHolder ID="MainPlaceHolder" runat="server"></asp:ContentPlaceHolder>
-				</div>
-			</div>
-			
-			<div class="row section">
-				<div class="twelvecol footer last">
-					<div class="fourcol footer-section">
-						Contact Us: <br/>
-					</div>
-					<div class="fourcol footer-section">
-						<div>Our Social Network:</div>
-						<p></p>
-						<div>
-							<span><img src="/images/custom/foot_facebook.png"/></span>
-							<span><img src="/images/custom/foot_twitter.png"/></span>
-							<span><img src="/images/custom/foot_google_plus.png"/></span>
-						</div>
-					</div>
-					<div class="fourcol footer-section last">
-						<div>Copyright &#169; Buncis 2012</div>
-					</div>
-				</div>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ParentMainPlaceHolder" runat="server">
+	<div class="row section">
+		<div class="fourcol">
+			<div class="height100 sideMenuContainer">
+				<ul class="sideMenu">
+					<li>
+						<a href="#">
+							<span>Testimony</span>
+							<span class="menuDesc">Sharing is Caring</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span>Devotional</span>
+							<span class="menuDesc">Our Strength</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span>Stories</span>
+							<span class="menuDesc">Life Inspiration</span>
+						</a>
+					</li>
+				</ul>
 			</div>
 		</div>
-	</form>
-</body>
-</html>
+		<div class="eightcol last">
+			<asp:ContentPlaceHolder ID="MainPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+		</div>
+	</div>
+</asp:Content>
+

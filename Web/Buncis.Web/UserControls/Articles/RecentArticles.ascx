@@ -9,6 +9,9 @@
 				</div>
 				<div class="recentarticles-articleinfo"><%# ((DateTime)Eval("DateCreated")).ToBuncisShortFormatString() %></div>
 				<div class="recentarticles-articlesummary"><%# Eval("ArticleTeaser")%></div>
+				<div class="listitem-social">
+					<fb:share-button type="button_count" href='<%# Buncis.Web.Common.Utility.WebUtil.GetFullUrlToShare(Eval("ArticleUrl").ToString()) %>'></fb:share-button>
+				</div>
 				<div class="recentarticles-footer">
 					<a href='<%# Eval("ArticleUrl") %>'>Read More</a>
 				</div>

@@ -6,6 +6,9 @@
 		<h1 class="articledetail-title"><asp:Literal runat="server" ID="ltrArticleTitle"></asp:Literal></h1>
 		<div class="articledetail-info"><asp:Literal runat="server" ID="ltrArticleInfo"></asp:Literal></div>
 		<br/>
+		<asp:Literal runat="server" ID="ltrSocial"></asp:Literal>
+		<div class="clearfix"></div>
+		<br/>
 		<div class="articledetail-content"><asp:Literal runat="server" ID="ltrContent"></asp:Literal></div>
 	</div>
 </asp:Content>

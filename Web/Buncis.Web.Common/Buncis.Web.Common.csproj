@@ -56,6 +56,7 @@
     <Reference Include="FluentNHibernate">
       <HintPath>..\..\Lib\fluentnhibernate\FluentNHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\..\Lib\fluentnhibernate\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
