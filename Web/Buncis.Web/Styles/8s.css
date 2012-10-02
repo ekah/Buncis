@@ -343,10 +343,10 @@ ul.sideMenu li a:hover {
 	padding: 10px 0px;
 }
 .socialbar {
-	height: 30px;
-	margin: auto;
+	
 }
-.socialbar span {
+.socialbar div {
 	display: block;
 	float: left;
+	margin-right: 10px;
 }

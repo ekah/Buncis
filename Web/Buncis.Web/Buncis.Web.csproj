@@ -143,6 +143,7 @@
     <Content Include="Images\000000.png" />
     <Content Include="Images\custom\dailybread.jpg" />
     <Content Include="Images\custom\dailybread_sm.jpg" />
+    <Content Include="Images\custom\Gmail.png" />
     <Content Include="Images\custom\nature1.jpg" />
     <Content Include="Images\custom\nature2.jpg" />
     <Content Include="Images\custom\nature3.jpg" />

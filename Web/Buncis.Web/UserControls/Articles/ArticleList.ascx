@@ -14,9 +14,9 @@
 					<div class="teaser">
 						<%# Eval("ArticleTeaser") %>
 					</div>
-					<div class="listitem-social">
+					<%--<div class="listitem-social">
 						<fb:share-button type="button_count" href='<%# Buncis.Web.Common.Utility.WebUtil.GetFullUrlToShare(Eval("ArticleUrl").ToString()) %>'></fb:share-button>
-					</div>
+					</div>--%>
 					<div class="item-footer">
 						<a href='<%# Eval("ArticleUrl") %>' title="Read More">Read More</a>
 					</div>

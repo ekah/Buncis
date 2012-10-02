@@ -122,10 +122,12 @@
 			
 			<div class="row section">
 				<div class="twelvecol footer last">
-					<div class="fourcol footer-section">
-						Contact Us: <br/>
+					<div class="sixcol footer-section">
+						If you have any feedback or willing to share your stories, please contact us
+						<p></p>
+						<a href="mailto:buncis.org@gmail.com"><span><img src="/images/custom/gmail.png" /></span></a>
 					</div>
-					<div class="fourcol footer-section">
+					<div class="threecol footer-section">
 						<div>Our Social Network:</div>
 						<p></p>
 						<div>
@@ -134,12 +136,24 @@
 							<span><img src="/images/custom/foot_google_plus.png"/></span>
 						</div>
 					</div>
-					<div class="fourcol footer-section last">
+					<div class="threecol footer-section last">
 						<div>Copyright &#169; Buncis 2012</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</form>
+	
+	<!-- G+ -->
+	<!-- Place this tag after the last share tag. -->
+	<script type="text/javascript">
+		(function () {
+			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			po.src = 'https://apis.google.com/js/plusone.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		})();
+	</script>
+	<!-- End G+ -->
+
 </body>
 </html>

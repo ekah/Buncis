@@ -49,11 +49,15 @@ namespace Buncis.Web.Common.Utility
 		public static string GetSocialBar(string url)
 		{
 			var fullUrl = GetFullUrlToShare(url);
+
 			var sb = new StringBuilder();
 			sb.Append("<div class=\"socialbar\">");
-			sb.AppendFormat("<span><fb:share-button type=\"button_count\" href=\"{0}\"></fb:share-button><span>", fullUrl);
-			sb.AppendFormat(@"<span><a href=""https://twitter.com/share"" class=""twitter-share-button"" data-url=""{0}"">Tweet</a></span>", fullUrl);
+			sb.AppendFormat("<div class=\"fb-like\" data-href=\"{0}\" data-send=\"false\" data-layout=\"button_count\" data-width=\"450\" data-show-faces=\"false\"></div>", fullUrl);
+			//sb.AppendFormat("<span><fb:share-button type=\"button_count\" href=\"{0}\"></fb:share-button><span>", fullUrl);
+			sb.AppendFormat(@"<div class=""twitter-tweet""><a href=""https://twitter.com/share"" class=""twitter-share-button"" data-url=""{0}"">Tweet</a></div>", fullUrl);
+			sb.AppendFormat(@"<div class=""g-plus"" data-action=""share"" data-annotation=""bubble""></div>");
 			sb.Append("</div>");
+
 			return sb.ToString();
 		}
 

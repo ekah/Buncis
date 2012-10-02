@@ -21,12 +21,16 @@ namespace Buncis.Web.Common.RouteHandler
 			routes.Add(RouteNames.News, newsRoute);
 
 			// articles route
-			var articlesRoute = new Route("{year}/{month}/{day}/30/{" + QueryStrings.ArticleDetailId + "}/{articleTitle}",
+			//var articlesRoute = new Route("{year}/{month}/{day}/30/{" + QueryStrings.ArticleDetailId + "}/{articleTitle}",
+			//    routeHandlerFactory.GetRouteHandler<ArticleRouteHandler>());
+			var articlesRoute = new Route("30/{" + QueryStrings.ArticleDetailId + "}/{articleTitle}",
 				routeHandlerFactory.GetRouteHandler<ArticleRouteHandler>());
 			routes.Add(RouteNames.Articles, articlesRoute);
 
 			// daily bread route
-			var dailyBreadRoute = new Route("{year}/{month}/{day}/50/{" + QueryStrings.DailyBreadDetailId + "}/{dailyBreadTitle}",
+			//var dailyBreadRoute = new Route("{year}/{month}/{day}/50/{" + QueryStrings.DailyBreadDetailId + "}/{dailyBreadTitle}",
+			//    routeHandlerFactory.GetRouteHandler<DailyBreadRouteHandler>());
+			var dailyBreadRoute = new Route("50/{" + QueryStrings.DailyBreadDetailId + "}/{dailyBreadTitle}",
 				routeHandlerFactory.GetRouteHandler<DailyBreadRouteHandler>());
 			routes.Add(RouteNames.DailyBread, dailyBreadRoute);
 
