@@ -362,10 +362,23 @@
     <Content Include="Scripts\bunx\_act_news_category.js" />
     <Content Include="Scripts\impress.js" />
     <Content Include="Scripts\jquery-ui-1.8.23.custom.min.js" />
-    <Content Include="Scripts\jquery.isotope.js" />
-    <Content Include="Scripts\jquery.isotope.min.js" />
-    <Content Include="Scripts\jquery.masonry.js" />
-    <Content Include="Scripts\jquery.masonry.min.js" />
+    <Content Include="Scripts\modules\fileupload\canvas-to-blob.js" />
+    <Content Include="Scripts\modules\fileupload\canvas-to-blob.min.js" />
+    <Content Include="Scripts\modules\fileupload\jquery.fileupload-fp.js" />
+    <Content Include="Scripts\modules\fileupload\jquery.fileupload-ui.js" />
+    <Content Include="Scripts\modules\fileupload\jquery.fileupload.js" />
+    <Content Include="Scripts\modules\fileupload\jquery.iframe-transport.js" />
+    <Content Include="Scripts\modules\fileupload\jquery.postmessage-transport.js" />
+    <Content Include="Scripts\modules\fileupload\jquery.ui.widget.js" />
+    <Content Include="Scripts\modules\fileupload\jquery.xdr-transport.js" />
+    <Content Include="Scripts\modules\fileupload\load-image.js" />
+    <Content Include="Scripts\modules\fileupload\load-image.min.js" />
+    <Content Include="Scripts\modules\fileupload\tmpl.js" />
+    <Content Include="Scripts\modules\fileupload\tmpl.min.js" />
+    <Content Include="Scripts\modules\jquery.isotope.js" />
+    <Content Include="Scripts\modules\jquery.isotope.min.js" />
+    <Content Include="Scripts\modules\jquery.masonry.js" />
+    <Content Include="Scripts\modules\jquery.masonry.min.js" />
     <Content Include="Scripts\modules\jquery.color.js" />
     <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\modules\blockui\jquery.blockUI.js" />
@@ -420,6 +433,7 @@
     <Content Include="Styles\wysihtml5\wysiwyg-color.css" />
     <Content Include="UserControls\Articles\ArticleList.ascx" />
     <Content Include="UserControls\Articles\RecentArticles.ascx" />
+    <Content Include="UserControls\Component\AsyncUpload.ascx" />
     <Content Include="UserControls\Component\LoginInfo.ascx" />
     <Content Include="UserControls\Component\PageMenu.ascx" />
     <Content Include="UserControls\Component\WysiwygToolbar.ascx" />
@@ -688,6 +702,13 @@
     <Compile Include="UserControls\Articles\RecentArticles.ascx.designer.cs">
       <DependentUpon>RecentArticles.ascx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Component\AsyncUpload.ascx.cs">
+      <DependentUpon>AsyncUpload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Component\AsyncUpload.ascx.designer.cs">
+      <DependentUpon>AsyncUpload.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Component\LoginInfo.ascx.cs">
       <DependentUpon>LoginInfo.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -781,6 +802,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="uploaded\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master\Buncis.Master" />

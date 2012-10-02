@@ -26,12 +26,19 @@
 	</div>
 </div>
 
-<script src="/Scripts/jquery.masonry.min.js" type="text/javascript"></script>
+<%--<script src="/Scripts/modules/jquery.masonry.min.js" type="text/javascript"></script>--%>
+<script src="/Scripts/modules/jquery.isotope.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
-		$('#articlelist-container').masonry({
+		var $container = $('#articlelist-container');
+		$container.isotope({
 			itemSelector: '.articlelist-item',
-			isAnimated: true
+			animationEngine: 'best-available',
+			animationOptions: {
+				duration: 800,
+				easing: 'linear',
+				queue: false
+			}
 		});
 		$(window).trigger('resize');
 	});

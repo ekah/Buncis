@@ -86,7 +86,7 @@
     <file relUrl="bPanel/Account/Login.aspx" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/logo_bg.jpg" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/icons/my-account.png" publishTime="09/28/2012 11:12:45" />
-    <file relUrl="bin/Buncis.Data.Common.dll" publishTime="10/02/2012 10:28:18" />
+    <file relUrl="bin/Buncis.Data.Common.dll" publishTime="10/02/2012 13:01:43" />
     <file relUrl="Images/icons/archives.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Styles/images/ui-bg_glass_75_e6e6e6_1x400.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/icons/brainstorming.png" publishTime="09/28/2012 11:12:45" />
@@ -97,14 +97,14 @@
     <file relUrl="Images/custom/nature4.jpg" publishTime="09/28/2012 17:21:40" />
     <file relUrl="Images/icons/library.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/icons/link.png" publishTime="09/28/2012 11:12:45" />
-    <file relUrl="Styles/8s.css" publishTime="10/02/2012 08:20:05" />
+    <file relUrl="Styles/8s.css" publishTime="10/02/2012 13:04:36" />
     <file relUrl="Images/icons/ticket.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="bin/Iesi.Collections.dll" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/menu/articles.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="bPanel/Dashboard.aspx" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/logo_text.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Styles/images/ui-icons_454545_256x240.png" publishTime="09/28/2012 11:12:45" />
-    <file relUrl="UserControls/DailyBread/DailyBreadList.ascx" publishTime="09/28/2012 11:12:45" />
+    <file relUrl="UserControls/DailyBread/DailyBreadList.ascx" publishTime="10/02/2012 13:03:34" />
     <file relUrl="Images/icons/tag.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/logo2.jpg" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Master/CustomPage8s.Master" publishTime="10/01/2012 08:26:30" />
@@ -156,7 +156,7 @@
     <file relUrl="Master/Content.Master" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/custom/verse.jpg" publishTime="09/28/2012 11:12:45" />
     <file relUrl="WebServices/News.svc" publishTime="09/28/2012 11:12:45" />
-    <file relUrl="bin/Buncis.Services.Common.dll" publishTime="10/02/2012 10:28:18" />
+    <file relUrl="bin/Buncis.Services.Common.dll" publishTime="10/02/2012 13:01:43" />
     <file relUrl="Images/custom/dummy07.jpg" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Styles/tools/tabs-no-images.css" publishTime="09/28/2012 11:12:45" />
     <file relUrl="bin/StructureMapAdapter.dll" publishTime="09/28/2012 11:12:45" />
@@ -179,7 +179,7 @@
     <file relUrl="Images/icons/order-1.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/icons/limited-edition.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/custom/foot_google_plus.png" publishTime="09/28/2012 11:12:45" />
-    <file relUrl="bin/Buncis.Services.dll" publishTime="10/02/2012 10:28:17" />
+    <file relUrl="bin/Buncis.Services.dll" publishTime="10/02/2012 13:01:43" />
     <file relUrl="Images/icons/logout.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="bin/NHibernate.Linq.dll" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/custom/bg-full3.jpg" publishTime="09/28/2012 11:12:45" />
@@ -194,7 +194,7 @@
     <file relUrl="Images/icons/ico-news-status-edited.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="bPanel/Account/Logout.aspx" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/icons/config.png" publishTime="09/28/2012 11:12:45" />
-    <file relUrl="bin/Buncis.Framework.Core.dll" publishTime="10/02/2012 10:28:17" />
+    <file relUrl="bin/Buncis.Framework.Core.dll" publishTime="10/02/2012 13:01:42" />
     <file relUrl="Scripts/modules/scrollto/jquery.scrollTo.js" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Styles/jquery-ui-1.8.23.custom.css" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Scripts/jquery.isotope.js" publishTime="09/28/2012 11:12:45" />
@@ -207,11 +207,11 @@
     <file relUrl="Images/custom/foot_facebook.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="bootstrap/carousel/bootstrap.js" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/menu/pages.png" publishTime="09/28/2012 11:12:45" />
-    <file relUrl="bin/Buncis.Web.Common.dll" publishTime="10/02/2012 10:28:18" />
+    <file relUrl="bin/Buncis.Web.Common.dll" publishTime="10/02/2012 13:01:44" />
     <file relUrl="Images/custom/bg.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Scripts/modules/wysihtml5/parser_rules/advanced.js" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/icons/billing.png" publishTime="09/28/2012 11:12:45" />
-    <file relUrl="bin/Buncis.Logic.dll" publishTime="10/02/2012 10:28:18" />
+    <file relUrl="bin/Buncis.Logic.dll" publishTime="10/02/2012 13:02:25" />
     <file relUrl="bPanel/Pages/List.aspx" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/icons/settings.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Scripts/modules/tools/scrollable.autoscroll.js" publishTime="09/28/2012 11:12:45" />
@@ -226,7 +226,7 @@
     <file relUrl="Images/icons/address.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="WebServices/Pages.svc" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Scripts/modules/toastr/toastr.js" publishTime="09/28/2012 11:12:45" />
-    <file relUrl="bin/Buncis.Web.dll" publishTime="10/02/2012 10:28:19" />
+    <file relUrl="bin/Buncis.Web.dll" publishTime="10/02/2012 14:55:58" />
     <file relUrl="NotFound.aspx" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/icons/networking.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Scripts/jquery-1.7.2.js" publishTime="09/28/2012 11:12:45" />
@@ -234,6 +234,7 @@
     <file relUrl="packages.config" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/icons/current-work.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/custom/current-label.png" publishTime="09/28/2012 11:12:45" />
+    <file relUrl="UserControls/Component/AsyncUpload.ascx" publishTime="10/02/2012 14:54:42" />
     <file relUrl="bin/Microsoft.Practices.ServiceLocation.dll" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Styles/normalize.css" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/custom/dummy05.jpg" publishTime="09/28/2012 11:12:45" />
@@ -269,7 +270,7 @@
     <file relUrl="Styles/images/ui-icons_2e83ff_256x240.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/custom/foot_twitter.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Modules/DailyBread/Detail.aspx" publishTime="10/02/2012 08:29:08" />
-    <file relUrl="UserControls/DailyBread/RecentDailyBread.ascx" publishTime="09/28/2012 16:25:51" />
+    <file relUrl="UserControls/DailyBread/RecentDailyBread.ascx" publishTime="10/02/2012 13:03:00" />
     <file relUrl="Scripts/modules/dataTables/jquery.dataTables.js" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Scripts/modules/trunk8.js" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Scripts/jquery.masonry.min.js" publishTime="09/28/2012 11:12:45" />
@@ -309,7 +310,7 @@
     <file relUrl="Images/icons/communication.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/custom/construction.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/icons/heart.png" publishTime="09/28/2012 11:12:45" />
-    <file relUrl="bin/Buncis.Data.Repository.dll" publishTime="10/02/2012 10:28:17" />
+    <file relUrl="bin/Buncis.Data.Repository.dll" publishTime="10/02/2012 13:01:42" />
     <file relUrl="bPanel/NotFound.aspx" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/menu/news.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/icons/photography.png" publishTime="09/28/2012 11:12:45" />

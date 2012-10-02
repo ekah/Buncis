@@ -26,12 +26,19 @@
 	</div>
 </div>
 
-<script src="/Scripts/jquery.masonry.min.js" type="text/javascript"></script>
+<%--<script src="/Scripts/modules/jquery.masonry.min.js" type="text/javascript"></script>--%>
+<script src="/Scripts/modules/jquery.isotope.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
-		$('#dailybreadlist-container').masonry({
+		var $container = $('#dailybreadlist-container');
+		$container.isotope({
 			itemSelector: '.dailybreadlist-item',
-			isAnimated: true
+			animationEngine: 'best-available',
+			animationOptions: {
+				duration: 800,
+				easing: 'linear',
+				queue: false
+			}
 		});
 		$(window).trigger("resize");
 	});
