@@ -53,7 +53,7 @@ namespace Buncis.Web.Modules.Articles
 
 			ltrSocial.Text = WebUtil.GetSocialBar(Model.ArticleUrl);
 
-			WebUtil.PutFBOpenGraphMetaTag(this.Page, Model.ArticleTitle, Model.ArticleSummary, Model.ArticleUrl);
+			WebUtil.PutFBOpenGraphMetaTag(Page, Model.ArticleTitle, Model.ArticleSummary, Model.ArticleUrl);
 		}
 
 		#endregion

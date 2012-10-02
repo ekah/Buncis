@@ -121,7 +121,7 @@
     <file relUrl="Images/body_bg2.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="WebServices/DailyBread.svc" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/icons/pencil.png" publishTime="09/28/2012 11:12:45" />
-    <file relUrl="Master/Parent.Master" publishTime="10/02/2012 08:22:17" />
+    <file relUrl="Master/Parent.Master" publishTime="10/02/2012 08:39:05" />
     <file relUrl="Images/menu/daily.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/custom/comingsoon.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Scripts/impress.js" publishTime="09/28/2012 11:12:45" />
@@ -206,11 +206,11 @@
     <file relUrl="Images/custom/foot_facebook.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="bootstrap/carousel/bootstrap.js" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/menu/pages.png" publishTime="09/28/2012 11:12:45" />
-    <file relUrl="bin/Buncis.Web.Common.dll" publishTime="10/02/2012 08:24:01" />
+    <file relUrl="bin/Buncis.Web.Common.dll" publishTime="10/02/2012 08:44:05" />
     <file relUrl="Images/custom/bg.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Scripts/modules/wysihtml5/parser_rules/advanced.js" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/icons/billing.png" publishTime="09/28/2012 11:12:45" />
-    <file relUrl="bin/Buncis.Logic.dll" publishTime="10/02/2012 08:24:02" />
+    <file relUrl="bin/Buncis.Logic.dll" publishTime="10/02/2012 08:44:06" />
     <file relUrl="bPanel/Pages/List.aspx" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/icons/settings.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Scripts/modules/tools/scrollable.autoscroll.js" publishTime="09/28/2012 11:12:45" />
@@ -225,7 +225,7 @@
     <file relUrl="Images/icons/address.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="WebServices/Pages.svc" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Scripts/modules/toastr/toastr.js" publishTime="09/28/2012 11:12:45" />
-    <file relUrl="bin/Buncis.Web.dll" publishTime="10/02/2012 08:24:02" />
+    <file relUrl="bin/Buncis.Web.dll" publishTime="10/02/2012 08:44:06" />
     <file relUrl="NotFound.aspx" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/icons/networking.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Scripts/jquery-1.7.2.js" publishTime="09/28/2012 11:12:45" />
@@ -268,7 +268,7 @@
     <file relUrl="Master/Sandbox8s.master" publishTime="10/01/2012 08:12:18" />
     <file relUrl="Styles/images/ui-icons_2e83ff_256x240.png" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Images/custom/foot_twitter.png" publishTime="09/28/2012 11:12:45" />
-    <file relUrl="Modules/DailyBread/Detail.aspx" publishTime="09/28/2012 11:12:45" />
+    <file relUrl="Modules/DailyBread/Detail.aspx" publishTime="10/02/2012 08:29:08" />
     <file relUrl="UserControls/DailyBread/RecentDailyBread.ascx" publishTime="09/28/2012 16:25:51" />
     <file relUrl="Scripts/modules/dataTables/jquery.dataTables.js" publishTime="09/28/2012 11:12:45" />
     <file relUrl="Styles/images/ui-bg_glass_75_e6e6e6_1x400.png" publishTime="09/28/2012 11:12:45" />

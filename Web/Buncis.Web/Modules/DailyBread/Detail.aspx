@@ -6,6 +6,9 @@
 		<h1 class="dailybreaddetail-title"><asp:Literal runat="server" ID="ltrTitle"></asp:Literal></h1>
 		<div class="dailybreaddetail-info"><asp:Literal runat="server" ID="ltrInfo"></asp:Literal></div>
 		<br/>
+		<asp:Literal runat="server" ID="ltrSocial"></asp:Literal>
+		<div class="clearfix"></div>
+		<br/>
 		<div class="dailybreaddetail-bible">
 			<blockquote>
 				<asp:Literal runat="server" ID="ltrBible"></asp:Literal>

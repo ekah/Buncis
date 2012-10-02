@@ -1,6 +1,7 @@
 ﻿using System;
 using Buncis.Framework.Core.Infrastructure.Extensions;
 using Buncis.Web.Common.Exceptions;
+using Buncis.Web.Common.Utility;
 using WebFormsMvp;
 using Buncis.Logic.Views.DailyBread;
 using Buncis.Logic.Presenters.DailyBread;
@@ -51,6 +52,10 @@ namespace Buncis.Web.Modules.DailyBread
 
 			Page.Title = Model.DailyBreadTitle;
 			Page.MetaDescription = Model.DailyBreadSummary;
+
+			ltrSocial.Text = WebUtil.GetSocialBar(Model.DailyBreadUrl);
+
+			WebUtil.PutFBOpenGraphMetaTag(Page, Model.DailyBreadTitle, Model.DailyBreadSummary, Model.DailyBreadUrl);
 		}
 
 		#endregion

@@ -31,6 +31,15 @@ namespace Buncis.Web.Modules.DailyBread {
         protected global::System.Web.UI.WebControls.Literal ltrInfo;
         
         /// <summary>
+        /// ltrSocial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrSocial;
+        
+        /// <summary>
         /// ltrBible control.
         /// </summary>
         /// <remarks>
