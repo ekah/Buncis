@@ -40,11 +40,7 @@ namespace Buncis.Logic.Presenters.DailyBread
 			View.Model.DailyBreadSummary = dailyBreadItem.DailyBreadSummary;
 			View.Model.DailyBreadUrl = dailyBreadItem.DailyBreadUrl;
 			View.Model.DailyBreadContent = dailyBreadItem.DailyBreadContent;
-			View.Model.DailyBreadBible = string.Format("{0} {1}:{2}-{3}",
-				dailyBreadItem.DailyBreadBook,
-				dailyBreadItem.DailyBreadBookChapter,
-				dailyBreadItem.DailyBreadBookVerse1,
-				dailyBreadItem.DailyBreadBookVerse2);
+			View.Model.DailyBreadBible = dailyBreadItem.DailyBreadBookInfo;
 			View.Model.DailyBreadBibleContent = dailyBreadItem.DailyBreadBookContent;
 			View.Model.DatePublished = dailyBreadItem.DatePublished;
 

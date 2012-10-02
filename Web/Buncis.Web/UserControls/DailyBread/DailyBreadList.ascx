@@ -11,6 +11,9 @@
 					<div class="info">
 						<%# Eval("DisplayDatePublished")%>
 					</div>
+					<div class="book">
+						<%# Eval("DailyBreadBookInfo")%>
+					</div>
 					<div class="teaser">
 						<%# Eval("DailyBreadSummary") %>
 					</div>

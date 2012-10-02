@@ -42,5 +42,17 @@ namespace Buncis.Framework.Core.ViewModel
 		public int DailyBreadBookVerse1 { get; set; }
 		public int DailyBreadBookVerse2 { get; set; }
 		public string DailyBreadBookContent { get; set; }
+		public string DailyBreadBookInfo
+		{
+			get
+			{
+				var showVerse2 = DailyBreadBookVerse2 > 0 && DailyBreadBookVerse2 != DailyBreadBookVerse1;
+				return string.Format("{0} {1}:{2}{3}",
+					DailyBreadBook,
+					DailyBreadBookChapter,
+					DailyBreadBookVerse1,
+					showVerse2 ? "-" + DailyBreadBookVerse2 : string.Empty);
+			}
+		}
 	}
 }

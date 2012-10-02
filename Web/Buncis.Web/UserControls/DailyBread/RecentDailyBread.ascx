@@ -17,7 +17,8 @@
 						</div>
 						<div class="recentdailybread-dailybreadinfo"><%# Eval("DisplayDatePublished")%></div>
 						<div class="recentdailybread-dailybreadbible2">
-							<%# Eval("DailyBreadBook")%>&nbsp<%# string.Format("{0}:{1}-{2}", Eval("DailyBreadBookChapter"), Eval("DailyBreadBookVerse1"), Eval("DailyBreadBookVerse2"))%>
+							<%# Eval("DailyBreadBookInfo")%>
+							<%--<%# Eval("DailyBreadBook")%>&nbsp<%# string.Format("{0}:{1}-{2}", Eval("DailyBreadBookChapter"), Eval("DailyBreadBookVerse1"), Eval("DailyBreadBookVerse2"))%>--%>
 						</div>
 						<div class="recentdailybread-dailybreadsummary"><%# Eval("DailyBreadSummary")%></div>
 						<div class="recentdailybread-footer">

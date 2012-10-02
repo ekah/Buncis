@@ -312,11 +312,16 @@ ul.sideMenu li a:hover {
 }
 #dailybreadlist-container .dailybreadlist-item .teaser, 
 #dailybreadlist-container .dailybreadlist-item .item-footer,
+#dailybreadlist-container .dailybreadlist-item .book,
 #dailybreadlist-container .dailybreadlist-item .info {
 	margin-top: 5px;
 }
 #dailybreadlist-container .dailybreadlist-item .item-footer	{
 	float: right;
+}
+#dailybreadlist-container .dailybreadlist-item .book {
+	font-weight: bolder;
+	font-size: 1.1em;
 }
 #dailybreadlist-container .dailybreadlist-item .item-footer a {
 	display: block;
