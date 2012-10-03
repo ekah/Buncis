@@ -7,8 +7,8 @@ namespace Buncis.Framework.Core.Services.Articles
 	public interface IArticleService
 	{
 		IEnumerable<ViewModelArticleItem> GetAvailableArticleItems(int clientId);
-		ViewModelArticleItem GetArticleItem(int newsId);
-		ValidationDictionary<ViewModelArticleItem> DeleteArticleItem(int articleitemId);
+		ViewModelArticleItem GetArticleItem(int clientId, int articleId);
+		ValidationDictionary<ViewModelArticleItem> DeleteArticleItem(int clientId, int articleitemId);
 		ValidationDictionary<ViewModelArticleItem> SaveArticleItem(int clientId, ViewModelArticleItem viewModelArticle);
 		IEnumerable<ViewModelArticleCategory> GetArticleCategories(int clientId);
 		ValidationDictionary<ViewModelArticleCategory> InsertArticleCategory(int clientId, ViewModelArticleCategory viewModelArticleCategory);
@@ -16,6 +16,6 @@ namespace Buncis.Framework.Core.Services.Articles
 		string GetArticleUrl(int articleId, string articleTitle);
 		IEnumerable<ViewModelArticleItem> GetRecentArticles(int clientId);
 		IEnumerable<ViewModelArticleItem> GetAvailableArticleItems(int clientId, int categoryId);
-		ValidationDictionary<ViewModelArticleCategory> DeleteArticleCategory(int articleCategoryId);
+		ValidationDictionary<ViewModelArticleCategory> DeleteArticleCategory(int clientId, int articleCategoryId);
 	}
 }

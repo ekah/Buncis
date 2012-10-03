@@ -25,7 +25,7 @@ namespace Buncis.Logic.Presenters.News
 		void view_GetNewsDetail(object sender, EventArgs e)
 		{
 			var newsId = int.Parse(WebUtil.GetQueryString(QueryStrings.NewsDetailId, "-1"));
-			var newsItem = _newsService.GetNewsItem(newsId);
+			var newsItem = _newsService.GetNewsItem(ClientId, newsId);
 			if (newsItem == null)
 			{
 				throw new PageNotFoundException("The Page is not found in database", WebUtil.GetCurrentUrl());

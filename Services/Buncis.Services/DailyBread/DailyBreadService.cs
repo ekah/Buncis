@@ -38,9 +38,9 @@ namespace Buncis.Services.DailyBread
 			return converted;
 		}
 
-		public ViewModelDailyBreadItem GetDailyBreadItem(int dailyBreadId)
+		public ViewModelDailyBreadItem GetDailyBreadItem(int clientId, int dailyBreadId)
 		{
-			var raw = _dailyBreadItemRepository.FindBy(o => !o.IsDeleted && o.DailyBreadId == dailyBreadId);
+			var raw = _dailyBreadItemRepository.FindBy(o => !o.IsDeleted && o.DailyBreadId == dailyBreadId && o.ClientId == clientId);
 
 			var viewModelDailyBreadItem = new ViewModelDailyBreadItem();
 			viewModelDailyBreadItem.InjectFrom(raw);
@@ -48,9 +48,9 @@ namespace Buncis.Services.DailyBread
 			return viewModelDailyBreadItem;
 		}
 
-		public ValidationDictionary<ViewModelDailyBreadItem> DeleteDailyBreadItem(int dailyBreadId)
+		public ValidationDictionary<ViewModelDailyBreadItem> DeleteDailyBreadItem(int clientId, int dailyBreadId)
 		{
-			var raw = _dailyBreadItemRepository.FindBy(o => o.DailyBreadId == dailyBreadId);
+			var raw = _dailyBreadItemRepository.FindBy(o => o.DailyBreadId == dailyBreadId && o.ClientId == clientId);
 
 			var validator = new ValidationDictionary<ViewModelDailyBreadItem>();
 
@@ -98,7 +98,10 @@ namespace Buncis.Services.DailyBread
 			}
 			else
 			{
-				dailyBreadItem = _dailyBreadItemRepository.FindBy(o => !o.IsDeleted && o.DailyBreadId == viewModelDailyBread.DailyBreadId);
+				dailyBreadItem = _dailyBreadItemRepository.FindBy(o => !o.IsDeleted
+					&& o.DailyBreadId == viewModelDailyBread.DailyBreadId
+					&& o.ClientId == clientId);
+
 				if (dailyBreadItem != null)
 				{
 					var createdDate = dailyBreadItem.DateCreated;
@@ -113,7 +116,7 @@ namespace Buncis.Services.DailyBread
 
 			UpdateDailyBreadUrl(dailyBreadItem.DailyBreadId);
 
-			var pinged = GetDailyBreadItem(dailyBreadItem.DailyBreadId);
+			var pinged = GetDailyBreadItem(clientId, dailyBreadItem.DailyBreadId);
 			validator.IsValid = true;
 			validator.RelatedObject = pinged;
 			return validator;
@@ -133,7 +136,7 @@ namespace Buncis.Services.DailyBread
 		{
 			return _urlEngine.GenerateUrl(dailyBreadId, dailyBreadTitle, DateTime.UtcNow);
 		}
-		
+
 		public IEnumerable<ViewModelDailyBreadItem> GetRecentDailyBread(int clientId)
 		{
 			var raw = GetAvailableDailyBreadItems(clientId);

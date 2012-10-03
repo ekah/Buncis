@@ -7,11 +7,10 @@ namespace Buncis.Framework.Core.Services.DailyBread
 	public interface IDailyBreadService
 	{
 		IEnumerable<ViewModelDailyBreadItem> GetAvailableDailyBreadItems(int clientId);
-		ViewModelDailyBreadItem GetDailyBreadItem(int dailybreadId);
-		ValidationDictionary<ViewModelDailyBreadItem> DeleteDailyBreadItem(int dailybreadId);
+		ViewModelDailyBreadItem GetDailyBreadItem(int clientId, int dailybreadId);
+		ValidationDictionary<ViewModelDailyBreadItem> DeleteDailyBreadItem(int clientId, int dailybreadId);
 		ValidationDictionary<ViewModelDailyBreadItem> SaveDailyBreadItem(int clientId, ViewModelDailyBreadItem viewModelDailyBread);
 		string GetDailyBreadUrl(int dailyBreadId, string dailyBreadTitle);
-		
 		IEnumerable<ViewModelDailyBreadItem> GetRecentDailyBread(int clientId);
 	}
 }

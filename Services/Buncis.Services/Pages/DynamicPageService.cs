@@ -38,10 +38,11 @@ namespace Buncis.Services.Pages
 			return viewModelPage;
 		}
 
-		public ViewModelPage GetPage(int pageId)
+		public ViewModelPage GetPage(int clientId, int pageId)
 		{
 			var expression = _dynamicPageFilters.Init()
 				.GetByPageId(pageId)
+				.GetByClientId(clientId)
 				.GetNotDeleted()
 				.FilterExpression;
 
@@ -108,6 +109,7 @@ namespace Buncis.Services.Pages
 			{
 				var gExpression = _dynamicPageFilters.Init()
 					.GetByPageId(viewModelPage.PageId)
+					.GetByClientId(clientId)
 					.GetNotDeleted()
 					.FilterExpression;
 
@@ -127,16 +129,17 @@ namespace Buncis.Services.Pages
 				}
 			}
 
-			var pingedPaged = GetPage(dPage.PageId);
+			var pingedPaged = GetPage(clientId, dPage.PageId);
 			validator.IsValid = true;
 			validator.RelatedObject = pingedPaged;
 			return validator;
 		}
 
-		public ValidationDictionary<ViewModelPage> DeletePage(int pageId)
+		public ValidationDictionary<ViewModelPage> DeletePage(int clientId, int pageId)
 		{
 			var expression = _dynamicPageFilters.Init()
 				.GetByPageId(pageId)
+				.GetByClientId(clientId)
 				.GetNotDeleted()
 				.FilterExpression;
 

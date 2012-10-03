@@ -37,7 +37,7 @@ namespace Buncis.Web.WebServices
 		public Response<DtoBuncisDailyBread> BPGetDailyBread(int clientId, int dailyBreadId)
 		{
 			var service = IoC.Resolve<IDailyBreadService>();
-			var data = service.GetDailyBreadItem(dailyBreadId);
+			var data = service.GetDailyBreadItem(clientId, dailyBreadId);
 
 			var response = new Response<DtoBuncisDailyBread>();
 			response.IsSuccess = true;
@@ -83,7 +83,7 @@ namespace Buncis.Web.WebServices
 		public Response BPDeleteDailyBread(int clientId, int dailyBreadId)
 		{
 			var service = IoC.Resolve<IDailyBreadService>();
-			var result = service.DeleteDailyBreadItem(dailyBreadId);
+			var result = service.DeleteDailyBreadItem(clientId, dailyBreadId);
 			return new Response(result.IsValid, string.Empty);
 		}
 

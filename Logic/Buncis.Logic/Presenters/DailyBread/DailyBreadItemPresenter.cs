@@ -29,7 +29,7 @@ namespace Buncis.Logic.Presenters.DailyBread
 		void view_GetDailyBreadDetail(object sender, EventArgs e)
 		{
 			var dailyBreadId = int.Parse(WebUtil.GetQueryString(QueryStrings.DailyBreadDetailId, "-1"));
-			var dailyBreadItem = _dailyBreadService.GetDailyBreadItem(dailyBreadId);
+			var dailyBreadItem = _dailyBreadService.GetDailyBreadItem(ClientId, dailyBreadId);
 			if (dailyBreadItem == null)
 			{
 				throw new PageNotFoundException("The Page is not found in database", WebUtil.GetCurrentUrl());

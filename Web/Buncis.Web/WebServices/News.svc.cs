@@ -69,7 +69,7 @@ namespace Buncis.Web.WebServices
 		public Response BPDeleteNews(int clientId, int newsId)
 		{
 			var service = IoC.Resolve<INewsService>();
-			var result = service.DeleteNewsItem(newsId);
+			var result = service.DeleteNewsItem(clientId, newsId);
 
 			return new Response(result.IsValid, string.Empty);
 		}

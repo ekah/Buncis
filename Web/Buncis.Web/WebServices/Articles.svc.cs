@@ -31,7 +31,7 @@ namespace Buncis.Web.WebServices
 		public Response<DtoBuncisArticle> BPGetArticle(int clientId, int articleId)
 		{
 			var service = IoC.Resolve<IArticleService>();
-			var data = service.GetArticleItem(articleId);
+			var data = service.GetArticleItem(clientId, articleId);
 
 			var response = new Response<DtoBuncisArticle>();
 			response.IsSuccess = true;
@@ -78,7 +78,7 @@ namespace Buncis.Web.WebServices
 		{
 			// do use clientId ?
 			var service = IoC.Resolve<IArticleService>();
-			var result = service.DeleteArticleItem(articleId);
+			var result = service.DeleteArticleItem(clientId, articleId);
 			return new Response(result.IsValid, string.Empty);
 		}
 
@@ -142,7 +142,7 @@ namespace Buncis.Web.WebServices
 		public Response BPDeleteArticleCategory(int clientId, int articleCategoryId)
 		{
 			var service = IoC.Resolve<IArticleService>();
-			var result = service.DeleteArticleCategory(articleCategoryId);
+			var result = service.DeleteArticleCategory(clientId, articleCategoryId);
 			return new Response(result.IsValid, string.Empty);
 		}
 	}

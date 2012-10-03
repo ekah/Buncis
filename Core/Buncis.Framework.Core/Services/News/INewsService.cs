@@ -7,8 +7,8 @@ namespace Buncis.Framework.Core.Services.News
 	public interface INewsService
 	{
 		IEnumerable<ViewModelNewsItem> GetAvailableNewsItems(int clientId);
-		ViewModelNewsItem GetNewsItem(int newsId);
-		ValidationDictionary<ViewModelNewsItem> DeleteNewsItem(int newsId);
+		ViewModelNewsItem GetNewsItem(int clientId, int newsId);
+		ValidationDictionary<ViewModelNewsItem> DeleteNewsItem(int clientId, int newsId);
 		ValidationDictionary<ViewModelNewsItem> SaveNewsItem(int clientId, ViewModelNewsItem viewModelNews);
 		IEnumerable<ViewModelNewsItem> GetPublishedNewsItem(int clientId);
 		IEnumerable<ViewModelNewsCategory> GetNewsCategories(int clientId);

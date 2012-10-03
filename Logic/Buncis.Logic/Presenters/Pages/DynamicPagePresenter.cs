@@ -22,12 +22,12 @@ namespace Buncis.Logic.Presenters.Pages
 		protected override void view_Initialize(object sender, EventArgs e)
 		{
 			var pageId = int.Parse(WebUtil.GetQueryString(QueryStrings.PageId, "-1"));
-			var pageFromDb = _dynamicPageService.GetPage(pageId);
+			var pageFromDb = _dynamicPageService.GetPage(ClientId, pageId);
 			if (pageFromDb == null)
 			{
 				throw new PageNotFoundException("The Page is not found in database", pageId);
 			}
-			
+
 			View.Model.PageId = pageFromDb.PageId;
 			View.Model.MetaTitle = pageFromDb.MetaTitle;
 			View.Model.MetaDescription = pageFromDb.MetaDescription;

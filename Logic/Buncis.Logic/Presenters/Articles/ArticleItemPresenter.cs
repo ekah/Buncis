@@ -23,7 +23,7 @@ namespace Buncis.Logic.Presenters.Articles
 		void view_GetArticleDetail(object sender, EventArgs e)
 		{
 			var articleId = int.Parse(WebUtil.GetQueryString(QueryStrings.ArticleDetailId, "-1"));
-			var articleItem = _articleService.GetArticleItem(articleId);
+			var articleItem = _articleService.GetArticleItem(ClientId, articleId);
 			if (articleItem == null)
 			{
 				throw new PageNotFoundException("The Page is not found in database", WebUtil.GetCurrentUrl());

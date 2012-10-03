@@ -31,7 +31,7 @@ namespace Buncis.Web.WebServices
 		public Response<DtoBuncisPage> BPGetPage(int clientId, int pageId)
 		{
 			var service = IoC.Resolve<IDynamicPageService>();
-			var page = service.GetPage(pageId);
+			var page = service.GetPage(clientId, pageId);
 
 			var response = new Response<DtoBuncisPage>();
 			response.IsSuccess = true;
@@ -78,7 +78,7 @@ namespace Buncis.Web.WebServices
 		{
 			// do use clientId ?
 			var service = IoC.Resolve<IDynamicPageService>();
-			var result = service.DeletePage(pageId);
+			var result = service.DeletePage(clientId, pageId);
 			return new Response(result.IsValid, string.Empty);
 		}
 	}

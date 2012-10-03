@@ -64,9 +64,9 @@ namespace Buncis.Services.News
 			return converted;
 		}
 
-		public ViewModelNewsItem GetNewsItem(int newsId)
+		public ViewModelNewsItem GetNewsItem(int clientId, int newsId)
 		{
-			var raw = _newsRepository.FindBy(o => !o.IsDeleted && o.NewsId == newsId);
+			var raw = _newsRepository.FindBy(o => !o.IsDeleted && o.NewsId == newsId && o.ClientId == clientId);
 
 			var viewModelNewsItem = new ViewModelNewsItem();
 			viewModelNewsItem.InjectFrom<CloneInjection>(raw);
@@ -74,9 +74,9 @@ namespace Buncis.Services.News
 			return viewModelNewsItem;
 		}
 
-		public ValidationDictionary<ViewModelNewsItem> DeleteNewsItem(int newsId)
+		public ValidationDictionary<ViewModelNewsItem> DeleteNewsItem(int clientId, int newsId)
 		{
-			var raw = _newsRepository.FindBy(o => o.NewsId == newsId);
+			var raw = _newsRepository.FindBy(o => o.NewsId == newsId && o.ClientId == clientId);
 
 			var validator = new ValidationDictionary<ViewModelNewsItem>();
 
@@ -124,7 +124,7 @@ namespace Buncis.Services.News
 			}
 			else
 			{
-				newsItem = _newsRepository.FindBy(o => !o.IsDeleted && o.NewsId == viewModelNews.NewsId);
+				newsItem = _newsRepository.FindBy(o => !o.IsDeleted && o.NewsId == viewModelNews.NewsId && o.ClientId == clientId);
 				if (newsItem != null)
 				{
 					var createdDate = newsItem.DateCreated;
@@ -140,7 +140,7 @@ namespace Buncis.Services.News
 			// update news url
 			UpdateNewsUrl(newsItem.NewsId);
 
-			var pingedNews = GetNewsItem(newsItem.NewsId);
+			var pingedNews = GetNewsItem(clientId, newsItem.NewsId);
 			validator.IsValid = true;
 			validator.RelatedObject = pingedNews;
 			return validator;
@@ -245,7 +245,7 @@ namespace Buncis.Services.News
 				_newsCategoryRepository.Add(newsCategory);
 			}
 
-			var rawPinged = _newsCategoryRepository.FindBy(o => o.NewsCategoryId == newsCategory.NewsCategoryId);
+			var rawPinged = _newsCategoryRepository.FindBy(o => o.NewsCategoryId == newsCategory.NewsCategoryId && o.ClientId == clientId);
 			var pinged = new ViewModelNewsCategory().InjectFrom(rawPinged) as ViewModelNewsCategory;
 			validator.IsValid = true;
 			validator.RelatedObject = pinged;
