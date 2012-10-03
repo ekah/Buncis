@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Buncis.Framework.Mvp.CustomEventArgs;
 using Buncis.Logic.CustomEventArgs;
 using Buncis.Web.Base;
 using Buncis.Logic.Presenters.News;

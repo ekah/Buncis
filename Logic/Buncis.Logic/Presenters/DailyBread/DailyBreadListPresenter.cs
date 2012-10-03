@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Buncis.Framework.Mvp.CustomEventArgs;
 using Buncis.Logic.Views.DailyBread;
 using Buncis.Framework.Core.Services.DailyBread;
 using Buncis.Logic.CustomEventArgs;
+using DailyBreadListEventArgs = Buncis.Logic.CustomEventArgs.DailyBreadListEventArgs;
 
 namespace Buncis.Logic.Presenters.DailyBread
 {
